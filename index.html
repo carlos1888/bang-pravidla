@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BANG! Dynamite Box & Legendy — Kompletní pravidla a encyklopedie karet</title>
+  <title>Pravidla deskové hry Bang! — Kompletní pravidla a encyklopedie karet</title>
   <meta name="description" content="Kompletní detailní pravidla pro hraní hry BANG! s Dynamite Boxem a rozšířením Legendy. Katalog všech karet s filtry, řešitel sporných situací a interaktivní průvodce tahem.">
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤠</text></svg>">
@@ -16,7 +16,7 @@
       <a href="#katalog" class="brand">
         <span class="brand-icon">🧨</span>
         <div class="brand-titles">
-          <h1>BANG! DYNAMITE &amp; LEGENDY</h1>
+          <h1 id="brand-main-title">Pravidla deskové hry Bang!</h1>
           <div class="subtitle">Kompletní pravidla všech rozšíření dohromady &amp; Encyklopedie karet</div>
         </div>
       </a>
@@ -72,64 +72,66 @@
             <button id="btn-reset-filters" class="btn-reset-filters">Resetovat</button>
           </h3>
 
-          <!-- Expansion Filter -->
-          <div class="filter-group">
-            <label for="filter-expansion" id="label-expansion">Rozšíření</label>
-            <select id="filter-expansion" class="filter-select">
-              <option value="all">Všechna rozšíření (234 karet)</option>
-              <option value="base">Základní hra</option>
-              <option value="dodge-city">Město duchů (Zelené karty)</option>
-              <option value="gold-rush">Zlatá horečka (Vybavení a zlato)</option>
-              <option value="armed-dangerous">Ozbrojení a nebezpeční (Oranžové)</option>
-              <option value="train-robbery">Velká vlaková loupež (Vlak a stanice)</option>
-              <option value="valley-of-shadows">Údolí stínů</option>
-              <option value="high-noon">Pravé poledne</option>
-              <option value="fistful-of-cards">Pěst plná karet</option>
-              <option value="wild-west-show">Divoký západ</option>
-              <option value="legends">Legendy</option>
-              <option value="dynamite-box">Dynamite Box bonusy &amp; Promo</option>
-            </select>
-          </div>
+          <div class="filter-groups-grid">
+            <!-- Expansion Filter -->
+            <div class="filter-group">
+              <label for="filter-expansion" id="label-expansion">Rozšíření</label>
+              <select id="filter-expansion" class="filter-select">
+                <option value="all">Všechna rozšíření (234 karet)</option>
+                <option value="base">Základní hra</option>
+                <option value="dodge-city">Město duchů (Zelené karty)</option>
+                <option value="gold-rush">Zlatá horečka (Vybavení a zlato)</option>
+                <option value="armed-dangerous">Ozbrojení a nebezpeční (Oranžové)</option>
+                <option value="train-robbery">Velká vlaková loupež (Vlak a stanice)</option>
+                <option value="valley-of-shadows">Údolí stínů</option>
+                <option value="high-noon">Pravé poledne</option>
+                <option value="fistful-of-cards">Pěst plná karet</option>
+                <option value="wild-west-show">Divoký západ</option>
+                <option value="legends">Legendy</option>
+                <option value="dynamite-box">Dynamite Box bonusy &amp; Promo</option>
+              </select>
+            </div>
 
-          <!-- Type Filter -->
-          <div class="filter-group">
-            <label for="filter-type" id="label-type">Typ a barva karty</label>
-            <select id="filter-type" class="filter-select">
-              <option value="all">Všechny typy karet</option>
-              <option value="brown">🟤 Hnědé karty (okamžité)</option>
-              <option value="blue">🔵 Modré karty (vyložené ve hře)</option>
-              <option value="green">🟢 Zelené karty (Město duchů)</option>
-              <option value="orange">🟠 Oranžové karty (Nebezpečné)</option>
-              <option value="black">⚫ Černé vybavení (Zlatá horečka)</option>
-              <option value="character">🤠 Postavy (běžné i legendární)</option>
-              <option value="train">🚂 Vlak, lokomotivy a vagony</option>
-              <option value="feat">📜 Karty činů (Legendy)</option>
-              <option value="event">⚡ Globální události</option>
-              <option value="role">⭐ Karty rolí</option>
-            </select>
-          </div>
+            <!-- Type Filter -->
+            <div class="filter-group">
+              <label for="filter-type" id="label-type">Typ a barva karty</label>
+              <select id="filter-type" class="filter-select">
+                <option value="all">Všechny typy karet</option>
+                <option value="brown">🟤 Hnědé karty (okamžité)</option>
+                <option value="blue">🔵 Modré karty (vyložené ve hře)</option>
+                <option value="green">🟢 Zelené karty (Město duchů)</option>
+                <option value="orange">🟠 Oranžové karty (Nebezpečné)</option>
+                <option value="black">⚫ Černé vybavení (Zlatá horečka)</option>
+                <option value="character">🤠 Postavy (běžné i legendární)</option>
+                <option value="train">🚂 Vlak, lokomotivy a vagony</option>
+                <option value="feat">📜 Karty činů (Legendy)</option>
+                <option value="event">⚡ Globální události</option>
+                <option value="role">⭐ Karty rolí</option>
+              </select>
+            </div>
 
-          <!-- Suit Filter -->
-          <div class="filter-group">
-            <label for="filter-suit" id="label-suit">Karetní barva</label>
-            <select id="filter-suit" class="filter-select">
-              <option value="all">Všechny barvy</option>
-              <option value="♠">♠ Piky</option>
-              <option value="♥">♥ Srdce</option>
-              <option value="♦">♦ Káry</option>
-              <option value="♣">♣ Kříže</option>
-            </select>
-          </div>
+            <!-- Suit Filter -->
+            <div class="filter-group">
+              <label for="filter-suit" id="label-suit">Karetní barva</label>
+              <select id="filter-suit" class="filter-select">
+                <option value="all">Všechny barvy</option>
+                <option value="♠">♠ Piky</option>
+                <option value="♥">♥ Srdce</option>
+                <option value="♦">♦ Káry</option>
+                <option value="♣">♣ Kříže</option>
+              </select>
+            </div>
 
-          <!-- Sorting -->
-          <div class="filter-group">
-            <label for="sort-cards" id="label-sort">Řazení</label>
-            <select id="sort-cards" class="filter-select">
-              <option value="name-asc">Název (A → Z)</option>
-              <option value="name-desc">Název (Z → A)</option>
-              <option value="expansion">Dle rozšíření</option>
-              <option value="type">Dle typu karty</option>
-            </select>
+            <!-- Sorting -->
+            <div class="filter-group">
+              <label for="sort-cards" id="label-sort">Řazení</label>
+              <select id="sort-cards" class="filter-select">
+                <option value="name-asc">Název (A → Z)</option>
+                <option value="name-desc">Název (Z → A)</option>
+                <option value="expansion">Dle rozšíření</option>
+                <option value="type">Dle typu karty</option>
+              </select>
+            </div>
           </div>
         </aside>
 
@@ -225,7 +227,7 @@
   <footer class="app-footer">
     <div class="footer-inner">
       <div class="footer-info">
-        <p id="footer-text-1"><strong>BANG! DYNAMITE BOX &amp; LEGENDY — Encyklopedie pravidel a karet</strong></p>
+        <p id="footer-text-1"><strong>Pravidla deskové hry Bang! — Encyklopedie pravidel a karet</strong></p>
         <p id="footer-text-2">Autor hry: Emiliano Sciarra | Vývoj: daVinci Games / dV Giochi &amp; Albi.</p>
         <p id="footer-text-3">Tato nezávislá fanouškovská webová aplikace slouží k rychlému vyhledávání a řešení herních situací.</p>
       </div>

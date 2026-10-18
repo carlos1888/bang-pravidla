@@ -24,6 +24,7 @@
     themeToggle: document.getElementById('theme-toggle'),
     langBtnCs: document.getElementById('lang-btn-cs'),
     langBtnEn: document.getElementById('lang-btn-en'),
+    brandMainTitle: document.getElementById('brand-main-title'),
     brandSubtitle: document.querySelector('.brand-titles .subtitle'),
     labelFilterTitle: document.getElementById('label-filter-title'),
     labelExpansion: document.getElementById('label-expansion'),
@@ -82,6 +83,7 @@
   // =========================================================================
   const I18N = {
     cs: {
+      brandTitle: "Pravidla deskové hry Bang!",
       brandSubtitle: "Kompletní pravidla všech rozšíření dohromady & Encyklopedie karet",
       searchPlaceholder: "Hledat kartu, postavu, pravidlo... (stiskni /)",
       themeTitle: "Přepnout tmavý / světlý westernový režim",
@@ -112,13 +114,14 @@
       faqSearchPlaceholder: "Hledat otázku nebo kartu: např. Slab, Vězení, Pivo, Vagon, Bomba, Rez...",
       faqNoResults: "Nebyly nalezeny žádné sporné situace.",
       faqNoResultsDesc: "Zkuste zadat jiná klíčová slova (např. Slab, Vězení, Pivo, Vagon, Bomba, Rez, Šerif).",
-      footerText1: "BANG! DYNAMITE BOX & LEGENDY — Encyklopedie pravidel a karet",
+      footerText1: "Pravidla deskové hry Bang! — Encyklopedie pravidel a karet",
       footerText2: "Autor hry: Emiliano Sciarra | Vývoj: daVinci Games / dV Giochi & Albi.",
       footerText3: "Tato nezávislá fanouškovská webová aplikace slouží k rychlému vyhledávání a řešení herních situací.",
       footerRepo: "Repozitář na GitHubu",
       footerNav: '<a href="#pravidla">Pravidla</a> • <a href="#faq">FAQ</a> • <a href="#katalog">Karty</a>'
     },
     en: {
+      brandTitle: "Bang! Board Game Rules",
       brandSubtitle: "Complete rules of all expansions together & Card encyclopedia",
       searchPlaceholder: "Search card, character, rule... (press /)",
       themeTitle: "Toggle dark / light western theme",
@@ -149,7 +152,7 @@
       faqSearchPlaceholder: "Search question or card: e.g. Slab, Jail, Beer, Ghost, Bomb, Rust...",
       faqNoResults: "No conflict situations found.",
       faqNoResultsDesc: "Try different keywords (e.g. Slab, Jail, Beer, Ghost, Bomb, Rust, Sheriff).",
-      footerText1: "BANG! DYNAMITE BOX & LEGENDS — Rules & Card Encyclopedia",
+      footerText1: "Bang! Board Game Rules — Rules & Card Encyclopedia",
       footerText2: "Game Author: Emiliano Sciarra | Publishing: daVinci Games / dV Giochi & Albi.",
       footerText3: "This independent fan-made web application provides instant rule reference and dispute resolution.",
       footerRepo: "GitHub Repository",
@@ -269,6 +272,7 @@
     const t = I18N[lang] || I18N.cs;
 
     // Header & Navigation
+    if (els.brandMainTitle) els.brandMainTitle.textContent = t.brandTitle;
     if (els.brandSubtitle) els.brandSubtitle.textContent = t.brandSubtitle;
     if (els.globalSearch) els.globalSearch.placeholder = t.searchPlaceholder;
     if (els.themeToggle) els.themeToggle.title = t.themeTitle;
@@ -357,7 +361,11 @@
     window.location.hash = tabId;
 
     els.tabs.forEach(tab => {
-      tab.classList.toggle('active', tab.dataset.tab === tabId);
+      const isActive = tab.dataset.tab === tabId;
+      tab.classList.toggle('active', isActive);
+      if (isActive) {
+        tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      }
     });
 
     els.panes.forEach(pane => {

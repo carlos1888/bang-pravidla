@@ -289,6 +289,21 @@ main.app-main {
   .catalog-layout {
     grid-template-columns: 1fr;
   }
+  .filter-sidebar {
+    position: static !important;
+    top: auto !important;
+    max-height: none !important;
+    overflow-y: visible !important;
+    margin-bottom: 1.25rem;
+  }
+  .filter-groups-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+  .filter-groups-grid .filter-group {
+    margin-bottom: 0;
+  }
 }
 
 /* Filter Sidebar */
@@ -327,6 +342,11 @@ main.app-main {
   background: var(--accent-red);
   color: #fff;
   border-color: var(--accent-red);
+}
+
+.filter-groups-grid {
+  display: flex;
+  flex-direction: column;
 }
 
 .filter-group {
@@ -586,6 +606,13 @@ main.app-main {
 @media (max-width: 850px) {
   .rules-container {
     grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .rules-toc {
+    position: static !important;
+    top: auto !important;
+    max-height: none !important;
+    margin-bottom: 1.25rem;
   }
 }
 
@@ -1547,4 +1574,344 @@ footer.app-footer {
   color: var(--text-muted);
   line-height: 1.45;
   margin: 0;
+}
+
+/* =========================================================================
+   COMPREHENSIVE RESPONSIVE STYLES (MOBILE & TABLET OPTIMIZATIONS)
+   ========================================================================= */
+
+@media (max-width: 768px) {
+  /* --- App Header & Navigation --- */
+  header.app-header {
+    padding: 0.6rem 0.75rem 0.4rem;
+  }
+
+  .header-top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.4rem;
+  }
+
+  .brand {
+    order: 1;
+    gap: 0.5rem;
+    max-width: calc(100% - 110px);
+    overflow: hidden;
+  }
+
+  .brand-icon {
+    font-size: 1.4rem;
+    flex-shrink: 0;
+  }
+
+  .brand-titles {
+    min-width: 0;
+  }
+
+  .brand-titles h1 {
+    font-size: 1.15rem;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .brand-titles .subtitle {
+    display: none;
+  }
+
+  .header-actions {
+    display: contents; /* Children participate directly in .header-top flex */
+  }
+
+  .lang-switch-group {
+    order: 2;
+    margin-left: auto;
+    padding: 2px;
+  }
+
+  .lang-btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.78rem;
+  }
+
+  #theme-toggle {
+    order: 3;
+    padding: 0.35rem 0.55rem;
+    font-size: 0.95rem;
+    margin-left: 0.35rem;
+  }
+
+  .header-search {
+    order: 4;
+    width: 100%;
+    min-width: 0;
+    margin-top: 0.35rem;
+  }
+
+  .header-search input {
+    font-size: 0.88rem;
+    padding: 0.48rem 0.85rem 0.48rem 2.1rem;
+  }
+
+  .header-search .search-icon {
+    left: 0.65rem;
+    font-size: 0.85rem;
+  }
+
+  /* --- Navigation Pill Tabs --- */
+  nav.app-nav {
+    margin: 0.45rem 0 0;
+    gap: 0.35rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 0.1rem 0 0.3rem;
+  }
+
+  nav.app-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-tab {
+    flex-shrink: 0;
+    padding: 0.38rem 0.75rem;
+    font-size: 0.82rem;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    color: #dfceb3;
+    gap: 0.35rem;
+  }
+
+  .nav-tab.active {
+    background: #ffcc00;
+    color: #1c0e07;
+    font-weight: 700;
+    border-color: #ffcc00;
+    box-shadow: 0 2px 8px rgba(255, 204, 0, 0.35);
+  }
+
+  /* --- Main Container --- */
+  main.app-main {
+    padding: 1rem 0.65rem;
+  }
+
+  /* --- Rules Table of Contents Chips --- */
+  .rules-toc {
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .rules-toc h4 {
+    font-size: 0.82rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .rules-toc-list {
+    display: flex;
+    overflow-x: auto;
+    gap: 0.4rem;
+    padding-bottom: 0.25rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .rules-toc-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .rules-toc-item {
+    flex-shrink: 0;
+    margin-bottom: 0;
+  }
+
+  .rules-toc-link {
+    font-size: 0.8rem;
+    white-space: nowrap;
+    padding: 0.35rem 0.7rem;
+    border-radius: 16px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+  }
+
+  .rules-toc-link.active {
+    background: var(--color-brown);
+    color: #ffffff;
+  }
+
+  .rules-article {
+    padding: 1.25rem 0.9rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .rule-section-header {
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .rule-section-header h2 {
+    font-size: 1.35rem;
+  }
+
+  /* --- FAQ Section & Conflict Arbitrator --- */
+  .faq-search-box {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .faq-search-box h2 {
+    font-size: 1.2rem;
+  }
+
+  .faq-search-box p {
+    font-size: 0.85rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .faq-search-box input {
+    font-size: 0.9rem;
+    padding: 0.65rem 1rem;
+  }
+
+  .faq-categories {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 0.4rem;
+    padding-bottom: 0.35rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .faq-categories::-webkit-scrollbar {
+    display: none;
+  }
+
+  .faq-cat-btn {
+    flex-shrink: 0;
+    white-space: nowrap;
+    font-size: 0.78rem;
+    padding: 0.3rem 0.65rem;
+    border-radius: 14px;
+  }
+
+  details.bang-disclosure summary {
+    padding: 0.85rem 0.95rem;
+    font-size: 0.98rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+
+  .disclosure-body {
+    padding: 0.95rem;
+    font-size: 0.92rem;
+  }
+
+  .faq-verdict {
+    padding: 0.75rem 0.95rem;
+    font-size: 0.95rem;
+  }
+
+  /* --- Turn Stepper & Timing Cards --- */
+  .turn-step-card {
+    padding: 1.15rem 0.85rem;
+  }
+
+  .turn-step-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+
+  .turn-step-title h3 {
+    font-size: 1.15rem;
+  }
+
+  .timing-flow-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .action-categories-grid {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+
+  .draw-characters-grid {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+  }
+
+  .symbols-grid {
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 0.75rem;
+  }
+
+  /* --- Tables Touch Scrolling --- */
+  .table-responsive {
+    margin: 0.75rem 0 1.25rem;
+  }
+
+  .bang-table {
+    font-size: 0.82rem;
+  }
+
+  .bang-table thead th,
+  .bang-table tbody td {
+    padding: 0.6rem 0.75rem;
+  }
+
+  /* --- Modal Dialog --- */
+  .modal-backdrop {
+    padding: 0.5rem;
+  }
+
+  .modal-content {
+    padding: 1.25rem 1rem;
+    max-height: 94vh;
+  }
+
+  .modal-close {
+    top: 0.6rem;
+    right: 0.6rem;
+    width: 38px;
+    height: 38px;
+    font-size: 1.2rem;
+  }
+
+  /* --- Footer --- */
+  footer.app-footer {
+    padding: 1.5rem 0.85rem;
+    margin-top: 2rem;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    gap: 1.25rem;
+    text-align: center;
+  }
+
+  .footer-links {
+    text-align: center;
+  }
+}
+
+@media (max-width: 540px) {
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .filter-groups-grid {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+
+  .symbols-grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }

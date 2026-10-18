@@ -1,4 +1,4 @@
-# 🧨 BANG! Dynamite Box & Legendy — Kompletní pravidla & Encyklopedie karet
+# 🧨 Pravidla deskové hry Bang! — Kompletní pravidla & Encyklopedie karet
 
 > **Oficiální pravidla a kompletní průvodce pro hraní karetní hry BANG! (nikoliv kostkové) se všemi rozšířeními z Dynamite Boxu a rozšířením Legendy (Legends).**
 >
