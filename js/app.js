@@ -401,8 +401,17 @@
   }
 
   // =========================================================================
-  // FILTER CARDS LOGIC
+  // NORMALIZATION & FILTER LOGIC (Diacritics-insensitive search)
   // =========================================================================
+  function normalizeString(str) {
+    if (!str) return '';
+    return str
+      .toString()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase();
+  }
+
   function getFilteredCards() {
     if (!window.BANG_CARDS) return [];
     const isEn = state.lang === 'en';
@@ -430,9 +439,15 @@
       }
 
       if (state.searchQuery.trim()) {
-        const q = state.searchQuery.toLowerCase();
-        const text = `${card.name} ${card.nameEn || ''} ${card.effect || ''} ${card.effectEn || ''} ${card.expansionName} ${card.typeLabel} ${(card.tags || []).join(' ')}`.toLowerCase();
-        if (!text.includes(q)) return false;
+        const qNorm = normalizeString(state.searchQuery);
+        const tokens = qNorm.split(/\s+/).filter(Boolean);
+        const rulingsText = Array.isArray(card.rulings) ? card.rulings.join(' ') : (card.rulings || '');
+        const rulingsEnText = Array.isArray(card.rulingsEn) ? card.rulingsEn.join(' ') : (card.rulingsEn || '');
+        const fullCardText = `${card.name} ${card.nameEn || ''} ${card.effect || ''} ${card.effectEn || ''} ${card.expansionName} ${card.typeLabel} ${(card.tags || []).join(' ')} ${rulingsText} ${rulingsEnText} ${card.values || ''}`;
+        const cardTextNorm = normalizeString(fullCardText);
+
+        const matches = tokens.every(token => cardTextNorm.includes(token));
+        if (!matches) return false;
       }
 
       return true;
@@ -723,9 +738,14 @@
         if (item.category !== targetCat) return false;
       }
       if (state.faqQuery.trim()) {
-        const q = state.faqQuery.toLowerCase();
-        const text = `${item.question} ${item.answerHtml} ${(item.tags || []).join(' ')} ${item.category}`.toLowerCase();
-        if (!text.includes(q)) return false;
+        const qNorm = normalizeString(state.faqQuery);
+        const tokens = qNorm.split(/\s+/).filter(Boolean);
+        const plainAnswer = (item.answerHtml || '').replace(/<[^>]*>/g, ' ');
+        const fullText = `${item.question} ${plainAnswer} ${(item.tags || []).join(' ')} ${item.category}`;
+        const faqTextNorm = normalizeString(fullText);
+
+        const matches = tokens.every(token => faqTextNorm.includes(token));
+        if (!matches) return false;
       }
       return true;
     });
@@ -795,7 +815,7 @@
     if (els.globalSearch) {
       els.globalSearch.addEventListener('input', (e) => {
         state.searchQuery = e.target.value;
-        if (state.activeTab !== 'katalog' && state.activeTab !== 'faq') {
+        if (state.activeTab !== 'katalog') {
           setTab('katalog');
         }
         renderCards();
