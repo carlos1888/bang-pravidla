@@ -1,4 +1,4 @@
-// BANG! Definitive Card Database (Clean Text-Only)
+// BANG! Definitive Card Database (Clean Text-Only & Bilingual)
 window.BANG_CARDS = [
   {
     "id": "role-sheriff",
@@ -29,7 +29,14 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Role Card",
-    "effectEn": "Plays with role revealed. Starts with 1 extra bullet (life point). Starts the game. Goal: Kill all Outlaws and the Renegade."
+    "effectEn": "Plays with role revealed. Starts with 1 extra bullet (life point). Starts the game. Goal: Kill all Outlaws and the Renegade.",
+    "timingEn": "Entire game (public role)",
+    "costEn": null,
+    "rulingsEn": [
+      "Jail cannot be played on the Sheriff.",
+      "If the Sheriff eliminates their Deputy, as penalty they must discard all cards from hand and in play (including equipment).",
+      "If the Sheriff eliminates an Outlaw, they receive the standard reward of 3 cards from the deck."
+    ]
   },
   {
     "id": "role-deputy",
@@ -60,7 +67,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Role Card",
-    "effectEn": "Plays with role hidden. Protects the Sheriff at all costs. Goal: Same as Sheriff (kill all Outlaws and Renegade). Wins if Sheriff wins."
+    "effectEn": "Plays with role hidden. Protects the Sheriff at all costs. Goal: Same as Sheriff (kill all Outlaws and Renegade). Wins if Sheriff wins.",
+    "timingEn": "Entire game (secret role)",
+    "costEn": null,
+    "rulingsEn": [
+      "Even if the Deputy dies, they win together with the Sheriff if law and order prevail.",
+      "If killed by the Sheriff, the Sheriff loses all cards in hand and in play."
+    ]
   },
   {
     "id": "role-outlaw",
@@ -90,7 +103,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Role Card",
-    "effectEn": "Plays with role hidden. Goal: Eliminate the Sheriff. Wins immediately when Sheriff is killed."
+    "effectEn": "Plays with role hidden. Goal: Eliminate the Sheriff. Wins immediately when Sheriff is killed.",
+    "timingEn": "Entire game (secret role)",
+    "costEn": null,
+    "rulingsEn": [
+      "Outlaws win immediately as soon as the Sheriff dies — unless the sole survivor is the Renegade.",
+      "Whoever eliminates an Outlaw (even another Outlaw) immediately draws 3 reward cards from the deck."
+    ]
   },
   {
     "id": "role-renegade",
@@ -120,7 +139,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Role Card",
-    "effectEn": "Plays with role hidden. Goal: Be the last surviving player in the game. Must eliminate Sheriff last in 1v1 duel."
+    "effectEn": "Plays with role hidden. Goal: Be the last surviving player in the game. Must eliminate Sheriff last in 1v1 duel.",
+    "timingEn": "Entire game (secret role)",
+    "costEn": null,
+    "rulingsEn": [
+      "If the Sheriff dies before all Deputies and Outlaws are eliminated, the Renegade LOSES and Outlaws win!",
+      "In an 8-player game there are two Renegades — each plays for themselves."
+    ]
   },
   {
     "id": "char-bart-cassidy",
@@ -151,7 +176,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Character",
-    "effectEn": "Each time he loses a life point, he immediately draws a card from the draw deck."
+    "effectEn": "Each time he loses a life point, he immediately draws a card from the draw deck.",
+    "timingEn": "Immediately upon losing a life point",
+    "costEn": null,
+    "rulingsEn": [
+      "This ability does not trigger if you lose your last life point (unless saved by a Beer).",
+      "When losing 3 life points to Dynamite, draws 3 cards (if surviving)."
+    ]
   },
   {
     "id": "char-black-jack",
@@ -182,7 +213,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Character",
-    "effectEn": "During Phase 1, reveals the 2nd card drawn: if Hearts ♥ or Diamonds ♦, draws 1 extra card."
+    "effectEn": "During Phase 1, reveals the 2nd card drawn: if Hearts ♥ or Diamonds ♦, draws 1 extra card.",
+    "timingEn": "Phase 1 of turn (drawing)",
+    "costEn": null,
+    "rulingsEn": [
+      "Pokud si dobírá z balíčku a 2. karta je červená, má celkem 3 karty v 1. fázi.",
+      "V kombinaci s kartami upravujícími dobírání (např. Příjezd vlaku, Žízeň) se druhá ukázaná karta posuzuje standardně."
+    ]
   },
   {
     "id": "char-calamity-janet",
@@ -215,7 +252,14 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Character",
-    "effectEn": "Can play BANG! cards as Missed! and Missed! cards as BANG!."
+    "effectEn": "Can play BANG! cards as Missed! and Missed! cards as BANG!.",
+    "timingEn": "Anytime (on own turn and out of turn)",
+    "costEn": null,
+    "rulingsEn": [
+      "Pokud zahraje Vedle! jako BANG!, stále podléhá limitu 1 BANG! za tah (pokud nemá Volcanic).",
+      "Může odhodit Vedle! proti Indiánům! (jako BANG! card).",
+      "V Duelu může odhazovat Missed! card jako BANG! card."
+    ]
   },
   {
     "id": "char-el-gringo",
@@ -248,7 +292,15 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Character",
-    "effectEn": "Each time he loses a life point from a player's card, draws 1 random card from that player's hand."
+    "effectEn": "Each time he loses a life point from a player's card, draws 1 random card from that player's hand.",
+    "timingEn": "Immediately upon taking damage",
+    "costEn": null,
+    "rulingsEn": [
+      "Neúčinkuje při ztrátě posledního life point(s) (pokud se nezachrání Pivem).",
+      "Zranění z Dynamitu, Bomby ani lokomotivy Ironhorse není způsobeno žádným hráčem, takže si kartu nebere.",
+      "Pokud prohraje jím vyvolaný Duel, kartu si od soupeře nebere.",
+      "Při zranění způsobeném Legendou přivlastněním činu si El Gringo kartu vezme od hráče, který čin přivlastnil!"
+    ]
   },
   {
     "id": "char-jesse-jones",
@@ -280,7 +332,14 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Character",
-    "effectEn": "During Phase 1, may draw his 1st card from any other player's hand instead of the deck."
+    "effectEn": "During Phase 1, may draw his 1st card from any other player's hand instead of the deck.",
+    "timingEn": "Phase 1 of turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Může cílit na libovolného hráče bez ohledu na vzdálenost.",
+      "Pokud hráč nemá karty v ruce, nelze od něj táhnout.",
+      "Henry Block na tuto krádež reaguje BANGem!"
+    ]
   },
   {
     "id": "char-jourdonnais",
@@ -313,7 +372,14 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Character",
-    "effectEn": "Has a built-in Barrel: whenever targeted by a BANG!, draws from the deck to cancel the shot on Hearts ♥."
+    "effectEn": "Has a built-in Barrel: whenever targeted by a BANG!, draws from the deck to cancel the shot on Hearts ♥.",
+    "timingEn": "Defense against a BANG! effect",
+    "costEn": null,
+    "rulingsEn": [
+      "Může mít ve hře i skutečnou Barrel card – v takovém případě snímá dvakrát za sebou před nutností hrát Vedle!.",
+      "Proti Slab the Killerovi může úspěšným sejmutím nahradit 1 ze dvou nutných Vedle!.",
+      "Funguje i proti Flintlocku (Křesadlovce) a schopnosti Mexicali Kida."
+    ]
   },
   {
     "id": "char-kit-carlson",
@@ -344,7 +410,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Character",
-    "effectEn": "During Phase 1, looks at the top 3 cards of the deck, chooses 2 for his hand, and returns 1 to the top."
+    "effectEn": "During Phase 1, looks at the top 3 cards of the deck, chooses 2 for his hand, and returns 1 to the top.",
+    "timingEn": "Phase 1 of turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Ostatní hráči nevidí žádnou z těchto karet.",
+      "Třetí kartu vrací na vršek v tajnosti, což mu umožňuje manipulovat budoucí sejmutí (Dynamit, Vězení soupeře atd.)."
+    ]
   },
   {
     "id": "char-lucky-duke",
@@ -377,7 +449,14 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Character",
-    "effectEn": "Whenever he draws from the deck (check), flips 2 cards and chooses the result he prefers."
+    "effectEn": "Whenever he draws from the deck (check), flips 2 cards and chooses the result he prefers.",
+    "timingEn": "Whenever you must perform a draw check",
+    "costEn": null,
+    "rulingsEn": [
+      "Platí pro Barel, Vězení, Dynamit, Rum, Bombu i Chřestýše.",
+      "V kombinaci s Podkovou (Horseshoe) otočí dokonce 3 karty a vybere 1.",
+      "Při kartě Stepní běžec (Tumbleweed) opakuje celé své sejmutí (otočí 2 nové karty)."
+    ]
   },
   {
     "id": "char-paul-regret",
@@ -409,7 +488,14 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Character",
-    "effectEn": "All other players see him at distance +1 (built-in Mustang)."
+    "effectEn": "All other players see him at distance +1 (built-in Mustang).",
+    "timingEn": "Permanent passive effect",
+    "costEn": null,
+    "rulingsEn": [
+      "Může mít vyloženou i reálnou kartu Mustang (vzdálenost se pak zvyšuje o 2).",
+      "Může mít zároveň Skrýš (Hideout z Dodge City).",
+      "Sám vidí ostatní hráče v normální základní vzdálenosti."
+    ]
   },
   {
     "id": "char-pedro-ramirez",
@@ -440,7 +526,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Character",
-    "effectEn": "During Phase 1, may take his 1st card from the top of the discard pile."
+    "effectEn": "During Phase 1, may take his 1st card from the top of the discard pile.",
+    "timingEn": "Phase 1 of turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Může si tak vzít kartu, kterou právě před ním někdo odhodil (např. Cat Balou, Pivo, BANG!).",
+      "Pokud je discard pile prázdný, bere obě z dobíracího."
+    ]
   },
   {
     "id": "char-rose-doolan",
@@ -471,7 +563,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Character",
-    "effectEn": "Sees all other players at distance -1 (built-in Scope)."
+    "effectEn": "Sees all other players at distance -1 (built-in Scope).",
+    "timingEn": "Permanent passive effect",
+    "costEn": null,
+    "rulingsEn": [
+      "Může mít vyložené i skutečné Hledí (vzdálenost o 2 menší, min. 1).",
+      "Platí pro dostřel zbraní, Panic! card, nůž i další efekty vázané na vzdálenost."
+    ]
   },
   {
     "id": "char-sid-ketchum",
@@ -503,7 +601,14 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Character",
-    "effectEn": "May discard any 2 cards from his hand to regain 1 life point at any time on his turn."
+    "effectEn": "May discard any 2 cards from his hand to regain 1 life point at any time on his turn.",
+    "timingEn": "Anytime (including when losing last life)",
+    "costEn": null,
+    "rulingsEn": [
+      "Může se zachránit před smrtícím zraněním, i když nemá Pivo!",
+      "Nemůže překročit maximální počáteční počet life point(s).",
+      "V rozšíření Legendy získá po vyléčení life point(s) 1 efekt BANG! zdarma!"
+    ]
   },
   {
     "id": "char-slab-the-killer",
@@ -536,7 +641,14 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Character",
-    "effectEn": "Players must play 2 Missed! cards to cancel his BANG! attacks."
+    "effectEn": "Players must play 2 Missed! cards to cancel his BANG! attacks.",
+    "timingEn": "When attacking with a BANG! card",
+    "costEn": null,
+    "rulingsEn": [
+      "Vztahuje se POUZE na skutečnou BANG! card zahranou Slabem.",
+      "NEVZTAHUJE se na Kulomet, Křesadlovku, Rychlopalbu ani Tomahavk (tam stačí 1 Vedle!).",
+      "V Legendách nelze jeho BANG! zrušit vůbec!"
+    ]
   },
   {
     "id": "char-suzy-lafayette",
@@ -568,7 +680,14 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Character",
-    "effectEn": "As soon as she has no cards in hand, immediately draws 1 card from the deck."
+    "effectEn": "As soon as she has no cards in hand, immediately draws 1 card from the deck.",
+    "timingEn": "Immediately after hand is emptied",
+    "costEn": null,
+    "rulingsEn": [
+      "Během Duelu se schopnost pozastaví: pokud zahodí poslední BANG! card a soupeř odpoví, Suzy ztratí life point(s) dříve, než dobere kartu.",
+      "Čin Pohraničí může splnit a potvrdit ještě dříve, než dobere kartu.",
+      "Při placení za vagon v Loupeži si po odhození poslední karty hned dobere."
+    ]
   },
   {
     "id": "char-vulture-sam",
@@ -601,7 +720,15 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Character",
-    "effectEn": "Whenever any player is eliminated, takes all cards from their hand and in play."
+    "effectEn": "Whenever any player is eliminated, takes all cards from their hand and in play.",
+    "timingEn": "Immediately when any player dies",
+    "costEn": null,
+    "rulingsEn": [
+      "Vezme si blue card(s), green card(s) i vagony (ty vyloží ihned před sebe).",
+      "NEBERE karty vybavení ze Zlaté horečky (ty jdou dospod balíčku vybavení).",
+      "NEBERE karty od Stínových pistolníků (ti neumírají, jen odcházejí na konci tahu).",
+      "Pokud je Sheriff a zabije Deputy, nejprve vezme karty Deputy a hned poté všechno odhodí."
+    ]
   },
   {
     "id": "char-willy-the-kid",
@@ -632,7 +759,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Character",
-    "effectEn": "May play any number of BANG! cards on his turn."
+    "effectEn": "May play any number of BANG! cards on his turn.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Má vestavěný efekt Volcanic bez omezení na zbraň (může mít zbraň s delším dostřelem).",
+      "Může střílet na jednoho nebo na různé cíle v dostřelu své zbraně."
+    ]
   },
   {
     "id": "card-bang",
@@ -664,7 +797,14 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Brown Card (Immediate)",
-    "effectEn": "A shot at another player within weapon range. The target must play a Missed! card or lose 1 life point. Limit 1 BANG! per turn."
+    "effectEn": "A shot at another player within weapon range. The target must play a Missed! card or lose 1 life point. Limit 1 BANG! per turn.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Limit 1 za tah se vztahuje pouze na samotné BANG! card, nikoli na karty s efektem BANG! (Kulomet, Křesadlovka, Derringer).",
+      "Zahraná karta se odhazuje vždy, i když byla zrušena.",
+      "Vzdálenost se určuje v okamžiku zahrání."
+    ]
   },
   {
     "id": "card-missed",
@@ -696,7 +836,14 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Brown Card (Immediate)",
-    "effectEn": "Cancel a BANG! attack played against you."
+    "effectEn": "Cancel a BANG! attack played against you.",
+    "timingEn": "Out of turn (in response to attack)",
+    "costEn": null,
+    "rulingsEn": [
+      "Can also be used to defend against Gatling and other cards causing a BANG! effect.",
+      "Nelze použít proti Indiánům! ani v Duelu.",
+      "Proti Slab the Killerovi je třeba dodat 2 efekty Vedle!."
+    ]
   },
   {
     "id": "card-beer",
@@ -728,7 +875,14 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Brown Card (Immediate)",
-    "effectEn": "Regain 1 lost life point (up to your starting maximum). Can be played out of turn when losing your last life point. Has no healing effect with only 2 players left."
+    "effectEn": "Regain 1 lost life point (up to your starting maximum). Can be played out of turn when losing your last life point. Has no healing effect with only 2 players left.",
+    "timingEn": "Own turn Phase 2 OR immediately upon losing last life",
+    "costEn": null,
+    "rulingsEn": [
+      "Nemůže překročit maximální počet life point(s) postavy.",
+      "Při zranění za více life point(s) najednou (Dynamit za 3) lze zahrát více Piv současně pro záchranu.",
+      "Ve 2 hráčích neléčí, ale ve Zlaté horečce jej lze směnit za 1 Gold Nugget(s)!"
+    ]
   },
   {
     "id": "card-saloon",
@@ -758,7 +912,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Brown Card (Immediate)",
-    "effectEn": "All living players regain 1 life point immediately. Cannot be played out of turn to prevent death."
+    "effectEn": "All living players regain 1 life point immediately. Cannot be played out of turn to prevent death.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Saloon NENÍ Pivo – nelze ho zahrát mimo svůj tah k záchraně před smrtí!",
+      "Funguje i ve dvou hráčích."
+    ]
   },
   {
     "id": "card-stagecoach",
@@ -787,7 +947,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Brown Card (Immediate)",
-    "effectEn": "Draw 2 cards from the draw deck."
+    "effectEn": "Draw 2 cards from the draw deck.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": null,
+    "rulingsEn": [
+      "V rozšíření Divoký západ (Wild West Show) zahrání Dostavníku otočí novou kartu události DZ!"
+    ]
   },
   {
     "id": "card-wells-fargo",
@@ -816,7 +981,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Brown Card (Immediate)",
-    "effectEn": "Draw 3 cards from the draw deck."
+    "effectEn": "Draw 3 cards from the draw deck.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": null,
+    "rulingsEn": [
+      "V rozšíření Divoký západ zahrání Wells Fargo otočí novou kartu události DZ!"
+    ]
   },
   {
     "id": "card-general-store",
@@ -846,7 +1016,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Brown Card (Immediate)",
-    "effectEn": "Reveal as many cards from the deck as living players. In turn order starting with you, each player chooses 1 card."
+    "effectEn": "Reveal as many cards from the deck as living players. In turn order starting with you, each player chooses 1 card.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Než kdokoli zahraje další kartu, musí být všechny karty z Hokynářství rozebrány.",
+      "Sgt. Blaze může z Hokynářství vyjmout 1 hráče (otočí se o 1 kartu méně)."
+    ]
   },
   {
     "id": "card-panic",
@@ -878,7 +1054,15 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Brown Card (Immediate)",
-    "effectEn": "Draw 1 card from any player at distance 1 (from hand or in play)."
+    "effectEn": "Draw 1 card from any player at distance 1 (from hand or in play).",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Vzdálenost je ovlivněna Mustangem a Hledím, nikoli však zbraněmi!",
+      "Lze ji zahrát i na sebe (např. vzít si zpět Vězení nebo Dynamit).",
+      "Může ukrást blue card(s), green card(s) nebo vagon (vagon jde ihned před vás do hry).",
+      "NEMŮŽE ukrást black equipment ze Zlaté horečky."
+    ]
   },
   {
     "id": "card-cat-balou",
@@ -910,7 +1094,15 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Brown Card (Immediate)",
-    "effectEn": "Force any player at any distance to discard 1 card (from hand or in play)."
+    "effectEn": "Force any player at any distance to discard 1 card (from hand or in play).",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Funguje bez ohledu na vzdálenost.",
+      "Lze zahrát i na sebe.",
+      "Může zničit Barel, Vězení, Dynamit, zbraň, green card(s) či vagon.",
+      "NEMŮŽE zničit black equipment ze Zlaté horečky."
+    ]
   },
   {
     "id": "card-gatling",
@@ -941,7 +1133,14 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Brown Card (Immediate)",
-    "effectEn": "Fires a BANG! attack at all other living players in play. Does not count toward your 1 BANG! per turn limit."
+    "effectEn": "Fires a BANG! attack at all other living players in play. Does not count toward your 1 BANG! per turn limit.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": null,
+    "rulingsEn": [
+      "NEPOČÍTÁ se do limitu 1 BANG! za tah (můžete v témže tahu zahrát Kulomet i BANG!).",
+      "Vyhodnocuje se postupně po směru hodinových ručiček.",
+      "Pokud ho zahraje Slab the Killer, stačí na zrušení pouze 1 Vedle!."
+    ]
   },
   {
     "id": "card-indians",
@@ -972,7 +1171,14 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Brown Card (Immediate)",
-    "effectEn": "All other players must discard a BANG! card or lose 1 life point. Missed! has no effect."
+    "effectEn": "All other players must discard a BANG! card or lose 1 life point. Missed! has no effect.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": null,
+    "rulingsEn": [
+      "K odvrácení je nutné odhodit skutečnou BANG! card (nebo Vedle! u Calamity Janet).",
+      "Nelze nahradit Křesadlovkou ani Kulometem.",
+      "Vyhodnocuje se po směru hodinových ručiček."
+    ]
   },
   {
     "id": "card-duel",
@@ -1003,7 +1209,14 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Brown Card (Immediate)",
-    "effectEn": "Challenge any player. Both players alternately discard a BANG! card. The first who fails loses 1 life point."
+    "effectEn": "Challenge any player. Both players alternately discard a BANG! card. The first who fails loses 1 life point.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Karty Barel ani Vedle! nelze v souboji použít.",
+      "Karty BANG! odhozené v Duelu se nepočítají do limitu 1 BANG! za tah.",
+      "Pokud v Duelu prohraje Outlaw vyzyvatel, nikdo nedostane odměnu 3 karty."
+    ]
   },
   {
     "id": "card-barrel",
@@ -1035,7 +1248,14 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Blue Card (In Play)",
-    "effectEn": "When targeted by a BANG!, draw: if Hearts ♥, you avoid the shot without needing a Missed! card."
+    "effectEn": "When targeted by a BANG!, draw: if Hearts ♥, you avoid the shot without needing a Missed! card.",
+    "timingEn": "In play in front of you; activated during BANG! attack",
+    "costEn": null,
+    "rulingsEn": [
+      "Hráč smí mít vyložený pouze 1 Barel (pravidlo unikátnosti jména).",
+      "Jourdonnais může kombinovat svůj imaginární Barel se skutečným (snímá dvakrát).",
+      "Proti Slab the Killerovi úspěšné sejmutí nahradí pouze 1 ze 2 nutných Vedle!."
+    ]
   },
   {
     "id": "card-mustang",
@@ -1067,7 +1287,14 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Blue Card (In Play)",
-    "effectEn": "Other players see you at distance +1."
+    "effectEn": "Other players see you at distance +1.",
+    "timingEn": "In play in front of you",
+    "costEn": null,
+    "rulingsEn": [
+      "Zvyšuje vzdálenost pro útoky BANG!, Paniku!, nože atd.",
+      "Sčítá se s dalším Mustangem (u Paula Regreta) a Skrýší (Hideout).",
+      "Neguje se s Hledím (Scope)."
+    ]
   },
   {
     "id": "card-scope",
@@ -1099,7 +1326,14 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Blue Card (In Play)",
-    "effectEn": "You see all other players at distance -1 (minimum distance is 1)."
+    "effectEn": "You see all other players at distance -1 (minimum distance is 1).",
+    "timingEn": "In play in front of you",
+    "costEn": null,
+    "rulingsEn": [
+      "Rozšiřuje dosah střelby i dosah Panic! card.",
+      "Sčítá se se schopností Rose Doolan.",
+      "Ostatní vás vidí v normální vzdálenosti."
+    ]
   },
   {
     "id": "card-jail",
@@ -1131,7 +1365,14 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Blue Card (In Play)",
-    "effectEn": "Play on any player (except Sheriff). At the start of their turn, draw: if Hearts ♥, they escape; otherwise they skip their turn."
+    "effectEn": "Play on any player (except Sheriff). At the start of their turn, draw: if Hearts ♥, they escape; otherwise they skip their turn.",
+    "timingEn": "Before Phase 1 of turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Sheriff nesmí být uvězněn.",
+      "Ve Vězení hráč stále může hrát Missed! card a Pivo mimo svůj tah a zůstává terčem útoků.",
+      "Nové pravidlo Legend: Uvězněný hráč může buď sejmout, NEBO dobrovolně odhodit 1 srdcovou kartu z ruky a odehrát tah bez rizika!"
+    ]
   },
   {
     "id": "card-dynamite",
@@ -1163,7 +1404,14 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Blue Card (In Play)",
-    "effectEn": "Passes clockwise. At the start of each player's turn, draw: if Spades ♠ 2–9, it explodes for 3 life points! Otherwise passes to the left."
+    "effectEn": "Passes clockwise. At the start of each player's turn, draw: if Spades ♠ 2–9, it explodes for 3 life points! Otherwise passes to the left.",
+    "timingEn": "Before Phase 1 of turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Při výbuchu způsobené zranění nepatří žádnému hráči (nezapočítává se El Gringovi, nikdo nedostane odměnu za zabití).",
+      "Pokud má hráč před sebou Dynamit i Vězení, VŽDY se jako první vyhodnocuje Dynamit!",
+      "K záchraně před 3 zraněními může hráč zahrát více Piv najednou."
+    ]
   },
   {
     "id": "weapon-colt-45",
@@ -1192,7 +1440,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Blue Card (In Play)",
-    "effectEn": null
+    "effectEn": "Default weapon pictured on player board. Range 1.",
+    "timingEn": "Permanently available",
+    "costEn": null,
+    "rulingsEn": [
+      "Pokud hráč přijde o vyloženou zbraň, automaticky opět střílí Coltem .45."
+    ]
   },
   {
     "id": "weapon-volcanic",
@@ -1223,7 +1476,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Blue Card (In Play)",
-    "effectEn": null
+    "effectEn": "Firearm weapon with Range 1. Allows you to play any number of BANG! cards on your turn.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Všechny výstřely musí směřovat na cíle ve vzdálenosti 1 (pokud nemáte Hledí snižující vzdálenost).",
+      "Můžete mít ve hře jen 1 kartu zbraně současně."
+    ]
   },
   {
     "id": "weapon-schofield",
@@ -1251,7 +1510,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Blue Card (In Play)",
-    "effectEn": null
+    "effectEn": "Firearm weapon with Range 2.",
+    "timingEn": "In play in front of you",
+    "costEn": null,
+    "rulingsEn": [
+      "Zbraně nemění skutečnou vzdálenost mezi hráči, pouze dostřel BANG! card."
+    ]
   },
   {
     "id": "weapon-remington",
@@ -1279,7 +1543,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Blue Card (In Play)",
-    "effectEn": null
+    "effectEn": "Firearm weapon with Range 3.",
+    "timingEn": "In play in front of you",
+    "costEn": null,
+    "rulingsEn": [
+      "Umožňuje zasáhnout cíle až ve vzdálenosti 3."
+    ]
   },
   {
     "id": "weapon-rev-carabine",
@@ -1308,7 +1577,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Blue Card (In Play)",
-    "effectEn": null
+    "effectEn": "Firearm weapon with Range 4.",
+    "timingEn": "In play in front of you",
+    "costEn": null,
+    "rulingsEn": [
+      "Umožňuje zasáhnout cíle až ve vzdálenosti 4."
+    ]
   },
   {
     "id": "weapon-winchester",
@@ -1337,7 +1611,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Blue Card (In Play)",
-    "effectEn": null
+    "effectEn": "Firearm weapon with Range 5.",
+    "timingEn": "In play in front of you",
+    "costEn": null,
+    "rulingsEn": [
+      "Umožňuje zasáhnout cíle až ve vzdálenosti 5."
+    ]
   },
   {
     "id": "char-apache-kid",
@@ -1369,7 +1648,14 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "Cards with Diamonds ♦ played by other players have no effect on him.",
+    "timingEn": "Permanent passive immunity",
+    "costEn": null,
+    "rulingsEn": [
+      "Imunita platí na kárové BANG! card, Panika!, Cat Balou atd.",
+      "Nelze na něj zahrát kárový Duel. Pokud je však vyzván nekárovým Duelem, kárové BANG! card odhozené soupeřem se počítají jako platné.",
+      "Proti Docu Holydayovi: k zásahu Apache Kida musí být alespoň jedna ze 2 odhozených karet nekárová."
+    ]
   },
   {
     "id": "char-belle-star",
@@ -1401,7 +1687,14 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "During her turn, cards in play in front of other players have no effect.",
+    "timingEn": "Entire own turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Ignoruje soupeřovy Barely, Mustangy, Skrýše, zbraně i zelené obranné karty.",
+      "V rozšíření Ozbrojení a nebezpeční ignoruje i orange card(s) soupeřů (Bedna, Nebezpečné zbraně).",
+      "Černé karty vybavení ze Zlaté horečky však mají vlastní pravidla a nejsou modrými ani green card(s)."
+    ]
   },
   {
     "id": "char-bill-noface",
@@ -1434,7 +1727,14 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "During Phase 1, draws 1 card plus 1 card for each wound he currently has.",
+    "timingEn": "Phase 1 of turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Při plném zdraví (4 life point(s)) dobírá 1 kartu.",
+      "Při 3 life point(s) dobírá 2 karty, při 2 life point(s) 3 karty, při 1 life point(s) dobírá 4 karty!",
+      "Pokud se vrátí jako Duch (Údolí stínů) bez life point(s), dobírá plných 5 karet!"
+    ]
   },
   {
     "id": "char-chuck-wengam",
@@ -1465,7 +1765,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "On his turn, may lose 1 life point to immediately draw 2 cards from the deck.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Nemůže se rozhodnout ztratit svůj poslední life point(s) (sebevražda je zakázána).",
+      "Může se vyléčit Pivem a znovu ztratit life point(s) pro další karty."
+    ]
   },
   {
     "id": "char-doc-holyday",
@@ -1497,7 +1803,14 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "Once per turn, may discard any 2 cards from his hand to count as playing a BANG! card.",
+    "timingEn": "Phase 2 of own turn (once per turn)",
+    "costEn": "Discard 2 cards from hand",
+    "rulingsEn": [
+      "This effect is NOT playing a BANG! card, so it does not count towards the 1 BANG! per turn limit.",
+      "Doc Holyday může ve stejném tahu zahrát svou běžnou BANG! card i použít tuto schopnost.",
+      "Na cíl platí standardní obrana (Vedle!, Barel)."
+    ]
   },
   {
     "id": "char-elena-fuente",
@@ -1529,7 +1842,14 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "May use any card from her hand as a Missed! card.",
+    "timingEn": "Out of turn (when defending)",
+    "costEn": null,
+    "rulingsEn": [
+      "Prakticky nezranitelná běžnou střelbou, dokud má karty v ruce.",
+      "Proti Slab the Killerovi může odhodit libovolné 2 karty jako 2 efekty Vedle!.",
+      "Nemůže použít karty ze hry, pouze z ruky."
+    ]
   },
   {
     "id": "char-greg-digger",
@@ -1561,7 +1881,14 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "Each time another player is eliminated, immediately regains 2 life points.",
+    "timingEn": "Immediately upon elimination of a character",
+    "costEn": null,
+    "rulingsEn": [
+      "Nemůže překročit svůj počáteční počet life point(s) (4 life point(s)).",
+      "Neaktivuje se při odchodu Stínových pistolníků (ti neumírají).",
+      "Aktivuje se, když postava s Vagonem duchů definitivně vypadne."
+    ]
   },
   {
     "id": "char-herb-hunter",
@@ -1592,7 +1919,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "Each time another player is eliminated, immediately draws 2 cards from the deck.",
+    "timingEn": "Immediately upon elimination of a character",
+    "costEn": null,
+    "rulingsEn": [
+      "Pokud Herb Hunter sám zabije Outlaw, dostane běžnou odměnu 3 karty + 2 karty za schopnost = celkem 5 karet!",
+      "Neaktivuje se při odchodu Stínového pistolníka na konci tahu."
+    ]
   },
   {
     "id": "char-jose-delgado",
@@ -1623,7 +1956,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "Up to twice per turn, may discard 1 blue card from hand to draw 2 cards from the deck.",
+    "timingEn": "Phase 2 of own turn (up to 2×)",
+    "costEn": "Discard 1 blue card from hand",
+    "rulingsEn": [
+      "Karta musí být odhozena z ruky, nikoli ze stolu.",
+      "Může takto protočit až 2 blue card(s) a získat celkem 4 nové karty."
+    ]
   },
   {
     "id": "char-molly-stark",
@@ -1655,7 +1994,14 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "Whenever she plays or discards a card out of turn, immediately draws 1 card from the deck.",
+    "timingEn": "Out of own turn",
+    "costEn": null,
+    "rulingsEn": [
+      "V případě Duelu si karty za odhozené BANG! card dobírá až po skončení Duelu (pokud v něm neztratí poslední life point(s)).",
+      "Nucené odhození Cat Balou card, Rvačka nebo Kankán se NEPOVAŽUJE za dobrovolné odhození!",
+      "Odhození BANG! proti Indiánům se považuje za dobrovolné odhození a Molly si líže!"
+    ]
   },
   {
     "id": "char-pat-brennan",
@@ -1687,7 +2033,14 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "During Phase 1, may choose to draw 1 card in play in front of any player instead of 2 cards from deck.",
+    "timingEn": "Phase 1 of turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Bere pouze jednu kartu ze stolu místo obou z balíčku.",
+      "Může vzít zbraň, Mustang, Barel, green card(s) i vagon.",
+      "Nemůže vzít black equipment ze Zlaté horečky."
+    ]
   },
   {
     "id": "char-pixie-pete",
@@ -1718,7 +2071,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "During Phase 1, draws 3 cards from the deck instead of 2.",
+    "timingEn": "Phase 1 of turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Konstantní výhoda +1 karta v každém tahu.",
+      "V kombinaci s kartami jako Příjezd vlaku dobírá 4 karty!"
+    ]
   },
   {
     "id": "char-sean-mallory",
@@ -1749,7 +2108,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "In Phase 3, he may hold up to 10 cards in hand regardless of his current life points.",
+    "timingEn": "Phase 3 of turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Může mít v ruce až 10 karet i s 1 life point(s).",
+      "Pokud má 11 a více karet, musí odhodit přebytek, aby mu zbylo 10 karet."
+    ]
   },
   {
     "id": "char-tequila-joe",
@@ -1781,7 +2146,14 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "Whenever he plays a Beer card, he regains 2 life points instead of 1.",
+    "timingEn": "When playing Beer",
+    "costEn": null,
+    "rulingsEn": [
+      "Platí pouze pro skutečnou Beer card.",
+      "Karty jako Saloon, Tequila nebo Čutora mu přidávají pouze 1 life point(s).",
+      "Ve 2 hráčích Pivo neléčí (ani pro Tequila Joea)."
+    ]
   },
   {
     "id": "char-vera-custer",
@@ -1812,7 +2184,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "At the start of her turn, chooses 1 other living character in play and gains their ability until her next turn.",
+    "timingEn": "Start of Phase 1 of turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Zkopíruje schopnost na celé kolo včetně obranných schopností mimo tah (např. Jourdonnais, Elena Fuente).",
+      "Pokud si zvolí Vulture Sama a dojde k úmrtí, karty se mezi ni a Sama rozdělují střídavě počínaje hráčem dříve na tahu."
+    ]
   },
   {
     "id": "card-sombrero",
@@ -1842,7 +2220,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Green Card (Dodge City)",
-    "effectEn": null
+    "effectEn": "Green card. Discard when targeted by BANG!: acts as a Missed! card.",
+    "timingEn": "Out of turn (in response to BANG! attack)",
+    "costEn": "Discard from play",
+    "rulingsEn": [
+      "Nelze použít v tahu, v němž byla vyložena.",
+      "Může být zničena Cat Balou nebo ukradena Panikou před použitím."
+    ]
   },
   {
     "id": "card-iron-plate",
@@ -1871,7 +2255,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Green Card (Dodge City)",
-    "effectEn": null
+    "effectEn": "Green card. Discard when targeted by BANG!: acts as a Missed! card.",
+    "timingEn": "Out of turn (in response to attack)",
+    "costEn": "Discard from play",
+    "rulingsEn": [
+      "Po vyložení čeká do tahu dalšího hráče."
+    ]
   },
   {
     "id": "card-ten-gallon-hat",
@@ -1900,7 +2289,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Green Card (Dodge City)",
-    "effectEn": null
+    "effectEn": "Green card. Discard when targeted by BANG!: acts as a Missed! card.",
+    "timingEn": "Out of turn",
+    "costEn": "Discard from play",
+    "rulingsEn": [
+      "Funguje jako připravené Vedle! na stole."
+    ]
   },
   {
     "id": "card-bible",
@@ -1931,7 +2325,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Green Card (Dodge City)",
-    "effectEn": null
+    "effectEn": "Green card. Discard on your turn after being targeted by BANG!: acts as Missed! and draw 1 card.",
+    "timingEn": "Out of turn",
+    "costEn": "Discard from play",
+    "rulingsEn": [
+      "Efekt Vedle! platí vždy; sejmutí na srdce je bonusové dobrání."
+    ]
   },
   {
     "id": "card-derringer",
@@ -1962,7 +2361,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Green Card (Dodge City)",
-    "effectEn": null
+    "effectEn": "Green card. Discard on your turn: fire a BANG! at distance 1 and draw 1 card from deck.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": "Discard from play",
+    "rulingsEn": [
+      "Nepočítá se do limitu 1 BANG! za tah (je to efekt, ne BANG! card).",
+      "Dostřel je vázán na vzdálenost 1 (modifikován Mustangem/Hledím, nikoli zbraněmi)."
+    ]
   },
   {
     "id": "card-pepperbox",
@@ -1991,7 +2396,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Green Card (Dodge City)",
-    "effectEn": null
+    "effectEn": "Green card. Discard on your turn: fire a BANG! within your weapon range.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": "Discard from play",
+    "rulingsEn": [
+      "Does not count towards the 1 BANG! per turn limit."
+    ]
   },
   {
     "id": "card-knife",
@@ -2020,7 +2430,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Green Card (Dodge City)",
-    "effectEn": null
+    "effectEn": "Green card. Discard on your turn: fire a BANG! at distance 1.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": "Discard from play",
+    "rulingsEn": [
+      "Does not count towards the 1 BANG! per turn limit."
+    ]
   },
   {
     "id": "card-buffalo-rifle",
@@ -2049,7 +2464,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Green Card (Dodge City)",
-    "effectEn": null
+    "effectEn": "Green card. Discard on your turn: fire a BANG! at any player regardless of distance.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": "Discard from play",
+    "rulingsEn": [
+      "Nepočítá se do limitu 1 BANG! za tah. Zasáhne kohokoli."
+    ]
   },
   {
     "id": "card-howitzer",
@@ -2079,7 +2499,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Green Card (Dodge City)",
-    "effectEn": null
+    "effectEn": "Green card. Discard on your turn: fire a BANG! at all other living players (like Gatling).",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": "Discard from play",
+    "rulingsEn": [
+      "Funguje jako připravený Kulomet na stole.",
+      "Does not count towards the 1 BANG! per turn limit."
+    ]
   },
   {
     "id": "card-canteen",
@@ -2109,7 +2535,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Green Card (Dodge City)",
-    "effectEn": null
+    "effectEn": "Green card. Discard on your turn: regain 1 life point.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": "Discard from play",
+    "rulingsEn": [
+      "Čutora NENÍ Pivo – nelze ji odhodit mimo vlastní tah při utrpění smrtelného zásahu!",
+      "Funguje i ve 2 hráčích."
+    ]
   },
   {
     "id": "card-can-can",
@@ -2138,7 +2570,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Green Card (Dodge City)",
-    "effectEn": null
+    "effectEn": "Green card. Discard on your turn: force any player to discard 1 card from hand or in play.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": "Discard from play",
+    "rulingsEn": [
+      "Funguje jako připravené Cat Balou na stole."
+    ]
   },
   {
     "id": "card-conestoga",
@@ -2167,7 +2604,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Green Card (Dodge City)",
-    "effectEn": null
+    "effectEn": "Green card. Discard on your turn: draw 1 card from any player regardless of distance.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": "Discard from play",
+    "rulingsEn": [
+      "Vylepšená Panika! s dosahem 2."
+    ]
   },
   {
     "id": "card-brawl",
@@ -2197,7 +2639,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Brown Card (Immediate)",
-    "effectEn": null
+    "effectEn": "Brown card. Discard with 1 other card: all other players must discard 1 card from hand or in play.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": "Discard 1 additional card from hand",
+    "rulingsEn": [
+      "U každého hráče se můžete zvlášť rozhodnout, zda mu zahodíte kartu ze stolu nebo náhodnou z ruky.",
+      "Karty odhozené v důsledku Rvačky se nepovažují za dobrovolně odhozené (Molly Stark si nelíže)."
+    ]
   },
   {
     "id": "card-tequila",
@@ -2227,7 +2675,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Brown Card (Immediate)",
-    "effectEn": null
+    "effectEn": "Brown card. Discard with 1 other card: regain 1 life point.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": "Discard 1 additional card from hand",
+    "rulingsEn": [
+      "Nelze zahrát mimo svůj tah k záchraně life point(s) před smrtí.",
+      "Lze hrát i ve 2 hráčích!"
+    ]
   },
   {
     "id": "card-rag-time",
@@ -2255,7 +2709,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Brown Card (Immediate)",
-    "effectEn": null
+    "effectEn": "Brown card. Discard with 1 other card: draw 1 card from any player regardless of distance.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": "Discard 1 additional card from hand",
+    "rulingsEn": [
+      "Funguje jako posílená Panika!."
+    ]
   },
   {
     "id": "card-springfield",
@@ -2285,7 +2744,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Brown Card (Immediate)",
-    "effectEn": null
+    "effectEn": "Brown card. Discard with 1 other card: fire a BANG! at any player regardless of distance.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": "Discard 1 additional card from hand",
+    "rulingsEn": [
+      "Nepočítá se do limitu 1 BANG! za tah (je to efekt BANG!)."
+    ]
   },
   {
     "id": "card-dodge",
@@ -2315,7 +2779,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Brown Card (Immediate)",
-    "effectEn": null
+    "effectEn": "Brown card. Acts as a Missed! card and draw 1 card from the deck.",
+    "timingEn": "Out of turn (in response to attack)",
+    "costEn": null,
+    "rulingsEn": [
+      "Funguje jako Vedle! + líznutí karty."
+    ]
   },
   {
     "id": "card-punch",
@@ -2345,7 +2814,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Brown Card (Immediate)",
-    "effectEn": null
+    "effectEn": "Brown card. A melee BANG! attack at distance 1.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Na zrušení stačí 1 Vedle! nebo Barel."
+    ]
   },
   {
     "id": "card-whisky",
@@ -2375,7 +2849,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Brown Card (Immediate)",
-    "effectEn": null
+    "effectEn": "Brown card. Discard with 1 other card: regain 2 life points.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": "Discard 1 additional card from hand",
+    "rulingsEn": [
+      "Nelze zahrát mimo vlastní tah k záchraně life point(s) před smrtí.",
+      "Funguje i ve 2 hráčích."
+    ]
   },
   {
     "id": "card-hideout",
@@ -2404,7 +2884,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Blue Card (In Play)",
-    "effectEn": null
+    "effectEn": "Blue card. Other players see you at distance +1 (acts like Mustang).",
+    "timingEn": "In play in front of you",
+    "costEn": null,
+    "rulingsEn": [
+      "Sčítá se s kartou Mustang (protože mají jiný název!)."
+    ]
   },
   {
     "id": "card-binoculars",
@@ -2433,7 +2918,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Blue Card (In Play)",
-    "effectEn": null
+    "effectEn": "Blue card. You see all other players at distance -1 (acts like Scope).",
+    "timingEn": "In play in front of you",
+    "costEn": null,
+    "rulingsEn": [
+      "Sčítá se s Hledím (Scope)."
+    ]
   },
   {
     "id": "char-don-bell",
@@ -2464,7 +2954,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Gold Rush",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "At the end of his turn, draw: on Hearts ♥ or Diamonds ♦, he immediately takes another entire turn!",
+    "timingEn": "End of own turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Na konci extra tahu už znovu nesnímá (nemůže mít řetězící se tahy).",
+      "Nefunguje, pokud je stínovým pistolníkem, pokud neuspěl ve Vězení nebo pokud platí událost Město duchů."
+    ]
   },
   {
     "id": "char-dutch-will",
@@ -2494,7 +2990,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Gold Rush",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "During Phase 1, draws 2 cards, keeps 1, and discards the other to take 1 Gold Nugget from the bank.",
+    "timingEn": "Phase 1 of turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Zaručený příjem 1 zlata v každém tahu za odhozenou kartu."
+    ]
   },
   {
     "id": "char-jacky-murieta",
@@ -2525,7 +3026,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Gold Rush",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "May pay 2 Gold Nuggets to fire a BANG! without playing a card.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": "2 Gold Nuggets",
+    "rulingsEn": [
+      "Nepotřebuje BANG! card a nepočítá se do limitu 1 BANG! za tah.",
+      "Nespouští zvláštní efekty Nebezpečných zbraní z Ozbrojení a nebezpeční."
+    ]
   },
   {
     "id": "char-josh-mccloud",
@@ -2555,7 +3062,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Gold Rush",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "May pay 2 Gold Nuggets to draw the top card from the equipment deck.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": "2 Gold Nuggets",
+    "rulingsEn": [
+      "Pokud si vytáhne hnědé vybavení, ihned ho zahraje. Pokud černé, vyloží před sebe.",
+      "Pokud vytáhne black equipment, které už má před sebou vyložené, musí novou kartu odhodit."
+    ]
   },
   {
     "id": "char-madam-yto",
@@ -2586,7 +3099,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Gold Rush",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "Whenever any Beer card is played, immediately draws 1 card from the draw deck.",
+    "timingEn": "Whenever anyone plays Beer",
+    "costEn": null,
+    "rulingsEn": [
+      "Platí i pro Pivo zahrané samotnou Madam Yto.",
+      "Nefunguje na Saloon, Tequilu ani Láhev."
+    ]
   },
   {
     "id": "char-pretty-luzena",
@@ -2616,7 +3135,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Gold Rush",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "May purchase 1 equipment card each turn with a discount of 1 Gold Nugget.",
+    "timingEn": "Phase 2 of own turn (once per turn)",
+    "costEn": null,
+    "rulingsEn": [
+      "Vybavení za 1 valoun (pokud takové je) získá zcela zdarma.",
+      "Může koupit více vybavení v tahu, ale slevu uplatní jen na jedno."
+    ]
   },
   {
     "id": "char-raddie-snake",
@@ -2647,7 +3172,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Gold Rush",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "Up to twice per turn, may pay 1 Gold Nugget to draw 1 card from the deck.",
+    "timingEn": "Phase 2 of own turn (up to 2×)",
+    "costEn": "1 Gold Nugget per card",
+    "rulingsEn": [
+      "Karty dobírá přímo z balíčku.",
+      "Zaplacené valouny položte na kartu postavy a na konci tahu vraťte do zásoby."
+    ]
   },
   {
     "id": "char-simeon-picos",
@@ -2678,7 +3209,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Gold Rush",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "Each time he loses a life point, takes 1 Gold Nugget from the bank.",
+    "timingEn": "Immediately upon losing a life point",
+    "costEn": null,
+    "rulingsEn": [
+      "Zlato bere ze společné zásoby na stole, nikoli od útočníka.",
+      "Platí i při zranění z Dynamitu, Bomby nebo přivlastnění činu v Legendách."
+    ]
   },
   {
     "id": "equip-boots",
@@ -2708,7 +3245,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Gold Rush",
     "typeLabelEn": "Black Equipment",
-    "effectEn": null
+    "effectEn": "Black equipment. Cost 1. Whenever you lose a life point, draw 1 card from the deck.",
+    "timingEn": "In play in front of you; activated upon taking damage",
+    "costEn": "3 Gold Nuggets",
+    "rulingsEn": [
+      "Funguje jako schopnost Barta Cassidyho.",
+      "Odstranit lze pouze zaplacením 4 Gold Nugget(s) soupeřem (cena + 1)."
+    ]
   },
   {
     "id": "equip-calumet",
@@ -2739,7 +3282,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Gold Rush",
     "typeLabelEn": "Black Equipment",
-    "effectEn": null
+    "effectEn": "Black equipment. Cost 3. Diamond ♦ cards played by other players have no effect on you.",
+    "timingEn": "In play in front of you",
+    "costEn": "3 Gold Nuggets",
+    "rulingsEn": [
+      "Dává schopnost postavy Apache Kid jakékoli postavě!",
+      "Nelze na vás hrát kárový Duel."
+    ]
   },
   {
     "id": "equip-gold-pan",
@@ -2768,7 +3317,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Gold Rush",
     "typeLabelEn": "Black Equipment",
-    "effectEn": null
+    "effectEn": "Black equipment. Cost 1. Up to twice per turn, pay 1 Gold Nugget to draw 1 card from the deck.",
+    "timingEn": "Phase 2 of own turn (up to 2×)",
+    "costEn": "3 Gold Nuggets",
+    "rulingsEn": [
+      "Umožňuje přeměňovat zlato na karty."
+    ]
   },
   {
     "id": "equip-horseshoe",
@@ -2800,7 +3354,14 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Gold Rush",
     "typeLabelEn": "Black Equipment",
-    "effectEn": null
+    "effectEn": "Black equipment. Cost 2. Whenever you draw (check), flip 1 additional card and choose the result.",
+    "timingEn": "On every draw check",
+    "costEn": "2 Gold Nuggets",
+    "rulingsEn": [
+      "Běžný hráč snímá 2 karty a vybírá 1.",
+      "Lucky Duke snímá 3 karty a vybírá 1!",
+      "Všechny sejmuté karty se poté odhodí."
+    ]
   },
   {
     "id": "equip-talisman",
@@ -2830,7 +3391,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Gold Rush",
     "typeLabelEn": "Black Equipment",
-    "effectEn": null
+    "effectEn": "Black equipment. Cost 1. Whenever you lose a life point from another player's card, take 1 Gold Nugget.",
+    "timingEn": "When taking damage",
+    "costEn": "3 Gold Nuggets",
+    "rulingsEn": [
+      "Dává schopnost Simeona Picose.",
+      "V kombinaci se Simeonem získá za každé zranění 2 Gold Nugget(s)!"
+    ]
   },
   {
     "id": "equip-rucksack",
@@ -2861,7 +3428,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Gold Rush",
     "typeLabelEn": "Black Equipment",
-    "effectEn": null
+    "effectEn": "Black equipment. Cost 2. Pay 2 Gold Nuggets to regain 1 life point.",
+    "timingEn": "Own turn Phase 2 OR immediately upon lethal damage",
+    "costEn": "3 Gold Nuggets",
+    "rulingsEn": [
+      "Jediné vybavení, které vás dokáže zachránit před smrtí bez Beer card!",
+      "Lze použít opakovaně, pokud máte dostatek zlata."
+    ]
   },
   {
     "id": "equip-gun-belt",
@@ -2890,7 +3463,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Gold Rush",
     "typeLabelEn": "Black Equipment",
-    "effectEn": null
+    "effectEn": "Black equipment. Cost 2. Your hand card limit is fixed at 8 cards regardless of current life points.",
+    "timingEn": "Phase 3 of own turn",
+    "costEn": "2 Gold Nuggets",
+    "rulingsEn": [
+      "Umožňuje držet až 8 karet i s 1 life point(s)."
+    ]
   },
   {
     "id": "equip-pickaxe",
@@ -2919,7 +3497,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Gold Rush",
     "typeLabelEn": "Black Equipment",
-    "effectEn": null
+    "effectEn": "Black equipment. Cost 4. During Phase 1, draw 1 additional card from the deck.",
+    "timingEn": "Phase 1 of turn",
+    "costEn": "4 Gold Nuggets",
+    "rulingsEn": [
+      "Trvalý bonus +1 karta v každém tahu."
+    ]
   },
   {
     "id": "equip-bottle",
@@ -2949,7 +3532,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Gold Rush",
     "typeLabelEn": "Brown Equipment",
-    "effectEn": null
+    "effectEn": "Brown equipment. Cost 2. May be discarded to act as Beer, Panic!, or BANG!.",
+    "timingEn": "Upon purchase in Phase 2",
+    "costEn": "2 Gold Nuggets",
+    "rulingsEn": [
+      "Nepočítá se do limitu 1 BANG! za tah (je to efekt Láhve).",
+      "Nespouští schopnost Madam Yto (nejde o skutečnou Beer card)."
+    ]
   },
   {
     "id": "equip-pardner",
@@ -2979,7 +3568,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Gold Rush",
     "typeLabelEn": "Brown Equipment",
-    "effectEn": null
+    "effectEn": "Brown equipment. Cost 2. Discard to act as Cat Balou, Duel, or General Store.",
+    "timingEn": "Upon purchase in Phase 2",
+    "costEn": "2 Gold Nuggets",
+    "rulingsEn": [
+      "Nepovažuje se za zahrání Duelu ani Cat Balou."
+    ]
   },
   {
     "id": "equip-rhum",
@@ -3010,7 +3604,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Gold Rush",
     "typeLabelEn": "Brown Equipment",
-    "effectEn": null
+    "effectEn": "Brown equipment. Cost 2. Discard and draw 4 cards (check): regain 1 life point for each Heart ♥.",
+    "timingEn": "Upon purchase in Phase 2",
+    "costEn": "3 Gold Nuggets",
+    "rulingsEn": [
+      "Všechny sejmuté karty se odhodí.",
+      "Lucky Duke snímá 5 karet a vybere 4. S Podkovou dokonce 6 a vybere 4!"
+    ]
   },
   {
     "id": "equip-wanted",
@@ -3040,7 +3640,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Gold Rush",
     "typeLabelEn": "Brown Equipment",
-    "effectEn": null
+    "effectEn": "Brown equipment. Cost 2. Place in front of any player. Whoever eliminates them draws 2 cards and takes 1 Gold Nugget.",
+    "timingEn": "Upon purchase; placed in front of player",
+    "costEn": "2 Gold Nuggets",
+    "rulingsEn": [
+      "Zabití Outlaw s kartou Wanted = 3 + 2 = 5 karet a 1 Gold Nugget(s)!",
+      "Pokud Sheriff zabije Deputy s kartou Wanted, lízne si 2 karty a vezme valoun dříve, než odhodí všechny karty."
+    ]
   },
   {
     "id": "equip-union-pacific",
@@ -3069,7 +3675,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Gold Rush",
     "typeLabelEn": "Brown Equipment",
-    "effectEn": null
+    "effectEn": "Brown equipment. Cost 4. Draw 4 cards from the draw deck.",
+    "timingEn": "Upon purchase in Phase 2",
+    "costEn": "4 Gold Nuggets",
+    "rulingsEn": [
+      "Položí se dospod balíčku vybavení."
+    ]
   },
   {
     "id": "equip-gold-rush",
@@ -3100,7 +3711,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Gold Rush",
     "typeLabelEn": "Brown Equipment",
-    "effectEn": null
+    "effectEn": "Brown equipment. Cost 5. Ends your turn and immediately starts a new turn for you with full life points restored!",
+    "timingEn": "Upon purchase in Phase 2",
+    "costEn": "5 Gold Nuggets",
+    "rulingsEn": [
+      "Konec stávajícího tahu přeskočí odhazování karet (nemusíte odhazovat přebytečné karty!).",
+      "Okamžitě začíná váš nový kompletní tah s plnými life point(s)!"
+    ]
   },
   {
     "id": "char-al-preacher",
@@ -3131,7 +3748,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Armed & Dangerous",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "When another player plays a blue or orange card, may pay 2 load tokens to draw 1 card from deck.",
+    "timingEn": "Anytime (including out of turn)",
+    "costEn": "2 load tokens",
+    "rulingsEn": [
+      "Lze aktivovat i mimo tah, žetony mohou pocházet z postavy i karet.",
+      "Musí se aktivovat dříve, než je zahrána další karta."
+    ]
   },
   {
     "id": "char-bass-greeves",
@@ -3160,7 +3783,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Armed & Dangerous",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "May discard 1 card from hand to place 2 load tokens on one of his cards.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": "Discard 1 card from hand",
+    "rulingsEn": [
+      "Oba žetony musí jít na stejné místo (ne 1 a 1). Max 4 žetony na kartě."
+    ]
   },
   {
     "id": "char-bloody-mary",
@@ -3191,7 +3819,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Armed & Dangerous",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "Whenever her BANG! is canceled by Missed!, she immediately draws 1 card from the deck.",
+    "timingEn": "When a BANG! card is canceled",
+    "costEn": null,
+    "rulingsEn": [
+      "Funguje pouze na skutečné BANG! card (ne na Kulomet, Křesadlovku, Rychlopalbu).",
+      "Zajišťuje stálý přísun karet i při neúspěšné střelbě."
+    ]
   },
   {
     "id": "char-frankie-canton",
@@ -3222,7 +3856,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Armed & Dangerous",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "Once per turn, may take 1 load token from any card in play and put it on his character.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Může krást žetony ze soupeřových karet i postavy.",
+      "Pokud vezme poslední žeton z Nebezpečné karty soupeře, karta je vyčerpána a odhodí se!"
+    ]
   },
   {
     "id": "char-julie-cutter",
@@ -3253,7 +3893,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Armed & Dangerous",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "Whenever a player causes her to lose a life point, she draws (check): on Hearts/Diamonds, that player loses 1 life point.",
+    "timingEn": "When damaged by a player",
+    "costEn": null,
+    "rulingsEn": [
+      "I při ztrátě více life point(s) spustí pouze 1 BANG!.",
+      "Útočník se může bránit standardně (Vedle!, Barel)."
+    ]
   },
   {
     "id": "char-mexicali-kid",
@@ -3284,7 +3930,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Armed & Dangerous",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "Once per turn, may pay 2 load tokens to fire a BANG! (does not count toward the 1 BANG! limit).",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": "2 load tokens",
+    "rulingsEn": [
+      "Nepotřebuje kartu z ruky a nepočítá se do limitu 1 BANG! za tah.",
+      "Nespouští zvláštní efekty Nebezpečných zbraní."
+    ]
   },
   {
     "id": "char-ms-abigail",
@@ -3316,7 +3968,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Armed & Dangerous",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "Ignores brown cards with values J, Q, K, A played against her if she is the sole target.",
+    "timingEn": "Permanent passive immunity",
+    "costEn": null,
+    "rulingsEn": [
+      "Imunní proti BANG! card, Panika!, Cat Balou s hodnotou figur a es.",
+      "NEFUNGUJE proti plošným kartám (Indiáni!, Kulomet)."
+    ]
   },
   {
     "id": "char-red-ringo",
@@ -3346,7 +4004,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Armed & Dangerous",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "May place up to 4 load tokens on his character card at game start.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Může dát oba žetony na 1 kartu nebo po 1 na dvě různé karty.",
+      "Nemůže přemisťovat žetony z karet zpět na postavu."
+    ]
   },
   {
     "id": "weapon-double-barrel",
@@ -3376,7 +4040,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Armed & Dangerous",
     "typeLabelEn": "Dangerous Card (Orange)",
-    "effectEn": null
+    "effectEn": "Orange weapon. Range 1. Loaded with 3 tokens. Pay 1 token on BANG!: target must play 2 Missed! to cancel.",
+    "timingEn": "When playing a BANG! card",
+    "costEn": "1 load token when firing",
+    "rulingsEn": [
+      "Platí pouze pro skutečnou károvou BANG! card.",
+      "Nelze zrušit Missed! card, Barelem ani Bednou."
+    ]
   },
   {
     "id": "weapon-buntline-special-ad",
@@ -3405,7 +4075,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Armed & Dangerous",
     "typeLabelEn": "Dangerous Card (Orange)",
-    "effectEn": null
+    "effectEn": "Orange weapon. Range 2. Loaded with 3 tokens. Pay 1 token on BANG!: if target cancels with Missed!, they must discard 1 card.",
+    "timingEn": "When a BANG! card is canceled",
+    "costEn": "1 load token when firing",
+    "rulingsEn": [
+      "Trest pro soupeře i v případě, že se úspěšně ubrání."
+    ]
   },
   {
     "id": "weapon-thunderer",
@@ -3435,7 +4110,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Armed & Dangerous",
     "typeLabelEn": "Dangerous Card (Orange)",
-    "effectEn": null
+    "effectEn": "Orange weapon. Range 3. Loaded with 3 tokens. Pay 1 token on BANG!: target cannot play Missed!.",
+    "timingEn": "When playing a BANG! card (before response)",
+    "costEn": "1 load token when firing",
+    "rulingsEn": [
+      "BANG! se vrací do ruky okamžitě. Cíl se stále musí bránit!",
+      "Umožňuje ušetřit BANG! card."
+    ]
   },
   {
     "id": "weapon-big-fifty",
@@ -3466,7 +4147,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Armed & Dangerous",
     "typeLabelEn": "Dangerous Card (Orange)",
-    "effectEn": null
+    "effectEn": "Orange weapon. Range 6. Loaded with 3 tokens. Pay 1 token on BANG!: target's character ability and cards in play are ignored.",
+    "timingEn": "When firing a BANG!",
+    "costEn": "1 load token when firing",
+    "rulingsEn": [
+      "Can reach any player at the table.",
+      "Cíl nemůže použít Barel ani pasivní obrany."
+    ]
   },
   {
     "id": "card-bomb",
@@ -3498,7 +4185,14 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Armed & Dangerous",
     "typeLabelEn": "Dangerous Card (Orange)",
-    "effectEn": null
+    "effectEn": "Orange card. Loaded with 3 tokens. In Phase 0 draw (check): on Hearts/Diamonds passes left; on Clubs/Spades lose 2 tokens (explodes for 2 lives at 0).",
+    "timingEn": "Before Phase 1 of turn (after Dynamite & Jail)",
+    "costEn": "3 load tokens when entering play",
+    "rulingsEn": [
+      "Vyhodnocuje se jako poslední (Dynamit -> Vězení -> Bomba).",
+      "Pokud žetony dojdou kvůli kartě Rez, Bomba okamžitě exploduje!",
+      "Při odstranění Panic! card nebo Cat Balou neexploduje."
+    ]
   },
   {
     "id": "card-whip",
@@ -3527,7 +4221,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Armed & Dangerous",
     "typeLabelEn": "Dangerous Card (Orange)",
-    "effectEn": null
+    "effectEn": "Orange card. Loaded with 3 tokens. Pay 1 token on your turn: force any player to discard 1 card in play.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": "Pay 2 load tokens",
+    "rulingsEn": [
+      "Cílí pouze na karty ve hře (na stole), nikoli do ruky."
+    ]
   },
   {
     "id": "card-crate",
@@ -3558,7 +4257,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Armed & Dangerous",
     "typeLabelEn": "Dangerous Card (Orange)",
-    "effectEn": null
+    "effectEn": "Orange card. Loaded with 3 tokens. Pay 2 tokens when targeted by BANG!: acts as Missed!.",
+    "timingEn": "Out of turn (in response to attack)",
+    "costEn": "Pay 2 load tokens",
+    "rulingsEn": [
+      "Lze použít mimo tah jako připravené Vedle!.",
+      "Pokud máte i Barel, sami si volíte pořadí použití."
+    ]
   },
   {
     "id": "card-bandolier",
@@ -3587,7 +4292,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Armed & Dangerous",
     "typeLabelEn": "Dangerous Card (Orange)",
-    "effectEn": null
+    "effectEn": "Orange card. Loaded with 3 tokens. Pay 1 token: play an additional BANG! card this turn.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": "Pay 2 load tokens",
+    "rulingsEn": [
+      "Zahrání se řídí běžnými pravidly dostřelu a může spustit efekt Nebezpečné zbraně."
+    ]
   },
   {
     "id": "card-bell-tower",
@@ -3617,7 +4327,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Armed & Dangerous",
     "typeLabelEn": "Dangerous Card (Orange)",
-    "effectEn": null
+    "effectEn": "Orange card. Loaded with 3 tokens. Pay 1 token: you see all players at distance 1 for your next card.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": "Pay 1 load token",
+    "rulingsEn": [
+      "Lze aktivovat i vícekrát během tahu (pokaždé za 1 žeton).",
+      "Ruší účinek Mustanga pro následující kartu."
+    ]
   },
   {
     "id": "card-a-little-nip",
@@ -3647,7 +4363,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Armed & Dangerous",
     "typeLabelEn": "Brown Card (Immediate)",
-    "effectEn": null
+    "effectEn": "Brown card. Regain 1 life point. Boost: pay 1 token to regain 2 life points.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": "3 load tokens per upgrade",
+    "rulingsEn": [
+      "Žetony mohou pocházet z postavy i z nebezpečných karet.",
+      "Nelze zahrát mimo vlastní tah k záchraně life point(s) (není to Pivo)."
+    ]
   },
   {
     "id": "card-beer-keg",
@@ -3676,7 +4398,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Armed & Dangerous",
     "typeLabelEn": "Brown Card (Immediate)",
-    "effectEn": null
+    "effectEn": "Brown card. Regain 1 life point. Boost: pay 2 tokens to regain 2 life points.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": "2 load tokens",
+    "rulingsEn": [
+      "Nelze zahrát mimo svůj tah k odvrácení smrti."
+    ]
   },
   {
     "id": "card-arrow",
@@ -3705,7 +4432,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Armed & Dangerous",
     "typeLabelEn": "Brown Card (Immediate)",
-    "effectEn": null
+    "effectEn": "Brown card. Shoot an arrow at any player (BANG!). Boost: pay 1 token to make it uncancelable.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": "2 load tokens per additional target",
+    "rulingsEn": [
+      "Cíl se nemůže bránit kartami jako Křesadlovka či Kulomet, musí mít skutečný BANG!."
+    ]
   },
   {
     "id": "card-quick-shot",
@@ -3735,7 +4467,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Armed & Dangerous",
     "typeLabelEn": "Brown Card (Immediate)",
-    "effectEn": null
+    "effectEn": "Brown card. Shoot a BANG!. Boost: pay 1 token to immediately draw 1 card.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": "2 load tokens per additional target",
+    "rulingsEn": [
+      "Všechny cíle musí být odlišné a v dostřelu zbraně.",
+      "Nespouští schopnost Nebezpečné zbraně."
+    ]
   },
   {
     "id": "card-flintlock",
@@ -3764,7 +4502,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Armed & Dangerous",
     "typeLabelEn": "Brown Card (Immediate)",
-    "effectEn": null
+    "effectEn": "Brown card. Shoot a BANG!. Boost: pay 2 tokens, target must play 2 Missed!.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": "2 load tokens to return to hand",
+    "rulingsEn": [
+      "Skvělé kombo na vyčerpání obranných karet soupeře."
+    ]
   },
   {
     "id": "card-tumbleweed",
@@ -3795,7 +4538,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Armed & Dangerous",
     "typeLabelEn": "Brown Card (Immediate)",
-    "effectEn": null
+    "effectEn": "Brown card. Play immediately after any draw (check) to cancel it and force a redraw.",
+    "timingEn": "Immediately after any draw check",
+    "costEn": "1 load token per repetition",
+    "rulingsEn": [
+      "Může zvrátit výbuch Dynamitu, útěk z Vězení, záchranu Barelem i výsledek u Bomby.",
+      "Lze opakovat i vícekrát za sebou, pokud pokaždé zaplatíte 1 load token(s)."
+    ]
   },
   {
     "id": "card-rust",
@@ -3825,7 +4574,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Armed & Dangerous",
     "typeLabelEn": "Brown Card (Immediate)",
-    "effectEn": null
+    "effectEn": "Brown card. Remove 1 load token from each card of all other players.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Pokud tímto způsobem dojdou žetony na Bomb card, Bomba okamžitě exploduje!",
+      "Pokud z Nebezpečné karty zmizí poslední žeton, karta je vyřazena."
+    ]
   },
   {
     "id": "card-reloading",
@@ -3853,7 +4608,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Armed & Dangerous",
     "typeLabelEn": "Brown Card (Immediate)",
-    "effectEn": null
+    "effectEn": "Brown card. Place 3 load tokens on your character card.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Na každé kartě i postavě smí ležet maximálně 4 žetony."
+    ]
   },
   {
     "id": "char-benny-brawler",
@@ -3884,7 +4644,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "May take a railcar from the station without paying the station cost if he pays 1 life point.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Posunout vlak zdarma smí pouze jednou za svůj tah.",
+      "Umožňuje nakoupit celou vlakovou soupravu, pokud má dostatek karet na zaplacení."
+    ]
   },
   {
     "id": "char-evan-babbit",
@@ -3917,7 +4683,14 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "Whenever targeted by BANG!, may redirect it to another player at distance 1 by discarding 1 card.",
+    "timingEn": "Out of turn (in response to BANG!)",
+    "costEn": "Discard card of the same suit",
+    "rulingsEn": [
+      "BANG! se stále považuje za vystřelený původním střelcem (ne Evanem!).",
+      "Nemůže přesměrovat výstřel zpět na střelce.",
+      "Ve 2 hráčích tuto schopnost nelze použít."
+    ]
   },
   {
     "id": "char-jimmy-texas",
@@ -3948,7 +4721,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "At the end of his turn, immediately draws 1 extra card from the deck.",
+    "timingEn": "End of own turn (after Phase 3)",
+    "costEn": null,
+    "rulingsEn": [
+      "Tuto dobranou kartu už v tomto tahu nemůže zahrát.",
+      "Tato schopnost funguje, I KDYŽ JE VE VĚZENÍ!"
+    ]
   },
   {
     "id": "char-manuelita",
@@ -3978,7 +4757,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "Sees all other players at distance -1 for each railcar in play in front of her.",
+    "timingEn": "Upon train arrival at the end station",
+    "costEn": null,
+    "rulingsEn": [
+      "Karty si líže kdykoli vlak dorazí na konečnou, bez ohledu na to, čí je to tah."
+    ]
   },
   {
     "id": "char-sancho",
@@ -4008,7 +4792,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "Whenever a railcar in front of any player is discarded or upgraded, takes it into his hand.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Tento vagon se počítá do běžného limitu 1 vagon za tah."
+    ]
   },
   {
     "id": "char-shade-oconnor",
@@ -4039,7 +4828,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "May pay the station cost by discarding cards from hand or load tokens.",
+    "timingEn": "Out of turn (each time train moves)",
+    "costEn": "Discard 1 card from hand",
+    "rulingsEn": [
+      "Pokud vlak dorazí na konečnou, odhodí a dobere kartu ještě před vyhodnocením lokomotivy.",
+      "Umožňuje vyměňovat slabé karty za nové při každém tahu soupeřů."
+    ]
   },
   {
     "id": "char-sgt-blaze",
@@ -4071,7 +4866,14 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "May shoot through other players: ignores distance modifiers for weapon range.",
+    "timingEn": "When using an area-of-effect card",
+    "costEn": null,
+    "rulingsEn": [
+      "U Hokynářství otočí o 1 kartu méně a vybraný hráč si nelíže.",
+      "U Kulometu nebo Indiánů může ušetřit svého spojence!",
+      "Funguje i na efekt lokomotivy, pokud dorazí na konečnou v jeho tahu."
+    ]
   },
   {
     "id": "char-zippy-roy",
@@ -4102,7 +4904,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "May advance the train 1 extra station on his turn.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Nezískává díky této schopnosti žádné vagony přímo.",
+      "Může tím přiblížit vlak ke konečné nebo změnit přiřazení vagonů ke stanicím."
+    ]
   },
   {
     "id": "train-ironhorse",
@@ -4133,7 +4941,14 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Railcar",
-    "effectEn": null
+    "effectEn": "Locomotive. Advances with Sheriff. Reaching the end triggers a lethal BANG! against all living players.",
+    "timingEn": "Upon arriving at the end station",
+    "costEn": null,
+    "rulingsEn": [
+      "Každý hráč se brání samostatně (Vedle!, Barel).",
+      "Opětovaná palba proti Ironhorse slouží pouze jako Vedle! (nelze palbu vrátit na vlak).",
+      "Po vyhodnocení se lokomotiva otočí na stranu Leland."
+    ]
   },
   {
     "id": "train-leland",
@@ -4163,7 +4978,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Railcar",
-    "effectEn": null
+    "effectEn": "Locomotive. Advances with Sheriff. Provides station bonus cards to the current player.",
+    "timingEn": "Upon arriving at the end station",
+    "costEn": null,
+    "rulingsEn": [
+      "Začíná hráč, v jehož tahu vlak dorazil na konečnou, po směru hodinových ručiček.",
+      "Po vyhodnocení se lokomotiva otočí na stranu Ironhorse."
+    ]
   },
   {
     "id": "railcar-circus-wagon",
@@ -4191,7 +5012,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Railcar",
-    "effectEn": null
+    "effectEn": "Railcar. You see all other players at distance -1.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": "Station cost upon purchase",
+    "rulingsEn": [
+      "Ostatní hráči odhazují karty postupně po směru hodinových ručiček."
+    ]
   },
   {
     "id": "railcar-express-car",
@@ -4219,7 +5045,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Railcar",
-    "effectEn": null
+    "effectEn": "Railcar. During Phase 1, draw 1 additional card from the deck.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": "Station cost upon purchase",
+    "rulingsEn": [
+      "Po tomto dodatečném tahu nelze získat další tah navíc, i kdybyste zahráli další Expresní vůz."
+    ]
   },
   {
     "id": "railcar-lumber-flatcar",
@@ -4248,7 +5079,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Railcar",
-    "effectEn": null
+    "effectEn": "Railcar. Other players see you at distance +1.",
+    "timingEn": "Upon purchase; placed in front of player",
+    "costEn": "Station cost upon purchase",
+    "rulingsEn": [
+      "Opačný efekt než Hledí (zhoršuje zrak a dostřel daného hráče)."
+    ]
   },
   {
     "id": "railcar-lounge-car",
@@ -4276,7 +5112,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Railcar",
-    "effectEn": null
+    "effectEn": "Railcar. On your turn, discard 1 card to regain 1 life point.",
+    "timingEn": "Upon purchase",
+    "costEn": "Station cost upon purchase",
+    "rulingsEn": [
+      "Pokud je Sheriff a dobere Vagon duchů, musí ho dát jinému hráči."
+    ]
   },
   {
     "id": "railcar-private-car",
@@ -4306,7 +5147,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Railcar",
-    "effectEn": null
+    "effectEn": "Railcar. You cannot be targeted by BANG! from players at distance 1.",
+    "timingEn": "Permanent passive effect in play in front of you",
+    "costEn": "Station cost upon purchase",
+    "rulingsEn": [
+      "Chrání pouze proti BANG! card.",
+      "NECHRÁNÍ proti Kulometu, Revolveru s nožem ani schopnosti Evana Babbita."
+    ]
   },
   {
     "id": "railcar-caboose",
@@ -4335,7 +5182,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Railcar",
-    "effectEn": null
+    "effectEn": "Railcar. When targeted by BANG!, draw (check): on Hearts ♥ cancel the shot.",
+    "timingEn": "Out of turn (in response to BANG! attack)",
+    "costEn": "Station cost upon purchase",
+    "rulingsEn": [
+      "Umožňuje obětovat vyložené karty na stole pro záchranu life point(s)."
+    ]
   },
   {
     "id": "railcar-ghost-car",
@@ -4367,7 +5219,14 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Railcar",
-    "effectEn": null
+    "effectEn": "Railcar. Prevents lethal damage: when you would die, stay alive with 0 life points.",
+    "timingEn": "Upon purchase",
+    "costEn": "Station cost upon purchase",
+    "rulingsEn": [
+      "Sheriff nesmí mít Vagon duchů.",
+      "Při definitivním vyřazení (ztrátě vagonu) se nepřiděluje žádná odměna za zabití a nespouští se Vulture Sam.",
+      "Počítá se jako živý hráč pro vzdálenosti i podmínky vítězství."
+    ]
   },
   {
     "id": "railcar-sleeper-car",
@@ -4397,7 +5256,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Railcar",
-    "effectEn": null
+    "effectEn": "Railcar. Immune to Jail cards.",
+    "timingEn": "Anytime in response",
+    "costEn": "Station cost upon purchase",
+    "rulingsEn": [
+      "Univerzální štít proti kartám, které běžné Vedle! nezastaví."
+    ]
   },
   {
     "id": "station-boom-town",
@@ -4425,7 +5289,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Station",
-    "effectEn": null
+    "effectEn": "Station tile. Purchase cost: discard 1 card. Grants the attached railcar.",
+    "timingEn": "Phase 2 when buying a railcar",
+    "costEn": "Discard a BANG! card",
+    "rulingsEn": [
+      "Musí jít o skutečnou BANG! card (nebo Vedle! u Calamity Janet)."
+    ]
   },
   {
     "id": "station-dodgeville",
@@ -4453,7 +5322,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Station",
-    "effectEn": null
+    "effectEn": "Station tile. Purchase cost: discard 2 cards. Grants the attached railcar.",
+    "timingEn": "Phase 2 when buying a railcar",
+    "costEn": "Discard a Missed! card",
+    "rulingsEn": [
+      "Nelze nahradit Kaktusem ani Barelem."
+    ]
   },
   {
     "id": "station-silverado",
@@ -4481,7 +5355,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Station",
-    "effectEn": null
+    "effectEn": "Station tile. Purchase cost: discard 1 Diamond ♦ card. Grants the attached railcar.",
+    "timingEn": "Phase 2 when buying a railcar",
+    "costEn": "Discard a Beer card",
+    "rulingsEn": [
+      "Lze využít i ve 2 hráčích k nákupu vagonu."
+    ]
   },
   {
     "id": "station-callico",
@@ -4510,7 +5389,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Station",
-    "effectEn": null
+    "effectEn": "Station tile. Purchase cost: discard 1 Heart ♥ card. Grants the attached railcar.",
+    "timingEn": "Phase 2 when buying a railcar",
+    "costEn": "Discard Panic! or Cat Balou",
+    "rulingsEn": [
+      "Karta může být z ruky nebo ze hry."
+    ]
   },
   {
     "id": "station-deathwood",
@@ -4538,7 +5422,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Station",
-    "effectEn": null
+    "effectEn": "Station tile. Purchase cost: discard 1 Club ♣ card. Grants the attached railcar.",
+    "timingEn": "Phase 2 when buying a railcar",
+    "costEn": "Discard a blue card",
+    "rulingsEn": [
+      "Lze odhodit jakoukoli blue card(s)."
+    ]
   },
   {
     "id": "station-tombrock",
@@ -4566,7 +5455,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Station",
-    "effectEn": null
+    "effectEn": "Station tile. Purchase cost: discard 1 Spade ♠ card. Grants the attached railcar.",
+    "timingEn": "Phase 2 when buying a railcar",
+    "costEn": "Lose 1 life point",
+    "rulingsEn": [
+      "Platí se vlastním zdravím. Spouští efekty ztráty life point(s) (Bart Cassidy, Simeon Picos)."
+    ]
   },
   {
     "id": "station-virginian-city",
@@ -4594,7 +5488,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Station",
-    "effectEn": null
+    "effectEn": "Station tile. Purchase cost: lose 1 life point. Grants the attached railcar.",
+    "timingEn": "Phase 2 when buying a railcar",
+    "costEn": "Discard any 2 cards",
+    "rulingsEn": [
+      "Můžete kombinovat karty z ruky i z vyložených karet."
+    ]
   },
   {
     "id": "station-yooma",
@@ -4622,7 +5521,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Station",
-    "effectEn": null
+    "effectEn": "Station tile. Purchase cost: discard 1 weapon card. Grants the attached railcar.",
+    "timingEn": "Phase 2 when buying a railcar",
+    "costEn": "Discard a card valued 2–9",
+    "rulingsEn": [
+      "Barva karty nerozhoduje."
+    ]
   },
   {
     "id": "station-fort-woth",
@@ -4650,7 +5554,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Station",
-    "effectEn": null
+    "effectEn": "Station tile. Purchase cost: pay 2 load tokens or discard 2 cards.",
+    "timingEn": "Phase 2 when buying a railcar",
+    "costEn": "Discard 10, J, Q, K, or A",
+    "rulingsEn": [
+      "Barva karty nerozhoduje."
+    ]
   },
   {
     "id": "station-santa-fe",
@@ -4678,7 +5587,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Station",
-    "effectEn": null
+    "effectEn": "Station tile. Purchase cost: discard 1 blue card.",
+    "timingEn": "Phase 2 when buying a railcar",
+    "costEn": "Discard a Hearts card",
+    "rulingsEn": [
+      "Hodnota karty nerozhoduje."
+    ]
   },
   {
     "id": "station-oathman",
@@ -4706,7 +5620,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Station",
-    "effectEn": null
+    "effectEn": "Station tile. Purchase cost: discard 1 green or orange card.",
+    "timingEn": "Phase 2 when buying a railcar",
+    "costEn": "Discard a Diamonds card",
+    "rulingsEn": [
+      "Hodnota karty nerozhoduje."
+    ]
   },
   {
     "id": "station-st-francis",
@@ -4734,7 +5653,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Station",
-    "effectEn": null
+    "effectEn": "Station tile. Purchase cost: discard 1 BANG! card.",
+    "timingEn": "Phase 2 when buying a railcar",
+    "costEn": "Discard a Clubs card",
+    "rulingsEn": [
+      "Hodnota karty nerozhoduje."
+    ]
   },
   {
     "id": "station-cripple-crack",
@@ -4762,7 +5686,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Station",
-    "effectEn": null
+    "effectEn": "Station tile. Purchase cost: discard 1 Missed! card.",
+    "timingEn": "Phase 2 when buying a railcar",
+    "costEn": "Discard a Spades card",
+    "rulingsEn": [
+      "Hodnota karty nerozhoduje."
+    ]
   },
   {
     "id": "card-train-robbery",
@@ -4793,7 +5722,14 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Brown Card (Immediate)",
-    "effectEn": null
+    "effectEn": "Brown card. Advance the train 1 station and take the attached railcar for free.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Hráč může kombinovat: některé karty odhodí, u jiných přijme BANG! a brání se (Vedle!, Barel).",
+      "Každý BANG! se vyhodnocuje odděleně.",
+      "Po zahrání už v témže tahu nesmíte hrát standardní BANG! card (a naopak)."
+    ]
   },
   {
     "id": "card-map",
@@ -4822,7 +5758,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Blue Card (In Play)",
-    "effectEn": null
+    "effectEn": "Blue card. In Phase 0, look at top 2 cards of deck and discard 1.",
+    "timingEn": "Phase 1 (after Dynamite/Jail, before draw and abilities)",
+    "costEn": null,
+    "rulingsEn": [
+      "Aktivuje se po všech snímacích efektech a před schopnostmi postav."
+    ]
   },
   {
     "id": "card-knife-revolver",
@@ -4853,7 +5794,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Brown Card (Immediate)",
-    "effectEn": null
+    "effectEn": "Brown card. Acts as a BANG! attack or draw 1 card.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Nelze použít v Duelu ani proti Indiánům!.",
+      "Karta K zemi! (Evaded!) jej získá do ruky pouze tehdy, pokud se nevrátí střelci."
+    ]
   },
   {
     "id": "card-refund",
@@ -4882,7 +5829,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Brown Card (Immediate)",
-    "effectEn": null
+    "effectEn": "Brown card. Discard 1 card in play to draw 2 cards from deck.",
+    "timingEn": "Out of turn (when your card is stolen or discarded)",
+    "costEn": null,
+    "rulingsEn": [
+      "Odškodnění nelze použít proti Vlakové loupeži."
+    ]
   },
   {
     "id": "card-full-steam",
@@ -4913,7 +5865,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Brown Card (Immediate)",
-    "effectEn": null
+    "effectEn": "Brown card. Advance the train 2 stations immediately.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Rozhodnutí platí pro všechny hráče u stolu.",
+      "Při zdvojení se aplikují dva efekty lokomotivy hned po sobě."
+    ]
   },
   {
     "id": "card-switch",
@@ -4945,7 +5903,15 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Brown Card (Immediate)",
-    "effectEn": null
+    "effectEn": "Brown card. Switch the positions of 2 stations or railcars.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Pokud získáte novou zbraň a již zbraň máte, starší zbraň odhoďte.",
+      "Pokud získáte Vagon duchů a předchozí majitel nemá žádné life point(s), okamžitě vypadává ze hry!",
+      "Sheriff takto nemůže získat Vagon duchů ani Vězení.",
+      "Karty tvořící vlak nejsou 've hře' a nelze je vyměnit."
+    ]
   },
   {
     "id": "card-evaded",
@@ -4976,7 +5942,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Brown Card (Immediate)",
-    "effectEn": null
+    "effectEn": "Brown card. Cancel an attack and draw 1 card.",
+    "timingEn": "Out of turn (in response to BANG!)",
+    "costEn": null,
+    "rulingsEn": [
+      "Pokud zrušíte efekt, který nevyvolala žádná skutečně zahraná karta (např. lokomotiva Ironhorse), žádnou kartu nezískáte.",
+      "Proti Revolveru s nožem získáte kartu pouze tehdy, pokud se nevrátí střelci."
+    ]
   },
   {
     "id": "char-henry-block",
@@ -5009,7 +5981,14 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Valley of Shadows",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "Anyone who draws or forces him to discard a card becomes target of a BANG! attack.",
+    "timingEn": "When card is taken or discarded by another player",
+    "costEn": null,
+    "rulingsEn": [
+      "Karta je vzata/odhozena až poté, co je vyřešen tento automatický BANG!.",
+      "Funguje proti schopnostem Jesse Jonese i Pata Brennana.",
+      "NEFUNGUJE proti El Gringovi (automatická schopnost zranění)."
+    ]
   },
   {
     "id": "char-colorado-bill",
@@ -5041,7 +6020,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Valley of Shadows",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "Whenever he plays a BANG!, draws (check): on Spades ♠, the shot cannot be canceled.",
+    "timingEn": "When playing a BANG! card",
+    "costEn": null,
+    "rulingsEn": [
+      "Vztahuje se pouze na skutečné BANG! card (ne na Kulomet ani Roztříštěnou kulku).",
+      "Při kartě Dvojitá rána a pikovém sejmutí cíl automaticky ztrácí 2 life point(s)!"
+    ]
   },
   {
     "id": "char-evelyn-shebang",
@@ -5072,7 +6057,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Valley of Shadows",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "During Phase 1, may choose not to draw to fire a BANG! at distance 1.",
+    "timingEn": "Phase 1 of turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Rozhodnutí kolik karet lízne musí učinit PŘED dobíráním (nelze líznout 1 kartu, podívat se na ni a pak se rozhodnout vystřelit).",
+      "Při události Žízeň nedobírá nic."
+    ]
   },
   {
     "id": "char-mick-defender",
@@ -5103,7 +6094,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Valley of Shadows",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "May use any card from hand as Missed! if targeted by a card other than BANG!.",
+    "timingEn": "Out of turn (in response to enemy card)",
+    "costEn": null,
+    "rulingsEn": [
+      "Umožňuje odvrátit Vězení nebo Chřestýše dříve, než jsou na něj vyloženy!",
+      "Nelze použít proti kartám, které se k němu dostanou jinak než zahráním (Dynamit)."
+    ]
   },
   {
     "id": "char-black-flower",
@@ -5133,7 +6130,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Valley of Shadows",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "Once per turn, may use any Clubs ♣ card as a BANG!.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Umožňuje vystřelit 2x za tah bez karty Volcanic."
+    ]
   },
   {
     "id": "char-der-spot-burst-ringer",
@@ -5162,7 +6164,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Valley of Shadows",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "Once per turn, may play a BANG! without counting toward his limit.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Promění obyčejný BANG! na plošnou palbu na všechny hráče."
+    ]
   },
   {
     "id": "char-tuco-the-franciscan",
@@ -5193,7 +6200,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Valley of Shadows",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "During Phase 1, draws 2 cards from deck. If he has no blue cards in play, draws 1 extra card.",
+    "timingEn": "Upon successful draw check for Dynamite/Jail",
+    "costEn": null,
+    "rulingsEn": [
+      "Odměna za přežití nebezpečných pastí."
+    ]
   },
   {
     "id": "card-ghost",
@@ -5226,7 +6238,15 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Valley of Shadows",
     "typeLabelEn": "Blue Card (In Play)",
-    "effectEn": null
+    "effectEn": "Blue card. Play on an eliminated player: returns as a ghost without role or character ability.",
+    "timingEn": "Phase 2 of own turn on dead player",
+    "costEn": null,
+    "rulingsEn": [
+      "Ponechává si schopnost své postavy.",
+      "Bill Noface jako Duch dobírá v 1. fázi 5 karet!",
+      "Chuck Wengam nemůže obětovat life point(s), protože žádný nemá.",
+      "Nemá smysl hrát na něj Pivo (ale ve Zlaté horečce získá za Pivo Gold Nugget(s))."
+    ]
   },
   {
     "id": "card-rattlesnake",
@@ -5258,7 +6278,14 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Valley of Shadows",
     "typeLabelEn": "Blue Card (In Play)",
-    "effectEn": null
+    "effectEn": "Blue card. Place in front of any player. In Phase 0 draw (check): on Spades ♠, lose 1 life point.",
+    "timingEn": "Before Phase 1 of turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Pořadí vyhodnocení před 1. fází: Dynamit -> Vězení -> Chřestýš.",
+      "Pokud hráč neuspěje ve Vězení a přijde o tah, na Chřestýše si už nesnímá!",
+      "Zůstává ve hře kolo za kolem, dokud ho někdo nezničí Cat Balou nebo neukradne Panikou (může to udělat i sám postižený hráč)."
+    ]
   },
   {
     "id": "card-shotgun",
@@ -5288,7 +6315,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Valley of Shadows",
     "typeLabelEn": "Brown Card (Immediate)",
-    "effectEn": null
+    "effectEn": "Brown card. Shoot a player. Target loses 1 life point and discards 1 card from hand.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Zasáhne primární cíl i jeho souseda.",
+      "Na vzdálenost mezi sousedy mají vliv Mustang a Hledí."
+    ]
   },
   {
     "id": "card-return-fire",
@@ -5320,7 +6353,14 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Valley of Shadows",
     "typeLabelEn": "Brown Card (Immediate)",
-    "effectEn": null
+    "effectEn": "Brown card. Cancel a BANG! and immediately fire a BANG! back at the attacker.",
+    "timingEn": "Out of turn (in response to BANG!)",
+    "costEn": null,
+    "rulingsEn": [
+      "Funguje jako Vedle! + okamžitý protiútok.",
+      "Proti Slab the Killerovi je zapotřebí ještě 1 další efekt Vedle! pro odvrácení a vrácení palby.",
+      "Proti lokomotivě Ironhorse funguje pouze jako Vedle! (vlak nelze zasáhnout)."
+    ]
   },
   {
     "id": "card-tornado",
@@ -5350,7 +6390,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Valley of Shadows",
     "typeLabelEn": "Brown Card (Immediate)",
-    "effectEn": null
+    "effectEn": "Brown card. All other players must discard 2 cards from hand.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Pokud má někdo pouze 1 kartu (nebo žádnou), pošle jen tuto 1 kartu (nebo nic).",
+      "Soused pak dostane méně karet."
+    ]
   },
   {
     "id": "card-double-shot",
@@ -5380,7 +6426,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Valley of Shadows",
     "typeLabelEn": "Brown Card (Immediate)",
-    "effectEn": null
+    "effectEn": "Brown card. Fire 2 BANG! attacks at the same or different targets.",
+    "timingEn": "Phase 2 when playing BANG!",
+    "costEn": null,
+    "rulingsEn": [
+      "Pokud ji zahraje Colorado Bill a sejme pik, cíl ztrácí automaticky 2 life point(s) bez šance na obranu!",
+      "Nelze zrušit kartou Útěk (Escape), protože necílí na hráče, ale posiluje BANG!."
+    ]
   },
   {
     "id": "card-escape",
@@ -5411,7 +6463,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Valley of Shadows",
     "typeLabelEn": "Brown Card (Immediate)",
-    "effectEn": null
+    "effectEn": "Brown card. Cancel any card played against you (like Missed! or against Cat Balou).",
+    "timingEn": "Out of turn (in response to enemy card)",
+    "costEn": null,
+    "rulingsEn": [
+      "Zabrání uvěznění dříve, než se Vězení dostane na stůl.",
+      "Nelze použít proti kartám, které se k vám dostanou jinak než zahráním (Dynamit)."
+    ]
   },
   {
     "id": "card-lemat",
@@ -5441,7 +6499,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Valley of Shadows",
     "typeLabelEn": "Blue Card (In Play)",
-    "effectEn": null
+    "effectEn": "Blue weapon. Range 1. Any card from hand may be played as a BANG!.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Karty zahrané přes LeMat se počítají do limitu 1 BANG! za tah.",
+      "Pokud máte možnost hrát více BANGů (Willy the Kid, Bandalír), můžete LeMat použít opakovaně."
+    ]
   },
   {
     "id": "card-last-call",
@@ -5471,7 +6535,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Valley of Shadows",
     "typeLabelEn": "Brown Card (Immediate)",
-    "effectEn": null
+    "effectEn": "Brown card. Regain 1 life point even if only 2 players remain in the game.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Prolamuje zákaz léčení ve 2 hráčích!",
+      "Nelze zahrát mimo vlastní tah."
+    ]
   },
   {
     "id": "event-ghost-town",
@@ -5502,7 +6572,14 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "High Noon",
     "typeLabelEn": "Global Event",
-    "effectEn": null
+    "effectEn": "Event. Dead players return as ghosts on their turns: draw 3 cards, cannot die, leave at turn end.",
+    "timingEn": "Entire round, on dead players' turns",
+    "costEn": null,
+    "rulingsEn": [
+      "Mrtví hráči mohou splnit svůj cíl a vyhrát hru (např. Outlaw zabije Sheriff)!",
+      "Bill Noface si dobírá 5 karet.",
+      "Při odchodu na konci tahu Gregg Digger získá 2 life point(s) a Herb Hunter 2 karty."
+    ]
   },
   {
     "id": "event-the-doctor",
@@ -5531,7 +6608,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "High Noon",
     "typeLabelEn": "Global Event",
-    "effectEn": null
+    "effectEn": "Event. Living players with lowest life points regain 1 life point.",
+    "timingEn": "Immediately when card is revealed",
+    "costEn": null,
+    "rulingsEn": [
+      "Vyhodnotí se před jakoukoli jinou akcí na začátku kola."
+    ]
   },
   {
     "id": "event-the-daltons",
@@ -5560,7 +6642,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "High Noon",
     "typeLabelEn": "Global Event",
-    "effectEn": null
+    "effectEn": "Event. When revealed, all players with blue cards in play discard 1 blue card.",
+    "timingEn": "Immediately when card is revealed",
+    "costEn": null,
+    "rulingsEn": [
+      "Hráč si sám vybere, kterou blue card(s) obětuje."
+    ]
   },
   {
     "id": "event-the-preacher",
@@ -5590,7 +6677,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "High Noon",
     "typeLabelEn": "Global Event",
-    "effectEn": null
+    "effectEn": "Event. Beer cards cannot be played.",
+    "timingEn": "Entire round",
+    "costEn": null,
+    "rulingsEn": [
+      "Zákaz platí i na odhazování BANG! v Duelu (hráč na tahu nesmí v Duelu odhodit BANG! a ztrácí life point(s)!).",
+      "Lze stále útočit Kulometem, Křesadlovkou, nožem apod."
+    ]
   },
   {
     "id": "event-thirst",
@@ -5619,7 +6712,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "High Noon",
     "typeLabelEn": "Global Event",
-    "effectEn": null
+    "effectEn": "Event. Players draw only 1 card during Phase 1.",
+    "timingEn": "Phase 1 on each turn this round",
+    "costEn": null,
+    "rulingsEn": [
+      "Postavy se schopností na 1. kartu (Jesse Jones, Pedro Ramirez) ji mohou normálně využít."
+    ]
   },
   {
     "id": "event-train-arrival",
@@ -5648,7 +6746,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "High Noon",
     "typeLabelEn": "Global Event",
-    "effectEn": null
+    "effectEn": "Event. Players draw 1 extra card during Phase 1.",
+    "timingEn": "Phase 1 on each turn this round",
+    "costEn": null,
+    "rulingsEn": [
+      "Pixie Pete si dobírá 4 karty! Black Jack může mít až 4 karty."
+    ]
   },
   {
     "id": "event-high-noon",
@@ -5678,7 +6781,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "High Noon",
     "typeLabelEn": "Global Event",
-    "effectEn": null
+    "effectEn": "Event. Each player loses 1 life point at the start of their turn. Lasts until game end.",
+    "timingEn": "At the start of each turn until end of game",
+    "costEn": null,
+    "rulingsEn": [
+      "Způsobuje rychlý konec hry („sudden death“).",
+      "Ztráta 1 life point(s) nastává ještě před snímáním na Dynamit a Vězení!"
+    ]
   },
   {
     "id": "event-a-fistful-of-cards",
@@ -5708,7 +6817,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "A Fistful of Cards",
     "typeLabelEn": "Global Event",
-    "effectEn": null
+    "effectEn": "Event. At the start of their turn, player is targeted by as many BANG!s as cards in hand.",
+    "timingEn": "Start of each turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Proti každému BANG! se lze bránit samostatně Missed! card nebo Barelem.",
+      "Hráč s plnou rukou může okamžitě padnout, pokud nemá dostatek obran."
+    ]
   },
   {
     "id": "event-sniper",
@@ -5738,7 +6853,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "A Fistful of Cards",
     "typeLabelEn": "Global Event",
-    "effectEn": null
+    "effectEn": "Event. Players may discard 2 BANG! cards to fire an uncancelable shot.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": "Discard 2 BANG! cards",
+    "rulingsEn": [
+      "Nezapočítává se do limitu 1 BANG! za tah.",
+      "Lze aktivovat i vícekrát za tah."
+    ]
   },
   {
     "id": "event-abandoned-mine",
@@ -5767,7 +6888,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "A Fistful of Cards",
     "typeLabelEn": "Global Event",
-    "effectEn": null
+    "effectEn": "Event. In Phase 1, players draw from discard pile if possible.",
+    "timingEn": "Entire round",
+    "costEn": null,
+    "rulingsEn": [
+      "Otáčí koloběh karet v balíčku.",
+      "Platí pro nadbytečné karty i karty odhozené v Duelu."
+    ]
   },
   {
     "id": "event-lasso",
@@ -5797,7 +6924,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "A Fistful of Cards",
     "typeLabelEn": "Global Event",
-    "effectEn": null
+    "effectEn": "Event. Cards in play in front of all players have no effect.",
+    "timingEn": "Entire round",
+    "costEn": null,
+    "rulingsEn": [
+      "Karty lze stále hrát na stůl, ale jsou dočasně neaktivní.",
+      "Barel nechrání, Mustang nezvyšuje vzdálenost, zbraně nestřílí dál."
+    ]
   },
   {
     "id": "event-russian-roulette",
@@ -5827,7 +6960,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "A Fistful of Cards",
     "typeLabelEn": "Global Event",
-    "effectEn": null
+    "effectEn": "Event. Starting with Sheriff, players alternately discard a Missed! or lose 2 life points.",
+    "timingEn": "Immediately when card is revealed",
+    "costEn": null,
+    "rulingsEn": [
+      "Lze použít Missed! card, úspěšné sejmutí na Barel nebo Jourdonnaise.",
+      "První neúspěšný hráč ztrácí 2 life point(s) a tím je událost vyřešena."
+    ]
   },
   {
     "id": "char-flint-westwood",
@@ -5858,7 +6997,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Wild West Show",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "On his turn, may trade 1 card from hand for 2 random cards from another player's hand.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": "1 chosen card from hand",
+    "rulingsEn": [
+      "Kartu, kterou dáváte, si sami vybíráte.",
+      "Pokud má protihráč v ruce pouze 1 kartu, dostanete pouze ji."
+    ]
   },
   {
     "id": "char-greygory-deck",
@@ -5888,7 +7033,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Wild West Show",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "At the start of his turn, may draw 2 character cards and choose which one to use this round.",
+    "timingEn": "Start of each turn (including start of game)",
+    "costEn": null,
+    "rulingsEn": [
+      "Může si postavy ponechat nebo obě vyměnit za dvě nové.",
+      "Kombinuje 2 plnohodnotné schopnosti základních postav."
+    ]
   },
   {
     "id": "char-john-pain",
@@ -5918,7 +7069,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Wild West Show",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "Whenever any player draws (check), takes the flipped card into his hand if he has under 6 cards.",
+    "timingEn": "Whenever anyone performs a draw check",
+    "costEn": null,
+    "rulingsEn": [
+      "Kartu nemůže použít okamžitě; musí počkat, dokud se nevyhodnotí původní efekt.",
+      "Při Lucky Dukovi dostane pouze tu kartu, kterou si Lucky Duke vybral jako výsledek."
+    ]
   },
   {
     "id": "char-lee-van-kliff",
@@ -5949,7 +7106,14 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Wild West Show",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "On his turn, may discard a BANG! to repeat the effect of the brown card he just played.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": "Discard 1 BANG! card",
+    "rulingsEn": [
+      "Kopírovaná brown card(s) může být i další BANG!.",
+      "Každý efekt smíte zopakovat pouze jednou.",
+      "Při zkopírování Dostavníku se otočí karta Divokého západu pouze jednou."
+    ]
   },
   {
     "id": "char-teren-kill",
@@ -5980,7 +7144,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Wild West Show",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "Whenever he would be eliminated, draws (check): on anything except Spades ♠, stays alive with 1 life.",
+    "timingEn": "Upon receiving lethal damage",
+    "costEn": null,
+    "rulingsEn": [
+      "Pokud sejmutí neuspěje (je pik), nemůže se zachránit Pivem!",
+      "Téměř 75% šance na přežití každého smrtícího zásahu."
+    ]
   },
   {
     "id": "event-wild-west-show",
@@ -6010,7 +7180,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Wild West Show",
     "typeLabelEn": "Global Event",
-    "effectEn": null
+    "effectEn": "Event. The goal of all players becomes: be the last one alive! Roles are suspended.",
+    "timingEn": "Permanently until the end of the game",
+    "costEn": null,
+    "rulingsEn": [
+      "Běžná pravidla rolí zůstávají (na Sheriff nelze hrát Vězení, za zabití Outlaw je 3 karty odměna).",
+      "Vítězství je čistě individuální."
+    ]
   },
   {
     "id": "event-showdown",
@@ -6038,7 +7214,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Wild West Show",
     "typeLabelEn": "Global Event",
-    "effectEn": null
+    "effectEn": "Event. All cards may be played as BANG!, and all cards may be played as Missed!.",
+    "timingEn": "Entire duration of the event",
+    "costEn": null,
+    "rulingsEn": [
+      "Totální přestřelka, kde se jakákoli karta promění v kulku."
+    ]
   },
   {
     "id": "event-bone-orchard",
@@ -6066,7 +7247,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Wild West Show",
     "typeLabelEn": "Global Event",
-    "effectEn": null
+    "effectEn": "Event. Eliminated players return with 1 life point on their turn.",
+    "timingEn": "At the start of eliminated player's turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Hráči se vrací do hry NATRVALO! Zůstávají ve hře i po skončení události."
+    ]
   },
   {
     "id": "event-miss-susanna",
@@ -6094,7 +7280,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Wild West Show",
     "typeLabelEn": "Global Event",
-    "effectEn": null
+    "effectEn": "Event. Each player must play at least 3 cards on their turn or lose 1 life point.",
+    "timingEn": "Own turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Nepůsobí na hráče, kteří musí přeskočit svůj tah v důsledku Vězení."
+    ]
   },
   {
     "id": "event-gag",
@@ -6123,7 +7314,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Wild West Show",
     "typeLabelEn": "Global Event",
-    "effectEn": null
+    "effectEn": "Event. Players cannot talk. Whoever speaks loses 1 life point.",
+    "timingEn": "Entire duration of the event",
+    "costEn": null,
+    "rulingsEn": [
+      "Platí i pro mimotahové komentáře a hlášení karet."
+    ]
   },
   {
     "id": "legend-bart-cassidy",
@@ -6154,7 +7350,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Legends",
     "typeLabelEn": "Legendary Character",
-    "effectEn": null
+    "effectEn": "Legendary Bart Cassidy (Side B). Whenever he loses a life point, draws 2 cards from deck.",
+    "timingEn": "When losing a life point",
+    "costEn": null,
+    "rulingsEn": [
+      "Ztráta 2 life point(s) = zisk 4 nových karet!",
+      "Může si přivlastnit čin a způsobit jiné legendě zranění bez obrany."
+    ]
   },
   {
     "id": "legend-black-jack",
@@ -6185,7 +7387,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Legends",
     "typeLabelEn": "Legendary Character",
-    "effectEn": null
+    "effectEn": "Legendary Black Jack (Side B). In Phase 1, reveals top 2 cards: on red card, draws 2 extra cards.",
+    "timingEn": "Phase 1 of turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Pokud součet dosáhne přesně 21, smí otočit ještě jednu kartu a vzít si všechny!",
+      "Může si automaticky přivlastnit čin Oregonská stezka."
+    ]
   },
   {
     "id": "legend-calamity-janet",
@@ -6215,7 +7423,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Legends",
     "typeLabelEn": "Legendary Character",
-    "effectEn": null
+    "effectEn": "Legendary Calamity Janet (Side B). May play any card as BANG! or Missed!.",
+    "timingEn": "Anytime",
+    "costEn": null,
+    "rulingsEn": [
+      "Totální kontrola nad BANG! card a Vedle!."
+    ]
   },
   {
     "id": "legend-el-gringo",
@@ -6246,7 +7459,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Legends",
     "typeLabelEn": "Legendary Character",
-    "effectEn": null
+    "effectEn": "Legendary El Gringo (Side B). When taking damage, steals 2 cards from attacker's hand.",
+    "timingEn": "When damaged by a player or legend",
+    "costEn": null,
+    "rulingsEn": [
+      "Bere jak kartu z ruky útočníka, tak samotnou zahranou útočnou kartu!",
+      "Pokud mu způsobí zranění jiná legenda přivlastněním činu, vezme si kartu z ruky této legendy."
+    ]
   },
   {
     "id": "legend-jourdonnais",
@@ -6277,7 +7496,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Legends",
     "typeLabelEn": "Legendary Character",
-    "effectEn": null
+    "effectEn": "Legendary Jourdonnais (Side B). When targeted by brown cards, draws: J, Q, K, A cancels the card.",
+    "timingEn": "In response to any brown card targeting them",
+    "costEn": null,
+    "rulingsEn": [
+      "Neproniknutelný štít na jakékoli figury i esa při sejmutí.",
+      "Protects against area-of-effect cards as well as direct attacks."
+    ]
   },
   {
     "id": "legend-lucky-duke",
@@ -6308,7 +7533,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Legends",
     "typeLabelEn": "Legendary Character",
-    "effectEn": null
+    "effectEn": "Legendary Lucky Duke (Side B). Draws 3 cards on checks and picks the best result.",
+    "timingEn": "During a draw check on your turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Při sejmutí na Vězení, Dynamit nebo Barel ve svém tahu si úspěšnou kartu bere do ruky!",
+      "S Podkovou snímá 3 karty a vybranou si vezme."
+    ]
   },
   {
     "id": "legend-paul-regret",
@@ -6339,7 +7570,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Legends",
     "typeLabelEn": "Legendary Character",
-    "effectEn": null
+    "effectEn": "Legendary Paul Regret (Side B). Distance to him is increased by +2.",
+    "timingEn": "Permanent + when attacked",
+    "costEn": null,
+    "rulingsEn": [
+      "Každý výstřel na Paula stojí útočníka 2 karty z ruky (BANG! + další odhozená karta).",
+      "Legendární Rose Doolan jeho vzdálenost ignoruje."
+    ]
   },
   {
     "id": "legend-rose-doolan",
@@ -6370,7 +7607,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Legends",
     "typeLabelEn": "Legendary Character",
-    "effectEn": null
+    "effectEn": "Legendary Rose Doolan (Side B). Sees all other players at distance 1 regardless of cards.",
+    "timingEn": "Permanent + Phase 2 of own turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Absolutní odstřelovač: žádný kůň ani skrýš před ní neochrání.",
+      "Může proměnit jakoukoli blue card(s) ve zlodějskou Paniku!."
+    ]
   },
   {
     "id": "legend-sid-ketchum",
@@ -6401,7 +7644,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Legends",
     "typeLabelEn": "Legendary Character",
-    "effectEn": null
+    "effectEn": "Legendary Sid Ketchum (Side B). May discard any 1 card to regain 1 life point.",
+    "timingEn": "Phase 2 after healing",
+    "costEn": null,
+    "rulingsEn": [
+      "Nezáleží, jak se vyléčil (schopností, Pivem, Rumem, Saloonem).",
+      "Získá bezplatný výstřel BANG! bez nutnosti mít kartu."
+    ]
   },
   {
     "id": "legend-slab-the-killer",
@@ -6432,7 +7681,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Legends",
     "typeLabelEn": "Legendary Character",
-    "effectEn": null
+    "effectEn": "Legendary Slab the Killer (Side B). Targets must play 3 Missed! cards to cancel his BANG!.",
+    "timingEn": "When firing BANG! and claiming a feat",
+    "costEn": null,
+    "rulingsEn": [
+      "Jeho BANG! projde vždy (žádné Vedle! ani Barel nepomůže).",
+      "Při přivlastnění činu může legendu zabít (ta se může zachránit pouze Pivem, pokud nezbývají 2 hráči)."
+    ]
   },
   {
     "id": "legend-suzy-lafayette",
@@ -6463,7 +7718,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Legends",
     "typeLabelEn": "Legendary Character",
-    "effectEn": null
+    "effectEn": "Legendary Suzy Lafayette (Side B). Whenever she has 1 or fewer cards in hand, draws 2 cards.",
+    "timingEn": "Whenever having fewer than 2 cards",
+    "costEn": null,
+    "rulingsEn": [
+      "Má v ruce permanentně minimálně 2 karty!",
+      "Kdykoli zahraje kartu a klesne na 1, okamžitě dobere zpět do 2."
+    ]
   },
   {
     "id": "legend-vulture-sam",
@@ -6494,7 +7755,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Legends",
     "typeLabelEn": "Legendary Character",
-    "effectEn": null
+    "effectEn": "Legendary Vulture Sam (Side B). When any player dies, takes all their cards and heals 2 lives.",
+    "timingEn": "Upon own elimination from the game",
+    "costEn": null,
+    "rulingsEn": [
+      "Znovuzrození / druhý life point(s)! Nezemře, ale obživne se 4 life point(s) na straně A.",
+      "Zůstává bez fame token(s) a nemůže se stát znovu legendou."
+    ]
   },
   {
     "id": "legend-willy-the-kid",
@@ -6524,7 +7791,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Legends",
     "typeLabelEn": "Legendary Character",
-    "effectEn": null
+    "effectEn": "Legendary Willy the Kid (Side B). Unlimited BANG! cards; his BANG!s deal 2 damage.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Může si vybrat: buď si přivlastní čin, NEBO použije bezplatný BANG!, ale ne obojí."
+    ]
   },
   {
     "id": "feat-vlak-do-yoomy",
@@ -6554,7 +7826,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Legends",
     "typeLabelEn": "Feat Card (Legends)",
-    "effectEn": null
+    "effectEn": "Feat: 3:10 to Yuma. Accomplish: advance train 2 stations. Reward: 2 Fame tokens.",
+    "timingEn": "During any draw check",
+    "costEn": "Draw check",
+    "rulingsEn": [
+      "Tento čin lze vykonat i sejmutím před začátkem 1. fáze (např. na Vězení, Dynamit či Bombu).",
+      "Při vykonání položte 2 fame token(s). Legenda si přivlastní a zraní jinou legendu."
+    ]
   },
   {
     "id": "feat-pohranici",
@@ -6584,7 +7862,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Legends",
     "typeLabelEn": "Feat Card (Legends)",
-    "effectEn": null
+    "effectEn": "Feat: The Frontier. Accomplish: eliminate a player. Reward: 2 Fame tokens.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": "Empty your hand",
+    "rulingsEn": [
+      "Obsahuje symbol vývěsního štítu: můžete odhodit karty bez jejich obvyklého efektu.",
+      "Suzy Lafayette smí tento čin vykonat dříve, než si díky své schopnosti dobere novou kartu!"
+    ]
   },
   {
     "id": "feat-dobra-spolecnost",
@@ -6615,7 +7899,14 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Legends",
     "typeLabelEn": "Feat Card (Legends)",
-    "effectEn": null
+    "effectEn": "Feat: Good Company. Accomplish: have 3 cards in play. Reward: 2 Fame tokens.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": "Cards with the same name",
+    "rulingsEn": [
+      "Obě karty musí být zahrány/odhozeny těsně po sobě.",
+      "Běžná Calamity Janet může použít BANG! jako Vedle! a naopak.",
+      "Legendární Calamity Janet může použít jakékoli 2 karty!"
+    ]
   },
   {
     "id": "feat-posledni-hrdina",
@@ -6645,7 +7936,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Legends",
     "typeLabelEn": "Feat Card (Legends)",
-    "effectEn": null
+    "effectEn": "Feat: The Last Hero. Accomplish: survive lethal damage with Beer. Reward: 2 Fame tokens.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": "Discard 1 blue card from in play",
+    "rulingsEn": [
+      "Nelze vykonat odhozením karet Vězení nebo Dynamit před 1. fází tahu.",
+      "Lze odhodit vlastní blue card(s) (např. zbraň, Mustang, Barel) nebo cizí Cat Balou card/Panika."
+    ]
   },
   {
     "id": "feat-oregonska-stezka",
@@ -6676,7 +7973,14 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Legends",
     "typeLabelEn": "Feat Card (Legends)",
-    "effectEn": null
+    "effectEn": "Feat: Oregon Trail. Accomplish: hold 5 cards in hand at turn end. Reward: 2 Fame tokens.",
+    "timingEn": "Phase 1 of own turn",
+    "costEn": "Draw 1 fewer card",
+    "rulingsEn": [
+      "Ztrácíte schopnost týkající se první karty (jako Jesse Jones).",
+      "Kit Carlson se podívá na 3 karty, ale dobere jen 1 a 2 vrátí.",
+      "Legendární Black Jack si tento čin přivlastní automaticky!"
+    ]
   },
   {
     "id": "feat-zdeseny-vykrik",
@@ -6706,7 +8010,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Legends",
     "typeLabelEn": "Feat Card (Legends)",
-    "effectEn": null
+    "effectEn": "Feat: Terrified Scream. Accomplish: hit 2 players with BANG!s in 1 turn. Reward: 2 Fame tokens.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": "Hit at range",
+    "rulingsEn": [
+      "Pokud má soused ve vzdálenosti 1 vyloženého Mustanga a vy ho zraníte, čin je splněn!",
+      "Běžná Rose Doolan musí zasáhnout hráče ve vzdálenosti alespoň 2 od jejího pohledu."
+    ]
   },
   {
     "id": "feat-padesat-pistoli",
@@ -6735,7 +8045,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Legends",
     "typeLabelEn": "Feat Card (Legends)",
-    "effectEn": null
+    "effectEn": "Feat: Fifty Pistols. Accomplish: equip weapon Range 3+. Reward: 2 Fame tokens.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": "Weapon from hand or in play",
+    "rulingsEn": [
+      "Lze splnit vyložením nové zbraně (nahrazením staré), odhozením zbraně Cat Balou, ukradením zbraně Panikou apod."
+    ]
   },
   {
     "id": "feat-hrdlo-lahve",
@@ -6765,7 +8080,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Legends",
     "typeLabelEn": "Feat Card (Legends)",
-    "effectEn": null
+    "effectEn": "Feat: Bottleneck. Accomplish: discard Beer card voluntarily. Reward: 2 Fame tokens.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": "Discard 1 Beer card",
+    "rulingsEn": [
+      "Obsahuje symbol vývěsního štítu: můžete odhodit Pivo z ruky dobrovolně bez jeho efektu, i když máte plné life point(s)!"
+    ]
   },
   {
     "id": "feat-banda-ze-stareho-zapadu",
@@ -6794,7 +8114,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Legends",
     "typeLabelEn": "Feat Card (Legends)",
-    "effectEn": null
+    "effectEn": "Feat: Old West Gang. Accomplish: have 2 Fame tokens on feats. Reward: 2 Fame tokens.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": "Damage 2 players",
+    "rulingsEn": [
+      "Lze splnit Kulometem, Indiány, více BANGy (Volcanic, Willy the Kid), nebo kombinací karet."
+    ]
   },
   {
     "id": "feat-bezejmenny-muz",
@@ -6823,7 +8148,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Legends",
     "typeLabelEn": "Feat Card (Legends)",
-    "effectEn": null
+    "effectEn": "Feat: The Man with No Name. Accomplish: lose 1 life point voluntarily. Reward: 2 Fame tokens.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": "Loss of 1 life point",
+    "rulingsEn": [
+      "Obsahuje symbol vývěsního štítu: můžete si odebrat life point(s) přímo."
+    ]
   },
   {
     "id": "feat-zranena-pycha",
@@ -6852,7 +8182,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Legends",
     "typeLabelEn": "Feat Card (Legends)",
-    "effectEn": null
+    "effectEn": "Feat: Wounded Pride. Accomplish: cancel an attack with Missed!. Reward: 2 Fame tokens.",
+    "timingEn": "Phase 2 of own turn when shooting",
+    "costEn": "Cancel a BANG!",
+    "rulingsEn": [
+      "Otočí neúspěšný útok ve velkolepý čin."
+    ]
   },
   {
     "id": "char-johnny-kisch",
@@ -6884,7 +8219,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Dynamite Box & Promo",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "Whenever he puts a card into play, all other players must discard 1 card with the same suit.",
+    "timingEn": "When played into play",
+    "costEn": null,
+    "rulingsEn": [
+      "Vztahuje se na blue card(s) i vagony (např. zahraje Mustang -> všichni ostatní Mustangové ve hře se odhodí!).",
+      "Může takto čistit soupeřovy Barely, zbraně i koně."
+    ]
   },
   {
     "id": "char-uncle-will",
@@ -6914,7 +8255,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Dynamite Box & Promo",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "Once per turn, may play any card from his hand as a General Store.",
+    "timingEn": "Phase 2 of own turn (once per turn)",
+    "costEn": null,
+    "rulingsEn": [
+      "Otočí tolik karet z balíčku, kolik je hráčů, a každý si postupně vezme 1."
+    ]
   },
   {
     "id": "char-claus-the-saint",
@@ -6945,7 +8291,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Dynamite Box & Promo",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "During Phase 1, draws cards equal to living players + 1, keeps 2, and distributes 1 to each other player.",
+    "timingEn": "Phase 1 of turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Sám si vybere, komu jakou kartu přidělí (může spojencům dávat dobré karty a nepřátelům slabé).",
+      "Vždy si nechá 2 nejlepší karty pro sebe."
+    ]
   },
   {
     "id": "char-annie-versary",
@@ -6976,7 +8328,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Dynamite Box & Promo",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "May use any card from hand as a BANG! card (does not count toward 1 BANG! limit).",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Zahrání podléhá běžnému limitu 1 BANG! za tah (pokud nemá Volcanic).",
+      "Může střílet i kartami, které se jí jinak nehodí."
+    ]
   },
   {
     "id": "char-emiliano",
@@ -7008,7 +8366,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Dynamite Box & Promo",
     "typeLabelEn": "Character",
-    "effectEn": null
+    "effectEn": "Whenever he draws (check), if it is a number card (2–10), takes it into his hand.",
+    "timingEn": "When BANG! is canceled by a Missed!",
+    "costEn": null,
+    "rulingsEn": [
+      "Recykluje obranné i útočné karty přímo ze střetů.",
+      "Pojmenován na počest autora hry Emiliana Sciarry."
+    ]
   },
   {
     "id": "card-new-identity",
@@ -7038,7 +8402,13 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Dynamite Box & Promo",
     "typeLabelEn": "Brown Card (Immediate)",
-    "effectEn": null
+    "effectEn": "Brown card. Swap your character card for a new random character from the box with full lives.",
+    "timingEn": "Start of own turn before Phase 1",
+    "costEn": null,
+    "rulingsEn": [
+      "Umožňuje změnit svou identitu i schopnosti během hry.",
+      "Restartuje life point(s) na hodnotu 2."
+    ]
   },
   {
     "id": "card-handcuffs",
@@ -7067,7 +8437,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Dynamite Box & Promo",
     "typeLabelEn": "Brown Card (Immediate)",
-    "effectEn": null
+    "effectEn": "Brown card. Target player cannot play cards of a chosen suit until their next turn.",
+    "timingEn": "Phase 1 after drawing cards",
+    "costEn": null,
+    "rulingsEn": [
+      "Omezuje hraní na jediný karetní symbol pro daný tah."
+    ]
   },
   {
     "id": "token-wooden-dynamite",
@@ -7097,6 +8472,12 @@ window.BANG_CARDS = [
     "image": null,
     "expansionNameEn": "Dynamite Box & Promo",
     "typeLabelEn": "Blue Card (In Play)",
-    "effectEn": null
+    "effectEn": "Blue card. Wooden Dynamite marker: passes left; explodes on ♠ 2–9 for 3 damage.",
+    "timingEn": "Throughout the game",
+    "costEn": null,
+    "rulingsEn": [
+      "Karta Dynamitu se nepovažuje za dobranou/sejmutou a hráč si ihned lízne náhradní kartu.",
+      "Když Dynamit vybuchne nebo je vyřazen, zamíchá se zpět do draw deck."
+    ]
   }
 ];

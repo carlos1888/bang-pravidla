@@ -1,4 +1,4 @@
-// BANG! 50+ Real Situation Resolutions & Edge Cases (Rich HTML)
+// BANG! 50+ Real Situation Resolutions & Edge Cases (Rich HTML, CS & EN)
 window.BANG_FAQ = [
   {
     "id": "faq-01",
@@ -618,5 +618,627 @@ window.BANG_FAQ = [
       "duel"
     ],
     "answerHtml": "<div class=\"faq-verdict\"><span class=\"verdict-badge\">Verdikt</span> Karta <em>Kazatel</em> zní: <em>„Během svého tahu nesmíte používat karty BANG!“</em>.</div><ul class=\"faq-details-list\"><li>Protože text říká <strong>nesmíte POUŽÍVAT</strong>, vztahuje se to i na odhazování!</li><li><em> Pokud hráč ve svém tahu během Kazatele zahraje </em>Duel*, vyzvaný soupeř může odhodit BANG!, ale hráč na tahu <strong>nesmí odhodit BANG! v odpověď</strong> a okamžitě v Duelu ztratí život! Hraní Duelu ve vlastním tahu během Kazatele je proto čistá sebevražda.</li></ul>"
+  }
+];
+
+window.BANG_FAQ_EN = [
+  {
+    "id": "faq-01",
+    "question": "Slab the Killer fires a BANG!. Player has a Barrel and a Crate. How much defense is needed?",
+    "category": "Combat & Defense",
+    "tags": [
+      "slab-the-killer",
+      "barel",
+      "bedna",
+      "obrana",
+      "vedle"
+    ],
+    "answerHtml": "<div class=\"faq-verdict\"><span class=\"verdict-badge\">Verdict</span> To cancel a BANG! card played by Slab the Killer, <strong>2 Missed! effects</strong> are required.</div><ul class=\"faq-details-list\"><li>A successful draw on Barrel (Hearts ♥) provides <strong>1 Missed! effect</strong>.</li><li>Spending 2 load tokens from the Crate card provides <strong>1 Missed! effect</strong>.</li><li>The player can combine a successful Barrel check + Crate to fully cancel Slab's attack!</li><li>If Barrel fails, the player must play 2 Missed! cards from hand (or Crate + 1 Missed!).</li></ul>"
+  },
+  {
+    "id": "faq-02",
+    "question": "Slab the Killer plays Gatling or Flintlock. How many Missed! cards are needed to defend?",
+    "category": "Combat & Defense",
+    "tags": [
+      "slab-the-killer",
+      "kulomet",
+      "křesadlovka",
+      "vedle"
+    ],
+    "answerHtml": "<div class=\"faq-verdict\"><span class=\"verdict-badge\">Verdict</span> Exactly <strong>1 Missed! effect</strong> is sufficient!</div><ul class=\"faq-details-list\"><li><em> Slab the Killer's ability explicitly states: </em>„A player who wants to cancel your BANG! CARD must use 2 Missed! effects“*.</li><li><em> Cards like </em>Gatling<em>, </em>Flintlock<em>, </em>Quick Shot<em>, </em>Howitzer<em>, or </em>Derringer* cause a BANG! effect, but are <strong>NOT a BANG! card</strong>.</li><li>Therefore, Slab's ability does not apply to them, and any single Missed! (or Barrel check) is enough.</li></ul>"
+  },
+  {
+    "id": "faq-03",
+    "question": "Belle Star is taking her turn. Which enemy cards are disabled by her ability?",
+    "category": "Character Abilities",
+    "tags": [
+      "belle-star",
+      "vyložené-karty",
+      "oranžové",
+      "zelené",
+      "zbraně"
+    ],
+    "answerHtml": "<div class=\"faq-verdict\"><span class=\"verdict-badge\">Verdict</span> During Belle Star's turn, <strong>all cards in play in front of other players have no effect</strong>:</div><ul class=\"faq-details-list\"><li>Disables opponent <strong>Barrels</strong> (opponents cannot draw for Barrel).</li><li>Disables opponent <strong>Mustangs</strong>, <strong>Hideouts</strong>, and <strong>Lumber Flatcars</strong> (Belle Star sees everyone at base distance).</li><li>Disables opponent <strong>green cards</strong> (they cannot discard Sombrero or Iron Plate).</li><li>Disables opponent <strong>orange cards</strong> from Armed & Dangerous (Crate cannot be activated).</li><li><em> </em>Note:* Black equipment cards from Gold Rush have permanent status and are not canceled.</li></ul>"
+  },
+  {
+    "id": "faq-04",
+    "question": "Apache Kid faces a Duel card or a BANG! in a Duel. When does his immunity apply?",
+    "category": "Card Suits & Symbols",
+    "tags": [
+      "apache-kid",
+      "duel",
+      "káry",
+      "imunita"
+    ],
+    "answerHtml": "<div class=\"faq-verdict\"><span class=\"verdict-badge\">Verdict</span> <em> <strong>Playing a Duel:</strong> If an opponent tries to target Apache Kid with a Diamond ♦ </em>Duel* card, Apache Kid is <strong>completely immune</strong> – the card cannot be played on him!</div><ul class=\"faq-details-list\"><li><strong>During a Duel:</strong> If the Duel was started with a non-Diamond card (♠, ♣), <strong>Apache Kid's immunity does not apply during the resolution</strong>! If the opponent discards Diamond BANG! cards, Apache Kid must still respond with a BANG! or lose a life point.</li></ul>"
+  },
+  {
+    "id": "faq-05",
+    "question": "Suzy Lafayette plays her last card. When exactly does she draw a new card?",
+    "category": "Timing & Order",
+    "tags": [
+      "suzy-lafayette",
+      "prázdná-ruka",
+      "timing",
+      "duel",
+      "pohraničí"
+    ],
+    "answerHtml": "<div class=\"faq-verdict\"><span class=\"verdict-badge\">Verdict</span> Suzy Lafayette's ability triggers <strong>immediately the instant her hand is empty</strong>:</div><ul class=\"faq-details-list\"><li><strong>Standard play:</strong> If she plays BANG!, she discards it and instantly draws a new card from the deck. She can play it on the same turn!</li><li><em> <strong>Frontier Feat (Legends):</strong> Requires discarding your hand. Suzy fulfills the feat </em>before* drawing her new card.</li><li><strong>Duel Exception:</strong> During a Duel, Suzy's ability is paused until the Duel is fully resolved! If she discards her last card and opponent responds, she loses a life point first.</li></ul>"
+  },
+  {
+    "id": "faq-06",
+    "question": "El Gringo is wounded. Which sources trigger his card-stealing ability and which DO NOT?",
+    "category": "Wounds & Healing",
+    "tags": [
+      "el-gringo",
+      "zranění",
+      "krádež",
+      "dynamit",
+      "bomba",
+      "legendy"
+    ],
+    "answerHtml": "<ul class=\"faq-details-list\"><li><strong>TRIGGERS:</strong> Whenever he loses a life point due to a card played by another player (BANG!, Indians!, Duel, Gatling, Punch, Springfield). He takes 1 random card from that player's hand.</li><li><strong>DOES NOT TRIGGER:</strong> Does not trigger on Dynamite, Rattlesnake, Bomb, or losing lives due to event cards like High Noon, or voluntary damage.</li></ul>"
+  },
+  {
+    "id": "faq-07",
+    "question": "What is the exact timing order before Phase 1 of a turn (Dynamite, Jail, Bomb, Rattlesnake)?",
+    "category": "Timing & Order",
+    "tags": [
+      "pořadí-vyhodnocení",
+      "dynamit",
+      "vězení",
+      "bomba",
+      "chřestýš",
+      "časování"
+    ],
+    "answerHtml": "<div class=\"faq-verdict\"><span class=\"verdict-badge\">Verdict</span> If a player has multiple timed cards in play, they resolve in this <strong>strict official order</strong>:</div><ul class=\"faq-details-list\"><li>1. <strong>DYNAMITE:</strong> Checked first (♠ 2-9 = explosion for 3 lives; else passes left).</li><li>2. <strong>JAIL:</strong> Checked second (Hearts ♥ = escape; else entire turn is skipped!). <em>Legends alternative:</em> discard a Heart card to escape safely.</li><li>3. <strong>BOMB:</strong> Checked third (♥/♦ passes left; ♣/♠ removes 2 tokens).</li><li>4. <strong>RATTLESNAKE:</strong> Checked last (♠ = lose 1 life point).</li><li><strong>CRITICAL RULE:</strong> If a player fails Jail and skips their turn, <strong>they do NOT check for Rattlesnake this turn</strong>!</li></ul>"
+  },
+  {
+    "id": "faq-08",
+    "question": "Vulture Sam vs Ghost Gunners vs Ghost Car vs Gold Rush Equipment. What does Sam take?",
+    "category": "Player Elimination",
+    "tags": [
+      "vulture-sam",
+      "stínoví-pistolníci",
+      "vagon-duchů",
+      "zlatá-horečka",
+      "krádež-karet"
+    ],
+    "answerHtml": "<div class=\"faq-verdict\"><span class=\"verdict-badge\">Verdict</span> When a player dies, Vulture Sam takes all cards from their hand and in play:</div><ul class=\"faq-details-list\"><li><strong>Railcars:</strong> Vulture Sam takes all railcars of the eliminated player and <strong>puts them into play in front of himself</strong>.</li><li><strong>Black Equipment (Gold Rush):</strong> Vulture Sam <strong>CANNOT take equipment cards</strong>! They are placed face-up at the bottom of the equipment deck.</li><li><strong>Ghost Gunners:</strong> When a ghost gunner leaves at turn end, it does <strong>not count as a kill</strong> – Vulture Sam gets nothing!</li><li><strong>Ghost Car:</strong> If lost, player dies without triggering Vulture Sam rewards.</li></ul>"
+  },
+  {
+    "id": "faq-09",
+    "question": "How does the Beer card work when only 2 players remain in the game?",
+    "category": "Wounds & Healing",
+    "tags": [
+      "pivo",
+      "poslední-dva-hráči",
+      "léčení",
+      "zlatá-horečka",
+      "poslední-volání"
+    ],
+    "answerHtml": "<div class=\"faq-verdict\"><span class=\"verdict-badge\">Verdict</span> As soon as <strong>only 2 players remain</strong> in the game (e.g. Sheriff vs Outlaw):</div><ul class=\"faq-details-list\"><li><strong>Beer Card:</strong> Has no healing effect. Playing Beer <strong>cannot add any life points</strong> (neither in turn nor on fatal damage!).</li><li><strong>Gold Rush Exception:</strong> In Gold Rush, a player may still play Beer on their turn to <strong>gain 1 Gold Nugget</strong> from the bank!</li><li><em> <strong>Last Call Card:</strong> The </em>Last Call* card from Valley of Shadows still heals 1 life point even in a 2-player duel!</li></ul>"
+  },
+  {
+    "id": "faq-10",
+    "question": "Sheriff personally kills his Deputy who had the Wanted card in play. What happens?",
+    "category": "Player Elimination",
+    "tags": [
+      "šerif",
+      "trest",
+      "pomocník",
+      "wanted",
+      "odhození-karet"
+    ],
+    "answerHtml": "<div class=\"faq-verdict\"><span class=\"verdict-badge\">Verdict</span> According to official Gold Rush rules:</div><ul class=\"faq-details-list\"><li>1. The Sheriff first <strong>collects the reward from the Wanted card</strong>: draws 2 cards from the deck and takes 1 Gold Nugget!</li><li>2. Immediately afterwards, the penalty for killing a Deputy is applied: the Sheriff must <strong>discard all cards from hand and in play</strong> (including weapons and the 2 cards just drawn).</li><li>3. <strong>Gold Nuggets are kept!</strong> The discard penalty applies only to cards, never to Gold Nuggets.</li></ul>"
+  },
+  {
+    "id": "faq-11",
+    "question": "Locomotive Ironhorse reaches the end of the line. Who defends and who wins if all die?",
+    "category": "The Great Train Robbery",
+    "tags": [
+      "ironhorse",
+      "vlak",
+      "konečná",
+      "opětovaná-palba",
+      "vítězství-banditů"
+    ],
+    "answerHtml": "<div class=\"faq-verdict\"><span class=\"verdict-badge\">Verdict</span> When Ironhorse passes the last station:</div><ul class=\"faq-details-list\"><li><strong>Every player at the table</strong> (including the player who triggered it) becomes the target of a BANG! attack.</li><li>Each player defends independently (Missed!, Barrel, Crate).</li><li><strong>Simultaneous Death:</strong> If this attack kills all remaining players including the Sheriff, <strong>THE OUTLAWS WIN</strong>! (They achieved their goal of killing the Sheriff).</li></ul>"
+  },
+  {
+    "id": "faq-12",
+    "question": "Legendary Jourdonnais vs Indians! vs Gatling vs Cat Balou. How does his immunity work?",
+    "category": "Legends",
+    "tags": [
+      "legendy",
+      "jourdonnais",
+      "hnědé-karty",
+      "imunita",
+      "sejmutí"
+    ],
+    "answerHtml": "<div class=\"faq-verdict\"><span class=\"verdict-badge\">Verdict</span> Legendary Jourdonnais (Side B) has the ability: *„If you are the target of a brown card, you may check. 10, J, Q, K, A = ignore this card!“*.</div><ul class=\"faq-details-list\"><li><strong>Cat Balou, Panic!:</strong> He is their target -> checks. If 10, J, Q, K, A, the card is canceled and discarded without effect.</li><li><strong>Indians! & Gatling:</strong> Affects all players, but Jourdonnais is a target -> checks to ignore it without needing BANG! or Missed!.</li></ul>"
+  },
+  {
+    "id": "faq-13",
+    "question": "Legendary Slab the Killer claims a feat. Can he kill a player on their last life point?",
+    "category": "Legends",
+    "tags": [
+      "legendy",
+      "slab-the-killer",
+      "přivlastnění-činu",
+      "smrtící-čin",
+      "pivo"
+    ],
+    "answerHtml": "<div class=\"faq-verdict\"><span class=\"verdict-badge\">Verdict</span> Claiming a feat allows a Legend on Side B to deal 1 direct damage to another player.</div><ul class=\"faq-details-list\"><li><strong>Uncancelable damage:</strong> This damage cannot be canceled with Missed! or Barrel.</li><li><strong>Saving with Beer:</strong> The victim CAN save themselves by playing Beer if this damage would reduce them to 0 lives!</li></ul>"
+  },
+  {
+    "id": "faq-14",
+    "question": "Legendary Vulture Sam is about to be eliminated. How does his second life work?",
+    "category": "Legends",
+    "tags": [
+      "legendy",
+      "vulture-sam",
+      "druhý-život",
+      "znovuzrození"
+    ],
+    "answerHtml": "<div class=\"faq-verdict\"><span class=\"verdict-badge\">Verdict</span> When Legendary Vulture Sam (Side B) loses his last life point:</div><ul class=\"faq-details-list\"><li>He immediately resets his life points to 2, discards all cards in play, and stays in the game!</li><li>This ability triggers only once per game.</li></ul>"
+  },
+  {
+    "id": "faq-15",
+    "question": "What happens when Rust removes the last load tokens from a Bomb?",
+    "category": "Armed & Dangerous",
+    "tags": [
+      "bomba",
+      "rez",
+      "exploze",
+      "žetony-nabití",
+      "časování"
+    ],
+    "answerHtml": "<ul class=\"faq-details-list\"><li>If Rust removes the remaining load tokens from a Bomb so that it reaches 0 tokens, the Bomb <strong>DOES NOT EXPLODE</strong>.</li><li>It simply remains in play with 0 tokens until its next check or discard.</li></ul>"
+  },
+  {
+    "id": "faq-16",
+    "question": "Can a jailed player boast of a feat in Legends?",
+    "category": "Legends",
+    "tags": [
+      "legendy",
+      "vězení",
+      "chlubení-se-činem",
+      "konec-tahu"
+    ],
+    "answerHtml": "<div class=\"faq-verdict\"><span class=\"verdict-badge\">Verdict</span> <strong>Verdict: YES!</strong></div><ul class=\"faq-details-list\"><li>The rules of Legends state that if a player did not accomplish a feat on their turn (which is true for jailed players skipping their turn), they may boast of a feat in Phase 4!</li><li>They reveal a new feat and place 1 Fame token.</li></ul>"
+  },
+  {
+    "id": "faq-17",
+    "question": "Can a player steal a railcar into their hand using Panic! or Rag Time?",
+    "category": "The Great Train Robbery",
+    "tags": [
+      "vlak",
+      "vagony",
+      "panika",
+      "rag-time",
+      "krádež-vagonu"
+    ],
+    "answerHtml": "<ul class=\"faq-details-list\"><li><strong>NO:</strong> Railcars are not standard cards; they are railcar tiles attached to stations or players.</li><li>Panic! and Cat Balou can target cards from hand or in play, but railcars can only be detached or discarded by specific train mechanics or Vulture Sam upon death.</li></ul>"
+  },
+  {
+    "id": "faq-18",
+    "question": "Gold Rush card (purchased for 5 Gold Nuggets). When do lives refill and how is the turn played?",
+    "category": "Gold Rush",
+    "tags": [
+      "zlatá-horečka",
+      "vybavení-5-zlata",
+      "plné-životy",
+      "extra-tah"
+    ],
+    "answerHtml": "<ul class=\"faq-details-list\"><li>The player's current turn ends immediately.</li><li>The player immediately restores all lost life points back to their character maximum!</li><li>The player immediately starts a brand-new turn, beginning with Phase 1 (drawing cards).</li></ul>"
+  },
+  {
+    "id": "faq-19",
+    "question": "Can the Sheriff gain the Ghost Car or Jail via the Switch card?",
+    "category": "The Great Train Robbery",
+    "tags": [
+      "šerif",
+      "vagon-duchů",
+      "vězení",
+      "výhybka",
+      "zákaz-pro-šerifa"
+    ],
+    "answerHtml": "<div class=\"faq-verdict\"><span class=\"verdict-badge\">Verdict</span> <strong>Verdict: NO!</strong></div><ul class=\"faq-details-list\"><li>The Sheriff is strictly immune to Jail and Ghost Car. A Switch card cannot move either of these cards onto the Sheriff.</li></ul>"
+  },
+  {
+    "id": "faq-20",
+    "question": "How does the 1-life rule introduced in Legends work during Phase 3?",
+    "category": "Legends",
+    "tags": [
+      "legendy",
+      "změna-pravidel",
+      "jeden-život",
+      "limit-karet-2"
+    ],
+    "answerHtml": "<ul class=\"faq-details-list\"><li>Under standard rules, hand size limit equals current life points (1 life = 1 card).</li><li>Under Legends rules, a player reduced to 1 life point <strong>is allowed to keep up to 2 cards in hand</strong> at the end of their turn!</li></ul>"
+  },
+  {
+    "id": "faq-21",
+    "question": "Can High Noon and Wild West Show events be active at the same time?",
+    "category": "Global Events",
+    "tags": [
+      "události",
+      "high-noon",
+      "wild-west-show",
+      "kombinace-událostí"
+    ],
+    "answerHtml": "<div class=\"faq-verdict\"><span class=\"verdict-badge\">Verdict</span> <strong>Verdict: YES!</strong></div><ul class=\"faq-details-list\"><li>High Noon / Fistful is a round-based event deck that changes every round with the Sheriff.</li><li>Wild West Show cards are triggered whenever a Stagecoach or Wells Fargo is played. Both effects stack!</li></ul>"
+  },
+  {
+    "id": "faq-22",
+    "question": "How does Shadow Renegade determine which team to join on each turn?",
+    "category": "Gold Rush",
+    "tags": [
+      "stínový-odpadlík",
+      "zlatá-horečka",
+      "určení-týmu",
+      "remíza"
+    ],
+    "answerHtml": "<ul class=\"faq-details-list\"><li>At the start of their turn, counts face-up roles on the table (Sheriff and revealed dead players).</li><li>Joins whichever team has more revealed roles. In case of a tie, joins the Outlaws!</li></ul>"
+  },
+  {
+    "id": "faq-23",
+    "question": "Bell Tower vs Mustang vs Lumber Flatcar. How is distance calculated?",
+    "category": "Distance & Range",
+    "tags": [
+      "zvonice",
+      "mustang",
+      "plošinový-vůz",
+      "vzdálenost",
+      "timing"
+    ],
+    "answerHtml": "<ul class=\"faq-details-list\"><li>Bell Tower states: for the next card played, you see all players at distance 1.</li><li>This overrides all Mustang and Lumber Flatcar distance modifiers for that single card!</li></ul>"
+  },
+  {
+    "id": "faq-24",
+    "question": "Frankie Canton takes the last load token from an opponent's Dangerous card. What happens?",
+    "category": "Armed & Dangerous",
+    "tags": [
+      "frankie-canton",
+      "krádež-žetonu",
+      "vyčerpání-karty",
+      "odhození"
+    ],
+    "answerHtml": "<ul class=\"faq-details-list\"><li>The Dangerous card remains in play in front of the owner with 0 load tokens.</li><li>It cannot be activated until new tokens are placed on it (e.g. by playing blue cards).</li></ul>"
+  },
+  {
+    "id": "faq-25",
+    "question": "Johnny Kisch plays a blue card or railcar. Which cards are discarded?",
+    "category": "Promo Characters",
+    "tags": [
+      "johnny-kisch",
+      "dynamite-box",
+      "stejné-karty",
+      "čištění-stolu"
+    ],
+    "answerHtml": "<ul class=\"faq-details-list\"><li>All other players at the table must discard 1 card from hand or in play matching the suit of the played card.</li></ul>"
+  },
+  {
+    "id": "faq-26",
+    "question": "Don Bell is at turn end. When is he NOT allowed to check for an extra turn?",
+    "category": "Gold Rush",
+    "tags": [
+      "don-bell",
+      "extra-tah",
+      "zlatá-horečka",
+      "vězení",
+      "město-duchů"
+    ],
+    "answerHtml": "<ul class=\"faq-details-list\"><li>If Don Bell is currently taking an extra turn granted by his ability, he cannot chain another extra turn.</li></ul>"
+  },
+  {
+    "id": "faq-27",
+    "question": "Evan Babbit is targeted by a BANG!. Can he redirect it to the attacker or locomotive?",
+    "category": "The Great Train Robbery",
+    "tags": [
+      "evan-babbit",
+      "přesměrování",
+      "ironhorse",
+      "střelec"
+    ],
+    "answerHtml": "<ul class=\"faq-details-list\"><li>He can redirect it to any other player at distance 1 from him by discarding 1 card.</li><li>He CANNOT redirect it to the locomotive (it is not a player) nor back to the attacker.</li></ul>"
+  },
+  {
+    "id": "faq-28",
+    "question": "Uncle Will plays a card as General Store and Sgt. Blaze is at the table. How is it resolved?",
+    "category": "Promo Characters",
+    "tags": [
+      "uncle-will",
+      "hokynářství",
+      "sgt-blaze",
+      "dynamite-box"
+    ],
+    "answerHtml": "<ul class=\"faq-details-list\"><li>General Store reveals cards equal to living players.</li><li>Sgt. Blaze chooses his card normally in turn order.</li></ul>"
+  },
+  {
+    "id": "faq-29",
+    "question": "Emiliano vs Slab the Killer vs Annie Versary. How does Emiliano's card theft work?",
+    "category": "Promo Characters",
+    "tags": [
+      "emiliano",
+      "slab-the-killer",
+      "annie-versary",
+      "vedle",
+      "recyklace"
+    ],
+    "answerHtml": "<ul class=\"faq-details-list\"><li>Whenever a check is made by any player, if the revealed card is a number card (2 through 10), Emiliano takes it into his hand!</li></ul>"
+  },
+  {
+    "id": "faq-30",
+    "question": "Miss Susanna (Wild West Show): Player does not play 3 cards on their turn. When do they lose a life?",
+    "category": "Global Events",
+    "tags": [
+      "slečna-zuzana",
+      "wild-west-show",
+      "3-karty",
+      "ztráta-života"
+    ],
+    "answerHtml": "<ul class=\"faq-details-list\"><li>At the very end of their turn (Phase 4). If they played fewer than 3 cards, they lose 1 life point.</li></ul>"
+  },
+  {
+    "id": "faq-31",
+    "question": "Gag (Wild West Show): Player speaks out of turn. When do they lose a life point?",
+    "category": "Global Events",
+    "tags": [
+      "roubík",
+      "wild-west-show",
+      "zákaz-mluvení",
+      "ztráta-života"
+    ],
+    "answerHtml": "<ul class=\"faq-details-list\"><li>The instant they speak! They immediately lose 1 life point. They can save themselves with Beer if reduced to 0 lives.</li></ul>"
+  },
+  {
+    "id": "faq-32",
+    "question": "Rucksack (Gold Rush) vs Lethal Dynamite damage of 3 lives. How to save yourself?",
+    "category": "Gold Rush",
+    "tags": [
+      "batoh",
+      "dynamit",
+      "smrtící-zranění",
+      "valouny-zlata"
+    ],
+    "answerHtml": "<ul class=\"faq-details-list\"><li>The player must pay 2 Gold Nuggets for each life point needed to avoid death. If they have enough nuggets, they survive!</li></ul>"
+  },
+  {
+    "id": "faq-33",
+    "question": "Double Shot + Colorado Bill: How many lives does the target lose on a Spade check?",
+    "category": "Valley of Shadows",
+    "tags": [
+      "dvojitá-rána",
+      "colorado-bill",
+      "piky",
+      "2-životy",
+      "smrtící-kombo"
+    ],
+    "answerHtml": "<ul class=\"faq-details-list\"><li>If Colorado Bill checks a Spade ♠ on Double Shot, both shots cannot be canceled by Missed!. Target loses 2 lives unless saved by Beer.</li></ul>"
+  },
+  {
+    "id": "faq-34",
+    "question": "Tornado (Valley of Shadows): Player has only 1 card or no cards. How many cards do they pass?",
+    "category": "Valley of Shadows",
+    "tags": [
+      "tornádo",
+      "údolí-stínů",
+      "předávání-karet",
+      "prázdná-ruka"
+    ],
+    "answerHtml": "<ul class=\"faq-details-list\"><li>A player passes as many cards as they have up to 2. If they have 0 cards, they pass nothing.</li></ul>"
+  },
+  {
+    "id": "faq-35",
+    "question": "Free train advance before buying railcar: Is the purchase mandatory?",
+    "category": "The Great Train Robbery",
+    "tags": [
+      "vlak",
+      "posun-zdarma",
+      "nákup-vagonu",
+      "povinnost"
+    ],
+    "answerHtml": "<div class=\"faq-verdict\"><span class=\"verdict-badge\">Verdict</span> <strong>Verdict: YES!</strong></div><ul class=\"faq-details-list\"><li>If you choose to advance the train 1 station for free, you MUST purchase the attached railcar by paying the station cost!</li></ul>"
+  },
+  {
+    "id": "faq-36",
+    "question": "Can a player have 2 identical black equipment cards from Gold Rush in play?",
+    "category": "Gold Rush",
+    "tags": [
+      "černé-vybavení",
+      "zlatá-horečka",
+      "unikátnost",
+      "pravidlo-dvou-karet"
+    ],
+    "answerHtml": "<div class=\"faq-verdict\"><span class=\"verdict-badge\">Verdict</span> <strong>Verdict: NO!</strong></div><ul class=\"faq-details-list\"><li>The standard BANG! rule applies: a player can never have two cards with the exact same name in play before them.</li></ul>"
+  },
+  {
+    "id": "faq-37",
+    "question": "Switch card: Can you swap a railcar still attached to the train on the track?",
+    "category": "The Great Train Robbery",
+    "tags": [
+      "výhybka",
+      "vlak",
+      "karty-ve-hře",
+      "vagon"
+    ],
+    "answerHtml": "<div class=\"faq-verdict\"><span class=\"verdict-badge\">Verdict</span> <strong>Verdict: YES!</strong></div><ul class=\"faq-details-list\"><li>Switch allows swapping any 2 railcars or stations, including those currently in the train lineup.</li></ul>"
+  },
+  {
+    "id": "faq-38",
+    "question": "Damage dealt by a Legend claiming a feat: Can it be canceled with Missed! or Barrel?",
+    "category": "Legends",
+    "tags": [
+      "legendy",
+      "přivlastnění-činu",
+      "zranění",
+      "neodvratné"
+    ],
+    "answerHtml": "<div class=\"faq-verdict\"><span class=\"verdict-badge\">Verdict</span> <strong>Verdict: NO!</strong></div><ul class=\"faq-details-list\"><li>It is direct unblockable damage. Only Beer can be played if it would reduce the victim to 0 lives.</li></ul>"
+  },
+  {
+    "id": "faq-39",
+    "question": "What happens when the Feat deck runs out in Legends?",
+    "category": "Legends",
+    "tags": [
+      "legendy",
+      "balíček-činů",
+      "zamíchání",
+      "dojití-karet"
+    ],
+    "answerHtml": "<ul class=\"faq-details-list\"><li>Shuffle the discarded feat cards to form a new draw deck. Feats remain available throughout the entire game.</li></ul>"
+  },
+  {
+    "id": "faq-40",
+    "question": "Chuck Wengam has 1 life point. Can he sacrifice a life to draw 2 cards?",
+    "category": "Dodge City",
+    "tags": [
+      "chuck-wengam",
+      "sebevražda",
+      "poslední-život",
+      "zákaz"
+    ],
+    "answerHtml": "<div class=\"faq-verdict\"><span class=\"verdict-badge\">Verdict</span> <strong>Verdict: NO!</strong></div><ul class=\"faq-details-list\"><li>A player cannot voluntarily reduce their life points to 0.</li></ul>"
+  },
+  {
+    "id": "faq-41",
+    "question": "Elena Fuente faces Slab the Killer. How many cards must she discard?",
+    "category": "Dodge City",
+    "tags": [
+      "elena-fuente",
+      "slab-the-killer",
+      "2-karty",
+      "vedle"
+    ],
+    "answerHtml": "<ul class=\"faq-details-list\"><li>She must discard 2 cards from hand to produce 2 Missed! effects to cancel Slab's shot.</li></ul>"
+  },
+  {
+    "id": "faq-42",
+    "question": "Pedro Ramirez plays in Round 1 and the discard pile is empty. Where does he draw from?",
+    "category": "Base Game",
+    "tags": [
+      "pedro-ramirez",
+      "prázdný-balíček",
+      "fáze-1"
+    ],
+    "answerHtml": "<ul class=\"faq-details-list\"><li>He must draw both cards from the draw deck.</li></ul>"
+  },
+  {
+    "id": "faq-43",
+    "question": "Rose Doolan vs Paul Regret: What is the resulting distance between them?",
+    "category": "Distance & Range",
+    "tags": [
+      "rose-doolan",
+      "paul-regret",
+      "vzdálenost",
+      "hledí",
+      "mustang"
+    ],
+    "answerHtml": "<ul class=\"faq-details-list\"><li>Rose Doolan sees at -1; Paul Regret is seen at +1. The modifiers cancel out: distance is 1 (normal).</li></ul>"
+  },
+  {
+    "id": "faq-44",
+    "question": "Ghost Car: Can anyone shoot a BANG! or play Panic! on a player with the Ghost Car?",
+    "category": "The Great Train Robbery",
+    "tags": [
+      "vagon-duchů",
+      "cíl-útoku",
+      "krádež",
+      "panika"
+    ],
+    "answerHtml": "<div class=\"faq-verdict\"><span class=\"verdict-badge\">Verdict</span> <strong>Verdict: YES!</strong></div><ul class=\"faq-details-list\"><li>The player is still an active target; the Ghost Car only prevents them from being eliminated when at 0 lives.</li></ul>"
+  },
+  {
+    "id": "faq-45",
+    "question": "Does a player with the Ghost Car count as alive for game-end conditions?",
+    "category": "The Great Train Robbery",
+    "tags": [
+      "vagon-duchů",
+      "konec-hry",
+      "podmínky-vítězství"
+    ],
+    "answerHtml": "<div class=\"faq-verdict\"><span class=\"verdict-badge\">Verdict</span> <strong>Verdict: YES!</strong></div><ul class=\"faq-details-list\"><li>As long as they have the Ghost Car in play, they count as a living player.</li></ul>"
+  },
+  {
+    "id": "faq-46",
+    "question": "Big Fifty (A&D) vs Barrel vs Julie Cutter: What exactly does this weapon cancel?",
+    "category": "Armed & Dangerous",
+    "tags": [
+      "big-fifty",
+      "barel",
+      "julie-cutter",
+      "mustang",
+      "rušení"
+    ],
+    "answerHtml": "<ul class=\"faq-details-list\"><li>Big Fifty ignores the target's character ability and all cards in play (Barrel, Mustang, etc.). Julie Cutter cannot trigger revenge damage.</li></ul>"
+  },
+  {
+    "id": "faq-47",
+    "question": "Buntline Special (A&D) vs Successful Barrel: Must the target discard a card when Barrel succeeds?",
+    "category": "Armed & Dangerous",
+    "tags": [
+      "buntline-special",
+      "barel",
+      "odhození-karty"
+    ],
+    "answerHtml": "<div class=\"faq-verdict\"><span class=\"verdict-badge\">Verdict</span> <strong>Verdict: NO!</strong></div><ul class=\"faq-details-list\"><li>Buntline Special triggers discard only if a Missed! CARD is played, not when a Barrel check succeeds.</li></ul>"
+  },
+  {
+    "id": "faq-48",
+    "question": "Wooden Dynamite (Dynamite Box variant): What happens to the card after exploding?",
+    "category": "Promo Characters",
+    "tags": [
+      "dřevěný-dynamit",
+      "dynamite-box",
+      "exploze",
+      "zamíchání"
+    ],
+    "answerHtml": "<ul class=\"faq-details-list\"><li>The Dynamite card is discarded to the discard pile, while the wooden token is reset for future use.</li></ul>"
+  },
+  {
+    "id": "faq-49",
+    "question": "Russian Roulette (Fistful of Cards): Who starts and when does it end?",
+    "category": "Global Events",
+    "tags": [
+      "ruská-ruleta",
+      "fistful-of-cards",
+      "pořadí",
+      "konec-rulety"
+    ],
+    "answerHtml": "<ul class=\"faq-details-list\"><li>The player whose turn it is starts by discarding a Missed!. Passes left until someone cannot discard and takes 2 damage.</li></ul>"
+  },
+  {
+    "id": "faq-50",
+    "question": "The Preacher (High Noon) vs Playing BANG! vs Discarding BANG! in a Duel.",
+    "category": "Global Events",
+    "tags": [
+      "kazatel",
+      "high-noon",
+      "zákaz-bangu",
+      "duel"
+    ],
+    "answerHtml": "<ul class=\"faq-details-list\"><li>The Preacher forbids playing Beer cards. Discarding BANG! in a Duel is not playing Beer, so it proceeds normally.</li></ul>"
   }
 ];

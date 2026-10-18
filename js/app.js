@@ -37,12 +37,24 @@
     filterSuit: document.getElementById('filter-suit'),
     sortCards: document.getElementById('sort-cards'),
     btnResetFilters: document.getElementById('btn-reset-filters'),
+    faqMainTitle: document.getElementById('faq-main-title'),
+    faqMainLead: document.getElementById('faq-main-lead'),
     faqSearch: document.getElementById('faq-search'),
     faqList: document.getElementById('faq-list'),
-    faqCatBtns: document.querySelectorAll('.faq-cat-btn'),
+    faqCatContainer: document.getElementById('faq-categories-container'),
     cardModal: document.getElementById('card-modal'),
     modalBody: document.getElementById('modal-body'),
-    modalClose: document.getElementById('modal-close')
+    modalClose: document.getElementById('modal-close'),
+    rulesTocHeader: document.getElementById('rules-toc-header'),
+    rulesContentTarget: document.getElementById('rules-content-target'),
+    rulesTocTarget: document.getElementById('rules-toc-target'),
+    tahHraceTarget: document.getElementById('tah-hrace-target'),
+    pomocnikTarget: document.getElementById('pomocnik-target'),
+    footerText1: document.getElementById('footer-text-1'),
+    footerText2: document.getElementById('footer-text-2'),
+    footerText3: document.getElementById('footer-text-3'),
+    footerRepoLink: document.getElementById('footer-repo-link'),
+    footerNavLinks: document.getElementById('footer-nav-links')
   };
 
   // Theme Init
@@ -94,9 +106,17 @@
       noResultsTitle: "Žádná položka neodpovídá zvoleným filtrům",
       noResultsText: "Zkuste upravit hledaný výraz nebo resetovat filtry.",
       showingResults: (c, t) => `Zobrazeno ${c} z celkem ${t} karet a položek`,
-      faqSearchPlaceholder: "Hledat mezi spornými situacemi a pravidly...",
+      rulesTocHeader: "Obsah pravidel",
+      faqMainTitle: "⚖️ Arbitr sporných situací & Pravidlové rébusy (50+ řešení)",
+      faqMainLead: "Okamžité vyhledávání v oficiálních rozhodnutích, neobvyklých kombinacích karet, sporných momentech a časových posloupnostech.",
+      faqSearchPlaceholder: "Hledat otázku nebo kartu: např. Slab, Vězení, Pivo, Vagon, Bomba, Rez...",
       faqNoResults: "Nebyly nalezeny žádné sporné situace.",
-      faqNoResultsDesc: "Zkuste zadat jiná klíčová slova (např. Slab, Vězení, Pivo, Vagon, Bomba, Rez, Šerif)."
+      faqNoResultsDesc: "Zkuste zadat jiná klíčová slova (např. Slab, Vězení, Pivo, Vagon, Bomba, Rez, Šerif).",
+      footerText1: "BANG! DYNAMITE BOX & LEGENDY — Encyklopedie pravidel a karet",
+      footerText2: "Autor hry: Emiliano Sciarra | Vývoj: daVinci Games / dV Giochi & Albi.",
+      footerText3: "Tato nezávislá fanouškovská webová aplikace slouží k rychlému vyhledávání a řešení herních situací.",
+      footerRepo: "Repozitář na GitHubu",
+      footerNav: '<a href="#pravidla">Pravidla</a> • <a href="#faq">FAQ</a> • <a href="#katalog">Karty</a>'
     },
     en: {
       brandSubtitle: "Complete rules of all expansions together & Card encyclopedia",
@@ -123,9 +143,17 @@
       noResultsTitle: "No cards match the selected filters",
       noResultsText: "Try adjusting your search query or reset filters.",
       showingResults: (c, t) => `Showing ${c} of ${t} cards and items`,
-      faqSearchPlaceholder: "Search conflict situations, characters and rulings...",
+      rulesTocHeader: "Table of Contents",
+      faqMainTitle: "⚖️ Conflict Arbitrator & Rule Enigmas (50+ Resolutions)",
+      faqMainLead: "Instant lookup for official rulings, unusual card combinations, dispute resolutions and timing sequences.",
+      faqSearchPlaceholder: "Search question or card: e.g. Slab, Jail, Beer, Ghost, Bomb, Rust...",
       faqNoResults: "No conflict situations found.",
-      faqNoResultsDesc: "Try different keywords (e.g. Slab, Jail, Beer, Ghost, Bomb, Rust, Sheriff)."
+      faqNoResultsDesc: "Try different keywords (e.g. Slab, Jail, Beer, Ghost, Bomb, Rust, Sheriff).",
+      footerText1: "BANG! DYNAMITE BOX & LEGENDS — Rules & Card Encyclopedia",
+      footerText2: "Game Author: Emiliano Sciarra | Publishing: daVinci Games / dV Giochi & Albi.",
+      footerText3: "This independent fan-made web application provides instant rule reference and dispute resolution.",
+      footerRepo: "GitHub Repository",
+      footerNav: '<a href="#pravidla">Rules</a> • <a href="#faq">FAQ</a> • <a href="#katalog">Cards</a>'
     }
   };
 
@@ -217,6 +245,18 @@
     'type': 'Dle typu karty'
   };
 
+  const FAQ_CATEGORIES = [
+    { id: 'all', cs: 'Všechny kategorie', en: 'All Categories', csCat: 'all', enCat: 'all' },
+    { id: 'combat', cs: 'Boj a obrana', en: 'Combat & Defense', csCat: 'Boj a obrana', enCat: 'Combat & Defense' },
+    { id: 'characters', cs: 'Schopnosti postav', en: 'Character Abilities', csCat: 'Schopnosti postav', enCat: 'Character Abilities' },
+    { id: 'timing', cs: 'Časová posloupnost', en: 'Timing & Order', csCat: 'Časová posloupnost', enCat: 'Timing & Order' },
+    { id: 'legends', cs: 'Legendy', en: 'Legends', csCat: 'Legendy', enCat: 'Legends' },
+    { id: 'train', cs: 'Vlaková loupež', en: 'Train Robbery', csCat: 'Velká vlaková loupež', enCat: 'The Great Train Robbery' },
+    { id: 'armed', cs: 'Ozbrojení a nebezpeční', en: 'Armed & Dangerous', csCat: 'Ozbrojení a nebezpeční', enCat: 'Armed & Dangerous' },
+    { id: 'gold', cs: 'Zlatá horečka', en: 'Gold Rush', csCat: 'Zlatá horečka', enCat: 'Gold Rush' },
+    { id: 'events', cs: 'Globální události', en: 'Global Events', csCat: 'Globální události', enCat: 'Global Events' }
+  ];
+
   function setLanguage(lang) {
     state.lang = lang;
     localStorage.setItem('bang_lang', lang);
@@ -225,6 +265,7 @@
     if (els.langBtnCs) els.langBtnCs.classList.toggle('active', lang === 'cs');
     if (els.langBtnEn) els.langBtnEn.classList.toggle('active', lang === 'en');
 
+    const isEn = lang === 'en';
     const t = I18N[lang] || I18N.cs;
 
     // Header & Navigation
@@ -255,68 +296,56 @@
     if (els.labelSort) els.labelSort.textContent = t.filterSort;
 
     // Options translation
-    const expDict = lang === 'en' ? EXPANSIONS_EN : EXPANSIONS_CS;
+    const expDict = isEn ? EXPANSIONS_EN : EXPANSIONS_CS;
     if (els.filterExpansion) {
       Array.from(els.filterExpansion.options).forEach(opt => {
         if (expDict[opt.value]) opt.textContent = expDict[opt.value];
       });
     }
 
-    const typeDict = lang === 'en' ? TYPES_EN : TYPES_CS;
+    const typeDict = isEn ? TYPES_EN : TYPES_CS;
     if (els.filterType) {
       Array.from(els.filterType.options).forEach(opt => {
         if (typeDict[opt.value]) opt.textContent = typeDict[opt.value];
       });
     }
 
-    const suitDict = lang === 'en' ? SUITS_EN : SUITS_CS;
+    const suitDict = isEn ? SUITS_EN : SUITS_CS;
     if (els.filterSuit) {
       Array.from(els.filterSuit.options).forEach(opt => {
         if (suitDict[opt.value]) opt.textContent = suitDict[opt.value];
       });
     }
 
-    const sortDict = lang === 'en' ? SORTS_EN : SORTS_CS;
+    const sortDict = isEn ? SORTS_EN : SORTS_CS;
     if (els.sortCards) {
       Array.from(els.sortCards.options).forEach(opt => {
         if (sortDict[opt.value]) opt.textContent = sortDict[opt.value];
       });
     }
 
+    // FAQ Section Headers
+    if (els.faqMainTitle) els.faqMainTitle.textContent = t.faqMainTitle;
+    if (els.faqMainLead) els.faqMainLead.textContent = t.faqMainLead;
     if (els.faqSearch) els.faqSearch.placeholder = t.faqSearchPlaceholder;
 
-    // Turn Guide & Quick Helper headers
-    updateTurnAndHelperLang(lang === 'en');
+    // Footer
+    if (els.footerText1) els.footerText1.innerHTML = `<strong>${t.footerText1}</strong>`;
+    if (els.footerText2) els.footerText2.textContent = t.footerText2;
+    if (els.footerText3) els.footerText3.textContent = t.footerText3;
+    if (els.footerRepoLink) els.footerRepoLink.textContent = t.footerRepo;
+    if (els.footerNavLinks) els.footerNavLinks.innerHTML = t.footerNav;
 
+    // Render all components
     renderCards();
+    renderRules();
+    renderFaqCategories();
+    renderFaq();
+    renderTurnGuide();
+    renderQuickHelper();
+
     if (state.selectedCard) {
       openCardModal(state.selectedCard.id);
-    }
-  }
-
-  function updateTurnAndHelperLang(isEn) {
-    const tahTag = document.getElementById('tah-tag');
-    const tahTitle = document.getElementById('tah-main-title');
-    const tahLead = document.getElementById('tah-main-lead');
-
-    if (tahTag) tahTag.textContent = isEn ? 'Interactive Guide' : 'Interaktivní průvodce';
-    if (tahTitle) tahTitle.textContent = isEn ? '⏱️ Player Turn Step-by-Step (All Expansions Combined)' : '⏱️ Tah hráče krok za krokem (Všechna rozšíření současně)';
-    if (tahLead) {
-      tahLead.textContent = isEn
-        ? 'When playing with the complete Dynamite Box and Legends expansion simultaneously, each turn follows a strict sequence. Following this official order eliminates all confusion at the table.'
-        : 'Pokud hrajete s kompletním balíkem Dynamite Box a rozšířením Legendy, má každé herní kolo přesnou a neměnnou posloupnost. Dodržení tohoto oficiálního pořadí zaručuje plynulou hru a předchází všem sporným situacím.';
-    }
-
-    const pomTag = document.getElementById('pomocnik-tag');
-    const pomTitle = document.getElementById('pomocnik-main-title');
-    const pomLead = document.getElementById('pomocnik-main-lead');
-
-    if (pomTag) pomTag.textContent = isEn ? 'Tabletop Cheat Sheet' : 'Přehledová příručka';
-    if (pomTitle) pomTitle.textContent = isEn ? '⚡ Quick Reference & Tabletop Cheat Sheets' : '⚡ Rychlý pomocník a přehledové tabulky pro hraní u stolu';
-    if (pomLead) {
-      pomLead.textContent = isEn
-        ? 'Quick lookup tables for instant rule verification during gameplay: player elimination checklist, distance and weapon range calculations, Beer rules in all situations, card symbols, and exceptions.'
-        : 'Rychlé souhrnné tabulky pro bleskové ověření pravidel během partie – vyřazení hráče, výpočet vzdáleností, pravidla pro Pivo, symboly karet a výjimky.';
     }
   }
 
@@ -443,13 +472,15 @@
       const cardBadge = isEn ? (card.expansionNameEn || EXPANSIONS_EN[card.expansion] || card.expansionName) : card.expansionName;
       const cardTypeLabel = isEn ? (card.typeLabelEn || TYPES_EN[card.type] || card.typeLabel) : card.typeLabel;
       const cardEffect = isEn ? (card.effectEn || card.effect) : card.effect;
+      const cardTiming = isEn ? (card.timingEn || card.timing) : card.timing;
+      const cardCost = isEn ? (card.costEn || card.cost) : card.cost;
 
       const metas = [];
       if (card.copies) metas.push(`<span class="card-meta-item meta-copies">${card.copies}× ${t.copiesInDeck}</span>`);
       if (card.range) metas.push(`<span class="card-meta-item">${t.rangeLabel}: ${card.range}</span>`);
-      if (card.cost) metas.push(`<span class="card-meta-item meta-cost">${card.cost}</span>`);
+      if (cardCost) metas.push(`<span class="card-meta-item meta-cost">${cardCost}</span>`);
       if (card.lives) metas.push(`<span class="card-meta-item" style="color: #b71c1c; font-weight: 700;">❤️ ${card.lives} ${t.livesLabel}</span>`);
-      if (card.timing) metas.push(`<span class="card-meta-item meta-timing">${card.timing}</span>`);
+      if (cardTiming) metas.push(`<span class="card-meta-item meta-timing">${cardTiming}</span>`);
 
       return `
         <article class="bang-card ${borderClass}" data-id="${card.id}" tabindex="0" role="button" aria-label="Detail ${cardTitle}">
@@ -499,15 +530,18 @@
     const cardBadge = isEn ? (card.expansionNameEn || EXPANSIONS_EN[card.expansion] || card.expansionName) : card.expansionName;
     const cardTypeLabel = isEn ? (card.typeLabelEn || TYPES_EN[card.type] || card.typeLabel) : card.typeLabel;
     const cardEffect = isEn ? (card.effectEn || card.effect) : card.effect;
+    const cardTiming = isEn ? (card.timingEn || card.timing) : card.timing;
+    const cardCost = isEn ? (card.costEn || card.cost) : card.cost;
+    const cardRulings = isEn && card.rulingsEn && card.rulingsEn.length > 0 ? card.rulingsEn : card.rulings;
 
-    const rulingsHtml = (card.rulings && card.rulings.length > 0)
+    const rulingsHtml = (cardRulings && cardRulings.length > 0)
       ? `
         <div style="margin-top: 1.25rem; border-top: 2px solid var(--border-color); padding-top: 1rem;">
           <h4 style="color: var(--color-brown); margin-bottom: 0.6rem; display: flex; align-items: center; gap: 0.4rem; font-size: 1.1rem;">
             <span>⚖️</span> ${t.rulingsHeader}
           </h4>
           <ul style="padding-left: 1.25rem; font-size: 0.96rem; line-height: 1.6;">
-            ${card.rulings.map(r => `<li style="margin-bottom: 0.5rem;">${r}</li>`).join('')}
+            ${cardRulings.map(r => `<li style="margin-bottom: 0.5rem;">${r}</li>`).join('')}
           </ul>
         </div>
       `
@@ -533,8 +567,8 @@
       </div>
 
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.75rem; font-size: 0.9rem; margin-bottom: 1rem;">
-        ${card.timing ? `<div style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 0.65rem; border-radius: 6px;"><strong>${t.timingLabel}:</strong><br>${card.timing}</div>` : ''}
-        ${card.cost ? `<div style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 0.65rem; border-radius: 6px;"><strong>${t.costLabel}:</strong><br>${card.cost}</div>` : ''}
+        ${cardTiming ? `<div style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 0.65rem; border-radius: 6px;"><strong>${t.timingLabel}:</strong><br>${cardTiming}</div>` : ''}
+        ${cardCost ? `<div style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 0.65rem; border-radius: 6px;"><strong>${t.costLabel}:</strong><br>${cardCost}</div>` : ''}
         ${card.range ? `<div style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 0.65rem; border-radius: 6px;"><strong>${t.rangeLabel}:</strong><br>${card.range}</div>` : ''}
         ${card.copies ? `<div style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 0.65rem; border-radius: 6px;"><strong>${t.copiesInDeck}:</strong><br>${card.copies}×</div>` : ''}
       </div>
@@ -557,19 +591,23 @@
   // RENDER RULES
   // =========================================================================
   function renderRules() {
-    const rulesContainer = document.getElementById('rules-content-target');
-    const tocTarget = document.getElementById('rules-toc-target');
-    if (!rulesContainer || !window.BANG_RULES) return;
+    if (!els.rulesContentTarget) return;
+    const isEn = state.lang === 'en';
+    const rules = (isEn && window.BANG_RULES_EN) ? window.BANG_RULES_EN : (window.BANG_RULES || []);
 
-    if (tocTarget) {
-      tocTarget.innerHTML = window.BANG_RULES.map((sec, idx) => `
+    if (els.rulesTocHeader) {
+      els.rulesTocHeader.textContent = isEn ? 'Table of Contents' : 'Obsah pravidel';
+    }
+
+    if (els.rulesTocTarget) {
+      els.rulesTocTarget.innerHTML = rules.map((sec, idx) => `
         <li class="rules-toc-item">
           <a href="#${sec.id}" class="rules-toc-link ${idx === 0 ? 'active' : ''}">${sec.title}</a>
         </li>
       `).join('');
     }
 
-    rulesContainer.innerHTML = window.BANG_RULES.map(sec => `
+    els.rulesContentTarget.innerHTML = rules.map(sec => `
       <section id="${sec.id}" class="rules-article">
         ${sec.content}
       </section>
@@ -579,13 +617,38 @@
   // =========================================================================
   // RENDER FAQ (CONFLICT SITUATIONS)
   // =========================================================================
-  function renderFaq() {
-    if (!els.faqList || !window.BANG_FAQ) return;
-    const t = I18N[state.lang] || I18N.cs;
+  function renderFaqCategories() {
+    if (!els.faqCatContainer) return;
+    const isEn = state.lang === 'en';
 
-    const filtered = window.BANG_FAQ.filter(item => {
-      if (state.activeFaqCategory !== 'all' && item.category !== state.activeFaqCategory) {
-        return false;
+    els.faqCatContainer.innerHTML = FAQ_CATEGORIES.map(cat => `
+      <button class="faq-cat-btn ${state.activeFaqCategory === cat.id ? 'active' : ''}" data-cat-id="${cat.id}">
+        ${isEn ? cat.en : cat.cs}
+      </button>
+    `).join('');
+
+    els.faqCatContainer.querySelectorAll('.faq-cat-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        els.faqCatContainer.querySelectorAll('.faq-cat-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        state.activeFaqCategory = btn.dataset.catId;
+        renderFaq();
+      });
+    });
+  }
+
+  function renderFaq() {
+    if (!els.faqList) return;
+    const isEn = state.lang === 'en';
+    const t = I18N[state.lang] || I18N.cs;
+    const faqData = (isEn && window.BANG_FAQ_EN) ? window.BANG_FAQ_EN : (window.BANG_FAQ || []);
+
+    const selectedCatObj = FAQ_CATEGORIES.find(c => c.id === state.activeFaqCategory);
+
+    const filtered = faqData.filter(item => {
+      if (state.activeFaqCategory !== 'all' && selectedCatObj) {
+        const targetCat = isEn ? selectedCatObj.enCat : selectedCatObj.csCat;
+        if (item.category !== targetCat) return false;
       }
       if (state.faqQuery.trim()) {
         const q = state.faqQuery.toLowerCase();
@@ -621,6 +684,21 @@
         </div>
       </details>
     `).join('');
+  }
+
+  // =========================================================================
+  // RENDER TURN GUIDE & QUICK HELPER (BILINGUAL)
+  // =========================================================================
+  function renderTurnGuide() {
+    if (!els.tahHraceTarget) return;
+    const isEn = state.lang === 'en';
+    els.tahHraceTarget.innerHTML = isEn ? window.BANG_TURN_HTML_EN : window.BANG_TURN_HTML_CS;
+  }
+
+  function renderQuickHelper() {
+    if (!els.pomocnikTarget) return;
+    const isEn = state.lang === 'en';
+    els.pomocnikTarget.innerHTML = isEn ? window.BANG_HELPER_HTML_EN : window.BANG_HELPER_HTML_CS;
   }
 
   // =========================================================================
@@ -705,15 +783,6 @@
       });
     }
 
-    els.faqCatBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        els.faqCatBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        state.activeFaqCategory = btn.dataset.category;
-        renderFaq();
-      });
-    });
-
     if (els.modalClose) {
       els.modalClose.addEventListener('click', closeCardModal);
     }
@@ -743,8 +812,6 @@
     initTheme();
     initEvents();
     setLanguage(state.lang);
-    renderRules();
-    renderFaq();
     initRouting();
   });
 })();

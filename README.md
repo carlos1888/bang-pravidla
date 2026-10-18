@@ -30,10 +30,11 @@ bang-pravidla/
 ├── css/
 │   └── style.css               # Westernový responzivní design, barvy karet dle typu, temný/světlý motiv
 ├── js/
-│   ├── cards-data.js           # Databáze 234 karet, postav, vagonů, stanic a činů
-│   ├── rules-data.js           # Kompletní text pravidel všech rozšíření
-│   ├── faq-data.js             # Databáze 50+ řešení sporných situací a rébusů
-│   └── app.js                  # Aplikační logika, filtry, vyhledávání, modální okna
+│   ├── cards-data.js           # Databáze 234 karet, postav, vagonů, stanic a činů (CZ / EN)
+│   ├── rules-data.js           # Kompletní text pravidel všech rozšíření (CZ / EN)
+│   ├── faq-data.js             # Databáze 50+ řešení sporných situací a rébusů (CZ / EN)
+│   ├── turn-helper-data.js     # Formátovaný tah hráče a přehledové tabulky (CZ / EN)
+│   └── app.js                  # Aplikační logika, přepínač jazyka CZ/EN, filtry, vyhledávání
 ├── assets/
 │   └── cards/                  # Extrahované oficiální ilustrace a komponenty z pravidel
 ├── scripts/
