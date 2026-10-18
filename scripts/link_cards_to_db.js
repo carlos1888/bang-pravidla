@@ -40,6 +40,8 @@ const MANUAL_OVERRIDES = {
   'char-sancho': 'assets/cards/05_velka_vlakova_loupez/sancho.webp',
   'char-sgt-blaze': 'assets/cards/05_velka_vlakova_loupez/sgt-blaze.webp',
   'char-shade-oconnor': 'assets/cards/05_velka_vlakova_loupez/shade-o-connor.webp',
+  'char-zippy-roy': 'assets/cards/05_velka_vlakova_loupez/zippy-roy.webp',
+  'train-ironhorse': 'assets/cards/05_velka_vlakova_loupez/ironhorse.webp',
   'train-leland': 'assets/cards/05_velka_vlakova_loupez/leland.webp',
   'railcar-sleeper-car': 'assets/cards/05_velka_vlakova_loupez/sleeper-car.webp',
   'railcar-private-car': 'assets/cards/05_velka_vlakova_loupez/private-car.webp',

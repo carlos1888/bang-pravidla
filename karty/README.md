@@ -2,7 +2,7 @@
 
 Zdroj: [https://bang-cardgame.fandom.com/wiki/List_Of_Cards](https://bang-cardgame.fandom.com/wiki/List_Of_Cards)
 
-Celkem úspěšně staženo a převedeno: **274** karet ve standardním formátu PNG.
+Celkem úspěšně staženo a převedeno: **276** karet ve standardním formátu PNG.
 
 ## Přehled složek rozšíření:
 
@@ -10,7 +10,7 @@ Celkem úspěšně staženo a převedeno: **274** karet ve standardním formátu
 - **`02_Mesto_duchu/`**: 37 karet
 - **`03_Zlata_horecka/`**: 24 karet
 - **`04_Ozbrojeni_a_nebezpecni/`**: 30 karet
-- **`05_Velka_vlakova_loupez/`**: 46 karet
+- **`05_Velka_vlakova_loupez/`**: 48 karet
 - **`06_Udoli_stinu/`**: 23 karet
 - **`07_Prave_poledne/`**: 12 karet
 - **`08_Pest_plna_karet/`**: 15 karet
@@ -169,7 +169,7 @@ Celkem úspěšně staženo a převedeno: **274** karet ve standardním formátu
 | **THUNDERER** | `THUNDERER.png` | 210×327 | 58.6 kB |
 | **TUMBLEWEED** | `TUMBLEWEED.png` | 210×327 | 90.0 kB |
 | **WHIP** | `WHIP.png` | 210×327 | 88.7 kB |
-### 📁 `05_Velka_vlakova_loupez` (46 karet)
+### 📁 `05_Velka_vlakova_loupez` (48 karet)
 
 | Karta | Soubor | Rozměry | Velikost |
 | :--- | :--- | :---: | :---: |
@@ -196,6 +196,7 @@ Celkem úspěšně staženo a převedeno: **274** karet ve standardním formátu
 | **Frisco** | `Frisco.png` | 210×327 | 70.7 kB |
 | **Full Steam** | `Full Steam.png` | 210×327 | 92.5 kB |
 | **GHOST CAR** | `GHOST CAR.png` | 210×327 | 102.0 kB |
+| **Ironhorse** | `Ironhorse.png` | 436×664 | 401.6 kB |
 | **Jimmy Texas** | `Jimmy Texas.png` | 416×656 | 274.1 kB |
 | **Knife Revolver** | `Knife Revolver.png` | 210×327 | 82.8 kB |
 | **Leland** | `Leland.png` | 424×658 | 359.1 kB |
@@ -219,6 +220,7 @@ Celkem úspěšně staženo a převedeno: **274** karet ve standardním formátu
 | **Virginia Town** | `Virginia Town.png` | 210×327 | 75.4 kB |
 | **Water Tower** | `Water Tower.png` | 210×327 | 83.1 kB |
 | **Yooma** | `Yooma.png` | 210×327 | 70.7 kB |
+| **Zippy Roy** | `Zippy Roy.png` | 430×668 | 294.2 kB |
 ### 📁 `06_Udoli_stinu` (23 karet)
 
 | Karta | Soubor | Rozměry | Velikost |

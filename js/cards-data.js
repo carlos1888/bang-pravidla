@@ -4901,7 +4901,7 @@ window.BANG_CARDS = [
       "manipulace vlaku",
       "rychlík"
     ],
-    "image": null,
+    "image": "assets/cards/05_velka_vlakova_loupez/zippy-roy.webp",
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Character",
     "effectEn": "May advance the train 1 extra station on his turn.",
@@ -4938,7 +4938,7 @@ window.BANG_CARDS = [
       "plošný bang",
       "železný oř"
     ],
-    "image": null,
+    "image": "assets/cards/05_velka_vlakova_loupez/ironhorse.webp",
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Railcar",
     "effectEn": "Locomotive. Advances with Sheriff. Reaching the end triggers a lethal BANG! against all living players.",

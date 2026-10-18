@@ -1561,6 +1561,16 @@
   },
   {
     "folder": "05_Velka_vlakova_loupez",
+    "filename": "Ironhorse.png",
+    "title": "Ironhorse",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/05_Velka_vlakova_loupez/Ironhorse.png",
+    "width": 436,
+    "height": 664,
+    "size_bytes": 411273,
+    "size_kb": 401.6
+  },
+  {
+    "folder": "05_Velka_vlakova_loupez",
     "filename": "Jimmy Texas.png",
     "title": "Jimmy Texas",
     "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/05_Velka_vlakova_loupez/Jimmy Texas.png",
@@ -1788,6 +1798,16 @@
     "height": 327,
     "size_bytes": 72390,
     "size_kb": 70.7
+  },
+  {
+    "folder": "05_Velka_vlakova_loupez",
+    "filename": "Zippy Roy.png",
+    "title": "Zippy Roy",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/05_Velka_vlakova_loupez/Zippy Roy.png",
+    "width": 430,
+    "height": 668,
+    "size_bytes": 301263,
+    "size_kb": 294.2
   },
   {
     "folder": "06_Udoli_stinu",

@@ -2464,5 +2464,23 @@
     "height": 549,
     "origBytes": 320188,
     "webpBytes": 24148
+  },
+  {
+    "origTitle": "Zippy Roy",
+    "origFolder": "05_Velka_vlakova_loupez",
+    "webPath": "assets/cards/05_velka_vlakova_loupez/zippy-roy.webp",
+    "width": 360,
+    "height": 559,
+    "origBytes": 301263,
+    "webpBytes": 22652
+  },
+  {
+    "origTitle": "Ironhorse",
+    "origFolder": "05_Velka_vlakova_loupez",
+    "webPath": "assets/cards/05_velka_vlakova_loupez/ironhorse.webp",
+    "width": 360,
+    "height": 548,
+    "origBytes": 411273,
+    "webpBytes": 21860
   }
 ]
