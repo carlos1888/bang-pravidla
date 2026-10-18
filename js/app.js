@@ -613,13 +613,41 @@
           <a href="#${sec.id}" class="rules-toc-link ${idx === 0 ? 'active' : ''}">${sec.title}</a>
         </li>
       `).join('');
+
+      els.rulesTocTarget.querySelectorAll('.rules-toc-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const targetId = link.getAttribute('href').replace('#', '');
+          const targetEl = document.getElementById(targetId);
+          if (targetEl) {
+            targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+          els.rulesTocTarget.querySelectorAll('.rules-toc-link').forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
+          link.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        });
+      });
     }
 
     els.rulesContentTarget.innerHTML = rules.map(sec => `
       <section id="${sec.id}" class="rules-article">
         ${sec.content}
+        <div class="rules-back-to-toc">
+          <button type="button" class="btn-back-to-toc">
+            <span>↑</span> <span>${isEn ? 'Back to Table of Contents' : 'Zpět na obsah pravidel'}</span>
+          </button>
+        </div>
       </section>
     `).join('');
+
+    els.rulesContentTarget.querySelectorAll('.btn-back-to-toc').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tocEl = document.querySelector('.rules-toc') || els.rulesTocTarget;
+        if (tocEl) {
+          tocEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
   }
 
   // =========================================================================
