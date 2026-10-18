@@ -4641,7 +4641,7 @@ window.BANG_CARDS = [
       "nákup vagonů",
       "benny brawler"
     ],
-    "image": null,
+    "image": "assets/cards/05_velka_vlakova_loupez/benny-brawler.webp",
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Character",
     "effectEn": "May take a railcar from the station without paying the station cost if he pays 1 life point.",
@@ -4680,7 +4680,7 @@ window.BANG_CARDS = [
       "obrana",
       "odveta"
     ],
-    "image": null,
+    "image": "assets/cards/05_velka_vlakova_loupez/evan-babbit.webp",
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Character",
     "effectEn": "Whenever targeted by BANG!, may redirect it to another player at distance 1 by discarding 1 card.",
@@ -4718,7 +4718,7 @@ window.BANG_CARDS = [
       "dobírání",
       "funguje ve vězení"
     ],
-    "image": null,
+    "image": "assets/cards/05_velka_vlakova_loupez/jimmy-texas.webp",
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Character",
     "effectEn": "At the end of his turn, immediately draws 1 extra card from the deck.",
@@ -4754,7 +4754,7 @@ window.BANG_CARDS = [
       "dobírání",
       "vlak"
     ],
-    "image": null,
+    "image": "assets/cards/05_velka_vlakova_loupez/manuelita.webp",
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Character",
     "effectEn": "Sees all other players at distance -1 for each railcar in play in front of her.",
@@ -4975,7 +4975,7 @@ window.BANG_CARDS = [
       "hokynářství",
       "leland"
     ],
-    "image": null,
+    "image": "assets/cards/05_velka_vlakova_loupez/leland.webp",
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Railcar",
     "effectEn": "Locomotive. Advances with Sheriff. Provides station bonus cards to the current player.",

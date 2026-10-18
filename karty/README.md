@@ -2,7 +2,7 @@
 
 Zdroj: [https://bang-cardgame.fandom.com/wiki/List_Of_Cards](https://bang-cardgame.fandom.com/wiki/List_Of_Cards)
 
-Celkem úspěšně staženo a převedeno: **264** karet ve standardním formátu PNG.
+Celkem úspěšně staženo a převedeno: **269** karet ve standardním formátu PNG.
 
 ## Přehled složek rozšíření:
 
@@ -10,7 +10,7 @@ Celkem úspěšně staženo a převedeno: **264** karet ve standardním formátu
 - **`02_Mesto_duchu/`**: 37 karet
 - **`03_Zlata_horecka/`**: 24 karet
 - **`04_Ozbrojeni_a_nebezpecni/`**: 30 karet
-- **`05_Velka_vlakova_loupez/`**: 36 karet
+- **`05_Velka_vlakova_loupez/`**: 41 karet
 - **`06_Udoli_stinu/`**: 23 karet
 - **`07_Prave_poledne/`**: 12 karet
 - **`08_Pest_plna_karet/`**: 15 karet
@@ -169,12 +169,13 @@ Celkem úspěšně staženo a převedeno: **264** karet ve standardním formátu
 | **THUNDERER** | `THUNDERER.png` | 210×327 | 58.6 kB |
 | **TUMBLEWEED** | `TUMBLEWEED.png` | 210×327 | 90.0 kB |
 | **WHIP** | `WHIP.png` | 210×327 | 88.7 kB |
-### 📁 `05_Velka_vlakova_loupez` (36 karet)
+### 📁 `05_Velka_vlakova_loupez` (41 karet)
 
 | Karta | Soubor | Rozměry | Velikost |
 | :--- | :--- | :---: | :---: |
 | **BAGGAGE CAR** | `BAGGAGE CAR.png` | 210×326 | 104.3 kB |
 | **BLANK STATION** | `BLANK STATION.png` | 210×326 | 46.3 kB |
+| **Benny Brawler** | `Benny Brawler.png` | 428×654 | 295.5 kB |
 | **Boom Town** | `Boom Town.png` | 210×326 | 80.5 kB |
 | **CABOOSE** | `CABOOSE.png` | 210×326 | 98.1 kB |
 | **CATTLE TRUCK** | `CATTLE TRUCK.png` | 210×326 | 90.5 kB |
@@ -190,11 +191,15 @@ Celkem úspěšně staženo a převedeno: **264** karet ve standardním formátu
 | **Dragoon** | `Dragoon.png` | 210×326 | 47.7 kB |
 | **EXPRESS CARD** | `EXPRESS CARD.png` | 210×327 | 93.6 kB |
 | **Evaded!** | `Evaded!.png` | 210×327 | 80.6 kB |
+| **Evan Babbit** | `Evan Babbit.png` | 418×654 | 341.3 kB |
 | **Fort Wroth** | `Fort Wroth.png` | 210×327 | 64.8 kB |
 | **Frisco** | `Frisco.png` | 210×327 | 70.7 kB |
 | **Full Steam** | `Full Steam.png` | 210×327 | 92.5 kB |
 | **GHOST CAR** | `GHOST CAR.png` | 210×327 | 102.0 kB |
+| **Jimmy Texas** | `Jimmy Texas.png` | 416×656 | 274.1 kB |
 | **Knife Revolver** | `Knife Revolver.png` | 210×327 | 82.8 kB |
+| **Leland** | `Leland.png` | 424×658 | 359.1 kB |
+| **Manuelita** | `Manuelita.png` | 424×648 | 293.9 kB |
 | **Map** | `Map.png` | 210×326 | 84.8 kB |
 | **Miner's Oath** | `Miner's Oath.png` | 210×327 | 65.5 kB |
 | **Money Bag** | `Money Bag.png` | 210×327 | 87.3 kB |

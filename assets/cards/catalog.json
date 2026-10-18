@@ -1215,6 +1215,15 @@
     "webpBytes": 4762
   },
   {
+    "origTitle": "Benny Brawler",
+    "origFolder": "05_Velka_vlakova_loupez",
+    "webPath": "assets/cards/05_velka_vlakova_loupez/benny-brawler.webp",
+    "width": 360,
+    "height": 550,
+    "origBytes": 302617,
+    "webpBytes": 24342
+  },
+  {
     "origTitle": "Boom Town",
     "origFolder": "05_Velka_vlakova_loupez",
     "webPath": "assets/cards/05_velka_vlakova_loupez/boom-town.webp",
@@ -1350,6 +1359,15 @@
     "webpBytes": 12066
   },
   {
+    "origTitle": "Evan Babbit",
+    "origFolder": "05_Velka_vlakova_loupez",
+    "webPath": "assets/cards/05_velka_vlakova_loupez/evan-babbit.webp",
+    "width": 360,
+    "height": 563,
+    "origBytes": 349482,
+    "webpBytes": 32758
+  },
+  {
     "origTitle": "Fort Wroth",
     "origFolder": "05_Velka_vlakova_loupez",
     "webPath": "assets/cards/05_velka_vlakova_loupez/fort-wroth.webp",
@@ -1386,6 +1404,15 @@
     "webpBytes": 14348
   },
   {
+    "origTitle": "Jimmy Texas",
+    "origFolder": "05_Velka_vlakova_loupez",
+    "webPath": "assets/cards/05_velka_vlakova_loupez/jimmy-texas.webp",
+    "width": 360,
+    "height": 568,
+    "origBytes": 280642,
+    "webpBytes": 21520
+  },
+  {
     "origTitle": "Knife Revolver",
     "origFolder": "05_Velka_vlakova_loupez",
     "webPath": "assets/cards/05_velka_vlakova_loupez/knife-revolver.webp",
@@ -1393,6 +1420,24 @@
     "height": 327,
     "origBytes": 84766,
     "webpBytes": 13778
+  },
+  {
+    "origTitle": "Leland",
+    "origFolder": "05_Velka_vlakova_loupez",
+    "webPath": "assets/cards/05_velka_vlakova_loupez/leland.webp",
+    "width": 360,
+    "height": 559,
+    "origBytes": 367769,
+    "webpBytes": 19190
+  },
+  {
+    "origTitle": "Manuelita",
+    "origFolder": "05_Velka_vlakova_loupez",
+    "webPath": "assets/cards/05_velka_vlakova_loupez/manuelita.webp",
+    "width": 360,
+    "height": 550,
+    "origBytes": 300975,
+    "webpBytes": 24278
   },
   {
     "origTitle": "Map",

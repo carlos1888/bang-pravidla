@@ -33,6 +33,11 @@ const MANUAL_OVERRIDES = {
   'weapon-buntline-special-ad': 'assets/cards/04_ozbrojeni_a_nebezpecni/buntline-special.webp',
 
   // Train Robbery
+  'char-benny-brawler': 'assets/cards/05_velka_vlakova_loupez/benny-brawler.webp',
+  'char-evan-babbit': 'assets/cards/05_velka_vlakova_loupez/evan-babbit.webp',
+  'char-jimmy-texas': 'assets/cards/05_velka_vlakova_loupez/jimmy-texas.webp',
+  'char-manuelita': 'assets/cards/05_velka_vlakova_loupez/manuelita.webp',
+  'train-leland': 'assets/cards/05_velka_vlakova_loupez/leland.webp',
   'card-train-robbery': 'assets/cards/05_velka_vlakova_loupez/train-robbery.webp',
   'card-map': 'assets/cards/05_velka_vlakova_loupez/map.webp',
   'card-knife-revolver': 'assets/cards/05_velka_vlakova_loupez/knife-revolver.webp',
