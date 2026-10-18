@@ -7234,24 +7234,35 @@ window.BANG_CARDS = [
     "values": null,
     "range": "Vyřazení hráči",
     "cost": null,
-    "effect": "Na začátku svého tahu se všichni vyřazení hráči vrátí do hry s 1 životem! Role vyřazených hráčů se zamíchají a rozdají náhodně.",
+    "effect": "Když přijde řada na mrtvého hráče, vrací se do hry s 1 životem a líže 2 karty. Hraje se známou odhalenou rolí. Pokud stále žije ve chvíli, kdy tato událost skončí, zůstává trvale ve hře!",
     "timing": "Při zahájení tahu vyřazeného hráče",
     "rulings": [
-      "Hráči se vrací do hry NATRVALO! Zůstávají ve hře i po skončení události."
+      "Aktivuje se pouze zahráním karty Dostavník nebo Wells Fargo a trvá do zahrání dalšího Dostavníku.",
+      "Mrtvý hráč ožije až v momentě, kdy na něj přijde řada – vezme si 1 život, lízne 2 karty a může se Pivem doléčit.",
+      "Hraje se s otevřenou kartou původní role; odměny a tresty za zabití platí znovu (+3 karty za Banditu; trest pro Šerifa).",
+      "Pokud hráč při výměně události stále žije (má alespoň 1 život), zůstává ve hře trvale naživu!"
     ],
     "tags": [
       "událost",
       "hřbitov",
-      "trvalý návrat mrtvých"
+      "krchov",
+      "bone-orchard",
+      "oživování",
+      "zombie",
+      "dostavník",
+      "wells-fargo"
     ],
     "image": null,
     "expansionNameEn": "Wild West Show",
     "typeLabelEn": "Global Event",
-    "effectEn": "Event. Eliminated players return with 1 life point on their turn.",
+    "effectEn": "Event. When an eliminated player's turn arrives, they return to the game with 1 life point and draw 2 cards. Role is played face-up. If still alive when this event leaves play, they remain permanently in the game!",
     "timingEn": "At the start of eliminated player's turn",
     "costEn": null,
     "rulingsEn": [
-      "Hráči se vrací do hry NATRVALO! Zůstávají ve hře i po skončení události."
+      "Activates only when Stagecoach or Wells Fargo is played, and lasts until the next Stagecoach is played.",
+      "An eliminated player revives only when their turn arrives — gains 1 life point, draws 2 cards, and can heal with Beer.",
+      "Played with original role card face-up; kill bounties and penalties apply again (+3 cards for Outlaw; penalty for Sheriff).",
+      "If a player is still alive when the event changes (has at least 1 life point), they stay in the game permanently!"
     ]
   },
   {

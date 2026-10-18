@@ -565,6 +565,31 @@ Podle pravidel varianty s dřevěnou patronou (str. 12 pravidel Dynamite Boxu):
 Karta *Kazatel* zní: *„Během svého tahu nesmíte používat karty BANG!“*.
 * Protože text říká **nesmíte POUŽÍVAT**, vztahuje se to i na odhazování!
 * Pokud hráč ve svém tahu během Kazatele zahraje *Duel*, vyzvaný soupeř může odhodit BANG!, ale hráč na tahu **nesmí odhodit BANG! v odpověď** a okamžitě v Duelu ztratí život! Hraní Duelu ve vlastním tahu během Kazatele je proto čistá sebevražda."""
+    },
+    {
+        "id": "faq-51",
+        "question": "Karta Hřbitov / Krchov (Bone Orchard): Kompletní pravidla – jak přesně ožívají mrtví hráči, jak probíhá tah a co platí?",
+        "tags": ["hřbitov", "krchov", "bone-orchard", "wild-west-show", "události", "oživování", "zombie", "dostavník", "wells-fargo"],
+        "category": "Globální události",
+        "answer": """**Řešení:**
+Karta **Bone Orchard** (česky obvykle překládaná jako *Hřbitov* nebo *Krchov*) z rozšíření *Wild West Show* patří k nejdivočejším kartám ve hře, protože dočasně vrací mrtvé hráče zpět do hry jako „zombie“. Zde je její kompletní autoritativní průvodce:
+* <strong>1. KDY A JAK KARTA ZAČÍNÁ A KONČÍ:</strong>
+* <strong>Vstup do hry:</strong> V rozšíření Wild West Show se události neotáčí každé kolo. Karta se otočí z balíčku událostí <strong>POUZE ve chvíli, kdy někdo zahraje kartu Dostavník (Stagecoach) nebo Wells Fargo</strong> (či jinou kartu se symbolem dostavníku).
+* <strong>Trvání:</strong> Karta zůstává aktivní na stole po celou dobu, dokud někdo nezahraje další Dostavník nebo Wells Fargo a neotočí novou událost.
+* <strong>2. CO SE PŘESNĚ DĚJE, KDYŽ JE KARTA NA STOLE:</strong>
+* Mrtví hráči <strong>neožijí všichni naráz</strong> v okamžiku vyložení karty! Hra pokračuje normálně dokola po směru hodinových ručiček:
+* <strong>Když přijde řada na mrtvého hráče:</strong> Jeho pozice u stolu se nepřeskakuje – hráč se vrací do hry!
+* <strong>Fáze 1 (Začátek tahu):</strong> Hráč vstoupí do hry a vezme si <strong>1 život</strong> (1 náboj / žeton). Následně si běžným způsobem <strong>lízne 2 karty</strong> z dobíracího balíčku (pokud jeho schopnost postavy neupravuje lízání, např. Kit Carlson, Pedro Ramirez atd. – schopnosti postav normálně fungují).
+* <strong>Fáze 2 (Akce):</strong> Hraje svůj tah naprosto standardně. Může hrát BANG!, vykládat zbraně, vybavení a <strong>především pít Pivo</strong>, aby si zvýšil počet životů z 1 na více (až do maxima své postavy).
+* <strong>Fáze 3 (Konec tahu):</strong> Odhodí karty z ruky tak, aby mu jich zůstalo nejvýše tolik, kolik má aktuálně životů (pokud si nedoplnil život, smí mu v ruce zůstat pouze 1 karta). Tah předává dalšímu hráči po směru hry.
+* <strong>3. ZÁSADNÍ PRAVIDLA A SITUACE (CHYTÁKY):</strong>
+* <strong>Role je známá všem (hra s otevřenými kartami):</strong> Hráč hraje za svou původní roli (Pomocník, Bandita, Odpadlík). Protože však při své první smrti roli ukázal, všichni u stolu už vědí, kdo to je. Hraje se s otevřenou kartou role.
+* <strong>Odměny a tresty za zabití platí znovu:</strong> Pokud je oživený Bandita znovu zabit, kdokoli ho zabil, bere okamžitě odměnu <strong>3 karty</strong>. Pokud Šerif omylem zabije svého oživeného Pomocníka (Vice), Šerif musí <strong>odhodit všechny karty z ruky i ze stolu</strong>.
+* <strong>Šerif nikdy neožívá:</strong> Pokud zemře Šerif, hra okamžitě končí vítězstvím Banditů (případně Odpadlíka). K situaci, kdy by Šerif čekal na oživení přes Bone Orchard, tedy v praxi nikdy nedojde.
+* <strong>Opakovaná smrt během trvání události:</strong> Pokud hráč během kola znovu zemře a Bone Orchard je stále na stole i ve chvíli, kdy na něj opět přijde řada, v 1. fázi svého dalšího tahu se <strong>opět vrátí s 1 životem</strong>.
+* <strong>Co se stane, když Bone Orchard skončí (zahrán nový Dostavník):</strong>
+* <strong>Žijící oživení hráči zůstávají:</strong> Hráči, kteří byli oživeni a v momentě výměny události stále žijí (mají alespoň 1 život), ve hře normálně zůstávají dál – <strong>neumírají, jsou plnohodnotně a natrvalo zpátky ve hře</strong>!
+* <strong>Mrtví zůstávají mrtví:</strong> Mrtví hráči, na které řada do té doby nepřišla (nebo kteří zrovna v momentě změny leží mrtví), už zůstávají definitivně vyřazeni."""
     }
 ]
 

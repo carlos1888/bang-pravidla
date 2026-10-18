@@ -175,7 +175,11 @@ def translate_ruling_text(cz):
         ("Tento efekt NENÍ zahráním karty BANG!, takže se nepočítá do limitu 1 BANG! za tah.", "This effect is NOT playing a BANG! card, so it does not count towards the 1 BANG! per turn limit."),
         ("Lze použít i na odvrácení Kulometu a dalších karet vyvolávajících efekt BANG!.", "Can also be used to defend against Gatling and other cards causing a BANG! effect."),
         ("Dosáhne na kteréhokoli hráče u stolu.", "Can reach any player at the table."),
-        ("Chrání ho před plošnými kartami i přímými útoky.", "Protects against area-of-effect cards as well as direct attacks.")
+        ("Chrání ho před plošnými kartami i přímými útoky.", "Protects against area-of-effect cards as well as direct attacks."),
+        ("Aktivuje se pouze zahráním karty Dostavník nebo Wells Fargo a trvá do zahrání dalšího Dostavníku.", "Activates only when Stagecoach or Wells Fargo is played, and lasts until the next Stagecoach is played."),
+        ("Mrtvý hráč ožije až v momentě, kdy na něj přijde řada – vezme si 1 život, lízne 2 karty a může se Pivem doléčit.", "An eliminated player revives only when their turn arrives — gains 1 life point, draws 2 cards, and can heal with Beer."),
+        ("Hraje se s otevřenou kartou původní role; odměny a tresty za zabití platí znovu (+3 karty za Banditu; trest pro Šerifa).", "Played with original role card face-up; kill bounties and penalties apply again (+3 cards for Outlaw; penalty for Sheriff)."),
+        ("Pokud hráč při výměně události stále žije (má alespoň 1 život), zůstává ve hře trvale naživu!", "If a player is still alive when the event changes (has at least 1 life point), they stay in the game permanently!")
     ]
     for pattern, repl in subs:
         if pattern == cz:

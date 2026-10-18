@@ -419,10 +419,15 @@ EXPANSIONS3_CARDS = [
         "values": None,
         "range": "Vyřazení hráči",
         "cost": None,
-        "effect": "Na začátku svého tahu se všichni vyřazení hráči vrátí do hry s 1 životem! Role vyřazených hráčů se zamíchají a rozdají náhodně.",
+        "effect": "Když přijde řada na mrtvého hráče, vrací se do hry s 1 životem a líže 2 karty. Hraje se známou odhalenou rolí. Pokud stále žije ve chvíli, kdy tato událost skončí, zůstává trvale ve hře!",
         "timing": "Při zahájení tahu vyřazeného hráče",
-        "rulings": ["Hráči se vrací do hry NATRVALO! Zůstávají ve hře i po skončení události."],
-        "tags": ["událost", "hřbitov", "trvalý návrat mrtvých"]
+        "rulings": [
+            "Aktivuje se pouze zahráním karty Dostavník nebo Wells Fargo a trvá do zahrání dalšího Dostavníku.",
+            "Mrtvý hráč ožije až v momentě, kdy na něj přijde řada – vezme si 1 život, lízne 2 karty a může se Pivem doléčit.",
+            "Hraje se s otevřenou kartou původní role; odměny a tresty za zabití platí znovu (+3 karty za Banditu; trest pro Šerifa).",
+            "Pokud hráč při výměně události stále žije (má alespoň 1 život), zůstává ve hře trvale naživu!"
+        ],
+        "tags": ["událost", "hřbitov", "krchov", "bone-orchard", "oživování", "zombie", "dostavník", "wells-fargo"]
     },
     {
         "id": "event-miss-susanna",

@@ -622,5 +622,23 @@ FAQ_ENTRIES_EN = [
       "duel"
     ],
     "answer": "**Verdict:**\n* The Preacher forbids playing Beer cards. Discarding BANG! in a Duel is not playing Beer, so it proceeds normally."
+  },
+  {
+    "id": "faq-51",
+    "question": "Bone Orchard (Wild West Show): Complete Guide – How do dead players revive, take turns, and what rulings apply?",
+    "category": "Global Events",
+    "tags": [
+      "bone-orchard",
+      "hřbitov",
+      "krchov",
+      "wild-west-show",
+      "events",
+      "revival",
+      "zombie",
+      "stagecoach",
+      "wells-fargo",
+      "elimination"
+    ],
+    "answer": "**Verdict:** Bone Orchard allows dead players to temporarily return to the game as 'zombies' with 1 life point on their turn, taking full turns with their original role revealed.\n* <strong>1. WHEN & HOW THE EVENT STARTS AND ENDS:</strong>\n* <strong>Entering Play:</strong> In the Wild West Show expansion, events do NOT rotate every round. Bone Orchard enters play <strong>ONLY when a player plays Stagecoach or Wells Fargo</strong> (or any card featuring a stagecoach icon).\n* <strong>Duration:</strong> The card remains active on the table continuously until someone plays another Stagecoach or Wells Fargo and reveals a new event.\n* <strong>2. WHAT EXACTLY HAPPENS ON THE TABLE:</strong>\n* Eliminated players <strong>do NOT all revive at once</strong> the moment the card is revealed! Play proceeds clockwise in standard seating order:\n* <strong>When turn reaches an eliminated player:</strong> Their seat is NOT skipped – the player returns to the game!\n* <strong>Phase 1 (Start of Turn):</strong> The player enters the game and takes <strong>1 life point</strong> (1 bullet / token). Then they draw <strong>2 cards</strong> normally from the draw deck (character drawing abilities like Kit Carlson or Pedro Ramirez function normally).\n* <strong>Phase 2 (Actions):</strong> They play their turn completely normally: can play BANG!, equip weapons and gear, and <strong>most importantly drink Beer</strong> to heal from 1 life to more (up to their character's maximum).\n* <strong>Phase 3 (End of Turn):</strong> Discards down to their current life points (if they did not heal, hand limit is only 1 card). Passes turn clockwise.\n* <strong>3. CRITICAL RULINGS & EDGE CASES (PITFALLS):</strong>\n* <strong>Role is Public Knowledge:</strong> The player plays with their original role (Deputy, Outlaw, Renegade). Because they revealed their role card upon their initial death, everyone already knows their identity. They play with their role face-up!\n* <strong>Kill Bounties & Penalties Apply Again:</strong> If a revived Outlaw is eliminated again, whoever killed them immediately draws the standard bounty of <strong>3 cards</strong>. If the Sheriff kills their revived Deputy, the Sheriff must <strong>discard all cards from hand and in play</strong>.\n* <strong>Sheriff Never Revives:</strong> If the Sheriff dies, the game ends immediately in an Outlaw (or Renegade) victory. A situation where the Sheriff waits to revive via Bone Orchard can never happen in practice.\n* <strong>Re-dying while Bone Orchard is Active:</strong> If a player is eliminated again during the round, and Bone Orchard is still in play when their turn arrives again, they <strong>revive once more with 1 life point</strong> in Phase 1 of their next turn.\n* <strong>What Happens when Bone Orchard Leaves Play (New Stagecoach played):</strong>\n* <strong>Surviving Revived Players Stay Alive:</strong> Players who revived and are currently alive (have $\\ge 1$ life point) when the event changes <strong>remain in the game permanently</strong> – they do not die, they are fully restored living players!\n* <strong>Dead Players Stay Eliminated:</strong> Eliminated players whose turn never arrived (or who are dead at the exact moment the card changes) remain permanently eliminated."
   }
 ]

@@ -618,6 +618,23 @@ window.BANG_FAQ = [
       "duel"
     ],
     "answerHtml": "<div class=\"faq-verdict\"><span class=\"verdict-badge\">Verdikt</span> Karta <em>Kazatel</em> zní: <em>„Během svého tahu nesmíte používat karty BANG!“</em>.</div><ul class=\"faq-details-list\"><li>Protože text říká <strong>nesmíte POUŽÍVAT</strong>, vztahuje se to i na odhazování!</li><li><em> Pokud hráč ve svém tahu během Kazatele zahraje </em>Duel*, vyzvaný soupeř může odhodit BANG!, ale hráč na tahu <strong>nesmí odhodit BANG! v odpověď</strong> a okamžitě v Duelu ztratí život! Hraní Duelu ve vlastním tahu během Kazatele je proto čistá sebevražda.</li></ul>"
+  },
+  {
+    "id": "faq-51",
+    "question": "Karta Hřbitov / Krchov (Bone Orchard): Kompletní pravidla – jak přesně ožívají mrtví hráči, jak probíhá tah a co platí?",
+    "category": "Globální události",
+    "tags": [
+      "hřbitov",
+      "krchov",
+      "bone-orchard",
+      "wild-west-show",
+      "události",
+      "oživování",
+      "zombie",
+      "dostavník",
+      "wells-fargo"
+    ],
+    "answerHtml": "<div class=\"faq-verdict\"><span class=\"verdict-badge\">Verdikt</span> Karta <strong>Bone Orchard</strong> (česky obvykle překládaná jako <em>Hřbitov</em> nebo <em>Krchov</em>) z rozšíření <em>Wild West Show</em> patří k nejdivočejším kartám ve hře, protože dočasně vrací mrtvé hráče zpět do hry jako „zombie“. Zde je její kompletní autoritativní průvodce:</div><ul class=\"faq-details-list\"><li><strong>1. KDY A JAK KARTA ZAČÍNÁ A KONČÍ:</strong></li><li><strong>Vstup do hry:</strong> V rozšíření Wild West Show se události neotáčí každé kolo. Karta se otočí z balíčku událostí <strong>POUZE ve chvíli, kdy někdo zahraje kartu Dostavník (Stagecoach) nebo Wells Fargo</strong> (či jinou kartu se symbolem dostavníku).</li><li><strong>Trvání:</strong> Karta zůstává aktivní na stole po celou dobu, dokud někdo nezahraje další Dostavník nebo Wells Fargo a neotočí novou událost.</li><li><strong>2. CO SE PŘESNĚ DĚJE, KDYŽ JE KARTA NA STOLE:</strong></li><li>Mrtví hráči <strong>neožijí všichni naráz</strong> v okamžiku vyložení karty! Hra pokračuje normálně dokola po směru hodinových ručiček:</li><li><strong>Když přijde řada na mrtvého hráče:</strong> Jeho pozice u stolu se nepřeskakuje – hráč se vrací do hry!</li><li><strong>Fáze 1 (Začátek tahu):</strong> Hráč vstoupí do hry a vezme si <strong>1 život</strong> (1 náboj / žeton). Následně si běžným způsobem <strong>lízne 2 karty</strong> z dobíracího balíčku (pokud jeho schopnost postavy neupravuje lízání, např. Kit Carlson, Pedro Ramirez atd. – schopnosti postav normálně fungují).</li><li><strong>Fáze 2 (Akce):</strong> Hraje svůj tah naprosto standardně. Může hrát BANG!, vykládat zbraně, vybavení a <strong>především pít Pivo</strong>, aby si zvýšil počet životů z 1 na více (až do maxima své postavy).</li><li><strong>Fáze 3 (Konec tahu):</strong> Odhodí karty z ruky tak, aby mu jich zůstalo nejvýše tolik, kolik má aktuálně životů (pokud si nedoplnil život, smí mu v ruce zůstat pouze 1 karta). Tah předává dalšímu hráči po směru hry.</li><li><strong>3. ZÁSADNÍ PRAVIDLA A SITUACE (CHYTÁKY):</strong></li><li><strong>Role je známá všem (hra s otevřenými kartami):</strong> Hráč hraje za svou původní roli (Pomocník, Bandita, Odpadlík). Protože však při své první smrti roli ukázal, všichni u stolu už vědí, kdo to je. Hraje se s otevřenou kartou role.</li><li><strong>Odměny a tresty za zabití platí znovu:</strong> Pokud je oživený Bandita znovu zabit, kdokoli ho zabil, bere okamžitě odměnu <strong>3 karty</strong>. Pokud Šerif omylem zabije svého oživeného Pomocníka (Vice), Šerif musí <strong>odhodit všechny karty z ruky i ze stolu</strong>.</li><li><strong>Šerif nikdy neožívá:</strong> Pokud zemře Šerif, hra okamžitě končí vítězstvím Banditů (případně Odpadlíka). K situaci, kdy by Šerif čekal na oživení přes Bone Orchard, tedy v praxi nikdy nedojde.</li><li><strong>Opakovaná smrt během trvání události:</strong> Pokud hráč během kola znovu zemře a Bone Orchard je stále na stole i ve chvíli, kdy na něj opět přijde řada, v 1. fázi svého dalšího tahu se <strong>opět vrátí s 1 životem</strong>.</li><li><strong>Co se stane, když Bone Orchard skončí (zahrán nový Dostavník):</strong></li><li><strong>Žijící oživení hráči zůstávají:</strong> Hráči, kteří byli oživeni a v momentě výměny události stále žijí (mají alespoň 1 život), ve hře normálně zůstávají dál – <strong>neumírají, jsou plnohodnotně a natrvalo zpátky ve hře</strong>!</li><li><strong>Mrtví zůstávají mrtví:</strong> Mrtví hráči, na které řada do té doby nepřišla (nebo kteří zrovna v momentě změny leží mrtví), už zůstávají definitivně vyřazeni.</li></ul>"
   }
 ];
 
@@ -1240,5 +1257,23 @@ window.BANG_FAQ_EN = [
       "duel"
     ],
     "answerHtml": "<ul class=\"faq-details-list\"><li>The Preacher forbids playing Beer cards. Discarding BANG! in a Duel is not playing Beer, so it proceeds normally.</li></ul>"
+  },
+  {
+    "id": "faq-51",
+    "question": "Bone Orchard (Wild West Show): Complete Guide – How do dead players revive, take turns, and what rulings apply?",
+    "category": "Global Events",
+    "tags": [
+      "bone-orchard",
+      "hřbitov",
+      "krchov",
+      "wild-west-show",
+      "events",
+      "revival",
+      "zombie",
+      "stagecoach",
+      "wells-fargo",
+      "elimination"
+    ],
+    "answerHtml": "<div class=\"faq-verdict\"><span class=\"verdict-badge\">Verdict</span> Bone Orchard allows dead players to temporarily return to the game as 'zombies' with 1 life point on their turn, taking full turns with their original role revealed.</div><ul class=\"faq-details-list\"><li><strong>1. WHEN & HOW THE EVENT STARTS AND ENDS:</strong></li><li><strong>Entering Play:</strong> In the Wild West Show expansion, events do NOT rotate every round. Bone Orchard enters play <strong>ONLY when a player plays Stagecoach or Wells Fargo</strong> (or any card featuring a stagecoach icon).</li><li><strong>Duration:</strong> The card remains active on the table continuously until someone plays another Stagecoach or Wells Fargo and reveals a new event.</li><li><strong>2. WHAT EXACTLY HAPPENS ON THE TABLE:</strong></li><li>Eliminated players <strong>do NOT all revive at once</strong> the moment the card is revealed! Play proceeds clockwise in standard seating order:</li><li><strong>When turn reaches an eliminated player:</strong> Their seat is NOT skipped – the player returns to the game!</li><li><strong>Phase 1 (Start of Turn):</strong> The player enters the game and takes <strong>1 life point</strong> (1 bullet / token). Then they draw <strong>2 cards</strong> normally from the draw deck (character drawing abilities like Kit Carlson or Pedro Ramirez function normally).</li><li><strong>Phase 2 (Actions):</strong> They play their turn completely normally: can play BANG!, equip weapons and gear, and <strong>most importantly drink Beer</strong> to heal from 1 life to more (up to their character's maximum).</li><li><strong>Phase 3 (End of Turn):</strong> Discards down to their current life points (if they did not heal, hand limit is only 1 card). Passes turn clockwise.</li><li><strong>3. CRITICAL RULINGS & EDGE CASES (PITFALLS):</strong></li><li><strong>Role is Public Knowledge:</strong> The player plays with their original role (Deputy, Outlaw, Renegade). Because they revealed their role card upon their initial death, everyone already knows their identity. They play with their role face-up!</li><li><strong>Kill Bounties & Penalties Apply Again:</strong> If a revived Outlaw is eliminated again, whoever killed them immediately draws the standard bounty of <strong>3 cards</strong>. If the Sheriff kills their revived Deputy, the Sheriff must <strong>discard all cards from hand and in play</strong>.</li><li><strong>Sheriff Never Revives:</strong> If the Sheriff dies, the game ends immediately in an Outlaw (or Renegade) victory. A situation where the Sheriff waits to revive via Bone Orchard can never happen in practice.</li><li><strong>Re-dying while Bone Orchard is Active:</strong> If a player is eliminated again during the round, and Bone Orchard is still in play when their turn arrives again, they <strong>revive once more with 1 life point</strong> in Phase 1 of their next turn.</li><li><strong>What Happens when Bone Orchard Leaves Play (New Stagecoach played):</strong></li><li><strong>Surviving Revived Players Stay Alive:</strong> Players who revived and are currently alive (have $\\ge 1$ life point) when the event changes <strong>remain in the game permanently</strong> – they do not die, they are fully restored living players!</li><li><strong>Dead Players Stay Eliminated:</strong> Eliminated players whose turn never arrived (or who are dead at the exact moment the card changes) remain permanently eliminated.</li></ul>"
   }
 ];

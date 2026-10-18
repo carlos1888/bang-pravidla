@@ -624,7 +624,7 @@ CARDS_EN = {
     "effect": "Event. All cards may be played as BANG!, and all cards may be played as Missed!."
   },
   "event-bone-orchard": {
-    "effect": "Event. Eliminated players return with 1 life point on their turn."
+    "effect": "Event. When an eliminated player's turn arrives, they return to the game with 1 life point and draw 2 cards. Role is played face-up. If still alive when this event leaves play, they remain permanently in the game!"
   },
   "event-miss-susanna": {
     "effect": "Event. Each player must play at least 3 cards on their turn or lose 1 life point."
