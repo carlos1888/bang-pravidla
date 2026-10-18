@@ -17,7 +17,7 @@ window.BANG_CARDS = [
     "timing": "Celá hra (veřejná role)",
     "rulings": [
       "Na Šerifa nelze zahrát kartu Vězení.",
-      "Pokud Šerif zabije svého Pomocníka, za trest musí odhodit všechny karty z ruky i ze hry (včetně vybavení).",
+      "Pokud Šerif zabije svého Pomocníka (Vice), za trest musí odhodit všechny karty z ruky i ze hry (včetně vybavení).",
       "Pokud Šerif zabije Banditu, dostane běžnou odměnu 3 karty z balíčku."
     ],
     "tags": [
@@ -26,11 +26,14 @@ window.BANG_CARDS = [
       "životy navíc",
       "zákon"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Base Game",
+    "typeLabelEn": "Role Card",
+    "effectEn": "Plays with role revealed. Starts with 1 extra bullet (life point). Starts the game. Goal: Kill all Outlaws and the Renegade."
   },
   {
     "id": "role-deputy",
-    "name": "Pomocník šerifa",
+    "name": "Pomocník šerifa (Vice)",
     "nameEn": "Deputy",
     "expansion": "base",
     "expansionName": "Základní hra",
@@ -41,19 +44,23 @@ window.BANG_CARDS = [
     "values": null,
     "range": null,
     "cost": null,
-    "effect": "Hraje s tajnou rolí. Pomáhá Šerifovi a chrání ho za každou cenu. Cíl: Stejný jako Šerif (eliminovat Bandity a Odpadlíka). Vítězí, pokud vyhraje Šerif (i když je Pomocník mrtev).",
+    "effect": "Hraje s tajnou rolí. Pomáhá Šerifovi a chrání ho za každou cenu. Cíl: Stejný jako Šerif (eliminovat Bandity a Odpadlíka). Vítězí, pokud vyhraje Šerif (i když je Pomocník (Vice) mrtev).",
     "timing": "Celá hra (tajná role)",
     "rulings": [
-      "I když Pomocník zemře, vyhrává společně se Šerifem, pokud Šerif a zákon zvítězí.",
+      "I když Pomocník (Vice) zemře, vyhrává společně se Šerifem, pokud Šerif a zákon zvítězí.",
       "Pokud je zabit Šerifem, Šerif ztrácí všechny karty v ruce i ve hře."
     ],
     "tags": [
       "role",
       "pomocník",
+      "vice",
       "zákon",
       "tajná role"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Base Game",
+    "typeLabelEn": "Role Card",
+    "effectEn": "Plays with role hidden. Protects the Sheriff at all costs. Goal: Same as Sheriff (kill all Outlaws and Renegade). Wins if Sheriff wins."
   },
   {
     "id": "role-outlaw",
@@ -80,7 +87,10 @@ window.BANG_CARDS = [
       "odměna",
       "tajná role"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Base Game",
+    "typeLabelEn": "Role Card",
+    "effectEn": "Plays with role hidden. Goal: Eliminate the Sheriff. Wins immediately when Sheriff is killed."
   },
   {
     "id": "role-renegade",
@@ -107,7 +117,10 @@ window.BANG_CARDS = [
       "samotář",
       "tajná role"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Base Game",
+    "typeLabelEn": "Role Card",
+    "effectEn": "Plays with role hidden. Goal: Be the last surviving player in the game. Must eliminate Sheriff last in 1v1 duel."
   },
   {
     "id": "char-bart-cassidy",
@@ -135,7 +148,10 @@ window.BANG_CARDS = [
       "dobírání karet",
       "obrana"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Base Game",
+    "typeLabelEn": "Character",
+    "effectEn": "Each time he loses a life point, he immediately draws a card from the draw deck."
   },
   {
     "id": "char-black-jack",
@@ -163,7 +179,10 @@ window.BANG_CARDS = [
       "červené karty",
       "dobírání"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Base Game",
+    "typeLabelEn": "Character",
+    "effectEn": "During Phase 1, reveals the 2nd card drawn: if Hearts ♥ or Diamonds ♦, draws 1 extra card."
   },
   {
     "id": "char-calamity-janet",
@@ -193,7 +212,10 @@ window.BANG_CARDS = [
       "vedle",
       "duel"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Base Game",
+    "typeLabelEn": "Character",
+    "effectEn": "Can play BANG! cards as Missed! and Missed! cards as BANG!."
   },
   {
     "id": "char-el-gringo",
@@ -223,7 +245,10 @@ window.BANG_CARDS = [
       "protiútok",
       "zranění"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Base Game",
+    "typeLabelEn": "Character",
+    "effectEn": "Each time he loses a life point from a player's card, draws 1 random card from that player's hand."
   },
   {
     "id": "char-jesse-jones",
@@ -252,7 +277,10 @@ window.BANG_CARDS = [
       "krádež z ruky",
       "dobírání"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Base Game",
+    "typeLabelEn": "Character",
+    "effectEn": "During Phase 1, may draw his 1st card from any other player's hand instead of the deck."
   },
   {
     "id": "char-jourdonnais",
@@ -282,7 +310,10 @@ window.BANG_CARDS = [
       "sejmutí",
       "srdce"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Base Game",
+    "typeLabelEn": "Character",
+    "effectEn": "Has a built-in Barrel: whenever targeted by a BANG!, draws from the deck to cancel the shot on Hearts ♥."
   },
   {
     "id": "char-kit-carlson",
@@ -310,7 +341,10 @@ window.BANG_CARDS = [
       "manipulace balíčku",
       "dobírání"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Base Game",
+    "typeLabelEn": "Character",
+    "effectEn": "During Phase 1, looks at the top 3 cards of the deck, chooses 2 for his hand, and returns 1 to the top."
   },
   {
     "id": "char-lucky-duke",
@@ -340,7 +374,10 @@ window.BANG_CARDS = [
       "barel",
       "dynamit"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Base Game",
+    "typeLabelEn": "Character",
+    "effectEn": "Whenever he draws from the deck (check), flips 2 cards and chooses the result he prefers."
   },
   {
     "id": "char-paul-regret",
@@ -369,7 +406,10 @@ window.BANG_CARDS = [
       "mustang",
       "obrana"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Base Game",
+    "typeLabelEn": "Character",
+    "effectEn": "All other players see him at distance +1 (built-in Mustang)."
   },
   {
     "id": "char-pedro-ramirez",
@@ -397,7 +437,10 @@ window.BANG_CARDS = [
       "odhazovací balíček",
       "recyklace"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Base Game",
+    "typeLabelEn": "Character",
+    "effectEn": "During Phase 1, may take his 1st card from the top of the discard pile."
   },
   {
     "id": "char-rose-doolan",
@@ -425,7 +468,10 @@ window.BANG_CARDS = [
       "hledí",
       "útok"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Base Game",
+    "typeLabelEn": "Character",
+    "effectEn": "Sees all other players at distance -1 (built-in Scope)."
   },
   {
     "id": "char-sid-ketchum",
@@ -454,7 +500,10 @@ window.BANG_CARDS = [
       "záchrana před smrtí",
       "životy"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Base Game",
+    "typeLabelEn": "Character",
+    "effectEn": "May discard any 2 cards from his hand to regain 1 life point at any time on his turn."
   },
   {
     "id": "char-slab-the-killer",
@@ -484,7 +533,10 @@ window.BANG_CARDS = [
       "2 vedle",
       "smrtící"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Base Game",
+    "typeLabelEn": "Character",
+    "effectEn": "Players must play 2 Missed! cards to cancel his BANG! attacks."
   },
   {
     "id": "char-suzy-lafayette",
@@ -513,7 +565,10 @@ window.BANG_CARDS = [
       "nekonečné lízání",
       "komba"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Base Game",
+    "typeLabelEn": "Character",
+    "effectEn": "As soon as she has no cards in hand, immediately draws 1 card from the deck."
   },
   {
     "id": "char-vulture-sam",
@@ -535,7 +590,7 @@ window.BANG_CARDS = [
       "Vezme si modré karty, zelené karty i vagony (ty vyloží ihned před sebe).",
       "NEBERE karty vybavení ze Zlaté horečky (ty jdou dospod balíčku vybavení).",
       "NEBERE karty od Stínových pistolníků (ti neumírají, jen odcházejí na konci tahu).",
-      "Pokud je Šerif a zabije Pomocníka, nejprve vezme karty Pomocníka a hned poté všechno odhodí."
+      "Pokud je Šerif a zabije Pomocníka (Vice), nejprve vezme karty Pomocníka (Vice) a hned poté všechno odhodí."
     ],
     "tags": [
       "postava",
@@ -543,7 +598,10 @@ window.BANG_CARDS = [
       "smrt",
       "krádež karet zabitých"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Base Game",
+    "typeLabelEn": "Character",
+    "effectEn": "Whenever any player is eliminated, takes all cards from their hand and in play."
   },
   {
     "id": "char-willy-the-kid",
@@ -571,7 +629,10 @@ window.BANG_CARDS = [
       "kulometčík",
       "útok"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Base Game",
+    "typeLabelEn": "Character",
+    "effectEn": "May play any number of BANG! cards on his turn."
   },
   {
     "id": "card-bang",
@@ -600,7 +661,10 @@ window.BANG_CARDS = [
       "zranění",
       "základ"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Base Game",
+    "typeLabelEn": "Brown Card (Immediate)",
+    "effectEn": "A shot at another player within weapon range. The target must play a Missed! card or lose 1 life point. Limit 1 BANG! per turn."
   },
   {
     "id": "card-missed",
@@ -629,7 +693,10 @@ window.BANG_CARDS = [
       "reakce",
       "základ"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Base Game",
+    "typeLabelEn": "Brown Card (Immediate)",
+    "effectEn": "Cancel a BANG! attack played against you."
   },
   {
     "id": "card-beer",
@@ -658,7 +725,10 @@ window.BANG_CARDS = [
       "pivo",
       "záchrana"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Base Game",
+    "typeLabelEn": "Brown Card (Immediate)",
+    "effectEn": "Regain 1 lost life point (up to your starting maximum). Can be played out of turn when losing your last life point. Has no healing effect with only 2 players left."
   },
   {
     "id": "card-saloon",
@@ -685,7 +755,10 @@ window.BANG_CARDS = [
       "saloon",
       "životy"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Base Game",
+    "typeLabelEn": "Brown Card (Immediate)",
+    "effectEn": "All living players regain 1 life point immediately. Cannot be played out of turn to prevent death."
   },
   {
     "id": "card-stagecoach",
@@ -711,7 +784,10 @@ window.BANG_CARDS = [
       "dostavník",
       "karty navíc"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Base Game",
+    "typeLabelEn": "Brown Card (Immediate)",
+    "effectEn": "Draw 2 cards from the draw deck."
   },
   {
     "id": "card-wells-fargo",
@@ -737,7 +813,10 @@ window.BANG_CARDS = [
       "wells fargo",
       "karty navíc"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Base Game",
+    "typeLabelEn": "Brown Card (Immediate)",
+    "effectEn": "Draw 3 cards from the draw deck."
   },
   {
     "id": "card-general-store",
@@ -764,7 +843,10 @@ window.BANG_CARDS = [
       "všichni hráči",
       "hokynářství"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Base Game",
+    "typeLabelEn": "Brown Card (Immediate)",
+    "effectEn": "Reveal as many cards from the deck as living players. In turn order starting with you, each player chooses 1 card."
   },
   {
     "id": "card-panic",
@@ -793,7 +875,10 @@ window.BANG_CARDS = [
       "panika",
       "vzdálenost 1"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Base Game",
+    "typeLabelEn": "Brown Card (Immediate)",
+    "effectEn": "Draw 1 card from any player at distance 1 (from hand or in play)."
   },
   {
     "id": "card-cat-balou",
@@ -822,7 +907,10 @@ window.BANG_CARDS = [
       "cat balou",
       "ničení"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Base Game",
+    "typeLabelEn": "Brown Card (Immediate)",
+    "effectEn": "Force any player at any distance to discard 1 card (from hand or in play)."
   },
   {
     "id": "card-gatling",
@@ -850,7 +938,10 @@ window.BANG_CARDS = [
       "kulomet",
       "plošné poškození"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Base Game",
+    "typeLabelEn": "Brown Card (Immediate)",
+    "effectEn": "Fires a BANG! attack at all other living players in play. Does not count toward your 1 BANG! per turn limit."
   },
   {
     "id": "card-indians",
@@ -878,7 +969,10 @@ window.BANG_CARDS = [
       "indiáni",
       "odhoď bang"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Base Game",
+    "typeLabelEn": "Brown Card (Immediate)",
+    "effectEn": "All other players must discard a BANG! card or lose 1 life point. Missed! has no effect."
   },
   {
     "id": "card-duel",
@@ -906,7 +1000,10 @@ window.BANG_CARDS = [
       "duel",
       "odhoď bang"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Base Game",
+    "typeLabelEn": "Brown Card (Immediate)",
+    "effectEn": "Challenge any player. Both players alternately discard a BANG! card. The first who fails loses 1 life point."
   },
   {
     "id": "card-barrel",
@@ -935,7 +1032,10 @@ window.BANG_CARDS = [
       "sejmutí",
       "srdce"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Base Game",
+    "typeLabelEn": "Blue Card (In Play)",
+    "effectEn": "When targeted by a BANG!, draw: if Hearts ♥, you avoid the shot without needing a Missed! card."
   },
   {
     "id": "card-mustang",
@@ -964,7 +1064,10 @@ window.BANG_CARDS = [
       "mustang",
       "obrana"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Base Game",
+    "typeLabelEn": "Blue Card (In Play)",
+    "effectEn": "Other players see you at distance +1."
   },
   {
     "id": "card-scope",
@@ -993,7 +1096,10 @@ window.BANG_CARDS = [
       "útok",
       "zaměřovač"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Base Game",
+    "typeLabelEn": "Blue Card (In Play)",
+    "effectEn": "You see all other players at distance -1 (minimum distance is 1)."
   },
   {
     "id": "card-jail",
@@ -1022,7 +1128,10 @@ window.BANG_CARDS = [
       "sejmutí",
       "zákaz na šerifa"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Base Game",
+    "typeLabelEn": "Blue Card (In Play)",
+    "effectEn": "Play on any player (except Sheriff). At the start of their turn, draw: if Hearts ♥, they escape; otherwise they skip their turn."
   },
   {
     "id": "card-dynamite",
@@ -1051,7 +1160,10 @@ window.BANG_CARDS = [
       "3 životy",
       "hazard"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Base Game",
+    "typeLabelEn": "Blue Card (In Play)",
+    "effectEn": "Passes clockwise. At the start of each player's turn, draw: if Spades ♠ 2–9, it explodes for 3 life points! Otherwise passes to the left."
   },
   {
     "id": "weapon-colt-45",
@@ -1077,7 +1189,10 @@ window.BANG_CARDS = [
       "dostřel 1",
       "základ"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Base Game",
+    "typeLabelEn": "Blue Card (In Play)",
+    "effectEn": null
   },
   {
     "id": "weapon-volcanic",
@@ -1105,7 +1220,10 @@ window.BANG_CARDS = [
       "rychlopalba",
       "neomezený bang"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Base Game",
+    "typeLabelEn": "Blue Card (In Play)",
+    "effectEn": null
   },
   {
     "id": "weapon-schofield",
@@ -1130,7 +1248,10 @@ window.BANG_CARDS = [
       "schofield",
       "dostřel 2"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Base Game",
+    "typeLabelEn": "Blue Card (In Play)",
+    "effectEn": null
   },
   {
     "id": "weapon-remington",
@@ -1155,7 +1276,10 @@ window.BANG_CARDS = [
       "remington",
       "dostřel 3"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Base Game",
+    "typeLabelEn": "Blue Card (In Play)",
+    "effectEn": null
   },
   {
     "id": "weapon-rev-carabine",
@@ -1181,7 +1305,10 @@ window.BANG_CARDS = [
       "karabina",
       "dostřel 4"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Base Game",
+    "typeLabelEn": "Blue Card (In Play)",
+    "effectEn": null
   },
   {
     "id": "weapon-winchester",
@@ -1207,7 +1334,10 @@ window.BANG_CARDS = [
       "puška",
       "dostřel 5"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Base Game",
+    "typeLabelEn": "Blue Card (In Play)",
+    "effectEn": null
   },
   {
     "id": "char-apache-kid",
@@ -1236,7 +1366,10 @@ window.BANG_CARDS = [
       "káry",
       "dodge city"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Dodge City",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "char-belle-star",
@@ -1265,7 +1398,10 @@ window.BANG_CARDS = [
       "mustang",
       "barel"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Dodge City",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "char-bill-noface",
@@ -1295,7 +1431,10 @@ window.BANG_CARDS = [
       "dobírání",
       "comeback"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Dodge City",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "char-chuck-wengam",
@@ -1323,7 +1462,10 @@ window.BANG_CARDS = [
       "dobírání",
       "agrese"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Dodge City",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "char-doc-holyday",
@@ -1352,7 +1494,10 @@ window.BANG_CARDS = [
       "odhození karet",
       "střelec"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Dodge City",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "char-elena-fuente",
@@ -1381,7 +1526,10 @@ window.BANG_CARDS = [
       "vedle",
       "neproniknutelná"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Dodge City",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "char-greg-digger",
@@ -1410,7 +1558,10 @@ window.BANG_CARDS = [
       "léčení při smrti",
       "životy"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Dodge City",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "char-herb-hunter",
@@ -1438,7 +1589,10 @@ window.BANG_CARDS = [
       "odměna",
       "dobírání při smrti"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Dodge City",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "char-jose-delgado",
@@ -1466,7 +1620,10 @@ window.BANG_CARDS = [
       "dobírání",
       "cyklení"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Dodge City",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "char-molly-stark",
@@ -1495,7 +1652,10 @@ window.BANG_CARDS = [
       "dobírání",
       "obrana"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Dodge City",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "char-pat-brennan",
@@ -1524,7 +1684,10 @@ window.BANG_CARDS = [
       "krádež ze stolu",
       "vyložené karty"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Dodge City",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "char-pixie-pete",
@@ -1552,7 +1715,10 @@ window.BANG_CARDS = [
       "dobírání",
       "karty navíc"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Dodge City",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "char-sean-mallory",
@@ -1580,7 +1746,10 @@ window.BANG_CARDS = [
       "kapacita ruky",
       "hromadění karet"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Dodge City",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "char-tequila-joe",
@@ -1609,7 +1778,10 @@ window.BANG_CARDS = [
       "dvojité léčení",
       "životy"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Dodge City",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "char-vera-custer",
@@ -1637,7 +1809,10 @@ window.BANG_CARDS = [
       "chameleon",
       "flexibilita"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Dodge City",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "card-sombrero",
@@ -1664,7 +1839,10 @@ window.BANG_CARDS = [
       "vedle",
       "sombrero"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Dodge City",
+    "typeLabelEn": "Green Card (Dodge City)",
+    "effectEn": null
   },
   {
     "id": "card-iron-plate",
@@ -1690,7 +1868,10 @@ window.BANG_CARDS = [
       "vedle",
       "železný plát"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Dodge City",
+    "typeLabelEn": "Green Card (Dodge City)",
+    "effectEn": null
   },
   {
     "id": "card-ten-gallon-hat",
@@ -1716,7 +1897,10 @@ window.BANG_CARDS = [
       "vedle",
       "klobouk"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Dodge City",
+    "typeLabelEn": "Green Card (Dodge City)",
+    "effectEn": null
   },
   {
     "id": "card-bible",
@@ -1744,7 +1928,10 @@ window.BANG_CARDS = [
       "sejmutí",
       "srdce"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Dodge City",
+    "typeLabelEn": "Green Card (Dodge City)",
+    "effectEn": null
   },
   {
     "id": "card-derringer",
@@ -1772,7 +1959,10 @@ window.BANG_CARDS = [
       "lízni kartu",
       "efekt bang"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Dodge City",
+    "typeLabelEn": "Green Card (Dodge City)",
+    "effectEn": null
   },
   {
     "id": "card-pepperbox",
@@ -1798,7 +1988,10 @@ window.BANG_CARDS = [
       "pepřenka",
       "efekt bang"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Dodge City",
+    "typeLabelEn": "Green Card (Dodge City)",
+    "effectEn": null
   },
   {
     "id": "card-knife",
@@ -1824,7 +2017,10 @@ window.BANG_CARDS = [
       "nůž",
       "vzdálenost 1"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Dodge City",
+    "typeLabelEn": "Green Card (Dodge City)",
+    "effectEn": null
   },
   {
     "id": "card-buffalo-rifle",
@@ -1850,7 +2046,10 @@ window.BANG_CARDS = [
       "puška",
       "libovolná vzdálenost"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Dodge City",
+    "typeLabelEn": "Green Card (Dodge City)",
+    "effectEn": null
   },
   {
     "id": "card-howitzer",
@@ -1877,7 +2076,10 @@ window.BANG_CARDS = [
       "houfnice",
       "kulomet"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Dodge City",
+    "typeLabelEn": "Green Card (Dodge City)",
+    "effectEn": null
   },
   {
     "id": "card-canteen",
@@ -1904,7 +2106,10 @@ window.BANG_CARDS = [
       "čutora",
       "životy"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Dodge City",
+    "typeLabelEn": "Green Card (Dodge City)",
+    "effectEn": null
   },
   {
     "id": "card-can-can",
@@ -1930,7 +2135,10 @@ window.BANG_CARDS = [
       "kankán",
       "ničení"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Dodge City",
+    "typeLabelEn": "Green Card (Dodge City)",
+    "effectEn": null
   },
   {
     "id": "card-conestoga",
@@ -1956,7 +2164,10 @@ window.BANG_CARDS = [
       "konkurence",
       "vzdálenost 2"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Dodge City",
+    "typeLabelEn": "Green Card (Dodge City)",
+    "effectEn": null
   },
   {
     "id": "card-brawl",
@@ -1983,7 +2194,10 @@ window.BANG_CARDS = [
       "rvačka",
       "odhoď kartu"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Dodge City",
+    "typeLabelEn": "Brown Card (Immediate)",
+    "effectEn": null
   },
   {
     "id": "card-tequila",
@@ -2010,7 +2224,10 @@ window.BANG_CARDS = [
       "tequila",
       "životy"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Dodge City",
+    "typeLabelEn": "Brown Card (Immediate)",
+    "effectEn": null
   },
   {
     "id": "card-rag-time",
@@ -2035,7 +2252,10 @@ window.BANG_CARDS = [
       "krádež",
       "rag time"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Dodge City",
+    "typeLabelEn": "Brown Card (Immediate)",
+    "effectEn": null
   },
   {
     "id": "card-springfield",
@@ -2062,7 +2282,10 @@ window.BANG_CARDS = [
       "efekt bang",
       "odstřelovač"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Dodge City",
+    "typeLabelEn": "Brown Card (Immediate)",
+    "effectEn": null
   },
   {
     "id": "card-dodge",
@@ -2089,7 +2312,10 @@ window.BANG_CARDS = [
       "úhyb",
       "lízni kartu"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Dodge City",
+    "typeLabelEn": "Brown Card (Immediate)",
+    "effectEn": null
   },
   {
     "id": "card-punch",
@@ -2116,7 +2342,10 @@ window.BANG_CARDS = [
       "vzdálenost 1",
       "efekt bang"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Dodge City",
+    "typeLabelEn": "Brown Card (Immediate)",
+    "effectEn": null
   },
   {
     "id": "card-whisky",
@@ -2143,7 +2372,10 @@ window.BANG_CARDS = [
       "whisky",
       "2 životy"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Dodge City",
+    "typeLabelEn": "Brown Card (Immediate)",
+    "effectEn": null
   },
   {
     "id": "card-hideout",
@@ -2169,7 +2401,10 @@ window.BANG_CARDS = [
       "skrýš",
       "obrana"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Dodge City",
+    "typeLabelEn": "Blue Card (In Play)",
+    "effectEn": null
   },
   {
     "id": "card-binoculars",
@@ -2195,7 +2430,10 @@ window.BANG_CARDS = [
       "dalekohled",
       "útok"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Dodge City",
+    "typeLabelEn": "Blue Card (In Play)",
+    "effectEn": null
   },
   {
     "id": "char-don-bell",
@@ -2223,7 +2461,10 @@ window.BANG_CARDS = [
       "zlatá horečka",
       "červené karty"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Gold Rush",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "char-dutch-will",
@@ -2250,7 +2491,10 @@ window.BANG_CARDS = [
       "valouny zlata",
       "zlatá horečka"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Gold Rush",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "char-jacky-murieta",
@@ -2278,7 +2522,10 @@ window.BANG_CARDS = [
       "efekt bang",
       "zlatá horečka"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Gold Rush",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "char-josh-mccloud",
@@ -2305,7 +2552,10 @@ window.BANG_CARDS = [
       "vybavení naslepo",
       "valouny zlata"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Gold Rush",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "char-madam-yto",
@@ -2333,7 +2583,10 @@ window.BANG_CARDS = [
       "dobírání karet",
       "reakce"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Gold Rush",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "char-pretty-luzena",
@@ -2360,7 +2613,10 @@ window.BANG_CARDS = [
       "sleva na vybavení",
       "valouny zlata"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Gold Rush",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "char-raddie-snake",
@@ -2388,7 +2644,10 @@ window.BANG_CARDS = [
       "dobírání",
       "zlato"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Gold Rush",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "char-simeon-picos",
@@ -2416,7 +2675,10 @@ window.BANG_CARDS = [
       "zisk zlata",
       "kompenzace"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Gold Rush",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "equip-boots",
@@ -2443,7 +2705,10 @@ window.BANG_CARDS = [
       "boty",
       "dobírání při zranění"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Gold Rush",
+    "typeLabelEn": "Black Equipment",
+    "effectEn": null
   },
   {
     "id": "equip-calumet",
@@ -2471,7 +2736,10 @@ window.BANG_CARDS = [
       "imunita",
       "káry"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Gold Rush",
+    "typeLabelEn": "Black Equipment",
+    "effectEn": null
   },
   {
     "id": "equip-gold-pan",
@@ -2497,7 +2765,10 @@ window.BANG_CARDS = [
       "rýžovací mísa",
       "nákup karet"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Gold Rush",
+    "typeLabelEn": "Black Equipment",
+    "effectEn": null
   },
   {
     "id": "equip-horseshoe",
@@ -2526,7 +2797,10 @@ window.BANG_CARDS = [
       "sejmutí",
       "štěstí"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Gold Rush",
+    "typeLabelEn": "Black Equipment",
+    "effectEn": null
   },
   {
     "id": "equip-talisman",
@@ -2553,7 +2827,10 @@ window.BANG_CARDS = [
       "talisman",
       "zlato při zranění"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Gold Rush",
+    "typeLabelEn": "Black Equipment",
+    "effectEn": null
   },
   {
     "id": "equip-rucksack",
@@ -2581,7 +2858,10 @@ window.BANG_CARDS = [
       "léčení",
       "záchrana před smrtí"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Gold Rush",
+    "typeLabelEn": "Black Equipment",
+    "effectEn": null
   },
   {
     "id": "equip-gun-belt",
@@ -2607,7 +2887,10 @@ window.BANG_CARDS = [
       "zbraňový pás",
       "kapacita ruky"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Gold Rush",
+    "typeLabelEn": "Black Equipment",
+    "effectEn": null
   },
   {
     "id": "equip-pickaxe",
@@ -2633,7 +2916,10 @@ window.BANG_CARDS = [
       "krumpáč",
       "dobírání"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Gold Rush",
+    "typeLabelEn": "Black Equipment",
+    "effectEn": null
   },
   {
     "id": "equip-bottle",
@@ -2660,7 +2946,10 @@ window.BANG_CARDS = [
       "láhev",
       "flexibilita"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Gold Rush",
+    "typeLabelEn": "Brown Equipment",
+    "effectEn": null
   },
   {
     "id": "equip-pardner",
@@ -2687,7 +2976,10 @@ window.BANG_CARDS = [
       "cat balou",
       "duel"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Gold Rush",
+    "typeLabelEn": "Brown Equipment",
+    "effectEn": null
   },
   {
     "id": "equip-rhum",
@@ -2715,7 +3007,10 @@ window.BANG_CARDS = [
       "masivní léčení",
       "sejmutí"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Gold Rush",
+    "typeLabelEn": "Brown Equipment",
+    "effectEn": null
   },
   {
     "id": "equip-wanted",
@@ -2734,7 +3029,7 @@ window.BANG_CARDS = [
     "timing": "Při nákupu; vyloží se před hráče",
     "rulings": [
       "Zabití Bandity s kartou Wanted = 3 + 2 = 5 karet a 1 valoun zlata!",
-      "Pokud Šerif zabije Pomocníka s kartou Wanted, lízne si 2 karty a vezme valoun dříve, než odhodí všechny karty."
+      "Pokud Šerif zabije Pomocníka (Vice) s kartou Wanted, lízne si 2 karty a vezme valoun dříve, než odhodí všechny karty."
     ],
     "tags": [
       "vybavení",
@@ -2742,7 +3037,10 @@ window.BANG_CARDS = [
       "odměna",
       "vražda"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Gold Rush",
+    "typeLabelEn": "Brown Equipment",
+    "effectEn": null
   },
   {
     "id": "equip-union-pacific",
@@ -2768,7 +3066,10 @@ window.BANG_CARDS = [
       "4 karty",
       "unie"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Gold Rush",
+    "typeLabelEn": "Brown Equipment",
+    "effectEn": null
   },
   {
     "id": "equip-gold-rush",
@@ -2796,7 +3097,10 @@ window.BANG_CARDS = [
       "extra tah",
       "nejsilnější"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Gold Rush",
+    "typeLabelEn": "Brown Equipment",
+    "effectEn": null
   },
   {
     "id": "char-al-preacher",
@@ -2824,7 +3128,10 @@ window.BANG_CARDS = [
       "reakce",
       "dobírání"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Armed & Dangerous",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "char-bass-greeves",
@@ -2850,7 +3157,10 @@ window.BANG_CARDS = [
       "nabíjení",
       "žetony nabití"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Armed & Dangerous",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "char-bloody-mary",
@@ -2878,7 +3188,10 @@ window.BANG_CARDS = [
       "zrušení útoku",
       "dobírání"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Armed & Dangerous",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "char-frankie-canton",
@@ -2906,7 +3219,10 @@ window.BANG_CARDS = [
       "sabotáž",
       "nabíjení"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Armed & Dangerous",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "char-julie-cutter",
@@ -2934,7 +3250,10 @@ window.BANG_CARDS = [
       "sejmutí",
       "zranění"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Armed & Dangerous",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "char-mexicali-kid",
@@ -2962,7 +3281,10 @@ window.BANG_CARDS = [
       "extra výstřel",
       "efekt bang"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Armed & Dangerous",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "char-ms-abigail",
@@ -2991,7 +3313,10 @@ window.BANG_CARDS = [
       "esa",
       "obrana"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Armed & Dangerous",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "char-red-ringo",
@@ -3018,7 +3343,10 @@ window.BANG_CARDS = [
       "zásoba žetonů",
       "nabíjení karet"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Armed & Dangerous",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "weapon-double-barrel",
@@ -3045,7 +3373,10 @@ window.BANG_CARDS = [
       "dvouhlavňovka",
       "nezrušitelný bang"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Armed & Dangerous",
+    "typeLabelEn": "Dangerous Card (Orange)",
+    "effectEn": null
   },
   {
     "id": "weapon-buntline-special-ad",
@@ -3071,7 +3402,10 @@ window.BANG_CARDS = [
       "buntline special",
       "odhození karty"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Armed & Dangerous",
+    "typeLabelEn": "Dangerous Card (Orange)",
+    "effectEn": null
   },
   {
     "id": "weapon-thunderer",
@@ -3098,7 +3432,10 @@ window.BANG_CARDS = [
       "thunderer",
       "recyklace bang"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Armed & Dangerous",
+    "typeLabelEn": "Dangerous Card (Orange)",
+    "effectEn": null
   },
   {
     "id": "weapon-big-fifty",
@@ -3126,7 +3463,10 @@ window.BANG_CARDS = [
       "dostřel 6",
       "ruší barel"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Armed & Dangerous",
+    "typeLabelEn": "Dangerous Card (Orange)",
+    "effectEn": null
   },
   {
     "id": "card-bomb",
@@ -3155,7 +3495,10 @@ window.BANG_CARDS = [
       "časovaná exploze",
       "2 životy"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Armed & Dangerous",
+    "typeLabelEn": "Dangerous Card (Orange)",
+    "effectEn": null
   },
   {
     "id": "card-whip",
@@ -3181,7 +3524,10 @@ window.BANG_CARDS = [
       "bič",
       "odhození karty ze stolu"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Armed & Dangerous",
+    "typeLabelEn": "Dangerous Card (Orange)",
+    "effectEn": null
   },
   {
     "id": "card-crate",
@@ -3209,7 +3555,10 @@ window.BANG_CARDS = [
       "vedle",
       "obrana"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Armed & Dangerous",
+    "typeLabelEn": "Dangerous Card (Orange)",
+    "effectEn": null
   },
   {
     "id": "card-bandolier",
@@ -3235,7 +3584,10 @@ window.BANG_CARDS = [
       "bandalír",
       "extra bang"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Armed & Dangerous",
+    "typeLabelEn": "Dangerous Card (Orange)",
+    "effectEn": null
   },
   {
     "id": "card-bell-tower",
@@ -3262,7 +3614,10 @@ window.BANG_CARDS = [
       "zvonice",
       "vzdálenost 1"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Armed & Dangerous",
+    "typeLabelEn": "Dangerous Card (Orange)",
+    "effectEn": null
   },
   {
     "id": "card-a-little-nip",
@@ -3289,7 +3644,10 @@ window.BANG_CARDS = [
       "léčení",
       "žetony nabití"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Armed & Dangerous",
+    "typeLabelEn": "Brown Card (Immediate)",
+    "effectEn": null
   },
   {
     "id": "card-beer-keg",
@@ -3315,7 +3673,10 @@ window.BANG_CARDS = [
       "bečka piva",
       "léčení"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Armed & Dangerous",
+    "typeLabelEn": "Brown Card (Immediate)",
+    "effectEn": null
   },
   {
     "id": "card-arrow",
@@ -3341,7 +3702,10 @@ window.BANG_CARDS = [
       "šíp",
       "odhoď bang"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Armed & Dangerous",
+    "typeLabelEn": "Brown Card (Immediate)",
+    "effectEn": null
   },
   {
     "id": "card-quick-shot",
@@ -3368,7 +3732,10 @@ window.BANG_CARDS = [
       "rychlopalba",
       "extra výstřel"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Armed & Dangerous",
+    "typeLabelEn": "Brown Card (Immediate)",
+    "effectEn": null
   },
   {
     "id": "card-flintlock",
@@ -3394,7 +3761,10 @@ window.BANG_CARDS = [
       "křesadlovka",
       "opakovaný útok"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Armed & Dangerous",
+    "typeLabelEn": "Brown Card (Immediate)",
+    "effectEn": null
   },
   {
     "id": "card-tumbleweed",
@@ -3422,7 +3792,10 @@ window.BANG_CARDS = [
       "opakování sejmutí",
       "reakce"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Armed & Dangerous",
+    "typeLabelEn": "Brown Card (Immediate)",
+    "effectEn": null
   },
   {
     "id": "card-rust",
@@ -3449,7 +3822,10 @@ window.BANG_CARDS = [
       "rez",
       "krádež žetonů"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Armed & Dangerous",
+    "typeLabelEn": "Brown Card (Immediate)",
+    "effectEn": null
   },
   {
     "id": "card-reloading",
@@ -3474,7 +3850,10 @@ window.BANG_CARDS = [
       "nabíjení",
       "žetony nabití"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Armed & Dangerous",
+    "typeLabelEn": "Brown Card (Immediate)",
+    "effectEn": null
   },
   {
     "id": "char-benny-brawler",
@@ -3502,7 +3881,10 @@ window.BANG_CARDS = [
       "nákup vagonů",
       "benny brawler"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "The Great Train Robbery",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "char-evan-babbit",
@@ -3532,7 +3914,10 @@ window.BANG_CARDS = [
       "obrana",
       "odveta"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "The Great Train Robbery",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "char-jimmy-texas",
@@ -3560,7 +3945,10 @@ window.BANG_CARDS = [
       "dobírání",
       "funguje ve vězení"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "The Great Train Robbery",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "char-manuelita",
@@ -3587,7 +3975,10 @@ window.BANG_CARDS = [
       "dobírání",
       "vlak"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "The Great Train Robbery",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "char-sancho",
@@ -3614,7 +4005,10 @@ window.BANG_CARDS = [
       "nákup vagonu",
       "sancho"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "The Great Train Robbery",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "char-shade-oconnor",
@@ -3642,7 +4036,10 @@ window.BANG_CARDS = [
       "vlak",
       "reakce"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "The Great Train Robbery",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "char-sgt-blaze",
@@ -3671,7 +4068,10 @@ window.BANG_CARDS = [
       "plošné efekty",
       "sgt blaze"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "The Great Train Robbery",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "char-zippy-roy",
@@ -3699,7 +4099,10 @@ window.BANG_CARDS = [
       "manipulace vlaku",
       "rychlík"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "The Great Train Robbery",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "train-ironhorse",
@@ -3727,7 +4130,10 @@ window.BANG_CARDS = [
       "plošný bang",
       "železný oř"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "The Great Train Robbery",
+    "typeLabelEn": "Railcar",
+    "effectEn": null
   },
   {
     "id": "train-leland",
@@ -3754,7 +4160,10 @@ window.BANG_CARDS = [
       "hokynářství",
       "leland"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "The Great Train Robbery",
+    "typeLabelEn": "Railcar",
+    "effectEn": null
   },
   {
     "id": "railcar-circus-wagon",
@@ -3779,7 +4188,10 @@ window.BANG_CARDS = [
       "plošné ničení",
       "cirkusácký vagon"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "The Great Train Robbery",
+    "typeLabelEn": "Railcar",
+    "effectEn": null
   },
   {
     "id": "railcar-express-car",
@@ -3804,7 +4216,10 @@ window.BANG_CARDS = [
       "extra tah",
       "expresní vůz"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "The Great Train Robbery",
+    "typeLabelEn": "Railcar",
+    "effectEn": null
   },
   {
     "id": "railcar-lumber-flatcar",
@@ -3830,7 +4245,10 @@ window.BANG_CARDS = [
       "plošinový vůz",
       "oslabení soupeře"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "The Great Train Robbery",
+    "typeLabelEn": "Railcar",
+    "effectEn": null
   },
   {
     "id": "railcar-lounge-car",
@@ -3855,7 +4273,10 @@ window.BANG_CARDS = [
       "dobírání vagonů",
       "salonní vůz"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "The Great Train Robbery",
+    "typeLabelEn": "Railcar",
+    "effectEn": null
   },
   {
     "id": "railcar-private-car",
@@ -3882,7 +4303,10 @@ window.BANG_CARDS = [
       "prázdná ruka",
       "soukromý vagon"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "The Great Train Robbery",
+    "typeLabelEn": "Railcar",
+    "effectEn": null
   },
   {
     "id": "railcar-caboose",
@@ -3908,7 +4332,10 @@ window.BANG_CARDS = [
       "vedle",
       "služební vůz"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "The Great Train Robbery",
+    "typeLabelEn": "Railcar",
+    "effectEn": null
   },
   {
     "id": "railcar-ghost-car",
@@ -3937,7 +4364,10 @@ window.BANG_CARDS = [
       "vagon duchů",
       "kritická karta"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "The Great Train Robbery",
+    "typeLabelEn": "Railcar",
+    "effectEn": null
   },
   {
     "id": "railcar-sleeper-car",
@@ -3964,7 +4394,10 @@ window.BANG_CARDS = [
       "duel",
       "spací vůz"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "The Great Train Robbery",
+    "typeLabelEn": "Railcar",
+    "effectEn": null
   },
   {
     "id": "station-boom-town",
@@ -3989,7 +4422,10 @@ window.BANG_CARDS = [
       "cena",
       "odhoď bang"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "The Great Train Robbery",
+    "typeLabelEn": "Station",
+    "effectEn": null
   },
   {
     "id": "station-dodgeville",
@@ -4014,7 +4450,10 @@ window.BANG_CARDS = [
       "cena",
       "odhoď vedle"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "The Great Train Robbery",
+    "typeLabelEn": "Station",
+    "effectEn": null
   },
   {
     "id": "station-silverado",
@@ -4039,7 +4478,10 @@ window.BANG_CARDS = [
       "cena",
       "odhoď pivo"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "The Great Train Robbery",
+    "typeLabelEn": "Station",
+    "effectEn": null
   },
   {
     "id": "station-callico",
@@ -4065,7 +4507,10 @@ window.BANG_CARDS = [
       "panika",
       "cat balou"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "The Great Train Robbery",
+    "typeLabelEn": "Station",
+    "effectEn": null
   },
   {
     "id": "station-deathwood",
@@ -4090,7 +4535,10 @@ window.BANG_CARDS = [
       "cena",
       "modrá karta"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "The Great Train Robbery",
+    "typeLabelEn": "Station",
+    "effectEn": null
   },
   {
     "id": "station-tombrock",
@@ -4115,7 +4563,10 @@ window.BANG_CARDS = [
       "cena",
       "ztráta života"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "The Great Train Robbery",
+    "typeLabelEn": "Station",
+    "effectEn": null
   },
   {
     "id": "station-virginian-city",
@@ -4140,7 +4591,10 @@ window.BANG_CARDS = [
       "cena",
       "2 karty"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "The Great Train Robbery",
+    "typeLabelEn": "Station",
+    "effectEn": null
   },
   {
     "id": "station-yooma",
@@ -4165,7 +4619,10 @@ window.BANG_CARDS = [
       "cena",
       "hodnota 2-9"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "The Great Train Robbery",
+    "typeLabelEn": "Station",
+    "effectEn": null
   },
   {
     "id": "station-fort-woth",
@@ -4190,7 +4647,10 @@ window.BANG_CARDS = [
       "cena",
       "figury a esa"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "The Great Train Robbery",
+    "typeLabelEn": "Station",
+    "effectEn": null
   },
   {
     "id": "station-santa-fe",
@@ -4215,7 +4675,10 @@ window.BANG_CARDS = [
       "cena",
       "srdce"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "The Great Train Robbery",
+    "typeLabelEn": "Station",
+    "effectEn": null
   },
   {
     "id": "station-oathman",
@@ -4240,7 +4703,10 @@ window.BANG_CARDS = [
       "cena",
       "káry"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "The Great Train Robbery",
+    "typeLabelEn": "Station",
+    "effectEn": null
   },
   {
     "id": "station-st-francis",
@@ -4265,7 +4731,10 @@ window.BANG_CARDS = [
       "cena",
       "kříže"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "The Great Train Robbery",
+    "typeLabelEn": "Station",
+    "effectEn": null
   },
   {
     "id": "station-cripple-crack",
@@ -4290,7 +4759,10 @@ window.BANG_CARDS = [
       "cena",
       "piky"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "The Great Train Robbery",
+    "typeLabelEn": "Station",
+    "effectEn": null
   },
   {
     "id": "card-train-robbery",
@@ -4318,7 +4790,10 @@ window.BANG_CARDS = [
       "ničení karet",
       "vícenásobný bang"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "The Great Train Robbery",
+    "typeLabelEn": "Brown Card (Immediate)",
+    "effectEn": null
   },
   {
     "id": "card-map",
@@ -4344,7 +4819,10 @@ window.BANG_CARDS = [
       "filtrace balíčku",
       "fáze 1"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "The Great Train Robbery",
+    "typeLabelEn": "Blue Card (In Play)",
+    "effectEn": null
   },
   {
     "id": "card-knife-revolver",
@@ -4372,7 +4850,10 @@ window.BANG_CARDS = [
       "vzdálenost 1",
       "návrat do ruky"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "The Great Train Robbery",
+    "typeLabelEn": "Brown Card (Immediate)",
+    "effectEn": null
   },
   {
     "id": "card-refund",
@@ -4398,7 +4879,10 @@ window.BANG_CARDS = [
       "kompenzace",
       "dobírání při ztrátě"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "The Great Train Robbery",
+    "typeLabelEn": "Brown Card (Immediate)",
+    "effectEn": null
   },
   {
     "id": "card-full-steam",
@@ -4426,7 +4910,10 @@ window.BANG_CARDS = [
       "plnou parou vpřed",
       "zdvojení efektu"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "The Great Train Robbery",
+    "typeLabelEn": "Brown Card (Immediate)",
+    "effectEn": null
   },
   {
     "id": "card-switch",
@@ -4455,7 +4942,10 @@ window.BANG_CARDS = [
       "výhybka",
       "sabotáž"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "The Great Train Robbery",
+    "typeLabelEn": "Brown Card (Immediate)",
+    "effectEn": null
   },
   {
     "id": "card-evaded",
@@ -4483,7 +4973,10 @@ window.BANG_CARDS = [
       "krádež útočné karty",
       "vedle"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "The Great Train Robbery",
+    "typeLabelEn": "Brown Card (Immediate)",
+    "effectEn": null
   },
   {
     "id": "char-henry-block",
@@ -4513,7 +5006,10 @@ window.BANG_CARDS = [
       "automatický bang",
       "údolí stínů"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Valley of Shadows",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "char-colorado-bill",
@@ -4542,7 +5038,10 @@ window.BANG_CARDS = [
       "sejmutí",
       "colorado bill"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Valley of Shadows",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "char-evelyn-shebang",
@@ -4570,7 +5069,10 @@ window.BANG_CARDS = [
       "střelba místo dobírání",
       "evelyn shebang"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Valley of Shadows",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "char-mick-defender",
@@ -4598,7 +5100,10 @@ window.BANG_CARDS = [
       "zrušení hnědé i modré karty",
       "vedle"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Valley of Shadows",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "char-black-flower",
@@ -4625,7 +5130,10 @@ window.BANG_CARDS = [
       "extra bang",
       "black flower"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Valley of Shadows",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "char-der-spot-burst-ringer",
@@ -4651,7 +5159,10 @@ window.BANG_CARDS = [
       "kulomet z bangu",
       "plošný útok"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Valley of Shadows",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "char-tuco-the-franciscan",
@@ -4679,7 +5190,10 @@ window.BANG_CARDS = [
       "odměna",
       "dobírání"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Valley of Shadows",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "card-ghost",
@@ -4709,7 +5223,10 @@ window.BANG_CARDS = [
       "nemá životy",
       "údolí stínů"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Valley of Shadows",
+    "typeLabelEn": "Blue Card (In Play)",
+    "effectEn": null
   },
   {
     "id": "card-rattlesnake",
@@ -4738,7 +5255,10 @@ window.BANG_CARDS = [
       "trvalé poškození",
       "piky"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Valley of Shadows",
+    "typeLabelEn": "Blue Card (In Play)",
+    "effectEn": null
   },
   {
     "id": "card-shotgun",
@@ -4765,7 +5285,10 @@ window.BANG_CARDS = [
       "roztříštěná kulka",
       "brokovnice"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Valley of Shadows",
+    "typeLabelEn": "Brown Card (Immediate)",
+    "effectEn": null
   },
   {
     "id": "card-return-fire",
@@ -4794,7 +5317,10 @@ window.BANG_CARDS = [
       "opětovaná palba",
       "vedle + bang"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Valley of Shadows",
+    "typeLabelEn": "Brown Card (Immediate)",
+    "effectEn": null
   },
   {
     "id": "card-tornado",
@@ -4821,7 +5347,10 @@ window.BANG_CARDS = [
       "tornádo",
       "všichni hráči"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Valley of Shadows",
+    "typeLabelEn": "Brown Card (Immediate)",
+    "effectEn": null
   },
   {
     "id": "card-double-shot",
@@ -4848,7 +5377,10 @@ window.BANG_CARDS = [
       "dvojitá rána",
       "2 vedle"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Valley of Shadows",
+    "typeLabelEn": "Brown Card (Immediate)",
+    "effectEn": null
   },
   {
     "id": "card-escape",
@@ -4876,7 +5408,10 @@ window.BANG_CARDS = [
       "zrušení vězení",
       "zrušení cat balou"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Valley of Shadows",
+    "typeLabelEn": "Brown Card (Immediate)",
+    "effectEn": null
   },
   {
     "id": "card-lemat",
@@ -4903,7 +5438,10 @@ window.BANG_CARDS = [
       "lemat",
       "univerzální bang"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Valley of Shadows",
+    "typeLabelEn": "Blue Card (In Play)",
+    "effectEn": null
   },
   {
     "id": "card-last-call",
@@ -4930,7 +5468,10 @@ window.BANG_CARDS = [
       "poslední volání",
       "funguje ve dvou hráčích"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Valley of Shadows",
+    "typeLabelEn": "Brown Card (Immediate)",
+    "effectEn": null
   },
   {
     "id": "event-ghost-town",
@@ -4958,7 +5499,10 @@ window.BANG_CARDS = [
       "město duchů",
       "high noon"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "High Noon",
+    "typeLabelEn": "Global Event",
+    "effectEn": null
   },
   {
     "id": "event-the-doctor",
@@ -4984,7 +5528,10 @@ window.BANG_CARDS = [
       "doktor",
       "podpora slabších"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "High Noon",
+    "typeLabelEn": "Global Event",
+    "effectEn": null
   },
   {
     "id": "event-the-daltons",
@@ -5010,7 +5557,10 @@ window.BANG_CARDS = [
       "daltonové",
       "odhození modré karty"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "High Noon",
+    "typeLabelEn": "Global Event",
+    "effectEn": null
   },
   {
     "id": "event-the-preacher",
@@ -5037,7 +5587,10 @@ window.BANG_CARDS = [
       "kazatel",
       "příměří"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "High Noon",
+    "typeLabelEn": "Global Event",
+    "effectEn": null
   },
   {
     "id": "event-thirst",
@@ -5063,7 +5616,10 @@ window.BANG_CARDS = [
       "méně karet",
       "fáze 1"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "High Noon",
+    "typeLabelEn": "Global Event",
+    "effectEn": null
   },
   {
     "id": "event-train-arrival",
@@ -5089,7 +5645,10 @@ window.BANG_CARDS = [
       "více karet",
       "fáze 1"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "High Noon",
+    "typeLabelEn": "Global Event",
+    "effectEn": null
   },
   {
     "id": "event-high-noon",
@@ -5116,7 +5675,10 @@ window.BANG_CARDS = [
       "pravé poledne",
       "nevyhnutelná smrt"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "High Noon",
+    "typeLabelEn": "Global Event",
+    "effectEn": null
   },
   {
     "id": "event-a-fistful-of-cards",
@@ -5143,7 +5705,10 @@ window.BANG_CARDS = [
       "pěst plná karet",
       "krupobití střel"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "A Fistful of Cards",
+    "typeLabelEn": "Global Event",
+    "effectEn": null
   },
   {
     "id": "event-sniper",
@@ -5170,7 +5735,10 @@ window.BANG_CARDS = [
       "2 bangy za supershot",
       "2 vedle"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "A Fistful of Cards",
+    "typeLabelEn": "Global Event",
+    "effectEn": null
   },
   {
     "id": "event-abandoned-mine",
@@ -5196,7 +5764,10 @@ window.BANG_CARDS = [
       "opuštěný důl",
       "obrácený koloběh karet"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "A Fistful of Cards",
+    "typeLabelEn": "Global Event",
+    "effectEn": null
   },
   {
     "id": "event-lasso",
@@ -5223,7 +5794,10 @@ window.BANG_CARDS = [
       "vypnutí vyložených karet",
       "divoký západ"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "A Fistful of Cards",
+    "typeLabelEn": "Global Event",
+    "effectEn": null
   },
   {
     "id": "event-russian-roulette",
@@ -5250,7 +5824,10 @@ window.BANG_CARDS = [
       "okamžité napětí",
       "2 životy"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "A Fistful of Cards",
+    "typeLabelEn": "Global Event",
+    "effectEn": null
   },
   {
     "id": "char-flint-westwood",
@@ -5278,7 +5855,10 @@ window.BANG_CARDS = [
       "krádež",
       "flint westwood"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Wild West Show",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "char-greygory-deck",
@@ -5305,7 +5885,10 @@ window.BANG_CARDS = [
       "dvojitá schopnost",
       "greygory deck"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Wild West Show",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "char-john-pain",
@@ -5332,7 +5915,10 @@ window.BANG_CARDS = [
       "sbírání sejmutých karet",
       "john pain"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Wild West Show",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "char-lee-van-kliff",
@@ -5360,7 +5946,10 @@ window.BANG_CARDS = [
       "kopírování hnědých karet",
       "lee van kliff"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Wild West Show",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "char-teren-kill",
@@ -5388,7 +5977,10 @@ window.BANG_CARDS = [
       "teren kill",
       "hazard"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Wild West Show",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "event-wild-west-show",
@@ -5415,7 +6007,10 @@ window.BANG_CARDS = [
       "všichni proti všem",
       "divoký západ"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Wild West Show",
+    "typeLabelEn": "Global Event",
+    "effectEn": null
   },
   {
     "id": "event-showdown",
@@ -5440,7 +6035,10 @@ window.BANG_CARDS = [
       "zúčtování",
       "univerzální bang a vedle"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Wild West Show",
+    "typeLabelEn": "Global Event",
+    "effectEn": null
   },
   {
     "id": "event-bone-orchard",
@@ -5465,7 +6063,10 @@ window.BANG_CARDS = [
       "hřbitov",
       "trvalý návrat mrtvých"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Wild West Show",
+    "typeLabelEn": "Global Event",
+    "effectEn": null
   },
   {
     "id": "event-miss-susanna",
@@ -5490,7 +6091,10 @@ window.BANG_CARDS = [
       "slečna zuzana",
       "povinnost hrát 3 karty"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Wild West Show",
+    "typeLabelEn": "Global Event",
+    "effectEn": null
   },
   {
     "id": "event-gag",
@@ -5516,7 +6120,10 @@ window.BANG_CARDS = [
       "zákaz mluvení",
       "zábava"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Wild West Show",
+    "typeLabelEn": "Global Event",
+    "effectEn": null
   },
   {
     "id": "legend-bart-cassidy",
@@ -5544,7 +6151,10 @@ window.BANG_CARDS = [
       "dvojité dobírání",
       "životy"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Legends",
+    "typeLabelEn": "Legendary Character",
+    "effectEn": null
   },
   {
     "id": "legend-black-jack",
@@ -5572,7 +6182,10 @@ window.BANG_CARDS = [
       "oko bere 21",
       "masivní dobírání"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Legends",
+    "typeLabelEn": "Legendary Character",
+    "effectEn": null
   },
   {
     "id": "legend-calamity-janet",
@@ -5599,7 +6212,10 @@ window.BANG_CARDS = [
       "činy",
       "univerzální karty"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Legends",
+    "typeLabelEn": "Legendary Character",
+    "effectEn": null
   },
   {
     "id": "legend-el-gringo",
@@ -5627,7 +6243,10 @@ window.BANG_CARDS = [
       "dvojitá krádež",
       "odveta"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Legends",
+    "typeLabelEn": "Legendary Character",
+    "effectEn": null
   },
   {
     "id": "legend-jourdonnais",
@@ -5655,7 +6274,10 @@ window.BANG_CARDS = [
       "imunita proti hnědým",
       "sejmutí"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Legends",
+    "typeLabelEn": "Legendary Character",
+    "effectEn": null
   },
   {
     "id": "legend-lucky-duke",
@@ -5683,7 +6305,10 @@ window.BANG_CARDS = [
       "sejmutí do ruky",
       "zisk karet"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Legends",
+    "typeLabelEn": "Legendary Character",
+    "effectEn": null
   },
   {
     "id": "legend-paul-regret",
@@ -5711,7 +6336,10 @@ window.BANG_CARDS = [
       "poplatek za výstřel",
       "nedobytný"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Legends",
+    "typeLabelEn": "Legendary Character",
+    "effectEn": null
   },
   {
     "id": "legend-rose-doolan",
@@ -5739,7 +6367,10 @@ window.BANG_CARDS = [
       "vzdálenost 1",
       "panika z modré karty"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Legends",
+    "typeLabelEn": "Legendary Character",
+    "effectEn": null
   },
   {
     "id": "legend-sid-ketchum",
@@ -5767,7 +6398,10 @@ window.BANG_CARDS = [
       "léčení",
       "bang zdarma"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Legends",
+    "typeLabelEn": "Legendary Character",
+    "effectEn": null
   },
   {
     "id": "legend-slab-the-killer",
@@ -5795,7 +6429,10 @@ window.BANG_CARDS = [
       "nezrušitelný bang",
       "smrtící čin"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Legends",
+    "typeLabelEn": "Legendary Character",
+    "effectEn": null
   },
   {
     "id": "legend-suzy-lafayette",
@@ -5823,7 +6460,10 @@ window.BANG_CARDS = [
       "stále 2 karty",
       "nevyčerpatelná ruka"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Legends",
+    "typeLabelEn": "Legendary Character",
+    "effectEn": null
   },
   {
     "id": "legend-vulture-sam",
@@ -5851,7 +6491,10 @@ window.BANG_CARDS = [
       "druhý život",
       "znovuzrození se 4 životy"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Legends",
+    "typeLabelEn": "Legendary Character",
+    "effectEn": null
   },
   {
     "id": "legend-willy-the-kid",
@@ -5878,7 +6521,10 @@ window.BANG_CARDS = [
       "neomezený bang",
       "bezplatný výstřel"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Legends",
+    "typeLabelEn": "Legendary Character",
+    "effectEn": null
   },
   {
     "id": "feat-vlak-do-yoomy",
@@ -5905,7 +6551,10 @@ window.BANG_CARDS = [
       "sejmutí",
       "vlak do yoomy"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Legends",
+    "typeLabelEn": "Feat Card (Legends)",
+    "effectEn": null
   },
   {
     "id": "feat-pohranici",
@@ -5932,7 +6581,10 @@ window.BANG_CARDS = [
       "prázdná ruka",
       "pohraničí"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Legends",
+    "typeLabelEn": "Feat Card (Legends)",
+    "effectEn": null
   },
   {
     "id": "feat-dobra-spolecnost",
@@ -5960,7 +6612,10 @@ window.BANG_CARDS = [
       "dobrá společnost",
       "dvojice karet"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Legends",
+    "typeLabelEn": "Feat Card (Legends)",
+    "effectEn": null
   },
   {
     "id": "feat-posledni-hrdina",
@@ -5987,7 +6642,10 @@ window.BANG_CARDS = [
       "modrá karta",
       "poslední hrdina"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Legends",
+    "typeLabelEn": "Feat Card (Legends)",
+    "effectEn": null
   },
   {
     "id": "feat-oregonska-stezka",
@@ -6015,7 +6673,10 @@ window.BANG_CARDS = [
       "oregonská stezka",
       "fáze 1"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Legends",
+    "typeLabelEn": "Feat Card (Legends)",
+    "effectEn": null
   },
   {
     "id": "feat-zdeseny-vykrik",
@@ -6042,7 +6703,10 @@ window.BANG_CARDS = [
       "dálkový zásah",
       "zděšený výkřik"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Legends",
+    "typeLabelEn": "Feat Card (Legends)",
+    "effectEn": null
   },
   {
     "id": "feat-padesat-pistoli",
@@ -6068,7 +6732,10 @@ window.BANG_CARDS = [
       "zbraně",
       "padesát pistolí"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Legends",
+    "typeLabelEn": "Feat Card (Legends)",
+    "effectEn": null
   },
   {
     "id": "feat-hrdlo-lahve",
@@ -6095,7 +6762,10 @@ window.BANG_CARDS = [
       "hrdlo lahve",
       "vývěsní štít"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Legends",
+    "typeLabelEn": "Feat Card (Legends)",
+    "effectEn": null
   },
   {
     "id": "feat-banda-ze-stareho-zapadu",
@@ -6121,7 +6791,10 @@ window.BANG_CARDS = [
       "dvojité zranění",
       "banda"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Legends",
+    "typeLabelEn": "Feat Card (Legends)",
+    "effectEn": null
   },
   {
     "id": "feat-bezejmenny-muz",
@@ -6147,7 +6820,10 @@ window.BANG_CARDS = [
       "obětování života",
       "bezejmenný muž"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Legends",
+    "typeLabelEn": "Feat Card (Legends)",
+    "effectEn": null
   },
   {
     "id": "feat-zranena-pycha",
@@ -6173,7 +6849,10 @@ window.BANG_CARDS = [
       "zrušený bang",
       "zraněná pýcha"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Legends",
+    "typeLabelEn": "Feat Card (Legends)",
+    "effectEn": null
   },
   {
     "id": "char-johnny-kisch",
@@ -6202,7 +6881,10 @@ window.BANG_CARDS = [
       "čištění stolu",
       "johnny kisch"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Dynamite Box & Promo",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "char-uncle-will",
@@ -6229,7 +6911,10 @@ window.BANG_CARDS = [
       "hokynářství",
       "uncle will"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Dynamite Box & Promo",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "char-claus-the-saint",
@@ -6257,7 +6942,10 @@ window.BANG_CARDS = [
       "rozdávání dárků",
       "claus the saint"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Dynamite Box & Promo",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "char-annie-versary",
@@ -6285,7 +6973,10 @@ window.BANG_CARDS = [
       "annie versary",
       "univerzální bang"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Dynamite Box & Promo",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "char-emiliano",
@@ -6314,7 +7005,10 @@ window.BANG_CARDS = [
       "recyklace",
       "krádež zrušených karet"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Dynamite Box & Promo",
+    "typeLabelEn": "Character",
+    "effectEn": null
   },
   {
     "id": "card-new-identity",
@@ -6341,7 +7035,10 @@ window.BANG_CARDS = [
       "změna postavy",
       "dynamite box"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Dynamite Box & Promo",
+    "typeLabelEn": "Brown Card (Immediate)",
+    "effectEn": null
   },
   {
     "id": "card-handcuffs",
@@ -6367,7 +7064,10 @@ window.BANG_CARDS = [
       "omezení barev",
       "dynamite box"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Dynamite Box & Promo",
+    "typeLabelEn": "Brown Card (Immediate)",
+    "effectEn": null
   },
   {
     "id": "token-wooden-dynamite",
@@ -6394,6 +7094,9 @@ window.BANG_CARDS = [
       "dynamite box",
       "dynamite patrona"
     ],
-    "image": null
+    "image": null,
+    "expansionNameEn": "Dynamite Box & Promo",
+    "typeLabelEn": "Blue Card (In Play)",
+    "effectEn": null
   }
 ];

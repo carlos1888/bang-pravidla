@@ -8,14 +8,21 @@ from cards_expansions2 import EXPANSIONS2_CARDS
 from cards_expansions3 import EXPANSIONS3_CARDS
 from rules_content import RULES_SECTIONS
 from faq_content import FAQ_ENTRIES
+from translations_en import EXPANSION_NAMES_EN, TYPE_LABELS_EN, CARDS_EN
 
 print("Merging all card sets (text only, no images)...")
 ALL_CARDS = BASE_CARDS + EXPANSIONS1_CARDS + EXPANSIONS2_CARDS + EXPANSIONS3_CARDS
 print(f"Total cards, characters, stations, railcars, feats: {len(ALL_CARDS)}")
 
-# Clean up cards: remove any image reference
+# Clean up cards: remove any image reference and add English fields
 for card in ALL_CARDS:
     card["image"] = None
+    card["expansionNameEn"] = EXPANSION_NAMES_EN.get(card.get("expansion"), card.get("expansionName"))
+    card["typeLabelEn"] = TYPE_LABELS_EN.get(card.get("type"), card.get("typeLabel"))
+    if card.get("id") in CARDS_EN and "effect" in CARDS_EN[card["id"]]:
+        card["effectEn"] = CARDS_EN[card["id"]]["effect"]
+    else:
+        card["effectEn"] = None
 
 # Format FAQ answers to clean semantic HTML
 def format_answer_html(ans):

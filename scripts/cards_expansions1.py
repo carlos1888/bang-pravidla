@@ -1167,7 +1167,7 @@ EXPANSIONS1_CARDS = [
         "timing": "Při nákupu; vyloží se před hráče",
         "rulings": [
             "Zabití Bandity s kartou Wanted = 3 + 2 = 5 karet a 1 valoun zlata!",
-            "Pokud Šerif zabije Pomocníka s kartou Wanted, lízne si 2 karty a vezme valoun dříve, než odhodí všechny karty."
+            "Pokud Šerif zabije Pomocníka (Vice) s kartou Wanted, lízne si 2 karty a vezme valoun dříve, než odhodí všechny karty."
         ],
         "tags": ["vybavení", "hledá se", "odměna", "vražda"]
     },

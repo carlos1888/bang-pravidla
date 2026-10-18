@@ -15,7 +15,7 @@ RULES_SECTIONS = [
 <div class="roles-grid">
   <div class="role-card role-sheriff">
     <div class="role-badge">Veřejná role</div>
-    <h3>⭐️ Šerif (Sheriff)</h3>
+    <h3>⭐️ Šerif</h3>
     <div class="role-life">+1 život navíc oproti kartě postavy</div>
     <p><strong>Cíl:</strong> Ochránit zákon a pořádek. Musí zabít všechny Bandity a Odpadlíka.</p>
     <div class="role-rules">
@@ -23,28 +23,28 @@ RULES_SECTIONS = [
         <li>Hraje s trvale odhalenou kartou role.</li>
         <li>Začíná hru jako první hráč.</li>
         <li><strong>Imunita:</strong> Na Šerifa nelze zahrát kartu <em>Vězení</em> ani <em>Vagon duchů</em>.</li>
-        <li><strong>Trest:</strong> Pokud Šerif osobně zabije svého Pomocníka, za trest musí odhodit všechny karty z ruky i ze stolu!</li>
+        <li><strong>Trest:</strong> Pokud Šerif osobně zabije svého Pomocníka (Vice), za trest musí odhodit všechny karty z ruky i ze stolu!</li>
       </ul>
     </div>
   </div>
 
   <div class="role-card role-deputy">
     <div class="role-badge">Tajná role</div>
-    <h3>🛡️ Pomocník šerifa (Deputy)</h3>
+    <h3>🛡️ Pomocník šerifa (Vice)</h3>
     <div class="role-life">Počet životů dle postavy</div>
     <p><strong>Cíl:</strong> Chránit Šerifa za každou cenu a zničit všechny Bandity a Odpadlíka.</p>
     <div class="role-rules">
       <ul>
         <li>Hraje v utajení a nesmí odhalit svou roli.</li>
         <li>Sdílí cíl se Šerifem.</li>
-        <li><strong>Kolektivní vítězství:</strong> Pokud zvítězí Šerif, Pomocník vítězí také, i když byl během partie vyřazen!</li>
+        <li><strong>Kolektivní vítězství:</strong> Pokud zvítězí Šerif, Pomocník (Vice) vítězí také, i když byl během partie vyřazen!</li>
       </ul>
     </div>
   </div>
 
   <div class="role-card role-outlaw">
     <div class="role-badge">Tajná role</div>
-    <h3>💀 Bandita (Outlaw)</h3>
+    <h3>💀 Bandita</h3>
     <div class="role-life">Počet životů dle postavy</div>
     <p><strong>Cíl:</strong> Zlikvidovat Šerifa za jakoukoli cenu.</p>
     <div class="role-rules">
@@ -58,14 +58,14 @@ RULES_SECTIONS = [
 
   <div class="role-card role-renegade">
     <div class="role-badge">Tajná role</div>
-    <h3>🗡️ Odpadlík (Renegade)</h3>
+    <h3>🗡️ Odpadlík</h3>
     <div class="role-life">Počet životů dle postavy</div>
     <p><strong>Cíl:</strong> Stát se novým Šerifem. Zůstat jako jediný přeživší ve hře!</p>
     <div class="role-rules">
       <ul>
         <li>Hraje sám za sebe.</li>
         <li><strong>Kritické pravidlo:</strong> Šerifa musí zabít až jako úplně posledního v duelu 1 na 1.</li>
-        <li>Pokud Šerif zemře dříve, než jsou eliminováni všichni Pomocníci a Bandité, <strong>vítězí Bandité a Odpadlík prohrává</strong>!</li>
+        <li>Pokud Šerif zemře dříve, než jsou eliminováni všichni Pomocníci (Vice) a Bandité, <strong>vítězí Bandité a Odpadlík prohrává</strong>!</li>
       </ul>
     </div>
   </div>
@@ -73,17 +73,17 @@ RULES_SECTIONS = [
 
 <div class="callout callout-info">
   <h4>👥 Speciální pravidla pro 8 hráčů (Dodge City)</h4>
-  <p>Při 8 hráčích se použije 8 rolí: <strong>1 Šerif, 2 Pomocníci, 3 Bandité a 2 Odpadlíci</strong>.</p>
+  <p>Při 8 hráčích se použije 8 rolí: <strong>1 Šerif, 2 Pomocníci (Vice), 3 Bandité a 2 Odpadlíci</strong>.</p>
   <p>Každý z obou Odpadlíků hraje sám za sebe. Pokud se Šerif ocitne v boji se dvěma Odpadlíky a Šerif zemře, <strong>vítězí Bandité</strong> (přestože už nežijí)!</p>
 </div>
 
 <div class="callout callout-warning">
   <h4>🤠 Speciální pravidla pro 3 hráče</h4>
-  <p>Rozdejte lícem nahoru 3 role: <strong>Pomocník šerifa, Bandita, Odpadlík</strong>. Všichni znají své role:</p>
+  <p>Rozdejte lícem nahoru 3 role: <strong>Pomocník šerifa (Vice), Bandita, Odpadlík</strong>. Všichni znají své role:</p>
   <ul>
-    <li><strong>Pomocník šerifa</strong> musí zabít Odpadlíka.</li>
+    <li><strong>Pomocník šerifa (Vice)</strong> musí zabít Odpadlíka.</li>
     <li><strong>Odpadlík</strong> musí zabít Banditu.</li>
-    <li><strong>Bandita</strong> musí zabít Pomocníka šerifa.</li>
+    <li><strong>Bandita</strong> musí zabít Pomocníka šerifa (Vice).</li>
   </ul>
   <p>Hráč zvítězí okamžitě, pokud sám zasadí smrtelný zásah svému cíli. Pokud cíl zabije někdo jiný, cílem obou přeživších je zůstat jako poslední naživu. Za každého zabitého hráče je odměna 3 karty. Vězení lze hrát na kohokoli.</p>
 </div>
@@ -201,11 +201,11 @@ RULES_SECTIONS = [
   <h3>1. Zahrání karty vs Použití karty vs Odhození karty</h3>
   <div class="concept-grid">
     <div class="concept-item">
-      <span class="concept-badge">Zahrání karty (Playing)</span>
+      <span class="concept-badge">Zahrání karty</span>
       <p>Vyložení karty z ruky na stůl za účelem vyvolání jejího efektu. Lze provést <strong>pouze ve 2. fázi vlastního tahu</strong> (výjimka: Vedle! a Pivo při smrtelném zranění).</p>
     </div>
     <div class="concept-item">
-      <span class="concept-badge concept-badge-sup">Použití karty (Using) — Nadřazený pojem</span>
+      <span class="concept-badge concept-badge-sup">Použití karty — Nadřazený pojem</span>
       <p>Zahrnuje jakékoli zapojení karty do hry: zahrání, ale i <strong>její odhození kvůli jiné kartě či schopnosti</strong> (odhození BANG! v Duelu, odhození karet u Sida Ketchuma či Doca Holydaye, zaplacení vagonu na stanici).</p>
     </div>
   </div>
@@ -240,11 +240,11 @@ RULES_SECTIONS = [
   <h3>3. Vzdálenost mezi hráči vs Dostřel zbraní</h3>
   <div class="concept-grid">
     <div class="concept-item">
-      <span class="concept-badge">Vzdálenost (Distance)</span>
+      <span class="concept-badge">Vzdálenost</span>
       <p>Minimální počet míst mezi živými hráči u stolu. Výchozí vzdálenost k sousedům je 1. Mění ji <em>Mustang</em>, <em>Skrýš</em>, <em>Plošinový vůz</em> (+1 k vám), <em>Hledí</em>, <em>Dalekohled</em> (-1 od vás).</p>
     </div>
     <div class="concept-item">
-      <span class="concept-badge concept-badge-gun">Dostřel zbraně (Range)</span>
+      <span class="concept-badge concept-badge-gun">Dostřel zbraně</span>
       <p>Maximální vzdálenost, na kterou můžete z ruky vystřelit kartu BANG!. Určuje ji vaše zbraň (Colt .45 dosáhne na vzdálenost 1, Winchester na vzdálenost 5).</p>
     </div>
   </div>
@@ -259,7 +259,7 @@ RULES_SECTIONS = [
   <ul>
     <li><strong>Lucky Duke:</strong> Otáčí vždy 2 karty a vybírá si výsledek.</li>
     <li><strong>Podkova (Zlatá horečka):</strong> Otáčí o 1 kartu navíc (Lucky Duke s Podkovou otáčí 3 karty!).</li>
-    <li><strong>Stepní běžec (Tumbleweed):</strong> Lze zahrát ihned po jakémkoli sejmutí – celé předchozí sejmutí se zruší a provede se znovu!</li>
+    <li><strong>Stepní běžec:</strong> Lze zahrát ihned po jakémkoli sejmutí – celé předchozí sejmutí se zruší a provede se znovu!</li>
   </ul>
 </div>
 
@@ -410,17 +410,17 @@ RULES_SECTIONS = [
 </div>
 
 <div class="expansion-detail-card">
-  <h3>🌟 Legendy (Legends)</h3>
+  <h3>🌟 Legendy</h3>
   <p>Přináší 16 legendárních verzí postav, karty činů a žetony slávy.</p>
   <ul>
-    <li><strong>Symbol vývěsního štítu (L):</strong> Pokud je na kartě činu vyobrazen dřevěný štít s písmenem L, akce požadované kartou můžete volně provádět, i kdyby to pravidla normálně nedovolovala (dobrovolně odhodit Pivo u <em>Hrdla lahve</em>, nebo si přímo ubrat život u <em>Bezejmenného muže</em>).</li>
+    <li><strong>Symbol vývěsního štítu:</strong> Pokud je na kartě činu vyobrazen dřevěný štít s písmenem L, akce požadované kartou můžete volně provádět, i kdyby to pravidla normálně nedovolovala (dobrovolně odhodit Pivo u <em>Hrdla lahve</em>, nebo si přímo ubrat život u <em>Bezejmenného muže</em>).</li>
     <li><strong>Přivlastnění činu:</strong> Může provést pouze Legenda na straně B. Provede požadavek činu a způsobí jiné legendě ztrátu 1 života bez možnosti obrany (nesmí jít o poslední život, pokud nejde o Slab the Killera). Čin se poté odhodí a nahradí novým.</li>
     <li><strong>Změny pravidel základní hry:</strong> Hráč s 1 životem smí držet 2 karty; ve Vězení lze odhodit 1 ♥ kartu z ruky pro okamžitý útěk.</li>
   </ul>
 </div>
 
 <div class="expansion-detail-card">
-  <h3>🚂 Velká vlaková loupež (The Great Train Robbery)</h3>
+  <h3>🚂 Velká vlaková loupež</h3>
   <p>Představuje vlakovou soupravu s lokomotivou a 3 vagony jedoucí po stanicích.</p>
   <ul>
     <li><strong>Vagony ve hře:</strong> Chovají se jako modré karty, ale <strong>NIKDY SE NESMÍ VZÍT DO RUKY</strong>! Při ukradení Panikou jdou rovnou před nového majitele na stůl.</li>
@@ -445,7 +445,7 @@ RULES_SECTIONS = [
 </div>
 
 <div class="expansion-detail-card">
-  <h3>🪙 Zlatá horečka (Gold Rush)</h3>
+  <h3>🪙 Zlatá horečka</h3>
   <p>Zavádí valouny zlata, černou a hnědou výbavu a Stínové pistolníky.</p>
   <ul>
     <li><strong>Zisk zlata:</strong> 1 valoun zlata ze zásoby za každé zranění způsobené jinému hráči.</li>

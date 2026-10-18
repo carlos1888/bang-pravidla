@@ -1,9 +1,10 @@
-// BANG! Dynamite Box & Legendy — Web Controller (Clean Text & Rich Formatting)
+// BANG! Dynamite Box & Legendy — Web Controller (Clean Text, Rich Formatting & Bilingual CZ/EN)
 (function() {
   'use strict';
 
   // State
   const state = {
+    lang: localStorage.getItem('bang_lang') || 'cs',
     activeTab: 'katalog',
     searchQuery: '',
     selectedExpansion: 'all',
@@ -21,6 +22,14 @@
     panes: document.querySelectorAll('.tab-pane'),
     globalSearch: document.getElementById('global-search'),
     themeToggle: document.getElementById('theme-toggle'),
+    langBtnCs: document.getElementById('lang-btn-cs'),
+    langBtnEn: document.getElementById('lang-btn-en'),
+    brandSubtitle: document.querySelector('.brand-titles .subtitle'),
+    labelFilterTitle: document.getElementById('label-filter-title'),
+    labelExpansion: document.getElementById('label-expansion'),
+    labelType: document.getElementById('label-type'),
+    labelSuit: document.getElementById('label-suit'),
+    labelSort: document.getElementById('label-sort'),
     cardsGrid: document.getElementById('cards-grid'),
     resultsCount: document.getElementById('results-count'),
     filterExpansion: document.getElementById('filter-expansion'),
@@ -56,7 +65,264 @@
     els.themeToggle.innerHTML = theme === 'dark' ? '<span>☀️</span>' : '<span>🌙</span>';
   }
 
-  // Tab Navigation & Hash Routing
+  // =========================================================================
+  // LANGUAGE CONTROLLER (CZ / EN)
+  // =========================================================================
+  const I18N = {
+    cs: {
+      brandSubtitle: "Kompletní pravidla všech rozšíření dohromady & Encyklopedie karet",
+      searchPlaceholder: "Hledat kartu, postavu, pravidlo... (stiskni /)",
+      themeTitle: "Přepnout tmavý / světlý westernový režim",
+      navKatalog: "Katalog karet a postav",
+      navPravidla: "Pravidla všech rozšíření",
+      navFaq: "Řešitel sporných situací (FAQ)",
+      navTah: "Tah hráče krok za krokem",
+      navPomocnik: "Rychlý pomocník při hře",
+      filterTitle: "Filtry karet",
+      filterReset: "Resetovat",
+      filterExpansion: "Rozšíření",
+      filterType: "Typ a barva karty",
+      filterSuit: "Karetní barva",
+      filterSort: "Řazení",
+      copiesInDeck: "v balíčku",
+      rangeLabel: "Dosah",
+      livesLabel: "životy",
+      timingLabel: "Časování",
+      costLabel: "Cena / Podmínka",
+      rulingsHeader: "Oficiální pravidla a přesné vyhodnocení:",
+      effectHeader: "Text a funkce karty:",
+      noResultsTitle: "Žádná položka neodpovídá zvoleným filtrům",
+      noResultsText: "Zkuste upravit hledaný výraz nebo resetovat filtry.",
+      showingResults: (c, t) => `Zobrazeno ${c} z celkem ${t} karet a položek`,
+      faqSearchPlaceholder: "Hledat mezi spornými situacemi a pravidly...",
+      faqNoResults: "Nebyly nalezeny žádné sporné situace.",
+      faqNoResultsDesc: "Zkuste zadat jiná klíčová slova (např. Slab, Vězení, Pivo, Vagon, Bomba, Rez, Šerif)."
+    },
+    en: {
+      brandSubtitle: "Complete rules of all expansions together & Card encyclopedia",
+      searchPlaceholder: "Search card, character, rule... (press /)",
+      themeTitle: "Toggle dark / light western theme",
+      navKatalog: "Card & Character Catalog",
+      navPravidla: "All Expansions Rules",
+      navFaq: "Conflict Resolver (FAQ)",
+      navTah: "Player Turn Step-by-Step",
+      navPomocnik: "Quick Helper & Cheat Sheet",
+      filterTitle: "Card Filters",
+      filterReset: "Reset",
+      filterExpansion: "Expansion",
+      filterType: "Card Type & Color",
+      filterSuit: "Card Suit",
+      filterSort: "Sorting",
+      copiesInDeck: "in deck",
+      rangeLabel: "Range",
+      livesLabel: "lives",
+      timingLabel: "Timing",
+      costLabel: "Cost / Requirement",
+      rulingsHeader: "Official Rulings & Timing Resolution:",
+      effectHeader: "Card Text & Ability:",
+      noResultsTitle: "No cards match the selected filters",
+      noResultsText: "Try adjusting your search query or reset filters.",
+      showingResults: (c, t) => `Showing ${c} of ${t} cards and items`,
+      faqSearchPlaceholder: "Search conflict situations, characters and rulings...",
+      faqNoResults: "No conflict situations found.",
+      faqNoResultsDesc: "Try different keywords (e.g. Slab, Jail, Beer, Ghost, Bomb, Rust, Sheriff)."
+    }
+  };
+
+  const EXPANSIONS_EN = {
+    'all': 'All Expansions (234 items)',
+    'base': 'Base Game',
+    'dodge-city': 'Dodge City (Green Cards)',
+    'gold-rush': 'Gold Rush (Equipment & Gold)',
+    'armed-dangerous': 'Armed & Dangerous (Orange Cards)',
+    'train-robbery': 'The Great Train Robbery (Train & Stations)',
+    'valley-of-shadows': 'Valley of Shadows',
+    'high-noon': 'High Noon',
+    'fistful-of-cards': 'A Fistful of Cards',
+    'wild-west-show': 'Wild West Show',
+    'legends': 'Legends (Legends & Feats)',
+    'dynamite-box': 'Dynamite Box & Promo'
+  };
+
+  const EXPANSIONS_CS = {
+    'all': 'Všechna rozšíření (234 karet)',
+    'base': 'Základní hra',
+    'dodge-city': 'Město duchů (Zelené karty)',
+    'gold-rush': 'Zlatá horečka (Vybavení a zlato)',
+    'armed-dangerous': 'Ozbrojení a nebezpeční (Oranžové)',
+    'train-robbery': 'Velká vlaková loupež (Vlak a stanice)',
+    'valley-of-shadows': 'Údolí stínů',
+    'high-noon': 'Pravé poledne',
+    'fistful-of-cards': 'Pěst plná karet',
+    'wild-west-show': 'Divoký západ',
+    'legends': 'Legendy',
+    'dynamite-box': 'Dynamite Box bonusy & Promo'
+  };
+
+  const TYPES_EN = {
+    'all': 'All Card Types',
+    'brown': '🟤 Brown Cards (Immediate)',
+    'blue': '🔵 Blue Cards (In Play)',
+    'green': '🟢 Green Cards (Dodge City)',
+    'orange': '🟠 Orange Cards (Dangerous)',
+    'black': '⚫ Black Equipment (Gold Rush)',
+    'character': '🤠 Characters (Standard & Legendary)',
+    'train': '🚂 Train, Locomotives & Railcars',
+    'feat': '📜 Feat Cards (Legends)',
+    'event': '⚡ Global Events',
+    'role': '⭐ Role Cards'
+  };
+
+  const TYPES_CS = {
+    'all': 'Všechny typy karet',
+    'brown': '🟤 Hnědé karty (okamžité)',
+    'blue': '🔵 Modré karty (vyložené ve hře)',
+    'green': '🟢 Zelené karty (Město duchů)',
+    'orange': '🟠 Oranžové karty (Nebezpečné)',
+    'black': '⚫ Černé vybavení (Zlatá horečka)',
+    'character': '🤠 Postavy (běžné i legendární)',
+    'train': '🚂 Vlak, lokomotivy a vagony',
+    'feat': '📜 Karty činů (Legendy)',
+    'event': '⚡ Globální události',
+    'role': '⭐ Karty rolí'
+  };
+
+  const SUITS_EN = {
+    'all': 'All Suits',
+    '♠': '♠ Spades',
+    '♥': '♥ Hearts',
+    '♦': '♦ Diamonds',
+    '♣': '♣ Clubs'
+  };
+
+  const SUITS_CS = {
+    'all': 'Všechny barvy',
+    '♠': '♠ Piky',
+    '♥': '♥ Srdce',
+    '♦': '♦ Káry',
+    '♣': '♣ Kříže'
+  };
+
+  const SORTS_EN = {
+    'name-asc': 'Name (A → Z)',
+    'name-desc': 'Name (Z → A)',
+    'expansion': 'By Expansion',
+    'type': 'By Card Type'
+  };
+
+  const SORTS_CS = {
+    'name-asc': 'Název (A → Z)',
+    'name-desc': 'Název (Z → A)',
+    'expansion': 'Dle rozšíření',
+    'type': 'Dle typu karty'
+  };
+
+  function setLanguage(lang) {
+    state.lang = lang;
+    localStorage.setItem('bang_lang', lang);
+    document.documentElement.setAttribute('lang', lang === 'en' ? 'en' : 'cs');
+
+    if (els.langBtnCs) els.langBtnCs.classList.toggle('active', lang === 'cs');
+    if (els.langBtnEn) els.langBtnEn.classList.toggle('active', lang === 'en');
+
+    const t = I18N[lang] || I18N.cs;
+
+    // Header & Navigation
+    if (els.brandSubtitle) els.brandSubtitle.textContent = t.brandSubtitle;
+    if (els.globalSearch) els.globalSearch.placeholder = t.searchPlaceholder;
+    if (els.themeToggle) els.themeToggle.title = t.themeTitle;
+
+    const navTexts = {
+      'katalog': t.navKatalog,
+      'pravidla': t.navPravidla,
+      'faq': t.navFaq,
+      'tah-hrace': t.navTah,
+      'pomocnik': t.navPomocnik
+    };
+
+    els.tabs.forEach(tab => {
+      const tabId = tab.dataset.tab;
+      const span = tab.querySelector('.nav-text');
+      if (span && navTexts[tabId]) span.textContent = navTexts[tabId];
+    });
+
+    // Filters
+    if (els.labelFilterTitle) els.labelFilterTitle.textContent = t.filterTitle;
+    if (els.btnResetFilters) els.btnResetFilters.textContent = t.filterReset;
+    if (els.labelExpansion) els.labelExpansion.textContent = t.filterExpansion;
+    if (els.labelType) els.labelType.textContent = t.filterType;
+    if (els.labelSuit) els.labelSuit.textContent = t.filterSuit;
+    if (els.labelSort) els.labelSort.textContent = t.filterSort;
+
+    // Options translation
+    const expDict = lang === 'en' ? EXPANSIONS_EN : EXPANSIONS_CS;
+    if (els.filterExpansion) {
+      Array.from(els.filterExpansion.options).forEach(opt => {
+        if (expDict[opt.value]) opt.textContent = expDict[opt.value];
+      });
+    }
+
+    const typeDict = lang === 'en' ? TYPES_EN : TYPES_CS;
+    if (els.filterType) {
+      Array.from(els.filterType.options).forEach(opt => {
+        if (typeDict[opt.value]) opt.textContent = typeDict[opt.value];
+      });
+    }
+
+    const suitDict = lang === 'en' ? SUITS_EN : SUITS_CS;
+    if (els.filterSuit) {
+      Array.from(els.filterSuit.options).forEach(opt => {
+        if (suitDict[opt.value]) opt.textContent = suitDict[opt.value];
+      });
+    }
+
+    const sortDict = lang === 'en' ? SORTS_EN : SORTS_CS;
+    if (els.sortCards) {
+      Array.from(els.sortCards.options).forEach(opt => {
+        if (sortDict[opt.value]) opt.textContent = sortDict[opt.value];
+      });
+    }
+
+    if (els.faqSearch) els.faqSearch.placeholder = t.faqSearchPlaceholder;
+
+    // Turn Guide & Quick Helper headers
+    updateTurnAndHelperLang(lang === 'en');
+
+    renderCards();
+    if (state.selectedCard) {
+      openCardModal(state.selectedCard.id);
+    }
+  }
+
+  function updateTurnAndHelperLang(isEn) {
+    const tahTag = document.getElementById('tah-tag');
+    const tahTitle = document.getElementById('tah-main-title');
+    const tahLead = document.getElementById('tah-main-lead');
+
+    if (tahTag) tahTag.textContent = isEn ? 'Interactive Guide' : 'Interaktivní průvodce';
+    if (tahTitle) tahTitle.textContent = isEn ? '⏱️ Player Turn Step-by-Step (All Expansions Combined)' : '⏱️ Tah hráče krok za krokem (Všechna rozšíření současně)';
+    if (tahLead) {
+      tahLead.textContent = isEn
+        ? 'When playing with the complete Dynamite Box and Legends expansion simultaneously, each turn follows a strict sequence. Following this official order eliminates all confusion at the table.'
+        : 'Pokud hrajete s kompletním balíkem Dynamite Box a rozšířením Legendy, má každé herní kolo přesnou a neměnnou posloupnost. Dodržení tohoto oficiálního pořadí zaručuje plynulou hru a předchází všem sporným situacím.';
+    }
+
+    const pomTag = document.getElementById('pomocnik-tag');
+    const pomTitle = document.getElementById('pomocnik-main-title');
+    const pomLead = document.getElementById('pomocnik-main-lead');
+
+    if (pomTag) pomTag.textContent = isEn ? 'Tabletop Cheat Sheet' : 'Přehledová příručka';
+    if (pomTitle) pomTitle.textContent = isEn ? '⚡ Quick Reference & Tabletop Cheat Sheets' : '⚡ Rychlý pomocník a přehledové tabulky pro hraní u stolu';
+    if (pomLead) {
+      pomLead.textContent = isEn
+        ? 'Quick lookup tables for instant rule verification during gameplay: player elimination checklist, distance and weapon range calculations, Beer rules in all situations, card symbols, and exceptions.'
+        : 'Rychlé souhrnné tabulky pro bleskové ověření pravidel během partie – vyřazení hráče, výpočet vzdáleností, pravidla pro Pivo, symboly karet a výjimky.';
+    }
+  }
+
+  // =========================================================================
+  // TAB NAVIGATION & HASH ROUTING
+  // =========================================================================
   function setTab(tabId) {
     state.activeTab = tabId;
     window.location.hash = tabId;
@@ -79,10 +345,13 @@
     }
   }
 
-  // Filter Cards Logic
+  // =========================================================================
+  // FILTER CARDS LOGIC
+  // =========================================================================
   function getFilteredCards() {
     if (!window.BANG_CARDS) return [];
-    
+    const isEn = state.lang === 'en';
+
     return window.BANG_CARDS.filter(card => {
       if (state.selectedExpansion !== 'all' && card.expansion !== state.selectedExpansion) {
         return false;
@@ -107,35 +376,47 @@
 
       if (state.searchQuery.trim()) {
         const q = state.searchQuery.toLowerCase();
-        const text = `${card.name} ${card.nameEn || ''} ${card.effect || ''} ${card.expansionName} ${card.typeLabel} ${(card.tags || []).join(' ')}`.toLowerCase();
+        const text = `${card.name} ${card.nameEn || ''} ${card.effect || ''} ${card.effectEn || ''} ${card.expansionName} ${card.typeLabel} ${(card.tags || []).join(' ')}`.toLowerCase();
         if (!text.includes(q)) return false;
       }
 
       return true;
     }).sort((a, b) => {
-      if (state.sortBy === 'name-asc') return a.name.localeCompare(b.name, 'cs');
-      if (state.sortBy === 'name-desc') return b.name.localeCompare(a.name, 'cs');
+      if (state.sortBy === 'name-asc') {
+        const nameA = isEn ? (a.nameEn || a.name) : a.name;
+        const nameB = isEn ? (b.nameEn || b.name) : b.name;
+        return nameA.localeCompare(nameB, isEn ? 'en' : 'cs');
+      }
+      if (state.sortBy === 'name-desc') {
+        const nameA = isEn ? (a.nameEn || a.name) : a.name;
+        const nameB = isEn ? (b.nameEn || b.name) : b.name;
+        return nameB.localeCompare(nameA, isEn ? 'en' : 'cs');
+      }
       if (state.sortBy === 'expansion') return a.expansionName.localeCompare(b.expansionName, 'cs');
       if (state.sortBy === 'type') return a.typeLabel.localeCompare(b.typeLabel, 'cs');
       return 0;
     });
   }
 
-  // Render Cards Grid (Clean Text Cards with Color Borders)
+  // =========================================================================
+  // RENDER CARDS GRID (Pure Text, Color Borders, No English under Czech)
+  // =========================================================================
   function renderCards() {
     if (!els.cardsGrid) return;
     const cards = getFilteredCards();
+    const isEn = state.lang === 'en';
+    const t = I18N[state.lang] || I18N.cs;
     
     if (els.resultsCount) {
-      els.resultsCount.textContent = `Zobrazeno ${cards.length} z celkem ${window.BANG_CARDS.length} karet a položek`;
+      els.resultsCount.textContent = t.showingResults(cards.length, window.BANG_CARDS.length);
     }
 
     if (cards.length === 0) {
       els.cardsGrid.innerHTML = `
         <div style="grid-column: 1 / -1; text-align: center; padding: 3rem 1rem; color: var(--text-muted);">
           <div style="font-size: 3rem; margin-bottom: 0.5rem;">🌵</div>
-          <h3>Žádná položka neodpovídá zvoleným filtrům</h3>
-          <p>Zkuste upravit hledaný výraz nebo resetovat filtry.</p>
+          <h3>${t.noResultsTitle}</h3>
+          <p>${t.noResultsText}</p>
         </div>
       `;
       return;
@@ -158,29 +439,33 @@
       const isRed = card.suit === '♥' || card.suit === '♦';
       const suitClass = isRed ? 'suit-red' : 'suit-black';
 
+      const cardTitle = isEn ? (card.nameEn || card.name) : card.name;
+      const cardBadge = isEn ? (card.expansionNameEn || EXPANSIONS_EN[card.expansion] || card.expansionName) : card.expansionName;
+      const cardTypeLabel = isEn ? (card.typeLabelEn || TYPES_EN[card.type] || card.typeLabel) : card.typeLabel;
+      const cardEffect = isEn ? (card.effectEn || card.effect) : card.effect;
+
       const metas = [];
-      if (card.copies) metas.push(`<span class="card-meta-item meta-copies">${card.copies}× v balíčku</span>`);
-      if (card.range) metas.push(`<span class="card-meta-item">Dosah: ${card.range}</span>`);
+      if (card.copies) metas.push(`<span class="card-meta-item meta-copies">${card.copies}× ${t.copiesInDeck}</span>`);
+      if (card.range) metas.push(`<span class="card-meta-item">${t.rangeLabel}: ${card.range}</span>`);
       if (card.cost) metas.push(`<span class="card-meta-item meta-cost">${card.cost}</span>`);
-      if (card.lives) metas.push(`<span class="card-meta-item" style="color: #b71c1c; font-weight: 700;">❤️ ${card.lives} životy</span>`);
+      if (card.lives) metas.push(`<span class="card-meta-item" style="color: #b71c1c; font-weight: 700;">❤️ ${card.lives} ${t.livesLabel}</span>`);
       if (card.timing) metas.push(`<span class="card-meta-item meta-timing">${card.timing}</span>`);
 
       return `
-        <article class="bang-card ${borderClass}" data-id="${card.id}" tabindex="0" role="button" aria-label="Detail karty ${card.name}">
+        <article class="bang-card ${borderClass}" data-id="${card.id}" tabindex="0" role="button" aria-label="Detail ${cardTitle}">
           <div class="card-top-bar">
-            <span class="card-badge">${card.expansionName}</span>
+            <span class="card-badge">${cardBadge}</span>
             ${card.suit ? `<span class="card-suit-value ${suitClass}">${card.suit} ${card.values || ''}</span>` : ''}
           </div>
           <div class="card-body">
             <div class="card-title-group">
-              <h3 class="card-title">${card.name}</h3>
-              ${card.nameEn ? `<div class="card-title-en">${card.nameEn}</div>` : ''}
+              <h3 class="card-title">${cardTitle}</h3>
             </div>
             <div class="card-effect-box">
-              ${card.effect}
+              ${cardEffect}
             </div>
             <div class="card-meta-list">
-              <span class="card-meta-item" style="font-weight: 700;">${card.typeLabel}</span>
+              <span class="card-meta-item" style="font-weight: 700;">${cardTypeLabel}</span>
               ${metas.join('')}
             </div>
           </div>
@@ -199,17 +484,27 @@
     });
   }
 
-  // Open Card Modal
+  // =========================================================================
+  // OPEN CARD DETAIL MODAL
+  // =========================================================================
   function openCardModal(cardId) {
     const card = window.BANG_CARDS.find(c => c.id === cardId);
     if (!card) return;
     state.selectedCard = card;
 
+    const isEn = state.lang === 'en';
+    const t = I18N[state.lang] || I18N.cs;
+
+    const cardTitle = isEn ? (card.nameEn || card.name) : card.name;
+    const cardBadge = isEn ? (card.expansionNameEn || EXPANSIONS_EN[card.expansion] || card.expansionName) : card.expansionName;
+    const cardTypeLabel = isEn ? (card.typeLabelEn || TYPES_EN[card.type] || card.typeLabel) : card.typeLabel;
+    const cardEffect = isEn ? (card.effectEn || card.effect) : card.effect;
+
     const rulingsHtml = (card.rulings && card.rulings.length > 0)
       ? `
         <div style="margin-top: 1.25rem; border-top: 2px solid var(--border-color); padding-top: 1rem;">
           <h4 style="color: var(--color-brown); margin-bottom: 0.6rem; display: flex; align-items: center; gap: 0.4rem; font-size: 1.1rem;">
-            <span>⚖️</span> Oficiální pravidla a přesné vyhodnocení:
+            <span>⚖️</span> ${t.rulingsHeader}
           </h4>
           <ul style="padding-left: 1.25rem; font-size: 0.96rem; line-height: 1.6;">
             ${card.rulings.map(r => `<li style="margin-bottom: 0.5rem;">${r}</li>`).join('')}
@@ -221,28 +516,27 @@
     const tagsHtml = (card.tags && card.tags.length > 0)
       ? `
         <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.25rem;">
-          ${card.tags.map(t => `<span class="card-meta-item" style="font-size: 0.78rem;">#${t}</span>`).join('')}
+          ${card.tags.map(tag => `<span class="card-meta-item" style="font-size: 0.78rem;">#${tag}</span>`).join('')}
         </div>
       `
       : '';
 
     els.modalBody.innerHTML = `
       <div style="border-bottom: 2px solid var(--border-color); padding-bottom: 0.85rem; margin-bottom: 1.2rem;">
-        <span class="card-badge" style="font-size: 0.85rem; margin-bottom: 0.4rem; display: inline-block;">${card.expansionName} • ${card.typeLabel}</span>
-        <h2 style="font-size: 2rem; font-family: 'Georgia', serif; color: var(--text-main); line-height: 1.2;">${card.name}</h2>
-        ${card.nameEn ? `<div style="color: var(--text-muted); font-style: italic; font-size: 0.95rem; margin-top: 0.2rem;">${card.nameEn}</div>` : ''}
+        <span class="card-badge" style="font-size: 0.85rem; margin-bottom: 0.4rem; display: inline-block;">${cardBadge} • ${cardTypeLabel}</span>
+        <h2 style="font-size: 2rem; font-family: 'Georgia', serif; color: var(--text-main); line-height: 1.2;">${cardTitle}</h2>
       </div>
 
       <div style="background: var(--bg-surface); padding: 1.15rem; border-radius: 8px; margin-bottom: 1.25rem; border-left: 4px solid var(--color-brown);">
-        <div style="font-weight: 700; margin-bottom: 0.4rem; color: var(--color-brown); text-transform: uppercase; font-size: 0.82rem; letter-spacing: 0.5px;">Text a funkce karty:</div>
-        <div style="font-size: 1.1rem; line-height: 1.6;">${card.effect}</div>
+        <div style="font-weight: 700; margin-bottom: 0.4rem; color: var(--color-brown); text-transform: uppercase; font-size: 0.82rem; letter-spacing: 0.5px;">${t.effectHeader}</div>
+        <div style="font-size: 1.1rem; line-height: 1.6;">${cardEffect}</div>
       </div>
 
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.75rem; font-size: 0.9rem; margin-bottom: 1rem;">
-        ${card.timing ? `<div style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 0.65rem; border-radius: 6px;"><strong>Časování:</strong><br>${card.timing}</div>` : ''}
-        ${card.cost ? `<div style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 0.65rem; border-radius: 6px;"><strong>Cena / Podmínka:</strong><br>${card.cost}</div>` : ''}
-        ${card.range ? `<div style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 0.65rem; border-radius: 6px;"><strong>Dosah:</strong><br>${card.range}</div>` : ''}
-        ${card.copies ? `<div style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 0.65rem; border-radius: 6px;"><strong>Počet kopií:</strong><br>${card.copies}×</div>` : ''}
+        ${card.timing ? `<div style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 0.65rem; border-radius: 6px;"><strong>${t.timingLabel}:</strong><br>${card.timing}</div>` : ''}
+        ${card.cost ? `<div style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 0.65rem; border-radius: 6px;"><strong>${t.costLabel}:</strong><br>${card.cost}</div>` : ''}
+        ${card.range ? `<div style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 0.65rem; border-radius: 6px;"><strong>${t.rangeLabel}:</strong><br>${card.range}</div>` : ''}
+        ${card.copies ? `<div style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 0.65rem; border-radius: 6px;"><strong>${t.copiesInDeck}:</strong><br>${card.copies}×</div>` : ''}
       </div>
 
       ${rulingsHtml}
@@ -259,7 +553,9 @@
     state.selectedCard = null;
   }
 
-  // Render Rules
+  // =========================================================================
+  // RENDER RULES
+  // =========================================================================
   function renderRules() {
     const rulesContainer = document.getElementById('rules-content-target');
     const tocTarget = document.getElementById('rules-toc-target');
@@ -280,9 +576,12 @@
     `).join('');
   }
 
-  // Render FAQ
+  // =========================================================================
+  // RENDER FAQ (CONFLICT SITUATIONS)
+  // =========================================================================
   function renderFaq() {
     if (!els.faqList || !window.BANG_FAQ) return;
+    const t = I18N[state.lang] || I18N.cs;
 
     const filtered = window.BANG_FAQ.filter(item => {
       if (state.activeFaqCategory !== 'all' && item.category !== state.activeFaqCategory) {
@@ -299,8 +598,8 @@
     if (filtered.length === 0) {
       els.faqList.innerHTML = `
         <div style="text-align: center; padding: 3rem 1rem; color: var(--text-muted);">
-          <h3>Nebyly nalezeny žádné sporné situace</h3>
-          <p>Zkuste zadat jiná klíčová slova (např. Slab, Vězení, Pivo, Vagon, Bomba, Rez, Šerif).</p>
+          <h3>${t.faqNoResults}</h3>
+          <p>${t.faqNoResultsDesc}</p>
         </div>
       `;
       return;
@@ -317,14 +616,16 @@
         <div class="disclosure-body">
           ${item.answerHtml}
           <div style="display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 1rem; border-top: 1px dashed var(--border-color); padding-top: 0.6rem;">
-            ${(item.tags || []).map(t => `<span class="card-meta-item" style="font-size: 0.75rem;">#${t}</span>`).join('')}
+            ${(item.tags || []).map(tag => `<span class="card-meta-item" style="font-size: 0.75rem;">#${tag}</span>`).join('')}
           </div>
         </div>
       </details>
     `).join('');
   }
 
-  // Events Initialization
+  // =========================================================================
+  // EVENTS INITIALIZATION
+  // =========================================================================
   function initEvents() {
     els.tabs.forEach(tab => {
       tab.addEventListener('click', () => setTab(tab.dataset.tab));
@@ -332,6 +633,13 @@
 
     if (els.themeToggle) {
       els.themeToggle.addEventListener('click', toggleTheme);
+    }
+
+    if (els.langBtnCs) {
+      els.langBtnCs.addEventListener('click', () => setLanguage('cs'));
+    }
+    if (els.langBtnEn) {
+      els.langBtnEn.addEventListener('click', () => setLanguage('en'));
     }
 
     if (els.globalSearch) {
@@ -430,10 +738,11 @@
     window.addEventListener('hashchange', initRouting);
   }
 
+  // DOMContentLoaded
   document.addEventListener('DOMContentLoaded', () => {
     initTheme();
     initEvents();
-    renderCards();
+    setLanguage(state.lang);
     renderRules();
     renderFaq();
     initRouting();

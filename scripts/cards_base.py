@@ -19,14 +19,14 @@ BASE_CARDS = [
         "timing": "Celá hra (veřejná role)",
         "rulings": [
             "Na Šerifa nelze zahrát kartu Vězení.",
-            "Pokud Šerif zabije svého Pomocníka, za trest musí odhodit všechny karty z ruky i ze hry (včetně vybavení).",
+            "Pokud Šerif zabije svého Pomocníka (Vice), za trest musí odhodit všechny karty z ruky i ze hry (včetně vybavení).",
             "Pokud Šerif zabije Banditu, dostane běžnou odměnu 3 karty z balíčku."
         ],
         "tags": ["role", "šerif", "životy navíc", "zákon"]
     },
     {
         "id": "role-deputy",
-        "name": "Pomocník šerifa",
+        "name": "Pomocník šerifa (Vice)",
         "nameEn": "Deputy",
         "expansion": "base",
         "expansionName": "Základní hra",
@@ -37,13 +37,13 @@ BASE_CARDS = [
         "values": None,
         "range": None,
         "cost": None,
-        "effect": "Hraje s tajnou rolí. Pomáhá Šerifovi a chrání ho za každou cenu. Cíl: Stejný jako Šerif (eliminovat Bandity a Odpadlíka). Vítězí, pokud vyhraje Šerif (i když je Pomocník mrtev).",
+        "effect": "Hraje s tajnou rolí. Pomáhá Šerifovi a chrání ho za každou cenu. Cíl: Stejný jako Šerif (eliminovat Bandity a Odpadlíka). Vítězí, pokud vyhraje Šerif (i když je Pomocník (Vice) mrtev).",
         "timing": "Celá hra (tajná role)",
         "rulings": [
-            "I když Pomocník zemře, vyhrává společně se Šerifem, pokud Šerif a zákon zvítězí.",
+            "I když Pomocník (Vice) zemře, vyhrává společně se Šerifem, pokud Šerif a zákon zvítězí.",
             "Pokud je zabit Šerifem, Šerif ztrácí všechny karty v ruce i ve hře."
         ],
-        "tags": ["role", "pomocník", "zákon", "tajná role"]
+        "tags": ["role", "pomocník", "vice", "zákon", "tajná role"]
     },
     {
         "id": "role-outlaw",
@@ -427,7 +427,7 @@ BASE_CARDS = [
             "Vezme si modré karty, zelené karty i vagony (ty vyloží ihned před sebe).",
             "NEBERE karty vybavení ze Zlaté horečky (ty jdou dospod balíčku vybavení).",
             "NEBERE karty od Stínových pistolníků (ti neumírají, jen odcházejí na konci tahu).",
-            "Pokud je Šerif a zabije Pomocníka, nejprve vezme karty Pomocníka a hned poté všechno odhodí."
+            "Pokud je Šerif a zabije Pomocníka (Vice), nejprve vezme karty Pomocníka (Vice) a hned poté všechno odhodí."
         ],
         "tags": ["postava", "mrchožrout", "smrt", "krádež karet zabitých"]
     },

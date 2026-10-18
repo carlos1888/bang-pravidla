@@ -9,7 +9,7 @@ FAQ_ENTRIES = [
         "answer": """**Řešení:**
 Ke zrušení karty BANG! zahrané Slabem the Killerem jsou zapotřebí **2 efekty Vedle!**.
 * Úspěšné sejmutí na Barel (otočení srdce ♥) poskytne **1 efekt Vedle!**.
-* Utracení 2 žetonů nabití z karty Bedna (Crate) poskytne **1 efekt Vedle!**.
+* Utracení 2 žetonů nabití z karty Bedna poskytne **1 efekt Vedle!**.
 * Hráč tedy může zkombinovat úspěšný Barel + Bednu a Slabův útok úspěšně odvrátit!
 * Pokud by Barel neuspěl, musí hráč zahrát 2 karty Vedle! z ruky (nebo Bednu + 1 Vedle!)."""
     },
@@ -108,18 +108,18 @@ Když hráč zemře, Vulture Sam standardně bere všechny jeho karty z ruky i z
 Jakmile ve hře zůstanou **pouze 2 hráči** (např. Šerif a poslední Bandita, nebo Šerif a Odpadlík):
 * **Karta Pivo:** Ztrácí veškerý léčivý účinek. Zahráním karty Pivo si hráč **nemůže přidat žádný život** (ani ve svém tahu, ani při smrtelném zásahu!).
 * **Výjimka – Zlatá horečka:** Ve Zlaté horečce může hráč zahrát kartu Pivo ve svém tahu za účelem **zisku 1 valounu zlata**! Tento zisk zlata funguje normálně i ve dvou hráčích.
-* **Výjimka – Poslední volání (Údolí stínů):** Karta *Poslední volání (Last Call)* má výslovně uvedeno, že **léčí 1 život i ve dvou hráčích**!
+* **Výjimka – Poslední volání (Údolí stínů):** Karta *Poslední volání* má výslovně uvedeno, že **léčí 1 život i ve dvou hráčích**!
 * **Ostatní léčivé karty:** *Saloon*, *Tequila*, *Čutora*, *Bečka piva* fungují i ve 2 hráčích normálně."""
     },
     {
         "id": "faq-10",
-        "question": "Šerif osobně zabije svého Pomocníka, který měl vyloženou kartu Wanted. Co se stane?",
+        "question": "Šerif osobně zabije svého Pomocníka (Vice), který měl vyloženou kartu Wanted. Co se stane?",
         "tags": ["šerif", "trest", "pomocník", "wanted", "odhození-karet"],
         "category": "Vyřazení ze hry",
         "answer": """**Řešení:**
 Podle oficiálních pravidel Zlaté horečky (str. 22):
 1. Šerif nejprve **vyhodnotí odměnu z karty Wanted**: dobere si 2 karty z balíčku a vezme si 1 valoun zlata ze zásoby!
-2. Ihned poté se aplikuje trest za zabití Pomocníka: Šerif musí **odhodit všechny karty, které má v ruce i ve hře před sebou** (včetně právě dobraných 2 karet a všech zbraní).
+2. Ihned poté se aplikuje trest za zabití Pomocníka (Vice): Šerif musí **odhodit všechny karty, které má v ruce i ve hře před sebou** (včetně právě dobraných 2 karet a všech zbraní).
 3. **Valouny zlata si však Šerif ponechává!** Trest odhození se vztahuje pouze na karty, nikoli na valouny zlata."""
     },
     {
@@ -131,8 +131,8 @@ Podle oficiálních pravidel Zlaté horečky (str. 22):
 Když Ironhorse přejede za poslední stanici:
 * **Každý hráč u stolu** (včetně hráče, který konečnou spustil) se stává cílem efektu BANG!.
 * Každý se brání samostatně (kartou Vedle!, Barelem, Bednou).
-* **Karta Opětovaná palba (Return Fire):** Lze použít jako Vedle!, ale útok nelze vrátit na vlak (lokomotiva není hráč).
-* **Karta K zemi! (Evaded!):** Zruší útok, ale nevezme si žádnou kartu do ruky (žádná karta nebyla zahrána).
+* **Karta Opětovaná palba:** Lze použít jako Vedle!, ale útok nelze vrátit na vlak (lokomotiva není hráč).
+* **Karta K zemi!:** Zruší útok, ale nevezme si žádnou kartu do ruky (žádná karta nebyla zahrána).
 * **Všichni hráči zemřou současně:** Pokud tento hromadný výstřel zabije všechny zbývající hráče včetně Šerifa, **VÍTĚZÍ BANDITÉ**! (Dosáhli svého cíle zničit Šerifa i za cenu vlastních životů)."""
     },
     {
@@ -172,7 +172,7 @@ Podle oficiálních pravidel Legend (str. 9):
     },
     {
         "id": "faq-15",
-        "question": "Co se stane, když karta Rez (Rust) vezme z Bomby její poslední žetony nabití?",
+        "question": "Co se stane, když karta Rez vezme z Bomby její poslední žetony nabití?",
         "tags": ["bomba", "rez", "exploze", "žetony-nabití", "časování"],
         "category": "Ozbrojení a nebezpeční",
         "answer": """**Řešení:**
@@ -218,7 +218,7 @@ Karta vybavení *Zlatá horečka* (cena 5 valounů zlata):
     },
     {
         "id": "faq-19",
-        "question": "Může Šerif získat Vagon duchů nebo Vězení pomocí karty Výhybka (Switch)?",
+        "question": "Může Šerif získat Vagon duchů nebo Vězení pomocí karty Výhybka?",
         "tags": ["šerif", "vagon-duchů", "vězení", "výhybka", "zákaz-pro-šerifa"],
         "category": "Velká vlaková loupež",
         "answer": """**Řešení:**
@@ -264,11 +264,11 @@ Když se Odpadlík stane Stínovým odpadlíkem:
     },
     {
         "id": "faq-23",
-        "question": "Zvonice (Bell Tower) vs Mustang vs Plošinový vůz. Jak se spočítá vzdálenost?",
+        "question": "Zvonice vs Mustang vs Plošinový vůz. Jak se spočítá vzdálenost?",
         "tags": ["zvonice", "mustang", "plošinový-vůz", "vzdálenost", "timing"],
         "category": "Vzdálenost a dostřel",
         "answer": """**Řešení:**
-* Karta *Zvonice (Bell Tower)* za zaplacení 1 žetonu nabití říká: *„Pro následující zahranou kartu vidíte všechny ostatní hráče ve vzdálenosti 1.“*
+* Karta *Zvonice* za zaplacení 1 žetonu nabití říká: *„Pro následující zahranou kartu vidíte všechny ostatní hráče ve vzdálenosti 1.“*
 * Tento efekt **přebíjí veškeré modifikátory vzdálenosti**! Bez ohledu na to, zda má cíl Mustanga, Skrýš, zda je na něm vyložen Plošinový vůz nebo zda jste vy pod vlivem jiné karty, pro vaši příští zahranou kartu je cíl ve vzdálenosti 1.
 * Můžete tak s obyčejným Coltem .45 vystřelit BANG! nebo zahrát Paniku! na kohokoli u stolu!"""
     },
@@ -370,7 +370,7 @@ Don Bell nesnímá na další tah v těchto situacích:
         "answer": """**Řešení:**
 * Hráč má 2 životy a vybuchne mu Dynamit (ztráta 3 životů -> stav -1 život).
 * K přežití potřebuje mít na konci vyhodnocení alespoň 1 život (tedy vyléčit 2 životy).
-* Vybavení *Batoh (Rucksack)* stojí 2 valouny zlata za 1 život a lze ho použít i mimo svůj tah při smrtelném zranění.
+* Vybavení *Batoh* stojí 2 valouny zlata za 1 život a lze ho použít i mimo svůj tah při smrtelném zranění.
 * Má-li hráč **4 valouny zlata**, může zaplatit 2x 2 valouny zlata a **vyléčit si 2 životy najednou**, čímž zůstane naživu s 1 životem!"""
     },
     {
@@ -419,7 +419,7 @@ Pravidla Zlaté horečky (str. 19):
     },
     {
         "id": "faq-37",
-        "question": "Výhybka (Switch): Lze vyměnit vagon, který ještě stojí ve vlaku na trati?",
+        "question": "Výhybka: Lze vyměnit vagon, který ještě stojí ve vlaku na trati?",
         "tags": ["výhybka", "vlak", "karty-ve-hře", "vagon"],
         "category": "Velká vlaková loupež",
         "answer": """**Řešení:**

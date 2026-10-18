@@ -11,7 +11,7 @@ window.BANG_FAQ = [
       "obrana",
       "vedle"
     ],
-    "answerHtml": "<div class=\"faq-verdict\"><span class=\"verdict-badge\">Verdikt</span> Ke zrušení karty BANG! zahrané Slabem the Killerem jsou zapotřebí <strong>2 efekty Vedle!</strong>.</div><ul class=\"faq-details-list\"><li>Úspěšné sejmutí na Barel (otočení srdce ♥) poskytne <strong>1 efekt Vedle!</strong>.</li><li>Utracení 2 žetonů nabití z karty Bedna (Crate) poskytne <strong>1 efekt Vedle!</strong>.</li><li>Hráč tedy může zkombinovat úspěšný Barel + Bednu a Slabův útok úspěšně odvrátit!</li><li>Pokud by Barel neuspěl, musí hráč zahrát 2 karty Vedle! z ruky (nebo Bednu + 1 Vedle!).</li></ul>"
+    "answerHtml": "<div class=\"faq-verdict\"><span class=\"verdict-badge\">Verdikt</span> Ke zrušení karty BANG! zahrané Slabem the Killerem jsou zapotřebí <strong>2 efekty Vedle!</strong>.</div><ul class=\"faq-details-list\"><li>Úspěšné sejmutí na Barel (otočení srdce ♥) poskytne <strong>1 efekt Vedle!</strong>.</li><li>Utracení 2 žetonů nabití z karty Bedna poskytne <strong>1 efekt Vedle!</strong>.</li><li>Hráč tedy může zkombinovat úspěšný Barel + Bednu a Slabův útok úspěšně odvrátit!</li><li>Pokud by Barel neuspěl, musí hráč zahrát 2 karty Vedle! z ruky (nebo Bednu + 1 Vedle!).</li></ul>"
   },
   {
     "id": "faq-02",
@@ -115,11 +115,11 @@ window.BANG_FAQ = [
       "zlatá-horečka",
       "poslední-volání"
     ],
-    "answerHtml": "<div class=\"faq-verdict\"><span class=\"verdict-badge\">Verdikt</span> Jakmile ve hře zůstanou <strong>pouze 2 hráči</strong> (např. Šerif a poslední Bandita, nebo Šerif a Odpadlík):</div><ul class=\"faq-details-list\"><li><strong>Karta Pivo:</strong> Ztrácí veškerý léčivý účinek. Zahráním karty Pivo si hráč <strong>nemůže přidat žádný život</strong> (ani ve svém tahu, ani při smrtelném zásahu!).</li><li><strong>Výjimka – Zlatá horečka:</strong> Ve Zlaté horečce může hráč zahrát kartu Pivo ve svém tahu za účelem <strong>zisku 1 valounu zlata</strong>! Tento zisk zlata funguje normálně i ve dvou hráčích.</li><li><em> <strong>Výjimka – Poslední volání (Údolí stínů):</strong> Karta </em>Poslední volání (Last Call)* má výslovně uvedeno, že <strong>léčí 1 život i ve dvou hráčích</strong>!</li><li><em> <strong>Ostatní léčivé karty:</strong> </em>Saloon<em>, </em>Tequila<em>, </em>Čutora<em>, </em>Bečka piva* fungují i ve 2 hráčích normálně.</li></ul>"
+    "answerHtml": "<div class=\"faq-verdict\"><span class=\"verdict-badge\">Verdikt</span> Jakmile ve hře zůstanou <strong>pouze 2 hráči</strong> (např. Šerif a poslední Bandita, nebo Šerif a Odpadlík):</div><ul class=\"faq-details-list\"><li><strong>Karta Pivo:</strong> Ztrácí veškerý léčivý účinek. Zahráním karty Pivo si hráč <strong>nemůže přidat žádný život</strong> (ani ve svém tahu, ani při smrtelném zásahu!).</li><li><strong>Výjimka – Zlatá horečka:</strong> Ve Zlaté horečce může hráč zahrát kartu Pivo ve svém tahu za účelem <strong>zisku 1 valounu zlata</strong>! Tento zisk zlata funguje normálně i ve dvou hráčích.</li><li><em> <strong>Výjimka – Poslední volání (Údolí stínů):</strong> Karta </em>Poslední volání* má výslovně uvedeno, že <strong>léčí 1 život i ve dvou hráčích</strong>!</li><li><em> <strong>Ostatní léčivé karty:</strong> </em>Saloon<em>, </em>Tequila<em>, </em>Čutora<em>, </em>Bečka piva* fungují i ve 2 hráčích normálně.</li></ul>"
   },
   {
     "id": "faq-10",
-    "question": "Šerif osobně zabije svého Pomocníka, který měl vyloženou kartu Wanted. Co se stane?",
+    "question": "Šerif osobně zabije svého Pomocníka (Vice), který měl vyloženou kartu Wanted. Co se stane?",
     "category": "Vyřazení ze hry",
     "tags": [
       "šerif",
@@ -128,7 +128,7 @@ window.BANG_FAQ = [
       "wanted",
       "odhození-karet"
     ],
-    "answerHtml": "<div class=\"faq-verdict\"><span class=\"verdict-badge\">Verdikt</span> Podle oficiálních pravidel Zlaté horečky (str. 22):</div><ul class=\"faq-details-list\"><li>1. Šerif nejprve <strong>vyhodnotí odměnu z karty Wanted</strong>: dobere si 2 karty z balíčku a vezme si 1 valoun zlata ze zásoby!</li><li>2. Ihned poté se aplikuje trest za zabití Pomocníka: Šerif musí <strong>odhodit všechny karty, které má v ruce i ve hře před sebou</strong> (včetně právě dobraných 2 karet a všech zbraní).</li><li>3. <strong>Valouny zlata si však Šerif ponechává!</strong> Trest odhození se vztahuje pouze na karty, nikoli na valouny zlata.</li></ul>"
+    "answerHtml": "<div class=\"faq-verdict\"><span class=\"verdict-badge\">Verdikt</span> Podle oficiálních pravidel Zlaté horečky (str. 22):</div><ul class=\"faq-details-list\"><li>1. Šerif nejprve <strong>vyhodnotí odměnu z karty Wanted</strong>: dobere si 2 karty z balíčku a vezme si 1 valoun zlata ze zásoby!</li><li>2. Ihned poté se aplikuje trest za zabití Pomocníka (Vice): Šerif musí <strong>odhodit všechny karty, které má v ruce i ve hře před sebou</strong> (včetně právě dobraných 2 karet a všech zbraní).</li><li>3. <strong>Valouny zlata si však Šerif ponechává!</strong> Trest odhození se vztahuje pouze na karty, nikoli na valouny zlata.</li></ul>"
   },
   {
     "id": "faq-11",
@@ -141,7 +141,7 @@ window.BANG_FAQ = [
       "opětovaná-palba",
       "vítězství-banditů"
     ],
-    "answerHtml": "<div class=\"faq-verdict\"><span class=\"verdict-badge\">Verdikt</span> Když Ironhorse přejede za poslední stanici:</div><ul class=\"faq-details-list\"><li><strong>Každý hráč u stolu</strong> (včetně hráče, který konečnou spustil) se stává cílem efektu BANG!.</li><li>Každý se brání samostatně (kartou Vedle!, Barelem, Bednou).</li><li><strong>Karta Opětovaná palba (Return Fire):</strong> Lze použít jako Vedle!, ale útok nelze vrátit na vlak (lokomotiva není hráč).</li><li><strong>Karta K zemi! (Evaded!):</strong> Zruší útok, ale nevezme si žádnou kartu do ruky (žádná karta nebyla zahrána).</li><li><strong>Všichni hráči zemřou současně:</strong> Pokud tento hromadný výstřel zabije všechny zbývající hráče včetně Šerifa, <strong>VÍTĚZÍ BANDITÉ</strong>! (Dosáhli svého cíle zničit Šerifa i za cenu vlastních životů).</li></ul>"
+    "answerHtml": "<div class=\"faq-verdict\"><span class=\"verdict-badge\">Verdikt</span> Když Ironhorse přejede za poslední stanici:</div><ul class=\"faq-details-list\"><li><strong>Každý hráč u stolu</strong> (včetně hráče, který konečnou spustil) se stává cílem efektu BANG!.</li><li>Každý se brání samostatně (kartou Vedle!, Barelem, Bednou).</li><li><strong>Karta Opětovaná palba:</strong> Lze použít jako Vedle!, ale útok nelze vrátit na vlak (lokomotiva není hráč).</li><li><strong>Karta K zemi!:</strong> Zruší útok, ale nevezme si žádnou kartu do ruky (žádná karta nebyla zahrána).</li><li><strong>Všichni hráči zemřou současně:</strong> Pokud tento hromadný výstřel zabije všechny zbývající hráče včetně Šerifa, <strong>VÍTĚZÍ BANDITÉ</strong>! (Dosáhli svého cíle zničit Šerifa i za cenu vlastních životů).</li></ul>"
   },
   {
     "id": "faq-12",
@@ -183,7 +183,7 @@ window.BANG_FAQ = [
   },
   {
     "id": "faq-15",
-    "question": "Co se stane, když karta Rez (Rust) vezme z Bomby její poslední žetony nabití?",
+    "question": "Co se stane, když karta Rez vezme z Bomby její poslední žetony nabití?",
     "category": "Ozbrojení a nebezpeční",
     "tags": [
       "bomba",
@@ -233,7 +233,7 @@ window.BANG_FAQ = [
   },
   {
     "id": "faq-19",
-    "question": "Může Šerif získat Vagon duchů nebo Vězení pomocí karty Výhybka (Switch)?",
+    "question": "Může Šerif získat Vagon duchů nebo Vězení pomocí karty Výhybka?",
     "category": "Velká vlaková loupež",
     "tags": [
       "šerif",
@@ -282,7 +282,7 @@ window.BANG_FAQ = [
   },
   {
     "id": "faq-23",
-    "question": "Zvonice (Bell Tower) vs Mustang vs Plošinový vůz. Jak se spočítá vzdálenost?",
+    "question": "Zvonice vs Mustang vs Plošinový vůz. Jak se spočítá vzdálenost?",
     "category": "Vzdálenost a dostřel",
     "tags": [
       "zvonice",
@@ -291,7 +291,7 @@ window.BANG_FAQ = [
       "vzdálenost",
       "timing"
     ],
-    "answerHtml": "<div class=\"faq-verdict\"><span class=\"verdict-badge\">Verdikt</span> <em> Karta </em>Zvonice (Bell Tower)<em> za zaplacení 1 žetonu nabití říká: </em>„Pro následující zahranou kartu vidíte všechny ostatní hráče ve vzdálenosti 1.“*</div><ul class=\"faq-details-list\"><li>Tento efekt <strong>přebíjí veškeré modifikátory vzdálenosti</strong>! Bez ohledu na to, zda má cíl Mustanga, Skrýš, zda je na něm vyložen Plošinový vůz nebo zda jste vy pod vlivem jiné karty, pro vaši příští zahranou kartu je cíl ve vzdálenosti 1.</li><li>Můžete tak s obyčejným Coltem .45 vystřelit BANG! nebo zahrát Paniku! na kohokoli u stolu!</li></ul>"
+    "answerHtml": "<div class=\"faq-verdict\"><span class=\"verdict-badge\">Verdikt</span> <em> Karta </em>Zvonice<em> za zaplacení 1 žetonu nabití říká: </em>„Pro následující zahranou kartu vidíte všechny ostatní hráče ve vzdálenosti 1.“*</div><ul class=\"faq-details-list\"><li>Tento efekt <strong>přebíjí veškeré modifikátory vzdálenosti</strong>! Bez ohledu na to, zda má cíl Mustanga, Skrýš, zda je na něm vyložen Plošinový vůz nebo zda jste vy pod vlivem jiné karty, pro vaši příští zahranou kartu je cíl ve vzdálenosti 1.</li><li>Můžete tak s obyčejným Coltem .45 vystřelit BANG! nebo zahrát Paniku! na kohokoli u stolu!</li></ul>"
   },
   {
     "id": "faq-24",
@@ -401,7 +401,7 @@ window.BANG_FAQ = [
       "smrtící-zranění",
       "valouny-zlata"
     ],
-    "answerHtml": "<ul class=\"faq-details-list\"><li>Hráč má 2 životy a vybuchne mu Dynamit (ztráta 3 životů -> stav -1 život).</li><li>K přežití potřebuje mít na konci vyhodnocení alespoň 1 život (tedy vyléčit 2 životy).</li><li><em> Vybavení </em>Batoh (Rucksack)* stojí 2 valouny zlata za 1 život a lze ho použít i mimo svůj tah při smrtelném zranění.</li><li>Má-li hráč <strong>4 valouny zlata</strong>, může zaplatit 2x 2 valouny zlata a <strong>vyléčit si 2 životy najednou</strong>, čímž zůstane naživu s 1 životem!</li></ul>"
+    "answerHtml": "<ul class=\"faq-details-list\"><li>Hráč má 2 životy a vybuchne mu Dynamit (ztráta 3 životů -> stav -1 život).</li><li>K přežití potřebuje mít na konci vyhodnocení alespoň 1 život (tedy vyléčit 2 životy).</li><li><em> Vybavení </em>Batoh* stojí 2 valouny zlata za 1 život a lze ho použít i mimo svůj tah při smrtelném zranění.</li><li>Má-li hráč <strong>4 valouny zlata</strong>, může zaplatit 2x 2 valouny zlata a <strong>vyléčit si 2 životy najednou</strong>, čímž zůstane naživu s 1 životem!</li></ul>"
   },
   {
     "id": "faq-33",
@@ -454,7 +454,7 @@ window.BANG_FAQ = [
   },
   {
     "id": "faq-37",
-    "question": "Výhybka (Switch): Lze vyměnit vagon, který ještě stojí ve vlaku na trati?",
+    "question": "Výhybka: Lze vyměnit vagon, který ještě stojí ve vlaku na trati?",
     "category": "Velká vlaková loupež",
     "tags": [
       "výhybka",
