@@ -66,13 +66,18 @@
       <div class="catalog-layout">
         
         <!-- Filter Sidebar -->
-        <aside class="filter-sidebar">
-          <h3>
-            <span id="label-filter-title">Filtry karet</span>
-            <button id="btn-reset-filters" class="btn-reset-filters">Resetovat</button>
-          </h3>
+        <aside class="filter-sidebar" id="filter-sidebar">
+          <div class="filter-sidebar-header" id="filter-sidebar-toggle">
+            <div class="filter-header-left">
+              <span class="filter-icon">⚙️</span>
+              <h3 id="label-filter-title">Filtry karet</h3>
+              <span id="active-filters-count" class="active-filters-badge" style="display: none;">0</span>
+              <span class="filter-toggle-arrow">▾</span>
+            </div>
+            <button id="btn-reset-filters" class="btn-reset-filters" type="button">Resetovat</button>
+          </div>
 
-          <div class="filter-groups-grid">
+          <div class="filter-groups-grid" id="filter-groups-grid">
             <!-- Expansion Filter -->
             <div class="filter-group">
               <label for="filter-expansion" id="label-expansion">Rozšíření</label>

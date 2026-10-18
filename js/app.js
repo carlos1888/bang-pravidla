@@ -38,6 +38,9 @@
     filterSuit: document.getElementById('filter-suit'),
     sortCards: document.getElementById('sort-cards'),
     btnResetFilters: document.getElementById('btn-reset-filters'),
+    filterSidebar: document.getElementById('filter-sidebar'),
+    filterSidebarToggle: document.getElementById('filter-sidebar-toggle'),
+    activeFiltersBadge: document.getElementById('active-filters-count'),
     faqMainTitle: document.getElementById('faq-main-title'),
     faqMainLead: document.getElementById('faq-main-lead'),
     faqSearch: document.getElementById('faq-search'),
@@ -444,10 +447,27 @@
     });
   }
 
+  function updateActiveFiltersBadge() {
+    if (!els.activeFiltersBadge) return;
+    let count = 0;
+    if (state.selectedExpansion !== 'all') count++;
+    if (state.selectedType !== 'all') count++;
+    if (state.selectedSuit !== 'all') count++;
+    if (state.sortBy !== 'name-asc') count++;
+
+    if (count > 0) {
+      els.activeFiltersBadge.textContent = count;
+      els.activeFiltersBadge.style.display = 'inline-block';
+    } else {
+      els.activeFiltersBadge.style.display = 'none';
+    }
+  }
+
   // =========================================================================
   // RENDER CARDS GRID (Pure Text, Color Borders, No English under Czech)
   // =========================================================================
   function renderCards() {
+    updateActiveFiltersBadge();
     if (!els.cardsGrid) return;
     const cards = getFilteredCards();
     const isEn = state.lang === 'en';
@@ -819,6 +839,16 @@
         if (els.sortCards) els.sortCards.value = 'name-asc';
 
         renderCards();
+      });
+    }
+
+    // Mobile Collapsible Filter Sidebar
+    if (els.filterSidebarToggle && els.filterSidebar) {
+      els.filterSidebarToggle.addEventListener('click', (e) => {
+        if (e.target.closest('#btn-reset-filters')) return;
+        if (window.innerWidth <= 900) {
+          els.filterSidebar.classList.toggle('is-open');
+        }
       });
     }
 
