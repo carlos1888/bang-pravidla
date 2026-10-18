@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="cs" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BANG! Dynamite Box & Legendy — Kompletní pravidla a encyklopedie karet</title>
+  <meta name="description" content="Kompletní detailní pravidla pro hraní hry BANG! s Dynamite Boxem a rozšířením Legendy. Katalog všech karet s filtry, řešitel sporných situací a interaktivní průvodce tahem.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤠</text></svg>">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="app-header">
+    <div class="header-top">
+      <a href="#katalog" class="brand">
+        <span class="brand-icon">🧨</span>
+        <div class="brand-titles">
+          <h1>BANG! DYNAMITE &amp; LEGENDY</h1>
+          <div class="subtitle">Kompletní pravidla všech rozšíření dohromady &amp; Encyklopedie karet</div>
+        </div>
+      </a>
+
+      <div class="header-actions">
+        <div class="header-search">
+          <span class="search-icon">🔍</span>
+          <input type="search" id="global-search" placeholder="Hledat kartu, postavu, pravidlo... (stiskni /)" autocomplete="off">
+        </div>
+        <button id="theme-toggle" class="btn-icon" title="Přepnout tmavý / světlý westernový režim" aria-label="Přepnout motiv">
+          <span>🌙</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- MAIN NAV TABS -->
+    <nav class="app-nav" aria-label="Hlavní navigace">
+      <button class="nav-tab active" data-tab="katalog">
+        <span>🎴</span> Katalog karet a postav
+      </button>
+      <button class="nav-tab" data-tab="pravidla">
+        <span>📖</span> Pravidla všech rozšíření
+      </button>
+      <button class="nav-tab" data-tab="faq">
+        <span>⚖️</span> Řešitel sporných situací (FAQ)
+      </button>
+      <button class="nav-tab" data-tab="tah-hrace">
+        <span>⏱️</span> Tah hráče krok za krokem
+      </button>
+      <button class="nav-tab" data-tab="pomocnik">
+        <span>⚡</span> Rychlý pomocník při hře
+      </button>
+    </nav>
+  </header>
+
+  <!-- MAIN VIEW CONTAINER -->
+  <main class="app-main">
+
+    <!-- ================================================================= -->
+    <!-- TAB 1: KATALOG KARET A POSTAV -->
+    <!-- ================================================================= -->
+    <section id="tab-katalog" class="tab-pane active">
+      <div class="catalog-layout">
+        
+        <!-- Filter Sidebar -->
+        <aside class="filter-sidebar">
+          <h3>
+            <span>Filtry karet</span>
+            <button id="btn-reset-filters" class="btn-reset-filters">Resetovat</button>
+          </h3>
+
+          <!-- Expansion Filter -->
+          <div class="filter-group">
+            <label for="filter-expansion">Rozšíření</label>
+            <select id="filter-expansion" class="filter-select">
+              <option value="all">Všechna rozšíření (234 karet)</option>
+              <option value="base">Základní hra</option>
+              <option value="dodge-city">Dodge City (Zelené karty)</option>
+              <option value="gold-rush">Zlatá horečka (Vybavení a zlato)</option>
+              <option value="armed-dangerous">Ozbrojení a nebezpeční (Oranžové)</option>
+              <option value="train-robbery">Velká vlaková loupež (Vlak a stanice)</option>
+              <option value="valley-of-shadows">Údolí stínů (CZ/SK rozšíření)</option>
+              <option value="high-noon">Pravé poledne (High Noon)</option>
+              <option value="fistful-of-cards">Pěst plná karet (Fistful)</option>
+              <option value="wild-west-show">Divoký západ (Wild West Show)</option>
+              <option value="legends">Legendy (Legendy a činy)</option>
+              <option value="dynamite-box">Dynamite Box bonusy &amp; Promo</option>
+            </select>
+          </div>
+
+          <!-- Type Filter -->
+          <div class="filter-group">
+            <label for="filter-type">Typ a barva karty</label>
+            <select id="filter-type" class="filter-select">
+              <option value="all">Všechny typy karet</option>
+              <option value="brown">🟤 Hnědé karty (okamžité)</option>
+              <option value="blue">🔵 Modré karty (vyložené ve hře)</option>
+              <option value="green">🟢 Zelené karty (Dodge City)</option>
+              <option value="orange">🟠 Oranžové karty (Nebezpečné)</option>
+              <option value="black">⚫ Černé vybavení (Zlatá horečka)</option>
+              <option value="character">🤠 Postavy (běžné i legendární)</option>
+              <option value="train">🚂 Vlak, lokomotivy a vagony</option>
+              <option value="feat">📜 Karty činů (Legendy)</option>
+              <option value="event">⚡ Globální události</option>
+              <option value="role">⭐ Karty rolí</option>
+            </select>
+          </div>
+
+          <!-- Suit Filter -->
+          <div class="filter-group">
+            <label for="filter-suit">Karetní barva</label>
+            <select id="filter-suit" class="filter-select">
+              <option value="all">Všechny barvy</option>
+              <option value="♠">♠ Piky (Spades)</option>
+              <option value="♥">♥ Srdce (Hearts)</option>
+              <option value="♦">♦ Káry (Diamonds)</option>
+              <option value="♣">♣ Kříže (Clubs)</option>
+            </select>
+          </div>
+
+          <!-- Sorting -->
+          <div class="filter-group">
+            <label for="sort-cards">Řazení</label>
+            <select id="sort-cards" class="filter-select">
+              <option value="name-asc">Název (A → Z)</option>
+              <option value="name-desc">Název (Z → A)</option>
+              <option value="expansion">Dle rozšíření</option>
+              <option value="type">Dle typu karty</option>
+            </select>
+          </div>
+        </aside>
+
+        <!-- Cards View -->
+        <div class="catalog-content">
+          <div class="results-header">
+            <div id="results-count" class="results-count">Načítání karet...</div>
+          </div>
+          <div id="cards-grid" class="cards-grid">
+            <!-- Dynamic cards injected via app.js -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- TAB 2: PRAVIDLA VŠECH ROZŠÍŘENÍ -->
+    <!-- ================================================================= -->
+    <section id="tab-pravidla" class="tab-pane">
+      <div class="rules-container">
+        
+        <!-- Sticky TOC -->
+        <aside class="rules-toc">
+          <h4>Obsah pravidel</h4>
+          <ul id="rules-toc-target" class="rules-toc-list">
+            <!-- TOC injected via app.js -->
+          </ul>
+        </aside>
+
+        <!-- Full Rules Content -->
+        <div id="rules-content-target" class="rules-articles-target">
+          <!-- Articles injected via app.js -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- TAB 3: ŘEŠITEL SPORNÝCH SITUACÍ (FAQ) -->
+    <!-- ================================================================= -->
+    <section id="tab-faq" class="tab-pane">
+      <div class="faq-search-box">
+        <h2 style="font-family: 'Georgia', serif; color: var(--color-brown); margin-bottom: 0.5rem;">
+          ⚖️ Arbitr sporných situací &amp; Pravidlové rébusy (50+ řešení)
+        </h2>
+        <p style="color: var(--text-muted); margin-bottom: 1rem;">
+          Okamžité vyhledávání v oficiálních rozhodnutích, neobvyklých kombinacích karet, sporných momentech a časových posloupnostech.
+        </p>
+        <input type="search" id="faq-search" placeholder="Zadejte otázku nebo kartu: např. Slab the Killer, Vězení, Pivo ve dvou, Vagon duchů, Bomba, Rez..." autocomplete="off">
+        
+        <div class="faq-categories">
+          <button class="faq-cat-btn active" data-category="all">Všechny kategorie</button>
+          <button class="faq-cat-btn" data-category="Boj a obrana">Boj a obrana</button>
+          <button class="faq-cat-btn" data-category="Schopnosti postav">Schopnosti postav</button>
+          <button class="faq-cat-btn" data-category="Časová posloupnost">Časová posloupnost</button>
+          <button class="faq-cat-btn" data-category="Legendy">Legendy</button>
+          <button class="faq-cat-btn" data-category="Velká vlaková loupež">Vlaková loupež</button>
+          <button class="faq-cat-btn" data-category="Ozbrojení a nebezpeční">Ozbrojení a nebezpeční</button>
+          <button class="faq-cat-btn" data-category="Zlatá horečka">Zlatá horečka</button>
+          <button class="faq-cat-btn" data-category="Globální události">Globální události</button>
+        </div>
+      </div>
+
+      <div id="faq-list" class="faq-list-container">
+        <!-- 50+ FAQ disclosures injected via app.js -->
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- TAB 4: TAH HRÁČE KROK ZA KROKEM -->
+    <!-- ================================================================= -->
+    <section id="tab-tah-hrace" class="tab-pane">
+      <div class="rules-article">
+        <h2 style="color: var(--color-brown); font-family: 'Georgia', serif;">
+          ⏱️ Interaktivní průvodce tahem hráče (Všechna rozšíření dohromady)
+        </h2>
+        <p>
+          Pokud hrajete se všemi rozšířeními současně, je dodržení správného pořadí kroků klíčové pro férovou hru. Následujte tyto kroky:
+        </p>
+
+        <div class="turn-stepper">
+          
+          <div class="turn-step-card">
+            <span class="step-badge">Fáze 0 (Před tahem)</span>
+            <h3>1. Události, Posun vlaku &amp; Časované karty na stole</h3>
+            <ul style="padding-left: 1.25rem;">
+              <li><strong>Pouze Šerif:</strong> Od 2. kola otočí novou kartu události (High Noon / Fistful) a posune lokomotivu o 1 stanici doprava (vlak táhne vagony).</li>
+              <li><strong>Události „Na začátku tahu“:</strong> Vyhodnotí se události jako <em>Pravé poledne</em> (ztráta 1 života).</li>
+              <li><strong>PŘÍSNÉ POŘADÍ ČASOVANÝCH KARET PŘED HRÁČEM:</strong>
+                <ol style="margin: 0.5rem 0 0.5rem 1.25rem;">
+                  <li><strong>1. Dynamit:</strong> Snímá na ♠ 2–9. Výbuch = 3 životy; jinak se posune doleva.</li>
+                  <li><strong>2. Vězení:</strong> Snímá na ♥ (nebo dle Legend dobrovolně odhodí ♥ kartu z ruky). Neúspěch = přeskakuje Fáze 1, 2 i 3!</li>
+                  <li><strong>3. Bomba:</strong> Snímá: ♥/♦ předá dál, ♣/♠ odebere 2 žetony (při 0 bouchne za 2 životy).</li>
+                  <li><strong>4. Chřestýš:</strong> Snímá na ♠ = ztráta 1 života. (Při neúspěchu ve Vězení se na Chřestýše nesnímá!).</li>
+                </ol>
+              </li>
+              <li><strong>Karta Mapa:</strong> Hráč se může podívat na 2 vrchní karty balíčku a 1 z nich odhodit.</li>
+            </ul>
+          </div>
+
+          <div class="turn-step-card">
+            <span class="step-badge">Fáze 1</span>
+            <h3>2. Dobrání karet do ruky</h3>
+            <ul style="padding-left: 1.25rem;">
+              <li>Standardně si doberte <strong>2 vrchní karty</strong> z dobíracího balíčku.</li>
+              <li>Aplikujte schopnosti postav: <em>Jesse Jones</em> (první z cizí ruky), <em>Pedro Ramirez</em> (první z odhozu), <em>Kit Carlson</em> (vybírá ze 3 karet), <em>Pixie Pete</em> (bere 3 karty), <em>Bill Noface</em> (1 + zranění), <em>Black Jack</em> (ukáže 2. kartu), <em>Dutch Will</em> (2 bere, 1 odhodí za 1 zlato).</li>
+            </ul>
+          </div>
+
+          <div class="turn-step-card">
+            <span class="step-badge">Fáze 2</span>
+            <h3>3. Akční fáze — Hraní karet a nákupy</h3>
+            <p>Můžete provést libovolné množství akcí v libovolném pořadí:</p>
+            <ul style="padding-left: 1.25rem;">
+              <li><strong>Běžné karty:</strong> Hnědé (okamžité), Modré (vyložení před sebe). <em>Omezení:</em> Max 1 BANG! za tah, max 1 zbraň, max 1 karta stejného jména.</li>
+              <li><strong>Zelené karty (Dodge City):</strong> Můžete odhodit kteroukoli zelenou kartu vyloženou v minulých kolech.</li>
+              <li><strong>Zlatá horečka:</strong> Kupujte vybavení z nabídky za valouny zlata; odhazujte vybavení soupeřů za cenu + 1 valoun; měňte Pivo za zlato.</li>
+              <li><strong>Velká vlaková loupež:</strong> Můžete posunout vlak o 1 stanici zdarma (pak ale MUSÍTE koupit vagon); plaťte ceny stanic a berte přiřazené vagony.</li>
+              <li><strong>Ozbrojení a nebezpeční:</strong> Vykládejte oranžové karty se 3 žetony nabití; nabíjejte karty zahráním modrých karet (+1 žeton); vylepšujte hnědé karty žetony nabití.</li>
+              <li><strong>Legendy:</strong> Vykonejte vyložený čin (položte na něj 2 své žetony slávy). Jste-li již Legendou na straně B, můžete si čin <strong>přivlastnit</strong> a ubrat jiné legendě 1 život bez možnosti obrany!</li>
+            </ul>
+          </div>
+
+          <div class="turn-step-card">
+            <span class="step-badge">Fáze 3</span>
+            <h3>4. Odhození nadbytečných karet &amp; Nabíjení</h3>
+            <ul style="padding-left: 1.25rem;">
+              <li>Váš limit karet v ruce se rovná <strong>aktuálnímu počtu vašich životů</strong>.</li>
+              <li><em>Výjimky:</em> Sean Mallory (až 10 karet), Zbraňový pás (8 karet), <strong>Pravidlo Legend pro 1 život (smíte si nechat 2 karty v ruce)</strong>.</li>
+              <li><strong>NABÍJENÍ V TÉTO FÁZI:</strong> Za každou kartu, kterou musíte kvůli limitu odhodit, přidejte <strong>1 žeton nabití</strong> na libovolnou svou Nebezpečnou kartu nebo na svou postavu!</li>
+            </ul>
+          </div>
+
+          <div class="turn-step-card">
+            <span class="step-badge">Fáze 4 (Konec tahu)</span>
+            <h3>5. Chlubení se činem (Legendy) &amp; Zrod Legendy</h3>
+            <ul style="padding-left: 1.25rem;">
+              <li><strong>Chlubení se činem:</strong> Pokud jste v tomto tahu NEVYKONALI žádný čin (i když jste byli ve Vězení!):
+                <ol style="margin: 0.3rem 0 0.3rem 1.25rem;">
+                  <li>Vyložte novou kartu činu z balíčku.</li>
+                  <li>Je-li vyloženo více než 4 činy, odhoďte ten s nejvyšším počtem žetonů.</li>
+                  <li>Položte 1 svůj žeton slávy na vyložený čin, kde ještě žádný váš žeton neleží.</li>
+                </ol>
+              </li>
+              <li><strong>ZROD LEGENDY:</strong> Umístěním svého posledního (5.) žetonu slávy se okamžitě stáváte <strong>LEGENDOU</strong>! Otočte postavu na stranu B a <strong>doplňte si životy na 3</strong> (pokud máte méně)!</li>
+              <li><strong>Konec tahu u postav:</strong> Jimmy Texas dobere 1 kartu; Don Bell snímá na možnost odehrát další celý tah.</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- TAB 5: RYCHLÝ POMOCNÍK PŘI HŘE -->
+    <!-- ================================================================= -->
+    <section id="tab-pomocnik" class="tab-pane">
+      <div class="rules-article">
+        <h2 style="color: var(--color-brown); font-family: 'Georgia', serif;">
+          ⚡ Rychlý pomocník a přehledové tabulky pro hraní u stolu
+        </h2>
+
+        <h3>1. Co se stane, když někdo zemře (Checklist vyřazení)</h3>
+        <div class="table-responsive">
+          <table class="bang-table">
+            <thead>
+              <tr>
+                <th>Prvek / Schopnost</th>
+                <th>Co se stane při smrti hráče</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Karta role</strong></td>
+                <td>Hráč ji ihned otočí lícem nahoru a ukáže všem.</td>
+              </tr>
+              <tr>
+                <td><strong>Byl to Bandita</strong></td>
+                <td>Kdokoli ho zabil (i jiný Bandita), ihned líže <strong>3 karty z dobíracího balíčku</strong>.</td>
+              </tr>
+              <tr>
+                <td><strong>Měl kartu Wanted</strong></td>
+                <td>Vrah dostane <strong>+2 karty a +1 valoun zlata</strong> navíc!</td>
+              </tr>
+              <tr>
+                <td><strong>Šerif zabil Pomocníka</strong></td>
+                <td>Šerif musí <strong>odhodit všechny své karty z ruky i ze hry</strong> (valouny zlata si ponechává).</td>
+              </tr>
+              <tr>
+                <td><strong>Vulture Sam u stolu</strong></td>
+                <td>Vezme si do ruky <strong>všechny karty zabitého</strong> (z ruky i ze stolu; vagony vyloží před sebe; černá výbava jde dospod balíčku).</td>
+              </tr>
+              <tr>
+                <td><strong>Herb Hunter u stolu</strong></td>
+                <td>Okamžitě si dobere <strong>2 karty z balíčku</strong>.</td>
+              </tr>
+              <tr>
+                <td><strong>Gregg Digger u stolu</strong></td>
+                <td>Okamžitě si vyléčí <strong>2 životy</strong> (do maxima).</td>
+              </tr>
+              <tr>
+                <td><strong>Varianta Stínoví pistolníci</strong></td>
+                <td>Hráč neumírá definitivně – vrací se v každém svém tahu jako duch s 0 životy.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>2. Výpočet vzdáleností a dostřelu</h3>
+        <div class="table-responsive">
+          <table class="bang-table">
+            <thead>
+              <tr>
+                <th>Karta / Schopnost</th>
+                <th>Efekt na vzdálenost</th>
+                <th>Poznámka</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Colt .45 (základní)</strong></td>
+                <td>Dostřel 1</td>
+                <td>Výchozí zbraň vyobrazená na desce hráče.</td>
+              </tr>
+              <tr>
+                <td><strong>Mustang / Skrýš</strong></td>
+                <td>+1 ke vzdálenosti K VÁM</td>
+                <td>Ostatní vás vidí o 1 dále. Vy vidíte ostatní normálně.</td>
+              </tr>
+              <tr>
+                <td><strong>Paul Regret</strong></td>
+                <td>+1 ke vzdálenosti K NĚMU</td>
+                <td>S reálným Mustangem je vzdálenost k němu dokonce +2.</td>
+              </tr>
+              <tr>
+                <td><strong>Hledí / Dalekohled</strong></td>
+                <td>-1 ke vzdálenosti OD VÁS</td>
+                <td>Vidíte všechny ostatní o 1 blíže (min. 1).</td>
+              </tr>
+              <tr>
+                <td><strong>Rose Doolan</strong></td>
+                <td>-1 ke vzdálenosti OD NÍ</td>
+                <td>S reálným Hledím vidí všechny o 2 blíže. V Legendách vidí všechny na 1!</td>
+              </tr>
+              <tr>
+                <td><strong>Zbraně (Schofield až Winchester)</strong></td>
+                <td>Dostřel 2 až 5</td>
+                <td><strong>POZOR:</strong> Zbraně nemění skutečnou vzdálenost, pouze dostřel BANG!.</td>
+              </tr>
+              <tr>
+                <td><strong>Zvonice (Bell Tower)</strong></td>
+                <td>Vzdálenost 1 na všechny</td>
+                <td>Za 1 žeton nabití vidíte pro příští kartu všechny na vzdálenost 1!</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>3. Pravidla pro Pivo v různých situacích</h3>
+        <div class="table-responsive">
+          <table class="bang-table">
+            <thead>
+              <tr>
+                <th>Situace</th>
+                <th>Lze zahrát Pivo?</th>
+                <th>Výsledek</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Ve svém tahu (Fáze 2)</td>
+                <td>ANO</td>
+                <td>Vyléčí 1 život (do počátečního maxima).</td>
+              </tr>
+              <tr>
+                <td>Mimo tah při ztrátě posledního života</td>
+                <td>ANO</td>
+                <td>Zabrání vyřazení ze hry (vyléčí 1 život).</td>
+              </tr>
+              <tr>
+                <td>Mimo tah při běžném zranění (zbývá život)</td>
+                <td>NE</td>
+                <td>Pivo nelze hrát mimo tah, pokud nejste na pokraji smrti!</td>
+              </tr>
+              <tr>
+                <td>Ve hře zbývají pouze 2 hráči</td>
+                <td>ANO (ale neléčí)</td>
+                <td>Běžně nemá žádný léčivý účinek. Ve Zlaté horečce dává 1 valoun zlata!</td>
+              </tr>
+              <tr>
+                <td>Karta Poslední volání (Last Call)</td>
+                <td>ANO</td>
+                <td>Léčí 1 život i ve dvou hráčích!</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- CARD DETAIL MODAL DIALOG -->
+  <div id="card-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-content">
+      <button id="modal-close" class="modal-close" aria-label="Zavřít detail">✕</button>
+      <div id="modal-body">
+        <!-- Injected via app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="app-footer">
+    <div class="footer-inner">
+      <div class="footer-info">
+        <p><strong>BANG! DYNAMITE BOX &amp; LEGENDY — Encyklopedie pravidel a karet</strong></p>
+        <p>Autor hry: Emiliano Sciarra | Vývoj: daVinci Games / dV Giochi &amp; Albi.</p>
+        <p>Tato nezávislá fanouškovská webová aplikace slouží k rychlému vyhledávání a řešení herních situací.</p>
+      </div>
+      <div class="footer-links">
+        <p><a href="https://github.com/carlos1888/bang-pravidla" target="_blank" rel="noopener">Repozitář na GitHubu</a></p>
+        <p><a href="#pravidla">Pravidla</a> • <a href="#faq">FAQ</a> • <a href="#katalog">Karty</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="js/cards-data.js"></script>
+  <script src="js/rules-data.js"></script>
+  <script src="js/faq-data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
