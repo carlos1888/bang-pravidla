@@ -850,10 +850,20 @@
 
     // Mobile Collapsible Filter Sidebar
     if (els.filterSidebarToggle && els.filterSidebar) {
-      els.filterSidebarToggle.addEventListener('click', (e) => {
-        if (e.target.closest('#btn-reset-filters')) return;
-        if (window.innerWidth <= 900) {
-          els.filterSidebar.classList.toggle('is-open');
+      const toggleFilters = (e) => {
+        if (e && e.target && e.target.closest('#btn-reset-filters')) return;
+        if (window.innerWidth <= 900 || window.matchMedia('(max-width: 900px)').matches) {
+          const isOpen = els.filterSidebar.classList.toggle('is-open');
+          els.filterSidebarToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        }
+      };
+
+      els.filterSidebarToggle.addEventListener('click', toggleFilters);
+      els.filterSidebarToggle.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          if (e.target.closest('#btn-reset-filters')) return;
+          e.preventDefault();
+          toggleFilters(e);
         }
       });
     }
