@@ -143,7 +143,7 @@ bang-pravidla/
 | **Šerif a Vagon duchů / Vězení** | Šerif nesmí mít Vězení ani Vagon duchů, a to ani přes kartu Výhybka! |
 | **Uvězněný hráč a chlubení činem** | Uvězněný hráč se na konci svého přeskočeného tahu **MŮŽE CHLUBIT ČINEM** a položit 1 žeton slávy! |
 
-*(Kompletní seznam všech 50 detailních situací je interaktivně prohledávatelný přímo ve webové aplikaci v záložce Řešitel sporných situací).*
+*(Kompletní seznam všech 50 detailních situací je interaktivně prohledávatelný přímo ve webové aplikaci v záložce FAQ).*
 
 ---
 
