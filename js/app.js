@@ -55,7 +55,8 @@
     footerText2: document.getElementById('footer-text-2'),
     footerText3: document.getElementById('footer-text-3'),
     footerRepoLink: document.getElementById('footer-repo-link'),
-    footerNavLinks: document.getElementById('footer-nav-links')
+    footerNavLinks: document.getElementById('footer-nav-links'),
+    btnScrollTop: document.getElementById('btn-scroll-top')
   };
 
   // Theme Init
@@ -118,7 +119,8 @@
       footerText2: "Autor hry: Emiliano Sciarra | Vývoj: daVinci Games / dV Giochi & Albi.",
       footerText3: "Tato nezávislá fanouškovská webová aplikace slouží k rychlému vyhledávání a řešení herních situací.",
       footerRepo: "Repozitář na GitHubu",
-      footerNav: '<a href="#pravidla">Pravidla</a> • <a href="#faq">FAQ</a> • <a href="#katalog">Karty</a>'
+      footerNav: '<a href="#pravidla">Pravidla</a> • <a href="#faq">FAQ</a> • <a href="#katalog">Karty</a>',
+      scrollTopTitle: "Zpět nahoru"
     },
     en: {
       brandTitle: "Bang! Board Game Rules",
@@ -156,7 +158,8 @@
       footerText2: "Game Author: Emiliano Sciarra | Publishing: daVinci Games / dV Giochi & Albi.",
       footerText3: "This independent fan-made web application provides instant rule reference and dispute resolution.",
       footerRepo: "GitHub Repository",
-      footerNav: '<a href="#pravidla">Rules</a> • <a href="#faq">FAQ</a> • <a href="#katalog">Cards</a>'
+      footerNav: '<a href="#pravidla">Rules</a> • <a href="#faq">FAQ</a> • <a href="#katalog">Cards</a>',
+      scrollTopTitle: "Scroll to top"
     }
   };
 
@@ -339,6 +342,12 @@
     if (els.footerText3) els.footerText3.textContent = t.footerText3;
     if (els.footerRepoLink) els.footerRepoLink.textContent = t.footerRepo;
     if (els.footerNavLinks) els.footerNavLinks.innerHTML = t.footerNav;
+
+    // Scroll to Top Button
+    if (els.btnScrollTop) {
+      els.btnScrollTop.title = t.scrollTopTitle || 'Zpět nahoru';
+      els.btnScrollTop.setAttribute('aria-label', t.scrollTopTitle || 'Zpět nahoru');
+    }
 
     // Render all components
     renderCards();
@@ -596,6 +605,30 @@
   }
 
   // =========================================================================
+  // SCROLL HELPERS (BULLETPROOF ACROSS ALL MOBILE BROWSERS & SAFARI)
+  // =========================================================================
+  function scrollToElement(targetEl, extraOffset = 14) {
+    if (!targetEl) return;
+    const header = document.querySelector('header.app-header');
+    const headerHeight = header ? header.offsetHeight : 100;
+    const rect = targetEl.getBoundingClientRect();
+    const targetY = window.pageYOffset + rect.top - headerHeight - extraOffset;
+    window.scrollTo({
+      top: Math.max(0, targetY),
+      behavior: 'smooth'
+    });
+  }
+
+  function scrollToRulesToc() {
+    const toc = document.querySelector('.rules-toc') || document.getElementById('rules-toc-header');
+    if (toc) {
+      scrollToElement(toc, 14);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
+
+  // =========================================================================
   // RENDER RULES
   // =========================================================================
   function renderRules() {
@@ -613,41 +646,18 @@
           <a href="#${sec.id}" class="rules-toc-link ${idx === 0 ? 'active' : ''}">${sec.title}</a>
         </li>
       `).join('');
-
-      els.rulesTocTarget.querySelectorAll('.rules-toc-link').forEach(link => {
-        link.addEventListener('click', (e) => {
-          e.preventDefault();
-          const targetId = link.getAttribute('href').replace('#', '');
-          const targetEl = document.getElementById(targetId);
-          if (targetEl) {
-            targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
-          els.rulesTocTarget.querySelectorAll('.rules-toc-link').forEach(l => l.classList.remove('active'));
-          link.classList.add('active');
-          link.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-        });
-      });
     }
 
     els.rulesContentTarget.innerHTML = rules.map(sec => `
       <section id="${sec.id}" class="rules-article">
         ${sec.content}
         <div class="rules-back-to-toc">
-          <button type="button" class="btn-back-to-toc">
+          <button type="button" class="btn-back-to-toc" data-action="back-to-toc">
             <span>↑</span> <span>${isEn ? 'Back to Table of Contents' : 'Zpět na obsah pravidel'}</span>
           </button>
         </div>
       </section>
     `).join('');
-
-    els.rulesContentTarget.querySelectorAll('.btn-back-to-toc').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const tocEl = document.querySelector('.rules-toc') || els.rulesTocTarget;
-        if (tocEl) {
-          tocEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      });
-    });
   }
 
   // =========================================================================
@@ -839,6 +849,50 @@
         }
       }
     });
+
+    // Delegated click for "Zpět na obsah pravidel" and TOC links
+    document.addEventListener('click', (e) => {
+      const btnBack = e.target.closest('.btn-back-to-toc');
+      if (btnBack) {
+        e.preventDefault();
+        e.stopPropagation();
+        scrollToRulesToc();
+        return;
+      }
+
+      const tocLink = e.target.closest('.rules-toc-link');
+      if (tocLink) {
+        e.preventDefault();
+        e.stopPropagation();
+        const href = tocLink.getAttribute('href') || '';
+        const targetId = href.replace('#', '');
+        const targetEl = document.getElementById(targetId);
+        if (targetEl) {
+          scrollToElement(targetEl, 12);
+        }
+        document.querySelectorAll('.rules-toc-link').forEach(l => l.classList.remove('active'));
+        tocLink.classList.add('active');
+        tocLink.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      }
+    });
+
+    // Floating Scroll-to-Top Button
+    if (els.btnScrollTop) {
+      const handleScroll = () => {
+        if (window.pageYOffset > 250) {
+          els.btnScrollTop.classList.add('visible');
+        } else {
+          els.btnScrollTop.classList.remove('visible');
+        }
+      };
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      handleScroll();
+
+      els.btnScrollTop.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
 
     window.addEventListener('hashchange', initRouting);
   }

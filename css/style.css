@@ -624,6 +624,7 @@ main.app-main {
   position: sticky;
   top: 90px;
   box-shadow: var(--shadow-sm);
+  scroll-margin-top: 120px;
 }
 
 .rules-toc h4 {
@@ -2315,3 +2316,66 @@ footer.app-footer {
     grid-template-columns: 1fr 1fr;
   }
 }
+
+/* =========================================================================
+   FLOATING SCROLL TO TOP BUTTON (MOBILE & DESKTOP)
+   ========================================================================= */
+.btn-scroll-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 1.5rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3d2314 0%, #1c0e07 100%);
+  border: 2px solid var(--accent-gold);
+  color: #ffcc00;
+  font-size: 1.25rem;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(18px) scale(0.9);
+  transition: opacity 0.25s ease, transform 0.25s ease, background 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+}
+
+.btn-scroll-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+.btn-scroll-top:hover {
+  background: linear-gradient(135deg, #5c2c16 0%, #2b1810 100%);
+  box-shadow: 0 6px 20px rgba(255, 204, 0, 0.35);
+  transform: translateY(-3px) scale(1.05);
+}
+
+.btn-scroll-top:active {
+  transform: translateY(0) scale(0.95);
+}
+
+[data-theme="dark"] .btn-scroll-top {
+  background: linear-gradient(135deg, #2b1810 0%, #120904 100%);
+  border-color: #ffcc00;
+  color: #ffcc00;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.7);
+}
+
+@media (max-width: 768px) {
+  .btn-scroll-top {
+    bottom: 1.25rem;
+    right: 1rem;
+    width: 46px;
+    height: 46px;
+    font-size: 1.15rem;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+  }
+}
+
