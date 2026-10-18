@@ -59,7 +59,8 @@
     footerText3: document.getElementById('footer-text-3'),
     footerRepoLink: document.getElementById('footer-repo-link'),
     footerNavLinks: document.getElementById('footer-nav-links'),
-    btnScrollTop: document.getElementById('btn-scroll-top')
+    btnScrollTop: document.getElementById('btn-scroll-top'),
+    scrollTopText: document.getElementById('scroll-top-text')
   };
 
   // Theme Init
@@ -123,6 +124,7 @@
       footerText3: "Tato nezávislá fanouškovská webová aplikace slouží k rychlému vyhledávání a řešení herních situací.",
       footerRepo: "Repozitář na GitHubu",
       footerNav: '<a href="#pravidla">Pravidla</a> • <a href="#faq">FAQ</a> • <a href="#katalog">Karty</a>',
+      scrollTopText: "Nahoru",
       scrollTopTitle: "Zpět nahoru"
     },
     en: {
@@ -162,6 +164,7 @@
       footerText3: "This independent fan-made web application provides instant rule reference and dispute resolution.",
       footerRepo: "GitHub Repository",
       footerNav: '<a href="#pravidla">Rules</a> • <a href="#faq">FAQ</a> • <a href="#katalog">Cards</a>',
+      scrollTopText: "Top",
       scrollTopTitle: "Scroll to top"
     }
   };
@@ -350,6 +353,9 @@
     if (els.btnScrollTop) {
       els.btnScrollTop.title = t.scrollTopTitle || 'Zpět nahoru';
       els.btnScrollTop.setAttribute('aria-label', t.scrollTopTitle || 'Zpět nahoru');
+    }
+    if (els.scrollTopText) {
+      els.scrollTopText.textContent = t.scrollTopText || (isEn ? 'Top' : 'Nahoru');
     }
 
     // Render all components
@@ -906,21 +912,26 @@
       }
     });
 
-    // Floating Scroll-to-Top Button
+    // Floating Scroll-to-Top Button (Desktop & Mobile)
     if (els.btnScrollTop) {
       const handleScroll = () => {
-        if (window.pageYOffset > 250) {
+        const scrolled = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+        if (scrolled > 150) {
           els.btnScrollTop.classList.add('visible');
         } else {
           els.btnScrollTop.classList.remove('visible');
         }
       };
       window.addEventListener('scroll', handleScroll, { passive: true });
+      document.addEventListener('scroll', handleScroll, { passive: true });
       handleScroll();
 
       els.btnScrollTop.addEventListener('click', (e) => {
         e.preventDefault();
         window.scrollTo({ top: 0, behavior: 'smooth' });
+        try {
+          document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
+        } catch (_) {}
       });
     }
 

@@ -2386,26 +2386,41 @@ footer.app-footer {
 .btn-scroll-top {
   position: fixed;
   bottom: 2rem;
-  right: 1.5rem;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
+  right: 2rem;
+  padding: 0.65rem 1.15rem;
+  border-radius: 30px;
   background: linear-gradient(135deg, #3d2314 0%, #1c0e07 100%);
   border: 2px solid var(--accent-gold);
   color: #ffcc00;
-  font-size: 1.25rem;
-  font-weight: 900;
+  font-family: inherit;
+  font-size: 0.92rem;
+  font-weight: 800;
   cursor: pointer;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
-  display: flex;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
+  display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 0.45rem;
   z-index: 999;
   opacity: 0;
   pointer-events: none;
   transform: translateY(18px) scale(0.9);
-  transition: opacity 0.25s ease, transform 0.25s ease, background 0.2s ease, box-shadow 0.2s ease;
+  transition: opacity 0.25s ease, transform 0.25s ease, background 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
   outline: none;
+  user-select: none;
+}
+
+.scroll-top-arrow {
+  font-size: 0.95rem;
+  line-height: 1;
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.scroll-top-text {
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-size: 0.85rem;
 }
 
 .btn-scroll-top.visible {
@@ -2416,19 +2431,32 @@ footer.app-footer {
 
 .btn-scroll-top:hover {
   background: linear-gradient(135deg, #5c2c16 0%, #2b1810 100%);
-  box-shadow: 0 6px 20px rgba(255, 204, 0, 0.35);
-  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 6px 22px rgba(212, 154, 0, 0.45);
+  border-color: #ffe066;
+  color: #ffffff;
+  transform: translateY(-3px) scale(1.04);
+}
+
+.btn-scroll-top:hover .scroll-top-arrow {
+  transform: translateY(-2px);
 }
 
 .btn-scroll-top:active {
-  transform: translateY(0) scale(0.95);
+  transform: translateY(0) scale(0.96);
 }
 
 [data-theme="dark"] .btn-scroll-top {
   background: linear-gradient(135deg, #2b1810 0%, #120904 100%);
   border-color: #ffcc00;
   color: #ffcc00;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+}
+
+[data-theme="dark"] .btn-scroll-top:hover {
+  background: linear-gradient(135deg, #422212 0%, #1a0c05 100%);
+  border-color: #ffe066;
+  color: #ffffff;
+  box-shadow: 0 6px 24px rgba(255, 204, 0, 0.45);
 }
 
 @media (max-width: 768px) {
@@ -2437,8 +2465,17 @@ footer.app-footer {
     right: 1rem;
     width: 46px;
     height: 46px;
-    font-size: 1.15rem;
+    padding: 0;
+    border-radius: 50%;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+  }
+
+  .scroll-top-arrow {
+    font-size: 1.15rem;
+  }
+
+  .scroll-top-text {
+    display: none;
   }
 }
 
