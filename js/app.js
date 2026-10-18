@@ -1,8 +1,8 @@
-// BANG! Dynamite Box & Legendy - Web Application Controller
+// BANG! Dynamite Box & Legendy — Web Controller (Clean Text & Rich Formatting)
 (function() {
   'use strict';
 
-  // State Management
+  // State
   const state = {
     activeTab: 'katalog',
     searchQuery: '',
@@ -21,7 +21,6 @@
     panes: document.querySelectorAll('.tab-pane'),
     globalSearch: document.getElementById('global-search'),
     themeToggle: document.getElementById('theme-toggle'),
-    // Catalog controls
     cardsGrid: document.getElementById('cards-grid'),
     resultsCount: document.getElementById('results-count'),
     filterExpansion: document.getElementById('filter-expansion'),
@@ -29,11 +28,9 @@
     filterSuit: document.getElementById('filter-suit'),
     sortCards: document.getElementById('sort-cards'),
     btnResetFilters: document.getElementById('btn-reset-filters'),
-    // FAQ controls
     faqSearch: document.getElementById('faq-search'),
     faqList: document.getElementById('faq-list'),
     faqCatBtns: document.querySelectorAll('.faq-cat-btn'),
-    // Modal
     cardModal: document.getElementById('card-modal'),
     modalBody: document.getElementById('modal-body'),
     modalClose: document.getElementById('modal-close')
@@ -56,9 +53,7 @@
 
   function updateThemeIcon(theme) {
     if (!els.themeToggle) return;
-    els.themeToggle.innerHTML = theme === 'dark' 
-      ? '<span>☀️</span>' 
-      : '<span>🌙</span>';
+    els.themeToggle.innerHTML = theme === 'dark' ? '<span>☀️</span>' : '<span>🌙</span>';
   }
 
   // Tab Navigation & Hash Routing
@@ -89,12 +84,10 @@
     if (!window.BANG_CARDS) return [];
     
     return window.BANG_CARDS.filter(card => {
-      // Expansion filter
       if (state.selectedExpansion !== 'all' && card.expansion !== state.selectedExpansion) {
         return false;
       }
       
-      // Type filter
       if (state.selectedType !== 'all') {
         if (state.selectedType === 'brown' && !['brown', 'brown-equipment'].includes(card.type)) return false;
         if (state.selectedType === 'blue' && card.type !== 'blue') return false;
@@ -108,12 +101,10 @@
         if (state.selectedType === 'role' && card.type !== 'role') return false;
       }
 
-      // Suit filter
       if (state.selectedSuit !== 'all') {
         if (!card.suit || !card.suit.includes(state.selectedSuit)) return false;
       }
 
-      // Search Query
       if (state.searchQuery.trim()) {
         const q = state.searchQuery.toLowerCase();
         const text = `${card.name} ${card.nameEn || ''} ${card.effect || ''} ${card.expansionName} ${card.typeLabel} ${(card.tags || []).join(' ')}`.toLowerCase();
@@ -130,20 +121,20 @@
     });
   }
 
-  // Render Cards Grid
+  // Render Cards Grid (Clean Text Cards with Color Borders)
   function renderCards() {
     if (!els.cardsGrid) return;
     const cards = getFilteredCards();
     
     if (els.resultsCount) {
-      els.resultsCount.textContent = `Zobrazeno ${cards.length} z celkem ${window.BANG_CARDS.length} položek`;
+      els.resultsCount.textContent = `Zobrazeno ${cards.length} z celkem ${window.BANG_CARDS.length} karet a položek`;
     }
 
     if (cards.length === 0) {
       els.cardsGrid.innerHTML = `
         <div style="grid-column: 1 / -1; text-align: center; padding: 3rem 1rem; color: var(--text-muted);">
           <div style="font-size: 3rem; margin-bottom: 0.5rem;">🌵</div>
-          <h3>Žádná karta neodpovídá zvoleným filtrům</h3>
+          <h3>Žádná položka neodpovídá zvoleným filtrům</h3>
           <p>Zkuste upravit hledaný výraz nebo resetovat filtry.</p>
         </div>
       `;
@@ -151,7 +142,6 @@
     }
 
     els.cardsGrid.innerHTML = cards.map(card => {
-      // Border class
       let borderClass = 'card-brown';
       if (card.type === 'blue') borderClass = 'card-blue';
       else if (card.type === 'green') borderClass = 'card-green';
@@ -165,21 +155,15 @@
       else if (card.type === 'feat') borderClass = 'card-feat';
       else if (card.type === 'event') borderClass = 'card-event';
 
-      // Suit color
       const isRed = card.suit === '♥' || card.suit === '♦';
       const suitClass = isRed ? 'suit-red' : 'suit-black';
 
-      // Meta pills
       const metas = [];
-      if (card.copies) metas.push(`<span class="card-meta-item meta-copies">Počet: ${card.copies}×</span>`);
+      if (card.copies) metas.push(`<span class="card-meta-item meta-copies">${card.copies}× v balíčku</span>`);
       if (card.range) metas.push(`<span class="card-meta-item">Dosah: ${card.range}</span>`);
       if (card.cost) metas.push(`<span class="card-meta-item meta-cost">${card.cost}</span>`);
       if (card.lives) metas.push(`<span class="card-meta-item" style="color: #b71c1c; font-weight: 700;">❤️ ${card.lives} životy</span>`);
-
-      // Image or visual placeholder
-      const imageHtml = card.image 
-        ? `<div class="card-image-box"><img src="${card.image}" alt="${card.name}" loading="lazy" onerror="this.style.display='none'"></div>`
-        : '';
+      if (card.timing) metas.push(`<span class="card-meta-item meta-timing">${card.timing}</span>`);
 
       return `
         <article class="bang-card ${borderClass}" data-id="${card.id}" tabindex="0" role="button" aria-label="Detail karty ${card.name}">
@@ -192,10 +176,11 @@
               <h3 class="card-title">${card.name}</h3>
               ${card.nameEn ? `<div class="card-title-en">${card.nameEn}</div>` : ''}
             </div>
-            ${imageHtml}
-            <div class="card-effect">${card.effect}</div>
+            <div class="card-effect-box">
+              ${card.effect}
+            </div>
             <div class="card-meta-list">
-              <span class="card-meta-item">${card.typeLabel}</span>
+              <span class="card-meta-item" style="font-weight: 700;">${card.typeLabel}</span>
               ${metas.join('')}
             </div>
           </div>
@@ -203,12 +188,8 @@
       `;
     }).join('');
 
-    // Attach card click handlers
     els.cardsGrid.querySelectorAll('.bang-card').forEach(el => {
-      el.addEventListener('click', () => {
-        const cardId = el.dataset.id;
-        openCardModal(cardId);
-      });
+      el.addEventListener('click', () => openCardModal(el.dataset.id));
       el.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
@@ -227,11 +208,11 @@
     const rulingsHtml = (card.rulings && card.rulings.length > 0)
       ? `
         <div style="margin-top: 1.25rem; border-top: 2px solid var(--border-color); padding-top: 1rem;">
-          <h4 style="color: var(--color-brown); margin-bottom: 0.6rem; display: flex; align-items: center; gap: 0.4rem;">
+          <h4 style="color: var(--color-brown); margin-bottom: 0.6rem; display: flex; align-items: center; gap: 0.4rem; font-size: 1.1rem;">
             <span>⚖️</span> Oficiální pravidla a přesné vyhodnocení:
           </h4>
-          <ul style="padding-left: 1.25rem; font-size: 0.95rem; line-height: 1.55;">
-            ${card.rulings.map(r => `<li style="margin-bottom: 0.4rem;">${r}</li>`).join('')}
+          <ul style="padding-left: 1.25rem; font-size: 0.96rem; line-height: 1.6;">
+            ${card.rulings.map(r => `<li style="margin-bottom: 0.5rem;">${r}</li>`).join('')}
           </ul>
         </div>
       `
@@ -239,35 +220,29 @@
 
     const tagsHtml = (card.tags && card.tags.length > 0)
       ? `
-        <div style="display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 1rem;">
-          ${card.tags.map(t => `<span class="filter-pill" style="font-size: 0.75rem; pointer-events: none;">#${t}</span>`).join('')}
+        <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.25rem;">
+          ${card.tags.map(t => `<span class="card-meta-item" style="font-size: 0.78rem;">#${t}</span>`).join('')}
         </div>
       `
       : '';
 
-    const imgFull = card.image 
-      ? `<div style="text-align: center; margin: 1rem 0;"><img src="${card.image}" style="max-height: 220px; border-radius: 8px; border: 2px solid var(--border-color); box-shadow: var(--shadow-sm);" alt="${card.name}"></div>`
-      : '';
-
     els.modalBody.innerHTML = `
-      <div style="border-bottom: 2px solid var(--border-color); padding-bottom: 0.75rem; margin-bottom: 1rem;">
+      <div style="border-bottom: 2px solid var(--border-color); padding-bottom: 0.85rem; margin-bottom: 1.2rem;">
         <span class="card-badge" style="font-size: 0.85rem; margin-bottom: 0.4rem; display: inline-block;">${card.expansionName} • ${card.typeLabel}</span>
-        <h2 style="font-size: 1.8rem; font-family: 'Georgia', serif; color: var(--text-main);">${card.name}</h2>
-        ${card.nameEn ? `<div style="color: var(--text-muted); font-style: italic;">${card.nameEn}</div>` : ''}
+        <h2 style="font-size: 2rem; font-family: 'Georgia', serif; color: var(--text-main); line-height: 1.2;">${card.name}</h2>
+        ${card.nameEn ? `<div style="color: var(--text-muted); font-style: italic; font-size: 0.95rem; margin-top: 0.2rem;">${card.nameEn}</div>` : ''}
       </div>
 
-      ${imgFull}
-
-      <div style="background: var(--bg-surface); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
-        <div style="font-weight: 700; margin-bottom: 0.3rem; color: var(--color-brown);">Efekt karty:</div>
-        <div style="font-size: 1.05rem; line-height: 1.5;">${card.effect}</div>
+      <div style="background: var(--bg-surface); padding: 1.15rem; border-radius: 8px; margin-bottom: 1.25rem; border-left: 4px solid var(--color-brown);">
+        <div style="font-weight: 700; margin-bottom: 0.4rem; color: var(--color-brown); text-transform: uppercase; font-size: 0.82rem; letter-spacing: 0.5px;">Text a funkce karty:</div>
+        <div style="font-size: 1.1rem; line-height: 1.6;">${card.effect}</div>
       </div>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.75rem; font-size: 0.88rem; margin-bottom: 1rem;">
-        ${card.timing ? `<div style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 0.6rem; border-radius: 6px;"><strong>Časování:</strong><br>${card.timing}</div>` : ''}
-        ${card.cost ? `<div style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 0.6rem; border-radius: 6px;"><strong>Cena / Podmínka:</strong><br>${card.cost}</div>` : ''}
-        ${card.range ? `<div style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 0.6rem; border-radius: 6px;"><strong>Dosah:</strong><br>${card.range}</div>` : ''}
-        ${card.copies ? `<div style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 0.6rem; border-radius: 6px;"><strong>Počet kopií:</strong><br>${card.copies}×</div>` : ''}
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.75rem; font-size: 0.9rem; margin-bottom: 1rem;">
+        ${card.timing ? `<div style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 0.65rem; border-radius: 6px;"><strong>Časování:</strong><br>${card.timing}</div>` : ''}
+        ${card.cost ? `<div style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 0.65rem; border-radius: 6px;"><strong>Cena / Podmínka:</strong><br>${card.cost}</div>` : ''}
+        ${card.range ? `<div style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 0.65rem; border-radius: 6px;"><strong>Dosah:</strong><br>${card.range}</div>` : ''}
+        ${card.copies ? `<div style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 0.65rem; border-radius: 6px;"><strong>Počet kopií:</strong><br>${card.copies}×</div>` : ''}
       </div>
 
       ${rulingsHtml}
@@ -290,7 +265,6 @@
     const tocTarget = document.getElementById('rules-toc-target');
     if (!rulesContainer || !window.BANG_RULES) return;
 
-    // Render TOC
     if (tocTarget) {
       tocTarget.innerHTML = window.BANG_RULES.map((sec, idx) => `
         <li class="rules-toc-item">
@@ -299,7 +273,6 @@
       `).join('');
     }
 
-    // Render Articles
     rulesContainer.innerHTML = window.BANG_RULES.map(sec => `
       <section id="${sec.id}" class="rules-article">
         ${sec.content}
@@ -317,7 +290,7 @@
       }
       if (state.faqQuery.trim()) {
         const q = state.faqQuery.toLowerCase();
-        const text = `${item.question} ${item.answer} ${(item.tags || []).join(' ')} ${item.category}`.toLowerCase();
+        const text = `${item.question} ${item.answerHtml} ${(item.tags || []).join(' ')} ${item.category}`.toLowerCase();
         if (!text.includes(q)) return false;
       }
       return true;
@@ -333,40 +306,34 @@
       return;
     }
 
-    // Render using modern exclusive details with name="bang-faq"
     els.faqList.innerHTML = filtered.map(item => `
       <details class="bang-disclosure" name="bang-faq" id="${item.id}">
         <summary>
           <span>${item.question}</span>
-          <span style="font-size: 0.8rem; font-weight: normal; color: var(--text-muted); background: var(--bg-surface); padding: 0.2rem 0.5rem; border-radius: 4px;">
+          <span style="font-size: 0.8rem; font-weight: normal; color: var(--text-muted); background: var(--bg-surface); padding: 0.25rem 0.55rem; border-radius: 4px; border: 1px solid var(--border-color); flex-shrink: 0;">
             ${item.category}
           </span>
         </summary>
         <div class="disclosure-body">
-          <div style="margin-bottom: 0.75rem;">
-            ${item.answer.replace(/\n/g, '<br>')}
-          </div>
-          <div style="display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.75rem; border-top: 1px dashed var(--border-color); padding-top: 0.5rem;">
-            ${(item.tags || []).map(t => `<span class="filter-pill" style="font-size: 0.75rem;">#${t}</span>`).join('')}
+          ${item.answerHtml}
+          <div style="display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 1rem; border-top: 1px dashed var(--border-color); padding-top: 0.6rem;">
+            ${(item.tags || []).map(t => `<span class="card-meta-item" style="font-size: 0.75rem;">#${t}</span>`).join('')}
           </div>
         </div>
       </details>
     `).join('');
   }
 
-  // Event Listeners Initialization
+  // Events Initialization
   function initEvents() {
-    // Nav tabs
     els.tabs.forEach(tab => {
       tab.addEventListener('click', () => setTab(tab.dataset.tab));
     });
 
-    // Theme toggle
     if (els.themeToggle) {
       els.themeToggle.addEventListener('click', toggleTheme);
     }
 
-    // Global Search Bar in Header
     if (els.globalSearch) {
       els.globalSearch.addEventListener('input', (e) => {
         state.searchQuery = e.target.value;
@@ -377,7 +344,6 @@
       });
     }
 
-    // Catalog Filter Controls
     if (els.filterExpansion) {
       els.filterExpansion.addEventListener('change', (e) => {
         state.selectedExpansion = e.target.value;
@@ -424,7 +390,6 @@
       });
     }
 
-    // FAQ Controls
     if (els.faqSearch) {
       els.faqSearch.addEventListener('input', (e) => {
         state.faqQuery = e.target.value;
@@ -441,7 +406,6 @@
       });
     });
 
-    // Modal close
     if (els.modalClose) {
       els.modalClose.addEventListener('click', closeCardModal);
     }
@@ -451,7 +415,6 @@
       });
     }
 
-    // Keyboard Shortcuts
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         closeCardModal();
@@ -467,7 +430,6 @@
     window.addEventListener('hashchange', initRouting);
   }
 
-  // Initialize Application
   document.addEventListener('DOMContentLoaded', () => {
     initTheme();
     initEvents();
