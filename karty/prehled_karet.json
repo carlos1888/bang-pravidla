@@ -1,0 +1,2642 @@
+[
+  {
+    "folder": "01_Zakladni_hra",
+    "filename": "BANG!.png",
+    "title": "BANG!",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/01_Zakladni_hra/BANG!.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 87820,
+    "size_kb": 85.8
+  },
+  {
+    "folder": "01_Zakladni_hra",
+    "filename": "BARREL.png",
+    "title": "BARREL",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/01_Zakladni_hra/BARREL.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 88442,
+    "size_kb": 86.4
+  },
+  {
+    "folder": "01_Zakladni_hra",
+    "filename": "BART CASSIDY.png",
+    "title": "BART CASSIDY",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/01_Zakladni_hra/BART CASSIDY.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 92121,
+    "size_kb": 90.0
+  },
+  {
+    "folder": "01_Zakladni_hra",
+    "filename": "BEER.png",
+    "title": "BEER",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/01_Zakladni_hra/BEER.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 80606,
+    "size_kb": 78.7
+  },
+  {
+    "folder": "01_Zakladni_hra",
+    "filename": "BLACK JACK.png",
+    "title": "BLACK JACK",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/01_Zakladni_hra/BLACK JACK.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 92169,
+    "size_kb": 90.0
+  },
+  {
+    "folder": "01_Zakladni_hra",
+    "filename": "CALAMITY JANET.png",
+    "title": "CALAMITY JANET",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/01_Zakladni_hra/CALAMITY JANET.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 87609,
+    "size_kb": 85.6
+  },
+  {
+    "folder": "01_Zakladni_hra",
+    "filename": "CAT BALOU.png",
+    "title": "CAT BALOU",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/01_Zakladni_hra/CAT BALOU.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 82175,
+    "size_kb": 80.2
+  },
+  {
+    "folder": "01_Zakladni_hra",
+    "filename": "DEPUTY SHERIFF.png",
+    "title": "DEPUTY SHERIFF",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/01_Zakladni_hra/DEPUTY SHERIFF.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 84387,
+    "size_kb": 82.4
+  },
+  {
+    "folder": "01_Zakladni_hra",
+    "filename": "DUEL.png",
+    "title": "DUEL",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/01_Zakladni_hra/DUEL.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 98355,
+    "size_kb": 96.0
+  },
+  {
+    "folder": "01_Zakladni_hra",
+    "filename": "DYNAMITE.png",
+    "title": "DYNAMITE",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/01_Zakladni_hra/DYNAMITE.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 97396,
+    "size_kb": 95.1
+  },
+  {
+    "folder": "01_Zakladni_hra",
+    "filename": "EL GRINGO.png",
+    "title": "EL GRINGO",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/01_Zakladni_hra/EL GRINGO.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 92086,
+    "size_kb": 89.9
+  },
+  {
+    "folder": "01_Zakladni_hra",
+    "filename": "GATLING.png",
+    "title": "GATLING",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/01_Zakladni_hra/GATLING.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 84479,
+    "size_kb": 82.5
+  },
+  {
+    "folder": "01_Zakladni_hra",
+    "filename": "GENERAL STORE.png",
+    "title": "GENERAL STORE",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/01_Zakladni_hra/GENERAL STORE.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 101050,
+    "size_kb": 98.7
+  },
+  {
+    "folder": "01_Zakladni_hra",
+    "filename": "INDIANS!.png",
+    "title": "INDIANS!",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/01_Zakladni_hra/INDIANS!.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 97787,
+    "size_kb": 95.5
+  },
+  {
+    "folder": "01_Zakladni_hra",
+    "filename": "JAIL.png",
+    "title": "JAIL",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/01_Zakladni_hra/JAIL.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 101195,
+    "size_kb": 98.8
+  },
+  {
+    "folder": "01_Zakladni_hra",
+    "filename": "JESSE JONES.png",
+    "title": "JESSE JONES",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/01_Zakladni_hra/JESSE JONES.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 88223,
+    "size_kb": 86.2
+  },
+  {
+    "folder": "01_Zakladni_hra",
+    "filename": "JOURDONNAIS.png",
+    "title": "JOURDONNAIS",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/01_Zakladni_hra/JOURDONNAIS.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 100645,
+    "size_kb": 98.3
+  },
+  {
+    "folder": "01_Zakladni_hra",
+    "filename": "KIT CARLSON.png",
+    "title": "KIT CARLSON",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/01_Zakladni_hra/KIT CARLSON.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 91726,
+    "size_kb": 89.6
+  },
+  {
+    "folder": "01_Zakladni_hra",
+    "filename": "LUCKY DUKE.png",
+    "title": "LUCKY DUKE",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/01_Zakladni_hra/LUCKY DUKE.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 87788,
+    "size_kb": 85.7
+  },
+  {
+    "folder": "01_Zakladni_hra",
+    "filename": "MISSED!.png",
+    "title": "MISSED!",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/01_Zakladni_hra/MISSED!.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 83880,
+    "size_kb": 81.9
+  },
+  {
+    "folder": "01_Zakladni_hra",
+    "filename": "MUSTANG.png",
+    "title": "MUSTANG",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/01_Zakladni_hra/MUSTANG.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 84966,
+    "size_kb": 83.0
+  },
+  {
+    "folder": "01_Zakladni_hra",
+    "filename": "OUTLAW.png",
+    "title": "OUTLAW",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/01_Zakladni_hra/OUTLAW.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 71123,
+    "size_kb": 69.5
+  },
+  {
+    "folder": "01_Zakladni_hra",
+    "filename": "PANIC!.png",
+    "title": "PANIC!",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/01_Zakladni_hra/PANIC!.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 85362,
+    "size_kb": 83.4
+  },
+  {
+    "folder": "01_Zakladni_hra",
+    "filename": "PAUL REGRET.png",
+    "title": "PAUL REGRET",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/01_Zakladni_hra/PAUL REGRET.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 80851,
+    "size_kb": 79.0
+  },
+  {
+    "folder": "01_Zakladni_hra",
+    "filename": "PEDRO RAMIREZ.png",
+    "title": "PEDRO RAMIREZ",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/01_Zakladni_hra/PEDRO RAMIREZ.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 84239,
+    "size_kb": 82.3
+  },
+  {
+    "folder": "01_Zakladni_hra",
+    "filename": "REMINGTON.png",
+    "title": "REMINGTON",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/01_Zakladni_hra/REMINGTON.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 62029,
+    "size_kb": 60.6
+  },
+  {
+    "folder": "01_Zakladni_hra",
+    "filename": "RENEGADE.png",
+    "title": "RENEGADE",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/01_Zakladni_hra/RENEGADE.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 78658,
+    "size_kb": 76.8
+  },
+  {
+    "folder": "01_Zakladni_hra",
+    "filename": "REV. CARABINE.png",
+    "title": "REV. CARABINE",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/01_Zakladni_hra/REV. CARABINE.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 41967,
+    "size_kb": 41.0
+  },
+  {
+    "folder": "01_Zakladni_hra",
+    "filename": "ROSE DOOLAN.png",
+    "title": "ROSE DOOLAN",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/01_Zakladni_hra/ROSE DOOLAN.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 91786,
+    "size_kb": 89.6
+  },
+  {
+    "folder": "01_Zakladni_hra",
+    "filename": "SALOON.png",
+    "title": "SALOON",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/01_Zakladni_hra/SALOON.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 89186,
+    "size_kb": 87.1
+  },
+  {
+    "folder": "01_Zakladni_hra",
+    "filename": "SCHOFIELD.png",
+    "title": "SCHOFIELD",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/01_Zakladni_hra/SCHOFIELD.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 45458,
+    "size_kb": 44.4
+  },
+  {
+    "folder": "01_Zakladni_hra",
+    "filename": "SCOPE.png",
+    "title": "SCOPE",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/01_Zakladni_hra/SCOPE.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 120635,
+    "size_kb": 117.8
+  },
+  {
+    "folder": "01_Zakladni_hra",
+    "filename": "SHERIFF.png",
+    "title": "SHERIFF",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/01_Zakladni_hra/SHERIFF.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 90965,
+    "size_kb": 88.8
+  },
+  {
+    "folder": "01_Zakladni_hra",
+    "filename": "SID KETCHUM.png",
+    "title": "SID KETCHUM",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/01_Zakladni_hra/SID KETCHUM.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 87940,
+    "size_kb": 85.9
+  },
+  {
+    "folder": "01_Zakladni_hra",
+    "filename": "SLAB THE KILLER.png",
+    "title": "SLAB THE KILLER",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/01_Zakladni_hra/SLAB THE KILLER.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 89090,
+    "size_kb": 87.0
+  },
+  {
+    "folder": "01_Zakladni_hra",
+    "filename": "STAGECOACH.png",
+    "title": "STAGECOACH",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/01_Zakladni_hra/STAGECOACH.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 81587,
+    "size_kb": 79.7
+  },
+  {
+    "folder": "01_Zakladni_hra",
+    "filename": "SUZY LAFAYETTE.png",
+    "title": "SUZY LAFAYETTE",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/01_Zakladni_hra/SUZY LAFAYETTE.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 88901,
+    "size_kb": 86.8
+  },
+  {
+    "folder": "01_Zakladni_hra",
+    "filename": "VOLCANIC.png",
+    "title": "VOLCANIC",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/01_Zakladni_hra/VOLCANIC.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 47123,
+    "size_kb": 46.0
+  },
+  {
+    "folder": "01_Zakladni_hra",
+    "filename": "VULTURE SAM.png",
+    "title": "VULTURE SAM",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/01_Zakladni_hra/VULTURE SAM.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 92930,
+    "size_kb": 90.8
+  },
+  {
+    "folder": "01_Zakladni_hra",
+    "filename": "WELLS FARGO.png",
+    "title": "WELLS FARGO",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/01_Zakladni_hra/WELLS FARGO.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 88665,
+    "size_kb": 86.6
+  },
+  {
+    "folder": "01_Zakladni_hra",
+    "filename": "WILLY THE KID.png",
+    "title": "WILLY THE KID",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/01_Zakladni_hra/WILLY THE KID.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 82994,
+    "size_kb": 81.0
+  },
+  {
+    "folder": "01_Zakladni_hra",
+    "filename": "WINCHESTER.png",
+    "title": "WINCHESTER",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/01_Zakladni_hra/WINCHESTER.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 42307,
+    "size_kb": 41.3
+  },
+  {
+    "folder": "02_Mesto_duchu",
+    "filename": "APACHE KID.png",
+    "title": "APACHE KID",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/02_Mesto_duchu/APACHE KID.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 81784,
+    "size_kb": 79.9
+  },
+  {
+    "folder": "02_Mesto_duchu",
+    "filename": "BELLE STAR.png",
+    "title": "BELLE STAR",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/02_Mesto_duchu/BELLE STAR.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 85584,
+    "size_kb": 83.6
+  },
+  {
+    "folder": "02_Mesto_duchu",
+    "filename": "BIBLE.png",
+    "title": "BIBLE",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/02_Mesto_duchu/BIBLE.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 122133,
+    "size_kb": 119.3
+  },
+  {
+    "folder": "02_Mesto_duchu",
+    "filename": "BILL NOFACE.png",
+    "title": "BILL NOFACE",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/02_Mesto_duchu/BILL NOFACE.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 111755,
+    "size_kb": 109.1
+  },
+  {
+    "folder": "02_Mesto_duchu",
+    "filename": "BINOCULAR.png",
+    "title": "BINOCULAR",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/02_Mesto_duchu/BINOCULAR.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 90409,
+    "size_kb": 88.3
+  },
+  {
+    "folder": "02_Mesto_duchu",
+    "filename": "BRAWL.png",
+    "title": "BRAWL",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/02_Mesto_duchu/BRAWL.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 89772,
+    "size_kb": 87.7
+  },
+  {
+    "folder": "02_Mesto_duchu",
+    "filename": "BUFFALO RIFLE.png",
+    "title": "BUFFALO RIFLE",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/02_Mesto_duchu/BUFFALO RIFLE.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 149606,
+    "size_kb": 146.1
+  },
+  {
+    "folder": "02_Mesto_duchu",
+    "filename": "CAN CAN.png",
+    "title": "CAN CAN",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/02_Mesto_duchu/CAN CAN.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 137077,
+    "size_kb": 133.9
+  },
+  {
+    "folder": "02_Mesto_duchu",
+    "filename": "CANTEEN.png",
+    "title": "CANTEEN",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/02_Mesto_duchu/CANTEEN.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 139043,
+    "size_kb": 135.8
+  },
+  {
+    "folder": "02_Mesto_duchu",
+    "filename": "CHUCK WENGAM.png",
+    "title": "CHUCK WENGAM",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/02_Mesto_duchu/CHUCK WENGAM.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 122021,
+    "size_kb": 119.2
+  },
+  {
+    "folder": "02_Mesto_duchu",
+    "filename": "CONESTOGA.png",
+    "title": "CONESTOGA",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/02_Mesto_duchu/CONESTOGA.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 132243,
+    "size_kb": 129.1
+  },
+  {
+    "folder": "02_Mesto_duchu",
+    "filename": "DERRINGER.png",
+    "title": "DERRINGER",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/02_Mesto_duchu/DERRINGER.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 129329,
+    "size_kb": 126.3
+  },
+  {
+    "folder": "02_Mesto_duchu",
+    "filename": "DOC HOLYDAY.png",
+    "title": "DOC HOLYDAY",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/02_Mesto_duchu/DOC HOLYDAY.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 133240,
+    "size_kb": 130.1
+  },
+  {
+    "folder": "02_Mesto_duchu",
+    "filename": "DODGE.png",
+    "title": "DODGE",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/02_Mesto_duchu/DODGE.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 72446,
+    "size_kb": 70.7
+  },
+  {
+    "folder": "02_Mesto_duchu",
+    "filename": "ELENA FUENTE.png",
+    "title": "ELENA FUENTE",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/02_Mesto_duchu/ELENA FUENTE.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 108587,
+    "size_kb": 106.0
+  },
+  {
+    "folder": "02_Mesto_duchu",
+    "filename": "GREG DIGGER.png",
+    "title": "GREG DIGGER",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/02_Mesto_duchu/GREG DIGGER.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 118949,
+    "size_kb": 116.2
+  },
+  {
+    "folder": "02_Mesto_duchu",
+    "filename": "HERB HUNTER.png",
+    "title": "HERB HUNTER",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/02_Mesto_duchu/HERB HUNTER.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 120569,
+    "size_kb": 117.7
+  },
+  {
+    "folder": "02_Mesto_duchu",
+    "filename": "HIDEOUT.png",
+    "title": "HIDEOUT",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/02_Mesto_duchu/HIDEOUT.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 90003,
+    "size_kb": 87.9
+  },
+  {
+    "folder": "02_Mesto_duchu",
+    "filename": "HOWITZER.png",
+    "title": "HOWITZER",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/02_Mesto_duchu/HOWITZER.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 137317,
+    "size_kb": 134.1
+  },
+  {
+    "folder": "02_Mesto_duchu",
+    "filename": "IRON PLATE.png",
+    "title": "IRON PLATE",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/02_Mesto_duchu/IRON PLATE.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 131332,
+    "size_kb": 128.3
+  },
+  {
+    "folder": "02_Mesto_duchu",
+    "filename": "JOSÉ DELGADO.png",
+    "title": "JOSÉ DELGADO",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/02_Mesto_duchu/JOSÉ DELGADO.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 127813,
+    "size_kb": 124.8
+  },
+  {
+    "folder": "02_Mesto_duchu",
+    "filename": "KNIFE.png",
+    "title": "KNIFE",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/02_Mesto_duchu/KNIFE.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 105631,
+    "size_kb": 103.2
+  },
+  {
+    "folder": "02_Mesto_duchu",
+    "filename": "MOLLY STARK.png",
+    "title": "MOLLY STARK",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/02_Mesto_duchu/MOLLY STARK.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 112836,
+    "size_kb": 110.2
+  },
+  {
+    "folder": "02_Mesto_duchu",
+    "filename": "PAT BRENNAN.png",
+    "title": "PAT BRENNAN",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/02_Mesto_duchu/PAT BRENNAN.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 121854,
+    "size_kb": 119.0
+  },
+  {
+    "folder": "02_Mesto_duchu",
+    "filename": "PEPPERBOX.png",
+    "title": "PEPPERBOX",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/02_Mesto_duchu/PEPPERBOX.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 99791,
+    "size_kb": 97.5
+  },
+  {
+    "folder": "02_Mesto_duchu",
+    "filename": "PIXIE PETE.png",
+    "title": "PIXIE PETE",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/02_Mesto_duchu/PIXIE PETE.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 112502,
+    "size_kb": 109.9
+  },
+  {
+    "folder": "02_Mesto_duchu",
+    "filename": "PONY EXPRESS.png",
+    "title": "PONY EXPRESS",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/02_Mesto_duchu/PONY EXPRESS.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 96213,
+    "size_kb": 94.0
+  },
+  {
+    "folder": "02_Mesto_duchu",
+    "filename": "PUNCH.png",
+    "title": "PUNCH",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/02_Mesto_duchu/PUNCH.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 131272,
+    "size_kb": 128.2
+  },
+  {
+    "folder": "02_Mesto_duchu",
+    "filename": "RAG TIME.png",
+    "title": "RAG TIME",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/02_Mesto_duchu/RAG TIME.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 129351,
+    "size_kb": 126.3
+  },
+  {
+    "folder": "02_Mesto_duchu",
+    "filename": "SEAN MALLORY.png",
+    "title": "SEAN MALLORY",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/02_Mesto_duchu/SEAN MALLORY.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 117316,
+    "size_kb": 114.6
+  },
+  {
+    "folder": "02_Mesto_duchu",
+    "filename": "SOMBRERO.png",
+    "title": "SOMBRERO",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/02_Mesto_duchu/SOMBRERO.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 75381,
+    "size_kb": 73.6
+  },
+  {
+    "folder": "02_Mesto_duchu",
+    "filename": "SPRINGFIELD.png",
+    "title": "SPRINGFIELD",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/02_Mesto_duchu/SPRINGFIELD.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 140136,
+    "size_kb": 136.9
+  },
+  {
+    "folder": "02_Mesto_duchu",
+    "filename": "TEN GALLON HAT.png",
+    "title": "TEN GALLON HAT",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/02_Mesto_duchu/TEN GALLON HAT.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 70838,
+    "size_kb": 69.2
+  },
+  {
+    "folder": "02_Mesto_duchu",
+    "filename": "TEQUILA JOE.png",
+    "title": "TEQUILA JOE",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/02_Mesto_duchu/TEQUILA JOE.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 121297,
+    "size_kb": 118.5
+  },
+  {
+    "folder": "02_Mesto_duchu",
+    "filename": "TEQUILA.png",
+    "title": "TEQUILA",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/02_Mesto_duchu/TEQUILA.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 115098,
+    "size_kb": 112.4
+  },
+  {
+    "folder": "02_Mesto_duchu",
+    "filename": "VERA CUSTER.png",
+    "title": "VERA CUSTER",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/02_Mesto_duchu/VERA CUSTER.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 114669,
+    "size_kb": 112.0
+  },
+  {
+    "folder": "02_Mesto_duchu",
+    "filename": "WHISKY.png",
+    "title": "WHISKY",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/02_Mesto_duchu/WHISKY.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 134941,
+    "size_kb": 131.8
+  },
+  {
+    "folder": "03_Zlata_horecka",
+    "filename": "BOOTS.png",
+    "title": "BOOTS",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/03_Zlata_horecka/BOOTS.png",
+    "width": 252,
+    "height": 389,
+    "size_bytes": 118958,
+    "size_kb": 116.2
+  },
+  {
+    "folder": "03_Zlata_horecka",
+    "filename": "BOTTLE.png",
+    "title": "BOTTLE",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/03_Zlata_horecka/BOTTLE.png",
+    "width": 252,
+    "height": 389,
+    "size_bytes": 129688,
+    "size_kb": 126.6
+  },
+  {
+    "folder": "03_Zlata_horecka",
+    "filename": "CALUMET.png",
+    "title": "CALUMET",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/03_Zlata_horecka/CALUMET.png",
+    "width": 252,
+    "height": 389,
+    "size_bytes": 129123,
+    "size_kb": 126.1
+  },
+  {
+    "folder": "03_Zlata_horecka",
+    "filename": "DON BELL.png",
+    "title": "DON BELL",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/03_Zlata_horecka/DON BELL.png",
+    "width": 252,
+    "height": 389,
+    "size_bytes": 137527,
+    "size_kb": 134.3
+  },
+  {
+    "folder": "03_Zlata_horecka",
+    "filename": "DUTCH WILL.png",
+    "title": "DUTCH WILL",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/03_Zlata_horecka/DUTCH WILL.png",
+    "width": 252,
+    "height": 389,
+    "size_bytes": 133671,
+    "size_kb": 130.5
+  },
+  {
+    "folder": "03_Zlata_horecka",
+    "filename": "GOLD PAN.png",
+    "title": "GOLD PAN",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/03_Zlata_horecka/GOLD PAN.png",
+    "width": 252,
+    "height": 389,
+    "size_bytes": 147999,
+    "size_kb": 144.5
+  },
+  {
+    "folder": "03_Zlata_horecka",
+    "filename": "GOLD RUSH (equipment).png",
+    "title": "GOLD RUSH (equipment)",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/03_Zlata_horecka/GOLD RUSH (equipment).png",
+    "width": 252,
+    "height": 389,
+    "size_bytes": 148894,
+    "size_kb": 145.4
+  },
+  {
+    "folder": "03_Zlata_horecka",
+    "filename": "GUN BELT.png",
+    "title": "GUN BELT",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/03_Zlata_horecka/GUN BELT.png",
+    "width": 252,
+    "height": 389,
+    "size_bytes": 130184,
+    "size_kb": 127.1
+  },
+  {
+    "folder": "03_Zlata_horecka",
+    "filename": "HORSESHOE.png",
+    "title": "HORSESHOE",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/03_Zlata_horecka/HORSESHOE.png",
+    "width": 252,
+    "height": 389,
+    "size_bytes": 136005,
+    "size_kb": 132.8
+  },
+  {
+    "folder": "03_Zlata_horecka",
+    "filename": "JACKY MURIETA.png",
+    "title": "JACKY MURIETA",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/03_Zlata_horecka/JACKY MURIETA.png",
+    "width": 252,
+    "height": 389,
+    "size_bytes": 136943,
+    "size_kb": 133.7
+  },
+  {
+    "folder": "03_Zlata_horecka",
+    "filename": "JOSH McCLOUD.png",
+    "title": "JOSH McCLOUD",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/03_Zlata_horecka/JOSH McCLOUD.png",
+    "width": 252,
+    "height": 389,
+    "size_bytes": 134516,
+    "size_kb": 131.4
+  },
+  {
+    "folder": "03_Zlata_horecka",
+    "filename": "LUCKY CHARM.png",
+    "title": "LUCKY CHARM",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/03_Zlata_horecka/LUCKY CHARM.png",
+    "width": 252,
+    "height": 389,
+    "size_bytes": 132265,
+    "size_kb": 129.2
+  },
+  {
+    "folder": "03_Zlata_horecka",
+    "filename": "MADAM YTO.png",
+    "title": "MADAM YTO",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/03_Zlata_horecka/MADAM YTO.png",
+    "width": 252,
+    "height": 389,
+    "size_bytes": 124740,
+    "size_kb": 121.8
+  },
+  {
+    "folder": "03_Zlata_horecka",
+    "filename": "PARDNER.png",
+    "title": "PARDNER",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/03_Zlata_horecka/PARDNER.png",
+    "width": 252,
+    "height": 389,
+    "size_bytes": 144574,
+    "size_kb": 141.2
+  },
+  {
+    "folder": "03_Zlata_horecka",
+    "filename": "PICKAXE.png",
+    "title": "PICKAXE",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/03_Zlata_horecka/PICKAXE.png",
+    "width": 252,
+    "height": 389,
+    "size_bytes": 133988,
+    "size_kb": 130.8
+  },
+  {
+    "folder": "03_Zlata_horecka",
+    "filename": "PRETTY LUZENA.png",
+    "title": "PRETTY LUZENA",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/03_Zlata_horecka/PRETTY LUZENA.png",
+    "width": 252,
+    "height": 389,
+    "size_bytes": 122221,
+    "size_kb": 119.4
+  },
+  {
+    "folder": "03_Zlata_horecka",
+    "filename": "RADDIE SNAKE.png",
+    "title": "RADDIE SNAKE",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/03_Zlata_horecka/RADDIE SNAKE.png",
+    "width": 252,
+    "height": 389,
+    "size_bytes": 137718,
+    "size_kb": 134.5
+  },
+  {
+    "folder": "03_Zlata_horecka",
+    "filename": "RHUM.png",
+    "title": "RHUM",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/03_Zlata_horecka/RHUM.png",
+    "width": 252,
+    "height": 389,
+    "size_bytes": 115376,
+    "size_kb": 112.7
+  },
+  {
+    "folder": "03_Zlata_horecka",
+    "filename": "RUCKSACK.png",
+    "title": "RUCKSACK",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/03_Zlata_horecka/RUCKSACK.png",
+    "width": 252,
+    "height": 389,
+    "size_bytes": 136533,
+    "size_kb": 133.3
+  },
+  {
+    "folder": "03_Zlata_horecka",
+    "filename": "SHADOW RENEGADE.png",
+    "title": "SHADOW RENEGADE",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/03_Zlata_horecka/SHADOW RENEGADE.png",
+    "width": 252,
+    "height": 389,
+    "size_bytes": 140166,
+    "size_kb": 136.9
+  },
+  {
+    "folder": "03_Zlata_horecka",
+    "filename": "SHOT.png",
+    "title": "SHOT",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/03_Zlata_horecka/SHOT.png",
+    "width": 252,
+    "height": 389,
+    "size_bytes": 138454,
+    "size_kb": 135.2
+  },
+  {
+    "folder": "03_Zlata_horecka",
+    "filename": "SIMEON PICOS.png",
+    "title": "SIMEON PICOS",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/03_Zlata_horecka/SIMEON PICOS.png",
+    "width": 252,
+    "height": 389,
+    "size_bytes": 123282,
+    "size_kb": 120.4
+  },
+  {
+    "folder": "03_Zlata_horecka",
+    "filename": "UNION PACIFIC.png",
+    "title": "UNION PACIFIC",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/03_Zlata_horecka/UNION PACIFIC.png",
+    "width": 252,
+    "height": 389,
+    "size_bytes": 134844,
+    "size_kb": 131.7
+  },
+  {
+    "folder": "03_Zlata_horecka",
+    "filename": "WANTED.png",
+    "title": "WANTED",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/03_Zlata_horecka/WANTED.png",
+    "width": 252,
+    "height": 389,
+    "size_bytes": 145781,
+    "size_kb": 142.4
+  },
+  {
+    "folder": "04_Ozbrojeni_a_nebezpecni",
+    "filename": "A LITTLE NIP.png",
+    "title": "A LITTLE NIP",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/04_Ozbrojeni_a_nebezpecni/A LITTLE NIP.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 108650,
+    "size_kb": 106.1
+  },
+  {
+    "folder": "04_Ozbrojeni_a_nebezpecni",
+    "filename": "ACE UP THE SLEEVE.png",
+    "title": "ACE UP THE SLEEVE",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/04_Ozbrojeni_a_nebezpecni/ACE UP THE SLEEVE.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 103705,
+    "size_kb": 101.3
+  },
+  {
+    "folder": "04_Ozbrojeni_a_nebezpecni",
+    "filename": "AL PREACHER.png",
+    "title": "AL PREACHER",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/04_Ozbrojeni_a_nebezpecni/AL PREACHER.png",
+    "width": 210,
+    "height": 327,
+    "size_bytes": 97473,
+    "size_kb": 95.2
+  },
+  {
+    "folder": "04_Ozbrojeni_a_nebezpecni",
+    "filename": "ARROW.png",
+    "title": "ARROW",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/04_Ozbrojeni_a_nebezpecni/ARROW.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 101217,
+    "size_kb": 98.8
+  },
+  {
+    "folder": "04_Ozbrojeni_a_nebezpecni",
+    "filename": "BANDOLIER.png",
+    "title": "BANDOLIER",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/04_Ozbrojeni_a_nebezpecni/BANDOLIER.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 128612,
+    "size_kb": 125.6
+  },
+  {
+    "folder": "04_Ozbrojeni_a_nebezpecni",
+    "filename": "BASS GREEVES.png",
+    "title": "BASS GREEVES",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/04_Ozbrojeni_a_nebezpecni/BASS GREEVES.png",
+    "width": 210,
+    "height": 327,
+    "size_bytes": 97429,
+    "size_kb": 95.1
+  },
+  {
+    "folder": "04_Ozbrojeni_a_nebezpecni",
+    "filename": "BEER KEG.png",
+    "title": "BEER KEG",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/04_Ozbrojeni_a_nebezpecni/BEER KEG.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 121689,
+    "size_kb": 118.8
+  },
+  {
+    "folder": "04_Ozbrojeni_a_nebezpecni",
+    "filename": "BELL TOWER.png",
+    "title": "BELL TOWER",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/04_Ozbrojeni_a_nebezpecni/BELL TOWER.png",
+    "width": 210,
+    "height": 327,
+    "size_bytes": 85751,
+    "size_kb": 83.7
+  },
+  {
+    "folder": "04_Ozbrojeni_a_nebezpecni",
+    "filename": "BIG FIFTY.png",
+    "title": "BIG FIFTY",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/04_Ozbrojeni_a_nebezpecni/BIG FIFTY.png",
+    "width": 210,
+    "height": 327,
+    "size_bytes": 56030,
+    "size_kb": 54.7
+  },
+  {
+    "folder": "04_Ozbrojeni_a_nebezpecni",
+    "filename": "BLOODY MARY.png",
+    "title": "BLOODY MARY",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/04_Ozbrojeni_a_nebezpecni/BLOODY MARY.png",
+    "width": 210,
+    "height": 327,
+    "size_bytes": 90078,
+    "size_kb": 88.0
+  },
+  {
+    "folder": "04_Ozbrojeni_a_nebezpecni",
+    "filename": "BOMB.png",
+    "title": "BOMB",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/04_Ozbrojeni_a_nebezpecni/BOMB.png",
+    "width": 210,
+    "height": 327,
+    "size_bytes": 90392,
+    "size_kb": 88.3
+  },
+  {
+    "folder": "04_Ozbrojeni_a_nebezpecni",
+    "filename": "BUNTLINE SPECIAL.png",
+    "title": "BUNTLINE SPECIAL",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/04_Ozbrojeni_a_nebezpecni/BUNTLINE SPECIAL.png",
+    "width": 210,
+    "height": 327,
+    "size_bytes": 64552,
+    "size_kb": 63.0
+  },
+  {
+    "folder": "04_Ozbrojeni_a_nebezpecni",
+    "filename": "CARAVAN.png",
+    "title": "CARAVAN",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/04_Ozbrojeni_a_nebezpecni/CARAVAN.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 107287,
+    "size_kb": 104.8
+  },
+  {
+    "folder": "04_Ozbrojeni_a_nebezpecni",
+    "filename": "CRATE.png",
+    "title": "CRATE",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/04_Ozbrojeni_a_nebezpecni/CRATE.png",
+    "width": 210,
+    "height": 327,
+    "size_bytes": 85467,
+    "size_kb": 83.5
+  },
+  {
+    "folder": "04_Ozbrojeni_a_nebezpecni",
+    "filename": "DOUBLE BARREL.png",
+    "title": "DOUBLE BARREL",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/04_Ozbrojeni_a_nebezpecni/DOUBLE BARREL.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 61523,
+    "size_kb": 60.1
+  },
+  {
+    "folder": "04_Ozbrojeni_a_nebezpecni",
+    "filename": "DUCK!.png",
+    "title": "DUCK!",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/04_Ozbrojeni_a_nebezpecni/DUCK!.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 119418,
+    "size_kb": 116.6
+  },
+  {
+    "folder": "04_Ozbrojeni_a_nebezpecni",
+    "filename": "FLINTLOCK.png",
+    "title": "FLINTLOCK",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/04_Ozbrojeni_a_nebezpecni/FLINTLOCK.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 107986,
+    "size_kb": 105.5
+  },
+  {
+    "folder": "04_Ozbrojeni_a_nebezpecni",
+    "filename": "FRANKIE CANTON.png",
+    "title": "FRANKIE CANTON",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/04_Ozbrojeni_a_nebezpecni/FRANKIE CANTON.png",
+    "width": 210,
+    "height": 327,
+    "size_bytes": 83244,
+    "size_kb": 81.3
+  },
+  {
+    "folder": "04_Ozbrojeni_a_nebezpecni",
+    "filename": "JULIE CUTTER.png",
+    "title": "JULIE CUTTER",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/04_Ozbrojeni_a_nebezpecni/JULIE CUTTER.png",
+    "width": 210,
+    "height": 327,
+    "size_bytes": 94720,
+    "size_kb": 92.5
+  },
+  {
+    "folder": "04_Ozbrojeni_a_nebezpecni",
+    "filename": "LOCK PICK.png",
+    "title": "LOCK PICK",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/04_Ozbrojeni_a_nebezpecni/LOCK PICK.png",
+    "width": 210,
+    "height": 327,
+    "size_bytes": 101068,
+    "size_kb": 98.7
+  },
+  {
+    "folder": "04_Ozbrojeni_a_nebezpecni",
+    "filename": "MEXICALI KID.png",
+    "title": "MEXICALI KID",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/04_Ozbrojeni_a_nebezpecni/MEXICALI KID.png",
+    "width": 210,
+    "height": 327,
+    "size_bytes": 87456,
+    "size_kb": 85.4
+  },
+  {
+    "folder": "04_Ozbrojeni_a_nebezpecni",
+    "filename": "MS. ABIGAIL.png",
+    "title": "MS. ABIGAIL",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/04_Ozbrojeni_a_nebezpecni/MS. ABIGAIL.png",
+    "width": 210,
+    "height": 327,
+    "size_bytes": 91767,
+    "size_kb": 89.6
+  },
+  {
+    "folder": "04_Ozbrojeni_a_nebezpecni",
+    "filename": "QUICK SHOT.png",
+    "title": "QUICK SHOT",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/04_Ozbrojeni_a_nebezpecni/QUICK SHOT.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 111933,
+    "size_kb": 109.3
+  },
+  {
+    "folder": "04_Ozbrojeni_a_nebezpecni",
+    "filename": "RED RINGO.png",
+    "title": "RED RINGO",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/04_Ozbrojeni_a_nebezpecni/RED RINGO.png",
+    "width": 210,
+    "height": 327,
+    "size_bytes": 88536,
+    "size_kb": 86.5
+  },
+  {
+    "folder": "04_Ozbrojeni_a_nebezpecni",
+    "filename": "RELOADING.png",
+    "title": "RELOADING",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/04_Ozbrojeni_a_nebezpecni/RELOADING.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 108800,
+    "size_kb": 106.2
+  },
+  {
+    "folder": "04_Ozbrojeni_a_nebezpecni",
+    "filename": "RUST.png",
+    "title": "RUST",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/04_Ozbrojeni_a_nebezpecni/RUST.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 101264,
+    "size_kb": 98.9
+  },
+  {
+    "folder": "04_Ozbrojeni_a_nebezpecni",
+    "filename": "SQUAW.png",
+    "title": "SQUAW",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/04_Ozbrojeni_a_nebezpecni/SQUAW.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 105714,
+    "size_kb": 103.2
+  },
+  {
+    "folder": "04_Ozbrojeni_a_nebezpecni",
+    "filename": "THUNDERER.png",
+    "title": "THUNDERER",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/04_Ozbrojeni_a_nebezpecni/THUNDERER.png",
+    "width": 210,
+    "height": 327,
+    "size_bytes": 60001,
+    "size_kb": 58.6
+  },
+  {
+    "folder": "04_Ozbrojeni_a_nebezpecni",
+    "filename": "TUMBLEWEED.png",
+    "title": "TUMBLEWEED",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/04_Ozbrojeni_a_nebezpecni/TUMBLEWEED.png",
+    "width": 210,
+    "height": 327,
+    "size_bytes": 92130,
+    "size_kb": 90.0
+  },
+  {
+    "folder": "04_Ozbrojeni_a_nebezpecni",
+    "filename": "WHIP.png",
+    "title": "WHIP",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/04_Ozbrojeni_a_nebezpecni/WHIP.png",
+    "width": 210,
+    "height": 327,
+    "size_bytes": 90809,
+    "size_kb": 88.7
+  },
+  {
+    "folder": "05_Velka_vlakova_loupez",
+    "filename": "BAGGAGE CAR.png",
+    "title": "BAGGAGE CAR",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/05_Velka_vlakova_loupez/BAGGAGE CAR.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 106791,
+    "size_kb": 104.3
+  },
+  {
+    "folder": "05_Velka_vlakova_loupez",
+    "filename": "BLANK STATION.png",
+    "title": "BLANK STATION",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/05_Velka_vlakova_loupez/BLANK STATION.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 47379,
+    "size_kb": 46.3
+  },
+  {
+    "folder": "05_Velka_vlakova_loupez",
+    "filename": "Boom Town.png",
+    "title": "Boom Town",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/05_Velka_vlakova_loupez/Boom Town.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 82446,
+    "size_kb": 80.5
+  },
+  {
+    "folder": "05_Velka_vlakova_loupez",
+    "filename": "CABOOSE.png",
+    "title": "CABOOSE",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/05_Velka_vlakova_loupez/CABOOSE.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 100456,
+    "size_kb": 98.1
+  },
+  {
+    "folder": "05_Velka_vlakova_loupez",
+    "filename": "CATTLE TRUCK.png",
+    "title": "CATTLE TRUCK",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/05_Velka_vlakova_loupez/CATTLE TRUCK.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 92648,
+    "size_kb": 90.5
+  },
+  {
+    "folder": "05_Velka_vlakova_loupez",
+    "filename": "CIRCUS WAGON.png",
+    "title": "CIRCUS WAGON",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/05_Velka_vlakova_loupez/CIRCUS WAGON.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 108346,
+    "size_kb": 105.8
+  },
+  {
+    "folder": "05_Velka_vlakova_loupez",
+    "filename": "COAL HOPPER.png",
+    "title": "COAL HOPPER",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/05_Velka_vlakova_loupez/COAL HOPPER.png",
+    "width": 210,
+    "height": 327,
+    "size_bytes": 96933,
+    "size_kb": 94.7
+  },
+  {
+    "folder": "05_Velka_vlakova_loupez",
+    "filename": "Cactus.png",
+    "title": "Cactus",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/05_Velka_vlakova_loupez/Cactus.png",
+    "width": 210,
+    "height": 327,
+    "size_bytes": 76831,
+    "size_kb": 75.0
+  },
+  {
+    "folder": "05_Velka_vlakova_loupez",
+    "filename": "Catico.png",
+    "title": "Catico",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/05_Velka_vlakova_loupez/Catico.png",
+    "width": 210,
+    "height": 327,
+    "size_bytes": 84018,
+    "size_kb": 82.0
+  },
+  {
+    "folder": "05_Velka_vlakova_loupez",
+    "filename": "Creepy Creek.png",
+    "title": "Creepy Creek",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/05_Velka_vlakova_loupez/Creepy Creek.png",
+    "width": 210,
+    "height": 327,
+    "size_bytes": 68113,
+    "size_kb": 66.5
+  },
+  {
+    "folder": "05_Velka_vlakova_loupez",
+    "filename": "Crown's Hole.png",
+    "title": "Crown's Hole",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/05_Velka_vlakova_loupez/Crown's Hole.png",
+    "width": 210,
+    "height": 327,
+    "size_bytes": 79339,
+    "size_kb": 77.5
+  },
+  {
+    "folder": "05_Velka_vlakova_loupez",
+    "filename": "DINING CAR.png",
+    "title": "DINING CAR",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/05_Velka_vlakova_loupez/DINING CAR.png",
+    "width": 210,
+    "height": 327,
+    "size_bytes": 93243,
+    "size_kb": 91.1
+  },
+  {
+    "folder": "05_Velka_vlakova_loupez",
+    "filename": "Deathwood.png",
+    "title": "Deathwood",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/05_Velka_vlakova_loupez/Deathwood.png",
+    "width": 210,
+    "height": 327,
+    "size_bytes": 68066,
+    "size_kb": 66.5
+  },
+  {
+    "folder": "05_Velka_vlakova_loupez",
+    "filename": "Dodgeville.png",
+    "title": "Dodgeville",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/05_Velka_vlakova_loupez/Dodgeville.png",
+    "width": 210,
+    "height": 327,
+    "size_bytes": 83112,
+    "size_kb": 81.2
+  },
+  {
+    "folder": "05_Velka_vlakova_loupez",
+    "filename": "Dragoon.png",
+    "title": "Dragoon",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/05_Velka_vlakova_loupez/Dragoon.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 48879,
+    "size_kb": 47.7
+  },
+  {
+    "folder": "05_Velka_vlakova_loupez",
+    "filename": "EXPRESS CARD.png",
+    "title": "EXPRESS CARD",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/05_Velka_vlakova_loupez/EXPRESS CARD.png",
+    "width": 210,
+    "height": 327,
+    "size_bytes": 95840,
+    "size_kb": 93.6
+  },
+  {
+    "folder": "05_Velka_vlakova_loupez",
+    "filename": "Evaded!.png",
+    "title": "Evaded!",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/05_Velka_vlakova_loupez/Evaded!.png",
+    "width": 210,
+    "height": 327,
+    "size_bytes": 82580,
+    "size_kb": 80.6
+  },
+  {
+    "folder": "05_Velka_vlakova_loupez",
+    "filename": "Fort Wroth.png",
+    "title": "Fort Wroth",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/05_Velka_vlakova_loupez/Fort Wroth.png",
+    "width": 210,
+    "height": 327,
+    "size_bytes": 66332,
+    "size_kb": 64.8
+  },
+  {
+    "folder": "05_Velka_vlakova_loupez",
+    "filename": "Frisco.png",
+    "title": "Frisco",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/05_Velka_vlakova_loupez/Frisco.png",
+    "width": 210,
+    "height": 327,
+    "size_bytes": 72384,
+    "size_kb": 70.7
+  },
+  {
+    "folder": "05_Velka_vlakova_loupez",
+    "filename": "Full Steam.png",
+    "title": "Full Steam",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/05_Velka_vlakova_loupez/Full Steam.png",
+    "width": 210,
+    "height": 327,
+    "size_bytes": 94726,
+    "size_kb": 92.5
+  },
+  {
+    "folder": "05_Velka_vlakova_loupez",
+    "filename": "GHOST CAR.png",
+    "title": "GHOST CAR",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/05_Velka_vlakova_loupez/GHOST CAR.png",
+    "width": 210,
+    "height": 327,
+    "size_bytes": 104427,
+    "size_kb": 102.0
+  },
+  {
+    "folder": "05_Velka_vlakova_loupez",
+    "filename": "Knife Revolver.png",
+    "title": "Knife Revolver",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/05_Velka_vlakova_loupez/Knife Revolver.png",
+    "width": 210,
+    "height": 327,
+    "size_bytes": 84766,
+    "size_kb": 82.8
+  },
+  {
+    "folder": "05_Velka_vlakova_loupez",
+    "filename": "Map.png",
+    "title": "Map",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/05_Velka_vlakova_loupez/Map.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 86801,
+    "size_kb": 84.8
+  },
+  {
+    "folder": "05_Velka_vlakova_loupez",
+    "filename": "Miner's Oath.png",
+    "title": "Miner's Oath",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/05_Velka_vlakova_loupez/Miner's Oath.png",
+    "width": 210,
+    "height": 327,
+    "size_bytes": 67021,
+    "size_kb": 65.5
+  },
+  {
+    "folder": "05_Velka_vlakova_loupez",
+    "filename": "Money Bag.png",
+    "title": "Money Bag",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/05_Velka_vlakova_loupez/Money Bag.png",
+    "width": 210,
+    "height": 327,
+    "size_bytes": 89393,
+    "size_kb": 87.3
+  },
+  {
+    "folder": "05_Velka_vlakova_loupez",
+    "filename": "Most Wanted.png",
+    "title": "Most Wanted",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/05_Velka_vlakova_loupez/Most Wanted.png",
+    "width": 210,
+    "height": 327,
+    "size_bytes": 80554,
+    "size_kb": 78.7
+  },
+  {
+    "folder": "05_Velka_vlakova_loupez",
+    "filename": "Next Stop.png",
+    "title": "Next Stop",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/05_Velka_vlakova_loupez/Next Stop.png",
+    "width": 210,
+    "height": 327,
+    "size_bytes": 83553,
+    "size_kb": 81.6
+  },
+  {
+    "folder": "05_Velka_vlakova_loupez",
+    "filename": "Refund.png",
+    "title": "Refund",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/05_Velka_vlakova_loupez/Refund.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 92884,
+    "size_kb": 90.7
+  },
+  {
+    "folder": "05_Velka_vlakova_loupez",
+    "filename": "San Tafe.png",
+    "title": "San Tafe",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/05_Velka_vlakova_loupez/San Tafe.png",
+    "width": 210,
+    "height": 327,
+    "size_bytes": 67776,
+    "size_kb": 66.2
+  },
+  {
+    "folder": "05_Velka_vlakova_loupez",
+    "filename": "Strong Box.png",
+    "title": "Strong Box",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/05_Velka_vlakova_loupez/Strong Box.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 81965,
+    "size_kb": 80.0
+  },
+  {
+    "folder": "05_Velka_vlakova_loupez",
+    "filename": "Switch.png",
+    "title": "Switch",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/05_Velka_vlakova_loupez/Switch.png",
+    "width": 210,
+    "height": 327,
+    "size_bytes": 86177,
+    "size_kb": 84.2
+  },
+  {
+    "folder": "05_Velka_vlakova_loupez",
+    "filename": "Tombrock.png",
+    "title": "Tombrock",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/05_Velka_vlakova_loupez/Tombrock.png",
+    "width": 210,
+    "height": 327,
+    "size_bytes": 71402,
+    "size_kb": 69.7
+  },
+  {
+    "folder": "05_Velka_vlakova_loupez",
+    "filename": "Train Robbery.png",
+    "title": "Train Robbery",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/05_Velka_vlakova_loupez/Train Robbery.png",
+    "width": 210,
+    "height": 327,
+    "size_bytes": 98410,
+    "size_kb": 96.1
+  },
+  {
+    "folder": "05_Velka_vlakova_loupez",
+    "filename": "Virginia Town.png",
+    "title": "Virginia Town",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/05_Velka_vlakova_loupez/Virginia Town.png",
+    "width": 210,
+    "height": 327,
+    "size_bytes": 77259,
+    "size_kb": 75.4
+  },
+  {
+    "folder": "05_Velka_vlakova_loupez",
+    "filename": "Water Tower.png",
+    "title": "Water Tower",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/05_Velka_vlakova_loupez/Water Tower.png",
+    "width": 210,
+    "height": 327,
+    "size_bytes": 85114,
+    "size_kb": 83.1
+  },
+  {
+    "folder": "05_Velka_vlakova_loupez",
+    "filename": "Yooma.png",
+    "title": "Yooma",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/05_Velka_vlakova_loupez/Yooma.png",
+    "width": 210,
+    "height": 327,
+    "size_bytes": 72390,
+    "size_kb": 70.7
+  },
+  {
+    "folder": "06_Udoli_stinu",
+    "filename": "AIM.png",
+    "title": "AIM",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/06_Udoli_stinu/AIM.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 117538,
+    "size_kb": 114.8
+  },
+  {
+    "folder": "06_Udoli_stinu",
+    "filename": "BACKFIRE.png",
+    "title": "BACKFIRE",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/06_Udoli_stinu/BACKFIRE.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 129150,
+    "size_kb": 126.1
+  },
+  {
+    "folder": "06_Udoli_stinu",
+    "filename": "BANDIDOS.png",
+    "title": "BANDIDOS",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/06_Udoli_stinu/BANDIDOS.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 142854,
+    "size_kb": 139.5
+  },
+  {
+    "folder": "06_Udoli_stinu",
+    "filename": "BLACK FLOWER.png",
+    "title": "BLACK FLOWER",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/06_Udoli_stinu/BLACK FLOWER.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 118246,
+    "size_kb": 115.5
+  },
+  {
+    "folder": "06_Udoli_stinu",
+    "filename": "BOUNTY.png",
+    "title": "BOUNTY",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/06_Udoli_stinu/BOUNTY.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 116961,
+    "size_kb": 114.2
+  },
+  {
+    "folder": "06_Udoli_stinu",
+    "filename": "COLORADO BILL.png",
+    "title": "COLORADO BILL",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/06_Udoli_stinu/COLORADO BILL.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 121331,
+    "size_kb": 118.5
+  },
+  {
+    "folder": "06_Udoli_stinu",
+    "filename": "DER SPOT-BURST RINGER.png",
+    "title": "DER SPOT-BURST RINGER",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/06_Udoli_stinu/DER SPOT-BURST RINGER.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 123049,
+    "size_kb": 120.2
+  },
+  {
+    "folder": "06_Udoli_stinu",
+    "filename": "ESCAPE.png",
+    "title": "ESCAPE",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/06_Udoli_stinu/ESCAPE.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 124948,
+    "size_kb": 122.0
+  },
+  {
+    "folder": "06_Udoli_stinu",
+    "filename": "EVELYN SHEBANG.png",
+    "title": "EVELYN SHEBANG",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/06_Udoli_stinu/EVELYN SHEBANG.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 132831,
+    "size_kb": 129.7
+  },
+  {
+    "folder": "06_Udoli_stinu",
+    "filename": "FANNING.png",
+    "title": "FANNING",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/06_Udoli_stinu/FANNING.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 93986,
+    "size_kb": 91.8
+  },
+  {
+    "folder": "06_Udoli_stinu",
+    "filename": "GHOST.png",
+    "title": "GHOST",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/06_Udoli_stinu/GHOST.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 126364,
+    "size_kb": 123.4
+  },
+  {
+    "folder": "06_Udoli_stinu",
+    "filename": "HENRY BLOCK.png",
+    "title": "HENRY BLOCK",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/06_Udoli_stinu/HENRY BLOCK.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 123943,
+    "size_kb": 121.0
+  },
+  {
+    "folder": "06_Udoli_stinu",
+    "filename": "LAST CALL.png",
+    "title": "LAST CALL",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/06_Udoli_stinu/LAST CALL.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 79766,
+    "size_kb": 77.9
+  },
+  {
+    "folder": "06_Udoli_stinu",
+    "filename": "LEMAT.png",
+    "title": "LEMAT",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/06_Udoli_stinu/LEMAT.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 64481,
+    "size_kb": 63.0
+  },
+  {
+    "folder": "06_Udoli_stinu",
+    "filename": "LEMONADE JIM.png",
+    "title": "LEMONADE JIM",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/06_Udoli_stinu/LEMONADE JIM.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 126454,
+    "size_kb": 123.5
+  },
+  {
+    "folder": "06_Udoli_stinu",
+    "filename": "MICK DEFENDER.png",
+    "title": "MICK DEFENDER",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/06_Udoli_stinu/MICK DEFENDER.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 133092,
+    "size_kb": 130.0
+  },
+  {
+    "folder": "06_Udoli_stinu",
+    "filename": "POKER.png",
+    "title": "POKER",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/06_Udoli_stinu/POKER.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 90771,
+    "size_kb": 88.6
+  },
+  {
+    "folder": "06_Udoli_stinu",
+    "filename": "RATTLESNAKE.png",
+    "title": "RATTLESNAKE",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/06_Udoli_stinu/RATTLESNAKE.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 137912,
+    "size_kb": 134.7
+  },
+  {
+    "folder": "06_Udoli_stinu",
+    "filename": "SAVED!.png",
+    "title": "SAVED!",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/06_Udoli_stinu/SAVED!.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 93633,
+    "size_kb": 91.4
+  },
+  {
+    "folder": "06_Udoli_stinu",
+    "filename": "SHOTGUN.png",
+    "title": "SHOTGUN",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/06_Udoli_stinu/SHOTGUN.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 63189,
+    "size_kb": 61.7
+  },
+  {
+    "folder": "06_Udoli_stinu",
+    "filename": "TOMAHAWK.png",
+    "title": "TOMAHAWK",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/06_Udoli_stinu/TOMAHAWK.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 86476,
+    "size_kb": 84.4
+  },
+  {
+    "folder": "06_Udoli_stinu",
+    "filename": "TORNADO.png",
+    "title": "TORNADO",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/06_Udoli_stinu/TORNADO.png",
+    "width": 210,
+    "height": 326,
+    "size_bytes": 95455,
+    "size_kb": 93.2
+  },
+  {
+    "folder": "06_Udoli_stinu",
+    "filename": "TUCO FRANZISKANER.png",
+    "title": "TUCO FRANZISKANER",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/06_Udoli_stinu/TUCO FRANZISKANER.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 131993,
+    "size_kb": 128.9
+  },
+  {
+    "folder": "07_Prave_poledne",
+    "filename": "BLESSING.png",
+    "title": "BLESSING",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/07_Prave_poledne/BLESSING.png",
+    "width": 210,
+    "height": 314,
+    "size_bytes": 85544,
+    "size_kb": 83.5
+  },
+  {
+    "folder": "07_Prave_poledne",
+    "filename": "CURSE.png",
+    "title": "CURSE",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/07_Prave_poledne/CURSE.png",
+    "width": 210,
+    "height": 314,
+    "size_bytes": 81144,
+    "size_kb": 79.2
+  },
+  {
+    "folder": "07_Prave_poledne",
+    "filename": "GHOST TOWN.png",
+    "title": "GHOST TOWN",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/07_Prave_poledne/GHOST TOWN.png",
+    "width": 210,
+    "height": 314,
+    "size_bytes": 96193,
+    "size_kb": 93.9
+  },
+  {
+    "folder": "07_Prave_poledne",
+    "filename": "GOLD RUSH (Event).png",
+    "title": "GOLD RUSH (Event)",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/07_Prave_poledne/GOLD RUSH (Event).png",
+    "width": 210,
+    "height": 314,
+    "size_bytes": 86529,
+    "size_kb": 84.5
+  },
+  {
+    "folder": "07_Prave_poledne",
+    "filename": "HIGH NOON.png",
+    "title": "HIGH NOON",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/07_Prave_poledne/HIGH NOON.png",
+    "width": 210,
+    "height": 314,
+    "size_bytes": 86310,
+    "size_kb": 84.3
+  },
+  {
+    "folder": "07_Prave_poledne",
+    "filename": "SHOOTOUT.png",
+    "title": "SHOOTOUT",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/07_Prave_poledne/SHOOTOUT.png",
+    "width": 210,
+    "height": 314,
+    "size_bytes": 95003,
+    "size_kb": 92.8
+  },
+  {
+    "folder": "07_Prave_poledne",
+    "filename": "THE DALTONS.png",
+    "title": "THE DALTONS",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/07_Prave_poledne/THE DALTONS.png",
+    "width": 210,
+    "height": 314,
+    "size_bytes": 89664,
+    "size_kb": 87.6
+  },
+  {
+    "folder": "07_Prave_poledne",
+    "filename": "THE DOCTOR.png",
+    "title": "THE DOCTOR",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/07_Prave_poledne/THE DOCTOR.png",
+    "width": 210,
+    "height": 314,
+    "size_bytes": 88965,
+    "size_kb": 86.9
+  },
+  {
+    "folder": "07_Prave_poledne",
+    "filename": "THE REVEREND.png",
+    "title": "THE REVEREND",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/07_Prave_poledne/THE REVEREND.png",
+    "width": 210,
+    "height": 314,
+    "size_bytes": 74431,
+    "size_kb": 72.7
+  },
+  {
+    "folder": "07_Prave_poledne",
+    "filename": "THE SERMON.png",
+    "title": "THE SERMON",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/07_Prave_poledne/THE SERMON.png",
+    "width": 210,
+    "height": 314,
+    "size_bytes": 88169,
+    "size_kb": 86.1
+  },
+  {
+    "folder": "07_Prave_poledne",
+    "filename": "THIRST.png",
+    "title": "THIRST",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/07_Prave_poledne/THIRST.png",
+    "width": 210,
+    "height": 314,
+    "size_bytes": 77900,
+    "size_kb": 76.1
+  },
+  {
+    "folder": "07_Prave_poledne",
+    "filename": "TRAIN ARRIVAL.png",
+    "title": "TRAIN ARRIVAL",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/07_Prave_poledne/TRAIN ARRIVAL.png",
+    "width": 210,
+    "height": 314,
+    "size_bytes": 87813,
+    "size_kb": 85.8
+  },
+  {
+    "folder": "08_Pest_plna_karet",
+    "filename": "A FISTFUL OF CARDS.png",
+    "title": "A FISTFUL OF CARDS",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/08_Pest_plna_karet/A FISTFUL OF CARDS.png",
+    "width": 260,
+    "height": 389,
+    "size_bytes": 142180,
+    "size_kb": 138.8
+  },
+  {
+    "folder": "08_Pest_plna_karet",
+    "filename": "ABONDED MINE.png",
+    "title": "ABONDED MINE",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/08_Pest_plna_karet/ABONDED MINE.png",
+    "width": 260,
+    "height": 389,
+    "size_bytes": 142461,
+    "size_kb": 139.1
+  },
+  {
+    "folder": "08_Pest_plna_karet",
+    "filename": "AMBUSH.png",
+    "title": "AMBUSH",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/08_Pest_plna_karet/AMBUSH.png",
+    "width": 260,
+    "height": 389,
+    "size_bytes": 129278,
+    "size_kb": 126.2
+  },
+  {
+    "folder": "08_Pest_plna_karet",
+    "filename": "BLOOD BROTHERS.png",
+    "title": "BLOOD BROTHERS",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/08_Pest_plna_karet/BLOOD BROTHERS.png",
+    "width": 260,
+    "height": 389,
+    "size_bytes": 142296,
+    "size_kb": 139.0
+  },
+  {
+    "folder": "08_Pest_plna_karet",
+    "filename": "DEAD MAN.png",
+    "title": "DEAD MAN",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/08_Pest_plna_karet/DEAD MAN.png",
+    "width": 260,
+    "height": 389,
+    "size_bytes": 130564,
+    "size_kb": 127.5
+  },
+  {
+    "folder": "08_Pest_plna_karet",
+    "filename": "HARD LIQUR.png",
+    "title": "HARD LIQUR",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/08_Pest_plna_karet/HARD LIQUR.png",
+    "width": 260,
+    "height": 389,
+    "size_bytes": 132440,
+    "size_kb": 129.3
+  },
+  {
+    "folder": "08_Pest_plna_karet",
+    "filename": "LASSO.png",
+    "title": "LASSO",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/08_Pest_plna_karet/LASSO.png",
+    "width": 260,
+    "height": 389,
+    "size_bytes": 120813,
+    "size_kb": 118.0
+  },
+  {
+    "folder": "08_Pest_plna_karet",
+    "filename": "LAW OF THE WEST.png",
+    "title": "LAW OF THE WEST",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/08_Pest_plna_karet/LAW OF THE WEST.png",
+    "width": 260,
+    "height": 389,
+    "size_bytes": 131236,
+    "size_kb": 128.2
+  },
+  {
+    "folder": "08_Pest_plna_karet",
+    "filename": "PEYOTE.png",
+    "title": "PEYOTE",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/08_Pest_plna_karet/PEYOTE.png",
+    "width": 260,
+    "height": 389,
+    "size_bytes": 141950,
+    "size_kb": 138.6
+  },
+  {
+    "folder": "08_Pest_plna_karet",
+    "filename": "RANCH.png",
+    "title": "RANCH",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/08_Pest_plna_karet/RANCH.png",
+    "width": 260,
+    "height": 389,
+    "size_bytes": 136952,
+    "size_kb": 133.7
+  },
+  {
+    "folder": "08_Pest_plna_karet",
+    "filename": "RICOCHET.png",
+    "title": "RICOCHET",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/08_Pest_plna_karet/RICOCHET.png",
+    "width": 260,
+    "height": 389,
+    "size_bytes": 134410,
+    "size_kb": 131.3
+  },
+  {
+    "folder": "08_Pest_plna_karet",
+    "filename": "RUSSIAN ROULETTE.png",
+    "title": "RUSSIAN ROULETTE",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/08_Pest_plna_karet/RUSSIAN ROULETTE.png",
+    "width": 260,
+    "height": 389,
+    "size_bytes": 154339,
+    "size_kb": 150.7
+  },
+  {
+    "folder": "08_Pest_plna_karet",
+    "filename": "SNIPER.png",
+    "title": "SNIPER",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/08_Pest_plna_karet/SNIPER.png",
+    "width": 260,
+    "height": 389,
+    "size_bytes": 136909,
+    "size_kb": 133.7
+  },
+  {
+    "folder": "08_Pest_plna_karet",
+    "filename": "THE JUDGE.png",
+    "title": "THE JUDGE",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/08_Pest_plna_karet/THE JUDGE.png",
+    "width": 260,
+    "height": 389,
+    "size_bytes": 117650,
+    "size_kb": 114.9
+  },
+  {
+    "folder": "08_Pest_plna_karet",
+    "filename": "VENDETTA.png",
+    "title": "VENDETTA",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/08_Pest_plna_karet/VENDETTA.png",
+    "width": 260,
+    "height": 389,
+    "size_bytes": 134675,
+    "size_kb": 131.5
+  },
+  {
+    "folder": "09_Divoky_zapad",
+    "filename": "BIG SPENCER.png",
+    "title": "BIG SPENCER",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/09_Divoky_zapad/BIG SPENCER.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 118432,
+    "size_kb": 115.7
+  },
+  {
+    "folder": "09_Divoky_zapad",
+    "filename": "BONE ORCHARD.png",
+    "title": "BONE ORCHARD",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/09_Divoky_zapad/BONE ORCHARD.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 152299,
+    "size_kb": 148.7
+  },
+  {
+    "folder": "09_Divoky_zapad",
+    "filename": "DARLING VALENTINE.png",
+    "title": "DARLING VALENTINE",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/09_Divoky_zapad/DARLING VALENTINE.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 162995,
+    "size_kb": 159.2
+  },
+  {
+    "folder": "09_Divoky_zapad",
+    "filename": "DOROTHY RAGE.png",
+    "title": "DOROTHY RAGE",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/09_Divoky_zapad/DOROTHY RAGE.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 135884,
+    "size_kb": 132.7
+  },
+  {
+    "folder": "09_Divoky_zapad",
+    "filename": "FLINT WESTWOOD.png",
+    "title": "FLINT WESTWOOD",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/09_Divoky_zapad/FLINT WESTWOOD.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 121908,
+    "size_kb": 119.1
+  },
+  {
+    "folder": "09_Divoky_zapad",
+    "filename": "GAG.png",
+    "title": "GAG",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/09_Divoky_zapad/GAG.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 139614,
+    "size_kb": 136.3
+  },
+  {
+    "folder": "09_Divoky_zapad",
+    "filename": "GARY LOOTER.png",
+    "title": "GARY LOOTER",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/09_Divoky_zapad/GARY LOOTER.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 120840,
+    "size_kb": 118.0
+  },
+  {
+    "folder": "09_Divoky_zapad",
+    "filename": "GREYGORY DECK.png",
+    "title": "GREYGORY DECK",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/09_Divoky_zapad/GREYGORY DECK.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 125093,
+    "size_kb": 122.2
+  },
+  {
+    "folder": "09_Divoky_zapad",
+    "filename": "HELENA ZONTERO.png",
+    "title": "HELENA ZONTERO",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/09_Divoky_zapad/HELENA ZONTERO.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 163269,
+    "size_kb": 159.4
+  },
+  {
+    "folder": "09_Divoky_zapad",
+    "filename": "JOHN PAIN.png",
+    "title": "JOHN PAIN",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/09_Divoky_zapad/JOHN PAIN.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 134505,
+    "size_kb": 131.4
+  },
+  {
+    "folder": "09_Divoky_zapad",
+    "filename": "LADY ROSE OF TEXAS.png",
+    "title": "LADY ROSE OF TEXAS",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/09_Divoky_zapad/LADY ROSE OF TEXAS.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 163922,
+    "size_kb": 160.1
+  },
+  {
+    "folder": "09_Divoky_zapad",
+    "filename": "LEE VAN KLIFF.png",
+    "title": "LEE VAN KLIFF",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/09_Divoky_zapad/LEE VAN KLIFF.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 135235,
+    "size_kb": 132.1
+  },
+  {
+    "folder": "09_Divoky_zapad",
+    "filename": "MISS SUSANNA.png",
+    "title": "MISS SUSANNA",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/09_Divoky_zapad/MISS SUSANNA.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 150875,
+    "size_kb": 147.3
+  },
+  {
+    "folder": "09_Divoky_zapad",
+    "filename": "SACAGAWAY.png",
+    "title": "SACAGAWAY",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/09_Divoky_zapad/SACAGAWAY.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 134911,
+    "size_kb": 131.7
+  },
+  {
+    "folder": "09_Divoky_zapad",
+    "filename": "SHOWDOWN.png",
+    "title": "SHOWDOWN",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/09_Divoky_zapad/SHOWDOWN.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 164227,
+    "size_kb": 160.4
+  },
+  {
+    "folder": "09_Divoky_zapad",
+    "filename": "TEREN KILL.png",
+    "title": "TEREN KILL",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/09_Divoky_zapad/TEREN KILL.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 125624,
+    "size_kb": 122.7
+  },
+  {
+    "folder": "09_Divoky_zapad",
+    "filename": "WILD WEST SHOW.png",
+    "title": "WILD WEST SHOW",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/09_Divoky_zapad/WILD WEST SHOW.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 153904,
+    "size_kb": 150.3
+  },
+  {
+    "folder": "09_Divoky_zapad",
+    "filename": "YOUL GRINNER.png",
+    "title": "YOUL GRINNER",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/09_Divoky_zapad/YOUL GRINNER.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 130893,
+    "size_kb": 127.8
+  },
+  {
+    "folder": "10_Legendy",
+    "filename": "179 (Legend).png",
+    "title": "179 (Legend)",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/10_Legendy/179 (Legend).png",
+    "width": 423,
+    "height": 231,
+    "size_bytes": 145867,
+    "size_kb": 142.4
+  },
+  {
+    "folder": "10_Legendy",
+    "filename": "3-15 TO YOOMA (Legend).png",
+    "title": "3-15 TO YOOMA (Legend)",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/10_Legendy/3-15 TO YOOMA (Legend).png",
+    "width": 423,
+    "height": 231,
+    "size_bytes": 150981,
+    "size_kb": 147.4
+  },
+  {
+    "folder": "10_Legendy",
+    "filename": "A Quick Death (Legend).png",
+    "title": "A Quick Death (Legend)",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/10_Legendy/A Quick Death (Legend).png",
+    "width": 423,
+    "height": 231,
+    "size_bytes": 149175,
+    "size_kb": 145.7
+  },
+  {
+    "folder": "10_Legendy",
+    "filename": "BART CASSIDY (Legend).png",
+    "title": "BART CASSIDY (Legend)",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/10_Legendy/BART CASSIDY (Legend).png",
+    "width": 231,
+    "height": 423,
+    "size_bytes": 188464,
+    "size_kb": 184.0
+  },
+  {
+    "folder": "10_Legendy",
+    "filename": "BLACK JACK (LEGEND).png",
+    "title": "BLACK JACK (LEGEND)",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/10_Legendy/BLACK JACK (LEGEND).png",
+    "width": 231,
+    "height": 423,
+    "size_bytes": 182027,
+    "size_kb": 177.8
+  },
+  {
+    "folder": "10_Legendy",
+    "filename": "BOTTLENECK (Legend).png",
+    "title": "BOTTLENECK (Legend)",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/10_Legendy/BOTTLENECK (Legend).png",
+    "width": 423,
+    "height": 231,
+    "size_bytes": 149347,
+    "size_kb": 145.8
+  },
+  {
+    "folder": "10_Legendy",
+    "filename": "CALAMITY JANET (Legend).png",
+    "title": "CALAMITY JANET (Legend)",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/10_Legendy/CALAMITY JANET (Legend).png",
+    "width": 231,
+    "height": 423,
+    "size_bytes": 193644,
+    "size_kb": 189.1
+  },
+  {
+    "folder": "10_Legendy",
+    "filename": "EL GRINGO (Legend).png",
+    "title": "EL GRINGO (Legend)",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/10_Legendy/EL GRINGO (Legend).png",
+    "width": 231,
+    "height": 423,
+    "size_bytes": 199470,
+    "size_kb": 194.8
+  },
+  {
+    "folder": "10_Legendy",
+    "filename": "JESSE JONES (Legend).png",
+    "title": "JESSE JONES (Legend)",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/10_Legendy/JESSE JONES (Legend).png",
+    "width": 231,
+    "height": 423,
+    "size_bytes": 186525,
+    "size_kb": 182.2
+  },
+  {
+    "folder": "10_Legendy",
+    "filename": "JOURDONNAIS (Legend).png",
+    "title": "JOURDONNAIS (Legend)",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/10_Legendy/JOURDONNAIS (Legend).png",
+    "width": 231,
+    "height": 423,
+    "size_bytes": 181671,
+    "size_kb": 177.4
+  },
+  {
+    "folder": "10_Legendy",
+    "filename": "KIT CARLSON (Legend).png",
+    "title": "KIT CARLSON (Legend)",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/10_Legendy/KIT CARLSON (Legend).png",
+    "width": 231,
+    "height": 423,
+    "size_bytes": 182467,
+    "size_kb": 178.2
+  },
+  {
+    "folder": "10_Legendy",
+    "filename": "LUCKY DUKE (Legend).png",
+    "title": "LUCKY DUKE (Legend)",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/10_Legendy/LUCKY DUKE (Legend).png",
+    "width": 231,
+    "height": 423,
+    "size_bytes": 184663,
+    "size_kb": 180.3
+  },
+  {
+    "folder": "10_Legendy",
+    "filename": "PAUL REGRET (Legend).png",
+    "title": "PAUL REGRET (Legend)",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/10_Legendy/PAUL REGRET (Legend).png",
+    "width": 231,
+    "height": 423,
+    "size_bytes": 190721,
+    "size_kb": 186.3
+  },
+  {
+    "folder": "10_Legendy",
+    "filename": "PEDRO RAMIREZ (Legend).png",
+    "title": "PEDRO RAMIREZ (Legend)",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/10_Legendy/PEDRO RAMIREZ (Legend).png",
+    "width": 231,
+    "height": 423,
+    "size_bytes": 200647,
+    "size_kb": 195.9
+  },
+  {
+    "folder": "10_Legendy",
+    "filename": "ROSE DOOLAN (Legend).png",
+    "title": "ROSE DOOLAN (Legend)",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/10_Legendy/ROSE DOOLAN (Legend).png",
+    "width": 231,
+    "height": 423,
+    "size_bytes": 185663,
+    "size_kb": 181.3
+  },
+  {
+    "folder": "10_Legendy",
+    "filename": "SID KETCHUM (Legend).png",
+    "title": "SID KETCHUM (Legend)",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/10_Legendy/SID KETCHUM (Legend).png",
+    "width": 231,
+    "height": 423,
+    "size_bytes": 183395,
+    "size_kb": 179.1
+  },
+  {
+    "folder": "10_Legendy",
+    "filename": "SLAB THE KILLER (Legend).png",
+    "title": "SLAB THE KILLER (Legend)",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/10_Legendy/SLAB THE KILLER (Legend).png",
+    "width": 231,
+    "height": 423,
+    "size_bytes": 181154,
+    "size_kb": 176.9
+  },
+  {
+    "folder": "10_Legendy",
+    "filename": "SUZY LAFAYETTE (Legend).png",
+    "title": "SUZY LAFAYETTE (Legend)",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/10_Legendy/SUZY LAFAYETTE (Legend).png",
+    "width": 231,
+    "height": 423,
+    "size_bytes": 183737,
+    "size_kb": 179.4
+  },
+  {
+    "folder": "10_Legendy",
+    "filename": "VULTURE SAM (Legend).png",
+    "title": "VULTURE SAM (Legend)",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/10_Legendy/VULTURE SAM (Legend).png",
+    "width": 231,
+    "height": 423,
+    "size_bytes": 191497,
+    "size_kb": 187.0
+  },
+  {
+    "folder": "10_Legendy",
+    "filename": "WILLY THE KID (Legend).png",
+    "title": "WILLY THE KID (Legend)",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/10_Legendy/WILLY THE KID (Legend).png",
+    "width": 231,
+    "height": 423,
+    "size_bytes": 175379,
+    "size_kb": 171.3
+  },
+  {
+    "folder": "11_Extra_karty",
+    "filename": "ANNIE VERSARY.png",
+    "title": "ANNIE VERSARY",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/11_Extra_karty/ANNIE VERSARY.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 116928,
+    "size_kb": 114.2
+  },
+  {
+    "folder": "11_Extra_karty",
+    "filename": "CLAUS THE SAINT.png",
+    "title": "CLAUS THE SAINT",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/11_Extra_karty/CLAUS THE SAINT.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 136629,
+    "size_kb": 133.4
+  },
+  {
+    "folder": "11_Extra_karty",
+    "filename": "EMILIANO.png",
+    "title": "EMILIANO",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/11_Extra_karty/EMILIANO.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 143314,
+    "size_kb": 140.0
+  },
+  {
+    "folder": "11_Extra_karty",
+    "filename": "HANDCUFFS.png",
+    "title": "HANDCUFFS",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/11_Extra_karty/HANDCUFFS.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 151285,
+    "size_kb": 147.7
+  },
+  {
+    "folder": "11_Extra_karty",
+    "filename": "JOHNNY KISCH.png",
+    "title": "JOHNNY KISCH",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/11_Extra_karty/JOHNNY KISCH.png",
+    "width": 231,
+    "height": 359,
+    "size_bytes": 115576,
+    "size_kb": 112.9
+  },
+  {
+    "folder": "11_Extra_karty",
+    "filename": "NEW IDENTITY.png",
+    "title": "NEW IDENTITY",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/11_Extra_karty/NEW IDENTITY.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 156983,
+    "size_kb": 153.3
+  },
+  {
+    "folder": "11_Extra_karty",
+    "filename": "UNCLE WILL.png",
+    "title": "UNCLE WILL",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/11_Extra_karty/UNCLE WILL.png",
+    "width": 250,
+    "height": 389,
+    "size_bytes": 125409,
+    "size_kb": 122.5
+  }
+]

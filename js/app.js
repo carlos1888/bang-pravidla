@@ -540,12 +540,17 @@
       if (card.lives) metas.push(`<span class="card-meta-item" style="color: #b71c1c; font-weight: 700;">❤️ ${card.lives} ${t.livesLabel}</span>`);
       if (cardTiming) metas.push(`<span class="card-meta-item meta-timing">${cardTiming}</span>`);
 
+      const imageThumbHtml = card.image
+        ? `<div class="card-thumb-wrap"><img src="${card.image}" alt="${cardTitle}" class="card-thumb-img" loading="lazy" decoding="async" onerror="this.parentElement.style.display='none'"></div>`
+        : '';
+
       return `
         <article class="bang-card ${borderClass}" data-id="${card.id}" tabindex="0" role="button" aria-label="Detail ${cardTitle}">
           <div class="card-top-bar">
             <span class="card-badge">${cardBadge}</span>
             ${card.suit ? `<span class="card-suit-value ${suitClass}">${card.suit} ${card.values || ''}</span>` : ''}
           </div>
+          ${imageThumbHtml}
           <div class="card-body">
             <div class="card-title-group">
               <h3 class="card-title">${cardTitle}</h3>
@@ -613,34 +618,51 @@
       `
       : '';
 
+    const imageColHtml = card.image
+      ? `
+        <div class="card-modal-img-col">
+          <div class="card-modal-img-wrap">
+            <img src="${card.image}" alt="${cardTitle}" class="card-modal-img" fetchpriority="high" onerror="this.parentElement.parentElement.style.display='none'">
+          </div>
+        </div>
+      `
+      : '';
+
     els.modalBody.innerHTML = `
-      <div style="border-bottom: 2px solid var(--border-color); padding-bottom: 0.85rem; margin-bottom: 1.2rem;">
-        <span class="card-badge" style="font-size: 0.85rem; margin-bottom: 0.4rem; display: inline-block;">${cardBadge} • ${cardTypeLabel}</span>
-        <h2 style="font-size: 2rem; font-family: 'Georgia', serif; color: var(--text-main); line-height: 1.2;">${cardTitle}</h2>
-      </div>
+      <div class="card-modal-layout ${card.image ? 'has-image' : 'no-image'}">
+        ${imageColHtml}
+        <div class="card-modal-info-col">
+          <div style="border-bottom: 2px solid var(--border-color); padding-bottom: 0.85rem; margin-bottom: 1.2rem;">
+            <span class="card-badge" style="font-size: 0.85rem; margin-bottom: 0.4rem; display: inline-block;">${cardBadge} • ${cardTypeLabel}</span>
+            <h2 style="font-size: 2rem; font-family: 'Georgia', serif; color: var(--text-main); line-height: 1.2;">${cardTitle}</h2>
+          </div>
 
-      <div style="background: var(--bg-surface); padding: 1.15rem; border-radius: 8px; margin-bottom: 1.25rem; border-left: 4px solid var(--color-brown);">
-        <div style="font-weight: 700; margin-bottom: 0.4rem; color: var(--color-brown); text-transform: uppercase; font-size: 0.82rem; letter-spacing: 0.5px;">${t.effectHeader}</div>
-        <div style="font-size: 1.1rem; line-height: 1.6;">${cardEffect}</div>
-      </div>
+          <div style="background: var(--bg-surface); padding: 1.15rem; border-radius: 8px; margin-bottom: 1.25rem; border-left: 4px solid var(--color-brown);">
+            <div style="font-weight: 700; margin-bottom: 0.4rem; color: var(--color-brown); text-transform: uppercase; font-size: 0.82rem; letter-spacing: 0.5px;">${t.effectHeader}</div>
+            <div style="font-size: 1.1rem; line-height: 1.6;">${cardEffect}</div>
+          </div>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.75rem; font-size: 0.9rem; margin-bottom: 1rem;">
-        ${cardTiming ? `<div style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 0.65rem; border-radius: 6px;"><strong>${t.timingLabel}:</strong><br>${cardTiming}</div>` : ''}
-        ${cardCost ? `<div style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 0.65rem; border-radius: 6px;"><strong>${t.costLabel}:</strong><br>${cardCost}</div>` : ''}
-        ${card.range ? `<div style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 0.65rem; border-radius: 6px;"><strong>${t.rangeLabel}:</strong><br>${card.range}</div>` : ''}
-        ${card.copies ? `<div style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 0.65rem; border-radius: 6px;"><strong>${t.copiesInDeck}:</strong><br>${card.copies}×</div>` : ''}
-      </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.75rem; font-size: 0.9rem; margin-bottom: 1rem;">
+            ${cardTiming ? `<div style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 0.65rem; border-radius: 6px;"><strong>${t.timingLabel}:</strong><br>${cardTiming}</div>` : ''}
+            ${cardCost ? `<div style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 0.65rem; border-radius: 6px;"><strong>${t.costLabel}:</strong><br>${cardCost}</div>` : ''}
+            ${card.range ? `<div style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 0.65rem; border-radius: 6px;"><strong>${t.rangeLabel}:</strong><br>${card.range}</div>` : ''}
+            ${card.copies ? `<div style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 0.65rem; border-radius: 6px;"><strong>${t.copiesInDeck}:</strong><br>${card.copies}×</div>` : ''}
+          </div>
 
-      ${rulingsHtml}
-      ${tagsHtml}
+          ${rulingsHtml}
+          ${tagsHtml}
+        </div>
+      </div>
     `;
 
+    els.cardModal.classList.toggle('has-image', !!card.image);
     els.cardModal.classList.add('active');
     document.body.style.overflow = 'hidden';
   }
 
   function closeCardModal() {
     els.cardModal.classList.remove('active');
+    els.cardModal.classList.remove('has-image');
     document.body.style.overflow = '';
     state.selectedCard = null;
   }

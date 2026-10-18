@@ -26,7 +26,7 @@ window.BANG_CARDS = [
       "životy navíc",
       "zákon"
     ],
-    "image": null,
+    "image": "assets/cards/01_zakladni_hra/sheriff.webp",
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Role Card",
     "effectEn": "Plays with role revealed. Starts with 1 extra bullet (life point). Starts the game. Goal: Kill all Outlaws and the Renegade.",
@@ -64,7 +64,7 @@ window.BANG_CARDS = [
       "zákon",
       "tajná role"
     ],
-    "image": null,
+    "image": "assets/cards/01_zakladni_hra/deputy-sheriff.webp",
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Role Card",
     "effectEn": "Plays with role hidden. Protects the Sheriff at all costs. Goal: Same as Sheriff (kill all Outlaws and Renegade). Wins if Sheriff wins.",
@@ -100,7 +100,7 @@ window.BANG_CARDS = [
       "odměna",
       "tajná role"
     ],
-    "image": null,
+    "image": "assets/cards/01_zakladni_hra/outlaw.webp",
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Role Card",
     "effectEn": "Plays with role hidden. Goal: Eliminate the Sheriff. Wins immediately when Sheriff is killed.",
@@ -136,7 +136,7 @@ window.BANG_CARDS = [
       "samotář",
       "tajná role"
     ],
-    "image": null,
+    "image": "assets/cards/01_zakladni_hra/renegade.webp",
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Role Card",
     "effectEn": "Plays with role hidden. Goal: Be the last surviving player in the game. Must eliminate Sheriff last in 1v1 duel.",
@@ -173,7 +173,7 @@ window.BANG_CARDS = [
       "dobírání karet",
       "obrana"
     ],
-    "image": null,
+    "image": "assets/cards/01_zakladni_hra/bart-cassidy.webp",
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Character",
     "effectEn": "Each time he loses a life point, he immediately draws a card from the draw deck.",
@@ -210,7 +210,7 @@ window.BANG_CARDS = [
       "červené karty",
       "dobírání"
     ],
-    "image": null,
+    "image": "assets/cards/01_zakladni_hra/black-jack.webp",
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Character",
     "effectEn": "During Phase 1, reveals the 2nd card drawn: if Hearts ♥ or Diamonds ♦, draws 1 extra card.",
@@ -249,7 +249,7 @@ window.BANG_CARDS = [
       "vedle",
       "duel"
     ],
-    "image": null,
+    "image": "assets/cards/01_zakladni_hra/calamity-janet.webp",
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Character",
     "effectEn": "Can play BANG! cards as Missed! and Missed! cards as BANG!.",
@@ -289,7 +289,7 @@ window.BANG_CARDS = [
       "protiútok",
       "zranění"
     ],
-    "image": null,
+    "image": "assets/cards/01_zakladni_hra/el-gringo.webp",
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Character",
     "effectEn": "Each time he loses a life point from a player's card, draws 1 random card from that player's hand.",
@@ -329,7 +329,7 @@ window.BANG_CARDS = [
       "krádež z ruky",
       "dobírání"
     ],
-    "image": null,
+    "image": "assets/cards/01_zakladni_hra/jesse-jones.webp",
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Character",
     "effectEn": "During Phase 1, may draw his 1st card from any other player's hand instead of the deck.",
@@ -369,7 +369,7 @@ window.BANG_CARDS = [
       "sejmutí",
       "srdce"
     ],
-    "image": null,
+    "image": "assets/cards/01_zakladni_hra/jourdonnais.webp",
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Character",
     "effectEn": "Has a built-in Barrel: whenever targeted by a BANG!, draws from the deck to cancel the shot on Hearts ♥.",
@@ -407,7 +407,7 @@ window.BANG_CARDS = [
       "manipulace balíčku",
       "dobírání"
     ],
-    "image": null,
+    "image": "assets/cards/01_zakladni_hra/kit-carlson.webp",
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Character",
     "effectEn": "During Phase 1, looks at the top 3 cards of the deck, chooses 2 for his hand, and returns 1 to the top.",
@@ -446,7 +446,7 @@ window.BANG_CARDS = [
       "barel",
       "dynamit"
     ],
-    "image": null,
+    "image": "assets/cards/01_zakladni_hra/lucky-duke.webp",
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Character",
     "effectEn": "Whenever he draws from the deck (check), flips 2 cards and chooses the result he prefers.",
@@ -485,7 +485,7 @@ window.BANG_CARDS = [
       "mustang",
       "obrana"
     ],
-    "image": null,
+    "image": "assets/cards/01_zakladni_hra/paul-regret.webp",
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Character",
     "effectEn": "All other players see him at distance +1 (built-in Mustang).",
@@ -523,7 +523,7 @@ window.BANG_CARDS = [
       "odhazovací balíček",
       "recyklace"
     ],
-    "image": null,
+    "image": "assets/cards/01_zakladni_hra/pedro-ramirez.webp",
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Character",
     "effectEn": "During Phase 1, may take his 1st card from the top of the discard pile.",
@@ -560,7 +560,7 @@ window.BANG_CARDS = [
       "hledí",
       "útok"
     ],
-    "image": null,
+    "image": "assets/cards/01_zakladni_hra/rose-doolan.webp",
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Character",
     "effectEn": "Sees all other players at distance -1 (built-in Scope).",
@@ -598,7 +598,7 @@ window.BANG_CARDS = [
       "záchrana před smrtí",
       "životy"
     ],
-    "image": null,
+    "image": "assets/cards/01_zakladni_hra/sid-ketchum.webp",
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Character",
     "effectEn": "May discard any 2 cards from his hand to regain 1 life point at any time on his turn.",
@@ -638,7 +638,7 @@ window.BANG_CARDS = [
       "2 vedle",
       "smrtící"
     ],
-    "image": null,
+    "image": "assets/cards/01_zakladni_hra/slab-the-killer.webp",
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Character",
     "effectEn": "Players must play 2 Missed! cards to cancel his BANG! attacks.",
@@ -677,7 +677,7 @@ window.BANG_CARDS = [
       "nekonečné lízání",
       "komba"
     ],
-    "image": null,
+    "image": "assets/cards/01_zakladni_hra/suzy-lafayette.webp",
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Character",
     "effectEn": "As soon as she has no cards in hand, immediately draws 1 card from the deck.",
@@ -717,7 +717,7 @@ window.BANG_CARDS = [
       "smrt",
       "krádež karet zabitých"
     ],
-    "image": null,
+    "image": "assets/cards/01_zakladni_hra/vulture-sam.webp",
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Character",
     "effectEn": "Whenever any player is eliminated, takes all cards from their hand and in play.",
@@ -756,7 +756,7 @@ window.BANG_CARDS = [
       "kulometčík",
       "útok"
     ],
-    "image": null,
+    "image": "assets/cards/01_zakladni_hra/willy-the-kid.webp",
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Character",
     "effectEn": "May play any number of BANG! cards on his turn.",
@@ -794,7 +794,7 @@ window.BANG_CARDS = [
       "zranění",
       "základ"
     ],
-    "image": null,
+    "image": "assets/cards/01_zakladni_hra/bang.webp",
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Brown Card (Immediate)",
     "effectEn": "A shot at another player within weapon range. The target must play a Missed! card or lose 1 life point. Limit 1 BANG! per turn.",
@@ -833,7 +833,7 @@ window.BANG_CARDS = [
       "reakce",
       "základ"
     ],
-    "image": null,
+    "image": "assets/cards/01_zakladni_hra/missed.webp",
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Brown Card (Immediate)",
     "effectEn": "Cancel a BANG! attack played against you.",
@@ -872,7 +872,7 @@ window.BANG_CARDS = [
       "pivo",
       "záchrana"
     ],
-    "image": null,
+    "image": "assets/cards/01_zakladni_hra/beer.webp",
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Brown Card (Immediate)",
     "effectEn": "Regain 1 lost life point (up to your starting maximum). Can be played out of turn when losing your last life point. Has no healing effect with only 2 players left.",
@@ -909,7 +909,7 @@ window.BANG_CARDS = [
       "saloon",
       "životy"
     ],
-    "image": null,
+    "image": "assets/cards/01_zakladni_hra/saloon.webp",
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Brown Card (Immediate)",
     "effectEn": "All living players regain 1 life point immediately. Cannot be played out of turn to prevent death.",
@@ -944,7 +944,7 @@ window.BANG_CARDS = [
       "dostavník",
       "karty navíc"
     ],
-    "image": null,
+    "image": "assets/cards/01_zakladni_hra/stagecoach.webp",
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Brown Card (Immediate)",
     "effectEn": "Draw 2 cards from the draw deck.",
@@ -978,7 +978,7 @@ window.BANG_CARDS = [
       "wells fargo",
       "karty navíc"
     ],
-    "image": null,
+    "image": "assets/cards/01_zakladni_hra/wells-fargo.webp",
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Brown Card (Immediate)",
     "effectEn": "Draw 3 cards from the draw deck.",
@@ -1013,7 +1013,7 @@ window.BANG_CARDS = [
       "všichni hráči",
       "hokynářství"
     ],
-    "image": null,
+    "image": "assets/cards/01_zakladni_hra/general-store.webp",
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Brown Card (Immediate)",
     "effectEn": "Reveal as many cards from the deck as living players. In turn order starting with you, each player chooses 1 card.",
@@ -1051,7 +1051,7 @@ window.BANG_CARDS = [
       "panika",
       "vzdálenost 1"
     ],
-    "image": null,
+    "image": "assets/cards/01_zakladni_hra/panic.webp",
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Brown Card (Immediate)",
     "effectEn": "Draw 1 card from any player at distance 1 (from hand or in play).",
@@ -1091,7 +1091,7 @@ window.BANG_CARDS = [
       "cat balou",
       "ničení"
     ],
-    "image": null,
+    "image": "assets/cards/01_zakladni_hra/cat-balou.webp",
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Brown Card (Immediate)",
     "effectEn": "Force any player at any distance to discard 1 card (from hand or in play).",
@@ -1130,7 +1130,7 @@ window.BANG_CARDS = [
       "kulomet",
       "plošné poškození"
     ],
-    "image": null,
+    "image": "assets/cards/01_zakladni_hra/gatling.webp",
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Brown Card (Immediate)",
     "effectEn": "Fires a BANG! attack at all other living players in play. Does not count toward your 1 BANG! per turn limit.",
@@ -1168,7 +1168,7 @@ window.BANG_CARDS = [
       "indiáni",
       "odhoď bang"
     ],
-    "image": null,
+    "image": "assets/cards/01_zakladni_hra/indians.webp",
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Brown Card (Immediate)",
     "effectEn": "All other players must discard a BANG! card or lose 1 life point. Missed! has no effect.",
@@ -1206,7 +1206,7 @@ window.BANG_CARDS = [
       "duel",
       "odhoď bang"
     ],
-    "image": null,
+    "image": "assets/cards/01_zakladni_hra/duel.webp",
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Brown Card (Immediate)",
     "effectEn": "Challenge any player. Both players alternately discard a BANG! card. The first who fails loses 1 life point.",
@@ -1245,7 +1245,7 @@ window.BANG_CARDS = [
       "sejmutí",
       "srdce"
     ],
-    "image": null,
+    "image": "assets/cards/01_zakladni_hra/barrel.webp",
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Blue Card (In Play)",
     "effectEn": "When targeted by a BANG!, draw: if Hearts ♥, you avoid the shot without needing a Missed! card.",
@@ -1284,7 +1284,7 @@ window.BANG_CARDS = [
       "mustang",
       "obrana"
     ],
-    "image": null,
+    "image": "assets/cards/01_zakladni_hra/mustang.webp",
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Blue Card (In Play)",
     "effectEn": "Other players see you at distance +1.",
@@ -1323,7 +1323,7 @@ window.BANG_CARDS = [
       "útok",
       "zaměřovač"
     ],
-    "image": null,
+    "image": "assets/cards/01_zakladni_hra/scope.webp",
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Blue Card (In Play)",
     "effectEn": "You see all other players at distance -1 (minimum distance is 1).",
@@ -1362,7 +1362,7 @@ window.BANG_CARDS = [
       "sejmutí",
       "zákaz na šerifa"
     ],
-    "image": null,
+    "image": "assets/cards/01_zakladni_hra/jail.webp",
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Blue Card (In Play)",
     "effectEn": "Play on any player (except Sheriff). At the start of their turn, draw: if Hearts ♥, they escape; otherwise they skip their turn.",
@@ -1401,7 +1401,7 @@ window.BANG_CARDS = [
       "3 životy",
       "hazard"
     ],
-    "image": null,
+    "image": "assets/cards/01_zakladni_hra/dynamite.webp",
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Blue Card (In Play)",
     "effectEn": "Passes clockwise. At the start of each player's turn, draw: if Spades ♠ 2–9, it explodes for 3 life points! Otherwise passes to the left.",
@@ -1473,7 +1473,7 @@ window.BANG_CARDS = [
       "rychlopalba",
       "neomezený bang"
     ],
-    "image": null,
+    "image": "assets/cards/01_zakladni_hra/volcanic.webp",
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Blue Card (In Play)",
     "effectEn": "Firearm weapon with Range 1. Allows you to play any number of BANG! cards on your turn.",
@@ -1507,7 +1507,7 @@ window.BANG_CARDS = [
       "schofield",
       "dostřel 2"
     ],
-    "image": null,
+    "image": "assets/cards/01_zakladni_hra/schofield.webp",
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Blue Card (In Play)",
     "effectEn": "Firearm weapon with Range 2.",
@@ -1540,7 +1540,7 @@ window.BANG_CARDS = [
       "remington",
       "dostřel 3"
     ],
-    "image": null,
+    "image": "assets/cards/01_zakladni_hra/remington.webp",
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Blue Card (In Play)",
     "effectEn": "Firearm weapon with Range 3.",
@@ -1574,7 +1574,7 @@ window.BANG_CARDS = [
       "karabina",
       "dostřel 4"
     ],
-    "image": null,
+    "image": "assets/cards/01_zakladni_hra/rev-carabine.webp",
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Blue Card (In Play)",
     "effectEn": "Firearm weapon with Range 4.",
@@ -1608,7 +1608,7 @@ window.BANG_CARDS = [
       "puška",
       "dostřel 5"
     ],
-    "image": null,
+    "image": "assets/cards/01_zakladni_hra/winchester.webp",
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Blue Card (In Play)",
     "effectEn": "Firearm weapon with Range 5.",
@@ -1645,7 +1645,7 @@ window.BANG_CARDS = [
       "káry",
       "dodge city"
     ],
-    "image": null,
+    "image": "assets/cards/02_mesto_duchu/apache-kid.webp",
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Character",
     "effectEn": "Cards with Diamonds ♦ played by other players have no effect on him.",
@@ -1684,7 +1684,7 @@ window.BANG_CARDS = [
       "mustang",
       "barel"
     ],
-    "image": null,
+    "image": "assets/cards/02_mesto_duchu/belle-star.webp",
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Character",
     "effectEn": "During her turn, cards in play in front of other players have no effect.",
@@ -1724,7 +1724,7 @@ window.BANG_CARDS = [
       "dobírání",
       "comeback"
     ],
-    "image": null,
+    "image": "assets/cards/02_mesto_duchu/bill-noface.webp",
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Character",
     "effectEn": "During Phase 1, draws 1 card plus 1 card for each wound he currently has.",
@@ -1762,7 +1762,7 @@ window.BANG_CARDS = [
       "dobírání",
       "agrese"
     ],
-    "image": null,
+    "image": "assets/cards/02_mesto_duchu/chuck-wengam.webp",
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Character",
     "effectEn": "On his turn, may lose 1 life point to immediately draw 2 cards from the deck.",
@@ -1800,7 +1800,7 @@ window.BANG_CARDS = [
       "odhození karet",
       "střelec"
     ],
-    "image": null,
+    "image": "assets/cards/02_mesto_duchu/doc-holyday.webp",
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Character",
     "effectEn": "Once per turn, may discard any 2 cards from his hand to count as playing a BANG! card.",
@@ -1839,7 +1839,7 @@ window.BANG_CARDS = [
       "vedle",
       "neproniknutelná"
     ],
-    "image": null,
+    "image": "assets/cards/02_mesto_duchu/elena-fuente.webp",
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Character",
     "effectEn": "May use any card from her hand as a Missed! card.",
@@ -1878,7 +1878,7 @@ window.BANG_CARDS = [
       "léčení při smrti",
       "životy"
     ],
-    "image": null,
+    "image": "assets/cards/02_mesto_duchu/greg-digger.webp",
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Character",
     "effectEn": "Each time another player is eliminated, immediately regains 2 life points.",
@@ -1916,7 +1916,7 @@ window.BANG_CARDS = [
       "odměna",
       "dobírání při smrti"
     ],
-    "image": null,
+    "image": "assets/cards/02_mesto_duchu/herb-hunter.webp",
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Character",
     "effectEn": "Each time another player is eliminated, immediately draws 2 cards from the deck.",
@@ -1953,7 +1953,7 @@ window.BANG_CARDS = [
       "dobírání",
       "cyklení"
     ],
-    "image": null,
+    "image": "assets/cards/02_mesto_duchu/jose-delgado.webp",
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Character",
     "effectEn": "Up to twice per turn, may discard 1 blue card from hand to draw 2 cards from the deck.",
@@ -1991,7 +1991,7 @@ window.BANG_CARDS = [
       "dobírání",
       "obrana"
     ],
-    "image": null,
+    "image": "assets/cards/02_mesto_duchu/molly-stark.webp",
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Character",
     "effectEn": "Whenever she plays or discards a card out of turn, immediately draws 1 card from the deck.",
@@ -2030,7 +2030,7 @@ window.BANG_CARDS = [
       "krádež ze stolu",
       "vyložené karty"
     ],
-    "image": null,
+    "image": "assets/cards/02_mesto_duchu/pat-brennan.webp",
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Character",
     "effectEn": "During Phase 1, may choose to draw 1 card in play in front of any player instead of 2 cards from deck.",
@@ -2068,7 +2068,7 @@ window.BANG_CARDS = [
       "dobírání",
       "karty navíc"
     ],
-    "image": null,
+    "image": "assets/cards/02_mesto_duchu/pixie-pete.webp",
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Character",
     "effectEn": "During Phase 1, draws 3 cards from the deck instead of 2.",
@@ -2105,7 +2105,7 @@ window.BANG_CARDS = [
       "kapacita ruky",
       "hromadění karet"
     ],
-    "image": null,
+    "image": "assets/cards/02_mesto_duchu/sean-mallory.webp",
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Character",
     "effectEn": "In Phase 3, he may hold up to 10 cards in hand regardless of his current life points.",
@@ -2143,7 +2143,7 @@ window.BANG_CARDS = [
       "dvojité léčení",
       "životy"
     ],
-    "image": null,
+    "image": "assets/cards/02_mesto_duchu/tequila-joe.webp",
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Character",
     "effectEn": "Whenever he plays a Beer card, he regains 2 life points instead of 1.",
@@ -2181,7 +2181,7 @@ window.BANG_CARDS = [
       "chameleon",
       "flexibilita"
     ],
-    "image": null,
+    "image": "assets/cards/02_mesto_duchu/vera-custer.webp",
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Character",
     "effectEn": "At the start of her turn, chooses 1 other living character in play and gains their ability until her next turn.",
@@ -2217,7 +2217,7 @@ window.BANG_CARDS = [
       "vedle",
       "sombrero"
     ],
-    "image": null,
+    "image": "assets/cards/02_mesto_duchu/sombrero.webp",
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Green Card (Dodge City)",
     "effectEn": "Green card. Discard when targeted by BANG!: acts as a Missed! card.",
@@ -2252,7 +2252,7 @@ window.BANG_CARDS = [
       "vedle",
       "železný plát"
     ],
-    "image": null,
+    "image": "assets/cards/02_mesto_duchu/iron-plate.webp",
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Green Card (Dodge City)",
     "effectEn": "Green card. Discard when targeted by BANG!: acts as a Missed! card.",
@@ -2286,7 +2286,7 @@ window.BANG_CARDS = [
       "vedle",
       "klobouk"
     ],
-    "image": null,
+    "image": "assets/cards/02_mesto_duchu/ten-gallon-hat.webp",
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Green Card (Dodge City)",
     "effectEn": "Green card. Discard when targeted by BANG!: acts as a Missed! card.",
@@ -2322,7 +2322,7 @@ window.BANG_CARDS = [
       "sejmutí",
       "srdce"
     ],
-    "image": null,
+    "image": "assets/cards/02_mesto_duchu/bible.webp",
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Green Card (Dodge City)",
     "effectEn": "Green card. Discard on your turn after being targeted by BANG!: acts as Missed! and draw 1 card.",
@@ -2358,7 +2358,7 @@ window.BANG_CARDS = [
       "lízni kartu",
       "efekt bang"
     ],
-    "image": null,
+    "image": "assets/cards/02_mesto_duchu/derringer.webp",
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Green Card (Dodge City)",
     "effectEn": "Green card. Discard on your turn: fire a BANG! at distance 1 and draw 1 card from deck.",
@@ -2393,7 +2393,7 @@ window.BANG_CARDS = [
       "pepřenka",
       "efekt bang"
     ],
-    "image": null,
+    "image": "assets/cards/02_mesto_duchu/pepperbox.webp",
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Green Card (Dodge City)",
     "effectEn": "Green card. Discard on your turn: fire a BANG! within your weapon range.",
@@ -2427,7 +2427,7 @@ window.BANG_CARDS = [
       "nůž",
       "vzdálenost 1"
     ],
-    "image": null,
+    "image": "assets/cards/02_mesto_duchu/knife.webp",
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Green Card (Dodge City)",
     "effectEn": "Green card. Discard on your turn: fire a BANG! at distance 1.",
@@ -2461,7 +2461,7 @@ window.BANG_CARDS = [
       "puška",
       "libovolná vzdálenost"
     ],
-    "image": null,
+    "image": "assets/cards/02_mesto_duchu/buffalo-rifle.webp",
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Green Card (Dodge City)",
     "effectEn": "Green card. Discard on your turn: fire a BANG! at any player regardless of distance.",
@@ -2496,7 +2496,7 @@ window.BANG_CARDS = [
       "houfnice",
       "kulomet"
     ],
-    "image": null,
+    "image": "assets/cards/02_mesto_duchu/howitzer.webp",
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Green Card (Dodge City)",
     "effectEn": "Green card. Discard on your turn: fire a BANG! at all other living players (like Gatling).",
@@ -2532,7 +2532,7 @@ window.BANG_CARDS = [
       "čutora",
       "životy"
     ],
-    "image": null,
+    "image": "assets/cards/02_mesto_duchu/canteen.webp",
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Green Card (Dodge City)",
     "effectEn": "Green card. Discard on your turn: regain 1 life point.",
@@ -2567,7 +2567,7 @@ window.BANG_CARDS = [
       "kankán",
       "ničení"
     ],
-    "image": null,
+    "image": "assets/cards/02_mesto_duchu/can-can.webp",
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Green Card (Dodge City)",
     "effectEn": "Green card. Discard on your turn: force any player to discard 1 card from hand or in play.",
@@ -2601,7 +2601,7 @@ window.BANG_CARDS = [
       "konkurence",
       "vzdálenost 2"
     ],
-    "image": null,
+    "image": "assets/cards/02_mesto_duchu/conestoga.webp",
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Green Card (Dodge City)",
     "effectEn": "Green card. Discard on your turn: draw 1 card from any player regardless of distance.",
@@ -2636,7 +2636,7 @@ window.BANG_CARDS = [
       "rvačka",
       "odhoď kartu"
     ],
-    "image": null,
+    "image": "assets/cards/02_mesto_duchu/brawl.webp",
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Brown Card (Immediate)",
     "effectEn": "Brown card. Discard with 1 other card: all other players must discard 1 card from hand or in play.",
@@ -2672,7 +2672,7 @@ window.BANG_CARDS = [
       "tequila",
       "životy"
     ],
-    "image": null,
+    "image": "assets/cards/02_mesto_duchu/tequila.webp",
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Brown Card (Immediate)",
     "effectEn": "Brown card. Discard with 1 other card: regain 1 life point.",
@@ -2706,7 +2706,7 @@ window.BANG_CARDS = [
       "krádež",
       "rag time"
     ],
-    "image": null,
+    "image": "assets/cards/02_mesto_duchu/rag-time.webp",
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Brown Card (Immediate)",
     "effectEn": "Brown card. Discard with 1 other card: draw 1 card from any player regardless of distance.",
@@ -2741,7 +2741,7 @@ window.BANG_CARDS = [
       "efekt bang",
       "odstřelovač"
     ],
-    "image": null,
+    "image": "assets/cards/02_mesto_duchu/springfield.webp",
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Brown Card (Immediate)",
     "effectEn": "Brown card. Discard with 1 other card: fire a BANG! at any player regardless of distance.",
@@ -2776,7 +2776,7 @@ window.BANG_CARDS = [
       "úhyb",
       "lízni kartu"
     ],
-    "image": null,
+    "image": "assets/cards/02_mesto_duchu/dodge.webp",
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Brown Card (Immediate)",
     "effectEn": "Brown card. Acts as a Missed! card and draw 1 card from the deck.",
@@ -2811,7 +2811,7 @@ window.BANG_CARDS = [
       "vzdálenost 1",
       "efekt bang"
     ],
-    "image": null,
+    "image": "assets/cards/02_mesto_duchu/punch.webp",
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Brown Card (Immediate)",
     "effectEn": "Brown card. A melee BANG! attack at distance 1.",
@@ -2846,7 +2846,7 @@ window.BANG_CARDS = [
       "whisky",
       "2 životy"
     ],
-    "image": null,
+    "image": "assets/cards/02_mesto_duchu/whisky.webp",
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Brown Card (Immediate)",
     "effectEn": "Brown card. Discard with 1 other card: regain 2 life points.",
@@ -2881,7 +2881,7 @@ window.BANG_CARDS = [
       "skrýš",
       "obrana"
     ],
-    "image": null,
+    "image": "assets/cards/02_mesto_duchu/hideout.webp",
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Blue Card (In Play)",
     "effectEn": "Blue card. Other players see you at distance +1 (acts like Mustang).",
@@ -2915,7 +2915,7 @@ window.BANG_CARDS = [
       "dalekohled",
       "útok"
     ],
-    "image": null,
+    "image": "assets/cards/02_mesto_duchu/binocular.webp",
     "expansionNameEn": "Dodge City",
     "typeLabelEn": "Blue Card (In Play)",
     "effectEn": "Blue card. You see all other players at distance -1 (acts like Scope).",
@@ -2951,7 +2951,7 @@ window.BANG_CARDS = [
       "zlatá horečka",
       "červené karty"
     ],
-    "image": null,
+    "image": "assets/cards/03_zlata_horecka/don-bell.webp",
     "expansionNameEn": "Gold Rush",
     "typeLabelEn": "Character",
     "effectEn": "At the end of his turn, draw: on Hearts ♥ or Diamonds ♦, he immediately takes another entire turn!",
@@ -2987,7 +2987,7 @@ window.BANG_CARDS = [
       "valouny zlata",
       "zlatá horečka"
     ],
-    "image": null,
+    "image": "assets/cards/03_zlata_horecka/dutch-will.webp",
     "expansionNameEn": "Gold Rush",
     "typeLabelEn": "Character",
     "effectEn": "During Phase 1, draws 2 cards, keeps 1, and discards the other to take 1 Gold Nugget from the bank.",
@@ -3023,7 +3023,7 @@ window.BANG_CARDS = [
       "efekt bang",
       "zlatá horečka"
     ],
-    "image": null,
+    "image": "assets/cards/03_zlata_horecka/jacky-murieta.webp",
     "expansionNameEn": "Gold Rush",
     "typeLabelEn": "Character",
     "effectEn": "May pay 2 Gold Nuggets to fire a BANG! without playing a card.",
@@ -3059,7 +3059,7 @@ window.BANG_CARDS = [
       "vybavení naslepo",
       "valouny zlata"
     ],
-    "image": null,
+    "image": "assets/cards/03_zlata_horecka/josh-mccloud.webp",
     "expansionNameEn": "Gold Rush",
     "typeLabelEn": "Character",
     "effectEn": "May pay 2 Gold Nuggets to draw the top card from the equipment deck.",
@@ -3096,7 +3096,7 @@ window.BANG_CARDS = [
       "dobírání karet",
       "reakce"
     ],
-    "image": null,
+    "image": "assets/cards/03_zlata_horecka/madam-yto.webp",
     "expansionNameEn": "Gold Rush",
     "typeLabelEn": "Character",
     "effectEn": "Whenever any Beer card is played, immediately draws 1 card from the draw deck.",
@@ -3132,7 +3132,7 @@ window.BANG_CARDS = [
       "sleva na vybavení",
       "valouny zlata"
     ],
-    "image": null,
+    "image": "assets/cards/03_zlata_horecka/pretty-luzena.webp",
     "expansionNameEn": "Gold Rush",
     "typeLabelEn": "Character",
     "effectEn": "May purchase 1 equipment card each turn with a discount of 1 Gold Nugget.",
@@ -3169,7 +3169,7 @@ window.BANG_CARDS = [
       "dobírání",
       "zlato"
     ],
-    "image": null,
+    "image": "assets/cards/03_zlata_horecka/raddie-snake.webp",
     "expansionNameEn": "Gold Rush",
     "typeLabelEn": "Character",
     "effectEn": "Up to twice per turn, may pay 1 Gold Nugget to draw 1 card from the deck.",
@@ -3206,7 +3206,7 @@ window.BANG_CARDS = [
       "zisk zlata",
       "kompenzace"
     ],
-    "image": null,
+    "image": "assets/cards/03_zlata_horecka/simeon-picos.webp",
     "expansionNameEn": "Gold Rush",
     "typeLabelEn": "Character",
     "effectEn": "Each time he loses a life point, takes 1 Gold Nugget from the bank.",
@@ -3242,7 +3242,7 @@ window.BANG_CARDS = [
       "boty",
       "dobírání při zranění"
     ],
-    "image": null,
+    "image": "assets/cards/03_zlata_horecka/boots.webp",
     "expansionNameEn": "Gold Rush",
     "typeLabelEn": "Black Equipment",
     "effectEn": "Black equipment. Cost 1. Whenever you lose a life point, draw 1 card from the deck.",
@@ -3279,7 +3279,7 @@ window.BANG_CARDS = [
       "imunita",
       "káry"
     ],
-    "image": null,
+    "image": "assets/cards/03_zlata_horecka/calumet.webp",
     "expansionNameEn": "Gold Rush",
     "typeLabelEn": "Black Equipment",
     "effectEn": "Black equipment. Cost 3. Diamond ♦ cards played by other players have no effect on you.",
@@ -3314,7 +3314,7 @@ window.BANG_CARDS = [
       "rýžovací mísa",
       "nákup karet"
     ],
-    "image": null,
+    "image": "assets/cards/03_zlata_horecka/gold-pan.webp",
     "expansionNameEn": "Gold Rush",
     "typeLabelEn": "Black Equipment",
     "effectEn": "Black equipment. Cost 1. Up to twice per turn, pay 1 Gold Nugget to draw 1 card from the deck.",
@@ -3351,7 +3351,7 @@ window.BANG_CARDS = [
       "sejmutí",
       "štěstí"
     ],
-    "image": null,
+    "image": "assets/cards/03_zlata_horecka/horseshoe.webp",
     "expansionNameEn": "Gold Rush",
     "typeLabelEn": "Black Equipment",
     "effectEn": "Black equipment. Cost 2. Whenever you draw (check), flip 1 additional card and choose the result.",
@@ -3388,7 +3388,7 @@ window.BANG_CARDS = [
       "talisman",
       "zlato při zranění"
     ],
-    "image": null,
+    "image": "assets/cards/03_zlata_horecka/lucky-charm.webp",
     "expansionNameEn": "Gold Rush",
     "typeLabelEn": "Black Equipment",
     "effectEn": "Black equipment. Cost 1. Whenever you lose a life point from another player's card, take 1 Gold Nugget.",
@@ -3425,7 +3425,7 @@ window.BANG_CARDS = [
       "léčení",
       "záchrana před smrtí"
     ],
-    "image": null,
+    "image": "assets/cards/03_zlata_horecka/rucksack.webp",
     "expansionNameEn": "Gold Rush",
     "typeLabelEn": "Black Equipment",
     "effectEn": "Black equipment. Cost 2. Pay 2 Gold Nuggets to regain 1 life point.",
@@ -3460,7 +3460,7 @@ window.BANG_CARDS = [
       "zbraňový pás",
       "kapacita ruky"
     ],
-    "image": null,
+    "image": "assets/cards/03_zlata_horecka/gun-belt.webp",
     "expansionNameEn": "Gold Rush",
     "typeLabelEn": "Black Equipment",
     "effectEn": "Black equipment. Cost 2. Your hand card limit is fixed at 8 cards regardless of current life points.",
@@ -3494,7 +3494,7 @@ window.BANG_CARDS = [
       "krumpáč",
       "dobírání"
     ],
-    "image": null,
+    "image": "assets/cards/03_zlata_horecka/pickaxe.webp",
     "expansionNameEn": "Gold Rush",
     "typeLabelEn": "Black Equipment",
     "effectEn": "Black equipment. Cost 4. During Phase 1, draw 1 additional card from the deck.",
@@ -3529,7 +3529,7 @@ window.BANG_CARDS = [
       "láhev",
       "flexibilita"
     ],
-    "image": null,
+    "image": "assets/cards/03_zlata_horecka/bottle.webp",
     "expansionNameEn": "Gold Rush",
     "typeLabelEn": "Brown Equipment",
     "effectEn": "Brown equipment. Cost 2. May be discarded to act as Beer, Panic!, or BANG!.",
@@ -3565,7 +3565,7 @@ window.BANG_CARDS = [
       "cat balou",
       "duel"
     ],
-    "image": null,
+    "image": "assets/cards/03_zlata_horecka/pardner.webp",
     "expansionNameEn": "Gold Rush",
     "typeLabelEn": "Brown Equipment",
     "effectEn": "Brown equipment. Cost 2. Discard to act as Cat Balou, Duel, or General Store.",
@@ -3601,7 +3601,7 @@ window.BANG_CARDS = [
       "masivní léčení",
       "sejmutí"
     ],
-    "image": null,
+    "image": "assets/cards/03_zlata_horecka/rhum.webp",
     "expansionNameEn": "Gold Rush",
     "typeLabelEn": "Brown Equipment",
     "effectEn": "Brown equipment. Cost 2. Discard and draw 4 cards (check): regain 1 life point for each Heart ♥.",
@@ -3637,7 +3637,7 @@ window.BANG_CARDS = [
       "odměna",
       "vražda"
     ],
-    "image": null,
+    "image": "assets/cards/03_zlata_horecka/wanted.webp",
     "expansionNameEn": "Gold Rush",
     "typeLabelEn": "Brown Equipment",
     "effectEn": "Brown equipment. Cost 2. Place in front of any player. Whoever eliminates them draws 2 cards and takes 1 Gold Nugget.",
@@ -3672,7 +3672,7 @@ window.BANG_CARDS = [
       "4 karty",
       "unie"
     ],
-    "image": null,
+    "image": "assets/cards/03_zlata_horecka/union-pacific.webp",
     "expansionNameEn": "Gold Rush",
     "typeLabelEn": "Brown Equipment",
     "effectEn": "Brown equipment. Cost 4. Draw 4 cards from the draw deck.",
@@ -3708,7 +3708,7 @@ window.BANG_CARDS = [
       "extra tah",
       "nejsilnější"
     ],
-    "image": null,
+    "image": "assets/cards/03_zlata_horecka/gold-rush-equipment.webp",
     "expansionNameEn": "Gold Rush",
     "typeLabelEn": "Brown Equipment",
     "effectEn": "Brown equipment. Cost 5. Ends your turn and immediately starts a new turn for you with full life points restored!",
@@ -3745,7 +3745,7 @@ window.BANG_CARDS = [
       "reakce",
       "dobírání"
     ],
-    "image": null,
+    "image": "assets/cards/04_ozbrojeni_a_nebezpecni/al-preacher.webp",
     "expansionNameEn": "Armed & Dangerous",
     "typeLabelEn": "Character",
     "effectEn": "When another player plays a blue or orange card, may pay 2 load tokens to draw 1 card from deck.",
@@ -3780,7 +3780,7 @@ window.BANG_CARDS = [
       "nabíjení",
       "žetony nabití"
     ],
-    "image": null,
+    "image": "assets/cards/04_ozbrojeni_a_nebezpecni/bass-greeves.webp",
     "expansionNameEn": "Armed & Dangerous",
     "typeLabelEn": "Character",
     "effectEn": "May discard 1 card from hand to place 2 load tokens on one of his cards.",
@@ -3816,7 +3816,7 @@ window.BANG_CARDS = [
       "zrušení útoku",
       "dobírání"
     ],
-    "image": null,
+    "image": "assets/cards/04_ozbrojeni_a_nebezpecni/bloody-mary.webp",
     "expansionNameEn": "Armed & Dangerous",
     "typeLabelEn": "Character",
     "effectEn": "Whenever her BANG! is canceled by Missed!, she immediately draws 1 card from the deck.",
@@ -3853,7 +3853,7 @@ window.BANG_CARDS = [
       "sabotáž",
       "nabíjení"
     ],
-    "image": null,
+    "image": "assets/cards/04_ozbrojeni_a_nebezpecni/frankie-canton.webp",
     "expansionNameEn": "Armed & Dangerous",
     "typeLabelEn": "Character",
     "effectEn": "Once per turn, may take 1 load token from any card in play and put it on his character.",
@@ -3890,7 +3890,7 @@ window.BANG_CARDS = [
       "sejmutí",
       "zranění"
     ],
-    "image": null,
+    "image": "assets/cards/04_ozbrojeni_a_nebezpecni/julie-cutter.webp",
     "expansionNameEn": "Armed & Dangerous",
     "typeLabelEn": "Character",
     "effectEn": "Whenever a player causes her to lose a life point, she draws (check): on Hearts/Diamonds, that player loses 1 life point.",
@@ -3927,7 +3927,7 @@ window.BANG_CARDS = [
       "extra výstřel",
       "efekt bang"
     ],
-    "image": null,
+    "image": "assets/cards/04_ozbrojeni_a_nebezpecni/mexicali-kid.webp",
     "expansionNameEn": "Armed & Dangerous",
     "typeLabelEn": "Character",
     "effectEn": "Once per turn, may pay 2 load tokens to fire a BANG! (does not count toward the 1 BANG! limit).",
@@ -3965,7 +3965,7 @@ window.BANG_CARDS = [
       "esa",
       "obrana"
     ],
-    "image": null,
+    "image": "assets/cards/04_ozbrojeni_a_nebezpecni/ms-abigail.webp",
     "expansionNameEn": "Armed & Dangerous",
     "typeLabelEn": "Character",
     "effectEn": "Ignores brown cards with values J, Q, K, A played against her if she is the sole target.",
@@ -4001,7 +4001,7 @@ window.BANG_CARDS = [
       "zásoba žetonů",
       "nabíjení karet"
     ],
-    "image": null,
+    "image": "assets/cards/04_ozbrojeni_a_nebezpecni/red-ringo.webp",
     "expansionNameEn": "Armed & Dangerous",
     "typeLabelEn": "Character",
     "effectEn": "May place up to 4 load tokens on his character card at game start.",
@@ -4037,7 +4037,7 @@ window.BANG_CARDS = [
       "dvouhlavňovka",
       "nezrušitelný bang"
     ],
-    "image": null,
+    "image": "assets/cards/04_ozbrojeni_a_nebezpecni/double-barrel.webp",
     "expansionNameEn": "Armed & Dangerous",
     "typeLabelEn": "Dangerous Card (Orange)",
     "effectEn": "Orange weapon. Range 1. Loaded with 3 tokens. Pay 1 token on BANG!: target must play 2 Missed! to cancel.",
@@ -4072,7 +4072,7 @@ window.BANG_CARDS = [
       "buntline special",
       "odhození karty"
     ],
-    "image": null,
+    "image": "assets/cards/04_ozbrojeni_a_nebezpecni/buntline-special.webp",
     "expansionNameEn": "Armed & Dangerous",
     "typeLabelEn": "Dangerous Card (Orange)",
     "effectEn": "Orange weapon. Range 2. Loaded with 3 tokens. Pay 1 token on BANG!: if target cancels with Missed!, they must discard 1 card.",
@@ -4107,7 +4107,7 @@ window.BANG_CARDS = [
       "thunderer",
       "recyklace bang"
     ],
-    "image": null,
+    "image": "assets/cards/04_ozbrojeni_a_nebezpecni/thunderer.webp",
     "expansionNameEn": "Armed & Dangerous",
     "typeLabelEn": "Dangerous Card (Orange)",
     "effectEn": "Orange weapon. Range 3. Loaded with 3 tokens. Pay 1 token on BANG!: target cannot play Missed!.",
@@ -4144,7 +4144,7 @@ window.BANG_CARDS = [
       "dostřel 6",
       "ruší barel"
     ],
-    "image": null,
+    "image": "assets/cards/04_ozbrojeni_a_nebezpecni/big-fifty.webp",
     "expansionNameEn": "Armed & Dangerous",
     "typeLabelEn": "Dangerous Card (Orange)",
     "effectEn": "Orange weapon. Range 6. Loaded with 3 tokens. Pay 1 token on BANG!: target's character ability and cards in play are ignored.",
@@ -4182,7 +4182,7 @@ window.BANG_CARDS = [
       "časovaná exploze",
       "2 životy"
     ],
-    "image": null,
+    "image": "assets/cards/04_ozbrojeni_a_nebezpecni/bomb.webp",
     "expansionNameEn": "Armed & Dangerous",
     "typeLabelEn": "Dangerous Card (Orange)",
     "effectEn": "Orange card. Loaded with 3 tokens. In Phase 0 draw (check): on Hearts/Diamonds passes left; on Clubs/Spades lose 2 tokens (explodes for 2 lives at 0).",
@@ -4218,7 +4218,7 @@ window.BANG_CARDS = [
       "bič",
       "odhození karty ze stolu"
     ],
-    "image": null,
+    "image": "assets/cards/04_ozbrojeni_a_nebezpecni/whip.webp",
     "expansionNameEn": "Armed & Dangerous",
     "typeLabelEn": "Dangerous Card (Orange)",
     "effectEn": "Orange card. Loaded with 3 tokens. Pay 1 token on your turn: force any player to discard 1 card in play.",
@@ -4254,7 +4254,7 @@ window.BANG_CARDS = [
       "vedle",
       "obrana"
     ],
-    "image": null,
+    "image": "assets/cards/04_ozbrojeni_a_nebezpecni/crate.webp",
     "expansionNameEn": "Armed & Dangerous",
     "typeLabelEn": "Dangerous Card (Orange)",
     "effectEn": "Orange card. Loaded with 3 tokens. Pay 2 tokens when targeted by BANG!: acts as Missed!.",
@@ -4289,7 +4289,7 @@ window.BANG_CARDS = [
       "bandalír",
       "extra bang"
     ],
-    "image": null,
+    "image": "assets/cards/04_ozbrojeni_a_nebezpecni/bandolier.webp",
     "expansionNameEn": "Armed & Dangerous",
     "typeLabelEn": "Dangerous Card (Orange)",
     "effectEn": "Orange card. Loaded with 3 tokens. Pay 1 token: play an additional BANG! card this turn.",
@@ -4324,7 +4324,7 @@ window.BANG_CARDS = [
       "zvonice",
       "vzdálenost 1"
     ],
-    "image": null,
+    "image": "assets/cards/04_ozbrojeni_a_nebezpecni/bell-tower.webp",
     "expansionNameEn": "Armed & Dangerous",
     "typeLabelEn": "Dangerous Card (Orange)",
     "effectEn": "Orange card. Loaded with 3 tokens. Pay 1 token: you see all players at distance 1 for your next card.",
@@ -4360,7 +4360,7 @@ window.BANG_CARDS = [
       "léčení",
       "žetony nabití"
     ],
-    "image": null,
+    "image": "assets/cards/04_ozbrojeni_a_nebezpecni/a-little-nip.webp",
     "expansionNameEn": "Armed & Dangerous",
     "typeLabelEn": "Brown Card (Immediate)",
     "effectEn": "Brown card. Regain 1 life point. Boost: pay 1 token to regain 2 life points.",
@@ -4395,7 +4395,7 @@ window.BANG_CARDS = [
       "bečka piva",
       "léčení"
     ],
-    "image": null,
+    "image": "assets/cards/04_ozbrojeni_a_nebezpecni/beer-keg.webp",
     "expansionNameEn": "Armed & Dangerous",
     "typeLabelEn": "Brown Card (Immediate)",
     "effectEn": "Brown card. Regain 1 life point. Boost: pay 2 tokens to regain 2 life points.",
@@ -4429,7 +4429,7 @@ window.BANG_CARDS = [
       "šíp",
       "odhoď bang"
     ],
-    "image": null,
+    "image": "assets/cards/04_ozbrojeni_a_nebezpecni/arrow.webp",
     "expansionNameEn": "Armed & Dangerous",
     "typeLabelEn": "Brown Card (Immediate)",
     "effectEn": "Brown card. Shoot an arrow at any player (BANG!). Boost: pay 1 token to make it uncancelable.",
@@ -4464,7 +4464,7 @@ window.BANG_CARDS = [
       "rychlopalba",
       "extra výstřel"
     ],
-    "image": null,
+    "image": "assets/cards/04_ozbrojeni_a_nebezpecni/quick-shot.webp",
     "expansionNameEn": "Armed & Dangerous",
     "typeLabelEn": "Brown Card (Immediate)",
     "effectEn": "Brown card. Shoot a BANG!. Boost: pay 1 token to immediately draw 1 card.",
@@ -4499,7 +4499,7 @@ window.BANG_CARDS = [
       "křesadlovka",
       "opakovaný útok"
     ],
-    "image": null,
+    "image": "assets/cards/04_ozbrojeni_a_nebezpecni/flintlock.webp",
     "expansionNameEn": "Armed & Dangerous",
     "typeLabelEn": "Brown Card (Immediate)",
     "effectEn": "Brown card. Shoot a BANG!. Boost: pay 2 tokens, target must play 2 Missed!.",
@@ -4535,7 +4535,7 @@ window.BANG_CARDS = [
       "opakování sejmutí",
       "reakce"
     ],
-    "image": null,
+    "image": "assets/cards/04_ozbrojeni_a_nebezpecni/tumbleweed.webp",
     "expansionNameEn": "Armed & Dangerous",
     "typeLabelEn": "Brown Card (Immediate)",
     "effectEn": "Brown card. Play immediately after any draw (check) to cancel it and force a redraw.",
@@ -4571,7 +4571,7 @@ window.BANG_CARDS = [
       "rez",
       "krádež žetonů"
     ],
-    "image": null,
+    "image": "assets/cards/04_ozbrojeni_a_nebezpecni/rust.webp",
     "expansionNameEn": "Armed & Dangerous",
     "typeLabelEn": "Brown Card (Immediate)",
     "effectEn": "Brown card. Remove 1 load token from each card of all other players.",
@@ -4605,7 +4605,7 @@ window.BANG_CARDS = [
       "nabíjení",
       "žetony nabití"
     ],
-    "image": null,
+    "image": "assets/cards/04_ozbrojeni_a_nebezpecni/reloading.webp",
     "expansionNameEn": "Armed & Dangerous",
     "typeLabelEn": "Brown Card (Immediate)",
     "effectEn": "Brown card. Place 3 load tokens on your character card.",
@@ -5009,7 +5009,7 @@ window.BANG_CARDS = [
       "plošné ničení",
       "cirkusácký vagon"
     ],
-    "image": null,
+    "image": "assets/cards/05_velka_vlakova_loupez/circus-wagon.webp",
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Railcar",
     "effectEn": "Railcar. You see all other players at distance -1.",
@@ -5042,7 +5042,7 @@ window.BANG_CARDS = [
       "extra tah",
       "expresní vůz"
     ],
-    "image": null,
+    "image": "assets/cards/05_velka_vlakova_loupez/express-card.webp",
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Railcar",
     "effectEn": "Railcar. During Phase 1, draw 1 additional card from the deck.",
@@ -5179,7 +5179,7 @@ window.BANG_CARDS = [
       "vedle",
       "služební vůz"
     ],
-    "image": null,
+    "image": "assets/cards/05_velka_vlakova_loupez/caboose.webp",
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Railcar",
     "effectEn": "Railcar. When targeted by BANG!, draw (check): on Hearts ♥ cancel the shot.",
@@ -5216,7 +5216,7 @@ window.BANG_CARDS = [
       "vagon duchů",
       "kritická karta"
     ],
-    "image": null,
+    "image": "assets/cards/05_velka_vlakova_loupez/ghost-car.webp",
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Railcar",
     "effectEn": "Railcar. Prevents lethal damage: when you would die, stay alive with 0 life points.",
@@ -5286,7 +5286,7 @@ window.BANG_CARDS = [
       "cena",
       "odhoď bang"
     ],
-    "image": null,
+    "image": "assets/cards/05_velka_vlakova_loupez/boom-town.webp",
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Station",
     "effectEn": "Station tile. Purchase cost: discard 1 card. Grants the attached railcar.",
@@ -5319,7 +5319,7 @@ window.BANG_CARDS = [
       "cena",
       "odhoď vedle"
     ],
-    "image": null,
+    "image": "assets/cards/05_velka_vlakova_loupez/dodgeville.webp",
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Station",
     "effectEn": "Station tile. Purchase cost: discard 2 cards. Grants the attached railcar.",
@@ -5386,7 +5386,7 @@ window.BANG_CARDS = [
       "panika",
       "cat balou"
     ],
-    "image": null,
+    "image": "assets/cards/05_velka_vlakova_loupez/catico.webp",
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Station",
     "effectEn": "Station tile. Purchase cost: discard 1 Heart ♥ card. Grants the attached railcar.",
@@ -5419,7 +5419,7 @@ window.BANG_CARDS = [
       "cena",
       "modrá karta"
     ],
-    "image": null,
+    "image": "assets/cards/05_velka_vlakova_loupez/deathwood.webp",
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Station",
     "effectEn": "Station tile. Purchase cost: discard 1 Club ♣ card. Grants the attached railcar.",
@@ -5452,7 +5452,7 @@ window.BANG_CARDS = [
       "cena",
       "ztráta života"
     ],
-    "image": null,
+    "image": "assets/cards/05_velka_vlakova_loupez/tombrock.webp",
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Station",
     "effectEn": "Station tile. Purchase cost: discard 1 Spade ♠ card. Grants the attached railcar.",
@@ -5485,7 +5485,7 @@ window.BANG_CARDS = [
       "cena",
       "2 karty"
     ],
-    "image": null,
+    "image": "assets/cards/05_velka_vlakova_loupez/virginia-town.webp",
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Station",
     "effectEn": "Station tile. Purchase cost: lose 1 life point. Grants the attached railcar.",
@@ -5518,7 +5518,7 @@ window.BANG_CARDS = [
       "cena",
       "hodnota 2-9"
     ],
-    "image": null,
+    "image": "assets/cards/05_velka_vlakova_loupez/yooma.webp",
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Station",
     "effectEn": "Station tile. Purchase cost: discard 1 weapon card. Grants the attached railcar.",
@@ -5551,7 +5551,7 @@ window.BANG_CARDS = [
       "cena",
       "figury a esa"
     ],
-    "image": null,
+    "image": "assets/cards/05_velka_vlakova_loupez/fort-wroth.webp",
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Station",
     "effectEn": "Station tile. Purchase cost: pay 2 load tokens or discard 2 cards.",
@@ -5584,7 +5584,7 @@ window.BANG_CARDS = [
       "cena",
       "srdce"
     ],
-    "image": null,
+    "image": "assets/cards/05_velka_vlakova_loupez/san-tafe.webp",
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Station",
     "effectEn": "Station tile. Purchase cost: discard 1 blue card.",
@@ -5617,7 +5617,7 @@ window.BANG_CARDS = [
       "cena",
       "káry"
     ],
-    "image": null,
+    "image": "assets/cards/05_velka_vlakova_loupez/miner-s-oath.webp",
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Station",
     "effectEn": "Station tile. Purchase cost: discard 1 green or orange card.",
@@ -5650,7 +5650,7 @@ window.BANG_CARDS = [
       "cena",
       "kříže"
     ],
-    "image": null,
+    "image": "assets/cards/05_velka_vlakova_loupez/frisco.webp",
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Station",
     "effectEn": "Station tile. Purchase cost: discard 1 BANG! card.",
@@ -5683,7 +5683,7 @@ window.BANG_CARDS = [
       "cena",
       "piky"
     ],
-    "image": null,
+    "image": "assets/cards/05_velka_vlakova_loupez/creepy-creek.webp",
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Station",
     "effectEn": "Station tile. Purchase cost: discard 1 Missed! card.",
@@ -5719,7 +5719,7 @@ window.BANG_CARDS = [
       "ničení karet",
       "vícenásobný bang"
     ],
-    "image": null,
+    "image": "assets/cards/05_velka_vlakova_loupez/train-robbery.webp",
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Brown Card (Immediate)",
     "effectEn": "Brown card. Advance the train 1 station and take the attached railcar for free.",
@@ -5755,7 +5755,7 @@ window.BANG_CARDS = [
       "filtrace balíčku",
       "fáze 1"
     ],
-    "image": null,
+    "image": "assets/cards/05_velka_vlakova_loupez/map.webp",
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Blue Card (In Play)",
     "effectEn": "Blue card. In Phase 0, look at top 2 cards of deck and discard 1.",
@@ -5791,7 +5791,7 @@ window.BANG_CARDS = [
       "vzdálenost 1",
       "návrat do ruky"
     ],
-    "image": null,
+    "image": "assets/cards/05_velka_vlakova_loupez/knife-revolver.webp",
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Brown Card (Immediate)",
     "effectEn": "Brown card. Acts as a BANG! attack or draw 1 card.",
@@ -5826,7 +5826,7 @@ window.BANG_CARDS = [
       "kompenzace",
       "dobírání při ztrátě"
     ],
-    "image": null,
+    "image": "assets/cards/05_velka_vlakova_loupez/refund.webp",
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Brown Card (Immediate)",
     "effectEn": "Brown card. Discard 1 card in play to draw 2 cards from deck.",
@@ -5862,7 +5862,7 @@ window.BANG_CARDS = [
       "plnou parou vpřed",
       "zdvojení efektu"
     ],
-    "image": null,
+    "image": "assets/cards/05_velka_vlakova_loupez/full-steam.webp",
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Brown Card (Immediate)",
     "effectEn": "Brown card. Advance the train 2 stations immediately.",
@@ -5900,7 +5900,7 @@ window.BANG_CARDS = [
       "výhybka",
       "sabotáž"
     ],
-    "image": null,
+    "image": "assets/cards/05_velka_vlakova_loupez/switch.webp",
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Brown Card (Immediate)",
     "effectEn": "Brown card. Switch the positions of 2 stations or railcars.",
@@ -5939,7 +5939,7 @@ window.BANG_CARDS = [
       "krádež útočné karty",
       "vedle"
     ],
-    "image": null,
+    "image": "assets/cards/05_velka_vlakova_loupez/evaded.webp",
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Brown Card (Immediate)",
     "effectEn": "Brown card. Cancel an attack and draw 1 card.",
@@ -5978,7 +5978,7 @@ window.BANG_CARDS = [
       "automatický bang",
       "údolí stínů"
     ],
-    "image": null,
+    "image": "assets/cards/06_udoli_stinu/henry-block.webp",
     "expansionNameEn": "Valley of Shadows",
     "typeLabelEn": "Character",
     "effectEn": "Anyone who draws or forces him to discard a card becomes target of a BANG! attack.",
@@ -6017,7 +6017,7 @@ window.BANG_CARDS = [
       "sejmutí",
       "colorado bill"
     ],
-    "image": null,
+    "image": "assets/cards/06_udoli_stinu/colorado-bill.webp",
     "expansionNameEn": "Valley of Shadows",
     "typeLabelEn": "Character",
     "effectEn": "Whenever he plays a BANG!, draws (check): on Spades ♠, the shot cannot be canceled.",
@@ -6054,7 +6054,7 @@ window.BANG_CARDS = [
       "střelba místo dobírání",
       "evelyn shebang"
     ],
-    "image": null,
+    "image": "assets/cards/06_udoli_stinu/evelyn-shebang.webp",
     "expansionNameEn": "Valley of Shadows",
     "typeLabelEn": "Character",
     "effectEn": "During Phase 1, may choose not to draw to fire a BANG! at distance 1.",
@@ -6091,7 +6091,7 @@ window.BANG_CARDS = [
       "zrušení hnědé i modré karty",
       "vedle"
     ],
-    "image": null,
+    "image": "assets/cards/06_udoli_stinu/mick-defender.webp",
     "expansionNameEn": "Valley of Shadows",
     "typeLabelEn": "Character",
     "effectEn": "May use any card from hand as Missed! if targeted by a card other than BANG!.",
@@ -6127,7 +6127,7 @@ window.BANG_CARDS = [
       "extra bang",
       "black flower"
     ],
-    "image": null,
+    "image": "assets/cards/06_udoli_stinu/black-flower.webp",
     "expansionNameEn": "Valley of Shadows",
     "typeLabelEn": "Character",
     "effectEn": "Once per turn, may use any Clubs ♣ card as a BANG!.",
@@ -6161,7 +6161,7 @@ window.BANG_CARDS = [
       "kulomet z bangu",
       "plošný útok"
     ],
-    "image": null,
+    "image": "assets/cards/06_udoli_stinu/der-spot-burst-ringer.webp",
     "expansionNameEn": "Valley of Shadows",
     "typeLabelEn": "Character",
     "effectEn": "Once per turn, may play a BANG! without counting toward his limit.",
@@ -6197,7 +6197,7 @@ window.BANG_CARDS = [
       "odměna",
       "dobírání"
     ],
-    "image": null,
+    "image": "assets/cards/06_udoli_stinu/tuco-franziskaner.webp",
     "expansionNameEn": "Valley of Shadows",
     "typeLabelEn": "Character",
     "effectEn": "During Phase 1, draws 2 cards from deck. If he has no blue cards in play, draws 1 extra card.",
@@ -6235,7 +6235,7 @@ window.BANG_CARDS = [
       "nemá životy",
       "údolí stínů"
     ],
-    "image": null,
+    "image": "assets/cards/06_udoli_stinu/ghost.webp",
     "expansionNameEn": "Valley of Shadows",
     "typeLabelEn": "Blue Card (In Play)",
     "effectEn": "Blue card. Play on an eliminated player: returns as a ghost without role or character ability.",
@@ -6275,7 +6275,7 @@ window.BANG_CARDS = [
       "trvalé poškození",
       "piky"
     ],
-    "image": null,
+    "image": "assets/cards/06_udoli_stinu/rattlesnake.webp",
     "expansionNameEn": "Valley of Shadows",
     "typeLabelEn": "Blue Card (In Play)",
     "effectEn": "Blue card. Place in front of any player. In Phase 0 draw (check): on Spades ♠, lose 1 life point.",
@@ -6312,7 +6312,7 @@ window.BANG_CARDS = [
       "roztříštěná kulka",
       "brokovnice"
     ],
-    "image": null,
+    "image": "assets/cards/06_udoli_stinu/shotgun.webp",
     "expansionNameEn": "Valley of Shadows",
     "typeLabelEn": "Brown Card (Immediate)",
     "effectEn": "Brown card. Shoot a player. Target loses 1 life point and discards 1 card from hand.",
@@ -6350,7 +6350,7 @@ window.BANG_CARDS = [
       "opětovaná palba",
       "vedle + bang"
     ],
-    "image": null,
+    "image": "assets/cards/06_udoli_stinu/backfire.webp",
     "expansionNameEn": "Valley of Shadows",
     "typeLabelEn": "Brown Card (Immediate)",
     "effectEn": "Brown card. Cancel a BANG! and immediately fire a BANG! back at the attacker.",
@@ -6387,7 +6387,7 @@ window.BANG_CARDS = [
       "tornádo",
       "všichni hráči"
     ],
-    "image": null,
+    "image": "assets/cards/06_udoli_stinu/tornado.webp",
     "expansionNameEn": "Valley of Shadows",
     "typeLabelEn": "Brown Card (Immediate)",
     "effectEn": "Brown card. All other players must discard 2 cards from hand.",
@@ -6423,7 +6423,7 @@ window.BANG_CARDS = [
       "dvojitá rána",
       "2 vedle"
     ],
-    "image": null,
+    "image": "assets/cards/06_udoli_stinu/fanning.webp",
     "expansionNameEn": "Valley of Shadows",
     "typeLabelEn": "Brown Card (Immediate)",
     "effectEn": "Brown card. Fire 2 BANG! attacks at the same or different targets.",
@@ -6460,7 +6460,7 @@ window.BANG_CARDS = [
       "zrušení vězení",
       "zrušení cat balou"
     ],
-    "image": null,
+    "image": "assets/cards/06_udoli_stinu/escape.webp",
     "expansionNameEn": "Valley of Shadows",
     "typeLabelEn": "Brown Card (Immediate)",
     "effectEn": "Brown card. Cancel any card played against you (like Missed! or against Cat Balou).",
@@ -6496,7 +6496,7 @@ window.BANG_CARDS = [
       "lemat",
       "univerzální bang"
     ],
-    "image": null,
+    "image": "assets/cards/06_udoli_stinu/lemat.webp",
     "expansionNameEn": "Valley of Shadows",
     "typeLabelEn": "Blue Card (In Play)",
     "effectEn": "Blue weapon. Range 1. Any card from hand may be played as a BANG!.",
@@ -6532,7 +6532,7 @@ window.BANG_CARDS = [
       "poslední volání",
       "funguje ve dvou hráčích"
     ],
-    "image": null,
+    "image": "assets/cards/06_udoli_stinu/last-call.webp",
     "expansionNameEn": "Valley of Shadows",
     "typeLabelEn": "Brown Card (Immediate)",
     "effectEn": "Brown card. Regain 1 life point even if only 2 players remain in the game.",
@@ -6569,7 +6569,7 @@ window.BANG_CARDS = [
       "město duchů",
       "high noon"
     ],
-    "image": null,
+    "image": "assets/cards/07_prave_poledne/ghost-town.webp",
     "expansionNameEn": "High Noon",
     "typeLabelEn": "Global Event",
     "effectEn": "Event. Dead players return as ghosts on their turns: draw 3 cards, cannot die, leave at turn end.",
@@ -6605,7 +6605,7 @@ window.BANG_CARDS = [
       "doktor",
       "podpora slabších"
     ],
-    "image": null,
+    "image": "assets/cards/07_prave_poledne/the-doctor.webp",
     "expansionNameEn": "High Noon",
     "typeLabelEn": "Global Event",
     "effectEn": "Event. Living players with lowest life points regain 1 life point.",
@@ -6639,7 +6639,7 @@ window.BANG_CARDS = [
       "daltonové",
       "odhození modré karty"
     ],
-    "image": null,
+    "image": "assets/cards/07_prave_poledne/the-daltons.webp",
     "expansionNameEn": "High Noon",
     "typeLabelEn": "Global Event",
     "effectEn": "Event. When revealed, all players with blue cards in play discard 1 blue card.",
@@ -6674,7 +6674,7 @@ window.BANG_CARDS = [
       "kazatel",
       "příměří"
     ],
-    "image": null,
+    "image": "assets/cards/07_prave_poledne/the-reverend.webp",
     "expansionNameEn": "High Noon",
     "typeLabelEn": "Global Event",
     "effectEn": "Event. Beer cards cannot be played.",
@@ -6709,7 +6709,7 @@ window.BANG_CARDS = [
       "méně karet",
       "fáze 1"
     ],
-    "image": null,
+    "image": "assets/cards/07_prave_poledne/thirst.webp",
     "expansionNameEn": "High Noon",
     "typeLabelEn": "Global Event",
     "effectEn": "Event. Players draw only 1 card during Phase 1.",
@@ -6743,7 +6743,7 @@ window.BANG_CARDS = [
       "více karet",
       "fáze 1"
     ],
-    "image": null,
+    "image": "assets/cards/07_prave_poledne/train-arrival.webp",
     "expansionNameEn": "High Noon",
     "typeLabelEn": "Global Event",
     "effectEn": "Event. Players draw 1 extra card during Phase 1.",
@@ -6778,7 +6778,7 @@ window.BANG_CARDS = [
       "pravé poledne",
       "nevyhnutelná smrt"
     ],
-    "image": null,
+    "image": "assets/cards/07_prave_poledne/high-noon.webp",
     "expansionNameEn": "High Noon",
     "typeLabelEn": "Global Event",
     "effectEn": "Event. Each player loses 1 life point at the start of their turn. Lasts until game end.",
@@ -6814,7 +6814,7 @@ window.BANG_CARDS = [
       "pěst plná karet",
       "krupobití střel"
     ],
-    "image": null,
+    "image": "assets/cards/08_pest_plna_karet/a-fistful-of-cards.webp",
     "expansionNameEn": "A Fistful of Cards",
     "typeLabelEn": "Global Event",
     "effectEn": "Event. At the start of their turn, player is targeted by as many BANG!s as cards in hand.",
@@ -6850,7 +6850,7 @@ window.BANG_CARDS = [
       "2 bangy za supershot",
       "2 vedle"
     ],
-    "image": null,
+    "image": "assets/cards/08_pest_plna_karet/sniper.webp",
     "expansionNameEn": "A Fistful of Cards",
     "typeLabelEn": "Global Event",
     "effectEn": "Event. Players may discard 2 BANG! cards to fire an uncancelable shot.",
@@ -6885,7 +6885,7 @@ window.BANG_CARDS = [
       "opuštěný důl",
       "obrácený koloběh karet"
     ],
-    "image": null,
+    "image": "assets/cards/08_pest_plna_karet/abonded-mine.webp",
     "expansionNameEn": "A Fistful of Cards",
     "typeLabelEn": "Global Event",
     "effectEn": "Event. In Phase 1, players draw from discard pile if possible.",
@@ -6921,7 +6921,7 @@ window.BANG_CARDS = [
       "vypnutí vyložených karet",
       "divoký západ"
     ],
-    "image": null,
+    "image": "assets/cards/08_pest_plna_karet/lasso.webp",
     "expansionNameEn": "A Fistful of Cards",
     "typeLabelEn": "Global Event",
     "effectEn": "Event. Cards in play in front of all players have no effect.",
@@ -6957,7 +6957,7 @@ window.BANG_CARDS = [
       "okamžité napětí",
       "2 životy"
     ],
-    "image": null,
+    "image": "assets/cards/08_pest_plna_karet/russian-roulette.webp",
     "expansionNameEn": "A Fistful of Cards",
     "typeLabelEn": "Global Event",
     "effectEn": "Event. Starting with Sheriff, players alternately discard a Missed! or lose 2 life points.",
@@ -6994,7 +6994,7 @@ window.BANG_CARDS = [
       "krádež",
       "flint westwood"
     ],
-    "image": null,
+    "image": "assets/cards/09_divoky_zapad/flint-westwood.webp",
     "expansionNameEn": "Wild West Show",
     "typeLabelEn": "Character",
     "effectEn": "On his turn, may trade 1 card from hand for 2 random cards from another player's hand.",
@@ -7030,7 +7030,7 @@ window.BANG_CARDS = [
       "dvojitá schopnost",
       "greygory deck"
     ],
-    "image": null,
+    "image": "assets/cards/09_divoky_zapad/greygory-deck.webp",
     "expansionNameEn": "Wild West Show",
     "typeLabelEn": "Character",
     "effectEn": "At the start of his turn, may draw 2 character cards and choose which one to use this round.",
@@ -7066,7 +7066,7 @@ window.BANG_CARDS = [
       "sbírání sejmutých karet",
       "john pain"
     ],
-    "image": null,
+    "image": "assets/cards/09_divoky_zapad/john-pain.webp",
     "expansionNameEn": "Wild West Show",
     "typeLabelEn": "Character",
     "effectEn": "Whenever any player draws (check), takes the flipped card into his hand if he has under 6 cards.",
@@ -7103,7 +7103,7 @@ window.BANG_CARDS = [
       "kopírování hnědých karet",
       "lee van kliff"
     ],
-    "image": null,
+    "image": "assets/cards/09_divoky_zapad/lee-van-kliff.webp",
     "expansionNameEn": "Wild West Show",
     "typeLabelEn": "Character",
     "effectEn": "On his turn, may discard a BANG! to repeat the effect of the brown card he just played.",
@@ -7141,7 +7141,7 @@ window.BANG_CARDS = [
       "teren kill",
       "hazard"
     ],
-    "image": null,
+    "image": "assets/cards/09_divoky_zapad/teren-kill.webp",
     "expansionNameEn": "Wild West Show",
     "typeLabelEn": "Character",
     "effectEn": "Whenever he would be eliminated, draws (check): on anything except Spades ♠, stays alive with 1 life.",
@@ -7177,7 +7177,7 @@ window.BANG_CARDS = [
       "všichni proti všem",
       "divoký západ"
     ],
-    "image": null,
+    "image": "assets/cards/09_divoky_zapad/wild-west-show.webp",
     "expansionNameEn": "Wild West Show",
     "typeLabelEn": "Global Event",
     "effectEn": "Event. The goal of all players becomes: be the last one alive! Roles are suspended.",
@@ -7211,7 +7211,7 @@ window.BANG_CARDS = [
       "zúčtování",
       "univerzální bang a vedle"
     ],
-    "image": null,
+    "image": "assets/cards/09_divoky_zapad/showdown.webp",
     "expansionNameEn": "Wild West Show",
     "typeLabelEn": "Global Event",
     "effectEn": "Event. All cards may be played as BANG!, and all cards may be played as Missed!.",
@@ -7252,7 +7252,7 @@ window.BANG_CARDS = [
       "dostavník",
       "wells-fargo"
     ],
-    "image": null,
+    "image": "assets/cards/09_divoky_zapad/bone-orchard.webp",
     "expansionNameEn": "Wild West Show",
     "typeLabelEn": "Global Event",
     "effectEn": "Event. When an eliminated player's turn arrives, they return to the game with 1 life point and draw 2 cards. Role is played face-up. If still alive when this event leaves play, they remain permanently in the game!",
@@ -7288,7 +7288,7 @@ window.BANG_CARDS = [
       "slečna zuzana",
       "povinnost hrát 3 karty"
     ],
-    "image": null,
+    "image": "assets/cards/09_divoky_zapad/miss-susanna.webp",
     "expansionNameEn": "Wild West Show",
     "typeLabelEn": "Global Event",
     "effectEn": "Event. Each player must play at least 3 cards on their turn or lose 1 life point.",
@@ -7322,7 +7322,7 @@ window.BANG_CARDS = [
       "zákaz mluvení",
       "zábava"
     ],
-    "image": null,
+    "image": "assets/cards/09_divoky_zapad/gag.webp",
     "expansionNameEn": "Wild West Show",
     "typeLabelEn": "Global Event",
     "effectEn": "Event. Players cannot talk. Whoever speaks loses 1 life point.",
@@ -7358,7 +7358,7 @@ window.BANG_CARDS = [
       "dvojité dobírání",
       "životy"
     ],
-    "image": null,
+    "image": "assets/cards/10_legendy/bart-cassidy-legend.webp",
     "expansionNameEn": "Legends",
     "typeLabelEn": "Legendary Character",
     "effectEn": "Legendary Bart Cassidy (Side B). Whenever he loses a life point, draws 2 cards from deck.",
@@ -7395,7 +7395,7 @@ window.BANG_CARDS = [
       "oko bere 21",
       "masivní dobírání"
     ],
-    "image": null,
+    "image": "assets/cards/10_legendy/black-jack-legend.webp",
     "expansionNameEn": "Legends",
     "typeLabelEn": "Legendary Character",
     "effectEn": "Legendary Black Jack (Side B). In Phase 1, reveals top 2 cards: on red card, draws 2 extra cards.",
@@ -7431,7 +7431,7 @@ window.BANG_CARDS = [
       "činy",
       "univerzální karty"
     ],
-    "image": null,
+    "image": "assets/cards/10_legendy/calamity-janet-legend.webp",
     "expansionNameEn": "Legends",
     "typeLabelEn": "Legendary Character",
     "effectEn": "Legendary Calamity Janet (Side B). May play any card as BANG! or Missed!.",
@@ -7467,7 +7467,7 @@ window.BANG_CARDS = [
       "dvojitá krádež",
       "odveta"
     ],
-    "image": null,
+    "image": "assets/cards/10_legendy/el-gringo-legend.webp",
     "expansionNameEn": "Legends",
     "typeLabelEn": "Legendary Character",
     "effectEn": "Legendary El Gringo (Side B). When taking damage, steals 2 cards from attacker's hand.",
@@ -7504,7 +7504,7 @@ window.BANG_CARDS = [
       "imunita proti hnědým",
       "sejmutí"
     ],
-    "image": null,
+    "image": "assets/cards/10_legendy/jourdonnais-legend.webp",
     "expansionNameEn": "Legends",
     "typeLabelEn": "Legendary Character",
     "effectEn": "Legendary Jourdonnais (Side B). When targeted by brown cards, draws: J, Q, K, A cancels the card.",
@@ -7541,7 +7541,7 @@ window.BANG_CARDS = [
       "sejmutí do ruky",
       "zisk karet"
     ],
-    "image": null,
+    "image": "assets/cards/10_legendy/lucky-duke-legend.webp",
     "expansionNameEn": "Legends",
     "typeLabelEn": "Legendary Character",
     "effectEn": "Legendary Lucky Duke (Side B). Draws 3 cards on checks and picks the best result.",
@@ -7578,7 +7578,7 @@ window.BANG_CARDS = [
       "poplatek za výstřel",
       "nedobytný"
     ],
-    "image": null,
+    "image": "assets/cards/10_legendy/paul-regret-legend.webp",
     "expansionNameEn": "Legends",
     "typeLabelEn": "Legendary Character",
     "effectEn": "Legendary Paul Regret (Side B). Distance to him is increased by +2.",
@@ -7615,7 +7615,7 @@ window.BANG_CARDS = [
       "vzdálenost 1",
       "panika z modré karty"
     ],
-    "image": null,
+    "image": "assets/cards/10_legendy/rose-doolan-legend.webp",
     "expansionNameEn": "Legends",
     "typeLabelEn": "Legendary Character",
     "effectEn": "Legendary Rose Doolan (Side B). Sees all other players at distance 1 regardless of cards.",
@@ -7652,7 +7652,7 @@ window.BANG_CARDS = [
       "léčení",
       "bang zdarma"
     ],
-    "image": null,
+    "image": "assets/cards/10_legendy/sid-ketchum-legend.webp",
     "expansionNameEn": "Legends",
     "typeLabelEn": "Legendary Character",
     "effectEn": "Legendary Sid Ketchum (Side B). May discard any 1 card to regain 1 life point.",
@@ -7689,7 +7689,7 @@ window.BANG_CARDS = [
       "nezrušitelný bang",
       "smrtící čin"
     ],
-    "image": null,
+    "image": "assets/cards/10_legendy/slab-the-killer-legend.webp",
     "expansionNameEn": "Legends",
     "typeLabelEn": "Legendary Character",
     "effectEn": "Legendary Slab the Killer (Side B). Targets must play 3 Missed! cards to cancel his BANG!.",
@@ -7726,7 +7726,7 @@ window.BANG_CARDS = [
       "stále 2 karty",
       "nevyčerpatelná ruka"
     ],
-    "image": null,
+    "image": "assets/cards/10_legendy/suzy-lafayette-legend.webp",
     "expansionNameEn": "Legends",
     "typeLabelEn": "Legendary Character",
     "effectEn": "Legendary Suzy Lafayette (Side B). Whenever she has 1 or fewer cards in hand, draws 2 cards.",
@@ -7763,7 +7763,7 @@ window.BANG_CARDS = [
       "druhý život",
       "znovuzrození se 4 životy"
     ],
-    "image": null,
+    "image": "assets/cards/10_legendy/vulture-sam-legend.webp",
     "expansionNameEn": "Legends",
     "typeLabelEn": "Legendary Character",
     "effectEn": "Legendary Vulture Sam (Side B). When any player dies, takes all their cards and heals 2 lives.",
@@ -7799,7 +7799,7 @@ window.BANG_CARDS = [
       "neomezený bang",
       "bezplatný výstřel"
     ],
-    "image": null,
+    "image": "assets/cards/10_legendy/willy-the-kid-legend.webp",
     "expansionNameEn": "Legends",
     "typeLabelEn": "Legendary Character",
     "effectEn": "Legendary Willy the Kid (Side B). Unlimited BANG! cards; his BANG!s deal 2 damage.",
@@ -7834,7 +7834,7 @@ window.BANG_CARDS = [
       "sejmutí",
       "vlak do yoomy"
     ],
-    "image": null,
+    "image": "assets/cards/10_legendy/3-15-to-yooma-legend.webp",
     "expansionNameEn": "Legends",
     "typeLabelEn": "Feat Card (Legends)",
     "effectEn": "Feat: 3:10 to Yuma. Accomplish: advance train 2 stations. Reward: 2 Fame tokens.",
@@ -8088,7 +8088,7 @@ window.BANG_CARDS = [
       "hrdlo lahve",
       "vývěsní štít"
     ],
-    "image": null,
+    "image": "assets/cards/10_legendy/bottleneck-legend.webp",
     "expansionNameEn": "Legends",
     "typeLabelEn": "Feat Card (Legends)",
     "effectEn": "Feat: Bottleneck. Accomplish: discard Beer card voluntarily. Reward: 2 Fame tokens.",
@@ -8227,7 +8227,7 @@ window.BANG_CARDS = [
       "čištění stolu",
       "johnny kisch"
     ],
-    "image": null,
+    "image": "assets/cards/11_extra_karty/johnny-kisch.webp",
     "expansionNameEn": "Dynamite Box & Promo",
     "typeLabelEn": "Character",
     "effectEn": "Whenever he puts a card into play, all other players must discard 1 card with the same suit.",
@@ -8263,7 +8263,7 @@ window.BANG_CARDS = [
       "hokynářství",
       "uncle will"
     ],
-    "image": null,
+    "image": "assets/cards/11_extra_karty/uncle-will.webp",
     "expansionNameEn": "Dynamite Box & Promo",
     "typeLabelEn": "Character",
     "effectEn": "Once per turn, may play any card from his hand as a General Store.",
@@ -8299,7 +8299,7 @@ window.BANG_CARDS = [
       "rozdávání dárků",
       "claus the saint"
     ],
-    "image": null,
+    "image": "assets/cards/11_extra_karty/claus-the-saint.webp",
     "expansionNameEn": "Dynamite Box & Promo",
     "typeLabelEn": "Character",
     "effectEn": "During Phase 1, draws cards equal to living players + 1, keeps 2, and distributes 1 to each other player.",
@@ -8336,7 +8336,7 @@ window.BANG_CARDS = [
       "annie versary",
       "univerzální bang"
     ],
-    "image": null,
+    "image": "assets/cards/11_extra_karty/annie-versary.webp",
     "expansionNameEn": "Dynamite Box & Promo",
     "typeLabelEn": "Character",
     "effectEn": "May use any card from hand as a BANG! card (does not count toward 1 BANG! limit).",
@@ -8374,7 +8374,7 @@ window.BANG_CARDS = [
       "recyklace",
       "krádež zrušených karet"
     ],
-    "image": null,
+    "image": "assets/cards/11_extra_karty/emiliano.webp",
     "expansionNameEn": "Dynamite Box & Promo",
     "typeLabelEn": "Character",
     "effectEn": "Whenever he draws (check), if it is a number card (2–10), takes it into his hand.",
@@ -8410,7 +8410,7 @@ window.BANG_CARDS = [
       "změna postavy",
       "dynamite box"
     ],
-    "image": null,
+    "image": "assets/cards/11_extra_karty/new-identity.webp",
     "expansionNameEn": "Dynamite Box & Promo",
     "typeLabelEn": "Brown Card (Immediate)",
     "effectEn": "Brown card. Swap your character card for a new random character from the box with full lives.",
@@ -8445,7 +8445,7 @@ window.BANG_CARDS = [
       "omezení barev",
       "dynamite box"
     ],
-    "image": null,
+    "image": "assets/cards/11_extra_karty/handcuffs.webp",
     "expansionNameEn": "Dynamite Box & Promo",
     "typeLabelEn": "Brown Card (Immediate)",
     "effectEn": "Brown card. Target player cannot play cards of a chosen suit until their next turn.",

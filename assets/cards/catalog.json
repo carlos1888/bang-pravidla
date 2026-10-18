@@ -1,0 +1,2378 @@
+[
+  {
+    "origTitle": "BANG!",
+    "origFolder": "01_Zakladni_hra",
+    "webPath": "assets/cards/01_zakladni_hra/bang.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 87820,
+    "webpBytes": 11046
+  },
+  {
+    "origTitle": "BARREL",
+    "origFolder": "01_Zakladni_hra",
+    "webPath": "assets/cards/01_zakladni_hra/barrel.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 88442,
+    "webpBytes": 11500
+  },
+  {
+    "origTitle": "BART CASSIDY",
+    "origFolder": "01_Zakladni_hra",
+    "webPath": "assets/cards/01_zakladni_hra/bart-cassidy.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 92121,
+    "webpBytes": 13308
+  },
+  {
+    "origTitle": "BEER",
+    "origFolder": "01_Zakladni_hra",
+    "webPath": "assets/cards/01_zakladni_hra/beer.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 80606,
+    "webpBytes": 9796
+  },
+  {
+    "origTitle": "BLACK JACK",
+    "origFolder": "01_Zakladni_hra",
+    "webPath": "assets/cards/01_zakladni_hra/black-jack.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 92169,
+    "webpBytes": 14222
+  },
+  {
+    "origTitle": "CALAMITY JANET",
+    "origFolder": "01_Zakladni_hra",
+    "webPath": "assets/cards/01_zakladni_hra/calamity-janet.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 87609,
+    "webpBytes": 12986
+  },
+  {
+    "origTitle": "CAT BALOU",
+    "origFolder": "01_Zakladni_hra",
+    "webPath": "assets/cards/01_zakladni_hra/cat-balou.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 82175,
+    "webpBytes": 10604
+  },
+  {
+    "origTitle": "DEPUTY SHERIFF",
+    "origFolder": "01_Zakladni_hra",
+    "webPath": "assets/cards/01_zakladni_hra/deputy-sheriff.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 84387,
+    "webpBytes": 10372
+  },
+  {
+    "origTitle": "DUEL",
+    "origFolder": "01_Zakladni_hra",
+    "webPath": "assets/cards/01_zakladni_hra/duel.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 98355,
+    "webpBytes": 14940
+  },
+  {
+    "origTitle": "DYNAMITE",
+    "origFolder": "01_Zakladni_hra",
+    "webPath": "assets/cards/01_zakladni_hra/dynamite.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 97396,
+    "webpBytes": 14034
+  },
+  {
+    "origTitle": "EL GRINGO",
+    "origFolder": "01_Zakladni_hra",
+    "webPath": "assets/cards/01_zakladni_hra/el-gringo.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 92086,
+    "webpBytes": 14232
+  },
+  {
+    "origTitle": "GATLING",
+    "origFolder": "01_Zakladni_hra",
+    "webPath": "assets/cards/01_zakladni_hra/gatling.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 84479,
+    "webpBytes": 11284
+  },
+  {
+    "origTitle": "GENERAL STORE",
+    "origFolder": "01_Zakladni_hra",
+    "webPath": "assets/cards/01_zakladni_hra/general-store.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 101050,
+    "webpBytes": 15442
+  },
+  {
+    "origTitle": "INDIANS!",
+    "origFolder": "01_Zakladni_hra",
+    "webPath": "assets/cards/01_zakladni_hra/indians.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 97787,
+    "webpBytes": 14566
+  },
+  {
+    "origTitle": "JAIL",
+    "origFolder": "01_Zakladni_hra",
+    "webPath": "assets/cards/01_zakladni_hra/jail.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 101195,
+    "webpBytes": 15274
+  },
+  {
+    "origTitle": "JESSE JONES",
+    "origFolder": "01_Zakladni_hra",
+    "webPath": "assets/cards/01_zakladni_hra/jesse-jones.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 88223,
+    "webpBytes": 13146
+  },
+  {
+    "origTitle": "JOURDONNAIS",
+    "origFolder": "01_Zakladni_hra",
+    "webPath": "assets/cards/01_zakladni_hra/jourdonnais.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 100645,
+    "webpBytes": 15922
+  },
+  {
+    "origTitle": "KIT CARLSON",
+    "origFolder": "01_Zakladni_hra",
+    "webPath": "assets/cards/01_zakladni_hra/kit-carlson.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 91726,
+    "webpBytes": 13824
+  },
+  {
+    "origTitle": "LUCKY DUKE",
+    "origFolder": "01_Zakladni_hra",
+    "webPath": "assets/cards/01_zakladni_hra/lucky-duke.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 87788,
+    "webpBytes": 12630
+  },
+  {
+    "origTitle": "MISSED!",
+    "origFolder": "01_Zakladni_hra",
+    "webPath": "assets/cards/01_zakladni_hra/missed.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 83880,
+    "webpBytes": 10890
+  },
+  {
+    "origTitle": "MUSTANG",
+    "origFolder": "01_Zakladni_hra",
+    "webPath": "assets/cards/01_zakladni_hra/mustang.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 84966,
+    "webpBytes": 12428
+  },
+  {
+    "origTitle": "OUTLAW",
+    "origFolder": "01_Zakladni_hra",
+    "webPath": "assets/cards/01_zakladni_hra/outlaw.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 71123,
+    "webpBytes": 8336
+  },
+  {
+    "origTitle": "PANIC!",
+    "origFolder": "01_Zakladni_hra",
+    "webPath": "assets/cards/01_zakladni_hra/panic.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 85362,
+    "webpBytes": 10772
+  },
+  {
+    "origTitle": "PAUL REGRET",
+    "origFolder": "01_Zakladni_hra",
+    "webPath": "assets/cards/01_zakladni_hra/paul-regret.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 80851,
+    "webpBytes": 11184
+  },
+  {
+    "origTitle": "PEDRO RAMIREZ",
+    "origFolder": "01_Zakladni_hra",
+    "webPath": "assets/cards/01_zakladni_hra/pedro-ramirez.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 84239,
+    "webpBytes": 12142
+  },
+  {
+    "origTitle": "REMINGTON",
+    "origFolder": "01_Zakladni_hra",
+    "webPath": "assets/cards/01_zakladni_hra/remington.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 62029,
+    "webpBytes": 10412
+  },
+  {
+    "origTitle": "RENEGADE",
+    "origFolder": "01_Zakladni_hra",
+    "webPath": "assets/cards/01_zakladni_hra/renegade.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 78658,
+    "webpBytes": 9766
+  },
+  {
+    "origTitle": "REV. CARABINE",
+    "origFolder": "01_Zakladni_hra",
+    "webPath": "assets/cards/01_zakladni_hra/rev-carabine.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 41967,
+    "webpBytes": 7024
+  },
+  {
+    "origTitle": "ROSE DOOLAN",
+    "origFolder": "01_Zakladni_hra",
+    "webPath": "assets/cards/01_zakladni_hra/rose-doolan.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 91786,
+    "webpBytes": 13272
+  },
+  {
+    "origTitle": "SALOON",
+    "origFolder": "01_Zakladni_hra",
+    "webPath": "assets/cards/01_zakladni_hra/saloon.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 89186,
+    "webpBytes": 12094
+  },
+  {
+    "origTitle": "SCHOFIELD",
+    "origFolder": "01_Zakladni_hra",
+    "webPath": "assets/cards/01_zakladni_hra/schofield.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 45458,
+    "webpBytes": 7700
+  },
+  {
+    "origTitle": "SCOPE",
+    "origFolder": "01_Zakladni_hra",
+    "webPath": "assets/cards/01_zakladni_hra/scope.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 120635,
+    "webpBytes": 14884
+  },
+  {
+    "origTitle": "SHERIFF",
+    "origFolder": "01_Zakladni_hra",
+    "webPath": "assets/cards/01_zakladni_hra/sheriff.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 90965,
+    "webpBytes": 12142
+  },
+  {
+    "origTitle": "SID KETCHUM",
+    "origFolder": "01_Zakladni_hra",
+    "webPath": "assets/cards/01_zakladni_hra/sid-ketchum.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 87940,
+    "webpBytes": 12872
+  },
+  {
+    "origTitle": "SLAB THE KILLER",
+    "origFolder": "01_Zakladni_hra",
+    "webPath": "assets/cards/01_zakladni_hra/slab-the-killer.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 89090,
+    "webpBytes": 13068
+  },
+  {
+    "origTitle": "STAGECOACH",
+    "origFolder": "01_Zakladni_hra",
+    "webPath": "assets/cards/01_zakladni_hra/stagecoach.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 81587,
+    "webpBytes": 10672
+  },
+  {
+    "origTitle": "SUZY LAFAYETTE",
+    "origFolder": "01_Zakladni_hra",
+    "webPath": "assets/cards/01_zakladni_hra/suzy-lafayette.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 88901,
+    "webpBytes": 12386
+  },
+  {
+    "origTitle": "VOLCANIC",
+    "origFolder": "01_Zakladni_hra",
+    "webPath": "assets/cards/01_zakladni_hra/volcanic.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 47123,
+    "webpBytes": 8476
+  },
+  {
+    "origTitle": "VULTURE SAM",
+    "origFolder": "01_Zakladni_hra",
+    "webPath": "assets/cards/01_zakladni_hra/vulture-sam.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 92930,
+    "webpBytes": 13856
+  },
+  {
+    "origTitle": "WELLS FARGO",
+    "origFolder": "01_Zakladni_hra",
+    "webPath": "assets/cards/01_zakladni_hra/wells-fargo.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 88665,
+    "webpBytes": 12346
+  },
+  {
+    "origTitle": "WILLY THE KID",
+    "origFolder": "01_Zakladni_hra",
+    "webPath": "assets/cards/01_zakladni_hra/willy-the-kid.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 82994,
+    "webpBytes": 11766
+  },
+  {
+    "origTitle": "WINCHESTER",
+    "origFolder": "01_Zakladni_hra",
+    "webPath": "assets/cards/01_zakladni_hra/winchester.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 42307,
+    "webpBytes": 7010
+  },
+  {
+    "origTitle": "APACHE KID",
+    "origFolder": "02_Mesto_duchu",
+    "webPath": "assets/cards/02_mesto_duchu/apache-kid.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 81784,
+    "webpBytes": 12410
+  },
+  {
+    "origTitle": "BELLE STAR",
+    "origFolder": "02_Mesto_duchu",
+    "webPath": "assets/cards/02_mesto_duchu/belle-star.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 85584,
+    "webpBytes": 13486
+  },
+  {
+    "origTitle": "BIBLE",
+    "origFolder": "02_Mesto_duchu",
+    "webPath": "assets/cards/02_mesto_duchu/bible.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 122133,
+    "webpBytes": 16674
+  },
+  {
+    "origTitle": "BILL NOFACE",
+    "origFolder": "02_Mesto_duchu",
+    "webPath": "assets/cards/02_mesto_duchu/bill-noface.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 111755,
+    "webpBytes": 14802
+  },
+  {
+    "origTitle": "BINOCULAR",
+    "origFolder": "02_Mesto_duchu",
+    "webPath": "assets/cards/02_mesto_duchu/binocular.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 90409,
+    "webpBytes": 13406
+  },
+  {
+    "origTitle": "BRAWL",
+    "origFolder": "02_Mesto_duchu",
+    "webPath": "assets/cards/02_mesto_duchu/brawl.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 89772,
+    "webpBytes": 12744
+  },
+  {
+    "origTitle": "BUFFALO RIFLE",
+    "origFolder": "02_Mesto_duchu",
+    "webPath": "assets/cards/02_mesto_duchu/buffalo-rifle.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 149606,
+    "webpBytes": 19584
+  },
+  {
+    "origTitle": "CAN CAN",
+    "origFolder": "02_Mesto_duchu",
+    "webPath": "assets/cards/02_mesto_duchu/can-can.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 137077,
+    "webpBytes": 17946
+  },
+  {
+    "origTitle": "CANTEEN",
+    "origFolder": "02_Mesto_duchu",
+    "webPath": "assets/cards/02_mesto_duchu/canteen.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 139043,
+    "webpBytes": 17224
+  },
+  {
+    "origTitle": "CHUCK WENGAM",
+    "origFolder": "02_Mesto_duchu",
+    "webPath": "assets/cards/02_mesto_duchu/chuck-wengam.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 122021,
+    "webpBytes": 17794
+  },
+  {
+    "origTitle": "CONESTOGA",
+    "origFolder": "02_Mesto_duchu",
+    "webPath": "assets/cards/02_mesto_duchu/conestoga.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 132243,
+    "webpBytes": 18070
+  },
+  {
+    "origTitle": "DERRINGER",
+    "origFolder": "02_Mesto_duchu",
+    "webPath": "assets/cards/02_mesto_duchu/derringer.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 129329,
+    "webpBytes": 17894
+  },
+  {
+    "origTitle": "DOC HOLYDAY",
+    "origFolder": "02_Mesto_duchu",
+    "webPath": "assets/cards/02_mesto_duchu/doc-holyday.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 133240,
+    "webpBytes": 20050
+  },
+  {
+    "origTitle": "DODGE",
+    "origFolder": "02_Mesto_duchu",
+    "webPath": "assets/cards/02_mesto_duchu/dodge.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 72446,
+    "webpBytes": 10088
+  },
+  {
+    "origTitle": "ELENA FUENTE",
+    "origFolder": "02_Mesto_duchu",
+    "webPath": "assets/cards/02_mesto_duchu/elena-fuente.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 108587,
+    "webpBytes": 14340
+  },
+  {
+    "origTitle": "GREG DIGGER",
+    "origFolder": "02_Mesto_duchu",
+    "webPath": "assets/cards/02_mesto_duchu/greg-digger.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 118949,
+    "webpBytes": 16868
+  },
+  {
+    "origTitle": "HERB HUNTER",
+    "origFolder": "02_Mesto_duchu",
+    "webPath": "assets/cards/02_mesto_duchu/herb-hunter.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 120569,
+    "webpBytes": 17410
+  },
+  {
+    "origTitle": "HIDEOUT",
+    "origFolder": "02_Mesto_duchu",
+    "webPath": "assets/cards/02_mesto_duchu/hideout.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 90003,
+    "webpBytes": 12988
+  },
+  {
+    "origTitle": "HOWITZER",
+    "origFolder": "02_Mesto_duchu",
+    "webPath": "assets/cards/02_mesto_duchu/howitzer.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 137317,
+    "webpBytes": 18892
+  },
+  {
+    "origTitle": "IRON PLATE",
+    "origFolder": "02_Mesto_duchu",
+    "webPath": "assets/cards/02_mesto_duchu/iron-plate.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 131332,
+    "webpBytes": 18124
+  },
+  {
+    "origTitle": "JOSÉ DELGADO",
+    "origFolder": "02_Mesto_duchu",
+    "webPath": "assets/cards/02_mesto_duchu/jose-delgado.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 127813,
+    "webpBytes": 18960
+  },
+  {
+    "origTitle": "KNIFE",
+    "origFolder": "02_Mesto_duchu",
+    "webPath": "assets/cards/02_mesto_duchu/knife.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 105631,
+    "webpBytes": 14524
+  },
+  {
+    "origTitle": "MOLLY STARK",
+    "origFolder": "02_Mesto_duchu",
+    "webPath": "assets/cards/02_mesto_duchu/molly-stark.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 112836,
+    "webpBytes": 15880
+  },
+  {
+    "origTitle": "PAT BRENNAN",
+    "origFolder": "02_Mesto_duchu",
+    "webPath": "assets/cards/02_mesto_duchu/pat-brennan.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 121854,
+    "webpBytes": 18090
+  },
+  {
+    "origTitle": "PEPPERBOX",
+    "origFolder": "02_Mesto_duchu",
+    "webPath": "assets/cards/02_mesto_duchu/pepperbox.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 99791,
+    "webpBytes": 13454
+  },
+  {
+    "origTitle": "PIXIE PETE",
+    "origFolder": "02_Mesto_duchu",
+    "webPath": "assets/cards/02_mesto_duchu/pixie-pete.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 112502,
+    "webpBytes": 14968
+  },
+  {
+    "origTitle": "PONY EXPRESS",
+    "origFolder": "02_Mesto_duchu",
+    "webPath": "assets/cards/02_mesto_duchu/pony-express.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 96213,
+    "webpBytes": 15148
+  },
+  {
+    "origTitle": "PUNCH",
+    "origFolder": "02_Mesto_duchu",
+    "webPath": "assets/cards/02_mesto_duchu/punch.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 131272,
+    "webpBytes": 17004
+  },
+  {
+    "origTitle": "RAG TIME",
+    "origFolder": "02_Mesto_duchu",
+    "webPath": "assets/cards/02_mesto_duchu/rag-time.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 129351,
+    "webpBytes": 15224
+  },
+  {
+    "origTitle": "SEAN MALLORY",
+    "origFolder": "02_Mesto_duchu",
+    "webPath": "assets/cards/02_mesto_duchu/sean-mallory.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 117316,
+    "webpBytes": 15664
+  },
+  {
+    "origTitle": "SOMBRERO",
+    "origFolder": "02_Mesto_duchu",
+    "webPath": "assets/cards/02_mesto_duchu/sombrero.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 75381,
+    "webpBytes": 10712
+  },
+  {
+    "origTitle": "SPRINGFIELD",
+    "origFolder": "02_Mesto_duchu",
+    "webPath": "assets/cards/02_mesto_duchu/springfield.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 140136,
+    "webpBytes": 17972
+  },
+  {
+    "origTitle": "TEN GALLON HAT",
+    "origFolder": "02_Mesto_duchu",
+    "webPath": "assets/cards/02_mesto_duchu/ten-gallon-hat.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 70838,
+    "webpBytes": 10812
+  },
+  {
+    "origTitle": "TEQUILA JOE",
+    "origFolder": "02_Mesto_duchu",
+    "webPath": "assets/cards/02_mesto_duchu/tequila-joe.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 121297,
+    "webpBytes": 16376
+  },
+  {
+    "origTitle": "TEQUILA",
+    "origFolder": "02_Mesto_duchu",
+    "webPath": "assets/cards/02_mesto_duchu/tequila.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 115098,
+    "webpBytes": 13488
+  },
+  {
+    "origTitle": "VERA CUSTER",
+    "origFolder": "02_Mesto_duchu",
+    "webPath": "assets/cards/02_mesto_duchu/vera-custer.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 114669,
+    "webpBytes": 17086
+  },
+  {
+    "origTitle": "WHISKY",
+    "origFolder": "02_Mesto_duchu",
+    "webPath": "assets/cards/02_mesto_duchu/whisky.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 134941,
+    "webpBytes": 16768
+  },
+  {
+    "origTitle": "BOOTS",
+    "origFolder": "03_Zlata_horecka",
+    "webPath": "assets/cards/03_zlata_horecka/boots.webp",
+    "width": 252,
+    "height": 389,
+    "origBytes": 118958,
+    "webpBytes": 18016
+  },
+  {
+    "origTitle": "BOTTLE",
+    "origFolder": "03_Zlata_horecka",
+    "webPath": "assets/cards/03_zlata_horecka/bottle.webp",
+    "width": 252,
+    "height": 389,
+    "origBytes": 129688,
+    "webpBytes": 18000
+  },
+  {
+    "origTitle": "CALUMET",
+    "origFolder": "03_Zlata_horecka",
+    "webPath": "assets/cards/03_zlata_horecka/calumet.webp",
+    "width": 252,
+    "height": 389,
+    "origBytes": 129123,
+    "webpBytes": 20378
+  },
+  {
+    "origTitle": "DON BELL",
+    "origFolder": "03_Zlata_horecka",
+    "webPath": "assets/cards/03_zlata_horecka/don-bell.webp",
+    "width": 252,
+    "height": 389,
+    "origBytes": 137527,
+    "webpBytes": 21282
+  },
+  {
+    "origTitle": "DUTCH WILL",
+    "origFolder": "03_Zlata_horecka",
+    "webPath": "assets/cards/03_zlata_horecka/dutch-will.webp",
+    "width": 252,
+    "height": 389,
+    "origBytes": 133671,
+    "webpBytes": 20238
+  },
+  {
+    "origTitle": "GOLD PAN",
+    "origFolder": "03_Zlata_horecka",
+    "webPath": "assets/cards/03_zlata_horecka/gold-pan.webp",
+    "width": 252,
+    "height": 389,
+    "origBytes": 147999,
+    "webpBytes": 23862
+  },
+  {
+    "origTitle": "GOLD RUSH (equipment)",
+    "origFolder": "03_Zlata_horecka",
+    "webPath": "assets/cards/03_zlata_horecka/gold-rush-equipment.webp",
+    "width": 252,
+    "height": 389,
+    "origBytes": 148894,
+    "webpBytes": 22250
+  },
+  {
+    "origTitle": "GUN BELT",
+    "origFolder": "03_Zlata_horecka",
+    "webPath": "assets/cards/03_zlata_horecka/gun-belt.webp",
+    "width": 252,
+    "height": 389,
+    "origBytes": 130184,
+    "webpBytes": 20736
+  },
+  {
+    "origTitle": "HORSESHOE",
+    "origFolder": "03_Zlata_horecka",
+    "webPath": "assets/cards/03_zlata_horecka/horseshoe.webp",
+    "width": 252,
+    "height": 389,
+    "origBytes": 136005,
+    "webpBytes": 22512
+  },
+  {
+    "origTitle": "JACKY MURIETA",
+    "origFolder": "03_Zlata_horecka",
+    "webPath": "assets/cards/03_zlata_horecka/jacky-murieta.webp",
+    "width": 252,
+    "height": 389,
+    "origBytes": 136943,
+    "webpBytes": 21246
+  },
+  {
+    "origTitle": "JOSH McCLOUD",
+    "origFolder": "03_Zlata_horecka",
+    "webPath": "assets/cards/03_zlata_horecka/josh-mccloud.webp",
+    "width": 252,
+    "height": 389,
+    "origBytes": 134516,
+    "webpBytes": 20684
+  },
+  {
+    "origTitle": "LUCKY CHARM",
+    "origFolder": "03_Zlata_horecka",
+    "webPath": "assets/cards/03_zlata_horecka/lucky-charm.webp",
+    "width": 252,
+    "height": 389,
+    "origBytes": 132265,
+    "webpBytes": 20262
+  },
+  {
+    "origTitle": "MADAM YTO",
+    "origFolder": "03_Zlata_horecka",
+    "webPath": "assets/cards/03_zlata_horecka/madam-yto.webp",
+    "width": 252,
+    "height": 389,
+    "origBytes": 124740,
+    "webpBytes": 18732
+  },
+  {
+    "origTitle": "PARDNER",
+    "origFolder": "03_Zlata_horecka",
+    "webPath": "assets/cards/03_zlata_horecka/pardner.webp",
+    "width": 252,
+    "height": 389,
+    "origBytes": 144574,
+    "webpBytes": 20716
+  },
+  {
+    "origTitle": "PICKAXE",
+    "origFolder": "03_Zlata_horecka",
+    "webPath": "assets/cards/03_zlata_horecka/pickaxe.webp",
+    "width": 252,
+    "height": 389,
+    "origBytes": 133988,
+    "webpBytes": 19862
+  },
+  {
+    "origTitle": "PRETTY LUZENA",
+    "origFolder": "03_Zlata_horecka",
+    "webPath": "assets/cards/03_zlata_horecka/pretty-luzena.webp",
+    "width": 252,
+    "height": 389,
+    "origBytes": 122221,
+    "webpBytes": 18838
+  },
+  {
+    "origTitle": "RADDIE SNAKE",
+    "origFolder": "03_Zlata_horecka",
+    "webPath": "assets/cards/03_zlata_horecka/raddie-snake.webp",
+    "width": 252,
+    "height": 389,
+    "origBytes": 137718,
+    "webpBytes": 21550
+  },
+  {
+    "origTitle": "RHUM",
+    "origFolder": "03_Zlata_horecka",
+    "webPath": "assets/cards/03_zlata_horecka/rhum.webp",
+    "width": 252,
+    "height": 389,
+    "origBytes": 115376,
+    "webpBytes": 15680
+  },
+  {
+    "origTitle": "RUCKSACK",
+    "origFolder": "03_Zlata_horecka",
+    "webPath": "assets/cards/03_zlata_horecka/rucksack.webp",
+    "width": 252,
+    "height": 389,
+    "origBytes": 136533,
+    "webpBytes": 19746
+  },
+  {
+    "origTitle": "SHADOW RENEGADE",
+    "origFolder": "03_Zlata_horecka",
+    "webPath": "assets/cards/03_zlata_horecka/shadow-renegade.webp",
+    "width": 252,
+    "height": 389,
+    "origBytes": 140166,
+    "webpBytes": 18004
+  },
+  {
+    "origTitle": "SHOT",
+    "origFolder": "03_Zlata_horecka",
+    "webPath": "assets/cards/03_zlata_horecka/shot.webp",
+    "width": 252,
+    "height": 389,
+    "origBytes": 138454,
+    "webpBytes": 20110
+  },
+  {
+    "origTitle": "SIMEON PICOS",
+    "origFolder": "03_Zlata_horecka",
+    "webPath": "assets/cards/03_zlata_horecka/simeon-picos.webp",
+    "width": 252,
+    "height": 389,
+    "origBytes": 123282,
+    "webpBytes": 18518
+  },
+  {
+    "origTitle": "UNION PACIFIC",
+    "origFolder": "03_Zlata_horecka",
+    "webPath": "assets/cards/03_zlata_horecka/union-pacific.webp",
+    "width": 252,
+    "height": 389,
+    "origBytes": 134844,
+    "webpBytes": 18796
+  },
+  {
+    "origTitle": "WANTED",
+    "origFolder": "03_Zlata_horecka",
+    "webPath": "assets/cards/03_zlata_horecka/wanted.webp",
+    "width": 252,
+    "height": 389,
+    "origBytes": 145781,
+    "webpBytes": 23586
+  },
+  {
+    "origTitle": "A LITTLE NIP",
+    "origFolder": "04_Ozbrojeni_a_nebezpecni",
+    "webPath": "assets/cards/04_ozbrojeni_a_nebezpecni/a-little-nip.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 108650,
+    "webpBytes": 16398
+  },
+  {
+    "origTitle": "ACE UP THE SLEEVE",
+    "origFolder": "04_Ozbrojeni_a_nebezpecni",
+    "webPath": "assets/cards/04_ozbrojeni_a_nebezpecni/ace-up-the-sleeve.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 103705,
+    "webpBytes": 15718
+  },
+  {
+    "origTitle": "AL PREACHER",
+    "origFolder": "04_Ozbrojeni_a_nebezpecni",
+    "webPath": "assets/cards/04_ozbrojeni_a_nebezpecni/al-preacher.webp",
+    "width": 210,
+    "height": 327,
+    "origBytes": 97473,
+    "webpBytes": 16268
+  },
+  {
+    "origTitle": "ARROW",
+    "origFolder": "04_Ozbrojeni_a_nebezpecni",
+    "webPath": "assets/cards/04_ozbrojeni_a_nebezpecni/arrow.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 101217,
+    "webpBytes": 18410
+  },
+  {
+    "origTitle": "BANDOLIER",
+    "origFolder": "04_Ozbrojeni_a_nebezpecni",
+    "webPath": "assets/cards/04_ozbrojeni_a_nebezpecni/bandolier.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 128612,
+    "webpBytes": 21542
+  },
+  {
+    "origTitle": "BASS GREEVES",
+    "origFolder": "04_Ozbrojeni_a_nebezpecni",
+    "webPath": "assets/cards/04_ozbrojeni_a_nebezpecni/bass-greeves.webp",
+    "width": 210,
+    "height": 327,
+    "origBytes": 97429,
+    "webpBytes": 16378
+  },
+  {
+    "origTitle": "BEER KEG",
+    "origFolder": "04_Ozbrojeni_a_nebezpecni",
+    "webPath": "assets/cards/04_ozbrojeni_a_nebezpecni/beer-keg.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 121689,
+    "webpBytes": 18580
+  },
+  {
+    "origTitle": "BELL TOWER",
+    "origFolder": "04_Ozbrojeni_a_nebezpecni",
+    "webPath": "assets/cards/04_ozbrojeni_a_nebezpecni/bell-tower.webp",
+    "width": 210,
+    "height": 327,
+    "origBytes": 85751,
+    "webpBytes": 13208
+  },
+  {
+    "origTitle": "BIG FIFTY",
+    "origFolder": "04_Ozbrojeni_a_nebezpecni",
+    "webPath": "assets/cards/04_ozbrojeni_a_nebezpecni/big-fifty.webp",
+    "width": 210,
+    "height": 327,
+    "origBytes": 56030,
+    "webpBytes": 9446
+  },
+  {
+    "origTitle": "BLOODY MARY",
+    "origFolder": "04_Ozbrojeni_a_nebezpecni",
+    "webPath": "assets/cards/04_ozbrojeni_a_nebezpecni/bloody-mary.webp",
+    "width": 210,
+    "height": 327,
+    "origBytes": 90078,
+    "webpBytes": 14774
+  },
+  {
+    "origTitle": "BOMB",
+    "origFolder": "04_Ozbrojeni_a_nebezpecni",
+    "webPath": "assets/cards/04_ozbrojeni_a_nebezpecni/bomb.webp",
+    "width": 210,
+    "height": 327,
+    "origBytes": 90392,
+    "webpBytes": 14448
+  },
+  {
+    "origTitle": "BUNTLINE SPECIAL",
+    "origFolder": "04_Ozbrojeni_a_nebezpecni",
+    "webPath": "assets/cards/04_ozbrojeni_a_nebezpecni/buntline-special.webp",
+    "width": 210,
+    "height": 327,
+    "origBytes": 64552,
+    "webpBytes": 11928
+  },
+  {
+    "origTitle": "CARAVAN",
+    "origFolder": "04_Ozbrojeni_a_nebezpecni",
+    "webPath": "assets/cards/04_ozbrojeni_a_nebezpecni/caravan.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 107287,
+    "webpBytes": 16470
+  },
+  {
+    "origTitle": "CRATE",
+    "origFolder": "04_Ozbrojeni_a_nebezpecni",
+    "webPath": "assets/cards/04_ozbrojeni_a_nebezpecni/crate.webp",
+    "width": 210,
+    "height": 327,
+    "origBytes": 85467,
+    "webpBytes": 12170
+  },
+  {
+    "origTitle": "DOUBLE BARREL",
+    "origFolder": "04_Ozbrojeni_a_nebezpecni",
+    "webPath": "assets/cards/04_ozbrojeni_a_nebezpecni/double-barrel.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 61523,
+    "webpBytes": 10546
+  },
+  {
+    "origTitle": "DUCK!",
+    "origFolder": "04_Ozbrojeni_a_nebezpecni",
+    "webPath": "assets/cards/04_ozbrojeni_a_nebezpecni/duck.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 119418,
+    "webpBytes": 18940
+  },
+  {
+    "origTitle": "FLINTLOCK",
+    "origFolder": "04_Ozbrojeni_a_nebezpecni",
+    "webPath": "assets/cards/04_ozbrojeni_a_nebezpecni/flintlock.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 107986,
+    "webpBytes": 16928
+  },
+  {
+    "origTitle": "FRANKIE CANTON",
+    "origFolder": "04_Ozbrojeni_a_nebezpecni",
+    "webPath": "assets/cards/04_ozbrojeni_a_nebezpecni/frankie-canton.webp",
+    "width": 210,
+    "height": 327,
+    "origBytes": 83244,
+    "webpBytes": 13484
+  },
+  {
+    "origTitle": "JULIE CUTTER",
+    "origFolder": "04_Ozbrojeni_a_nebezpecni",
+    "webPath": "assets/cards/04_ozbrojeni_a_nebezpecni/julie-cutter.webp",
+    "width": 210,
+    "height": 327,
+    "origBytes": 94720,
+    "webpBytes": 15604
+  },
+  {
+    "origTitle": "LOCK PICK",
+    "origFolder": "04_Ozbrojeni_a_nebezpecni",
+    "webPath": "assets/cards/04_ozbrojeni_a_nebezpecni/lock-pick.webp",
+    "width": 210,
+    "height": 327,
+    "origBytes": 101068,
+    "webpBytes": 15970
+  },
+  {
+    "origTitle": "MEXICALI KID",
+    "origFolder": "04_Ozbrojeni_a_nebezpecni",
+    "webPath": "assets/cards/04_ozbrojeni_a_nebezpecni/mexicali-kid.webp",
+    "width": 210,
+    "height": 327,
+    "origBytes": 87456,
+    "webpBytes": 14518
+  },
+  {
+    "origTitle": "MS. ABIGAIL",
+    "origFolder": "04_Ozbrojeni_a_nebezpecni",
+    "webPath": "assets/cards/04_ozbrojeni_a_nebezpecni/ms-abigail.webp",
+    "width": 210,
+    "height": 327,
+    "origBytes": 91767,
+    "webpBytes": 14876
+  },
+  {
+    "origTitle": "QUICK SHOT",
+    "origFolder": "04_Ozbrojeni_a_nebezpecni",
+    "webPath": "assets/cards/04_ozbrojeni_a_nebezpecni/quick-shot.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 111933,
+    "webpBytes": 18022
+  },
+  {
+    "origTitle": "RED RINGO",
+    "origFolder": "04_Ozbrojeni_a_nebezpecni",
+    "webPath": "assets/cards/04_ozbrojeni_a_nebezpecni/red-ringo.webp",
+    "width": 210,
+    "height": 327,
+    "origBytes": 88536,
+    "webpBytes": 14242
+  },
+  {
+    "origTitle": "RELOADING",
+    "origFolder": "04_Ozbrojeni_a_nebezpecni",
+    "webPath": "assets/cards/04_ozbrojeni_a_nebezpecni/reloading.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 108800,
+    "webpBytes": 16492
+  },
+  {
+    "origTitle": "RUST",
+    "origFolder": "04_Ozbrojeni_a_nebezpecni",
+    "webPath": "assets/cards/04_ozbrojeni_a_nebezpecni/rust.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 101264,
+    "webpBytes": 16910
+  },
+  {
+    "origTitle": "SQUAW",
+    "origFolder": "04_Ozbrojeni_a_nebezpecni",
+    "webPath": "assets/cards/04_ozbrojeni_a_nebezpecni/squaw.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 105714,
+    "webpBytes": 16956
+  },
+  {
+    "origTitle": "THUNDERER",
+    "origFolder": "04_Ozbrojeni_a_nebezpecni",
+    "webPath": "assets/cards/04_ozbrojeni_a_nebezpecni/thunderer.webp",
+    "width": 210,
+    "height": 327,
+    "origBytes": 60001,
+    "webpBytes": 9954
+  },
+  {
+    "origTitle": "TUMBLEWEED",
+    "origFolder": "04_Ozbrojeni_a_nebezpecni",
+    "webPath": "assets/cards/04_ozbrojeni_a_nebezpecni/tumbleweed.webp",
+    "width": 210,
+    "height": 327,
+    "origBytes": 92130,
+    "webpBytes": 13780
+  },
+  {
+    "origTitle": "WHIP",
+    "origFolder": "04_Ozbrojeni_a_nebezpecni",
+    "webPath": "assets/cards/04_ozbrojeni_a_nebezpecni/whip.webp",
+    "width": 210,
+    "height": 327,
+    "origBytes": 90809,
+    "webpBytes": 13488
+  },
+  {
+    "origTitle": "BAGGAGE CAR",
+    "origFolder": "05_Velka_vlakova_loupez",
+    "webPath": "assets/cards/05_velka_vlakova_loupez/baggage-car.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 106791,
+    "webpBytes": 15080
+  },
+  {
+    "origTitle": "BLANK STATION",
+    "origFolder": "05_Velka_vlakova_loupez",
+    "webPath": "assets/cards/05_velka_vlakova_loupez/blank-station.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 47379,
+    "webpBytes": 4762
+  },
+  {
+    "origTitle": "Boom Town",
+    "origFolder": "05_Velka_vlakova_loupez",
+    "webPath": "assets/cards/05_velka_vlakova_loupez/boom-town.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 82446,
+    "webpBytes": 9506
+  },
+  {
+    "origTitle": "CABOOSE",
+    "origFolder": "05_Velka_vlakova_loupez",
+    "webPath": "assets/cards/05_velka_vlakova_loupez/caboose.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 100456,
+    "webpBytes": 14066
+  },
+  {
+    "origTitle": "CATTLE TRUCK",
+    "origFolder": "05_Velka_vlakova_loupez",
+    "webPath": "assets/cards/05_velka_vlakova_loupez/cattle-truck.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 92648,
+    "webpBytes": 12472
+  },
+  {
+    "origTitle": "CIRCUS WAGON",
+    "origFolder": "05_Velka_vlakova_loupez",
+    "webPath": "assets/cards/05_velka_vlakova_loupez/circus-wagon.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 108346,
+    "webpBytes": 15846
+  },
+  {
+    "origTitle": "COAL HOPPER",
+    "origFolder": "05_Velka_vlakova_loupez",
+    "webPath": "assets/cards/05_velka_vlakova_loupez/coal-hopper.webp",
+    "width": 210,
+    "height": 327,
+    "origBytes": 96933,
+    "webpBytes": 13580
+  },
+  {
+    "origTitle": "Cactus",
+    "origFolder": "05_Velka_vlakova_loupez",
+    "webPath": "assets/cards/05_velka_vlakova_loupez/cactus.webp",
+    "width": 210,
+    "height": 327,
+    "origBytes": 76831,
+    "webpBytes": 10322
+  },
+  {
+    "origTitle": "Catico",
+    "origFolder": "05_Velka_vlakova_loupez",
+    "webPath": "assets/cards/05_velka_vlakova_loupez/catico.webp",
+    "width": 210,
+    "height": 327,
+    "origBytes": 84018,
+    "webpBytes": 10238
+  },
+  {
+    "origTitle": "Creepy Creek",
+    "origFolder": "05_Velka_vlakova_loupez",
+    "webPath": "assets/cards/05_velka_vlakova_loupez/creepy-creek.webp",
+    "width": 210,
+    "height": 327,
+    "origBytes": 68113,
+    "webpBytes": 7474
+  },
+  {
+    "origTitle": "Crown's Hole",
+    "origFolder": "05_Velka_vlakova_loupez",
+    "webPath": "assets/cards/05_velka_vlakova_loupez/crown-s-hole.webp",
+    "width": 210,
+    "height": 327,
+    "origBytes": 79339,
+    "webpBytes": 8742
+  },
+  {
+    "origTitle": "DINING CAR",
+    "origFolder": "05_Velka_vlakova_loupez",
+    "webPath": "assets/cards/05_velka_vlakova_loupez/dining-car.webp",
+    "width": 210,
+    "height": 327,
+    "origBytes": 93243,
+    "webpBytes": 11630
+  },
+  {
+    "origTitle": "Deathwood",
+    "origFolder": "05_Velka_vlakova_loupez",
+    "webPath": "assets/cards/05_velka_vlakova_loupez/deathwood.webp",
+    "width": 210,
+    "height": 327,
+    "origBytes": 68066,
+    "webpBytes": 7548
+  },
+  {
+    "origTitle": "Dodgeville",
+    "origFolder": "05_Velka_vlakova_loupez",
+    "webPath": "assets/cards/05_velka_vlakova_loupez/dodgeville.webp",
+    "width": 210,
+    "height": 327,
+    "origBytes": 83112,
+    "webpBytes": 9864
+  },
+  {
+    "origTitle": "Dragoon",
+    "origFolder": "05_Velka_vlakova_loupez",
+    "webPath": "assets/cards/05_velka_vlakova_loupez/dragoon.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 48879,
+    "webpBytes": 8648
+  },
+  {
+    "origTitle": "EXPRESS CARD",
+    "origFolder": "05_Velka_vlakova_loupez",
+    "webPath": "assets/cards/05_velka_vlakova_loupez/express-card.webp",
+    "width": 210,
+    "height": 327,
+    "origBytes": 95840,
+    "webpBytes": 13156
+  },
+  {
+    "origTitle": "Evaded!",
+    "origFolder": "05_Velka_vlakova_loupez",
+    "webPath": "assets/cards/05_velka_vlakova_loupez/evaded.webp",
+    "width": 210,
+    "height": 327,
+    "origBytes": 82580,
+    "webpBytes": 12066
+  },
+  {
+    "origTitle": "Fort Wroth",
+    "origFolder": "05_Velka_vlakova_loupez",
+    "webPath": "assets/cards/05_velka_vlakova_loupez/fort-wroth.webp",
+    "width": 210,
+    "height": 327,
+    "origBytes": 66332,
+    "webpBytes": 7210
+  },
+  {
+    "origTitle": "Frisco",
+    "origFolder": "05_Velka_vlakova_loupez",
+    "webPath": "assets/cards/05_velka_vlakova_loupez/frisco.webp",
+    "width": 210,
+    "height": 327,
+    "origBytes": 72384,
+    "webpBytes": 7792
+  },
+  {
+    "origTitle": "Full Steam",
+    "origFolder": "05_Velka_vlakova_loupez",
+    "webPath": "assets/cards/05_velka_vlakova_loupez/full-steam.webp",
+    "width": 210,
+    "height": 327,
+    "origBytes": 94726,
+    "webpBytes": 14988
+  },
+  {
+    "origTitle": "GHOST CAR",
+    "origFolder": "05_Velka_vlakova_loupez",
+    "webPath": "assets/cards/05_velka_vlakova_loupez/ghost-car.webp",
+    "width": 210,
+    "height": 327,
+    "origBytes": 104427,
+    "webpBytes": 14348
+  },
+  {
+    "origTitle": "Knife Revolver",
+    "origFolder": "05_Velka_vlakova_loupez",
+    "webPath": "assets/cards/05_velka_vlakova_loupez/knife-revolver.webp",
+    "width": 210,
+    "height": 327,
+    "origBytes": 84766,
+    "webpBytes": 13778
+  },
+  {
+    "origTitle": "Map",
+    "origFolder": "05_Velka_vlakova_loupez",
+    "webPath": "assets/cards/05_velka_vlakova_loupez/map.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 86801,
+    "webpBytes": 14258
+  },
+  {
+    "origTitle": "Miner's Oath",
+    "origFolder": "05_Velka_vlakova_loupez",
+    "webPath": "assets/cards/05_velka_vlakova_loupez/miner-s-oath.webp",
+    "width": 210,
+    "height": 327,
+    "origBytes": 67021,
+    "webpBytes": 6980
+  },
+  {
+    "origTitle": "Money Bag",
+    "origFolder": "05_Velka_vlakova_loupez",
+    "webPath": "assets/cards/05_velka_vlakova_loupez/money-bag.webp",
+    "width": 210,
+    "height": 327,
+    "origBytes": 89393,
+    "webpBytes": 14256
+  },
+  {
+    "origTitle": "Most Wanted",
+    "origFolder": "05_Velka_vlakova_loupez",
+    "webPath": "assets/cards/05_velka_vlakova_loupez/most-wanted.webp",
+    "width": 210,
+    "height": 327,
+    "origBytes": 80554,
+    "webpBytes": 13068
+  },
+  {
+    "origTitle": "Next Stop",
+    "origFolder": "05_Velka_vlakova_loupez",
+    "webPath": "assets/cards/05_velka_vlakova_loupez/next-stop.webp",
+    "width": 210,
+    "height": 327,
+    "origBytes": 83553,
+    "webpBytes": 12336
+  },
+  {
+    "origTitle": "Refund",
+    "origFolder": "05_Velka_vlakova_loupez",
+    "webPath": "assets/cards/05_velka_vlakova_loupez/refund.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 92884,
+    "webpBytes": 14596
+  },
+  {
+    "origTitle": "San Tafe",
+    "origFolder": "05_Velka_vlakova_loupez",
+    "webPath": "assets/cards/05_velka_vlakova_loupez/san-tafe.webp",
+    "width": 210,
+    "height": 327,
+    "origBytes": 67776,
+    "webpBytes": 7268
+  },
+  {
+    "origTitle": "Strong Box",
+    "origFolder": "05_Velka_vlakova_loupez",
+    "webPath": "assets/cards/05_velka_vlakova_loupez/strong-box.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 81965,
+    "webpBytes": 11848
+  },
+  {
+    "origTitle": "Switch",
+    "origFolder": "05_Velka_vlakova_loupez",
+    "webPath": "assets/cards/05_velka_vlakova_loupez/switch.webp",
+    "width": 210,
+    "height": 327,
+    "origBytes": 86177,
+    "webpBytes": 12852
+  },
+  {
+    "origTitle": "Tombrock",
+    "origFolder": "05_Velka_vlakova_loupez",
+    "webPath": "assets/cards/05_velka_vlakova_loupez/tombrock.webp",
+    "width": 210,
+    "height": 327,
+    "origBytes": 71402,
+    "webpBytes": 6800
+  },
+  {
+    "origTitle": "Train Robbery",
+    "origFolder": "05_Velka_vlakova_loupez",
+    "webPath": "assets/cards/05_velka_vlakova_loupez/train-robbery.webp",
+    "width": 210,
+    "height": 327,
+    "origBytes": 98410,
+    "webpBytes": 16544
+  },
+  {
+    "origTitle": "Virginia Town",
+    "origFolder": "05_Velka_vlakova_loupez",
+    "webPath": "assets/cards/05_velka_vlakova_loupez/virginia-town.webp",
+    "width": 210,
+    "height": 327,
+    "origBytes": 77259,
+    "webpBytes": 8870
+  },
+  {
+    "origTitle": "Water Tower",
+    "origFolder": "05_Velka_vlakova_loupez",
+    "webPath": "assets/cards/05_velka_vlakova_loupez/water-tower.webp",
+    "width": 210,
+    "height": 327,
+    "origBytes": 85114,
+    "webpBytes": 12398
+  },
+  {
+    "origTitle": "Yooma",
+    "origFolder": "05_Velka_vlakova_loupez",
+    "webPath": "assets/cards/05_velka_vlakova_loupez/yooma.webp",
+    "width": 210,
+    "height": 327,
+    "origBytes": 72390,
+    "webpBytes": 7956
+  },
+  {
+    "origTitle": "AIM",
+    "origFolder": "06_Udoli_stinu",
+    "webPath": "assets/cards/06_udoli_stinu/aim.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 117538,
+    "webpBytes": 16422
+  },
+  {
+    "origTitle": "BACKFIRE",
+    "origFolder": "06_Udoli_stinu",
+    "webPath": "assets/cards/06_udoli_stinu/backfire.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 129150,
+    "webpBytes": 20168
+  },
+  {
+    "origTitle": "BANDIDOS",
+    "origFolder": "06_Udoli_stinu",
+    "webPath": "assets/cards/06_udoli_stinu/bandidos.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 142854,
+    "webpBytes": 20258
+  },
+  {
+    "origTitle": "BLACK FLOWER",
+    "origFolder": "06_Udoli_stinu",
+    "webPath": "assets/cards/06_udoli_stinu/black-flower.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 118246,
+    "webpBytes": 15842
+  },
+  {
+    "origTitle": "BOUNTY",
+    "origFolder": "06_Udoli_stinu",
+    "webPath": "assets/cards/06_udoli_stinu/bounty.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 116961,
+    "webpBytes": 17474
+  },
+  {
+    "origTitle": "COLORADO BILL",
+    "origFolder": "06_Udoli_stinu",
+    "webPath": "assets/cards/06_udoli_stinu/colorado-bill.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 121331,
+    "webpBytes": 17636
+  },
+  {
+    "origTitle": "DER SPOT-BURST RINGER",
+    "origFolder": "06_Udoli_stinu",
+    "webPath": "assets/cards/06_udoli_stinu/der-spot-burst-ringer.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 123049,
+    "webpBytes": 17622
+  },
+  {
+    "origTitle": "ESCAPE",
+    "origFolder": "06_Udoli_stinu",
+    "webPath": "assets/cards/06_udoli_stinu/escape.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 124948,
+    "webpBytes": 19158
+  },
+  {
+    "origTitle": "EVELYN SHEBANG",
+    "origFolder": "06_Udoli_stinu",
+    "webPath": "assets/cards/06_udoli_stinu/evelyn-shebang.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 132831,
+    "webpBytes": 20728
+  },
+  {
+    "origTitle": "FANNING",
+    "origFolder": "06_Udoli_stinu",
+    "webPath": "assets/cards/06_udoli_stinu/fanning.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 93986,
+    "webpBytes": 14950
+  },
+  {
+    "origTitle": "GHOST",
+    "origFolder": "06_Udoli_stinu",
+    "webPath": "assets/cards/06_udoli_stinu/ghost.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 126364,
+    "webpBytes": 19916
+  },
+  {
+    "origTitle": "HENRY BLOCK",
+    "origFolder": "06_Udoli_stinu",
+    "webPath": "assets/cards/06_udoli_stinu/henry-block.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 123943,
+    "webpBytes": 17506
+  },
+  {
+    "origTitle": "LAST CALL",
+    "origFolder": "06_Udoli_stinu",
+    "webPath": "assets/cards/06_udoli_stinu/last-call.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 79766,
+    "webpBytes": 11210
+  },
+  {
+    "origTitle": "LEMAT",
+    "origFolder": "06_Udoli_stinu",
+    "webPath": "assets/cards/06_udoli_stinu/lemat.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 64481,
+    "webpBytes": 12718
+  },
+  {
+    "origTitle": "LEMONADE JIM",
+    "origFolder": "06_Udoli_stinu",
+    "webPath": "assets/cards/06_udoli_stinu/lemonade-jim.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 126454,
+    "webpBytes": 18488
+  },
+  {
+    "origTitle": "MICK DEFENDER",
+    "origFolder": "06_Udoli_stinu",
+    "webPath": "assets/cards/06_udoli_stinu/mick-defender.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 133092,
+    "webpBytes": 19576
+  },
+  {
+    "origTitle": "POKER",
+    "origFolder": "06_Udoli_stinu",
+    "webPath": "assets/cards/06_udoli_stinu/poker.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 90771,
+    "webpBytes": 14286
+  },
+  {
+    "origTitle": "RATTLESNAKE",
+    "origFolder": "06_Udoli_stinu",
+    "webPath": "assets/cards/06_udoli_stinu/rattlesnake.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 137912,
+    "webpBytes": 22622
+  },
+  {
+    "origTitle": "SAVED!",
+    "origFolder": "06_Udoli_stinu",
+    "webPath": "assets/cards/06_udoli_stinu/saved.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 93633,
+    "webpBytes": 14768
+  },
+  {
+    "origTitle": "SHOTGUN",
+    "origFolder": "06_Udoli_stinu",
+    "webPath": "assets/cards/06_udoli_stinu/shotgun.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 63189,
+    "webpBytes": 12500
+  },
+  {
+    "origTitle": "TOMAHAWK",
+    "origFolder": "06_Udoli_stinu",
+    "webPath": "assets/cards/06_udoli_stinu/tomahawk.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 86476,
+    "webpBytes": 11904
+  },
+  {
+    "origTitle": "TORNADO",
+    "origFolder": "06_Udoli_stinu",
+    "webPath": "assets/cards/06_udoli_stinu/tornado.webp",
+    "width": 210,
+    "height": 326,
+    "origBytes": 95455,
+    "webpBytes": 14004
+  },
+  {
+    "origTitle": "TUCO FRANZISKANER",
+    "origFolder": "06_Udoli_stinu",
+    "webPath": "assets/cards/06_udoli_stinu/tuco-franziskaner.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 131993,
+    "webpBytes": 19464
+  },
+  {
+    "origTitle": "BLESSING",
+    "origFolder": "07_Prave_poledne",
+    "webPath": "assets/cards/07_prave_poledne/blessing.webp",
+    "width": 210,
+    "height": 314,
+    "origBytes": 85544,
+    "webpBytes": 12878
+  },
+  {
+    "origTitle": "CURSE",
+    "origFolder": "07_Prave_poledne",
+    "webPath": "assets/cards/07_prave_poledne/curse.webp",
+    "width": 210,
+    "height": 314,
+    "origBytes": 81144,
+    "webpBytes": 12294
+  },
+  {
+    "origTitle": "GHOST TOWN",
+    "origFolder": "07_Prave_poledne",
+    "webPath": "assets/cards/07_prave_poledne/ghost-town.webp",
+    "width": 210,
+    "height": 314,
+    "origBytes": 96193,
+    "webpBytes": 15778
+  },
+  {
+    "origTitle": "GOLD RUSH (Event)",
+    "origFolder": "07_Prave_poledne",
+    "webPath": "assets/cards/07_prave_poledne/gold-rush-event.webp",
+    "width": 210,
+    "height": 314,
+    "origBytes": 86529,
+    "webpBytes": 14346
+  },
+  {
+    "origTitle": "HIGH NOON",
+    "origFolder": "07_Prave_poledne",
+    "webPath": "assets/cards/07_prave_poledne/high-noon.webp",
+    "width": 210,
+    "height": 314,
+    "origBytes": 86310,
+    "webpBytes": 13232
+  },
+  {
+    "origTitle": "SHOOTOUT",
+    "origFolder": "07_Prave_poledne",
+    "webPath": "assets/cards/07_prave_poledne/shootout.webp",
+    "width": 210,
+    "height": 314,
+    "origBytes": 95003,
+    "webpBytes": 14780
+  },
+  {
+    "origTitle": "THE DALTONS",
+    "origFolder": "07_Prave_poledne",
+    "webPath": "assets/cards/07_prave_poledne/the-daltons.webp",
+    "width": 210,
+    "height": 314,
+    "origBytes": 89664,
+    "webpBytes": 14452
+  },
+  {
+    "origTitle": "THE DOCTOR",
+    "origFolder": "07_Prave_poledne",
+    "webPath": "assets/cards/07_prave_poledne/the-doctor.webp",
+    "width": 210,
+    "height": 314,
+    "origBytes": 88965,
+    "webpBytes": 14002
+  },
+  {
+    "origTitle": "THE REVEREND",
+    "origFolder": "07_Prave_poledne",
+    "webPath": "assets/cards/07_prave_poledne/the-reverend.webp",
+    "width": 210,
+    "height": 314,
+    "origBytes": 74431,
+    "webpBytes": 10664
+  },
+  {
+    "origTitle": "THE SERMON",
+    "origFolder": "07_Prave_poledne",
+    "webPath": "assets/cards/07_prave_poledne/the-sermon.webp",
+    "width": 210,
+    "height": 314,
+    "origBytes": 88169,
+    "webpBytes": 13664
+  },
+  {
+    "origTitle": "THIRST",
+    "origFolder": "07_Prave_poledne",
+    "webPath": "assets/cards/07_prave_poledne/thirst.webp",
+    "width": 210,
+    "height": 314,
+    "origBytes": 77900,
+    "webpBytes": 11348
+  },
+  {
+    "origTitle": "TRAIN ARRIVAL",
+    "origFolder": "07_Prave_poledne",
+    "webPath": "assets/cards/07_prave_poledne/train-arrival.webp",
+    "width": 210,
+    "height": 314,
+    "origBytes": 87813,
+    "webpBytes": 13728
+  },
+  {
+    "origTitle": "A FISTFUL OF CARDS",
+    "origFolder": "08_Pest_plna_karet",
+    "webPath": "assets/cards/08_pest_plna_karet/a-fistful-of-cards.webp",
+    "width": 260,
+    "height": 389,
+    "origBytes": 142180,
+    "webpBytes": 20556
+  },
+  {
+    "origTitle": "ABONDED MINE",
+    "origFolder": "08_Pest_plna_karet",
+    "webPath": "assets/cards/08_pest_plna_karet/abonded-mine.webp",
+    "width": 260,
+    "height": 389,
+    "origBytes": 142461,
+    "webpBytes": 20972
+  },
+  {
+    "origTitle": "AMBUSH",
+    "origFolder": "08_Pest_plna_karet",
+    "webPath": "assets/cards/08_pest_plna_karet/ambush.webp",
+    "width": 260,
+    "height": 389,
+    "origBytes": 129278,
+    "webpBytes": 18012
+  },
+  {
+    "origTitle": "BLOOD BROTHERS",
+    "origFolder": "08_Pest_plna_karet",
+    "webPath": "assets/cards/08_pest_plna_karet/blood-brothers.webp",
+    "width": 260,
+    "height": 389,
+    "origBytes": 142296,
+    "webpBytes": 20972
+  },
+  {
+    "origTitle": "DEAD MAN",
+    "origFolder": "08_Pest_plna_karet",
+    "webPath": "assets/cards/08_pest_plna_karet/dead-man.webp",
+    "width": 260,
+    "height": 389,
+    "origBytes": 130564,
+    "webpBytes": 18890
+  },
+  {
+    "origTitle": "HARD LIQUR",
+    "origFolder": "08_Pest_plna_karet",
+    "webPath": "assets/cards/08_pest_plna_karet/hard-liqur.webp",
+    "width": 260,
+    "height": 389,
+    "origBytes": 132440,
+    "webpBytes": 18712
+  },
+  {
+    "origTitle": "LASSO",
+    "origFolder": "08_Pest_plna_karet",
+    "webPath": "assets/cards/08_pest_plna_karet/lasso.webp",
+    "width": 260,
+    "height": 389,
+    "origBytes": 120813,
+    "webpBytes": 14848
+  },
+  {
+    "origTitle": "LAW OF THE WEST",
+    "origFolder": "08_Pest_plna_karet",
+    "webPath": "assets/cards/08_pest_plna_karet/law-of-the-west.webp",
+    "width": 260,
+    "height": 389,
+    "origBytes": 131236,
+    "webpBytes": 17796
+  },
+  {
+    "origTitle": "PEYOTE",
+    "origFolder": "08_Pest_plna_karet",
+    "webPath": "assets/cards/08_pest_plna_karet/peyote.webp",
+    "width": 260,
+    "height": 389,
+    "origBytes": 141950,
+    "webpBytes": 19488
+  },
+  {
+    "origTitle": "RANCH",
+    "origFolder": "08_Pest_plna_karet",
+    "webPath": "assets/cards/08_pest_plna_karet/ranch.webp",
+    "width": 260,
+    "height": 389,
+    "origBytes": 136952,
+    "webpBytes": 18858
+  },
+  {
+    "origTitle": "RICOCHET",
+    "origFolder": "08_Pest_plna_karet",
+    "webPath": "assets/cards/08_pest_plna_karet/ricochet.webp",
+    "width": 260,
+    "height": 389,
+    "origBytes": 134410,
+    "webpBytes": 19080
+  },
+  {
+    "origTitle": "RUSSIAN ROULETTE",
+    "origFolder": "08_Pest_plna_karet",
+    "webPath": "assets/cards/08_pest_plna_karet/russian-roulette.webp",
+    "width": 260,
+    "height": 389,
+    "origBytes": 154339,
+    "webpBytes": 22652
+  },
+  {
+    "origTitle": "SNIPER",
+    "origFolder": "08_Pest_plna_karet",
+    "webPath": "assets/cards/08_pest_plna_karet/sniper.webp",
+    "width": 260,
+    "height": 389,
+    "origBytes": 136909,
+    "webpBytes": 19440
+  },
+  {
+    "origTitle": "THE JUDGE",
+    "origFolder": "08_Pest_plna_karet",
+    "webPath": "assets/cards/08_pest_plna_karet/the-judge.webp",
+    "width": 260,
+    "height": 389,
+    "origBytes": 117650,
+    "webpBytes": 15562
+  },
+  {
+    "origTitle": "VENDETTA",
+    "origFolder": "08_Pest_plna_karet",
+    "webPath": "assets/cards/08_pest_plna_karet/vendetta.webp",
+    "width": 260,
+    "height": 389,
+    "origBytes": 134675,
+    "webpBytes": 19090
+  },
+  {
+    "origTitle": "BIG SPENCER",
+    "origFolder": "09_Divoky_zapad",
+    "webPath": "assets/cards/09_divoky_zapad/big-spencer.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 118432,
+    "webpBytes": 15914
+  },
+  {
+    "origTitle": "BONE ORCHARD",
+    "origFolder": "09_Divoky_zapad",
+    "webPath": "assets/cards/09_divoky_zapad/bone-orchard.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 152299,
+    "webpBytes": 24018
+  },
+  {
+    "origTitle": "DARLING VALENTINE",
+    "origFolder": "09_Divoky_zapad",
+    "webPath": "assets/cards/09_divoky_zapad/darling-valentine.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 162995,
+    "webpBytes": 26174
+  },
+  {
+    "origTitle": "DOROTHY RAGE",
+    "origFolder": "09_Divoky_zapad",
+    "webPath": "assets/cards/09_divoky_zapad/dorothy-rage.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 135884,
+    "webpBytes": 20202
+  },
+  {
+    "origTitle": "FLINT WESTWOOD",
+    "origFolder": "09_Divoky_zapad",
+    "webPath": "assets/cards/09_divoky_zapad/flint-westwood.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 121908,
+    "webpBytes": 18888
+  },
+  {
+    "origTitle": "GAG",
+    "origFolder": "09_Divoky_zapad",
+    "webPath": "assets/cards/09_divoky_zapad/gag.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 139614,
+    "webpBytes": 20244
+  },
+  {
+    "origTitle": "GARY LOOTER",
+    "origFolder": "09_Divoky_zapad",
+    "webPath": "assets/cards/09_divoky_zapad/gary-looter.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 120840,
+    "webpBytes": 18260
+  },
+  {
+    "origTitle": "GREYGORY DECK",
+    "origFolder": "09_Divoky_zapad",
+    "webPath": "assets/cards/09_divoky_zapad/greygory-deck.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 125093,
+    "webpBytes": 19284
+  },
+  {
+    "origTitle": "HELENA ZONTERO",
+    "origFolder": "09_Divoky_zapad",
+    "webPath": "assets/cards/09_divoky_zapad/helena-zontero.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 163269,
+    "webpBytes": 25880
+  },
+  {
+    "origTitle": "JOHN PAIN",
+    "origFolder": "09_Divoky_zapad",
+    "webPath": "assets/cards/09_divoky_zapad/john-pain.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 134505,
+    "webpBytes": 21048
+  },
+  {
+    "origTitle": "LADY ROSE OF TEXAS",
+    "origFolder": "09_Divoky_zapad",
+    "webPath": "assets/cards/09_divoky_zapad/lady-rose-of-texas.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 163922,
+    "webpBytes": 25360
+  },
+  {
+    "origTitle": "LEE VAN KLIFF",
+    "origFolder": "09_Divoky_zapad",
+    "webPath": "assets/cards/09_divoky_zapad/lee-van-kliff.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 135235,
+    "webpBytes": 21546
+  },
+  {
+    "origTitle": "MISS SUSANNA",
+    "origFolder": "09_Divoky_zapad",
+    "webPath": "assets/cards/09_divoky_zapad/miss-susanna.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 150875,
+    "webpBytes": 22850
+  },
+  {
+    "origTitle": "SACAGAWAY",
+    "origFolder": "09_Divoky_zapad",
+    "webPath": "assets/cards/09_divoky_zapad/sacagaway.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 134911,
+    "webpBytes": 19478
+  },
+  {
+    "origTitle": "SHOWDOWN",
+    "origFolder": "09_Divoky_zapad",
+    "webPath": "assets/cards/09_divoky_zapad/showdown.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 164227,
+    "webpBytes": 25612
+  },
+  {
+    "origTitle": "TEREN KILL",
+    "origFolder": "09_Divoky_zapad",
+    "webPath": "assets/cards/09_divoky_zapad/teren-kill.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 125624,
+    "webpBytes": 18050
+  },
+  {
+    "origTitle": "WILD WEST SHOW",
+    "origFolder": "09_Divoky_zapad",
+    "webPath": "assets/cards/09_divoky_zapad/wild-west-show.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 153904,
+    "webpBytes": 22656
+  },
+  {
+    "origTitle": "YOUL GRINNER",
+    "origFolder": "09_Divoky_zapad",
+    "webPath": "assets/cards/09_divoky_zapad/youl-grinner.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 130893,
+    "webpBytes": 20754
+  },
+  {
+    "origTitle": "179 (Legend)",
+    "origFolder": "10_Legendy",
+    "webPath": "assets/cards/10_legendy/179-legend.webp",
+    "width": 360,
+    "height": 197,
+    "origBytes": 145867,
+    "webpBytes": 12018
+  },
+  {
+    "origTitle": "3-15 TO YOOMA (Legend)",
+    "origFolder": "10_Legendy",
+    "webPath": "assets/cards/10_legendy/3-15-to-yooma-legend.webp",
+    "width": 360,
+    "height": 197,
+    "origBytes": 150981,
+    "webpBytes": 13086
+  },
+  {
+    "origTitle": "A Quick Death (Legend)",
+    "origFolder": "10_Legendy",
+    "webPath": "assets/cards/10_legendy/a-quick-death-legend.webp",
+    "width": 360,
+    "height": 197,
+    "origBytes": 149175,
+    "webpBytes": 13812
+  },
+  {
+    "origTitle": "BART CASSIDY (Legend)",
+    "origFolder": "10_Legendy",
+    "webPath": "assets/cards/10_legendy/bart-cassidy-legend.webp",
+    "width": 231,
+    "height": 423,
+    "origBytes": 188464,
+    "webpBytes": 21390
+  },
+  {
+    "origTitle": "BLACK JACK (LEGEND)",
+    "origFolder": "10_Legendy",
+    "webPath": "assets/cards/10_legendy/black-jack-legend.webp",
+    "width": 231,
+    "height": 423,
+    "origBytes": 182027,
+    "webpBytes": 21132
+  },
+  {
+    "origTitle": "BOTTLENECK (Legend)",
+    "origFolder": "10_Legendy",
+    "webPath": "assets/cards/10_legendy/bottleneck-legend.webp",
+    "width": 360,
+    "height": 197,
+    "origBytes": 149347,
+    "webpBytes": 11918
+  },
+  {
+    "origTitle": "CALAMITY JANET (Legend)",
+    "origFolder": "10_Legendy",
+    "webPath": "assets/cards/10_legendy/calamity-janet-legend.webp",
+    "width": 231,
+    "height": 423,
+    "origBytes": 193644,
+    "webpBytes": 24170
+  },
+  {
+    "origTitle": "EL GRINGO (Legend)",
+    "origFolder": "10_Legendy",
+    "webPath": "assets/cards/10_legendy/el-gringo-legend.webp",
+    "width": 231,
+    "height": 423,
+    "origBytes": 199470,
+    "webpBytes": 26130
+  },
+  {
+    "origTitle": "JESSE JONES (Legend)",
+    "origFolder": "10_Legendy",
+    "webPath": "assets/cards/10_legendy/jesse-jones-legend.webp",
+    "width": 231,
+    "height": 423,
+    "origBytes": 186525,
+    "webpBytes": 22648
+  },
+  {
+    "origTitle": "JOURDONNAIS (Legend)",
+    "origFolder": "10_Legendy",
+    "webPath": "assets/cards/10_legendy/jourdonnais-legend.webp",
+    "width": 231,
+    "height": 423,
+    "origBytes": 181671,
+    "webpBytes": 22872
+  },
+  {
+    "origTitle": "KIT CARLSON (Legend)",
+    "origFolder": "10_Legendy",
+    "webPath": "assets/cards/10_legendy/kit-carlson-legend.webp",
+    "width": 231,
+    "height": 423,
+    "origBytes": 182467,
+    "webpBytes": 21048
+  },
+  {
+    "origTitle": "LUCKY DUKE (Legend)",
+    "origFolder": "10_Legendy",
+    "webPath": "assets/cards/10_legendy/lucky-duke-legend.webp",
+    "width": 231,
+    "height": 423,
+    "origBytes": 184663,
+    "webpBytes": 22614
+  },
+  {
+    "origTitle": "PAUL REGRET (Legend)",
+    "origFolder": "10_Legendy",
+    "webPath": "assets/cards/10_legendy/paul-regret-legend.webp",
+    "width": 231,
+    "height": 423,
+    "origBytes": 190721,
+    "webpBytes": 24164
+  },
+  {
+    "origTitle": "PEDRO RAMIREZ (Legend)",
+    "origFolder": "10_Legendy",
+    "webPath": "assets/cards/10_legendy/pedro-ramirez-legend.webp",
+    "width": 231,
+    "height": 423,
+    "origBytes": 200647,
+    "webpBytes": 25430
+  },
+  {
+    "origTitle": "ROSE DOOLAN (Legend)",
+    "origFolder": "10_Legendy",
+    "webPath": "assets/cards/10_legendy/rose-doolan-legend.webp",
+    "width": 231,
+    "height": 423,
+    "origBytes": 185663,
+    "webpBytes": 21456
+  },
+  {
+    "origTitle": "SID KETCHUM (Legend)",
+    "origFolder": "10_Legendy",
+    "webPath": "assets/cards/10_legendy/sid-ketchum-legend.webp",
+    "width": 231,
+    "height": 423,
+    "origBytes": 183395,
+    "webpBytes": 25098
+  },
+  {
+    "origTitle": "SLAB THE KILLER (Legend)",
+    "origFolder": "10_Legendy",
+    "webPath": "assets/cards/10_legendy/slab-the-killer-legend.webp",
+    "width": 231,
+    "height": 423,
+    "origBytes": 181154,
+    "webpBytes": 22294
+  },
+  {
+    "origTitle": "SUZY LAFAYETTE (Legend)",
+    "origFolder": "10_Legendy",
+    "webPath": "assets/cards/10_legendy/suzy-lafayette-legend.webp",
+    "width": 231,
+    "height": 423,
+    "origBytes": 183737,
+    "webpBytes": 21832
+  },
+  {
+    "origTitle": "VULTURE SAM (Legend)",
+    "origFolder": "10_Legendy",
+    "webPath": "assets/cards/10_legendy/vulture-sam-legend.webp",
+    "width": 231,
+    "height": 423,
+    "origBytes": 191497,
+    "webpBytes": 25024
+  },
+  {
+    "origTitle": "WILLY THE KID (Legend)",
+    "origFolder": "10_Legendy",
+    "webPath": "assets/cards/10_legendy/willy-the-kid-legend.webp",
+    "width": 231,
+    "height": 423,
+    "origBytes": 175379,
+    "webpBytes": 21268
+  },
+  {
+    "origTitle": "ANNIE VERSARY",
+    "origFolder": "11_Extra_karty",
+    "webPath": "assets/cards/11_extra_karty/annie-versary.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 116928,
+    "webpBytes": 15828
+  },
+  {
+    "origTitle": "CLAUS THE SAINT",
+    "origFolder": "11_Extra_karty",
+    "webPath": "assets/cards/11_extra_karty/claus-the-saint.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 136629,
+    "webpBytes": 19732
+  },
+  {
+    "origTitle": "EMILIANO",
+    "origFolder": "11_Extra_karty",
+    "webPath": "assets/cards/11_extra_karty/emiliano.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 143314,
+    "webpBytes": 24182
+  },
+  {
+    "origTitle": "HANDCUFFS",
+    "origFolder": "11_Extra_karty",
+    "webPath": "assets/cards/11_extra_karty/handcuffs.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 151285,
+    "webpBytes": 23650
+  },
+  {
+    "origTitle": "JOHNNY KISCH",
+    "origFolder": "11_Extra_karty",
+    "webPath": "assets/cards/11_extra_karty/johnny-kisch.webp",
+    "width": 231,
+    "height": 359,
+    "origBytes": 115576,
+    "webpBytes": 15332
+  },
+  {
+    "origTitle": "NEW IDENTITY",
+    "origFolder": "11_Extra_karty",
+    "webPath": "assets/cards/11_extra_karty/new-identity.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 156983,
+    "webpBytes": 26124
+  },
+  {
+    "origTitle": "UNCLE WILL",
+    "origFolder": "11_Extra_karty",
+    "webPath": "assets/cards/11_extra_karty/uncle-will.webp",
+    "width": 250,
+    "height": 389,
+    "origBytes": 125409,
+    "webpBytes": 18682
+  }
+]
