@@ -4789,7 +4789,7 @@ window.BANG_CARDS = [
       "nákup vagonu",
       "sancho"
     ],
-    "image": null,
+    "image": "assets/cards/05_velka_vlakova_loupez/sancho.webp",
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Character",
     "effectEn": "Whenever a railcar in front of any player is discarded or upgraded, takes it into his hand.",
@@ -4825,7 +4825,7 @@ window.BANG_CARDS = [
       "vlak",
       "reakce"
     ],
-    "image": null,
+    "image": "assets/cards/05_velka_vlakova_loupez/shade-o-connor.webp",
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Character",
     "effectEn": "May pay the station cost by discarding cards from hand or load tokens.",
@@ -4863,7 +4863,7 @@ window.BANG_CARDS = [
       "plošné efekty",
       "sgt blaze"
     ],
-    "image": null,
+    "image": "assets/cards/05_velka_vlakova_loupez/sgt-blaze.webp",
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Character",
     "effectEn": "May shoot through other players: ignores distance modifiers for weapon range.",
@@ -5144,7 +5144,7 @@ window.BANG_CARDS = [
       "prázdná ruka",
       "soukromý vagon"
     ],
-    "image": null,
+    "image": "assets/cards/05_velka_vlakova_loupez/private-car.webp",
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Railcar",
     "effectEn": "Railcar. You cannot be targeted by BANG! from players at distance 1.",
@@ -5253,7 +5253,7 @@ window.BANG_CARDS = [
       "duel",
       "spací vůz"
     ],
-    "image": null,
+    "image": "assets/cards/05_velka_vlakova_loupez/sleeper-car.webp",
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Railcar",
     "effectEn": "Railcar. Immune to Jail cards.",

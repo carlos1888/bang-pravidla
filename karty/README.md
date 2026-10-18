@@ -2,7 +2,7 @@
 
 Zdroj: [https://bang-cardgame.fandom.com/wiki/List_Of_Cards](https://bang-cardgame.fandom.com/wiki/List_Of_Cards)
 
-Celkem úspěšně staženo a převedeno: **269** karet ve standardním formátu PNG.
+Celkem úspěšně staženo a převedeno: **274** karet ve standardním formátu PNG.
 
 ## Přehled složek rozšíření:
 
@@ -10,7 +10,7 @@ Celkem úspěšně staženo a převedeno: **269** karet ve standardním formátu
 - **`02_Mesto_duchu/`**: 37 karet
 - **`03_Zlata_horecka/`**: 24 karet
 - **`04_Ozbrojeni_a_nebezpecni/`**: 30 karet
-- **`05_Velka_vlakova_loupez/`**: 41 karet
+- **`05_Velka_vlakova_loupez/`**: 46 karet
 - **`06_Udoli_stinu/`**: 23 karet
 - **`07_Prave_poledne/`**: 12 karet
 - **`08_Pest_plna_karet/`**: 15 karet
@@ -169,7 +169,7 @@ Celkem úspěšně staženo a převedeno: **269** karet ve standardním formátu
 | **THUNDERER** | `THUNDERER.png` | 210×327 | 58.6 kB |
 | **TUMBLEWEED** | `TUMBLEWEED.png` | 210×327 | 90.0 kB |
 | **WHIP** | `WHIP.png` | 210×327 | 88.7 kB |
-### 📁 `05_Velka_vlakova_loupez` (41 karet)
+### 📁 `05_Velka_vlakova_loupez` (46 karet)
 
 | Karta | Soubor | Rozměry | Velikost |
 | :--- | :--- | :---: | :---: |
@@ -205,7 +205,12 @@ Celkem úspěšně staženo a převedeno: **269** karet ve standardním formátu
 | **Money Bag** | `Money Bag.png` | 210×327 | 87.3 kB |
 | **Most Wanted** | `Most Wanted.png` | 210×327 | 78.7 kB |
 | **Next Stop** | `Next Stop.png` | 210×327 | 81.6 kB |
+| **PRIVATE CAR** | `PRIVATE CAR.png` | 434×670 | 365.1 kB |
 | **Refund** | `Refund.png` | 210×326 | 90.7 kB |
+| **SANCHO** | `SANCHO.png` | 434×662 | 312.7 kB |
+| **SGT. BLAZE** | `SGT. BLAZE.png` | 430×658 | 331.8 kB |
+| **SHADE O'CONNOR** | `SHADE O'CONNOR.png` | 436×668 | 355.7 kB |
+| **SLEEPER CAR** | `SLEEPER CAR.png` | 432×666 | 398.7 kB |
 | **San Tafe** | `San Tafe.png` | 210×327 | 66.2 kB |
 | **Strong Box** | `Strong Box.png` | 210×326 | 80.0 kB |
 | **Switch** | `Switch.png` | 210×327 | 84.2 kB |

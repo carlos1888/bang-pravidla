@@ -1651,6 +1651,16 @@
   },
   {
     "folder": "05_Velka_vlakova_loupez",
+    "filename": "PRIVATE CAR.png",
+    "title": "PRIVATE CAR",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/05_Velka_vlakova_loupez/PRIVATE CAR.png",
+    "width": 434,
+    "height": 670,
+    "size_bytes": 373825,
+    "size_kb": 365.1
+  },
+  {
+    "folder": "05_Velka_vlakova_loupez",
     "filename": "Refund.png",
     "title": "Refund",
     "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/05_Velka_vlakova_loupez/Refund.png",
@@ -1658,6 +1668,46 @@
     "height": 326,
     "size_bytes": 92884,
     "size_kb": 90.7
+  },
+  {
+    "folder": "05_Velka_vlakova_loupez",
+    "filename": "SANCHO.png",
+    "title": "SANCHO",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/05_Velka_vlakova_loupez/SANCHO.png",
+    "width": 434,
+    "height": 662,
+    "size_bytes": 320188,
+    "size_kb": 312.7
+  },
+  {
+    "folder": "05_Velka_vlakova_loupez",
+    "filename": "SGT. BLAZE.png",
+    "title": "SGT. BLAZE",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/05_Velka_vlakova_loupez/SGT. BLAZE.png",
+    "width": 430,
+    "height": 658,
+    "size_bytes": 339713,
+    "size_kb": 331.8
+  },
+  {
+    "folder": "05_Velka_vlakova_loupez",
+    "filename": "SHADE O'CONNOR.png",
+    "title": "SHADE O'CONNOR",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/05_Velka_vlakova_loupez/SHADE O'CONNOR.png",
+    "width": 436,
+    "height": 668,
+    "size_bytes": 364243,
+    "size_kb": 355.7
+  },
+  {
+    "folder": "05_Velka_vlakova_loupez",
+    "filename": "SLEEPER CAR.png",
+    "title": "SLEEPER CAR",
+    "path": "/Users/miloslavboudnik/Documents/GitHub/bang-pravidla/karty/05_Velka_vlakova_loupez/SLEEPER CAR.png",
+    "width": 432,
+    "height": 666,
+    "size_bytes": 408257,
+    "size_kb": 398.7
   },
   {
     "folder": "05_Velka_vlakova_loupez",

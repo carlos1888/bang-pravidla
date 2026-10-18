@@ -2419,5 +2419,50 @@
     "height": 389,
     "origBytes": 125409,
     "webpBytes": 18682
+  },
+  {
+    "origTitle": "SLEEPER CAR",
+    "origFolder": "05_Velka_vlakova_loupez",
+    "webPath": "assets/cards/05_velka_vlakova_loupez/sleeper-car.webp",
+    "width": 360,
+    "height": 555,
+    "origBytes": 408257,
+    "webpBytes": 24616
+  },
+  {
+    "origTitle": "PRIVATE CAR",
+    "origFolder": "05_Velka_vlakova_loupez",
+    "webPath": "assets/cards/05_velka_vlakova_loupez/private-car.webp",
+    "width": 360,
+    "height": 556,
+    "origBytes": 373825,
+    "webpBytes": 20016
+  },
+  {
+    "origTitle": "SHADE O'CONNOR",
+    "origFolder": "05_Velka_vlakova_loupez",
+    "webPath": "assets/cards/05_velka_vlakova_loupez/shade-o-connor.webp",
+    "width": 360,
+    "height": 552,
+    "origBytes": 364243,
+    "webpBytes": 30058
+  },
+  {
+    "origTitle": "SGT. BLAZE",
+    "origFolder": "05_Velka_vlakova_loupez",
+    "webPath": "assets/cards/05_velka_vlakova_loupez/sgt-blaze.webp",
+    "width": 360,
+    "height": 551,
+    "origBytes": 339713,
+    "webpBytes": 28306
+  },
+  {
+    "origTitle": "SANCHO",
+    "origFolder": "05_Velka_vlakova_loupez",
+    "webPath": "assets/cards/05_velka_vlakova_loupez/sancho.webp",
+    "width": 360,
+    "height": 549,
+    "origBytes": 320188,
+    "webpBytes": 24148
   }
 ]
