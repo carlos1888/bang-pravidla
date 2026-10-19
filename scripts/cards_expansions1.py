@@ -416,10 +416,10 @@ EXPANSIONS1_CARDS = [
         "values": "10",
         "range": None,
         "cost": "Odhození ze hry",
-        "effect": "Vyložte před sebe. V dalších tazích odhoďte pro efekt Vedle! a navíc sejměte: otočíte-li srdce (♥), doberte si 1 kartu z balíčku.",
+        "effect": "Vyložte před sebe. V dalších tazích odhoďte pro efekt Vedle! a doberte si 1 kartu z balíčku.",
         "timing": "Mimo tah",
-        "rulings": ["Efekt Vedle! platí vždy; sejmutí na srdce je bonusové dobrání."],
-        "tags": ["zelená", "obrana", "vedle", "bible", "sejmutí", "srdce"]
+        "rulings": ["Při odhození slouží jako Vedle! a okamžitě si doberete 1 kartu z dobíracího balíčku."],
+        "tags": ["zelená", "obrana", "vedle", "bible", "dobrání karty"]
     },
     {
         "id": "card-derringer",

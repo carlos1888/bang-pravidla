@@ -2313,18 +2313,17 @@ window.BANG_CARDS = [
     "values": "10",
     "range": null,
     "cost": "Odhození ze hry",
-    "effect": "Vyložte před sebe. V dalších tazích odhoďte pro efekt Vedle! a navíc sejměte: otočíte-li srdce (♥), doberte si 1 kartu z balíčku.",
+    "effect": "Vyložte před sebe. V dalších tazích odhoďte pro efekt Vedle! a doberte si 1 kartu z balíčku.",
     "timing": "Mimo tah",
     "rulings": [
-      "Efekt Vedle! platí vždy; sejmutí na srdce je bonusové dobrání."
+      "Při odhození slouží jako Vedle! a okamžitě si doberete 1 kartu z dobíracího balíčku."
     ],
     "tags": [
       "zelená",
       "obrana",
       "vedle",
       "bible",
-      "sejmutí",
-      "srdce"
+      "dobrání karty"
     ],
     "image": "assets/cards/02_mesto_duchu/bible.webp",
     "expansionNameEn": "Dodge City",
@@ -2333,7 +2332,7 @@ window.BANG_CARDS = [
     "timingEn": "Out of turn",
     "costEn": "Discard from play",
     "rulingsEn": [
-      "Efekt Vedle! platí vždy; sejmutí na srdce je bonusové dobrání."
+      "When discarded, acts as a Missed! and you immediately draw 1 card from the deck."
     ]
   },
   {
