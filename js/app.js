@@ -2331,7 +2331,6 @@
     document.getElementById('btn-lives-minus').addEventListener('click', () => {
       if (trackerState.lives > 0) {
         trackerState.lives--;
-        window.BANG_TOOLS.SoundFX.playShot();
         renderPlayerBoard(container);
       }
     });
@@ -2339,7 +2338,6 @@
     document.getElementById('btn-lives-plus').addEventListener('click', () => {
       if (trackerState.lives < effectiveMaxLives + 2) {
         trackerState.lives++;
-        window.BANG_TOOLS.SoundFX.playBeer();
         renderPlayerBoard(container);
       }
     });
@@ -2353,7 +2351,6 @@
 
     document.getElementById('btn-gold-plus').addEventListener('click', () => {
       trackerState.gold++;
-      window.BANG_TOOLS.SoundFX.playCoin();
       renderPlayerBoard(container);
     });
 
