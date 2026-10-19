@@ -218,19 +218,31 @@ header.app-header {
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid #735338;
   color: #ffcc00;
-  font-size: 1.1rem;
-  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  padding: 0.35rem 0.65rem;
+  height: 32px;
+  min-width: 36px;
   border-radius: var(--radius-sm);
   cursor: pointer;
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.4rem;
   transition: all 0.2s;
+  line-height: 1;
 }
 
 .btn-icon:hover {
   background: rgba(255, 255, 255, 0.2);
   border-color: #ffcc00;
+}
+
+#sound-icon {
+  font-size: 1rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Nav Tabs */
@@ -2174,6 +2186,7 @@ footer.app-footer {
     font-size: 0.76rem;
   }
 
+  #sound-toggle,
   #theme-toggle {
     order: unset;
     padding: 0.25rem 0.45rem;
@@ -2185,6 +2198,15 @@ footer.app-footer {
     justify-content: center;
     margin-left: 0;
     border-radius: var(--radius-sm);
+    line-height: 1;
+  }
+
+  #sound-icon {
+    font-size: 0.95rem;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .header-search {
@@ -2896,10 +2918,16 @@ footer.app-footer {
     padding: 0.18rem 0.38rem;
     font-size: 0.72rem;
   }
+  #sound-toggle,
   #theme-toggle {
     min-width: 29px;
     height: 27px;
     font-size: 0.85rem;
+    padding: 0.2rem 0.35rem;
+  }
+  #sound-icon {
+    font-size: 0.85rem;
+    line-height: 1;
   }
 }
 
