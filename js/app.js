@@ -2493,9 +2493,6 @@
         quizState.answered = true;
         if (chosen === q.correctIndex) {
           quizState.score++;
-          window.BANG_TOOLS.SoundFX.playCoin();
-        } else {
-          window.BANG_TOOLS.SoundFX.playRicochet();
         }
         renderRulesQuiz(container);
       });
