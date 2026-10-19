@@ -1,5 +1,5 @@
 // BANG! Companion Service Worker (PWA Offline Support)
-const CACHE_NAME = 'bang-pravidla-v24';
+const CACHE_NAME = 'bang-pravidla-v25';
 
 const STATIC_ASSETS = [
   './',
@@ -16,6 +16,10 @@ const STATIC_ASSETS = [
   './assets/bang-logo.png',
   './assets/icon-192.png',
   './assets/icon-512.png',
+  './assets/western/saloon_wood.jpg',
+  './assets/western/saloon_wood_header.jpg',
+  './assets/western/sheriff_star_thumb.jpg',
+  './assets/western/wanted_poster_thumb.jpg',
   './assets/audio/gunshot.mp3',
   './assets/audio/ricochet.m4a',
   './assets/audio/dynamite.m4a',
