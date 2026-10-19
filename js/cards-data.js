@@ -6555,6 +6555,79 @@ window.BANG_CARDS = [
     ]
   },
   {
+    "id": "event-blessing",
+    "name": "Požehnání",
+    "nameEn": "Blessing",
+    "expansion": "high-noon",
+    "expansionName": "Pravé poledne",
+    "type": "event",
+    "typeLabel": "Globální událost",
+    "copies": 1,
+    "suit": null,
+    "values": null,
+    "range": "Všichni hráči",
+    "cost": null,
+    "effect": "Barva všech karet je po celé toto kolo považována za srdce ♥ (pro snímání, schopnosti postav i vyhodnocování karet).",
+    "timing": "Celé kolo",
+    "rulings": [
+      "Všechna snímání (např. Vězení, Dynamit) jsou automaticky v srdcích ♥.",
+      "Karty a schopnosti vyžadující srdce ♥ jsou vždy automaticky splněny."
+    ],
+    "tags": [
+      "událost",
+      "požehnání",
+      "srdce",
+      "high-noon"
+    ],
+    "image": "assets/cards/07_prave_poledne/blessing.webp",
+    "expansionNameEn": "High Noon",
+    "typeLabelEn": "Global Event",
+    "effectEn": "The suit of all cards is considered Hearts ♥ for the entire round (for card checks, character abilities, and card effects).",
+    "timingEn": "Entire round",
+    "costEn": null,
+    "rulingsEn": [
+      "All checks (e.g. Jail, Dynamite) are automatically considered Hearts ♥.",
+      "Cards and abilities requiring Hearts ♥ are always automatically fulfilled."
+    ]
+  },
+  {
+    "id": "event-curse",
+    "name": "Prokletí",
+    "nameEn": "Curse",
+    "expansion": "high-noon",
+    "expansionName": "Pravé poledne",
+    "type": "event",
+    "typeLabel": "Globální událost",
+    "copies": 1,
+    "suit": null,
+    "values": null,
+    "range": "Všichni hráči",
+    "cost": null,
+    "effect": "Barva všech karet je po celé toto kolo považována za piky ♠ (pro snímání, schopnosti postav i vyhodnocování karet).",
+    "timing": "Celé kolo",
+    "rulings": [
+      "Útěk z Vězení selže, protože barva je piky ♠, nikoli srdce ♥.",
+      "Dynamit při sejmutí hodnoty 2–9 okamžitě exploduje!"
+    ],
+    "tags": [
+      "událost",
+      "prokletí",
+      "piky",
+      "dynamit",
+      "high-noon"
+    ],
+    "image": "assets/cards/07_prave_poledne/curse.webp",
+    "expansionNameEn": "High Noon",
+    "typeLabelEn": "Global Event",
+    "effectEn": "The suit of all cards is considered Spades ♠ for the entire round (for card checks, character abilities, and card effects).",
+    "timingEn": "Entire round",
+    "costEn": null,
+    "rulingsEn": [
+      "Escaping Jail automatically fails because card suit is Spades ♠, not Hearts ♥.",
+      "Dynamite explodes immediately if drawn value is 2–9!"
+    ]
+  },
+  {
     "id": "event-ghost-town",
     "name": "Město duchů",
     "nameEn": "Ghost Town",
@@ -6567,10 +6640,10 @@ window.BANG_CARDS = [
     "values": null,
     "range": "Všichni vyřazení hráči",
     "cost": null,
-    "effect": "Vyřazení hráči se na jeden tah vrací do hry! V 1. fázi si dobírají 3 karty. Během svého tahu nemohou zemřít a na jeho konci jsou opět vyřazeni.",
-    "timing": "Celé kolo, v tazích mrtvých hráčů",
+    "effect": "Vyřazení hráči se na jeden tah vrací do hry jako duchové! Ve fázi 1 si dobírají 3 karty. Během svého tahu nemohou zemřít a na jeho konci jsou opět vyřazeni.",
+    "timing": "Celé kolo, v tazích vyřazených hráčů",
     "rulings": [
-      "Mrtví hráči mohou splnit svůj cíl a vyhrát hru (např. Bandita zabije Šerifa)!",
+      "Vyřazení hráči mohou splnit svůj cíl a vyhrát hru (např. Bandita zabije Šerifa)!",
       "Bill Noface si dobírá 5 karet.",
       "Při odchodu na konci tahu Gregg Digger získá 2 životy a Herb Hunter 2 karty."
     ],
@@ -6578,24 +6651,24 @@ window.BANG_CARDS = [
       "událost",
       "návrat mrtvých",
       "město duchů",
-      "high noon"
+      "high-noon"
     ],
     "image": "assets/cards/07_prave_poledne/ghost-town.webp",
     "expansionNameEn": "High Noon",
     "typeLabelEn": "Global Event",
-    "effectEn": "Event. Dead players return as ghosts on their turns: draw 3 cards, cannot die, leave at turn end.",
-    "timingEn": "Entire round, on dead players' turns",
+    "effectEn": "Eliminated players return as ghosts on their turns: draw 3 cards, cannot die, and leave at turn end.",
+    "timingEn": "Entire round, on dead players turns",
     "costEn": null,
     "rulingsEn": [
-      "Mrtví hráči mohou splnit svůj cíl a vyhrát hru (např. Outlaw zabije Sheriff)!",
-      "Bill Noface si dobírá 5 karet.",
-      "Při odchodu na konci tahu Gregg Digger získá 2 life point(s) a Herb Hunter 2 karty."
+      "Dead players can achieve their objective and win (e.g. Outlaw kills Sheriff)!",
+      "Bill Noface draws 5 cards.",
+      "When leaving at turn end, Gregg Digger gets 2 lives and Herb Hunter 2 cards."
     ]
   },
   {
-    "id": "event-the-doctor",
-    "name": "Doktor",
-    "nameEn": "The Doctor",
+    "id": "event-gold-rush",
+    "name": "Zlatá horečka (Událost)",
+    "nameEn": "Gold Rush",
     "expansion": "high-noon",
     "expansionName": "Pravé poledne",
     "type": "event",
@@ -6603,27 +6676,138 @@ window.BANG_CARDS = [
     "copies": 1,
     "suit": null,
     "values": null,
-    "range": "Hráči s nejméně životy",
+    "range": "Všichni hráči",
     "cost": null,
-    "effect": "Když přijde Doktor do hry: hráč nebo hráči, kteří mají v tuto chvíli nejméně životů, si vyléčí 1 život.",
-    "timing": "Okamžitě při otočení karty",
+    "effect": "Hra probíhá v protisměru hodinových ručiček (doprava), počínaje Šerifem. Všechny směrové efekty karet a schopností se obracejí.",
+    "timing": "Celé kolo",
     "rulings": [
-      "Vyhodnotí se před jakoukoli jinou akcí na začátku kola."
+      "Hráč po vaší pravici je nyní ve vzdálenosti 1.",
+      "Otáčení tahů se pro toto kolo zcela obrací doprava."
     ],
     "tags": [
       "událost",
-      "léčení",
-      "doktor",
-      "podpora slabších"
+      "zlatá horečka",
+      "protisměr",
+      "high-noon"
     ],
-    "image": "assets/cards/07_prave_poledne/the-doctor.webp",
+    "image": "assets/cards/07_prave_poledne/gold-rush-event.webp",
     "expansionNameEn": "High Noon",
     "typeLabelEn": "Global Event",
-    "effectEn": "Event. Living players with lowest life points regain 1 life point.",
-    "timingEn": "Immediately when card is revealed",
+    "effectEn": "The game proceeds counter-clockwise (to the right), starting with the Sheriff. All directional card and ability effects are reversed.",
+    "timingEn": "Entire round",
     "costEn": null,
     "rulingsEn": [
-      "Vyhodnotí se před jakoukoli jinou akcí na začátku kola."
+      "The player to your right is now at distance 1.",
+      "Turn order reverses completely for this round."
+    ]
+  },
+  {
+    "id": "event-hangover",
+    "name": "Kocovina",
+    "nameEn": "Hangover",
+    "expansion": "high-noon",
+    "expansionName": "Pravé poledne",
+    "type": "event",
+    "typeLabel": "Globální událost",
+    "copies": 1,
+    "suit": null,
+    "values": null,
+    "range": "Všechny postavy",
+    "cost": null,
+    "effect": "Všechny postavy ztrácejí své speciální schopnosti po celé toto kolo.",
+    "timing": "Celé kolo",
+    "rulings": [
+      "Žádná postava nemůže používat pasivní ani aktivní schopnosti (např. Willy the Kid může hrát jen 1 BANG!, Suzy Lafayette nedobírá kartu při prázdné ruce).",
+      "Maximální počet životů i aktuální životy postav zůstávají beze změny."
+    ],
+    "tags": [
+      "událost",
+      "kocovina",
+      "ztráta schopností",
+      "high-noon"
+    ],
+    "image": "assets/cards/07_prave_poledne/hangover.webp",
+    "expansionNameEn": "High Noon",
+    "typeLabelEn": "Global Event",
+    "effectEn": "All characters lose their special abilities for the entire round.",
+    "timingEn": "Entire round",
+    "costEn": null,
+    "rulingsEn": [
+      "No character may use active or passive abilities (e.g. Willy the Kid can only play 1 BANG!, Suzy Lafayette does not draw when empty).",
+      "Maximum life points and current health remain unchanged."
+    ]
+  },
+  {
+    "id": "event-high-noon",
+    "name": "Pravé poledne",
+    "nameEn": "High Noon",
+    "expansion": "high-noon",
+    "expansionName": "Pravé poledne",
+    "type": "event",
+    "typeLabel": "Globální událost (finální)",
+    "copies": 1,
+    "suit": null,
+    "values": null,
+    "range": "Všichni hráči",
+    "cost": null,
+    "effect": "Na začátku svého tahu ztrácí každý hráč 1 život! Karta zůstává ve hře trvale až do konce partie.",
+    "timing": "Začátek každého tahu až do konce hry",
+    "rulings": [
+      "Ztráta 1 života nastává ještě před snímáním na Dynamit a Vězení!",
+      "Urychluje konec hry v napínavém rozuzlení."
+    ],
+    "tags": [
+      "událost",
+      "finální",
+      "pravé poledne",
+      "nevyhnutelná smrt",
+      "high-noon"
+    ],
+    "image": "assets/cards/07_prave_poledne/high-noon.webp",
+    "expansionNameEn": "High Noon",
+    "typeLabelEn": "Global Event (climax)",
+    "effectEn": "Each player loses 1 life point at the start of their turn! This card remains in play permanently until the game ends.",
+    "timingEn": "At the start of each turn until end of game",
+    "costEn": null,
+    "rulingsEn": [
+      "Causes sudden death to speed up game conclusion.",
+      "The loss of 1 life occurs before checks for Dynamite and Jail!"
+    ]
+  },
+  {
+    "id": "event-shootout",
+    "name": "Přestřelka",
+    "nameEn": "Shootout",
+    "expansion": "high-noon",
+    "expansionName": "Pravé poledne",
+    "type": "event",
+    "typeLabel": "Globální událost",
+    "copies": 1,
+    "suit": null,
+    "values": null,
+    "range": "Všichni hráči",
+    "cost": null,
+    "effect": "Každý hráč může ve své fázi 2 zahrát druhý BANG! za tah.",
+    "timing": "Fáze 2 vlastního tahu",
+    "rulings": [
+      "Hráč může zahrát až 2 karty BANG! za tah i bez zbraně Volcanic.",
+      "S kartou Volcanic může stále střílet neomezeně."
+    ],
+    "tags": [
+      "událost",
+      "přestřelka",
+      "druhý bang",
+      "high-noon"
+    ],
+    "image": "assets/cards/07_prave_poledne/shootout.webp",
+    "expansionNameEn": "High Noon",
+    "typeLabelEn": "Global Event",
+    "effectEn": "Each player may play a second BANG! card during Phase 2 of their turn.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": null,
+    "rulingsEn": [
+      "A player may play up to 2 BANG! cards per turn even without a Volcanic.",
+      "With a Volcanic weapon, the player can still fire unlimited BANG!s."
     ]
   },
   {
@@ -6642,28 +6826,68 @@ window.BANG_CARDS = [
     "effect": "Když přijdou Daltonové do hry: každý hráč, který má před sebou vyloženy modré karty, musí jednu z nich vybrat a odhodit.",
     "timing": "Okamžitě při otočení karty",
     "rulings": [
-      "Hráč si sám vybere, kterou modrou kartu obětuje."
+      "Hráč si sám vybere, kterou ze svých modrých karet obětuje.",
+      "Kdo nemá žádnou modrou kartu, nic neodhadzuje."
     ],
     "tags": [
       "událost",
       "sabotáž",
       "daltonové",
-      "odhození modré karty"
+      "odhození modré karty",
+      "high-noon"
     ],
     "image": "assets/cards/07_prave_poledne/the-daltons.webp",
     "expansionNameEn": "High Noon",
     "typeLabelEn": "Global Event",
-    "effectEn": "Event. When revealed, all players with blue cards in play discard 1 blue card.",
+    "effectEn": "When revealed, all players with blue cards in play discard 1 blue card.",
     "timingEn": "Immediately when card is revealed",
     "costEn": null,
     "rulingsEn": [
-      "Hráč si sám vybere, kterou blue card(s) obětuje."
+      "Each player chooses which blue card to discard.",
+      "Players with no blue cards in play discard nothing."
     ]
   },
   {
-    "id": "event-the-preacher",
+    "id": "event-the-doctor",
+    "name": "Doktor",
+    "nameEn": "The Doctor",
+    "expansion": "high-noon",
+    "expansionName": "Pravé poledne",
+    "type": "event",
+    "typeLabel": "Globální událost",
+    "copies": 1,
+    "suit": null,
+    "values": null,
+    "range": "Hráči s nejméně životy",
+    "cost": null,
+    "effect": "Když přijde Doktor do hry: hráč nebo hráči, kteří mají v tuto chvíli nejméně životů, si vyléčí 1 život.",
+    "timing": "Okamžitě při otočení karty",
+    "rulings": [
+      "Vyhodnotí se okamžitě před jakoukoli jinou akcí na začátku kola.",
+      "Nelze překročit maximální počet životů postavy."
+    ],
+    "tags": [
+      "událost",
+      "léčení",
+      "doktor",
+      "podpora slabších",
+      "high-noon"
+    ],
+    "image": "assets/cards/07_prave_poledne/the-doctor.webp",
+    "expansionNameEn": "High Noon",
+    "typeLabelEn": "Global Event",
+    "effectEn": "When revealed, the player(s) with the fewest current life points regain 1 life point.",
+    "timingEn": "Immediately when card is revealed",
+    "costEn": null,
+    "rulingsEn": [
+      "Resolved immediately before any other action at round start.",
+      "Cannot exceed character maximum life points."
+    ]
+  },
+  {
+    "id": "event-the-reverend",
     "name": "Kazatel",
-    "nameEn": "The Preacher",
+    "nameEn": "The Reverend",
     "expansion": "high-noon",
     "expansionName": "Pravé poledne",
     "type": "event",
@@ -6673,27 +6897,65 @@ window.BANG_CARDS = [
     "values": null,
     "range": "Všichni hráči",
     "cost": null,
-    "effect": "Během svého tahu nesmíte používat karty BANG!.",
+    "effect": "Během celého tohoto kola nelze hrát karty Pivo.",
     "timing": "Celé kolo",
     "rulings": [
-      "Zákaz platí i na odhazování BANG! v Duelu (hráč na tahu nesmí v Duelu odhodit BANG! a ztrácí život!).",
-      "Lze stále útočit Kulometem, Křesadlovkou, nožem apod."
+      "Karty Pivo nelze hrát ani mimo tah k záchraně života při smrtícím zásahu!",
+      "Ostatní formy léčení (Saloon, Tequila apod.) fungují normálně."
     ],
     "tags": [
       "událost",
-      "zákaz bangu",
       "kazatel",
-      "příměří"
+      "zákaz piva",
+      "reverend",
+      "high-noon"
     ],
     "image": "assets/cards/07_prave_poledne/the-reverend.webp",
     "expansionNameEn": "High Noon",
     "typeLabelEn": "Global Event",
-    "effectEn": "Event. Beer cards cannot be played.",
+    "effectEn": "Beer cards cannot be played during the entire round.",
     "timingEn": "Entire round",
     "costEn": null,
     "rulingsEn": [
-      "Zákaz platí i na odhazování BANG! v Duelu (hráč na tahu nesmí v Duelu odhodit BANG! a ztrácí life point(s)!).",
-      "Lze stále útočit Kulometem, Křesadlovkou, nožem apod."
+      "Beer cards cannot even be played out of turn to save a lethal hit!",
+      "Other forms of healing (Saloon, Tequila, etc.) function normally."
+    ]
+  },
+  {
+    "id": "event-the-sermon",
+    "name": "Kázání",
+    "nameEn": "The Sermon",
+    "expansion": "high-noon",
+    "expansionName": "Pravé poledne",
+    "type": "event",
+    "typeLabel": "Globální událost",
+    "copies": 1,
+    "suit": null,
+    "values": null,
+    "range": "Všichni hráči",
+    "cost": null,
+    "effect": "Během celého tohoto kola nesmí nikdo zahrát kartu BANG!.",
+    "timing": "Celé kolo",
+    "rulings": [
+      "Nikdo nesmí zahrát kartu BANG! ve své fázi 2 ani jako reakci v Duelu.",
+      "Útočit lze stále Kulometem, Indiány apod."
+    ],
+    "tags": [
+      "událost",
+      "kázání",
+      "zákaz bangu",
+      "příměří",
+      "high-noon"
+    ],
+    "image": "assets/cards/07_prave_poledne/the-sermon.webp",
+    "expansionNameEn": "High Noon",
+    "typeLabelEn": "Global Event",
+    "effectEn": "Players cannot play any BANG! cards during this entire round.",
+    "timingEn": "Entire round",
+    "costEn": null,
+    "rulingsEn": [
+      "No player may play BANG! cards during Phase 2 or in response during a Duel.",
+      "Other attacks like Gatling or Indians! can still be played."
     ]
   },
   {
@@ -6718,16 +6980,17 @@ window.BANG_CARDS = [
       "událost",
       "žízeň",
       "méně karet",
-      "fáze 1"
+      "fáze 1",
+      "high-noon"
     ],
     "image": "assets/cards/07_prave_poledne/thirst.webp",
     "expansionNameEn": "High Noon",
     "typeLabelEn": "Global Event",
-    "effectEn": "Event. Players draw only 1 card during Phase 1.",
+    "effectEn": "All players draw 1 card less than usual in Phase 1 (normally only 1 card).",
     "timingEn": "Phase 1 on each turn this round",
     "costEn": null,
     "rulingsEn": [
-      "Postavy se schopností na 1. kartu (Jesse Jones, Pedro Ramirez) ji mohou normálně využít."
+      "Characters with abilities affecting their first card (Jesse Jones, Pedro Ramirez) can use them normally."
     ]
   },
   {
@@ -6752,52 +7015,17 @@ window.BANG_CARDS = [
       "událost",
       "příjezd vlaku",
       "více karet",
-      "fáze 1"
+      "fáze 1",
+      "high-noon"
     ],
     "image": "assets/cards/07_prave_poledne/train-arrival.webp",
     "expansionNameEn": "High Noon",
     "typeLabelEn": "Global Event",
-    "effectEn": "Event. Players draw 1 extra card during Phase 1.",
+    "effectEn": "All players draw 1 extra card than usual in Phase 1 (normally 3 cards).",
     "timingEn": "Phase 1 on each turn this round",
     "costEn": null,
     "rulingsEn": [
-      "Pixie Pete si dobírá 4 karty! Black Jack může mít až 4 karty."
-    ]
-  },
-  {
-    "id": "event-high-noon",
-    "name": "Pravé poledne",
-    "nameEn": "High Noon",
-    "expansion": "high-noon",
-    "expansionName": "Pravé poledne",
-    "type": "event",
-    "typeLabel": "Globální událost (finální)",
-    "copies": 1,
-    "suit": null,
-    "values": null,
-    "range": "Všichni hráči",
-    "cost": null,
-    "effect": "Na začátku svého tahu ztrácí každý hráč 1 život! Karta zůstává ve hře trvale až do konce hry.",
-    "timing": "Na začátku každého tahu až do konce hry",
-    "rulings": [
-      "Způsobuje rychlý konec hry („sudden death“).",
-      "Ztráta 1 života nastává ještě před snímáním na Dynamit a Vězení!"
-    ],
-    "tags": [
-      "událost",
-      "finální",
-      "pravé poledne",
-      "nevyhnutelná smrt"
-    ],
-    "image": "assets/cards/07_prave_poledne/high-noon.webp",
-    "expansionNameEn": "High Noon",
-    "typeLabelEn": "Global Event",
-    "effectEn": "Event. Each player loses 1 life point at the start of their turn. Lasts until game end.",
-    "timingEn": "At the start of each turn until end of game",
-    "costEn": null,
-    "rulingsEn": [
-      "Způsobuje rychlý konec hry („sudden death“).",
-      "Ztráta 1 life point(s) nastává ještě před snímáním na Dynamit a Vězení!"
+      "Pixie Pete draws 4 cards! Black Jack can draw up to 4 cards."
     ]
   },
   {
@@ -6823,53 +7051,18 @@ window.BANG_CARDS = [
       "událost",
       "finální",
       "pěst plná karet",
-      "krupobití střel"
+      "krupobití střel",
+      "fistful"
     ],
     "image": "assets/cards/08_pest_plna_karet/a-fistful-of-cards.webp",
     "expansionNameEn": "A Fistful of Cards",
-    "typeLabelEn": "Global Event",
-    "effectEn": "Event. At the start of their turn, player is targeted by as many BANG!s as cards in hand.",
+    "typeLabelEn": "Global Event (climax)",
+    "effectEn": "At the start of their turn, player is targeted by as many BANG!s as cards in hand. Lasts until game end.",
     "timingEn": "Start of each turn",
     "costEn": null,
     "rulingsEn": [
-      "Proti každému BANG! se lze bránit samostatně Missed! card nebo Barelem.",
-      "Hráč s plnou rukou může okamžitě padnout, pokud nemá dostatek obran."
-    ]
-  },
-  {
-    "id": "event-sniper",
-    "name": "Odstřelovač",
-    "nameEn": "Sniper",
-    "expansion": "fistful-of-cards",
-    "expansionName": "Pěst plná karet",
-    "type": "event",
-    "typeLabel": "Globální událost",
-    "copies": 1,
-    "suit": null,
-    "values": null,
-    "range": "Dle zbraně",
-    "cost": "Odhození 2 karet BANG!",
-    "effect": "Během svého tahu můžete odhodit 2 karty BANG! a získat tím posílený efekt BANG!, který lze zrušit POUZE 2 EFEKTY VEDLE!.",
-    "timing": "Fáze 2 vlastního tahu",
-    "rulings": [
-      "Nezapočítává se do limitu 1 BANG! za tah.",
-      "Lze aktivovat i vícekrát za tah."
-    ],
-    "tags": [
-      "událost",
-      "odstřelovač",
-      "2 bangy za supershot",
-      "2 vedle"
-    ],
-    "image": "assets/cards/08_pest_plna_karet/sniper.webp",
-    "expansionNameEn": "A Fistful of Cards",
-    "typeLabelEn": "Global Event",
-    "effectEn": "Event. Players may discard 2 BANG! cards to fire an uncancelable shot.",
-    "timingEn": "Phase 2 of own turn",
-    "costEn": "Discard 2 BANG! cards",
-    "rulingsEn": [
-      "Nezapočítává se do limitu 1 BANG! za tah.",
-      "Lze aktivovat i vícekrát za tah."
+      "Against each BANG!, the player may defend individually with Missed! or Barrel.",
+      "A player with a full hand can fall immediately if lacking defenses."
     ]
   },
   {
@@ -6894,17 +7087,163 @@ window.BANG_CARDS = [
     "tags": [
       "událost",
       "opuštěný důl",
-      "obrácený koloběh karet"
+      "obrácený koloběh karet",
+      "fistful"
     ],
     "image": "assets/cards/08_pest_plna_karet/abonded-mine.webp",
     "expansionNameEn": "A Fistful of Cards",
     "typeLabelEn": "Global Event",
-    "effectEn": "Event. In Phase 1, players draw from discard pile if possible.",
+    "effectEn": "In Phase 1, players draw from discard pile if possible. Discarded cards go face down on draw deck!",
     "timingEn": "Entire round",
     "costEn": null,
     "rulingsEn": [
-      "Otáčí koloběh karet v balíčku.",
-      "Platí pro nadbytečné karty i karty odhozené v Duelu."
+      "Inverts card cycling between discard and draw deck.",
+      "Applies to excess discarded cards and cards discarded in a Duel."
+    ]
+  },
+  {
+    "id": "event-ambush",
+    "name": "Léčka",
+    "nameEn": "Ambush",
+    "expansion": "fistful-of-cards",
+    "expansionName": "Pěst plná karet",
+    "type": "event",
+    "typeLabel": "Globální událost",
+    "copies": 1,
+    "suit": null,
+    "values": null,
+    "range": "Všichni hráči",
+    "cost": null,
+    "effect": "Vzdálenost mezi všemi hráči je rovna 1 bez ohledu na vyložené karty (Mustang, Hledí, Skrýš) i zbraně.",
+    "timing": "Celé kolo",
+    "rulings": [
+      "Každý může zasáhnout každého standardním výstřelem.",
+      "Modifikátory vzdálenosti jsou dočasně neúčinné."
+    ],
+    "tags": [
+      "událost",
+      "léčka",
+      "vzdálenost 1",
+      "fistful"
+    ],
+    "image": "assets/cards/08_pest_plna_karet/ambush.webp",
+    "expansionNameEn": "A Fistful of Cards",
+    "typeLabelEn": "Global Event",
+    "effectEn": "The distance between all players is 1, regardless of cards in play (Mustang, Scope, Hideout) or weapons.",
+    "timingEn": "Entire round",
+    "costEn": null,
+    "rulingsEn": [
+      "Every player can target anyone with a standard shot.",
+      "Distance modifiers are temporarily ignored."
+    ]
+  },
+  {
+    "id": "event-blood-brothers",
+    "name": "Pokrevní bratři",
+    "nameEn": "Blood Brothers",
+    "expansion": "fistful-of-cards",
+    "expansionName": "Pěst plná karet",
+    "type": "event",
+    "typeLabel": "Globální událost",
+    "copies": 1,
+    "suit": null,
+    "values": null,
+    "range": "Aktivní hráč a spojenec",
+    "cost": null,
+    "effect": "Na začátku svého tahu se můžete vzdát 1 svého života a darovat ho libovolnému jinému hráči (tímto nelze překročit jeho max. životy).",
+    "timing": "Začátek vlastního tahu",
+    "rulings": [
+      "Darování je dobrovolné.",
+      "Nelze se tímto obětovat a zabít se (hráč musí mít alespoň 2 životy)."
+    ],
+    "tags": [
+      "událost",
+      "pokrevní bratři",
+      "darování života",
+      "fistful"
+    ],
+    "image": "assets/cards/08_pest_plna_karet/blood-brothers.webp",
+    "expansionNameEn": "A Fistful of Cards",
+    "typeLabelEn": "Global Event",
+    "effectEn": "At the start of your turn, you may choose to sacrifice 1 of your life points to heal another player for 1 life.",
+    "timingEn": "Start of own turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Sacrifice is optional.",
+      "Cannot be used to commit suicide (player must have at least 2 lives)."
+    ]
+  },
+  {
+    "id": "event-dead-man",
+    "name": "Mrtvý muž",
+    "nameEn": "Dead Man",
+    "expansion": "fistful-of-cards",
+    "expansionName": "Pěst plná karet",
+    "type": "event",
+    "typeLabel": "Globální událost",
+    "copies": 1,
+    "suit": null,
+    "values": null,
+    "range": "První vyřazený hráč",
+    "cost": null,
+    "effect": "V tomto kole se první dříve vyřazený hráč vrací natrvalo do hry se 2 životy a 2 kartami z dobíracího balíčku!",
+    "timing": "V tahu prvního vyřazeného hráče",
+    "rulings": [
+      "Hráč se vrací do hry s původní rolí i postavou a pokračuje normálně v partii.",
+      "Pokud dosud nikdo nebyl vyřazen, karta nemá žádný efekt."
+    ],
+    "tags": [
+      "událost",
+      "mrtvý muž",
+      "oživení",
+      "návrat do hry",
+      "fistful"
+    ],
+    "image": "assets/cards/08_pest_plna_karet/dead-man.webp",
+    "expansionNameEn": "A Fistful of Cards",
+    "typeLabelEn": "Global Event",
+    "effectEn": "During this round, the first player eliminated from the game returns permanently to play with 2 life points and 2 cards drawn from the deck!",
+    "timingEn": "On first eliminated players turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Player returns with original role and character and resumes normal play.",
+      "If no player has been eliminated yet, card has no effect."
+    ]
+  },
+  {
+    "id": "event-hard-liquor",
+    "name": "Tvrdý alkohol",
+    "nameEn": "Hard Liquor",
+    "expansion": "fistful-of-cards",
+    "expansionName": "Pěst plná karet",
+    "type": "event",
+    "typeLabel": "Globální událost",
+    "copies": 1,
+    "suit": null,
+    "values": null,
+    "range": "Aktivní hráč",
+    "cost": null,
+    "effect": "Můžete přeskočit 1. fázi svého tahu (dobírání karet) a místo toho si okamžitě vyléčit 1 život.",
+    "timing": "Fáze 1 vlastního tahu",
+    "rulings": [
+      "Léčení je dobrovolné – můžete normálně lízat 2 karty, nebo nelízat nic a vyléčit 1 život.",
+      "Nelze překročit maximální počet životů."
+    ],
+    "tags": [
+      "událost",
+      "tvrdý alkohol",
+      "léčení místo lízání",
+      "fistful"
+    ],
+    "image": "assets/cards/08_pest_plna_karet/hard-liqur.webp",
+    "expansionNameEn": "A Fistful of Cards",
+    "typeLabelEn": "Global Event",
+    "effectEn": "You may choose to skip Phase 1 of your turn (drawing cards) to regain 1 life point instead.",
+    "timingEn": "Phase 1 of own turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Healing is optional – you can draw 2 cards normally, or draw 0 cards and regain 1 life.",
+      "Cannot exceed max life points."
     ]
   },
   {
@@ -6930,17 +7269,161 @@ window.BANG_CARDS = [
       "událost",
       "laso",
       "vypnutí vyložených karet",
-      "divoký západ"
+      "fistful"
     ],
     "image": "assets/cards/08_pest_plna_karet/lasso.webp",
     "expansionNameEn": "A Fistful of Cards",
     "typeLabelEn": "Global Event",
-    "effectEn": "Event. Cards in play in front of all players have no effect.",
+    "effectEn": "Cards in play in front of all players have no effect for the entire round.",
     "timingEn": "Entire round",
     "costEn": null,
     "rulingsEn": [
-      "Karty lze stále hrát na stůl, ale jsou dočasně neaktivní.",
-      "Barel nechrání, Mustang nezvyšuje vzdálenost, zbraně nestřílí dál."
+      "Cards can still be played, but are temporarily inactive.",
+      "Barrel does not protect, Mustang does not increase distance, weapons do not shoot further."
+    ]
+  },
+  {
+    "id": "event-law-of-the-west",
+    "name": "Zákon západu",
+    "nameEn": "Law of the West",
+    "expansion": "fistful-of-cards",
+    "expansionName": "Pěst plná karet",
+    "type": "event",
+    "typeLabel": "Globální událost",
+    "copies": 1,
+    "suit": null,
+    "values": null,
+    "range": "Aktivní hráč",
+    "cost": null,
+    "effect": "Při lízání v 1. fázi musíte druhou líznutou kartu ukázat všem ostatním. Pokud je možné ji v tomto tahu zahrát, musíte ji povinně zahrát!",
+    "timing": "Fáze 1 a 2 vlastního tahu",
+    "rulings": [
+      "Karta musí být zahrána, pokud existuje platný cíl nebo podmínka.",
+      "Pokud ji nelze zahrát (např. Vedle! ve svém tahu), zůstává normálně v ruce."
+    ],
+    "tags": [
+      "událost",
+      "zákon západu",
+      "povinné zahrání",
+      "fistful"
+    ],
+    "image": "assets/cards/08_pest_plna_karet/law-of-the-west.webp",
+    "expansionNameEn": "A Fistful of Cards",
+    "typeLabelEn": "Global Event",
+    "effectEn": "In Phase 1, you must show the second card drawn to everyone. If it is possible to play it this turn, you MUST play it!",
+    "timingEn": "Phase 1 & 2 of own turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Card must be played if a valid target or condition exists.",
+      "If unplayable (e.g. Missed! on your turn), it stays in hand."
+    ]
+  },
+  {
+    "id": "event-peyote",
+    "name": "Peyotl",
+    "nameEn": "Peyote",
+    "expansion": "fistful-of-cards",
+    "expansionName": "Pěst plná karet",
+    "type": "event",
+    "typeLabel": "Globální událost",
+    "copies": 1,
+    "suit": null,
+    "values": null,
+    "range": "Aktivní hráč",
+    "cost": null,
+    "effect": "Ve fázi 1 netaháte 2 karty: místo toho si před každou kartou tipnete barvu (černá ♠♣ / červená ♥♦). Uhodnete-li, kartu si vezmete a tipujete znovu, dokud se nespletete!",
+    "timing": "Fáze 1 vlastního tahu",
+    "rulings": [
+      "Šťastlivec může získat mnoho karet za sebou.",
+      "První chybná karta jde na odhazovací balíček a fáze 1 končí."
+    ],
+    "tags": [
+      "událost",
+      "peyotl",
+      "tipování barev",
+      "fistful"
+    ],
+    "image": "assets/cards/08_pest_plna_karet/peyote.webp",
+    "expansionNameEn": "A Fistful of Cards",
+    "typeLabelEn": "Global Event",
+    "effectEn": "In Phase 1 you do not draw 2 cards: instead guess red or black before each card. If correct, keep card and guess again until wrong!",
+    "timingEn": "Phase 1 of own turn",
+    "costEn": null,
+    "rulingsEn": [
+      "A lucky player can draw multiple cards in a row.",
+      "The first incorrect card goes to discard pile and Phase 1 ends."
+    ]
+  },
+  {
+    "id": "event-ranch",
+    "name": "Ranč",
+    "nameEn": "Ranch",
+    "expansion": "fistful-of-cards",
+    "expansionName": "Pěst plná karet",
+    "type": "event",
+    "typeLabel": "Globální událost",
+    "copies": 1,
+    "suit": null,
+    "values": null,
+    "range": "Aktivní hráč",
+    "cost": null,
+    "effect": "Na konci 1. fáze můžete odhodit libovolný počet karet z ruky a dobrat si stejný počet nových karet z balíčku.",
+    "timing": "Konec fáze 1 vlastního tahu",
+    "rulings": [
+      "Výměna je jednorázová a dobrovolná.",
+      "Skvělá možnost, jak vyměnit nepotřebné karty."
+    ],
+    "tags": [
+      "událost",
+      "ranč",
+      "výměna karet",
+      "fistful"
+    ],
+    "image": "assets/cards/08_pest_plna_karet/ranch.webp",
+    "expansionNameEn": "A Fistful of Cards",
+    "typeLabelEn": "Global Event",
+    "effectEn": "At the end of Phase 1, you may discard any number of cards from your hand and draw that many replacement cards from the deck.",
+    "timingEn": "End of Phase 1 of own turn",
+    "costEn": null,
+    "rulingsEn": [
+      "Exchange is optional and happens once at end of Phase 1.",
+      "Great opportunity to mulligan unneeded cards."
+    ]
+  },
+  {
+    "id": "event-ricochet",
+    "name": "Odražená střela",
+    "nameEn": "Ricochet",
+    "expansion": "fistful-of-cards",
+    "expansionName": "Pěst plná karet",
+    "type": "event",
+    "typeLabel": "Globální událost",
+    "copies": 1,
+    "suit": null,
+    "values": null,
+    "range": "Protihráči s vyloženými kartami",
+    "cost": null,
+    "effect": "Můžete zahrát kartu BANG! proti kterékoli vyložené kartě soupeře: pokud cíl neodhodí kartu Vedle!, jeho vyložená karta je zničena a odhozena!",
+    "timing": "Fáze 2 vlastního tahu",
+    "rulings": [
+      "Tento výstřel nezpůsobuje zranění hráči, ale ničí jeho vybavení.",
+      "Lze tímto zničit modré i zelené karty."
+    ],
+    "tags": [
+      "událost",
+      "odražená střela",
+      "střelba na vybavení",
+      "fistful"
+    ],
+    "image": "assets/cards/08_pest_plna_karet/ricochet.webp",
+    "expansionNameEn": "A Fistful of Cards",
+    "typeLabelEn": "Global Event",
+    "effectEn": "You may discard a BANG! against any card in play in front of an opponent: if the target does not play a Missed!, that card is destroyed and discarded!",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": null,
+    "rulingsEn": [
+      "This shot does not wound the player, but destroys their equipment.",
+      "Can destroy blue or green cards."
     ]
   },
   {
@@ -6966,17 +7449,126 @@ window.BANG_CARDS = [
       "událost",
       "ruská ruleta",
       "okamžité napětí",
-      "2 životy"
+      "2 životy",
+      "fistful"
     ],
     "image": "assets/cards/08_pest_plna_karet/russian-roulette.webp",
     "expansionNameEn": "A Fistful of Cards",
     "typeLabelEn": "Global Event",
-    "effectEn": "Event. Starting with Sheriff, players alternately discard a Missed! or lose 2 life points.",
+    "effectEn": "Starting with the Sheriff, players in turn must discard a Missed! or lose 2 life points. The first to fail loses 2 lives and the event ends.",
     "timingEn": "Immediately when card is revealed",
     "costEn": null,
     "rulingsEn": [
-      "Lze použít Missed! card, úspěšné sejmutí na Barel nebo Jourdonnaise.",
-      "První neúspěšný hráč ztrácí 2 life point(s) a tím je událost vyřešena."
+      "Can use a Missed! card, or successful Barrel/Jourdonnais check.",
+      "The first player to fail loses 2 life points and the event is resolved."
+    ]
+  },
+  {
+    "id": "event-sniper",
+    "name": "Odstřelovač",
+    "nameEn": "Sniper",
+    "expansion": "fistful-of-cards",
+    "expansionName": "Pěst plná karet",
+    "type": "event",
+    "typeLabel": "Globální událost",
+    "copies": 1,
+    "suit": null,
+    "values": null,
+    "range": "Dle zbraně",
+    "cost": "Odhození 2 karet BANG!",
+    "effect": "Během svého tahu můžete odhodit 2 karty BANG! a získat tím posílený efekt BANG!, který lze zrušit POUZE 2 EFEKTY VEDLE!.",
+    "timing": "Fáze 2 vlastního tahu",
+    "rulings": [
+      "Nezapočítává se do limitu 1 BANG! za tah.",
+      "Lze aktivovat i vícekrát za tah."
+    ],
+    "tags": [
+      "událost",
+      "odstřelovač",
+      "2 bangy za supershot",
+      "fistful"
+    ],
+    "image": "assets/cards/08_pest_plna_karet/sniper.webp",
+    "expansionNameEn": "A Fistful of Cards",
+    "typeLabelEn": "Global Event",
+    "effectEn": "During your turn, you may discard 2 BANG! cards together to fire a super shot that requires 2 Missed! effects to cancel.",
+    "timingEn": "Phase 2 of own turn",
+    "costEn": "Discard 2 BANG! cards",
+    "rulingsEn": [
+      "Does not count against the limit of 1 BANG! per turn.",
+      "Can be used multiple times per turn if you have the cards."
+    ]
+  },
+  {
+    "id": "event-the-judge",
+    "name": "Soudce",
+    "nameEn": "The Judge",
+    "expansion": "fistful-of-cards",
+    "expansionName": "Pěst plná karet",
+    "type": "event",
+    "typeLabel": "Globální událost",
+    "copies": 1,
+    "suit": null,
+    "values": null,
+    "range": "Všichni hráči",
+    "cost": null,
+    "effect": "Během celého tohoto kola nesmí nikdo vykládat žádné karty na stůl (modré, zelené ani oranžové).",
+    "timing": "Celé kolo",
+    "rulings": [
+      "Nelze vykládat nové zbraně, koně ani vybavení.",
+      "Již vyložené karty na stole fungují normálně (pokud nejsou omezeny jiným efektem)."
+    ],
+    "tags": [
+      "událost",
+      "soudce",
+      "zákaz vykládání",
+      "fistful"
+    ],
+    "image": "assets/cards/08_pest_plna_karet/the-judge.webp",
+    "expansionNameEn": "A Fistful of Cards",
+    "typeLabelEn": "Global Event",
+    "effectEn": "During this entire round, players cannot play any cards in front of themselves (blue, green, or orange).",
+    "timingEn": "Entire round",
+    "costEn": null,
+    "rulingsEn": [
+      "Cannot deploy new weapons, horses, or equipment.",
+      "Cards already in play continue to function normally."
+    ]
+  },
+  {
+    "id": "event-vendetta",
+    "name": "Krevní msta",
+    "nameEn": "Vendetta",
+    "expansion": "fistful-of-cards",
+    "expansionName": "Pěst plná karet",
+    "type": "event",
+    "typeLabel": "Globální událost",
+    "copies": 1,
+    "suit": null,
+    "values": null,
+    "range": "Aktivní hráč",
+    "cost": null,
+    "effect": "Na konci svého tahu si hráč „lízne!“ (seme z balíčku): otočí-li srdce ♥, smí okamžitě odehrát další celý tah! (V tomto druhém tahu již na Vendettu nesnímá). Tento tah nelze řetězit.",
+    "timing": "Konec vlastního tahu",
+    "rulings": [
+      "Pokud hráč otočí srdce ♥, začíná ihned novou fázi 1.",
+      "Tento extra tah nelze řetězit."
+    ],
+    "tags": [
+      "událost",
+      "krevní msta",
+      "extra tah",
+      "fistful"
+    ],
+    "image": "assets/cards/08_pest_plna_karet/vendetta.webp",
+    "expansionNameEn": "A Fistful of Cards",
+    "typeLabelEn": "Global Event",
+    "effectEn": "At the end of their turn, a player draws: on Hearts ♥, they immediately take another full turn! (Cannot draw for Vendetta during the extra turn). This extra turn cannot chain.",
+    "timingEn": "End of own turn",
+    "costEn": null,
+    "rulingsEn": [
+      "If Hearts ♥ is drawn, immediately start Phase 1 of an extra turn.",
+      "This extra turn cannot chain into another Vendetta."
     ]
   },
   {

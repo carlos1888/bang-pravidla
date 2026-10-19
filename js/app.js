@@ -194,7 +194,7 @@
   };
 
   const EXPANSIONS_EN = {
-    'all': 'All Expansions (234 items)',
+    'all': 'All Expansions (250 items)',
     'base': 'Base Game',
     'dodge-city': 'Dodge City (Green Cards)',
     'gold-rush': 'Gold Rush (Equipment & Gold)',
@@ -209,7 +209,7 @@
   };
 
   const EXPANSIONS_CS = {
-    'all': 'Všechna rozšíření (234 karet)',
+    'all': 'Všechna rozšíření (250 karet)',
     'base': 'Základní hra',
     'dodge-city': 'Město duchů (Zelené karty)',
     'gold-rush': 'Zlatá horečka (Vybavení a zlato)',
@@ -1863,7 +1863,13 @@
       }
 
       const shuffled = [...filtered].sort(() => Math.random() - 0.5);
-      const climaxIdx = shuffled.findIndex(c => c.name === 'Pravé poledne' || c.name === 'Pěst plná karet');
+      const climaxIdx = shuffled.findIndex(c => 
+        c.name === 'Pravé poledne' || 
+        c.name === 'Pěst plná karet' || 
+        c.name === 'Pěst plná karet (Fistful)' ||
+        c.nameEn === 'High Noon' ||
+        c.nameEn === 'A Fistful of Cards'
+      );
       if (climaxIdx !== -1) {
         const climaxCard = shuffled.splice(climaxIdx, 1)[0];
         shuffled.push(climaxCard);

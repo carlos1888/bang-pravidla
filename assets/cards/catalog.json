@@ -1809,6 +1809,15 @@
     "webpBytes": 14346
   },
   {
+    "origTitle": "HANGOVER",
+    "origFolder": "07_Prave_poledne",
+    "webPath": "assets/cards/07_prave_poledne/hangover.webp",
+    "width": 210,
+    "height": 314,
+    "origBytes": 88000,
+    "webpBytes": 88000
+  },
+  {
     "origTitle": "HIGH NOON",
     "origFolder": "07_Prave_poledne",
     "webPath": "assets/cards/07_prave_poledne/high-noon.webp",
