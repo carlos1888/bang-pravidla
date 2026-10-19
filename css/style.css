@@ -136,9 +136,18 @@ header.app-header {
   color: inherit;
 }
 
-.brand-icon {
-  font-size: 2rem;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+.brand-logo {
+  height: 42px;
+  width: auto;
+  max-width: 80px;
+  object-fit: contain;
+  flex-shrink: 0;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.45));
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.brand:hover .brand-logo {
+  transform: scale(1.06) rotate(-2deg);
 }
 
 .brand-titles h1 {
@@ -1892,8 +1901,9 @@ footer.app-footer {
     overflow: hidden;
   }
 
-  .brand-icon {
-    font-size: 1.4rem;
+  .brand-logo {
+    height: 30px;
+    max-width: 56px;
     flex-shrink: 0;
   }
 
