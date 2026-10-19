@@ -777,11 +777,30 @@
     }
 
     if (els.rulesTocTarget) {
-      els.rulesTocTarget.innerHTML = rules.map((sec, idx) => `
-        <li class="rules-toc-item">
-          <a href="#${sec.id}" class="rules-toc-link ${idx === 0 ? 'active' : ''}">${sec.title}</a>
-        </li>
-      `).join('');
+      if (state.activeRulesCategory === 'all') {
+        let lastCategory = null;
+        let tocHtml = '';
+        rules.forEach((sec, idx) => {
+          if (sec.category !== lastCategory) {
+            lastCategory = sec.category;
+            const catObj = RULES_CATEGORIES.find(c => c.id === sec.category);
+            const catName = isEn ? (catObj ? catObj.en : sec.categoryTitle) : (catObj ? catObj.cs : sec.categoryTitle);
+            tocHtml += `<li class="rules-toc-group-header" role="presentation">${catName}</li>`;
+          }
+          tocHtml += `
+            <li class="rules-toc-item">
+              <a href="#${sec.id}" class="rules-toc-link ${idx === 0 ? 'active' : ''}">${sec.title}</a>
+            </li>
+          `;
+        });
+        els.rulesTocTarget.innerHTML = tocHtml;
+      } else {
+        els.rulesTocTarget.innerHTML = rules.map((sec, idx) => `
+          <li class="rules-toc-item">
+            <a href="#${sec.id}" class="rules-toc-link ${idx === 0 ? 'active' : ''}">${sec.title}</a>
+          </li>
+        `).join('');
+      }
 
       els.rulesTocTarget.querySelectorAll('.rules-toc-link').forEach(link => {
         link.addEventListener('click', (e) => {
@@ -791,6 +810,7 @@
             e.preventDefault();
             els.rulesTocTarget.querySelectorAll('.rules-toc-link').forEach(l => l.classList.remove('active'));
             link.classList.add('active');
+            link.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
             scrollToElement(targetEl, 14);
           }
         });
@@ -815,6 +835,34 @@
         scrollToRulesToc();
       });
     });
+
+    // Setup scrollspy observer for rule articles
+    if (window.rulesSectionObserver) {
+      window.rulesSectionObserver.disconnect();
+    }
+    if ('IntersectionObserver' in window && els.rulesContentTarget) {
+      window.rulesSectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const secId = entry.target.id;
+            if (els.rulesTocTarget) {
+              const matchingLink = els.rulesTocTarget.querySelector(`a[href="#${secId}"]`);
+              if (matchingLink) {
+                els.rulesTocTarget.querySelectorAll('.rules-toc-link').forEach(l => l.classList.remove('active'));
+                matchingLink.classList.add('active');
+              }
+            }
+          }
+        });
+      }, {
+        rootMargin: '-80px 0px -65% 0px',
+        threshold: 0
+      });
+
+      els.rulesContentTarget.querySelectorAll('.rules-article').forEach(art => {
+        window.rulesSectionObserver.observe(art);
+      });
+    }
   }
 
   // =========================================================================

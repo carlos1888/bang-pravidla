@@ -1006,6 +1006,7 @@ main.app-main {
     position: static !important;
     top: auto !important;
     max-height: none !important;
+    overflow-y: visible !important;
     margin-bottom: 1.25rem;
   }
 }
@@ -1017,8 +1018,53 @@ main.app-main {
   padding: 1.25rem;
   position: sticky;
   top: 90px;
+  max-height: calc(100vh - 110px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
   box-shadow: var(--shadow-sm);
   scroll-margin-top: 120px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-color) transparent;
+}
+
+.rules-toc::-webkit-scrollbar {
+  width: 6px;
+}
+
+.rules-toc::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.rules-toc::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+.rules-toc::-webkit-scrollbar-thumb:hover {
+  background: var(--color-brown, #8B4513);
+}
+
+.rules-toc-group-header {
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--color-brown, #8B4513);
+  padding: 0.65rem 0.4rem 0.25rem 0.4rem;
+  border-top: 1px solid var(--border-color);
+  margin-top: 0.6rem;
+  letter-spacing: 0.5px;
+  list-style: none;
+  user-select: none;
+}
+
+.rules-toc-group-header:first-child {
+  border-top: none;
+  margin-top: 0;
+  padding-top: 0.1rem;
+}
+
+[data-theme="dark"] .rules-toc-group-header {
+  color: var(--accent-gold, #f39c12);
 }
 
 .rules-toc h4 {
@@ -2215,6 +2261,10 @@ footer.app-footer {
     box-shadow: var(--shadow-sm);
     width: 100%;
     box-sizing: border-box;
+    position: static !important;
+    top: auto !important;
+    max-height: none !important;
+    overflow-y: visible !important;
   }
 
   .rules-toc h4 {
@@ -2253,6 +2303,28 @@ footer.app-footer {
   .rules-toc-item {
     flex-shrink: 0;
     margin-bottom: 0;
+  }
+
+  .rules-toc-group-header {
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0.35rem 0.65rem;
+    border-top: none;
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: var(--color-brown);
+    background: rgba(139, 69, 19, 0.1);
+    border: 1px dashed var(--color-brown);
+    border-radius: 20px;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  [data-theme="dark"] .rules-toc-group-header {
+    background: rgba(255, 204, 0, 0.15);
+    border-color: rgba(255, 204, 0, 0.35);
+    color: #ffcc00;
   }
 
   .rules-toc-link {
