@@ -207,6 +207,19 @@ window.BANG_FAQ = [
     "answerHtml": "<div class=\"faq-verdict\"><span class=\"verdict-badge\">Verdikt</span> <strong>ANO, zcela výslovně!</strong></div><ul class=\"faq-details-list\"><li>Oficiální pravidla Legend (str. 4) doslova říkají:</li><li><em> </em>„Jestliže během svého tahu nevykonáte žádný čin, můžete se místo toho na konci svého tahu (dokonce i když jste ve Vězení) jedním činem chlubit!“*</li><li>I když jste tedy neuspěli v sejmutí na Vězení a museli přeskočit fáze 1, 2 i 3, na konci tahu vyložíte nový čin, případně odhodíte přeplněný čin a <strong>umístíte 1 svůj žeton slávy</strong>! Vězení vám v chlubení nijak nebrání.</li></ul>"
   },
   {
+    "id": "faq-16b",
+    "question": "Na začátku hry je v Legendách vyložen pouze 1 čin. Kdy a jak se na stůl vykládají další karty činů?",
+    "category": "Legendy",
+    "tags": [
+      "legendy",
+      "karty-činů",
+      "chlubení-se-činem",
+      "vykládání-činů",
+      "limit-4-činy"
+    ],
+    "answerHtml": "<div class=\"faq-verdict\"><span class=\"verdict-badge\">Verdikt</span> <strong>Nové činy se vykládají na konci tahu hráčů při Chlubení se činem (Fáze 4) a při Přivlastnění Legendou!</strong></div><ul class=\"faq-details-list\"><li><strong>1. Chlubení se činem (Fáze 4 každého tahu):</strong> Kdykoli hráč ve svém tahu <strong>nevykoná žádný čin</strong> (což se v prvních kolech stává téměř každému), na konci svého tahu <strong>otočí z balíčku činů 1 novou kartu činu a vyloží ji na stůl</strong>! Následně položí 1 svůj žeton slávy na libovolný vyložený čin, kde ještě žádný jeho žeton neleží. Nabídka se tak po tazích hráčů rychle rozroste z 1 na 2, 3 a <strong>až na 4 činy</strong>.</li><li><strong>2. Limit 4 činů na stole:</strong> Na stole smí ležet maximálně 4 činy současně. Pokud by při chlubení měl přibýt 5. čin, hráč vyloží nový čin a <strong>ihned odhodí ten čin, na kterém leží nejvíce žetonů slávy</strong> (při rovnosti si vybere).</li><li><strong>3. Přivlastnění činu Legendou (strana B):</strong> Když Legenda (strana B) přivlastní čin a udělí 1 nezvratné zranění, karta se ihned odhodí a z balíčku se <strong>okamžitě otočí 1 nový čin</strong>.</li></ul>"
+  },
+  {
     "id": "faq-17",
     "question": "Může si hráč vzít kartu vagonu do ruky pomocí Paniky nebo Rag Time?",
     "category": "Velká vlaková loupež",
@@ -844,6 +857,19 @@ window.BANG_FAQ_EN = [
       "konec-tahu"
     ],
     "answerHtml": "<div class=\"faq-verdict\"><span class=\"verdict-badge\">Verdict</span> <strong>Verdict: YES!</strong></div><ul class=\"faq-details-list\"><li>The rules of Legends state that if a player did not accomplish a feat on their turn (which is true for jailed players skipping their turn), they may boast of a feat in Phase 4!</li><li>They reveal a new feat and place 1 Fame token.</li></ul>"
+  },
+  {
+    "id": "faq-16b",
+    "question": "At the start of Legends only 1 feat card is revealed. When and how are more feat cards placed on the table?",
+    "category": "Legends",
+    "tags": [
+      "legendy",
+      "karty-činů",
+      "chlubení-se-činem",
+      "vykládání-činů",
+      "limit-4-činy"
+    ],
+    "answerHtml": "<div class=\"faq-verdict\"><span class=\"verdict-badge\">Verdict</span> <strong>New feats enter play during Phase 4 (Boasting) and whenever a Legend Claims a feat!</strong></div><ul class=\"faq-details-list\"><li><strong>1. Boasting (Phase 4 of every turn):</strong> Whenever a player does not accomplish a feat during their turn (which happens to almost everyone in early rounds), at the end of their turn they <strong>draw and reveal 1 new feat card from the feat deck</strong> and place 1 Fame token on any active feat where they don't have one. Thus, after a few turns, the feats on the table naturally grow from 1 to 2, 3, and <strong>up to 4 feats</strong>!</li><li><strong>2. Maximum limit of 4 feats:</strong> There can be at most 4 feats face-up on the table. If a 5th feat is revealed during Boasting, the player immediately <strong>discards the feat with the most Fame tokens on it</strong> (ties chosen by the active player).</li><li><strong>3. Claiming a Feat (Side B Legend):</strong> When a Legend (Side B) claims a feat to deal unblockable damage to another legend, the claimed feat card is discarded and <strong>immediately replaced with a fresh card from the deck</strong>.</li></ul>"
   },
   {
     "id": "faq-17",

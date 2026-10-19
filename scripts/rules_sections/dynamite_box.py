@@ -112,11 +112,11 @@ DYNAMITE_BOX_SECTIONS = [
   </div>
   <div class="phase-body">
     <div class="callout callout-gold">
-      <h4>🏆 Chlubení se činem (Legendy)</h4>
+      <h4>🏆 Chlubení se činem (Legendy – Když v tahu nebyl splněn čin)</h4>
       <p>Jestliže jste během celého svého tahu <strong>nevykonali žádný čin</strong> (dokonce i když jste byli ve Vězení!):</p>
       <ol>
-        <li>Vyložte novou kartu činu z balíčku.</li>
-        <li>Pokud je vyloženo více než 4 činy, odhoďte ten s nejvyšším počtem žetonů slávy.</li>
+        <li><strong>Vyložte 1 novou kartu činu z balíčku na stůl:</strong> Právě tímto krokem se nabídka činů na začátku hry rozrůstá z 1 na 2, 3 až na 4 činy!</li>
+        <li>Pokud je po vyložení na stole více než 4 činy, odhoďte ten s nejvyšším počtem žetonů slávy.</li>
         <li>Položte <strong>1 svůj žeton slávy</strong> na vyložený čin, kde ještě žádný váš žeton neleží.</li>
       </ol>
     </div>

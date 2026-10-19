@@ -22,8 +22,28 @@ LEGENDS_SECTIONS = [
   <ul>
     <li>Každý hráč si vezme sadu <strong>5 dřevěných žetonů slávy stejné barvy</strong> (z celkových 35 žetonů v 7 barvách).</li>
     <li>Postavy se rozdávají <strong>lícem nahoru běžnou stranou A</strong> (karty berte zespodu balíčku, aby nikdo neviděl legendární stranu B).</li>
-    <li>Karty činů se zamíchají a doprostřed stolu se vyloží <strong>1 karta činu lícem nahoru</strong>. V průběhu hry smí být vyloženy <strong>maximálně 4 činy současně</strong>.</li>
+    <li>Karty činů se zamíchají a doprostřed stolu se vyloží <strong>pouze 1 karta činu lícem nahoru</strong>. V průběhu hry smí být vyloženy <strong>maximálně 4 činy současně</strong>.</li>
   </ul>
+</div>
+
+<div class="callout callout-info" style="margin: 1.25rem 0;">
+  <h4>❓ Kdy a jak se na stůl vykládají nové karty činů (Od 1 k maximálně 4)?</h4>
+  <p>Na začátku hry leží na stole <strong>pouze 1 karta činu</strong>. Nabídka činů na stole se postupně rozšiřuje a obnovuje dvěma způsoby:</p>
+  <ol style="margin-top: 0.5rem; padding-left: 1.25rem;">
+    <li>
+      <strong>Hlavní způsob – Chlubení se činem (na konci tahu každého hráče):</strong><br>
+      Kdykoli hráč ve svém tahu <strong>nevykoná žádný čin</strong> (což se v prvních kolech stává téměř všem, a platí to i pro hráče ve Vězení!), ve 4. fázi svého tahu <strong>otočí z balíčku činů 1 novou kartu a přidá ji na stůl</strong>. Následně položí 1 svůj žeton slávy na libovolný čin, kde ještě svůj žeton nemá.<br>
+      <em>Během prvních několika tahů se tak nabídka na stole přirozeně a rychle rozroste z 1 činu na 2, 3 a až na 4 činy!</em>
+    </li>
+    <li style="margin-top: 0.5rem;">
+      <strong>Limit 4 činů na stole:</strong><br>
+      Na stole smí ležet maximálně 4 činy. Pokud má při chlubení na konci tahu přibýt pátý čin, hráč nejprve vyloží novou kartu a ihned <strong>odhodí ten čin, na kterém leží nejvíce žetonů slávy</strong> (při shodě si vybere). Tím se nabídka neustále obměňuje.
+    </li>
+    <li style="margin-top: 0.5rem;">
+      <strong>Druhý způsob – Přivlastnění činu Legendou (strana B):</strong><br>
+      Jakmile se hráč stane Legendou a provede Přivlastnění činu (způsobí jiné legendě 1 zranění), tato karta činu se ihned odhodí a na její místo se <strong>z balíčku okamžitě otočí 1 nová karta činu</strong>.
+    </li>
+  </ol>
 </div>
 
 <div class="callout callout-gold">
@@ -61,12 +81,12 @@ LEGENDS_SECTIONS = [
 
   <div class="concept-item">
     <span class="concept-badge concept-badge-eff">Fáze 4</span>
-    <h4>2. Chlubení se činem</h4>
+    <h4>2. Chlubení se činem (Když nebyl čin splněn)</h4>
     <p>Jestliže jste během celého svého tahu <strong>nevykonali žádný čin</strong> (dokonce i když jste seděli ve Vězení!):</p>
     <ol>
-      <li>Otočte novou kartu činu z balíčku.</li>
-      <li>Je-li vyloženo více než 4 činy, odhoďte ten s nejvyšším počtem žetonů.</li>
-      <li>Položte <strong>1 svůj žeton slávy</strong> na vyložený čin, kde ještě žádný váš žeton neleží.</li>
+      <li><strong>Otočte 1 novou kartu činu z balíčku a položte ji na stůl:</strong> Právě tímto krokem se nabídka činů v prvních tazích postupně rozrůstá z počáteční 1 karty až na 4 činy!</li>
+      <li><strong>Kontrola limitu 4 karet:</strong> Je-li po vyložení na stole více než 4 činy, <strong>ihned odhoďte ten čin, na kterém leží nejvíce žetonů slávy</strong> (při rovnosti si vyberte).</li>
+      <li><strong>Položte 1 svůj žeton slávy</strong> na libovolný z vyložených činů, kde ještě žádný váš žeton neleží.</li>
     </ol>
   </div>
 </div>
