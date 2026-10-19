@@ -1,5 +1,5 @@
 // BANG! Companion Service Worker (PWA Offline Support)
-const CACHE_NAME = 'bang-pravidla-v26';
+const CACHE_NAME = 'bang-pravidla-v27';
 
 const STATIC_ASSETS = [
   './',
@@ -20,6 +20,22 @@ const STATIC_ASSETS = [
   './assets/western/saloon_wood_header.jpg',
   './assets/western/sheriff_star_thumb.jpg',
   './assets/western/wanted_poster_thumb.jpg',
+  './assets/symbols/symbol_bang.png',
+  './assets/symbols/symbol_missed.png',
+  './assets/symbols/symbol_regain_life.png',
+  './assets/symbols/symbol_draw_card.png',
+  './assets/symbols/symbol_discard_card.png',
+  './assets/symbols/symbol_reachable_distance.png',
+  './assets/symbols/symbol_distance_x.png',
+  './assets/symbols/symbol_any_one_player.png',
+  './assets/symbols/symbol_all_other_players.png',
+  './assets/symbols/symbol_draw_check.png',
+  './assets/symbols/symbol_barrel.png',
+  './assets/symbols/symbol_dynamite.png',
+  './assets/symbols/symbol_jail.png',
+  './assets/symbols/symbol_mustang.png',
+  './assets/symbols/symbol_scope.png',
+  './assets/symbols/symbol_life_points.png',
   './assets/audio/gunshot.mp3',
   './assets/audio/ricochet.m4a',
   './assets/audio/dynamite.m4a',

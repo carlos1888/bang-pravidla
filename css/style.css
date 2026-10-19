@@ -2487,33 +2487,92 @@ footer.app-footer {
   color: #ffcc00;
 }
 
-/* Symbols Cheat Sheet */
+/* Symbols Cheat Sheet — Official BANG! Card Symbols (Dized / Emiliano Sciarra) */
 .symbols-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  margin: 1.25rem 0;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.35rem;
+  margin: 1.5rem 0 2rem;
 }
 
 .symbol-card {
   background: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-sm);
-  padding: 1rem;
+  border: 2.5px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.35rem 1.15rem;
   text-align: center;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 4px 12px rgba(43, 24, 16, 0.08);
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
 }
 
-.symbol-card .symbol-icon {
-  font-size: 2.2rem;
+.symbol-card::after {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 1px dashed rgba(139, 69, 19, 0.2);
+  border-radius: calc(var(--radius-md) - 3px);
+  pointer-events: none;
+}
+
+[data-theme="dark"] .symbol-card::after {
+  border-color: rgba(255, 204, 0, 0.15);
+}
+
+.symbol-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  border-color: var(--accent-gold);
+  box-shadow: 0 8px 24px rgba(43, 24, 16, 0.18);
+}
+
+.symbol-img-wrap {
+  height: 82px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+  padding: 0.35rem;
+  background: radial-gradient(circle at center, rgba(212, 154, 55, 0.15) 0%, transparent 72%);
+  border-radius: 8px;
+}
+
+.symbol-real-img {
+  max-height: 72px;
+  max-width: 130px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 3px 6px rgba(44, 22, 12, 0.4));
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.symbol-card:hover .symbol-real-img {
+  transform: scale(1.12);
+}
+
+.symbol-card .symbol-type-tag {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--text-muted);
   margin-bottom: 0.35rem;
-  display: block;
+  display: inline-block;
+  font-family: var(--font-western);
 }
 
 .symbol-card h4 {
-  font-size: 1rem;
+  font-family: var(--font-western);
+  font-size: 1.15rem;
   color: var(--color-brown);
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.3px;
+  line-height: 1.25;
 }
 
 [data-theme="dark"] .symbol-card h4 {
@@ -2523,7 +2582,7 @@ footer.app-footer {
 .symbol-card p {
   font-size: 0.88rem;
   color: var(--text-muted);
-  line-height: 1.45;
+  line-height: 1.55;
   margin: 0;
 }
 

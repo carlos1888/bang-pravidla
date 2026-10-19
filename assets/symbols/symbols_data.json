@@ -1,0 +1,74 @@
+[
+  {
+    "key": "symbol_distance_x",
+    "nameEn": "A player at distance X",
+    "nameCs": "Hráč ve vzdálenosti 1",
+    "remoteUrl": "https://assets.dized.app/project/092385d2-c1fb-4dd1-8ab9-fb191bd1e5c9/en-US/eb51938ff9a3aaa135a6ae051260d1ab/804c2801-c711-4cd2-8fc1-afc6c2247ff1-23264415fb8ba48d1f9f4cb0727f70cf.png",
+    "localPath": "assets/symbols/symbol_distance_x.png",
+    "descriptionEn": "It specifies that the effect applies to any one player at a distance of the number or less.    Note: Mustang and Scope can alter this distance, but weapons in play do not."
+  },
+  {
+    "key": "symbol_reachable_distance",
+    "nameEn": "Any one player at a reachable distance",
+    "nameCs": "Hráč v dosahu zbraně",
+    "remoteUrl": "https://assets.dized.app/project/092385d2-c1fb-4dd1-8ab9-fb191bd1e5c9/en-US/eb51938ff9a3aaa135a6ae051260d1ab/9ef73e45-cb9c-451d-8805-777939c77eb6-23264415fb8ba48d1f9f4cb0727f70cf.png",
+    "localPath": "assets/symbols/symbol_reachable_distance.png",
+    "descriptionEn": "It specifies that the effect applies to any one player, provided that he is within a reachable distance."
+  },
+  {
+    "key": "symbol_all_other_players",
+    "nameEn": "All other players",
+    "nameCs": "Všichni ostatní hráči",
+    "remoteUrl": "https://assets.dized.app/project/092385d2-c1fb-4dd1-8ab9-fb191bd1e5c9/en-US/eb51938ff9a3aaa135a6ae051260d1ab/7865968c-c449-4467-9481-8d1d41a9c9a6-23264415fb8ba48d1f9f4cb0727f70cf.png",
+    "localPath": "assets/symbols/symbol_all_other_players.png",
+    "descriptionEn": "It specifies that the effect applies to all the other players - not the player who played the card - regardless of the distance."
+  },
+  {
+    "key": "symbol_any_one_player",
+    "nameEn": "Any one player",
+    "nameCs": "Jakýkoliv jeden hráč",
+    "remoteUrl": "https://assets.dized.app/project/092385d2-c1fb-4dd1-8ab9-fb191bd1e5c9/en-US/eb51938ff9a3aaa135a6ae051260d1ab/0e211d94-c411-4984-a7b7-71cd1904f53d-23264415fb8ba48d1f9f4cb0727f70cf.png",
+    "localPath": "assets/symbols/symbol_any_one_player.png",
+    "descriptionEn": "It specifies that you can apply the effect to any chosen player, regardless of the distance."
+  },
+  {
+    "key": "symbol_discard_card",
+    "nameEn": "Discard a card",
+    "nameCs": "Odhození karty",
+    "remoteUrl": "https://assets.dized.app/project/092385d2-c1fb-4dd1-8ab9-fb191bd1e5c9/en-US/eb51938ff9a3aaa135a6ae051260d1ab/cd1d1702-7e28-4076-8e22-dd9733d52b27-23264415fb8ba48d1f9f4cb0727f70cf.png",
+    "localPath": "assets/symbols/symbol_discard_card.png",
+    "descriptionEn": "Force to discard a card. You can force a specified person to discard a random card from his hand, or you can choose and discard one card in play in front of him."
+  },
+  {
+    "key": "symbol_draw_card",
+    "nameEn": "Draw a card",
+    "nameCs": "Líznutí karty",
+    "remoteUrl": "https://assets.dized.app/project/092385d2-c1fb-4dd1-8ab9-fb191bd1e5c9/en-US/eb51938ff9a3aaa135a6ae051260d1ab/0812ae76-80f3-43c0-897c-6b976f8c22fe-23264415fb8ba48d1f9f4cb0727f70cf.png",
+    "localPath": "assets/symbols/symbol_draw_card.png",
+    "descriptionEn": "Draw a card. If \"any one player\" is specified, then you can draw a random card from his hand, or you can choose one in play in front of him. If no player is specified, draw the top card of the deck. In any case, cards drawn are added to your hand."
+  },
+  {
+    "key": "symbol_regain_life",
+    "nameEn": "Regain one life point",
+    "nameCs": "Obnovení 1 života (Pivo)",
+    "remoteUrl": "https://assets.dized.app/project/092385d2-c1fb-4dd1-8ab9-fb191bd1e5c9/en-US/eb51938ff9a3aaa135a6ae051260d1ab/ef3ae65d-fa4a-4fbb-9de4-ff368357c3ee-23264415fb8ba48d1f9f4cb0727f70cf.png",
+    "localPath": "assets/symbols/symbol_regain_life.png",
+    "descriptionEn": "Regain one life point. Only the player playing this card benefits from this effect, unless otherwise stated."
+  },
+  {
+    "key": "symbol_missed",
+    "nameEn": "Missed!",
+    "nameCs": "Vedle! (Zrušení výstřelu)",
+    "remoteUrl": "https://assets.dized.app/project/092385d2-c1fb-4dd1-8ab9-fb191bd1e5c9/en-US/eb51938ff9a3aaa135a6ae051260d1ab/8e4efc2b-a73b-4acd-8865-4a1b3d318d7a-23264415fb8ba48d1f9f4cb0727f70cf.png",
+    "localPath": "assets/symbols/symbol_missed.png",
+    "descriptionEn": "Count as a Missed!: cancel the effect of \"BANG!\""
+  },
+  {
+    "key": "symbol_bang",
+    "nameEn": "BANG!",
+    "nameCs": "BANG! (Ztráta 1 života)",
+    "remoteUrl": "https://assets.dized.app/project/092385d2-c1fb-4dd1-8ab9-fb191bd1e5c9/en-US/eb51938ff9a3aaa135a6ae051260d1ab/c4775799-a155-428c-a042-6633ec232f37-23264415fb8ba48d1f9f4cb0727f70cf.png",
+    "localPath": "assets/symbols/symbol_bang.png",
+    "descriptionEn": "Count as a BANG!: remove one life point."
+  }
+]

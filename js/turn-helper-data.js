@@ -642,53 +642,196 @@
     </div>
 
     <h3 style="color: var(--color-brown); font-size: 1.3rem; margin: 2rem 0 0.5rem;">
-      4. Přehled symbolů a ikon na kartách
+      4. Oficiální symboly a ikony na kartách (Dized / Pravidla BANG!)
     </h3>
+    <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+      Oficiální grafické symboly používané na kartách BANG! pro jednoznačné určení efektů, cílení a vzdáleností bez závislosti na jazyce.
+    </p>
+
+    <div class="symbols-grid">
+      <!-- 1. BANG! -->
+      <div class="symbol-card">
+        <span class="symbol-type-tag">Útok / Ztráta života</span>
+        <div class="symbol-img-wrap">
+          <img src="assets/symbols/symbol_bang.png" alt="BANG! symbol" class="symbol-real-img" loading="lazy">
+        </div>
+        <h4>BANG! (Výstřel)</h4>
+        <p>Způsobí ztrátu 1 života zvolenému hráči v dostřelu zbraně. Cíl se může bránit kartou Vedle! nebo schopností Barelu. Standardně 1× za tah.</p>
+      </div>
+
+      <!-- 2. Vedle! -->
+      <div class="symbol-card">
+        <span class="symbol-type-tag">Obrana / Zrušení zásahu</span>
+        <div class="symbol-img-wrap">
+          <img src="assets/symbols/symbol_missed.png" alt="Vedle! symbol" class="symbol-real-img" loading="lazy">
+        </div>
+        <h4>Vedle! (Missed!)</h4>
+        <p>Okamžitě zruší efekt zahraného výstřelu BANG!, Gatling nebo jiného přímého útoku mířeného na vás. Hraje se v reakci mimo svůj tah.</p>
+      </div>
+
+      <!-- 3. Pivo -->
+      <div class="symbol-card">
+        <span class="symbol-type-tag">Léčení / Záchrana</span>
+        <div class="symbol-img-wrap">
+          <img src="assets/symbols/symbol_regain_life.png" alt="Pivo symbol" class="symbol-real-img" loading="lazy">
+        </div>
+        <h4>Obnovení 1 života (Pivo)</h4>
+        <p>Okamžitě obnoví 1 život (až do maxima postavy). Lze zahrát i mimo tah jako záchranu při poklesu na 0 životů. V duelu 2 hráčů nemá efekt!</p>
+      </div>
+
+      <!-- 4. Líznutí karty -->
+      <div class="symbol-card">
+        <span class="symbol-type-tag">Dobírání karet</span>
+        <div class="symbol-img-wrap">
+          <img src="assets/symbols/symbol_draw_card.png" alt="Líznutí karty symbol" class="symbol-real-img" loading="lazy">
+        </div>
+        <h4>Líznutí karty</h4>
+        <p>Doberte si kartu do ruky. Je-li určen hráč (např. Panika!), vezměte náhodnou kartu z jeho ruky nebo vyloženou kartu ze stolu. Jinak lízejte z balíčku.</p>
+      </div>
+
+      <!-- 5. Odhození karty -->
+      <div class="symbol-card">
+        <span class="symbol-type-tag">Ztráta / Likvidace</span>
+        <div class="symbol-img-wrap">
+          <img src="assets/symbols/symbol_discard_card.png" alt="Odhození karty symbol" class="symbol-real-img" loading="lazy">
+        </div>
+        <h4>Odhození karty</h4>
+        <p>Donutí hráče odhodit kartu (např. Cat Balou). Můžete zvolit náhodnou kartu z ruky soupeře nebo vybranou vyloženou kartu z jeho herní plochy.</p>
+      </div>
+
+      <!-- 6. Hráč na dostřel zbraně -->
+      <div class="symbol-card">
+        <span class="symbol-type-tag">Cílení / Dosah zbraně</span>
+        <div class="symbol-img-wrap">
+          <img src="assets/symbols/symbol_reachable_distance.png" alt="Hráč na dostřel symbol" class="symbol-real-img" loading="lazy">
+        </div>
+        <h4>Hráč v dosahu zbraně</h4>
+        <p>Cílem může být jakýkoliv hráč v aktuálním dosahu vaší zbraně (základní Colt .45 má dostřel 1; zbraně, Hledí a Mustang dostřel upravují).</p>
+      </div>
+
+      <!-- 7. Hráč ve vzdálenosti 1 / X -->
+      <div class="symbol-card">
+        <span class="symbol-type-tag">Fixní vzdálenost</span>
+        <div class="symbol-img-wrap">
+          <img src="assets/symbols/symbol_distance_x.png" alt="Vzdálenost 1 symbol" class="symbol-real-img" loading="lazy">
+        </div>
+        <h4>Hráč ve vzdálenosti 1 (X)</h4>
+        <p>Platí na hráče do dané vzdálenosti (např. Panika!). POZOR: Mustang a Hledí tuto vzdálenost upravují, ale vyložené ZBRANĚ NIKOLIV!</p>
+      </div>
+
+      <!-- 8. Jakýkoliv jeden hráč -->
+      <div class="symbol-card">
+        <span class="symbol-type-tag">Neomezený cíl</span>
+        <div class="symbol-img-wrap">
+          <img src="assets/symbols/symbol_any_one_player.png" alt="Jakýkoliv hráč symbol" class="symbol-real-img" loading="lazy">
+        </div>
+        <h4>Jakýkoliv jeden hráč</h4>
+        <p>Efekt lze zacílit na kteréhokoliv hráče u stolu bez ohledu na vzdálenost, zbraně, Mustang či Hledí (např. Vězení, Cat Balou, Duel).</p>
+      </div>
+
+      <!-- 9. Všichni ostatní hráči -->
+      <div class="symbol-card">
+        <span class="symbol-type-tag">Plošný zásah (AoE)</span>
+        <div class="symbol-img-wrap">
+          <img src="assets/symbols/symbol_all_other_players.png" alt="Všichni ostatní hráči symbol" class="symbol-real-img" loading="lazy">
+        </div>
+        <h4>Všichni ostatní hráči</h4>
+        <p>Zasáhne všechny ostatní živé hráče u stolu (nikoliv hráče, který kartu zahrál), a to bez ohledu na vzájemnou vzdálenost (Gatling, Indiáni!, Saloon).</p>
+      </div>
+
+      <!-- 10. Sejmutí („Líznutí si“) -->
+      <div class="symbol-card">
+        <span class="symbol-type-tag">Mechanika stolu</span>
+        <div class="symbol-img-wrap">
+          <img src="assets/symbols/symbol_draw_check.png" alt="Sejmutí karty symbol" class="symbol-real-img" loading="lazy">
+        </div>
+        <h4>Sejmutí („Líznutí si“)</h4>
+        <p>Otočení vrchní karty z balíčku za účelem vyhodnocení barvy a hodnoty v rohu karty. Používá se pro Barel (♥), Vězení (♥) a Dynamit (♠ 2–9).</p>
+      </div>
+
+      <!-- 11. Barel -->
+      <div class="symbol-card">
+        <span class="symbol-type-tag">Modré vybavení</span>
+        <div class="symbol-img-wrap">
+          <img src="assets/symbols/symbol_barrel.png" alt="Barel symbol" class="symbol-real-img" loading="lazy">
+        </div>
+        <h4>Barel (Záchranný úkryt)</h4>
+        <p>Modrá karta na stole. Při útoku BANG!em můžete sejmout: padne-li Srdcová barva (♥), útok je zrušen stejně, jako byste zahráli kartu Vedle!.</p>
+      </div>
+
+      <!-- 12. Dynamit -->
+      <div class="symbol-card">
+        <span class="symbol-type-tag">Časovaná bomba</span>
+        <div class="symbol-img-wrap">
+          <img src="assets/symbols/symbol_dynamite.png" alt="Dynamit symbol" class="symbol-real-img" loading="lazy">
+        </div>
+        <h4>Dynamit (Hazard)</h4>
+        <p>Obíhá po směru hodin. Na začátku tahu hráč sejme: je-li Pika (♠) 2–9, Dynamit exploduje za 3 životy! Jinak se předá hráči po levici.</p>
+      </div>
+
+      <!-- 13. Vězení -->
+      <div class="symbol-card">
+        <span class="symbol-type-tag">Zadržení soupeře</span>
+        <div class="symbol-img-wrap">
+          <img src="assets/symbols/symbol_jail.png" alt="Vězení symbol" class="symbol-real-img" loading="lazy">
+        </div>
+        <h4>Vězení (Jail)</h4>
+        <p>Lze nasadit na kohokoliv kromě Šerifa. Na začátku tahu uvězněný sejme: je-li Srdce (♥), uniká a hraje. Jinak odhodí Vězení a celý tah propadá.</p>
+      </div>
+
+      <!-- 14. Mustang -->
+      <div class="symbol-card">
+        <span class="symbol-type-tag">Obranná vzdálenost</span>
+        <div class="symbol-img-wrap">
+          <img src="assets/symbols/symbol_mustang.png" alt="Mustang symbol" class="symbol-real-img" loading="lazy">
+        </div>
+        <h4>Mustang (Vzdálenost +1)</h4>
+        <p>Kůň vyložený před hráčem. Všichni ostatní hráči vás vidí na vzdálenost o 1 větší než normálně (např. soused vás vidí na vzdálenost 2 místo 1).</p>
+      </div>
+
+      <!-- 15. Hledí / Scope -->
+      <div class="symbol-card">
+        <span class="symbol-type-tag">Útočná vzdálenost</span>
+        <div class="symbol-img-wrap">
+          <img src="assets/symbols/symbol_scope.png" alt="Hledí symbol" class="symbol-real-img" loading="lazy">
+        </div>
+        <h4>Hledí / Scope (Vzdálenost -1)</h4>
+        <p>Optický zaměřovač. Vidíte všechny ostatní hráče u stolu na vzdálenost o 1 kratší (např. souseda na vzdálenost 1 vidíte na vzdálenost 0).</p>
+      </div>
+
+      <!-- 16. Náboje / Životy -->
+      <div class="symbol-card">
+        <span class="symbol-type-tag">Zdraví &amp; Limit ruky</span>
+        <div class="symbol-img-wrap">
+          <img src="assets/symbols/symbol_life_points.png" alt="Životy a náboje symbol" class="symbol-real-img" loading="lazy">
+        </div>
+        <h4>Náboje / Životy</h4>
+        <p>Ukazatel počtu životů postavy (Šerif má +1 život). Aktuální počet životů zároveň udává maximální povolený počet karet v ruce na konci tahu.</p>
+      </div>
+    </div>
+
+    <!-- Speciální žetony -->
+    <h4 style="color: var(--color-brown); font-size: 1.15rem; margin: 1.5rem 0 0.5rem; font-family: var(--font-western);">
+      Speciální žetony z rozšíření
+    </h4>
     <div class="symbols-grid">
       <div class="symbol-card">
-        <span class="symbol-icon">💥</span>
-        <h4>BANG! (Výstřel)</h4>
-        <p>Způsobí ztrátu 1 života zvolenému cíli na dostřel. Cíl se může bránit kartou Vedle!.</p>
-      </div>
-      <div class="symbol-card">
-        <span class="symbol-icon">🛡️</span>
-        <h4>Vedle! (Obrana)</h4>
-        <p>Zruší právě zahraný výstřel BANG!, Gatling nebo jiný přímý střelecký útok.</p>
-      </div>
-      <div class="symbol-card">
-        <span class="symbol-icon">🍺</span>
-        <h4>Pivo (Léčení)</h4>
-        <p>Okamžitě obnoví 1 ztracený život (nebo slouží k záchraně při poklesu na 0 životů).</p>
-      </div>
-      <div class="symbol-card">
-        <span class="symbol-icon">🎴</span>
-        <h4>Lízání karty</h4>
-        <p>Doberte si vrchní kartu z balíčku nebo od zvoleného hráče dle textu karty.</p>
-      </div>
-      <div class="symbol-card">
-        <span class="symbol-icon">👁️</span>
-        <h4>Dohled / Vzdálenost</h4>
-        <p>Upravuje vzdálenost k ostatním hráčům nebo rozšiřuje dostřel vašich zbraní.</p>
-      </div>
-      <div class="symbol-card">
-        <span class="symbol-icon">🪙</span>
+        <span class="symbol-type-tag">Zlatá horečka</span>
+        <div class="symbol-img-wrap" style="font-size: 2.5rem;">🪙</div>
         <h4>Valoun zlata</h4>
-        <p>Měna ze Zlaté horečky sloužící k nákupu černého a hnědého vybavení.</p>
+        <p>Měna z rozšíření Zlatá horečka sloužící k nákupu černého a hnědého vybavení z obchodu.</p>
       </div>
       <div class="symbol-card">
-        <span class="symbol-icon">⚡</span>
-        <h4>Žeton nabití</h4>
-        <p>Zdroje z Ozbrojení a nebezpeční pro aktivaci a násobení efektů nebezpečných karet.</p>
+        <span class="symbol-type-tag">Ozbrojení a nebezpeční</span>
+        <div class="symbol-img-wrap" style="font-size: 2.5rem;">⚡</div>
+        <h4>Žeton nabití (Kostka)</h4>
+        <p>Zdroje z Ozbrojení a nebezpeční pro aktivaci a násobení efektů nebezpečných oranžových karet.</p>
       </div>
       <div class="symbol-card">
-        <span class="symbol-icon">⭐</span>
+        <span class="symbol-type-tag">Legendy</span>
+        <div class="symbol-img-wrap" style="font-size: 2.5rem;">⭐</div>
         <h4>Žeton slávy</h4>
-        <p>Žetony z Legend pro plnění činů, chlubení se a následný zrod mocné Legendy (strana B).</p>
-      </div>
-      <div class="symbol-card">
-        <span class="symbol-icon">🔄</span>
-        <h4>Sejmutí („Líznutí si“)</h4>
-        <p>Otočení vrchní karty z balíčku za účelem kontroly barvy a hodnoty (např. Vězení, Dynamit).</p>
+        <p>Žetony z rozšíření Legendy pro plnění hrdinských činů, chlubení se a zrod mocné Legendy (strana B).</p>
       </div>
     </div>
 
@@ -900,53 +1043,196 @@
     </div>
 
     <h3 style="color: var(--color-brown); font-size: 1.3rem; margin: 2rem 0 0.5rem;">
-      4. Card Symbols and Icons Guide
+      4. Official Card Symbols and Icons Guide (Dized / BANG! Rules)
     </h3>
+    <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+      Official graphic symbols used on BANG! cards to unambiguously indicate effects, targeting criteria, and distance rules across all languages.
+    </p>
+
+    <div class="symbols-grid">
+      <!-- 1. BANG! -->
+      <div class="symbol-card">
+        <span class="symbol-type-tag">Attack / Life Loss</span>
+        <div class="symbol-img-wrap">
+          <img src="assets/symbols/symbol_bang.png" alt="BANG! symbol" class="symbol-real-img" loading="lazy">
+        </div>
+        <h4>BANG! (Shot)</h4>
+        <p>Inflicts 1 wound on chosen target in weapon range. The target may cancel with Missed! or Barrel check. Normally limited to 1 BANG! per turn.</p>
+      </div>
+
+      <!-- 2. Missed! -->
+      <div class="symbol-card">
+        <span class="symbol-type-tag">Defense / Dodge</span>
+        <div class="symbol-img-wrap">
+          <img src="assets/symbols/symbol_missed.png" alt="Missed! symbol" class="symbol-real-img" loading="lazy">
+        </div>
+        <h4>Missed! (Dodge)</h4>
+        <p>Immediately cancels a BANG!, Gatling, or direct shot attack targeted at you. Played defensively out of turn (unless you are Calamity Janet).</p>
+      </div>
+
+      <!-- 3. Beer -->
+      <div class="symbol-card">
+        <span class="symbol-type-tag">Healing / Survival</span>
+        <div class="symbol-img-wrap">
+          <img src="assets/symbols/symbol_regain_life.png" alt="Beer symbol" class="symbol-real-img" loading="lazy">
+        </div>
+        <h4>Regain 1 Life (Beer)</h4>
+        <p>Instantly restores 1 lost life point (up to your character max). Can be played out of turn to prevent lethal elimination at 0 HP. In a 2-player duel, Beer has no effect!</p>
+      </div>
+
+      <!-- 4. Draw a card -->
+      <div class="symbol-card">
+        <span class="symbol-type-tag">Draw Mechanic</span>
+        <div class="symbol-img-wrap">
+          <img src="assets/symbols/symbol_draw_card.png" alt="Draw card symbol" class="symbol-real-img" loading="lazy">
+        </div>
+        <h4>Draw a Card</h4>
+        <p>Draw a card into your hand. If a target player is specified (e.g. Panic!), choose a random card from hand or a card in play. Otherwise, draw from the deck.</p>
+      </div>
+
+      <!-- 5. Discard a card -->
+      <div class="symbol-card">
+        <span class="symbol-type-tag">Card Removal</span>
+        <div class="symbol-img-wrap">
+          <img src="assets/symbols/symbol_discard_card.png" alt="Discard card symbol" class="symbol-real-img" loading="lazy">
+        </div>
+        <h4>Discard a Card</h4>
+        <p>Forces target player to discard a card (e.g. Cat Balou). You may choose a random card from their hand or an active card in play before them.</p>
+      </div>
+
+      <!-- 6. Player at reachable distance -->
+      <div class="symbol-card">
+        <span class="symbol-type-tag">Targeting / Weapon Reach</span>
+        <div class="symbol-img-wrap">
+          <img src="assets/symbols/symbol_reachable_distance.png" alt="Reachable distance symbol" class="symbol-real-img" loading="lazy">
+        </div>
+        <h4>Player at Reachable Distance</h4>
+        <p>Applies to any one player within current firearm reach (default Colt .45 reach is 1; modified by weapons, Scope, and Mustang).</p>
+      </div>
+
+      <!-- 7. Player at distance 1 / X -->
+      <div class="symbol-card">
+        <span class="symbol-type-tag">Fixed Distance</span>
+        <div class="symbol-img-wrap">
+          <img src="assets/symbols/symbol_distance_x.png" alt="Distance 1 symbol" class="symbol-real-img" loading="lazy">
+        </div>
+        <h4>Player at Distance 1 (X)</h4>
+        <p>Applies to a player at distance X or less (e.g. Panic!). NOTE: Mustang and Scope modify this distance, but equipped WEAPONS DO NOT!</p>
+      </div>
+
+      <!-- 8. Any one player -->
+      <div class="symbol-card">
+        <span class="symbol-type-tag">Unlimited Target</span>
+        <div class="symbol-img-wrap">
+          <img src="assets/symbols/symbol_any_one_player.png" alt="Any player symbol" class="symbol-real-img" loading="lazy">
+        </div>
+        <h4>Any One Player</h4>
+        <p>Can target any chosen player at the table regardless of distance, weapons, Mustang, or Scope (e.g. Jail, Cat Balou, Duel).</p>
+      </div>
+
+      <!-- 9. All other players -->
+      <div class="symbol-card">
+        <span class="symbol-type-tag">Global Area Effect</span>
+        <div class="symbol-img-wrap">
+          <img src="assets/symbols/symbol_all_other_players.png" alt="All other players symbol" class="symbol-real-img" loading="lazy">
+        </div>
+        <h4>All Other Players</h4>
+        <p>Applies to all other living players at the table (not the player who played the card), regardless of distance (Gatling, Indians!, Saloon).</p>
+      </div>
+
+      <!-- 10. Check ("Draw!") -->
+      <div class="symbol-card">
+        <span class="symbol-type-tag">Deck Mechanic</span>
+        <div class="symbol-img-wrap">
+          <img src="assets/symbols/symbol_draw_check.png" alt="Check draw symbol" class="symbol-real-img" loading="lazy">
+        </div>
+        <h4>Check ("Draw!")</h4>
+        <p>Flip the top card of the draw deck into discard to check suit and value in the corner. Used for Barrel (♥), Jail (♥), and Dynamite (♠ 2–9).</p>
+      </div>
+
+      <!-- 11. Barrel -->
+      <div class="symbol-card">
+        <span class="symbol-type-tag">Blue Equipment</span>
+        <div class="symbol-img-wrap">
+          <img src="assets/symbols/symbol_barrel.png" alt="Barrel symbol" class="symbol-real-img" loading="lazy">
+        </div>
+        <h4>Barrel (Protective Cover)</h4>
+        <p>Blue card in play. Whenever targeted by BANG!, you may "draw!": if the flipped card is Hearts (♥), the attack is cancelled just like a Missed!.</p>
+      </div>
+
+      <!-- 12. Dynamite -->
+      <div class="symbol-card">
+        <span class="symbol-type-tag">Ticking Hazard</span>
+        <div class="symbol-img-wrap">
+          <img src="assets/symbols/symbol_dynamite.png" alt="Dynamite symbol" class="symbol-real-img" loading="lazy">
+        </div>
+        <h4>Dynamite (Hazard)</h4>
+        <p>Passes clockwise. At turn start, flip a card: if Spades (♠) 2 through 9, Dynamite explodes for 3 wounds! Otherwise it passes to your left.</p>
+      </div>
+
+      <!-- 13. Jail -->
+      <div class="symbol-card">
+        <span class="symbol-type-tag">Turn Lockout</span>
+        <div class="symbol-img-wrap">
+          <img src="assets/symbols/symbol_jail.png" alt="Jail symbol" class="symbol-real-img" loading="lazy">
+        </div>
+        <h4>Jail (Arrest)</h4>
+        <p>Placed on any player except Sheriff. At turn start, flip a card: if Hearts (♥), break free and play. Otherwise discard Jail and entire turn is skipped.</p>
+      </div>
+
+      <!-- 14. Mustang -->
+      <div class="symbol-card">
+        <span class="symbol-type-tag">Defensive Distance</span>
+        <div class="symbol-img-wrap">
+          <img src="assets/symbols/symbol_mustang.png" alt="Mustang symbol" class="symbol-real-img" loading="lazy">
+        </div>
+        <h4>Mustang (Distance +1)</h4>
+        <p>Blue mount in play. All other players see you at a distance +1 further than normal (e.g. a neighbor sees you at distance 2 instead of 1).</p>
+      </div>
+
+      <!-- 15. Scope -->
+      <div class="symbol-card">
+        <span class="symbol-type-tag">Offensive Distance</span>
+        <div class="symbol-img-wrap">
+          <img src="assets/symbols/symbol_scope.png" alt="Scope symbol" class="symbol-real-img" loading="lazy">
+        </div>
+        <h4>Scope (Distance -1)</h4>
+        <p>Blue optical sight. You see all other players at a distance 1 closer than normal (e.g. neighbor at distance 1 is seen at distance 0).</p>
+      </div>
+
+      <!-- 16. Life Points -->
+      <div class="symbol-card">
+        <span class="symbol-type-tag">Health &amp; Hand Limit</span>
+        <div class="symbol-img-wrap">
+          <img src="assets/symbols/symbol_life_points.png" alt="Life points symbol" class="symbol-real-img" loading="lazy">
+        </div>
+        <h4>Life Points / Bullets</h4>
+        <p>Tracks your character's current and maximum health (Sheriff gets +1 HP). Current HP also dictates maximum hand size at the end of your turn.</p>
+      </div>
+    </div>
+
+    <!-- Expansion Tokens -->
+    <h4 style="color: var(--color-brown); font-size: 1.15rem; margin: 1.5rem 0 0.5rem; font-family: var(--font-western);">
+      Special Expansion Tokens
+    </h4>
     <div class="symbols-grid">
       <div class="symbol-card">
-        <span class="symbol-icon">💥</span>
-        <h4>BANG! (Shot)</h4>
-        <p>Inflicts 1 wound on chosen target in range. Target may cancel with Missed!.</p>
-      </div>
-      <div class="symbol-card">
-        <span class="symbol-icon">🛡️</span>
-        <h4>Missed! (Dodge)</h4>
-        <p>Cancels a BANG!, Gatling, or direct shot attack targeted at you.</p>
-      </div>
-      <div class="symbol-card">
-        <span class="symbol-icon">🍺</span>
-        <h4>Beer (Heal)</h4>
-        <p>Instantly restores 1 lost life point (or saves from elimination at 0 lives).</p>
-      </div>
-      <div class="symbol-card">
-        <span class="symbol-icon">🎴</span>
-        <h4>Card Draw</h4>
-        <p>Draw a card from draw deck or from target player according to card text.</p>
-      </div>
-      <div class="symbol-card">
-        <span class="symbol-icon">👁️</span>
-        <h4>Sight / Distance</h4>
-        <p>Modifies distance to other players or extends your firearm range.</p>
-      </div>
-      <div class="symbol-card">
-        <span class="symbol-icon">🪙</span>
+        <span class="symbol-type-tag">Gold Rush</span>
+        <div class="symbol-img-wrap" style="font-size: 2.5rem;">🪙</div>
         <h4>Gold Nugget</h4>
-        <p>Gold Rush currency used to buy black and brown equipment cards.</p>
+        <p>Gold Rush currency used to buy black and brown equipment cards from the general store.</p>
       </div>
       <div class="symbol-card">
-        <span class="symbol-icon">⚡</span>
-        <h4>Load Token</h4>
-        <p>Armed &amp; Dangerous resource used to activate and upgrade dangerous cards.</p>
+        <span class="symbol-type-tag">Armed &amp; Dangerous</span>
+        <div class="symbol-img-wrap" style="font-size: 2.5rem;">⚡</div>
+        <h4>Load Token (Cube)</h4>
+        <p>Armed &amp; Dangerous resource used to activate and upgrade dangerous orange cards.</p>
       </div>
       <div class="symbol-card">
-        <span class="symbol-icon">⭐</span>
+        <span class="symbol-type-tag">Legends</span>
+        <div class="symbol-img-wrap" style="font-size: 2.5rem;">⭐</div>
         <h4>Fame Token</h4>
-        <p>Legends tokens used to accomplish feats and achieve Legendary status (Side B).</p>
-      </div>
-      <div class="symbol-card">
-        <span class="symbol-icon">🔄</span>
-        <h4>Check ("Draw!")</h4>
-        <p>Flip the top card of the deck to check its suit and value (e.g. Jail, Dynamite).</p>
+        <p>Legends tokens used to accomplish feats, boast, and forge a legendary character status (Side B).</p>
       </div>
     </div>
 
