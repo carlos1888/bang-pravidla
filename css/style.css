@@ -1,7 +1,8 @@
 /* BANG! Dynamite Box & Legendy — Animated Western Comic Stylesheet */
 :root {
-  --font-western: 'Rye', 'Smokum', 'Georgia', serif;
-  --font-serif: 'Playfair Display', 'Georgia', serif;
+  --font-western: 'Rokkitt', 'Alfa Slab One', Palatino, 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
+  --font-western-display: 'Alfa Slab One', 'Rokkitt', Georgia, serif;
+  --font-serif: 'Playfair Display', Palatino, 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
   --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 
   --bg-primary: #f6eedb;
@@ -220,9 +221,9 @@ header.app-header {
 }
 
 .brand-titles h1 {
-  font-family: var(--font-western);
+  font-family: var(--font-western-display);
   font-size: 2.15rem;
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
   color: #ffcc00;
   text-shadow: 2px 2px 0px #3d1c05, 4px 4px 0px #1a0a02, 0 0 16px rgba(255,204,0,0.5);
   line-height: 1;
@@ -1260,7 +1261,7 @@ main.app-main {
 }
 
 .rules-toc-group-header {
-  font-family: var(--font-western, 'Rye', serif);
+  font-family: var(--font-western);
   font-size: 0.78rem;
   font-weight: 800;
   text-transform: uppercase;
@@ -1293,7 +1294,7 @@ main.app-main {
 }
 
 .rules-toc h4 {
-  font-family: var(--font-western, 'Rye', serif);
+  font-family: var(--font-western);
   font-size: 0.95rem;
   text-transform: uppercase;
   letter-spacing: 0.6px;
@@ -1368,7 +1369,7 @@ main.app-main {
 }
 
 .rules-article h3 {
-  font-family: var(--font-western, 'Rye', serif);
+  font-family: var(--font-western);
   font-size: 1.35rem;
   color: var(--color-brown);
   margin-top: 1.75rem;
@@ -1381,7 +1382,7 @@ main.app-main {
 }
 
 .rules-article h4 {
-  font-family: var(--font-western, 'Rye', serif);
+  font-family: var(--font-western);
   font-size: 1.1rem;
   color: var(--text-main);
   margin-top: 1.25rem;
@@ -1448,7 +1449,7 @@ main.app-main {
 }
 
 .section-tag {
-  font-family: var(--font-western, 'Rye', serif);
+  font-family: var(--font-western);
   font-size: 0.76rem;
   font-weight: 800;
   text-transform: uppercase;
@@ -1461,7 +1462,7 @@ main.app-main {
 .rule-section-header h2 {
   font-size: 2.1rem;
   color: var(--color-brown);
-  font-family: var(--font-western, 'Rye', serif);
+  font-family: var(--font-western);
   letter-spacing: 0.5px;
   line-height: 1.25;
 }
@@ -1610,14 +1611,14 @@ main.app-main {
   letter-spacing: 0.8px;
   color: var(--text-muted);
   margin-bottom: 0.35rem;
-  font-family: var(--font-western, 'Rye', serif);
+  font-family: var(--font-western);
 }
 
 .role-card h3 {
   font-size: 1.45rem;
   margin-bottom: 0.4rem;
   color: var(--text-main);
-  font-family: var(--font-western, 'Rye', serif);
+  font-family: var(--font-western);
   letter-spacing: 0.5px;
 }
 
@@ -1660,7 +1661,7 @@ main.app-main {
 }
 
 .callout h4 {
-  font-family: var(--font-western, 'Rye', serif);
+  font-family: var(--font-western);
   font-size: 1.15rem;
   margin-bottom: 0.5rem;
   display: flex;
@@ -1742,7 +1743,7 @@ main.app-main {
   justify-content: center;
   font-weight: 900;
   font-size: 1.15rem;
-  font-family: var(--font-western, 'Rye', serif);
+  font-family: var(--font-western);
   flex-shrink: 0;
   border: 2px solid #5a3410;
   box-shadow: 0 3px 0 #3a200b, 0 4px 8px rgba(0,0,0,0.25);
@@ -1757,7 +1758,7 @@ main.app-main {
 }
 
 .step-content h4 {
-  font-family: var(--font-western, 'Rye', serif);
+  font-family: var(--font-western);
   font-size: 1.25rem;
   color: var(--text-main);
   margin-bottom: 0.4rem;
@@ -2032,7 +2033,7 @@ details.bang-disclosure[open] {
 
 details.bang-disclosure summary {
   padding: 1.15rem 1.45rem;
-  font-family: var(--font-western, 'Rye', serif);
+  font-family: var(--font-western);
   font-weight: 700;
   font-size: 1.05rem;
   letter-spacing: 0.3px;
@@ -2086,7 +2087,7 @@ details.bang-disclosure summary:hover {
   color: #fff;
   font-size: 0.72rem;
   font-weight: 900;
-  font-family: var(--font-western, 'Rye', serif);
+  font-family: var(--font-western);
   text-transform: uppercase;
   letter-spacing: 0.6px;
   padding: 0.25rem 0.6rem;
@@ -2198,7 +2199,7 @@ footer.app-footer {
   background: linear-gradient(180deg, #3d2214 0%, #241208 100%);
   color: #f5d061;
   padding: 1rem 1.15rem;
-  font-family: var(--font-western, 'Rye', serif);
+  font-family: var(--font-western);
   font-weight: 700;
   font-size: 0.9rem;
   letter-spacing: 0.8px;
@@ -2247,7 +2248,7 @@ footer.app-footer {
   gap: 0.35rem;
   font-size: 0.74rem;
   font-weight: 900;
-  font-family: var(--font-western, 'Rye', serif);
+  font-family: var(--font-western);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   padding: 0.28rem 0.65rem;
@@ -4521,7 +4522,7 @@ button.btn-secondary:active {
 .sound-tile-name {
   font-weight: 800;
   font-size: 0.82rem;
-  font-family: var(--font-western, 'Rye', serif);
+  font-family: var(--font-western);
   color: #2b1409;
   line-height: 1.25;
   margin: 0;
@@ -4806,7 +4807,7 @@ button.btn-secondary:active {
 }
 
 .timer-time-display {
-  font-family: var(--font-western, 'Rye', serif);
+  font-family: var(--font-western);
   font-size: 3.4rem;
   color: #ffcc00;
   text-shadow: 0 2px 10px rgba(255,204,0,0.6), 0 0 25px rgba(255,165,0,0.4);
@@ -4816,7 +4817,7 @@ button.btn-secondary:active {
 .timer-time-sub {
   font-size: 0.82rem;
   font-weight: 800;
-  font-family: var(--font-western, 'Rye', serif);
+  font-family: var(--font-western);
   color: #e0cca7;
   text-transform: uppercase;
   letter-spacing: 1.5px;
