@@ -1270,9 +1270,12 @@
   };
 
   const eventDeckState = {
-    filterSet: 'both',
-    deck: [],
-    currentIndex: -1
+    filterSet: 'dual',
+    sheriffVariant: 'both-official',
+    sheriffDeck: [],
+    sheriffIndex: 0,
+    wwsDeck: [],
+    wwsIndex: -1
   };
 
   const draftState = {
@@ -1852,133 +1855,402 @@
     const isEn = state.lang === 'en';
     const allEventCards = window.BANG_CARDS.filter(c => c.type === 'event');
 
-    const initEventDeck = () => {
-      let filtered = allEventCards;
-      if (eventDeckState.filterSet === 'high-noon') {
-        filtered = allEventCards.filter(c => c.expansion === 'high-noon');
-      } else if (eventDeckState.filterSet === 'fistful') {
-        filtered = allEventCards.filter(c => c.expansion === 'fistful-of-cards');
-      } else if (eventDeckState.filterSet === 'wild-west-show') {
-        filtered = allEventCards.filter(c => c.expansion === 'wild-west-show');
-      } else if (eventDeckState.filterSet === 'both') {
-        filtered = allEventCards.filter(c => ['high-noon', 'fistful-of-cards'].includes(c.expansion));
-      }
-
-      const shuffled = [...filtered].sort(() => Math.random() - 0.5);
-      const climaxIdx = shuffled.findIndex(c => 
-        c.name === 'Pravé poledne' || 
-        c.name === 'Pěst plná karet' || 
-        c.name === 'Pěst plná karet (Fistful)' ||
-        c.name === 'Divoký západ (Wild West Show)' ||
-        c.nameEn === 'High Noon' ||
-        c.nameEn === 'A Fistful of Cards' ||
-        c.nameEn === 'Wild West Show'
-      );
-      if (climaxIdx !== -1) {
-        const climaxCard = shuffled.splice(climaxIdx, 1)[0];
-        shuffled.push(climaxCard);
-      }
-
-      eventDeckState.deck = shuffled;
-      eventDeckState.currentIndex = 0;
+    const isClimax = (c) => {
+      if (!c) return false;
+      return c.name === 'Pravé poledne' || 
+             c.name === 'Pěst plná karet' || 
+             c.name === 'Pěst plná karet (Fistful)' ||
+             c.name === 'Divoký západ (Wild West Show)' ||
+             c.nameEn === 'High Noon' ||
+             c.nameEn === 'A Fistful of Cards' ||
+             c.nameEn === 'Wild West Show' ||
+             (c.typeLabel && c.typeLabel.includes('finální')) ||
+             (c.typeLabelEn && c.typeLabelEn.includes('climax'));
     };
 
-    if (eventDeckState.deck.length === 0) {
-      initEventDeck();
+    const playRoundSound = () => {
+      if (window.BANG_TOOLS && window.BANG_TOOLS.SoundFX && window.BANG_TOOLS.SoundFX.playBell) {
+        window.BANG_TOOLS.SoundFX.playBell();
+      }
+    };
+
+    const playStagecoachSound = () => {
+      if (window.BANG_TOOLS && window.BANG_TOOLS.SoundFX) {
+        if (window.BANG_TOOLS.SoundFX.playHorse) {
+          window.BANG_TOOLS.SoundFX.playHorse();
+        } else if (window.BANG_TOOLS.SoundFX.playWhip) {
+          window.BANG_TOOLS.SoundFX.playWhip();
+        } else if (window.BANG_TOOLS.SoundFX.playBell) {
+          window.BANG_TOOLS.SoundFX.playBell();
+        }
+      }
+    };
+
+    const initSheriffDeck = (variant) => {
+      let deck = [];
+      const v = variant || eventDeckState.sheriffVariant || 'both-official';
+      eventDeckState.sheriffVariant = v;
+
+      if (v === 'high-noon') {
+        const reg = allEventCards.filter(c => c.expansion === 'high-noon' && !isClimax(c)).sort(() => Math.random() - 0.5);
+        const climax = allEventCards.find(c => c.expansion === 'high-noon' && isClimax(c));
+        deck = climax ? [...reg, climax] : reg;
+      } else if (v === 'fistful') {
+        const reg = allEventCards.filter(c => c.expansion === 'fistful-of-cards' && !isClimax(c)).sort(() => Math.random() - 0.5);
+        const climax = allEventCards.find(c => c.expansion === 'fistful-of-cards' && isClimax(c));
+        deck = climax ? [...reg, climax] : reg;
+      } else if (v === 'both-full') {
+        const reg = allEventCards.filter(c => ['high-noon', 'fistful-of-cards'].includes(c.expansion) && !isClimax(c)).sort(() => Math.random() - 0.5);
+        const climaxes = allEventCards.filter(c => ['high-noon', 'fistful-of-cards'].includes(c.expansion) && isClimax(c)).sort(() => Math.random() - 0.5);
+        deck = climaxes.length > 0 ? [...reg, climaxes[0]] : reg;
+      } else { // 'both-official' (Oficiální pravidla: 12 náhodných z obou sad + 1 náhodná finální dospodu = 13 karet)
+        const reg = allEventCards.filter(c => ['high-noon', 'fistful-of-cards'].includes(c.expansion) && !isClimax(c)).sort(() => Math.random() - 0.5).slice(0, 12);
+        const climaxes = allEventCards.filter(c => ['high-noon', 'fistful-of-cards'].includes(c.expansion) && isClimax(c)).sort(() => Math.random() - 0.5);
+        deck = climaxes.length > 0 ? [...reg, climaxes[0]] : reg;
+      }
+
+      eventDeckState.sheriffDeck = deck;
+      eventDeckState.sheriffIndex = 0;
+    };
+
+    const initWWSDeck = (keepRevealed) => {
+      const reg = allEventCards.filter(c => c.expansion === 'wild-west-show' && !isClimax(c)).sort(() => Math.random() - 0.5);
+      const climax = allEventCards.find(c => c.expansion === 'wild-west-show' && isClimax(c));
+      eventDeckState.wwsDeck = climax ? [...reg, climax] : reg;
+      if (!keepRevealed) {
+        eventDeckState.wwsIndex = -1;
+      } else if (eventDeckState.wwsIndex >= eventDeckState.wwsDeck.length) {
+        eventDeckState.wwsIndex = 0;
+      }
+    };
+
+    if (!eventDeckState.sheriffDeck || eventDeckState.sheriffDeck.length === 0) {
+      initSheriffDeck(eventDeckState.sheriffVariant);
+    }
+    if (!eventDeckState.wwsDeck || eventDeckState.wwsDeck.length === 0) {
+      initWWSDeck();
     }
 
-    const currentCard = eventDeckState.deck[eventDeckState.currentIndex] || eventDeckState.deck[0];
-    const title = isEn ? (currentCard.nameEn || currentCard.name) : currentCard.name;
-    const badge = isEn ? (currentCard.expansionNameEn || currentCard.expansionName) : currentCard.expansionName;
-    const effect = isEn ? (currentCard.effectEn || currentCard.effect) : currentCard.effect;
-    const timing = isEn ? (currentCard.timingEn || currentCard.timing) : currentCard.timing;
-    const rulings = isEn && currentCard.rulingsEn && currentCard.rulingsEn.length > 0 ? currentCard.rulingsEn : currentCard.rulings;
+    const mode = eventDeckState.filterSet;
+    const isDual = mode === 'dual' || mode === 'all' || mode === 'both';
+    const isWwsOnly = mode === 'wild-west-show';
+
+    const currentSheriffCard = eventDeckState.sheriffDeck[eventDeckState.sheriffIndex] || eventDeckState.sheriffDeck[0];
+    const currentWWSCard = (eventDeckState.wwsIndex >= 0) 
+      ? (eventDeckState.wwsDeck[eventDeckState.wwsIndex] || eventDeckState.wwsDeck[0])
+      : null;
+
+    const renderEventCard = (card, index, total, deckType) => {
+      if (!card) return '';
+      const title = isEn ? (card.nameEn || card.name) : card.name;
+      const badge = isEn ? (card.expansionNameEn || card.expansionName) : card.expansionName;
+      const effect = isEn ? (card.effectEn || card.effect) : card.effect;
+      const timing = isEn ? (card.timingEn || card.timing) : card.timing;
+      const rulings = isEn && card.rulingsEn && card.rulingsEn.length > 0 ? card.rulingsEn : card.rulings;
+      const isClimaxCard = isClimax(card);
+      const topClass = deckType === 'wws' ? 'event-top-wws' : 'event-top-sheriff';
+
+      return `
+        <div class="event-big-card">
+          <div class="event-card-top ${topClass}">
+            <span class="event-round-badge">
+              ${deckType === 'wws' ? (isEn ? 'Event' : 'Událost') : (isEn ? 'Round' : 'Kolo')} ${index + 1} / ${total}
+              ${isClimaxCard ? (isEn ? ' • ⭐️ CLIMAX' : ' • ⭐️ FINÁLNÍ') : ''}
+            </span>
+            <span style="font-size: 0.85rem; font-weight: 700; opacity: 0.95;">${badge}</span>
+          </div>
+          ${card.image ? `
+            <div style="background: var(--bg-surface); text-align: center; padding: 1.25rem 0.5rem; border-bottom: 1px solid var(--border-color);">
+              <img src="${card.image}" alt="${title}" style="max-height: 220px; object-fit: contain; border-radius: 8px; box-shadow: var(--shadow-sm);">
+            </div>
+          ` : ''}
+          <div class="event-card-body">
+            <h3 class="event-card-title">${title}</h3>
+            <div class="event-card-timing">⏱️ ${timing}</div>
+            <div class="event-card-effect">${effect}</div>
+            ${(rulings && rulings.length > 0) ? `
+              <div style="font-size: 0.88rem; line-height: 1.6; border-top: 1px dashed var(--border-color); padding-top: 0.75rem;">
+                <strong style="color: var(--color-brown);">${isEn ? 'Official Rulings:' : 'Přesný výklad pravidla:'}</strong>
+                <ul style="padding-left: 1.2rem; margin-top: 0.35rem;">
+                  ${rulings.map(r => `<li>${r}</li>`).join('')}
+                </ul>
+              </div>
+            ` : ''}
+          </div>
+        </div>
+      `;
+    };
+
+    const renderWWSWaitingCard = () => {
+      return `
+        <div class="event-big-card">
+          <div class="event-card-top event-top-wws">
+            <span class="event-round-badge">🎪 ${isEn ? 'Wild West Show (10 cards)' : 'Divoký západ (10 karet)'}</span>
+            <span style="font-size: 0.85rem; font-weight: 700; opacity: 0.95;">${isEn ? 'In center table' : 'Uprostřed stolu'}</span>
+          </div>
+          <div class="event-waiting-card">
+            <div class="event-waiting-icon">📯</div>
+            <h3 class="event-waiting-title">${isEn ? 'Waiting for Stagecoach' : 'Čeká na první Dostavník'}</h3>
+            <p class="event-waiting-desc">
+              ${isEn 
+                ? 'The 10-card Wild West Show deck is kept separate in the center. Its first event is revealed only when any player plays a Stagecoach or Wells Fargo.' 
+                : 'Samostatný balíček 10 karet Divokého západu leží uprostřed stolu. První karta se otočí až ve chvíli, kdy kterýkoli hráč zahraje kartu Dostavník nebo Wells Fargo.'}
+            </p>
+            <button type="button" class="tool-subnav-btn active" id="btn-reveal-first-wws" style="padding: 0.75rem 1.4rem; font-weight: 700; font-size: 1rem; margin-top: 0.5rem;">
+              📯 ${isEn ? 'Play Stagecoach ➔ Reveal 1st Event' : 'Zahrán Dostavník ➔ Otočit 1. událost'}
+            </button>
+          </div>
+        </div>
+      `;
+    };
 
     container.innerHTML = `
       <div class="tool-card-box">
         <div class="tool-card-header">
-          <h2><span>☀️</span> ${isEn ? 'Event Deck (High Noon, Fistful & Wild West Show)' : 'Digitální balíček událostí (Pravé poledne, Fistful & Divoký západ)'}</h2>
-          <p class="tool-card-lead">${isEn ? 'Sheriff turns a new global event card at the start of each round (or when a Stagecoach / Wells Fargo is played in Wild West Show). The climax card is automatically placed on the bottom.' : 'Šerif na začátku každého kola hry otočí novou událost (nebo při zahrání Dostavníku / Wells Fargo v Divokém západu). Finální karta je automaticky zamíchána na spodek balíčku dle oficiálních pravidel.'}</p>
+          <h2><span>☀️</span> ${isEn ? 'Event Decks (High Noon, Fistful & Wild West Show)' : 'Digitální balíček událostí (Pravé poledne, Fistful & Divoký západ)'}</h2>
+          <p class="tool-card-lead">${isEn ? 'Official 2-Deck Rules: Sheriff turns round events (High Noon / Fistful) at the start of each round. Wild West Show sits independently in the center and is revealed ONLY when Stagecoach or Wells Fargo is played.' : 'Oficiální pravidlový systém 2 balíčků: Šerif otáčí balíček kol (Pravé poledne / Pěst plná karet) na začátku každého kola hry. Samostatný balíček Divokého západu leží uprostřed stolu a otáčí se POUZE při zahrání karty Dostavník nebo Wells Fargo.'}</p>
         </div>
 
         <div class="events-deck-container">
           <div class="events-controls-bar">
             <select id="event-set-select" class="filter-select">
-              <option value="both" ${eventDeckState.filterSet === 'both' ? 'selected' : ''}>☀️ ${isEn ? 'High Noon & Fistful together (28 cards)' : 'Pravé poledne & Pěst plná karet (28 karet)'}</option>
-              <option value="high-noon" ${eventDeckState.filterSet === 'high-noon' ? 'selected' : ''}>☀️ ${isEn ? 'High Noon only (13 cards)' : 'Pouze Pravé poledne (13 karet)'}</option>
-              <option value="fistful" ${eventDeckState.filterSet === 'fistful' ? 'selected' : ''}>💀 ${isEn ? 'A Fistful of Cards only (15 cards)' : 'Pouze Pěst plná karet (15 karet)'}</option>
-              <option value="wild-west-show" ${eventDeckState.filterSet === 'wild-west-show' ? 'selected' : ''}>🎪 ${isEn ? 'Wild West Show only (10 cards)' : 'Pouze Divoký západ (10 karet)'}</option>
-              <option value="all" ${eventDeckState.filterSet === 'all' ? 'selected' : ''}>🏜️ ${isEn ? 'All Expansions (38 cards)' : 'Všechna rozšíření dohromady (38 karet)'}</option>
+              <option value="dual" ${isDual ? 'selected' : ''}>🏜️ ${isEn ? 'Two Independent Decks: Sheriff (Rounds) + Wild West Show (Stagecoach)' : 'Dva nezávislé balíčky: Šerif (Kolo) + Divoký západ (Dostavník)'}</option>
+              <option value="both-official" ${eventDeckState.filterSet === 'both-official' ? 'selected' : ''}>☀️💀 ${isEn ? 'Sheriff Deck: High Noon & Fistful (Official: 13 cards)' : 'Pouze balíček Šerifa: Pravé poledne & Fistful (Oficiální: 13 karet)'}</option>
+              <option value="both-full" ${eventDeckState.filterSet === 'both-full' ? 'selected' : ''}>☀️💀 ${isEn ? 'Sheriff Deck: High Noon & Fistful (Marathon: 27 cards)' : 'Pouze balíček Šerifa: Pravé poledne & Fistful (Maraton: 27 karet)'}</option>
+              <option value="high-noon" ${eventDeckState.filterSet === 'high-noon' ? 'selected' : ''}>☀️ ${isEn ? 'Sheriff Deck: High Noon only (13 cards)' : 'Pouze balíček Šerifa: Pouze Pravé poledne (13 karet)'}</option>
+              <option value="fistful" ${eventDeckState.filterSet === 'fistful' ? 'selected' : ''}>💀 ${isEn ? 'Sheriff Deck: A Fistful of Cards only (15 cards)' : 'Pouze balíček Šerifa: Pouze Pěst plná karet (15 karet)'}</option>
+              <option value="wild-west-show" ${eventDeckState.filterSet === 'wild-west-show' ? 'selected' : ''}>🎪 ${isEn ? 'Wild West Show Deck only (10 cards – Stagecoach)' : 'Pouze Divoký západ (10 karet – otáčí se při Dostavníku)'}</option>
             </select>
             <button type="button" class="btn-reset-filters" id="btn-shuffle-events" style="font-weight: 700;">
-              🔄 ${isEn ? 'Shuffle New Deck' : 'Zamíchat nový balíček'}
+              🔄 ${isEn ? 'Shuffle Decks' : 'Zamíchat balíčky'}
             </button>
           </div>
 
-          <div class="event-big-card">
-            <div class="event-card-top">
-              <span class="event-round-badge">
-                ${isEn ? 'Round' : 'Kolo'} ${eventDeckState.currentIndex + 1} / ${eventDeckState.deck.length}
-              </span>
-              <span style="font-size: 0.85rem; font-weight: 700; opacity: 0.95;">${badge}</span>
-            </div>
-            ${currentCard.image ? `
-              <div style="background: var(--bg-surface); text-align: center; padding: 1.25rem 0.5rem; border-bottom: 1px solid var(--border-color);">
-                <img src="${currentCard.image}" alt="${title}" style="max-height: 220px; object-fit: contain; border-radius: 8px; box-shadow: var(--shadow-sm);">
-              </div>
-            ` : ''}
-            <div class="event-card-body">
-              <h3 class="event-card-title">${title}</h3>
-              <div class="event-card-timing">⏱️ ${timing}</div>
-              <div class="event-card-effect">${effect}</div>
-              ${(rulings && rulings.length > 0) ? `
-                <div style="font-size: 0.88rem; line-height: 1.6; border-top: 1px dashed var(--border-color); padding-top: 0.75rem;">
-                  <strong style="color: var(--color-brown);">${isEn ? 'Official Rulings:' : 'Přesný výklad pravidla:'}</strong>
-                  <ul style="padding-left: 1.2rem; margin-top: 0.35rem;">
-                    ${rulings.map(r => `<li>${r}</li>`).join('')}
-                  </ul>
+          ${isDual ? `
+            <div class="events-dual-grid">
+              <!-- LEFT: Sheriff Deck -->
+              <div class="event-deck-column">
+                <div class="event-deck-column-header">
+                  <div class="event-deck-column-title">☀️ ${isEn ? 'Sheriff Deck (Rounds)' : 'Balíček Šerifa (Kola hry)'}</div>
+                  <div class="event-deck-column-subtitle">${isEn ? 'Sheriff reveals a new event at the start of each round (from Round 2). Climax card at bottom.' : 'Šerif otáčí na začátku každého kola hry od 2. kola. Finální karta je zamíchána dospodu.'}</div>
+                  <div style="margin-top: 0.35rem;">
+                    <select id="sheriff-variant-select" class="filter-select" style="width: 100%; font-size: 0.88rem; padding: 0.35rem 0.5rem;">
+                      <option value="both-official" ${eventDeckState.sheriffVariant === 'both-official' ? 'selected' : ''}>☀️💀 ${isEn ? 'High Noon & Fistful (Official: 13 cards)' : 'Pravé poledne & Fistful (Oficiální: 13 karet)'}</option>
+                      <option value="both-full" ${eventDeckState.sheriffVariant === 'both-full' ? 'selected' : ''}>☀️💀 ${isEn ? 'High Noon & Fistful (Marathon: 27 cards)' : 'Pravé poledne & Fistful (Maraton: 27 karet)'}</option>
+                      <option value="high-noon" ${eventDeckState.sheriffVariant === 'high-noon' ? 'selected' : ''}>☀️ ${isEn ? 'High Noon only (13 cards)' : 'Pouze Pravé poledne (13 karet)'}</option>
+                      <option value="fistful" ${eventDeckState.sheriffVariant === 'fistful' ? 'selected' : ''}>💀 ${isEn ? 'A Fistful of Cards only (15 cards)' : 'Pouze Pěst plná karet (15 karet)'}</option>
+                    </select>
+                  </div>
                 </div>
-              ` : ''}
-            </div>
-          </div>
 
-          <div style="display: flex; gap: 0.85rem; flex-wrap: wrap; justify-content: center;">
-            <button type="button" class="tool-subnav-btn" id="btn-prev-event" ${eventDeckState.currentIndex <= 0 ? 'disabled style="opacity: 0.5;"' : ''}>
-              ← ${isEn ? 'Previous Round' : 'Předchozí kolo'}
-            </button>
-            <button type="button" class="tool-subnav-btn active" id="btn-next-event" ${eventDeckState.currentIndex >= eventDeckState.deck.length - 1 ? 'disabled style="opacity: 0.5;"' : ''}>
-              ${isEn ? 'Next Event (New Round)' : 'Další událost (Nové kolo)'} ➔
-            </button>
-          </div>
+                ${renderEventCard(currentSheriffCard, eventDeckState.sheriffIndex, eventDeckState.sheriffDeck.length, 'sheriff')}
+
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; margin-top: 0.25rem;">
+                  <button type="button" class="tool-subnav-btn" id="btn-prev-sheriff" ${eventDeckState.sheriffIndex <= 0 ? 'disabled style="opacity: 0.5;"' : ''}>
+                    ← ${isEn ? 'Prev Round' : 'Předchozí kolo'}
+                  </button>
+                  <button type="button" class="tool-subnav-btn active" id="btn-next-sheriff" ${eventDeckState.sheriffIndex >= eventDeckState.sheriffDeck.length - 1 ? 'disabled style="opacity: 0.5;"' : ''}>
+                    ${isEn ? 'Next Round ➔' : 'Další kolo ➔'}
+                  </button>
+                  <button type="button" class="btn-reset-filters" id="btn-shuffle-sheriff" style="font-weight: 700; padding: 0.45rem 0.85rem;" title="${isEn ? 'Shuffle Sheriff Deck' : 'Zamíchat balíček Šerifa'}">
+                    🔄
+                  </button>
+                </div>
+              </div>
+
+              <!-- RIGHT: Wild West Show Deck -->
+              <div class="event-deck-column">
+                <div class="event-deck-column-header">
+                  <div class="event-deck-column-title">🎪 ${isEn ? 'Wild West Show (Center Table)' : 'Divoký západ (Uprostřed stolu)'}</div>
+                  <div class="event-deck-column-subtitle">${isEn ? 'Revealed ONLY when someone plays a Stagecoach or Wells Fargo card.' : 'Otáčí se POUZE při zahrání karty Dostavník nebo Wells Fargo.'}</div>
+                  <div style="font-size: 0.85rem; color: var(--text-muted); padding: 0.35rem 0; font-weight: 600;">
+                    ${eventDeckState.wwsIndex === -1 
+                      ? (isEn ? '⏳ Deck is waiting for first Stagecoach' : '⏳ Balíček čeká na první Dostavník')
+                      : (isEn ? `Active Event: ${eventDeckState.wwsIndex + 1} of 10` : `Aktivní událost: ${eventDeckState.wwsIndex + 1} z 10`)}
+                  </div>
+                </div>
+
+                ${eventDeckState.wwsIndex === -1 ? renderWWSWaitingCard() : renderEventCard(currentWWSCard, eventDeckState.wwsIndex, eventDeckState.wwsDeck.length, 'wws')}
+
+                ${eventDeckState.wwsIndex >= 0 ? `
+                  <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; margin-top: 0.25rem;">
+                    <button type="button" class="tool-subnav-btn" id="btn-prev-wws" ${eventDeckState.wwsIndex <= 0 ? 'disabled style="opacity: 0.5;"' : ''}>
+                      ← ${isEn ? 'Previous' : 'Předchozí'}
+                    </button>
+                    <button type="button" class="tool-subnav-btn active" id="btn-next-wws" ${eventDeckState.wwsIndex >= eventDeckState.wwsDeck.length - 1 ? 'disabled style="opacity: 0.5;"' : ''}>
+                      📯 ${isEn ? 'Stagecoach Played ➔' : 'Zahrán Dostavník ➔'}
+                    </button>
+                    <button type="button" class="btn-reset-filters" id="btn-shuffle-wws" style="font-weight: 700; padding: 0.45rem 0.85rem;" title="${isEn ? 'Shuffle WWS Deck' : 'Zamíchat balíček Divokého západu'}">
+                      🔄
+                    </button>
+                    <button type="button" class="btn-reset-filters" id="btn-reset-wws" style="font-size: 0.82rem; padding: 0.45rem 0.75rem;" title="${isEn ? 'Reset to Waiting' : 'Vrátit do stavu před Dostavníkem'}">
+                      ⏸️ ${isEn ? 'Wait' : 'Čekat'}
+                    </button>
+                  </div>
+                ` : ''}
+              </div>
+            </div>
+          ` : `
+            <div style="display: flex; flex-direction: column; align-items: center; width: 100%; gap: 1rem;">
+              ${isWwsOnly ? (
+                eventDeckState.wwsIndex === -1 ? renderWWSWaitingCard() : renderEventCard(currentWWSCard, eventDeckState.wwsIndex, eventDeckState.wwsDeck.length, 'wws')
+              ) : (
+                renderEventCard(currentSheriffCard, eventDeckState.sheriffIndex, eventDeckState.sheriffDeck.length, 'sheriff')
+              )}
+
+              <div style="display: flex; gap: 0.85rem; flex-wrap: wrap; justify-content: center;">
+                ${isWwsOnly ? (
+                  eventDeckState.wwsIndex >= 0 ? `
+                    <button type="button" class="tool-subnav-btn" id="btn-prev-single" ${eventDeckState.wwsIndex <= 0 ? 'disabled style="opacity: 0.5;"' : ''}>
+                      ← ${isEn ? 'Previous' : 'Předchozí'}
+                    </button>
+                    <button type="button" class="tool-subnav-btn active" id="btn-next-single" ${eventDeckState.wwsIndex >= eventDeckState.wwsDeck.length - 1 ? 'disabled style="opacity: 0.5;"' : ''}>
+                      📯 ${isEn ? 'Stagecoach Played ➔' : 'Zahrán Dostavník ➔'}
+                    </button>
+                    <button type="button" class="btn-reset-filters" id="btn-reset-wws" style="font-size: 0.85rem; padding: 0.5rem 0.85rem;">
+                      ⏸️ ${isEn ? 'Reset to Waiting' : 'Vrátit do čekání'}
+                    </button>
+                  ` : ''
+                ) : `
+                  <button type="button" class="tool-subnav-btn" id="btn-prev-single" ${eventDeckState.sheriffIndex <= 0 ? 'disabled style="opacity: 0.5;"' : ''}>
+                    ← ${isEn ? 'Previous Round' : 'Předchozí kolo'}
+                  </button>
+                  <button type="button" class="tool-subnav-btn active" id="btn-next-single" ${eventDeckState.sheriffIndex >= eventDeckState.sheriffDeck.length - 1 ? 'disabled style="opacity: 0.5;"' : ''}>
+                    ${isEn ? 'Next Round ➔' : 'Další kolo (Nové kolo) ➔'}
+                  </button>
+                `}
+              </div>
+            </div>
+          `}
         </div>
       </div>
     `;
 
+    // --- EVENT LISTENERS ---
     document.getElementById('event-set-select').addEventListener('change', (e) => {
-      eventDeckState.filterSet = e.target.value;
-      initEventDeck();
+      const val = e.target.value;
+      eventDeckState.filterSet = val;
+      if (val === 'wild-west-show' && eventDeckState.wwsIndex === -1) {
+        eventDeckState.wwsIndex = 0;
+      } else if (val !== 'wild-west-show' && val !== 'dual' && val !== 'all') {
+        eventDeckState.sheriffVariant = val;
+        initSheriffDeck(val);
+      }
       renderEventDeck(container);
     });
 
-    document.getElementById('btn-shuffle-events').addEventListener('click', () => {
-      initEventDeck();
-      window.BANG_TOOLS.SoundFX.playBell();
-      renderEventDeck(container);
-    });
-
-    const prevBtn = document.getElementById('btn-prev-event');
-    if (prevBtn && eventDeckState.currentIndex > 0) {
-      prevBtn.addEventListener('click', () => {
-        eventDeckState.currentIndex--;
+    const sheriffVariantSelect = document.getElementById('sheriff-variant-select');
+    if (sheriffVariantSelect) {
+      sheriffVariantSelect.addEventListener('change', (e) => {
+        eventDeckState.sheriffVariant = e.target.value;
+        initSheriffDeck(e.target.value);
+        playRoundSound();
         renderEventDeck(container);
       });
     }
 
-    const nextBtn = document.getElementById('btn-next-event');
-    if (nextBtn && eventDeckState.currentIndex < eventDeckState.deck.length - 1) {
-      nextBtn.addEventListener('click', () => {
-        eventDeckState.currentIndex++;
-        window.BANG_TOOLS.SoundFX.playBell();
+    document.getElementById('btn-shuffle-events').addEventListener('click', () => {
+      initSheriffDeck(eventDeckState.sheriffVariant);
+      initWWSDeck(false);
+      playRoundSound();
+      renderEventDeck(container);
+    });
+
+    // Dual mode - Sheriff listeners
+    const nextSheriffBtn = document.getElementById('btn-next-sheriff');
+    if (nextSheriffBtn && eventDeckState.sheriffIndex < eventDeckState.sheriffDeck.length - 1) {
+      nextSheriffBtn.addEventListener('click', () => {
+        eventDeckState.sheriffIndex++;
+        playRoundSound();
+        renderEventDeck(container);
+      });
+    }
+    const prevSheriffBtn = document.getElementById('btn-prev-sheriff');
+    if (prevSheriffBtn && eventDeckState.sheriffIndex > 0) {
+      prevSheriffBtn.addEventListener('click', () => {
+        eventDeckState.sheriffIndex--;
+        renderEventDeck(container);
+      });
+    }
+    const shuffleSheriffBtn = document.getElementById('btn-shuffle-sheriff');
+    if (shuffleSheriffBtn) {
+      shuffleSheriffBtn.addEventListener('click', () => {
+        initSheriffDeck(eventDeckState.sheriffVariant);
+        playRoundSound();
+        renderEventDeck(container);
+      });
+    }
+
+    // WWS listeners (Dual & Single)
+    const revealFirstWwsBtn = document.getElementById('btn-reveal-first-wws');
+    if (revealFirstWwsBtn) {
+      revealFirstWwsBtn.addEventListener('click', () => {
+        eventDeckState.wwsIndex = 0;
+        playStagecoachSound();
+        renderEventDeck(container);
+      });
+    }
+    const nextWwsBtn = document.getElementById('btn-next-wws');
+    if (nextWwsBtn && eventDeckState.wwsIndex < eventDeckState.wwsDeck.length - 1) {
+      nextWwsBtn.addEventListener('click', () => {
+        eventDeckState.wwsIndex++;
+        playStagecoachSound();
+        renderEventDeck(container);
+      });
+    }
+    const prevWwsBtn = document.getElementById('btn-prev-wws');
+    if (prevWwsBtn && eventDeckState.wwsIndex > 0) {
+      prevWwsBtn.addEventListener('click', () => {
+        eventDeckState.wwsIndex--;
+        renderEventDeck(container);
+      });
+    }
+    const shuffleWwsBtn = document.getElementById('btn-shuffle-wws');
+    if (shuffleWwsBtn) {
+      shuffleWwsBtn.addEventListener('click', () => {
+        initWWSDeck(true);
+        playStagecoachSound();
+        renderEventDeck(container);
+      });
+    }
+    const resetWwsBtn = document.getElementById('btn-reset-wws');
+    if (resetWwsBtn) {
+      resetWwsBtn.addEventListener('click', () => {
+        eventDeckState.wwsIndex = -1;
+        renderEventDeck(container);
+      });
+    }
+
+    // Single mode listeners
+    const nextSingleBtn = document.getElementById('btn-next-single');
+    if (nextSingleBtn) {
+      nextSingleBtn.addEventListener('click', () => {
+        if (isWwsOnly) {
+          if (eventDeckState.wwsIndex < eventDeckState.wwsDeck.length - 1) {
+            eventDeckState.wwsIndex++;
+            playStagecoachSound();
+          }
+        } else {
+          if (eventDeckState.sheriffIndex < eventDeckState.sheriffDeck.length - 1) {
+            eventDeckState.sheriffIndex++;
+            playRoundSound();
+          }
+        }
+        renderEventDeck(container);
+      });
+    }
+    const prevSingleBtn = document.getElementById('btn-prev-single');
+    if (prevSingleBtn) {
+      prevSingleBtn.addEventListener('click', () => {
+        if (isWwsOnly) {
+          if (eventDeckState.wwsIndex > 0) {
+            eventDeckState.wwsIndex--;
+          }
+        } else {
+          if (eventDeckState.sheriffIndex > 0) {
+            eventDeckState.sheriffIndex--;
+          }
+        }
         renderEventDeck(container);
       });
     }
