@@ -1,5 +1,5 @@
-// BANG! Rules & Encyclopedia Service Worker (PWA Offline Support)
-const CACHE_NAME = 'bang-pravidla-v18';
+// BANG! Companion Service Worker (PWA Offline Support)
+const CACHE_NAME = 'bang-pravidla-v19';
 
 const STATIC_ASSETS = [
   './',

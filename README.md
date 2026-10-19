@@ -1,6 +1,6 @@
-# 🧨 Pravidla deskové hry Bang! — Kompletní pravidla & Encyklopedie karet
+# 🧨 BANG! Companion — Kompletní pravidla, encyklopedie karet & herní pomocník
 
-> **Oficiální pravidla a kompletní průvodce pro hraní karetní hry BANG! (nikoliv kostkové) se všemi rozšířeními z Dynamite Boxu a rozšířením Legendy (Legends).**
+> **Kompletní oficiální pravidla, encyklopedie všech 258 karet a interaktivní herní pomocník (Companion) pro stolní hru BANG! se všemi rozšířeními z Dynamite Boxu a rozšířením Legendy (Legends).**
 >
 > 🌐 **Online webová aplikace:** [https://carlos1888.github.io/bang-pravidla/](https://carlos1888.github.io/bang-pravidla/)
 
@@ -8,17 +8,27 @@
 
 ## 🤠 O projektu
 
-Tento repozitář obsahuje komplexní pravidlový systém, encyklopedii karet a interaktivní webovou aplikaci pro karetní hru **BANG!** v plné výbavě:
+Tento repozitář obsahuje komplexní pravidlový systém, encyklopedii karet a interaktivní webovou aplikaci (PWA) **BANG! Companion** – nepostradatelného pomocníka pro každou herní seanci karetní hry **BANG!** v plné výbavě:
 * **Základní hra (Base Game)**
 * **Dodge City** (zelené karty, pravidla pro 8 a 3 hráče)
 * **Zlatá horečka (Gold Rush)** (valouny zlata, karty vybavení, varianta Stínoví pistolníci)
 * **Ozbrojení a nebezpeční (Armed & Dangerous)** (oranžové nebezpečné karty, žetony nabití, vylepšitelné karty)
 * **Velká vlaková loupež (The Great Train Robbery)** (vlaková souprava, lokomotivy Leland / Ironhorse, vagony, stanice)
 * **Údolí stínů (The Valley of Shadows)** (československé rozšíření: Duch, Chřestýš, Tomahavk...)
-* **Pravé poledne (High Noon)** & **Pěst plná karet (A Fistful of Cards)** (balíček globálních událostí)
+* **Pravé poledne (High Noon)** & **Pěst plná karet (A Fistful of Cards)** (balíček globálních událostí pro Šerifa)
 * **Divoký západ (Wild West Show)** (události spouštěné Dostavníkem a Wells Fargo)
 * **Legendy (Legends)** (16 legendárních postav, žetony slávy, karty činů, přivlastnění činů, úpravy základních pravidel)
 * **Dynamite Box Bonusy a Promo** (Dřevěná patrona dynamitu, postavy Johnny Kisch, Uncle Will, Claus „The Saint“, Annie Versary, Emiliano, Nová identita, Želízka)
+
+### 🛠️ Herní nástroje (Companion Tools)
+Aplikace obsahuje řadu praktických nástrojů přímo ke stolu:
+* 🎯 **Kalkulačka vzdáleností:** Vizuální westernový stůl v saloonu pro přesný výpočet vzdáleností a dostřelů zbraní s vlivem karet (Mustang, Hledí, Skrýš...).
+* 📋 **Virtuální deska hráčů:** Přehledná tabule pro správu životů, rolí a postav u stolu.
+* 🎲 **Losování rolí a postav (Draft):** Rychlé a férové náhodné rozlosování pro 3–8 hráčů.
+* 🎴 **Balíček událostí:** Nezávislé losování událostí – Šerifský balíček (kombinace *Pravé poledne* a *Pěst plná karet* s finální kartou dle oficiálních pravidel) a samostatný balíček *Divoký západ* (otáčený při zahrání Dostavníku / Wells Fargo).
+* 🤠 **Kvíz pravidel:** Prověření znalostí záludných a pokročilých herních pravidel.
+* 🔊 **Western Soundboard:** 16 atmosférických westernových zvukových efektů pro oživení atmosféry u hry.
+
 
 ---
 

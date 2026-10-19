@@ -1,7 +1,7 @@
 {
-  "name": "BANG! Pravidla & Encyklopedie karet",
-  "short_name": "BANG! Pravidla",
-  "description": "Kompletní detailní pravidla pro hraní hry BANG! s Dynamite Boxem, encyklopedie všech karet, herní nástroje a řešitel sporných situací.",
+  "name": "BANG! Companion — Pravidla & Pomocník",
+  "short_name": "BANG! Companion",
+  "description": "Kompletní herní asistent pro hru BANG! se všemi rozšířeními, katalogem 258 karet a nástroji pro stůl.",
   "start_url": "./index.html",
   "display": "standalone",
   "orientation": "any",
