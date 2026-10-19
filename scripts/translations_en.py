@@ -464,38 +464,38 @@ CARDS_EN = {
   "station-dodgeville": {
     "effect": "Station tile. Purchase cost: discard 2 cards. Grants the attached railcar."
   },
-  "station-silverado": {
-    "effect": "Station tile. Purchase cost: discard 1 Diamond \u2666 card. Grants the attached railcar."
+  "station-crown-s-hole": {
+    "effect": "Station tile. Purchase cost: discard 1 Beer card. Grants the attached railcar."
   },
-  "station-callico": {
-    "effect": "Station tile. Purchase cost: discard 1 Heart \u2665 card. Grants the attached railcar."
+  "station-catico": {
+    "effect": "Station tile. Purchase cost: discard 1 Panic! or Cat Balou card. Grants the attached railcar."
   },
   "station-deathwood": {
-    "effect": "Station tile. Purchase cost: discard 1 Club \u2663 card. Grants the attached railcar."
+    "effect": "Station tile. Purchase cost: discard 1 blue card. Grants the attached railcar."
   },
   "station-tombrock": {
-    "effect": "Station tile. Purchase cost: discard 1 Spade \u2660 card. Grants the attached railcar."
-  },
-  "station-virginian-city": {
     "effect": "Station tile. Purchase cost: lose 1 life point. Grants the attached railcar."
   },
+  "station-virginia-town": {
+    "effect": "Station tile. Purchase cost: discard 2 cards. Grants the attached railcar."
+  },
   "station-yooma": {
-    "effect": "Station tile. Purchase cost: discard 1 weapon card. Grants the attached railcar."
+    "effect": "Station tile. Purchase cost: discard 1 card valued 2-9. Grants the attached railcar."
   },
-  "station-fort-woth": {
-    "effect": "Station tile. Purchase cost: pay 2 load tokens or discard 2 cards."
+  "station-fort-wroth": {
+    "effect": "Station tile. Purchase cost: discard 1 card valued 10, J, Q, K, or A."
   },
-  "station-santa-fe": {
-    "effect": "Station tile. Purchase cost: discard 1 blue card."
+  "station-san-tafe": {
+    "effect": "Station tile. Purchase cost: discard 1 Heart \u2665 card."
   },
-  "station-oathman": {
-    "effect": "Station tile. Purchase cost: discard 1 green or orange card."
+  "station-miner-s-oath": {
+    "effect": "Station tile. Purchase cost: discard 1 Diamond \u2666 card."
   },
-  "station-st-francis": {
-    "effect": "Station tile. Purchase cost: discard 1 BANG! card."
+  "station-frisco": {
+    "effect": "Station tile. Purchase cost: discard 1 Club \u2663 card."
   },
-  "station-cripple-crack": {
-    "effect": "Station tile. Purchase cost: discard 1 Missed! card."
+  "station-creepy-creek": {
+    "effect": "Station tile. Purchase cost: discard 1 Spade \u2660 card."
   },
   "card-train-robbery": {
     "effect": "Brown card. Advance the train 1 station and take the attached railcar for free."

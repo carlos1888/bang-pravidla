@@ -5367,9 +5367,9 @@ window.BANG_CARDS = [
     ]
   },
   {
-    "id": "station-callico",
-    "name": "Stanice Callico",
-    "nameEn": "Callico",
+    "id": "station-catico",
+    "name": "Stanice Catico",
+    "nameEn": "Catico",
     "expansion": "train-robbery",
     "expansionName": "Velká vlaková loupež",
     "type": "station",
@@ -5387,6 +5387,7 @@ window.BANG_CARDS = [
     "tags": [
       "stanice",
       "cena",
+      "catico",
       "panika",
       "cat balou"
     ],
@@ -5467,9 +5468,9 @@ window.BANG_CARDS = [
     ]
   },
   {
-    "id": "station-virginian-city",
-    "name": "Stanice Virginian City",
-    "nameEn": "Virginian City",
+    "id": "station-virginia-town",
+    "name": "Stanice Virginia Town",
+    "nameEn": "Virginia Town",
     "expansion": "train-robbery",
     "expansionName": "Velká vlaková loupež",
     "type": "station",
@@ -5487,7 +5488,8 @@ window.BANG_CARDS = [
     "tags": [
       "stanice",
       "cena",
-      "2 karty"
+      "virginia town",
+      "odhoď 2 karty"
     ],
     "image": "assets/cards/05_velka_vlakova_loupez/virginia-town.webp",
     "expansionNameEn": "The Great Train Robbery",
@@ -5533,9 +5535,9 @@ window.BANG_CARDS = [
     ]
   },
   {
-    "id": "station-fort-woth",
-    "name": "Stanice Fort Woth",
-    "nameEn": "Fort Woth",
+    "id": "station-fort-wroth",
+    "name": "Stanice Fort Wroth",
+    "nameEn": "Fort Wroth",
     "expansion": "train-robbery",
     "expansionName": "Velká vlaková loupež",
     "type": "station",
@@ -5553,7 +5555,8 @@ window.BANG_CARDS = [
     "tags": [
       "stanice",
       "cena",
-      "figury a esa"
+      "fort wroth",
+      "vysoká hodnota"
     ],
     "image": "assets/cards/05_velka_vlakova_loupez/fort-wroth.webp",
     "expansionNameEn": "The Great Train Robbery",
@@ -5566,9 +5569,9 @@ window.BANG_CARDS = [
     ]
   },
   {
-    "id": "station-santa-fe",
-    "name": "Stanice Santa Fe",
-    "nameEn": "Santa Fe",
+    "id": "station-san-tafe",
+    "name": "Stanice San Tafe",
+    "nameEn": "San Tafe",
     "expansion": "train-robbery",
     "expansionName": "Velká vlaková loupež",
     "type": "station",
@@ -5586,6 +5589,7 @@ window.BANG_CARDS = [
     "tags": [
       "stanice",
       "cena",
+      "san tafe",
       "srdce"
     ],
     "image": "assets/cards/05_velka_vlakova_loupez/san-tafe.webp",
@@ -5599,9 +5603,9 @@ window.BANG_CARDS = [
     ]
   },
   {
-    "id": "station-oathman",
-    "name": "Stanice Oathman",
-    "nameEn": "Oathman",
+    "id": "station-miner-s-oath",
+    "name": "Stanice Miner's Oath",
+    "nameEn": "Miner's Oath",
     "expansion": "train-robbery",
     "expansionName": "Velká vlaková loupež",
     "type": "station",
@@ -5619,6 +5623,7 @@ window.BANG_CARDS = [
     "tags": [
       "stanice",
       "cena",
+      "miners oath",
       "káry"
     ],
     "image": "assets/cards/05_velka_vlakova_loupez/miner-s-oath.webp",
@@ -5632,9 +5637,9 @@ window.BANG_CARDS = [
     ]
   },
   {
-    "id": "station-st-francis",
-    "name": "Stanice St. Francis",
-    "nameEn": "St. Francis",
+    "id": "station-frisco",
+    "name": "Stanice Frisco",
+    "nameEn": "Frisco",
     "expansion": "train-robbery",
     "expansionName": "Velká vlaková loupež",
     "type": "station",
@@ -5652,6 +5657,7 @@ window.BANG_CARDS = [
     "tags": [
       "stanice",
       "cena",
+      "frisco",
       "kříže"
     ],
     "image": "assets/cards/05_velka_vlakova_loupez/frisco.webp",
@@ -5665,9 +5671,9 @@ window.BANG_CARDS = [
     ]
   },
   {
-    "id": "station-cripple-crack",
-    "name": "Stanice Cripple Crack",
-    "nameEn": "Cripple Crack",
+    "id": "station-creepy-creek",
+    "name": "Stanice Creepy Creek",
+    "nameEn": "Creepy Creek",
     "expansion": "train-robbery",
     "expansionName": "Velká vlaková loupež",
     "type": "station",
@@ -5685,6 +5691,7 @@ window.BANG_CARDS = [
     "tags": [
       "stanice",
       "cena",
+      "creepy creek",
       "piky"
     ],
     "image": "assets/cards/05_velka_vlakova_loupez/creepy-creek.webp",
@@ -7816,7 +7823,7 @@ window.BANG_CARDS = [
   {
     "id": "feat-vlak-do-yoomy",
     "name": "Čin: Vlak do Yoomy",
-    "nameEn": "Feat: 3:10 to Yuma",
+    "nameEn": "Feat: 3:15 to Yooma",
     "expansion": "legends",
     "expansionName": "Legendy",
     "type": "feat",

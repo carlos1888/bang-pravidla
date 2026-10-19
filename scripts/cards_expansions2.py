@@ -414,9 +414,9 @@ EXPANSIONS2_CARDS = [
         "tags": ["stanice", "cena", "odhoď vedle"]
     },
     {
-        "id": "station-silverado",
-        "name": "Stanice Silverado",
-        "nameEn": "Silverado",
+        "id": "station-crown-s-hole",
+        "name": "Stanice Crown's Hole",
+        "nameEn": "Crown's Hole",
         "expansion": "train-robbery",
         "expansionName": "Velká vlaková loupež",
         "type": "station",
@@ -429,12 +429,12 @@ EXPANSIONS2_CARDS = [
         "effect": "Cena za nákup přiřazeného vagonu: Odhoďte z ruky nebo ze hry 1 kartu Pivo.",
         "timing": "Fáze 2 při nákupu vagonu",
         "rulings": ["Lze využít i ve 2 hráčích k nákupu vagonu."],
-        "tags": ["stanice", "cena", "odhoď pivo"]
+        "tags": ["stanice", "cena", "crowns hole", "odhoď pivo"]
     },
     {
-        "id": "station-callico",
-        "name": "Stanice Callico",
-        "nameEn": "Callico",
+        "id": "station-catico",
+        "name": "Stanice Catico",
+        "nameEn": "Catico",
         "expansion": "train-robbery",
         "expansionName": "Velká vlaková loupež",
         "type": "station",
@@ -447,7 +447,7 @@ EXPANSIONS2_CARDS = [
         "effect": "Cena za nákup přiřazeného vagonu: Odhoďte 1 kartu Panika! nebo Cat Balou.",
         "timing": "Fáze 2 při nákupu vagonu",
         "rulings": ["Karta může být z ruky nebo ze hry."],
-        "tags": ["stanice", "cena", "panika", "cat balou"]
+        "tags": ["stanice", "cena", "catico", "panika", "cat balou"]
     },
     {
         "id": "station-deathwood",
@@ -486,9 +486,9 @@ EXPANSIONS2_CARDS = [
         "tags": ["stanice", "cena", "ztráta života"]
     },
     {
-        "id": "station-virginian-city",
-        "name": "Stanice Virginian City",
-        "nameEn": "Virginian City",
+        "id": "station-virginia-town",
+        "name": "Stanice Virginia Town",
+        "nameEn": "Virginia Town",
         "expansion": "train-robbery",
         "expansionName": "Velká vlaková loupež",
         "type": "station",
@@ -501,7 +501,7 @@ EXPANSIONS2_CARDS = [
         "effect": "Cena za nákup přiřazeného vagonu: Odhoďte 2 libovolné karty z ruky a/nebo ze hry.",
         "timing": "Fáze 2 při nákupu vagonu",
         "rulings": ["Můžete kombinovat karty z ruky i z vyložených karet."],
-        "tags": ["stanice", "cena", "2 karty"]
+        "tags": ["stanice", "cena", "virginia town", "odhoď 2 karty"]
     },
     {
         "id": "station-yooma",
@@ -522,9 +522,9 @@ EXPANSIONS2_CARDS = [
         "tags": ["stanice", "cena", "hodnota 2-9"]
     },
     {
-        "id": "station-fort-woth",
-        "name": "Stanice Fort Woth",
-        "nameEn": "Fort Woth",
+        "id": "station-fort-wroth",
+        "name": "Stanice Fort Wroth",
+        "nameEn": "Fort Wroth",
         "expansion": "train-robbery",
         "expansionName": "Velká vlaková loupež",
         "type": "station",
@@ -537,12 +537,12 @@ EXPANSIONS2_CARDS = [
         "effect": "Cena za nákup přiřazeného vagonu: Odhoďte kartu s hodnotou 10, J, Q, K nebo A.",
         "timing": "Fáze 2 při nákupu vagonu",
         "rulings": ["Barva karty nerozhoduje."],
-        "tags": ["stanice", "cena", "figury a esa"]
+        "tags": ["stanice", "cena", "fort wroth", "vysoká hodnota"]
     },
     {
-        "id": "station-santa-fe",
-        "name": "Stanice Santa Fe",
-        "nameEn": "Santa Fe",
+        "id": "station-san-tafe",
+        "name": "Stanice San Tafe",
+        "nameEn": "San Tafe",
         "expansion": "train-robbery",
         "expansionName": "Velká vlaková loupež",
         "type": "station",
@@ -555,12 +555,12 @@ EXPANSIONS2_CARDS = [
         "effect": "Cena za nákup přiřazeného vagonu: Odhoďte jakoukoli srdcovou kartu (♥).",
         "timing": "Fáze 2 při nákupu vagonu",
         "rulings": ["Hodnota karty nerozhoduje."],
-        "tags": ["stanice", "cena", "srdce"]
+        "tags": ["stanice", "cena", "san tafe", "srdce"]
     },
     {
-        "id": "station-oathman",
-        "name": "Stanice Oathman",
-        "nameEn": "Oathman",
+        "id": "station-miner-s-oath",
+        "name": "Stanice Miner's Oath",
+        "nameEn": "Miner's Oath",
         "expansion": "train-robbery",
         "expansionName": "Velká vlaková loupež",
         "type": "station",
@@ -573,12 +573,12 @@ EXPANSIONS2_CARDS = [
         "effect": "Cena za nákup přiřazeného vagonu: Odhoďte jakoukoli károvou kartu (♦).",
         "timing": "Fáze 2 při nákupu vagonu",
         "rulings": ["Hodnota karty nerozhoduje."],
-        "tags": ["stanice", "cena", "káry"]
+        "tags": ["stanice", "cena", "miners oath", "káry"]
     },
     {
-        "id": "station-st-francis",
-        "name": "Stanice St. Francis",
-        "nameEn": "St. Francis",
+        "id": "station-frisco",
+        "name": "Stanice Frisco",
+        "nameEn": "Frisco",
         "expansion": "train-robbery",
         "expansionName": "Velká vlaková loupež",
         "type": "station",
@@ -591,12 +591,12 @@ EXPANSIONS2_CARDS = [
         "effect": "Cena za nákup přiřazeného vagonu: Odhoďte jakoukoli křížovou kartu (♣).",
         "timing": "Fáze 2 při nákupu vagonu",
         "rulings": ["Hodnota karty nerozhoduje."],
-        "tags": ["stanice", "cena", "kříže"]
+        "tags": ["stanice", "cena", "frisco", "kříže"]
     },
     {
-        "id": "station-cripple-crack",
-        "name": "Stanice Cripple Crack",
-        "nameEn": "Cripple Crack",
+        "id": "station-creepy-creek",
+        "name": "Stanice Creepy Creek",
+        "nameEn": "Creepy Creek",
         "expansion": "train-robbery",
         "expansionName": "Velká vlaková loupež",
         "type": "station",
@@ -609,7 +609,7 @@ EXPANSIONS2_CARDS = [
         "effect": "Cena za nákup přiřazeného vagonu: Odhoďte jakoukoli pikovou kartu (♠).",
         "timing": "Fáze 2 při nákupu vagonu",
         "rulings": ["Hodnota karty nerozhoduje."],
-        "tags": ["stanice", "cena", "piky"]
+        "tags": ["stanice", "cena", "creepy creek", "piky"]
     },
 
     # --- AKČNÍ KARTY (TRAIN ROBBERY) ---
