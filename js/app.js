@@ -736,12 +736,12 @@
       <div class="card-modal-layout ${card.image ? 'has-image' : 'no-image'}">
         ${imageColHtml}
         <div class="card-modal-info-col">
-          <div style="border-bottom: 2px solid var(--border-color); padding-bottom: 0.85rem; margin-bottom: 1.2rem;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+          <div class="card-modal-header">
+            <div class="card-modal-header-top">
               <span class="card-badge" style="font-size: 0.85rem; display: inline-block;">${cardBadge} • ${cardTypeLabel}</span>
               ${modalSuitHtml}
             </div>
-            <h2 style="font-size: 2rem; font-family: 'Georgia', serif; color: var(--text-main); line-height: 1.2;">${cardTitle}</h2>
+            <h2 class="card-modal-title">${cardTitle}</h2>
           </div>
 
           <div style="background: var(--bg-surface); padding: 1.15rem; border-radius: 8px; margin-bottom: 1.25rem; border-left: 4px solid var(--color-brown);">
@@ -766,6 +766,11 @@
     els.cardModal.classList.toggle('has-image', !!card.image);
     els.cardModal.classList.add('active');
     document.body.style.overflow = 'hidden';
+
+    const modalContentEl = els.cardModal.querySelector('.modal-content');
+    if (modalContentEl) {
+      modalContentEl.scrollTop = 0;
+    }
 
     const pinBtn = document.getElementById('btn-pin-character');
     if (pinBtn) {
@@ -933,7 +938,7 @@
 
     els.modalBody.innerHTML = `
       <div style="padding: 0.5rem;">
-        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--border-color); padding-bottom: 0.85rem; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.75rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--border-color); padding-bottom: 0.85rem; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.75rem; padding-right: 3.5rem;">
           <h2 style="font-family: 'Georgia', serif; font-size: 1.6rem; color: var(--color-brown); margin: 0;">
             ⚖️ ${isEn ? 'Card Comparison' : 'Porovnání karet'}
           </h2>
@@ -976,6 +981,11 @@
     els.cardModal.classList.remove('has-image');
     els.cardModal.classList.add('active');
     document.body.style.overflow = 'hidden';
+
+    const modalContentEl = els.cardModal.querySelector('.modal-content');
+    if (modalContentEl) {
+      modalContentEl.scrollTop = 0;
+    }
   }
 
   // =========================================================================

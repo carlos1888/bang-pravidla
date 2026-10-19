@@ -784,10 +784,9 @@ main.app-main {
 }
 
 .modal-close {
-  position: sticky;
-  top: 0.5rem;
-  right: 0.5rem;
-  float: right;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
   z-index: 120;
   background: var(--bg-card);
   border: 2px solid var(--border-color);
@@ -804,8 +803,9 @@ main.app-main {
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
   transition: all 0.15s ease;
   pointer-events: auto;
-  margin-top: -0.5rem;
-  margin-right: -0.5rem;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
 }
 
 .modal-close:hover,
@@ -814,6 +814,31 @@ main.app-main {
   color: #fff;
   border-color: var(--accent-red);
   transform: scale(1.08);
+}
+
+.card-modal-header {
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 0.85rem;
+  margin-bottom: 1.2rem;
+  padding-right: 3.5rem; /* Essential clearance: prevents badge, suits or title from overlapping the close button */
+}
+
+.card-modal-header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.4rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.card-modal-title {
+  font-size: 2rem;
+  font-family: 'Georgia', serif;
+  color: var(--text-main);
+  line-height: 1.2;
+  margin: 0;
+  word-break: break-word;
 }
 
 /* Card Modal with Image Layout */
@@ -2804,13 +2829,16 @@ footer.app-footer {
   }
 
   .modal-close {
-    top: 0.4rem;
-    right: 0.4rem;
+    top: 0.65rem;
+    right: 0.65rem;
     width: 44px;
     height: 44px;
     font-size: 1.35rem;
-    margin-top: -0.35rem;
-    margin-right: -0.35rem;
+    margin: 0;
+  }
+
+  .card-modal-header {
+    padding-right: 3.25rem;
   }
 
   /* --- Footer --- */
