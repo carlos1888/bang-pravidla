@@ -1,5 +1,5 @@
 // BANG! Rules & Encyclopedia Service Worker (PWA Offline Support)
-const CACHE_NAME = 'bang-pravidla-v8';
+const CACHE_NAME = 'bang-pravidla-v9';
 
 const STATIC_ASSETS = [
   './',
@@ -26,7 +26,12 @@ const STATIC_ASSETS = [
   './assets/audio/whip.m4a',
   './assets/audio/horse.m4a',
   './assets/audio/saloon_piano.m4a',
-  './assets/audio/wilhelm.m4a'
+  './assets/audio/wilhelm.m4a',
+  './assets/audio/gatling.m4a',
+  './assets/audio/indians.m4a',
+  './assets/audio/rattlesnake.m4a',
+  './assets/audio/jail.m4a',
+  './assets/audio/duel.m4a'
 ];
 
 self.addEventListener('install', (event) => {

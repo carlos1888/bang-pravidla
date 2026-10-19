@@ -18,7 +18,12 @@
     whip: 'assets/audio/whip.m4a',
     horse: 'assets/audio/horse.m4a',
     saloon: 'assets/audio/saloon_piano.m4a',
-    wilhelm: 'assets/audio/wilhelm.m4a'
+    wilhelm: 'assets/audio/wilhelm.m4a',
+    gatling: 'assets/audio/gatling.m4a',
+    indians: 'assets/audio/indians.m4a',
+    rattlesnake: 'assets/audio/rattlesnake.m4a',
+    jail: 'assets/audio/jail.m4a',
+    duel: 'assets/audio/duel.m4a'
   };
 
   const audioCache = {};
@@ -61,7 +66,12 @@
     playWhip: () => playAudioFile('whip'),
     playHorse: () => playAudioFile('horse'),
     playSaloon: () => playAudioFile('saloon'),
-    playWilhelm: () => playAudioFile('wilhelm')
+    playWilhelm: () => playAudioFile('wilhelm'),
+    playGatling: () => playAudioFile('gatling'),
+    playIndians: () => playAudioFile('indians'),
+    playRattlesnake: () => playAudioFile('rattlesnake'),
+    playJail: () => playAudioFile('jail'),
+    playDuel: () => playAudioFile('duel')
   };
 
   // =========================================================================

@@ -2432,13 +2432,18 @@
       { id: 'shot', icon: '💥', nameCs: 'Výstřel', nameEn: 'Gunshot', action: () => window.BANG_TOOLS.SoundFX.playShot() },
       { id: 'ricochet', icon: '⚡', nameCs: 'Odraz kulky', nameEn: 'Ricochet', action: () => window.BANG_TOOLS.SoundFX.playRicochet() },
       { id: 'dynamite', icon: '🧨', nameCs: 'Dynamit', nameEn: 'Dynamite', action: () => window.BANG_TOOLS.SoundFX.playDynamite() },
+      { id: 'gatling', icon: '🔫', nameCs: 'Gatling', nameEn: 'Gatling', action: () => window.BANG_TOOLS.SoundFX.playGatling() },
+      { id: 'indians', icon: '🏹', nameCs: 'Indiáni!', nameEn: 'Indians!', action: () => window.BANG_TOOLS.SoundFX.playIndians() },
+      { id: 'rattlesnake', icon: '🐍', nameCs: 'Chřestýš', nameEn: 'Rattlesnake', action: () => window.BANG_TOOLS.SoundFX.playRattlesnake() },
+      { id: 'jail', icon: '⛓️', nameCs: 'Vězení', nameEn: 'Jail', action: () => window.BANG_TOOLS.SoundFX.playJail() },
+      { id: 'duel', icon: '⚔️', nameCs: 'Duel', nameEn: 'Duel', action: () => window.BANG_TOOLS.SoundFX.playDuel() },
       { id: 'beer', icon: '🍺', nameCs: 'Pivo', nameEn: 'Beer', action: () => window.BANG_TOOLS.SoundFX.playBeer() },
+      { id: 'saloon', icon: '🎹', nameCs: 'Saloon piáno', nameEn: 'Saloon Piano', action: () => window.BANG_TOOLS.SoundFX.playSaloon() },
       { id: 'bell', icon: '🔔', nameCs: 'Umíráček', nameEn: 'Church Bell', action: () => window.BANG_TOOLS.SoundFX.playBell() },
       { id: 'train', icon: '🚂', nameCs: 'Parní vlak', nameEn: 'Steam Train', action: () => window.BANG_TOOLS.SoundFX.playTrain() },
       { id: 'coin', icon: '💰', nameCs: 'Zlaťáky', nameEn: 'Gold Coins', action: () => window.BANG_TOOLS.SoundFX.playCoin() },
       { id: 'whip', icon: '🤠', nameCs: 'Bič', nameEn: 'Bullwhip', action: () => window.BANG_TOOLS.SoundFX.playWhip() },
       { id: 'horse', icon: '🐎', nameCs: 'Kůň', nameEn: 'Mustang', action: () => window.BANG_TOOLS.SoundFX.playHorse() },
-      { id: 'saloon', icon: '🎹', nameCs: 'Saloon piáno', nameEn: 'Saloon Piano', action: () => window.BANG_TOOLS.SoundFX.playSaloon() },
       { id: 'wilhelm', icon: '😱', nameCs: 'Wilhelmův křik', nameEn: 'Wilhelm Scream', action: () => window.BANG_TOOLS.SoundFX.playWilhelm() }
     ];
 
@@ -2446,7 +2451,7 @@
       <div class="tool-card-box">
         <div class="tool-card-header">
           <h2><span>🔊</span> ${isEn ? 'Wild West Soundboard' : 'Westernový Soundboard'}</h2>
-          <p class="tool-card-lead">${isEn ? 'Cinematic sound effects from the Wild West: real Colt .45 gunshots, ricochets, saloon piano, and dynamite. Fully cached for 100% offline play.' : 'Skutečné filmové zvukové efekty Divokého západu: výstřely z Coltu .45, odrazy kulek, saloonové piáno i dynamit. Funguje 100% i offline bez internetu.'}</p>
+          <p class="tool-card-lead">${isEn ? 'Cinematic sound effects from the Wild West and BANG! game: Colt .45, Gatling, Indians!, Rattlesnake, Duel, Jail, and cold beer. Fully cached for 100% offline play.' : 'Filmové a herní zvukové efekty ze hry BANG! a Divokého západu: Colt .45, Gatling, Indiáni!, Chřestýš, Duel, Vězení i poctivé vychlazené pivo. Funguje 100% i offline bez internetu.'}</p>
         </div>
 
         <div class="soundboard-grid">
