@@ -1231,6 +1231,7 @@
     totalPlayers: 5,
     shooterIdx: 0,
     targetIdx: 2,
+    mode: 'target',
     weaponId: 'colt',
     appaloosa: false,
     binoculars: false,
@@ -1298,14 +1299,16 @@
     }
   }
 
-  // 1. DISTANCE CALCULATOR
+  // 1. DISTANCE CALCULATOR WITH SALOON POKER TABLE
   function renderDistanceCalc(container) {
     const isEn = state.lang === 'en';
     const weapons = window.BANG_TOOLS ? window.BANG_TOOLS.DistanceCalc.weapons : [];
-    const selectedWeapon = weapons.find(w => w.id === calcParams.weaponId) || weapons[0] || { range: 1 };
+    const selectedWeapon = weapons.find(w => w.id === calcParams.weaponId) || weapons[0] || { range: 1, nameCs: 'Colt .45', nameEn: 'Colt .45' };
 
     const calcResult = window.BANG_TOOLS.DistanceCalc.calculate({
-      seatDistance: window.BANG_TOOLS.DistanceCalc.getSeatDistance(calcParams.shooterIdx, calcParams.targetIdx, calcParams.totalPlayers),
+      shooterIdx: calcParams.shooterIdx,
+      targetIdx: calcParams.targetIdx,
+      totalPlayers: calcParams.totalPlayers,
       shooterWeaponRange: selectedWeapon.range,
       shooterAppaloosa: calcParams.appaloosa,
       shooterBinoculars: calcParams.binoculars,
@@ -1316,44 +1319,199 @@
       globalZvonice: calcParams.zvonice
     });
 
-    let seatButtonsHtml = '';
+    const dir = calcResult.directionDetails || { clockwise: 1, counterClockwise: 1, shortest: 1, direction: 'cw' };
+
+    // Table Geometry for SVG
+    const cx = 350;
+    const cy = 230;
+    const rxSeat = 265;
+    const rySeat = 168;
+
+    const seatCoords = [];
+    let seatsSvg = '';
+
     for (let i = 0; i < calcParams.totalPlayers; i++) {
+      const theta = (2 * Math.PI * i / calcParams.totalPlayers) - (Math.PI / 2);
+      const sx = Math.round(cx + rxSeat * Math.cos(theta));
+      const sy = Math.round(cy + rySeat * Math.sin(theta));
+      seatCoords.push({ x: sx, y: sy });
+
       const isShooter = i === calcParams.shooterIdx;
       const isTarget = i === calcParams.targetIdx;
-      let cls = 'seat-btn';
-      let roleLabel = `${i + 1}`;
+      const seatDist = window.BANG_TOOLS.DistanceCalc.getSeatDistance(calcParams.shooterIdx, i, calcParams.totalPlayers);
+
+      let strokeColor = '#8b5a2b';
+      let strokeWidth = '2';
+      let fillColor = '#2b170e';
+      let icon = '👤';
+      let roleTitle = `${isEn ? 'Player' : 'Hráč'} ${i + 1}`;
+      let titleColor = '#d2b48c';
+
       if (isShooter) {
-        cls += ' active-shooter';
-        roleLabel = `🤠 ${isEn ? 'Shooter' : 'Střelec'} (${i + 1})`;
+        strokeColor = '#f39c12';
+        strokeWidth = '4';
+        fillColor = '#c0392b';
+        icon = '🤠';
+        roleTitle = isEn ? 'SHOOTER' : 'STŘELEC';
+        titleColor = '#ffeb3b';
       } else if (isTarget) {
-        cls += ' active-target';
-        roleLabel = `🎯 ${isEn ? 'Target' : 'Cíl'} (${i + 1})`;
+        strokeColor = '#ffffff';
+        strokeWidth = '4';
+        fillColor = '#2980b9';
+        icon = '🎯';
+        roleTitle = isEn ? 'TARGET' : 'CÍL';
+        titleColor = '#ffffff';
       }
-      seatButtonsHtml += `<button type="button" class="${cls}" data-seat="${i}">${roleLabel}</button>`;
+
+      // Distance indicator badge for non-shooters
+      let distBadge = '';
+      if (!isShooter) {
+        distBadge = `
+          <g transform="translate(0, 36)">
+            <rect x="-30" y="-10" width="60" height="20" rx="10" fill="${isTarget ? '#2980b9' : '#1c262f'}" stroke="${isTarget ? '#ffffff' : '#8b5a2b'}" stroke-width="1.5" />
+            <text x="0" y="4" text-anchor="middle" font-size="11" font-weight="bold" fill="#ffffff">${isEn ? 'Dist' : 'Vzdál'}: ${seatDist}</text>
+          </g>
+        `;
+      }
+
+      // Equipment chips above seat
+      let equipBadge = '';
+      if (isShooter) {
+        const wShort = (isEn ? selectedWeapon.nameEn : selectedWeapon.nameCs).split(' ')[0];
+        equipBadge = `
+          <g transform="translate(0, -36)">
+            <rect x="-44" y="-10" width="88" height="20" rx="10" fill="#c0392b" stroke="#ffeb3b" stroke-width="1.5" />
+            <text x="0" y="4" text-anchor="middle" font-size="10" font-weight="900" fill="#ffffff">🔫 ${wShort} (${selectedWeapon.range})</text>
+          </g>
+        `;
+      } else if (isTarget && (calcParams.mustang || calcParams.hideout || calcParams.paulRegret)) {
+        const mods = [];
+        if (calcParams.mustang) mods.push('🐴+1');
+        if (calcParams.hideout) mods.push('🏕️+1');
+        if (calcParams.paulRegret) mods.push('🤠+1');
+        equipBadge = `
+          <g transform="translate(0, -36)">
+            <rect x="-38" y="-10" width="76" height="20" rx="10" fill="#27ae60" stroke="#ffffff" stroke-width="1.5" />
+            <text x="0" y="4" text-anchor="middle" font-size="10" font-weight="900" fill="#ffffff">${mods.join(' ')}</text>
+          </g>
+        `;
+      }
+
+      seatsSvg += `
+        <g class="table-seat-node ${isShooter ? 'is-shooter' : ''} ${isTarget ? 'is-target' : ''}" data-seat="${i}" transform="translate(${sx}, ${sy})">
+          <circle r="32" fill="#3d2314" stroke="${strokeColor}" stroke-width="${strokeWidth}" />
+          <circle r="26" fill="${fillColor}" />
+          <text x="0" y="-2" text-anchor="middle" font-size="20">${icon}</text>
+          <text x="0" y="15" text-anchor="middle" font-size="10" font-weight="900" fill="${titleColor}">${roleTitle}</text>
+          ${distBadge}
+          ${equipBadge}
+        </g>
+      `;
+    }
+
+    const shooterPos = seatCoords[calcParams.shooterIdx] || { x: cx, y: cy - rySeat };
+    const targetPos = seatCoords[calcParams.targetIdx] || { x: cx, y: cy + rySeat };
+    const sightlineClass = calcResult.canBang ? 'sightline-in-range' : 'sightline-out-range';
+
+    // Decorative brass rivet studs around table rim
+    let studsSvg = '';
+    const numStuds = 28;
+    for (let s = 0; s < numStuds; s++) {
+      const a = (2 * Math.PI * s / numStuds);
+      const stX = Math.round(cx + 216 * Math.cos(a));
+      const stY = Math.round(cy + 136 * Math.sin(a));
+      studsSvg += `<circle cx="${stX}" cy="${stY}" r="2.5" fill="#d4af37" opacity="0.85" />`;
     }
 
     container.innerHTML = `
       <div class="tool-card-box">
         <div class="tool-card-header">
-          <h2><span>📏</span> ${isEn ? 'Distance & Range Calculator' : 'Kalkulačka vzdálenosti a dostřelu'}</h2>
-          <p class="tool-card-lead">${isEn ? 'Resolve shooting disputes instantly with active seat distance, weapon range, scopes and defensive horses.' : 'Okamžité vyřešení sporu u stolu: výpočet skutečné vzdálenosti, dosahu zbraně, modifikátorů a karet Panika! či BANG!.'}</p>
+          <h2><span>📏</span> ${isEn ? 'Saloon Distance & Range Calculator' : 'Kalkulačka vzdálenosti a dostřelu u stolu'}</h2>
+          <p class="tool-card-lead">${isEn ? 'Authentic round poker table view as featured in the BANG! rules. Click any seat to designate Shooter or Target!' : 'Věrná vizualizace stolu podle oficiálních pravidel hry BANG!. Klepněte na libovolnou židli pro výběr Střelce či Cíle!'}</p>
         </div>
 
-        <div style="margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
-          <label style="font-weight: 700; font-size: 0.95rem;">${isEn ? 'Players seated around table:' : 'Počet hráčů u stolu:'}</label>
-          <div style="display: flex; gap: 0.35rem;">
-            ${[4, 5, 6, 7, 8].map(n => `
-              <button type="button" class="seat-btn ${n === calcParams.totalPlayers ? 'active-shooter' : ''}" data-total="${n}">${n}</button>
-            `).join('')}
-          </div>
-        </div>
+        <div class="saloon-table-container">
+          <div class="table-controls-bar">
+            <div style="display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap;">
+              <span style="font-weight: 800; font-size: 0.92rem; color: var(--color-brown);">
+                👥 ${isEn ? 'Players at table:' : 'Hráčů u stolu:'}
+              </span>
+              <div style="display: flex; gap: 0.35rem;">
+                ${[4, 5, 6, 7, 8].map(n => `
+                  <button type="button" class="seat-btn ${n === calcParams.totalPlayers ? 'active-shooter' : ''}" data-total="${n}">${n}</button>
+                `).join('')}
+              </div>
+            </div>
 
-        <div style="margin-bottom: 1.5rem;">
-          <div style="font-weight: 700; font-size: 0.92rem; margin-bottom: 0.5rem; color: var(--color-brown);">
-            ${isEn ? 'Click to select Shooter (red) and Target (blue):' : 'Kliknutím zvolte Střelce (červený) a Cíl (modrý):'}
+            <div class="table-mode-toggle">
+              <button type="button" class="table-mode-btn ${calcParams.mode === 'shooter' ? 'active mode-shooter' : ''}" id="btn-mode-shooter">
+                🤠 ${isEn ? 'Pick Shooter' : 'Zvolit Střelce'}
+              </button>
+              <button type="button" class="table-mode-btn ${calcParams.mode === 'target' ? 'active mode-target' : ''}" id="btn-mode-target">
+                🎯 ${isEn ? 'Pick Target' : 'Zvolit Cíl'}
+              </button>
+            </div>
           </div>
-          <div class="seat-picker-wrap" id="calc-seats-wrap">
-            ${seatButtonsHtml}
+
+          <div class="saloon-table-svg-wrap">
+            <svg class="saloon-table-svg" viewBox="0 0 700 460">
+              <defs>
+                <radialGradient id="tableWoodGrad" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#4d2711" />
+                  <stop offset="85%" stop-color="#2c1409" />
+                  <stop offset="100%" stop-color="#190a04" />
+                </radialGradient>
+                <radialGradient id="tableFeltGrad" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#246e3b" />
+                  <stop offset="70%" stop-color="#184e29" />
+                  <stop offset="100%" stop-color="#0e341b" />
+                </radialGradient>
+              </defs>
+
+              <!-- Table Drop Shadow -->
+              <ellipse cx="350" cy="236" rx="228" ry="148" fill="rgba(0,0,0,0.3)" />
+
+              <!-- Outer Wood Table Rim -->
+              <ellipse cx="350" cy="230" rx="224" ry="144" fill="url(#tableWoodGrad)" stroke="#140803" stroke-width="5" />
+
+              <!-- Brass Studs -->
+              ${studsSvg}
+
+              <!-- Inner Poker Green Felt -->
+              <ellipse cx="350" cy="230" rx="198" ry="120" fill="url(#tableFeltGrad)" stroke="#348a4f" stroke-width="2.5" />
+
+              <!-- Watermark -->
+              <text x="350" y="145" text-anchor="middle" font-family="'Georgia', serif" font-size="14" font-weight="900" fill="rgba(255,255,255,0.07)" letter-spacing="4">
+                ★ BANG! SALOON POKER TABLE ★
+              </text>
+
+              <!-- Sightline / Line of Fire -->
+              <line x1="${shooterPos.x}" y1="${shooterPos.y}" x2="${targetPos.x}" y2="${targetPos.y}" class="${sightlineClass}" />
+
+              <!-- Bullet on Sightline -->
+              <circle id="svg-bullet" cx="${shooterPos.x}" cy="${shooterPos.y}" r="6" fill="#ffd700" stroke="#d35400" stroke-width="2" style="opacity: 0; pointer-events: none;" />
+
+              <!-- Center Distance Readout Plate -->
+              <g transform="translate(350, 230)">
+                <rect x="-140" y="-38" width="280" height="76" rx="12" fill="#0c2615" stroke="#d4af37" stroke-width="2" />
+                <text x="0" y="-10" text-anchor="middle" font-family="'Georgia', serif" font-size="16" font-weight="bold" fill="#ffd700">
+                  🎯 ${isEn ? 'EFFECTIVE DISTANCE' : 'SKUTEČNÁ VZDÁLENOST'}: ${calcResult.actualDistance} ${isEn ? (calcResult.actualDistance === 1 ? 'SEAT' : 'SEATS') : (calcResult.actualDistance === 1 ? 'MÍSTO' : (calcResult.actualDistance < 5 ? 'MÍSTA' : 'MÍST'))}
+                </text>
+                <text x="0" y="12" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#ffffff" opacity="0.95">
+                  ↻ ${isEn ? 'Clockwise' : 'Po směru'}: ${dir.clockwise} | ↺ ${isEn ? 'Counter-CW' : 'Proti směru'}: ${dir.counterClockwise}
+                </text>
+                <text x="0" y="27" text-anchor="middle" font-size="10.5" fill="#a3d9a5">
+                  ${isEn ? 'Shortest table distance' : 'Základ u stolu (nejkratší)'}: ${dir.shortest} ${isEn ? 'seats' : (dir.shortest === 1 ? 'místo' : 'místa')}
+                </text>
+              </g>
+
+              <!-- Player Chairs -->
+              ${seatsSvg}
+            </svg>
+          </div>
+
+          <div class="table-instruction-hint">
+            💡 ${isEn ? 'Tap any seat to select who is shooting and who is being targeted. The table calculates the shortest direction (clockwise vs counter-clockwise) automatically.' : 'Klepněte na libovolnou židli pro výběr střelce či cíle. Stůl automaticky počítá nejkratší vzdálenost (po směru i proti směru hodinových ručiček).'}
           </div>
         </div>
 
@@ -1409,7 +1567,7 @@
           <div class="calc-stat-row">
             <div class="calc-stat-card">
               <div class="calc-stat-num">${calcResult.seatDistance}</div>
-              <div class="calc-stat-lbl">${isEn ? 'Base Table Distance' : 'Míst v kruhu'}</div>
+              <div class="calc-stat-lbl">${isEn ? 'Base Table Distance' : 'Míst v kruhu (základ)'}</div>
             </div>
             <div class="calc-stat-card">
               <div class="calc-stat-num" style="color: #2980b9;">${calcResult.actualDistance}</div>
@@ -1438,16 +1596,17 @@
 
           <div style="margin-top: 1.25rem; font-size: 0.9rem; color: var(--text-muted); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
             <div>
-              <strong>${isEn ? 'Formula:' : 'Vzorec:'}</strong> ${isEn ? 'Base' : 'Kruh'} (${calcResult.seatDistance}) ${calcResult.targetMods ? `+ Obrana (+${calcResult.targetMods})` : ''} ${calcResult.shooterMods ? `- Hledí (-${calcResult.shooterMods})` : ''} = <strong>${calcResult.actualDistance}</strong>.
+              <strong>${isEn ? 'Calculation:' : 'Výpočet:'}</strong> ${isEn ? 'Table seats' : 'Základ u stolu'} (${calcResult.seatDistance}) ${calcResult.targetMods ? `+ ${isEn ? 'Defense' : 'Obrana'} (+${calcResult.targetMods})` : ''} ${calcResult.shooterMods ? `- ${isEn ? 'Sight' : 'Hledí'} (-${calcResult.shooterMods})` : ''} = <strong>${calcResult.actualDistance}</strong>.
             </div>
-            <button type="button" class="btn-reset-filters" id="btn-sound-shot" style="display: inline-flex; align-items: center; gap: 0.4rem; font-weight: 700;">
-              <span>💥</span> ${isEn ? 'Test Gunshot' : 'Otestovat výstřel'}
+            <button type="button" class="btn-reset-filters" id="btn-sound-shot" style="display: inline-flex; align-items: center; gap: 0.4rem; font-weight: 800; font-size: 0.95rem; padding: 0.65rem 1.2rem; background: var(--color-brown); color: #fff;">
+              <span>💥</span> ${isEn ? 'Test Shot on Table' : 'Otestovat výstřel na stůl'}
             </button>
           </div>
         </div>
       </div>
     `;
 
+    // Handle Total Players change
     container.querySelectorAll('[data-total]').forEach(btn => {
       btn.addEventListener('click', () => {
         calcParams.totalPlayers = parseInt(btn.dataset.total, 10);
@@ -1457,20 +1616,50 @@
       });
     });
 
-    container.querySelectorAll('.seat-btn[data-seat]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const seat = parseInt(btn.dataset.seat, 10);
-        if (seat === calcParams.shooterIdx) return;
-        if (seat !== calcParams.targetIdx) {
-          calcParams.targetIdx = seat;
+    // Handle Mode Toggles
+    const modeShooterBtn = document.getElementById('btn-mode-shooter');
+    if (modeShooterBtn) {
+      modeShooterBtn.addEventListener('click', () => {
+        calcParams.mode = 'shooter';
+        renderDistanceCalc(container);
+      });
+    }
+
+    const modeTargetBtn = document.getElementById('btn-mode-target');
+    if (modeTargetBtn) {
+      modeTargetBtn.addEventListener('click', () => {
+        calcParams.mode = 'target';
+        renderDistanceCalc(container);
+      });
+    }
+
+    // Handle Seat Click
+    container.querySelectorAll('.table-seat-node[data-seat]').forEach(seatNode => {
+      seatNode.addEventListener('click', () => {
+        const seat = parseInt(seatNode.dataset.seat, 10);
+        if (calcParams.mode === 'shooter') {
+          if (seat !== calcParams.targetIdx) {
+            calcParams.shooterIdx = seat;
+            calcParams.mode = 'target'; // Auto advance to target pick
+          } else {
+            // Swap if clicked target
+            calcParams.targetIdx = calcParams.shooterIdx;
+            calcParams.shooterIdx = seat;
+          }
         } else {
-          calcParams.targetIdx = calcParams.shooterIdx;
-          calcParams.shooterIdx = seat;
+          if (seat !== calcParams.shooterIdx) {
+            calcParams.targetIdx = seat;
+          } else {
+            // Swap if clicked shooter
+            calcParams.shooterIdx = calcParams.targetIdx;
+            calcParams.targetIdx = seat;
+          }
         }
         renderDistanceCalc(container);
       });
     });
 
+    // Handle Weapon Change
     const wSelect = document.getElementById('calc-weapon');
     if (wSelect) {
       wSelect.addEventListener('change', (e) => {
@@ -1479,6 +1668,7 @@
       });
     }
 
+    // Handle Checkboxes
     const bindChk = (id, key) => {
       const el = document.getElementById(id);
       if (el) {
@@ -1497,9 +1687,28 @@
     bindChk('chk-paulregret', 'paulRegret');
     bindChk('chk-zvonice', 'zvonice');
 
+    // Handle Test Shot Button with Animation & Authentic Audio
     const shotBtn = document.getElementById('btn-sound-shot');
     if (shotBtn) {
       shotBtn.addEventListener('click', () => {
+        const bullet = document.getElementById('svg-bullet');
+        if (bullet) {
+          bullet.setAttribute('cx', shooterPos.x);
+          bullet.setAttribute('cy', shooterPos.y);
+          bullet.style.opacity = '1';
+          bullet.style.transition = 'all 0.35s cubic-bezier(0.2, 0.8, 0.4, 1)';
+          setTimeout(() => {
+            bullet.setAttribute('cx', targetPos.x);
+            bullet.setAttribute('cy', targetPos.y);
+          }, 20);
+          setTimeout(() => {
+            bullet.style.opacity = '0';
+            bullet.style.transition = 'none';
+            bullet.setAttribute('cx', shooterPos.x);
+            bullet.setAttribute('cy', shooterPos.y);
+          }, 400);
+        }
+
         if (calcResult.canBang) {
           window.BANG_TOOLS.SoundFX.playShot();
         } else {
@@ -2181,24 +2390,28 @@
     }
   }
 
-  // 6. WESTERN SOUNDBOARD
+  // 6. WESTERN SOUNDBOARD (AUTHENTIC CINEMATIC WILD WEST SOUNDS)
   function renderSoundboard(container) {
     const isEn = state.lang === 'en';
     const sounds = [
-      { id: 'shot', icon: '💥', nameCs: 'Výstřel BANG!', nameEn: 'Gunshot BANG!', descCs: 'Výstřel z revolveru Colt .45', descEn: 'Colt .45 revolver shot', action: () => window.BANG_TOOLS.SoundFX.playShot() },
-      { id: 'dynamite', icon: '🧨', nameCs: 'Dynamit', nameEn: 'Dynamite', descCs: 'Syčení zápalné šňůry a exploze', descEn: 'Fuse hiss & blast explosion', action: () => window.BANG_TOOLS.SoundFX.playDynamite() },
-      { id: 'beer', icon: '🍺', nameCs: 'Pivo / Saloon', nameEn: 'Beer / Saloon', descCs: 'Cinknutí sklenic na zdraví', descEn: 'Glass clink & toast', action: () => window.BANG_TOOLS.SoundFX.playBeer() },
-      { id: 'train', icon: '🚂', nameCs: 'Parní vlak', nameEn: 'Steam Train', descCs: 'Píšťala lokomotivy', descEn: 'Locomotive whistle', action: () => window.BANG_TOOLS.SoundFX.playTrain() },
-      { id: 'bell', icon: '🔔', nameCs: 'Zvonice', nameEn: 'Church Bell', descCs: 'Westernový zvon', descEn: 'Western church bell', action: () => window.BANG_TOOLS.SoundFX.playBell() },
-      { id: 'coin', icon: '💰', nameCs: 'Zlatý valoun', nameEn: 'Gold Nugget', descCs: 'Cinknutí ryzího zlata', descEn: 'Gold coin clink', action: () => window.BANG_TOOLS.SoundFX.playCoin() },
-      { id: 'ricochet', icon: '⚡', nameCs: 'Odrážka (Ricochet)', nameEn: 'Ricochet', descCs: 'Hvízdnutí kulky o skálu', descEn: 'Bullet ricochet whistle', action: () => window.BANG_TOOLS.SoundFX.playRicochet() }
+      { id: 'shot', icon: '💥', nameCs: 'Výstřel z revolveru', nameEn: 'Colt .45 Gunshot', descCs: 'Třaskavý výstřel legendárního Coltu', descEn: 'Thunderous single action blast', action: () => window.BANG_TOOLS.SoundFX.playShot() },
+      { id: 'ricochet', icon: '⚡', nameCs: 'Odraz kulky (Ricochet)', nameEn: 'Bullet Ricochet', descCs: 'Hvízdnutí odražené kulky z westernů', descEn: 'Classic cinematic ricochet whiz', action: () => window.BANG_TOOLS.SoundFX.playRicochet() },
+      { id: 'dynamite', icon: '🧨', nameCs: 'Exploze dynamitu', nameEn: 'Dynamite Blast', descCs: 'Drtivý výbuch s létajícími troskami', descEn: 'Massive blast with flying debris', action: () => window.BANG_TOOLS.SoundFX.playDynamite() },
+      { id: 'beer', icon: '🍺', nameCs: 'Saloon & Pivo', nameEn: 'Saloon & Cold Beer', descCs: 'Vystřelení zátky a nalití piva', descEn: 'Bottle cork pop & ice-cold pour', action: () => window.BANG_TOOLS.SoundFX.playBeer() },
+      { id: 'bell', icon: '🔔', nameCs: 'Kostelní umíráček', nameEn: 'High Noon Church Bell', descCs: 'Pochmurný zvon pro polední duel', descEn: 'Solemn duel church bell toll', action: () => window.BANG_TOOLS.SoundFX.playBell() },
+      { id: 'train', icon: '🚂', nameCs: 'Parní lokomotiva', nameEn: 'Steam Locomotive', descCs: 'Ostrá parní píšťala na prérii', descEn: 'Authentic steam train whistle', action: () => window.BANG_TOOLS.SoundFX.playTrain() },
+      { id: 'coin', icon: '💰', nameCs: 'Zlaté valouny', nameEn: 'Gold Coins Jingle', descCs: 'Cinkot zlatých mincí v truhle', descEn: 'Heavy gold coins dropped in box', action: () => window.BANG_TOOLS.SoundFX.playCoin() },
+      { id: 'whip', icon: '🤠', nameCs: 'Býčí bič honáka', nameEn: 'Cowboy Bullwhip', descCs: 'Hlasité prásknutí honáckým bičem', descEn: 'Sharp bullwhip sonic crack', action: () => window.BANG_TOOLS.SoundFX.playWhip() },
+      { id: 'horse', icon: '🐎', nameCs: 'Ržání mustanga', nameEn: 'Wild Mustang Neigh', descCs: 'Divoký kůň na prérii', descEn: 'Spirited wild horse whinny', action: () => window.BANG_TOOLS.SoundFX.playHorse() },
+      { id: 'saloon', icon: '🎹', nameCs: 'Saloon ragtime piano', nameEn: 'Saloon Honky-Tonk Piano', descCs: 'Scott Joplin 1902: The Entertainer', descEn: 'Vintage 1902 player piano ragtime', action: () => window.BANG_TOOLS.SoundFX.playSaloon() },
+      { id: 'wilhelm', icon: '😱', nameCs: 'Wilhelmův křik', nameEn: 'Wilhelm Scream', descCs: 'Slavný hollywoodský filmový řev bandity', descEn: 'Legendary movie outlaw death scream', action: () => window.BANG_TOOLS.SoundFX.playWilhelm() }
     ];
 
     container.innerHTML = `
       <div class="tool-card-box">
         <div class="tool-card-header">
-          <h2><span>🔊</span> ${isEn ? 'Western Soundboard (Web Audio Synthesizer)' : 'Westernový Soundboard (Zvukové efekty)'}</h2>
-          <p class="tool-card-lead">${isEn ? 'Pure browser audio synthesis – works offline with zero external audio files. Tap any tile to play.' : '100% nativní zvuková syntéza v prohlížeči. Běží bez stahování audio souborů a funguje i offline.'}</p>
+          <h2><span>🔊</span> ${isEn ? 'Wild West Soundboard' : 'Westernový Soundboard (Autentické zvuky)'}</h2>
+          <p class="tool-card-lead">${isEn ? 'Cinematic sound effects from the Wild West: real Colt .45 gunshots, ricochets, saloon piano, and dynamite. Fully cached for 100% offline play.' : 'Skutečné filmové zvukové efekty Divokého západu: výstřely z Coltu .45, odrazy kulek, saloonové piáno i dynamit. Funguje 100% i offline bez internetu.'}</p>
         </div>
 
         <div class="soundboard-grid">
@@ -2217,7 +2430,11 @@
       tile.addEventListener('click', () => {
         const sid = tile.dataset.snd;
         const targetSnd = sounds.find(s => s.id === sid);
-        if (targetSnd) targetSnd.action();
+        if (targetSnd) {
+          tile.classList.add('sound-tile-playing');
+          setTimeout(() => tile.classList.remove('sound-tile-playing'), 300);
+          targetSnd.action();
+        }
       });
     });
   }

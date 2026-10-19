@@ -3730,3 +3730,140 @@ footer.app-footer {
   color: var(--text-muted);
 }
 
+/* ==========================================================================
+   WESTERN SALOON POKER TABLE DISTANCE VISUALIZER
+   ========================================================================== */
+.saloon-table-container {
+  background: var(--bg-surface);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 1rem;
+  margin: 1.5rem 0;
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.table-controls-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  padding: 0 0.5rem;
+}
+
+.table-mode-toggle {
+  display: inline-flex;
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-color);
+  border-radius: 30px;
+  padding: 4px;
+  gap: 4px;
+}
+
+.table-mode-btn {
+  background: transparent;
+  border: none;
+  padding: 0.45rem 1rem;
+  border-radius: 24px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.table-mode-btn.active.mode-shooter {
+  background: #c0392b;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(192, 57, 43, 0.4);
+}
+
+.table-mode-btn.active.mode-target {
+  background: #2980b9;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(41, 128, 185, 0.4);
+}
+
+.saloon-table-svg-wrap {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  position: relative;
+  user-select: none;
+}
+
+.saloon-table-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.table-seat-node {
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-origin: center;
+}
+
+.table-seat-node:hover {
+  transform: scale(1.12);
+}
+
+.table-seat-node.is-shooter {
+  filter: drop-shadow(0 0 12px rgba(243, 156, 18, 0.8));
+}
+
+.table-seat-node.is-target {
+  filter: drop-shadow(0 0 12px rgba(231, 76, 60, 0.8));
+}
+
+.sightline-in-range {
+  stroke: #2ecc71;
+  stroke-width: 4;
+  stroke-dasharray: 8 4;
+  animation: laserPulse 1.2s infinite linear;
+}
+
+.sightline-out-range {
+  stroke: #e74c3c;
+  stroke-width: 3;
+  stroke-dasharray: 6 6;
+  opacity: 0.85;
+}
+
+@keyframes laserPulse {
+  0% { stroke-dashoffset: 24; }
+  100% { stroke-dashoffset: 0; }
+}
+
+@keyframes bulletTraverse {
+  0% {
+    opacity: 1;
+    transform: translate(var(--from-x), var(--from-y)) scale(1.4);
+  }
+  90% {
+    opacity: 1;
+    transform: translate(var(--to-x), var(--to-y)) scale(1.1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--to-x), var(--to-y)) scale(2);
+  }
+}
+
+.bullet-fly-active {
+  animation: bulletTraverse 0.4s ease-out forwards;
+}
+
+.table-instruction-hint {
+  text-align: center;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-top: 0.75rem;
+  font-style: italic;
+}
+

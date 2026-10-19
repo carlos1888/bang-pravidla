@@ -1,5 +1,5 @@
 // BANG! Rules & Encyclopedia Service Worker (PWA Offline Support)
-const CACHE_NAME = 'bang-pravidla-v2';
+const CACHE_NAME = 'bang-pravidla-v3';
 
 const STATIC_ASSETS = [
   './',
@@ -15,7 +15,18 @@ const STATIC_ASSETS = [
   './assets/bang-logo.webp',
   './assets/bang-logo.png',
   './assets/icon-192.png',
-  './assets/icon-512.png'
+  './assets/icon-512.png',
+  './assets/audio/gunshot.mp3',
+  './assets/audio/ricochet.m4a',
+  './assets/audio/dynamite.m4a',
+  './assets/audio/beer.m4a',
+  './assets/audio/church_bell.m4a',
+  './assets/audio/steam_train.m4a',
+  './assets/audio/coins.m4a',
+  './assets/audio/whip.m4a',
+  './assets/audio/horse.m4a',
+  './assets/audio/saloon_piano.m4a',
+  './assets/audio/wilhelm.m4a'
 ];
 
 self.addEventListener('install', (event) => {
@@ -50,8 +61,10 @@ self.addEventListener('fetch', (event) => {
 
   // For same-origin requests
   if (url.origin === location.origin) {
-    // Images: Cache first, fallback to network and cache dynamic
-    if (url.pathname.includes('/assets/') || url.pathname.endsWith('.webp') || url.pathname.endsWith('.png') || url.pathname.endsWith('.jpg')) {
+    // Media & Audio: Cache first, fallback to network and cache dynamic
+    if (url.pathname.includes('/assets/') || 
+        url.pathname.endsWith('.webp') || url.pathname.endsWith('.png') || url.pathname.endsWith('.jpg') ||
+        url.pathname.endsWith('.mp3') || url.pathname.endsWith('.m4a') || url.pathname.endsWith('.ogg')) {
       event.respondWith(
         caches.match(event.request).then((cached) => {
           if (cached) return cached;

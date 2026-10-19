@@ -3,22 +3,45 @@
   'use strict';
 
   // =========================================================================
-  // 1. WEB AUDIO API SYNTHESIZER (ZERO EXTERNAL FILES)
+  // 1. AUTHENTIC WILD WEST AUDIO ENGINE (HIGH QUALITY SOUND EFFECTS)
   // =========================================================================
-  let audioCtx = null;
   let soundEnabled = true;
 
-  function getAudioContext() {
-    if (!audioCtx) {
-      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-      if (AudioContextClass) {
-        audioCtx = new AudioContextClass();
+  const AUDIO_PATHS = {
+    shot: 'assets/audio/gunshot.mp3',
+    ricochet: 'assets/audio/ricochet.m4a',
+    dynamite: 'assets/audio/dynamite.m4a',
+    beer: 'assets/audio/beer.m4a',
+    bell: 'assets/audio/church_bell.m4a',
+    train: 'assets/audio/steam_train.m4a',
+    coins: 'assets/audio/coins.m4a',
+    whip: 'assets/audio/whip.m4a',
+    horse: 'assets/audio/horse.m4a',
+    saloon: 'assets/audio/saloon_piano.m4a',
+    wilhelm: 'assets/audio/wilhelm.m4a'
+  };
+
+  const audioCache = {};
+
+  function playAudioFile(key) {
+    if (!soundEnabled) return;
+    const path = AUDIO_PATHS[key];
+    if (!path) return;
+    try {
+      if (!audioCache[key]) {
+        audioCache[key] = new Audio(path);
       }
+      const sound = audioCache[key].cloneNode();
+      sound.volume = 0.95;
+      const promise = sound.play();
+      if (promise && promise.catch) {
+        promise.catch((err) => {
+          console.warn('[Audio] Playback issue:', err);
+        });
+      }
+    } catch (e) {
+      console.warn('[Audio] Audio error:', e);
     }
-    if (audioCtx && audioCtx.state === 'suspended') {
-      audioCtx.resume();
-    }
-    return audioCtx;
   }
 
   const SoundFX = {
@@ -27,197 +50,18 @@
       soundEnabled = enable !== undefined ? enable : !soundEnabled;
       return soundEnabled;
     },
-
-    // 💥 Revolver Shot BANG!
-    playShot: () => {
-      if (!soundEnabled) return;
-      const ctx = getAudioContext();
-      if (!ctx) return;
-      const now = ctx.currentTime;
-
-      // Noise burst for gunpowder blast
-      const bufferSize = ctx.sampleRate * 0.4;
-      const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
-      const data = buffer.getChannelData(0);
-      for (let i = 0; i < bufferSize; i++) {
-        data[i] = (Math.random() * 2 - 1) * Math.exp(-i / (ctx.sampleRate * 0.08));
-      }
-      const noise = ctx.createBufferSource();
-      noise.buffer = buffer;
-
-      const filter = ctx.createBiquadFilter();
-      filter.type = 'lowpass';
-      filter.frequency.setValueAtTime(1600, now);
-      filter.frequency.exponentialRampToValueAtTime(100, now + 0.35);
-
-      const gain = ctx.createGain();
-      gain.gain.setValueAtTime(0.8, now);
-      gain.gain.exponentialRampToValueAtTime(0.01, now + 0.35);
-
-      noise.connect(filter);
-      filter.connect(gain);
-      gain.connect(ctx.destination);
-      noise.start(now);
-    },
-
-    // 🧨 Dynamite Hiss & Explosion
-    playDynamite: () => {
-      if (!soundEnabled) return;
-      const ctx = getAudioContext();
-      if (!ctx) return;
-      const now = ctx.currentTime;
-
-      // Deep rumble explosion
-      const bufferSize = ctx.sampleRate * 0.8;
-      const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
-      const data = buffer.getChannelData(0);
-      for (let i = 0; i < bufferSize; i++) {
-        data[i] = (Math.random() * 2 - 1) * Math.exp(-i / (ctx.sampleRate * 0.25));
-      }
-      const noise = ctx.createBufferSource();
-      noise.buffer = buffer;
-
-      const filter = ctx.createBiquadFilter();
-      filter.type = 'lowpass';
-      filter.frequency.setValueAtTime(450, now);
-      filter.frequency.exponentialRampToValueAtTime(40, now + 0.75);
-
-      const osc = ctx.createOscillator();
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(90, now);
-      osc.frequency.exponentialRampToValueAtTime(25, now + 0.5);
-
-      const oscGain = ctx.createGain();
-      oscGain.gain.setValueAtTime(0.6, now);
-      oscGain.gain.exponentialRampToValueAtTime(0.01, now + 0.5);
-
-      const gain = ctx.createGain();
-      gain.gain.setValueAtTime(0.9, now);
-      gain.gain.exponentialRampToValueAtTime(0.01, now + 0.75);
-
-      noise.connect(filter);
-      filter.connect(gain);
-      gain.connect(ctx.destination);
-
-      osc.connect(oscGain);
-      oscGain.connect(ctx.destination);
-
-      osc.start(now);
-      noise.start(now);
-      osc.stop(now + 0.55);
-    },
-
-    // 🍺 Beer Clink / Toast
-    playBeer: () => {
-      if (!soundEnabled) return;
-      const ctx = getAudioContext();
-      if (!ctx) return;
-      const now = ctx.currentTime;
-
-      [1800, 2400].forEach((freq, idx) => {
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(freq, now + idx * 0.04);
-        gain.gain.setValueAtTime(0.35, now + idx * 0.04);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.04 + 0.4);
-        osc.connect(gain);
-        gain.connect(ctx.destination);
-        osc.start(now + idx * 0.04);
-        osc.stop(now + idx * 0.04 + 0.45);
-      });
-    },
-
-    // 🚂 Train Whistle
-    playTrain: () => {
-      if (!soundEnabled) return;
-      const ctx = getAudioContext();
-      if (!ctx) return;
-      const now = ctx.currentTime;
-
-      [440, 554].forEach((freq) => {
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        osc.type = 'triangle';
-        osc.frequency.setValueAtTime(freq, now);
-        osc.frequency.linearRampToValueAtTime(freq * 1.05, now + 0.4);
-        osc.frequency.linearRampToValueAtTime(freq, now + 0.8);
-
-        gain.gain.setValueAtTime(0, now);
-        gain.gain.linearRampToValueAtTime(0.25, now + 0.1);
-        gain.gain.setValueAtTime(0.25, now + 0.5);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.9);
-
-        osc.connect(gain);
-        gain.connect(ctx.destination);
-        osc.start(now);
-        osc.stop(now + 0.95);
-      });
-    },
-
-    // 🔔 Church Bell / Zvonice
-    playBell: () => {
-      if (!soundEnabled) return;
-      const ctx = getAudioContext();
-      if (!ctx) return;
-      const now = ctx.currentTime;
-
-      [320, 640, 960].forEach((freq, idx) => {
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(freq, now);
-        gain.gain.setValueAtTime(0.3 / (idx + 1), now);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + 1.2);
-        osc.connect(gain);
-        gain.connect(ctx.destination);
-        osc.start(now);
-        osc.stop(now + 1.25);
-      });
-    },
-
-    // 💰 Gold Coin Clink
-    playCoin: () => {
-      if (!soundEnabled) return;
-      const ctx = getAudioContext();
-      if (!ctx) return;
-      const now = ctx.currentTime;
-
-      [2800, 4200].forEach((freq, idx) => {
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(freq, now + idx * 0.05);
-        gain.gain.setValueAtTime(0.25, now + idx * 0.05);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.05 + 0.3);
-        osc.connect(gain);
-        gain.connect(ctx.destination);
-        osc.start(now + idx * 0.05);
-        osc.stop(now + idx * 0.05 + 0.35);
-      });
-    },
-
-    // ⚡ Ricochet / Bullet Slide
-    playRicochet: () => {
-      if (!soundEnabled) return;
-      const ctx = getAudioContext();
-      if (!ctx) return;
-      const now = ctx.currentTime;
-
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-      osc.type = 'sawtooth';
-      osc.frequency.setValueAtTime(2200, now);
-      osc.frequency.exponentialRampToValueAtTime(400, now + 0.28);
-
-      gain.gain.setValueAtTime(0.3, now);
-      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.28);
-
-      osc.connect(gain);
-      gain.connect(ctx.destination);
-      osc.start(now);
-      osc.stop(now + 0.3);
-    }
+    play: (id) => playAudioFile(id),
+    playShot: () => playAudioFile('shot'),
+    playRicochet: () => playAudioFile('ricochet'),
+    playDynamite: () => playAudioFile('dynamite'),
+    playBeer: () => playAudioFile('beer'),
+    playBell: () => playAudioFile('bell'),
+    playTrain: () => playAudioFile('train'),
+    playCoin: () => playAudioFile('coins'),
+    playWhip: () => playAudioFile('whip'),
+    playHorse: () => playAudioFile('horse'),
+    playSaloon: () => playAudioFile('saloon'),
+    playWilhelm: () => playAudioFile('wilhelm')
   };
 
   // =========================================================================
@@ -446,11 +290,27 @@
       return Math.min(direct, totalPlayers - direct);
     },
 
+    // Get clockwise and counter-clockwise distances and which is shortest
+    getDirectionDetails: (fromIdx, toIdx, totalPlayers) => {
+      if (fromIdx === toIdx) {
+        return { clockwise: 0, counterClockwise: 0, shortest: 0, direction: 'same' };
+      }
+      const clockwise = (toIdx - fromIdx + totalPlayers) % totalPlayers;
+      const counterClockwise = (fromIdx - toIdx + totalPlayers) % totalPlayers;
+      const shortest = Math.min(clockwise, counterClockwise);
+      let direction = 'cw';
+      if (counterClockwise < clockwise) direction = 'ccw';
+      else if (counterClockwise === clockwise) direction = 'both';
+      return { clockwise, counterClockwise, shortest, direction };
+    },
+
     // Calculate effective actual distance and weapon reach
     calculate: (params) => {
       const {
-        seatDistance,
-        shooterWeaponRange,
+        shooterIdx = 0,
+        targetIdx = 1,
+        totalPlayers = 5,
+        shooterWeaponRange = 1,
         shooterAppaloosa,   // -1
         shooterBinoculars,  // -1
         shooterRoseDoolan,  // -1
@@ -460,15 +320,23 @@
         globalZvonice       // forces distance to 1
       } = params;
 
+      const directionDetails = DistanceCalc.getDirectionDetails(shooterIdx, targetIdx, totalPlayers);
+      const seatDistance = directionDetails.shortest;
+
       if (globalZvonice) {
         return {
           seatDistance,
+          directionDetails,
           actualDistance: 1,
           weaponRange: shooterWeaponRange,
           canBang: shooterWeaponRange >= 1,
           canPanic: true,
           canDuel: true,
           canCatBalou: true,
+          targetMods: 0,
+          targetBreakdown: [],
+          shooterMods: 0,
+          shooterBreakdown: [],
           notes: ['🔔 Zvonice: Všichni hráči se vidí na vzdálenost 1!']
         };
       }
@@ -494,6 +362,7 @@
 
       return {
         seatDistance,
+        directionDetails,
         targetMods,
         targetBreakdown,
         shooterMods,
