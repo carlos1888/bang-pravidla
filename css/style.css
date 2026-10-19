@@ -3762,56 +3762,90 @@ footer.app-footer {
 }
 
 /* ==========================================================================
-   WESTERN SOUNDBOARD STYLES
+/* ==========================================================================
+   WESTERN SOUNDBOARD STYLES (Compact & Mobile-Optimized Grid)
    ========================================================================== */
 .soundboard-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 0.75rem;
 }
 
 .sound-tile {
   background: var(--bg-card);
   border: 2px solid var(--border-color);
   border-radius: var(--radius-md);
-  padding: 1.5rem 1rem;
+  padding: 0.85rem 0.5rem;
   text-align: center;
   cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   box-shadow: var(--shadow-sm);
   user-select: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 84px;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
 }
 
 .sound-tile:hover {
   border-color: var(--color-brown);
-  transform: translateY(-4px);
-  box-shadow: 0 6px 18px rgba(139, 69, 19, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(139, 69, 19, 0.2);
 }
 
-.sound-tile:active {
-  transform: scale(0.95);
+.sound-tile:active,
+.sound-tile.sound-tile-playing {
+  border-color: var(--accent-gold, #f39c12);
+  background: rgba(243, 156, 18, 0.15);
+  transform: scale(0.93);
+  box-shadow: 0 0 12px rgba(243, 156, 18, 0.45);
 }
 
 .sound-tile-icon {
-  font-size: 2.75rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.65rem;
+  margin-bottom: 0.25rem;
   display: block;
+  line-height: 1;
 }
 
 .sound-tile-name {
   font-weight: 800;
-  font-size: 1rem;
+  font-size: 0.82rem;
   color: var(--color-brown);
-  margin-bottom: 0.25rem;
+  line-height: 1.25;
+  margin: 0;
+  text-align: center;
+  word-break: break-word;
 }
 
 [data-theme="dark"] .sound-tile-name {
   color: #ffcc00;
 }
 
-.sound-tile-desc {
-  font-size: 0.78rem;
-  color: var(--text-muted);
+@media (max-width: 600px) {
+  .soundboard-grid {
+    grid-template-columns: repeat(auto-fill, minmax(82px, 1fr));
+    gap: 0.5rem;
+  }
+
+  .sound-tile {
+    padding: 0.65rem 0.35rem;
+    min-height: 74px;
+    border-radius: var(--radius-sm);
+  }
+
+  .sound-tile-icon {
+    font-size: 1.45rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .sound-tile-name {
+    font-size: 0.74rem;
+    font-weight: 700;
+  }
 }
 
 /* ==========================================================================

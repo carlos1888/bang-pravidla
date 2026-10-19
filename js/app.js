@@ -2429,17 +2429,17 @@
   function renderSoundboard(container) {
     const isEn = state.lang === 'en';
     const sounds = [
-      { id: 'shot', icon: '💥', nameCs: 'Výstřel z revolveru', nameEn: 'Colt .45 Gunshot', descCs: 'Třaskavý výstřel legendárního Coltu', descEn: 'Thunderous single action blast', action: () => window.BANG_TOOLS.SoundFX.playShot() },
-      { id: 'ricochet', icon: '⚡', nameCs: 'Odraz kulky (Ricochet)', nameEn: 'Bullet Ricochet', descCs: 'Hvízdnutí odražené kulky z westernů', descEn: 'Classic cinematic ricochet whiz', action: () => window.BANG_TOOLS.SoundFX.playRicochet() },
-      { id: 'dynamite', icon: '🧨', nameCs: 'Exploze dynamitu', nameEn: 'Dynamite Blast', descCs: 'Drtivý výbuch s létajícími troskami', descEn: 'Massive blast with flying debris', action: () => window.BANG_TOOLS.SoundFX.playDynamite() },
-      { id: 'beer', icon: '🍺', nameCs: 'Saloon & Pivo', nameEn: 'Saloon & Cold Beer', descCs: 'Vystřelení zátky a nalití piva', descEn: 'Bottle cork pop & ice-cold pour', action: () => window.BANG_TOOLS.SoundFX.playBeer() },
-      { id: 'bell', icon: '🔔', nameCs: 'Kostelní umíráček', nameEn: 'High Noon Church Bell', descCs: 'Pochmurný zvon pro polední duel', descEn: 'Solemn duel church bell toll', action: () => window.BANG_TOOLS.SoundFX.playBell() },
-      { id: 'train', icon: '🚂', nameCs: 'Parní lokomotiva', nameEn: 'Steam Locomotive', descCs: 'Ostrá parní píšťala na prérii', descEn: 'Authentic steam train whistle', action: () => window.BANG_TOOLS.SoundFX.playTrain() },
-      { id: 'coin', icon: '💰', nameCs: 'Zlaté valouny', nameEn: 'Gold Coins Jingle', descCs: 'Cinkot zlatých mincí v truhle', descEn: 'Heavy gold coins dropped in box', action: () => window.BANG_TOOLS.SoundFX.playCoin() },
-      { id: 'whip', icon: '🤠', nameCs: 'Býčí bič honáka', nameEn: 'Cowboy Bullwhip', descCs: 'Hlasité prásknutí honáckým bičem', descEn: 'Sharp bullwhip sonic crack', action: () => window.BANG_TOOLS.SoundFX.playWhip() },
-      { id: 'horse', icon: '🐎', nameCs: 'Ržání mustanga', nameEn: 'Wild Mustang Neigh', descCs: 'Divoký kůň na prérii', descEn: 'Spirited wild horse whinny', action: () => window.BANG_TOOLS.SoundFX.playHorse() },
-      { id: 'saloon', icon: '🎹', nameCs: 'Saloon ragtime piano', nameEn: 'Saloon Honky-Tonk Piano', descCs: 'Scott Joplin 1902: The Entertainer', descEn: 'Vintage 1902 player piano ragtime', action: () => window.BANG_TOOLS.SoundFX.playSaloon() },
-      { id: 'wilhelm', icon: '😱', nameCs: 'Wilhelmův křik', nameEn: 'Wilhelm Scream', descCs: 'Slavný hollywoodský filmový řev bandity', descEn: 'Legendary movie outlaw death scream', action: () => window.BANG_TOOLS.SoundFX.playWilhelm() }
+      { id: 'shot', icon: '💥', nameCs: 'Výstřel', nameEn: 'Gunshot', action: () => window.BANG_TOOLS.SoundFX.playShot() },
+      { id: 'ricochet', icon: '⚡', nameCs: 'Odraz kulky', nameEn: 'Ricochet', action: () => window.BANG_TOOLS.SoundFX.playRicochet() },
+      { id: 'dynamite', icon: '🧨', nameCs: 'Dynamit', nameEn: 'Dynamite', action: () => window.BANG_TOOLS.SoundFX.playDynamite() },
+      { id: 'beer', icon: '🍺', nameCs: 'Pivo', nameEn: 'Beer', action: () => window.BANG_TOOLS.SoundFX.playBeer() },
+      { id: 'bell', icon: '🔔', nameCs: 'Umíráček', nameEn: 'Church Bell', action: () => window.BANG_TOOLS.SoundFX.playBell() },
+      { id: 'train', icon: '🚂', nameCs: 'Parní vlak', nameEn: 'Steam Train', action: () => window.BANG_TOOLS.SoundFX.playTrain() },
+      { id: 'coin', icon: '💰', nameCs: 'Zlaťáky', nameEn: 'Gold Coins', action: () => window.BANG_TOOLS.SoundFX.playCoin() },
+      { id: 'whip', icon: '🤠', nameCs: 'Bič', nameEn: 'Bullwhip', action: () => window.BANG_TOOLS.SoundFX.playWhip() },
+      { id: 'horse', icon: '🐎', nameCs: 'Kůň', nameEn: 'Mustang', action: () => window.BANG_TOOLS.SoundFX.playHorse() },
+      { id: 'saloon', icon: '🎹', nameCs: 'Saloon piáno', nameEn: 'Saloon Piano', action: () => window.BANG_TOOLS.SoundFX.playSaloon() },
+      { id: 'wilhelm', icon: '😱', nameCs: 'Wilhelmův křik', nameEn: 'Wilhelm Scream', action: () => window.BANG_TOOLS.SoundFX.playWilhelm() }
     ];
 
     container.innerHTML = `
@@ -2451,10 +2451,9 @@
 
         <div class="soundboard-grid">
           ${sounds.map(s => `
-            <div class="sound-tile" data-snd="${s.id}">
+            <div class="sound-tile" data-snd="${s.id}" role="button" tabindex="0" title="${isEn ? s.nameEn : s.nameCs}" aria-label="${isEn ? s.nameEn : s.nameCs}">
               <span class="sound-tile-icon">${s.icon}</span>
               <div class="sound-tile-name">${isEn ? s.nameEn : s.nameCs}</div>
-              <div class="sound-tile-desc">${isEn ? s.descEn : s.descCs}</div>
             </div>
           `).join('')}
         </div>
@@ -2462,13 +2461,21 @@
     `;
 
     container.querySelectorAll('.sound-tile').forEach(tile => {
-      tile.addEventListener('click', () => {
+      const play = () => {
         const sid = tile.dataset.snd;
         const targetSnd = sounds.find(s => s.id === sid);
         if (targetSnd) {
           tile.classList.add('sound-tile-playing');
-          setTimeout(() => tile.classList.remove('sound-tile-playing'), 300);
+          setTimeout(() => tile.classList.remove('sound-tile-playing'), 250);
           targetSnd.action();
+        }
+      };
+
+      tile.addEventListener('click', play);
+      tile.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          play();
         }
       });
     });
