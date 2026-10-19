@@ -333,7 +333,7 @@
     const toolLabels = {
       'setup': isEn ? 'Setup Assistant' : 'Příprava hry',
       'calc': isEn ? 'Calculator & Radar' : 'Kalkulačka & Radar',
-      'draw': isEn ? 'Draw! Simulator' : 'Snímání karet',
+      'draw': isEn ? 'Draw Arbitrator & Odds' : 'Arbitr & Šance snímání',
       'events': isEn ? 'Event Deck' : 'Balíček událostí',
       'draft': isEn ? 'Role & Char Draft' : 'Losovač rolí a postav',
       'tracker': isEn ? 'Virtual Board' : 'Virtuální deska',
@@ -2575,145 +2575,238 @@
   }
 
   // =========================================================================
-  // 3. DRAW SIMULATOR ("SEJMUTÍ KARTY")
+  // 3. DRAW ARBITRATOR & ODDS CALCULATOR ("ARBITR & ŠANCE SNÍMÁNÍ")
   // =========================================================================
   const drawSimulatorState = {
-    preset: 'jail',
+    preset: 'dynamite',
     luckyDuke: false,
-    lastCards: null,
+    selectedSuit: '♠',
+    selectedValue: '7',
+    evaluatedCard: null,
     result: null,
     history: []
   };
 
   function renderDrawSimulator(container) {
     const isEn = state.lang === 'en';
+    const sim = window.BANG_TOOLS ? window.BANG_TOOLS.DrawSimulator : null;
+    const suits = (sim && sim.suits) ? sim.suits : [
+      { symbol: '♥', nameCs: 'Srdce', nameEn: 'Hearts', color: 'red' },
+      { symbol: '♦', nameCs: 'Káry', nameEn: 'Diamonds', color: 'red' },
+      { symbol: '♠', nameCs: 'Piky', nameEn: 'Spades', color: 'black' },
+      { symbol: '♣', nameCs: 'Kříže', nameEn: 'Clubs', color: 'black' }
+    ];
+    const values = (sim && sim.values) ? sim.values : ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
+
     const presets = [
-      { id: 'jail', nameCs: '⛓️ Vězení', nameEn: '⛓️ Jail', targetCs: 'Srdce ♥ = útěk', targetEn: 'Hearts ♥ = escape' },
       { id: 'dynamite', nameCs: '💣 Dynamit', nameEn: '💣 Dynamite', targetCs: 'Piky ♠ 2–9 = BUM!', targetEn: 'Spades ♠ 2–9 = BOOM!' },
+      { id: 'jail', nameCs: '⛓️ Vězení', nameEn: '⛓️ Jail', targetCs: 'Srdce ♥ = útěk', targetEn: 'Hearts ♥ = escape' },
       { id: 'barrel', nameCs: '🛡️ Barel', nameEn: '🛡️ Barrel', targetCs: 'Srdce ♥ = Vedle!', targetEn: 'Hearts ♥ = Missed!' },
       { id: 'rattlesnake', nameCs: '🐍 Chřestýš', nameEn: '🐍 Rattlesnake', targetCs: 'Piky ♠ = -1 život', targetEn: 'Spades ♠ = -1 life' },
       { id: 'bomb', nameCs: '💥 Bomba', nameEn: '💥 Bomb', targetCs: 'Černá = -2 žetony', targetEn: 'Black = -2 charges' },
-      { id: 'teren', nameCs: '🤠 Teren Kill', nameEn: '🤠 Teren Kill', targetCs: 'Nepiková = přežití s 1 HP', targetEn: 'Non-spades = survive' },
-      { id: 'general', nameCs: '🃏 Volné snímání', nameEn: '🃏 Free Draw', targetCs: 'Jakákoliv karta', targetEn: 'Any card' }
+      { id: 'teren', nameCs: '🤠 Teren Kill', nameEn: '🤠 Teren Kill', targetCs: 'Nepiková = přežití', targetEn: 'Non-spades = survive' },
+      { id: 'general', nameCs: '🃏 Volné ověření', nameEn: '🃏 Free Check', targetCs: 'Jakákoliv karta', targetEn: 'Any card' }
     ];
 
     const currentPreset = presets.find(p => p.id === drawSimulatorState.preset) || presets[0];
+    const odds = sim ? sim.getOdds(drawSimulatorState.preset, drawSimulatorState.luckyDuke) : {
+      successPct: 50, failurePct: 50, successLabelCs: 'Úspěch', successLabelEn: 'Success',
+      failureLabelCs: 'Neúspěch', failureLabelEn: 'Failure', ratioCs: '1 z 2', ratioEn: '1 in 2',
+      tipCs: '', tipEn: ''
+    };
+
+    // Ensure initial card evaluation
+    if (!drawSimulatorState.evaluatedCard && sim) {
+      drawSimulatorState.evaluatedCard = sim.createCard(drawSimulatorState.selectedSuit, drawSimulatorState.selectedValue);
+      drawSimulatorState.result = sim.evaluate(drawSimulatorState.preset, drawSimulatorState.evaluatedCard, isEn);
+    }
 
     container.innerHTML = `
       <div class="tool-card-box">
         <div class="tool-card-header">
-          <h2>🎴 ${isEn ? 'Card Draw Simulator („Draw!“)' : 'Simulátor snímání karet („Draw!“)'}</h2>
+          <h2>⚖️ ${isEn ? 'Draw Arbitrator & Odds Calculator' : 'Arbitr snímání & Kalkulátor šancí'}</h2>
           <p class="tool-card-lead">
             ${isEn
-              ? 'Instant test for Jail, Dynamite, Barrel, Rattlesnake, and character abilities without physical deck shuffling.'
-              : 'Okamžité a férové vyhodnocení Vězení, Dynamitu, Barelu, Chřestýše i schopností postav přímo u stolu.'}
+              ? 'Authoritative rulings for physical cards flipped at the table, dispute prevention, and mathematical survival odds.'
+              : 'Nezpochybnitelný oficiální verdikt pro kartu otočenou ze stolu, řešení hádek u hry a přesné matematické šance na přežití.'}
           </p>
         </div>
 
-        <!-- PRESET CHIPS -->
+        <!-- 1. SITUATION PRESETS -->
         <div style="margin-bottom: 1.5rem;">
           <div style="font-weight: bold; font-size: 0.95rem; margin-bottom: 0.5rem; color: var(--color-brown);">
-            ${isEn ? '1. Select Test Situation:' : '1. Zvol situaci k vyhodnocení:'}
+            1. ${isEn ? 'Select Situation to Arbitrate:' : 'Vyber situaci k vyhodnocení:'}
           </div>
           <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
             ${presets.map(p => `
               <button type="button" class="btn-preset-chip ${p.id === drawSimulatorState.preset ? 'active' : ''}" 
                       data-preset="${p.id}"
-                      style="padding: 0.5rem 0.85rem; border-radius: 20px; border: 1.5px solid ${p.id === drawSimulatorState.preset ? 'var(--color-gold)' : 'var(--border-color)'}; background: ${p.id === drawSimulatorState.preset ? 'var(--color-gold)' : 'var(--bg-surface)'}; color: ${p.id === drawSimulatorState.preset ? '#fff' : 'inherit'}; cursor: pointer; font-weight: 500; font-size: 0.88rem; transition: all 0.2s ease;">
+                      style="padding: 0.55rem 0.9rem; border-radius: 20px; border: 1.5px solid ${p.id === drawSimulatorState.preset ? 'var(--color-gold)' : 'var(--border-color)'}; background: ${p.id === drawSimulatorState.preset ? 'var(--color-gold)' : 'var(--bg-surface)'}; color: ${p.id === drawSimulatorState.preset ? '#fff' : 'inherit'}; cursor: pointer; font-weight: 500; font-size: 0.88rem; transition: all 0.2s ease;">
                 ${isEn ? p.nameEn : p.nameCs}
-                <span style="opacity: 0.8; font-size: 0.78rem; display: block;">${isEn ? p.targetEn : p.targetCs}</span>
+                <span style="opacity: 0.82; font-size: 0.78rem; display: block;">${isEn ? p.targetEn : p.targetCs}</span>
               </button>
             `).join('')}
           </div>
         </div>
 
-        <!-- LUCKY DUKE OPTION -->
-        <div style="margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: space-between; background: var(--bg-surface); padding: 0.85rem 1.2rem; border-radius: 8px; border: 1px solid var(--border-color);">
-          <div>
-            <div style="font-weight: bold; font-size: 0.95rem;">
-              🤠 ${isEn ? 'Lucky Duke (Special Ability)' : 'Lucky Duke (Speciální schopnost)'}
+        <!-- 2. MATHEMATICAL ODDS & RISK MANAGEMENT PANEL -->
+        <div style="background: var(--bg-surface); border: 1.5px solid var(--border-color); border-radius: 12px; padding: 1.25rem 1.5rem; margin-bottom: 1.5rem; box-shadow: var(--shadow-sm);">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.8rem; margin-bottom: 1rem;">
+            <div>
+              <div style="font-weight: bold; font-size: 1.05rem; color: var(--color-brown); display: flex; align-items: center; gap: 0.4rem;">
+                📊 ${isEn ? 'Survival Odds & Risk Analysis' : 'Matematické šance & Analýza rizika'}
+              </div>
+              <div style="font-size: 0.82rem; color: var(--text-muted);">
+                ${isEn ? 'Exact probabilities in a standard 52-card deck' : 'Přesné pravděpodobnosti ve standardním balíčku 52 karet'}
+              </div>
             </div>
-            <div style="font-size: 0.82rem; color: var(--text-muted);">
-              ${isEn ? 'Draw 2 cards simultaneously and choose the favorable outcome.' : 'Sejme 2 karty najednou a hráč si vybere tu výhodnější.'}
+
+            <!-- LUCKY DUKE TOGGLE -->
+            <label style="display: flex; align-items: center; gap: 0.6rem; cursor: pointer; background: var(--bg-card); padding: 0.45rem 0.85rem; border-radius: 20px; border: 1.5px solid ${drawSimulatorState.luckyDuke ? 'var(--color-gold)' : 'var(--border-color)'}; transition: all 0.2s;">
+              <input type="checkbox" id="chk-lucky-duke" ${drawSimulatorState.luckyDuke ? 'checked' : ''} style="cursor: pointer; width: 16px; height: 16px;">
+              <span style="font-size: 0.88rem; font-weight: bold; color: ${drawSimulatorState.luckyDuke ? 'var(--color-gold)' : 'inherit'};">
+                🤠 ${isEn ? 'Lucky Duke (Draw 2 cards)' : 'Lucky Duke (snímá 2 karty)'}
+              </span>
+            </label>
+          </div>
+
+          <!-- ODDS CARDS -->
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
+            <div style="background: rgba(46, 204, 113, 0.12); border: 2px solid #2ecc71; border-radius: 10px; padding: 1rem; text-align: center;">
+              <div style="font-size: 0.82rem; font-weight: bold; color: #27ae60; text-transform: uppercase;">
+                ${isEn ? odds.successLabelEn : odds.successLabelCs}
+              </div>
+              <div style="font-size: 2.2rem; font-weight: bold; color: #27ae60; margin: 0.2rem 0; line-height: 1.1;">
+                ${odds.successPct}%
+              </div>
+              <div style="font-size: 0.8rem; color: var(--text-muted);">
+                ${isEn ? 'Probability of success / safety' : 'Šance na úspěch / bezpečí'}
+              </div>
+            </div>
+
+            <div style="background: rgba(231, 76, 60, 0.12); border: 2px solid #e74c3c; border-radius: 10px; padding: 1rem; text-align: center;">
+              <div style="font-size: 0.82rem; font-weight: bold; color: #c0392b; text-transform: uppercase;">
+                ${isEn ? odds.failureLabelEn : odds.failureLabelCs}
+              </div>
+              <div style="font-size: 2.2rem; font-weight: bold; color: #c0392b; margin: 0.2rem 0; line-height: 1.1;">
+                ${odds.failurePct}%
+              </div>
+              <div style="font-size: 0.8rem; color: var(--text-muted);">
+                ${isEn ? 'Risk of penalty / explosion' : 'Riziko zranění / nehody'}
+              </div>
             </div>
           </div>
-          <label style="position: relative; display: inline-block; width: 48px; height: 26px; cursor: pointer;">
-            <input type="checkbox" id="chk-lucky-duke" ${drawSimulatorState.luckyDuke ? 'checked' : ''} style="opacity: 0; width: 0; height: 0;">
-            <span style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: ${drawSimulatorState.luckyDuke ? 'var(--color-gold)' : '#ccc'}; transition: .3s; border-radius: 26px;">
-              <span style="position: absolute; content: ''; height: 20px; width: 20px; left: ${drawSimulatorState.luckyDuke ? '24px' : '4px'}; bottom: 3px; background-color: white; transition: .3s; border-radius: 50%;"></span>
-            </span>
-          </label>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.6rem; font-size: 0.86rem; border-top: 1px dashed var(--border-color); padding-top: 0.75rem;">
+            <div><strong>🎯 ${isEn ? 'Odds Ratio:' : 'Reálný poměr:'}</strong> ${isEn ? odds.ratioEn : odds.ratioCs}</div>
+            <div style="color: var(--text-muted); font-style: italic;">💡 ${isEn ? odds.tipEn : odds.tipCs}</div>
+          </div>
         </div>
 
-        <!-- DRAW STAGE & CARDS AREA -->
-        <div style="background: radial-gradient(circle at center, #2e4d34 0%, #172b1d 100%); border-radius: 12px; padding: 2rem 1rem; text-align: center; margin-bottom: 1.5rem; box-shadow: inset 0 2px 10px rgba(0,0,0,0.5); min-height: 260px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-          ${!drawSimulatorState.lastCards ? `
-            <div style="color: rgba(255,255,255,0.7); font-size: 1.1rem; font-style: italic; margin-bottom: 1.5rem;">
-              ${isEn ? 'Click the button below to draw from a fresh 52-card deck!' : 'Klikni na tlačítko níže pro sejmutí karty z balíčku 52 karet!'}
+        <!-- 3. TABLE CARD REFEREE: SELECT SUIT & VALUE -->
+        <div style="background: var(--bg-surface); border: 1.5px solid var(--border-color); border-radius: 12px; padding: 1.25rem 1.5rem; margin-bottom: 1.5rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.8rem; margin-bottom: 1.2rem;">
+            <div>
+              <div style="font-weight: bold; font-size: 1.05rem; color: var(--color-brown);">
+                🎴 ${isEn ? 'Tabletop Referee: Enter Flipped Card' : 'Rozhodčí: Zadej kartu otočenou ze stolu'}
+              </div>
+              <div style="font-size: 0.82rem; color: var(--text-muted);">
+                ${isEn ? 'Flipped a physical card from your draw deck at the table? Click its suit & value for an instant authoritative verdict:' : 'Otočili jste kartu z dobíracího balíčku na stole? Zadejte barvu a hodnotu pro bleskový oficiální verdikt:'}
+              </div>
             </div>
-          ` : `
-            <div style="display: flex; gap: 1.5rem; justify-content: center; align-items: center; flex-wrap: wrap; margin-bottom: 1.5rem;">
-              ${drawSimulatorState.lastCards.map((c, idx) => {
-                const isRed = c.color === 'red';
-                const cardColor = isRed ? '#d32f2f' : '#222222';
+
+            <button type="button" id="btn-random-draw" class="btn-primary" style="padding: 0.45rem 1rem; font-size: 0.85rem; border-radius: 20px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 0.4rem;">
+              🎲 ${isEn ? 'Simulate Random Draw' : 'Simulovat náhodné otočení'}
+            </button>
+          </div>
+
+          <!-- SUIT SELECTOR (4 SUITS) -->
+          <div style="margin-bottom: 1rem;">
+            <div style="font-size: 0.82rem; font-weight: bold; color: var(--text-muted); margin-bottom: 0.4rem; text-transform: uppercase;">
+              ${isEn ? 'A) Card Suit:' : 'A) Barva karty:'}
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.6rem;">
+              ${suits.map(s => {
+                const isSelected = s.symbol === drawSimulatorState.selectedSuit;
+                const isRed = s.color === 'red';
+                const mainColor = isRed ? '#d32f2f' : '#222222';
                 return `
-                  <div class="draw-sim-card animate-card-pop" style="width: 140px; height: 210px; background: #fffcf0; border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.6); border: 2px solid #3d2b1f; display: flex; flex-direction: column; justify-content: space-between; padding: 12px; position: relative; user-select: none;">
-                    <div style="text-align: left; line-height: 1; color: ${cardColor}; font-weight: bold; font-size: 1.35rem;">
-                      <div>${c.value}</div>
-                      <div style="font-size: 1.45rem;">${c.suitSymbol}</div>
-                    </div>
-                    <div style="text-align: center; font-size: 3.5rem; line-height: 1; color: ${cardColor};">
-                      ${c.suitSymbol}
-                    </div>
-                    <div style="text-align: right; line-height: 1; color: ${cardColor}; font-weight: bold; font-size: 1.35rem; transform: rotate(180deg);">
-                      <div>${c.value}</div>
-                      <div style="font-size: 1.45rem;">${c.suitSymbol}</div>
-                    </div>
-                    ${drawSimulatorState.luckyDuke ? `
-                      <div style="position: absolute; top: -10px; right: -10px; background: var(--color-brown); color: #fff; font-size: 0.72rem; font-weight: bold; padding: 2px 7px; border-radius: 10px; border: 1px solid #ffcc00;">
-                        #${idx + 1}
-                      </div>
-                    ` : ''}
-                  </div>
+                  <button type="button" class="btn-suit-select" data-suit="${s.symbol}"
+                          style="padding: 0.65rem 0.5rem; border-radius: 8px; border: 2px solid ${isSelected ? mainColor : 'var(--border-color)'}; background: ${isSelected ? mainColor : 'var(--bg-card)'}; color: ${isSelected ? '#ffffff' : mainColor}; cursor: pointer; font-weight: bold; font-size: 1rem; display: flex; align-items: center; justify-content: center; gap: 0.4rem; transition: all 0.15s; box-shadow: ${isSelected ? 'var(--shadow-sm)' : 'none'};">
+                    <span style="font-size: 1.35rem;">${s.symbol}</span>
+                    <span style="font-size: 0.85rem;">${isEn ? s.nameEn : s.nameCs}</span>
+                  </button>
                 `;
               }).join('')}
             </div>
-          `}
+          </div>
 
-          <!-- MAIN DRAW BUTTON -->
-          <button type="button" id="btn-do-draw" style="background: linear-gradient(135deg, #f59e0b, #d97706); color: #fff; font-size: 1.25rem; font-weight: bold; font-family: 'Georgia', serif; padding: 0.9rem 2.2rem; border-radius: 30px; border: 2px solid #ffcc00; box-shadow: 0 6px 16px rgba(0,0,0,0.4); cursor: pointer; display: inline-flex; align-items: center; gap: 0.6rem; transition: transform 0.15s, box-shadow 0.15s;">
-            🎴 ${isEn ? 'DRAW CARD („DRAW!“)' : 'SEJMOUT KARTU („DRAW!“)'}
-          </button>
+          <!-- VALUE SELECTOR (13 VALUES) -->
+          <div>
+            <div style="font-size: 0.82rem; font-weight: bold; color: var(--text-muted); margin-bottom: 0.4rem; text-transform: uppercase;">
+              ${isEn ? 'B) Card Value (Rank):' : 'B) Hodnota karty:'}
+            </div>
+            <div style="display: flex; gap: 0.35rem; flex-wrap: wrap;">
+              ${values.map(v => {
+                const isSelected = v === drawSimulatorState.selectedValue;
+                return `
+                  <button type="button" class="btn-val-select" data-val="${v}"
+                          style="flex: 1; min-width: 38px; height: 38px; border-radius: 6px; border: 1.5px solid ${isSelected ? 'var(--color-gold)' : 'var(--border-color)'}; background: ${isSelected ? 'var(--color-gold)' : 'var(--bg-card)'}; color: ${isSelected ? '#fff' : 'inherit'}; cursor: pointer; font-weight: bold; font-size: 0.95rem; display: flex; align-items: center; justify-content: center; transition: all 0.15s;">
+                    ${v}
+                  </button>
+                `;
+              }).join('')}
+            </div>
+          </div>
         </div>
 
-        <!-- OUTCOME RESULT BANNER -->
-        ${drawSimulatorState.result ? `
-          <div style="margin-bottom: 1.5rem; padding: 1.25rem 1.5rem; border-radius: 10px; border: 2px solid ${
-            drawSimulatorState.result.status === 'success' ? '#2ecc71' : drawSimulatorState.result.status === 'failure' ? '#e74c3c' : '#f39c12'
-          }; background: ${
-            drawSimulatorState.result.status === 'success' ? 'rgba(46, 204, 113, 0.12)' : drawSimulatorState.result.status === 'failure' ? 'rgba(231, 76, 60, 0.12)' : 'rgba(243, 156, 18, 0.12)'
-          };">
-            <div style="font-size: 1.15rem; font-weight: bold; color: ${
-              drawSimulatorState.result.status === 'success' ? '#27ae60' : drawSimulatorState.result.status === 'failure' ? '#c0392b' : '#d35400'
-            }; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.4rem;">
-              ${drawSimulatorState.result.status === 'success' ? '✅' : drawSimulatorState.result.status === 'failure' ? '❌' : 'ℹ️'}
-              ${isEn ? drawSimulatorState.result.titleEn : drawSimulatorState.result.titleCs}
+        <!-- 4. OFFICIAL VERDICT BANNER -->
+        ${drawSimulatorState.evaluatedCard && drawSimulatorState.result ? `
+          <div style="background: radial-gradient(circle at center, #2e4d34 0%, #172b1d 100%); border-radius: 12px; padding: 1.75rem 1.25rem; text-align: center; margin-bottom: 1.5rem; box-shadow: inset 0 2px 10px rgba(0,0,0,0.5); display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            
+            <div style="display: flex; gap: 1.5rem; justify-content: center; align-items: center; flex-wrap: wrap; margin-bottom: 1.25rem;">
+              <!-- CARD GRAPHIC -->
+              <div class="draw-sim-card animate-card-pop" style="width: 120px; height: 180px; background: #fffcf0; border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.6); border: 2px solid #3d2b1f; display: flex; flex-direction: column; justify-content: space-between; padding: 10px; user-select: none;">
+                <div style="text-align: left; line-height: 1; color: ${drawSimulatorState.evaluatedCard.color === 'red' ? '#d32f2f' : '#222'}; font-weight: bold; font-size: 1.25rem;">
+                  <div>${drawSimulatorState.evaluatedCard.value}</div>
+                  <div style="font-size: 1.35rem;">${drawSimulatorState.evaluatedCard.suitSymbol}</div>
+                </div>
+                <div style="text-align: center; font-size: 3rem; line-height: 1; color: ${drawSimulatorState.evaluatedCard.color === 'red' ? '#d32f2f' : '#222'};">
+                  ${drawSimulatorState.evaluatedCard.suitSymbol}
+                </div>
+                <div style="text-align: right; line-height: 1; color: ${drawSimulatorState.evaluatedCard.color === 'red' ? '#d32f2f' : '#222'}; font-weight: bold; font-size: 1.25rem; transform: rotate(180deg);">
+                  <div>${drawSimulatorState.evaluatedCard.value}</div>
+                  <div style="font-size: 1.35rem;">${drawSimulatorState.evaluatedCard.suitSymbol}</div>
+                </div>
+              </div>
             </div>
-            <div style="font-size: 0.95rem; line-height: 1.5;">
-              ${isEn ? drawSimulatorState.result.messageEn : drawSimulatorState.result.messageCs}
+
+            <!-- RESULT BANNER -->
+            <div style="max-width: 600px; width: 100%; padding: 1.2rem 1.5rem; border-radius: 10px; border: 2px solid ${
+              drawSimulatorState.result.status === 'success' ? '#2ecc71' : drawSimulatorState.result.status === 'failure' ? '#e74c3c' : '#f39c12'
+            }; background: ${
+              drawSimulatorState.result.status === 'success' ? 'rgba(46, 204, 113, 0.92)' : drawSimulatorState.result.status === 'failure' ? 'rgba(231, 76, 60, 0.92)' : 'rgba(243, 156, 18, 0.92)'
+            }; color: #ffffff; text-shadow: 0 1px 3px rgba(0,0,0,0.5);">
+              <div style="font-size: 1.2rem; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-bottom: 0.4rem;">
+                ${drawSimulatorState.result.status === 'success' ? '✅' : drawSimulatorState.result.status === 'failure' ? '❌' : 'ℹ️'}
+                ${isEn ? drawSimulatorState.result.titleEn : drawSimulatorState.result.titleCs}
+              </div>
+              <div style="font-size: 0.96rem; line-height: 1.5; font-weight: 500;">
+                ${isEn ? drawSimulatorState.result.messageEn : drawSimulatorState.result.messageCs}
+              </div>
             </div>
           </div>
         ` : ''}
 
-        <!-- DRAW HISTORY STRIP -->
+        <!-- 5. DRAW HISTORY STRIP -->
         ${drawSimulatorState.history.length > 0 ? `
           <div style="border-top: 1px solid var(--border-color); padding-top: 1rem;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem;">
               <span style="font-size: 0.85rem; font-weight: bold; color: var(--text-muted); text-transform: uppercase;">
-                ${isEn ? 'Recent Draws History:' : 'Poslední sejmutí v této partii:'}
+                ${isEn ? 'Arbitration Log (Recent Table Draws):' : 'Záznam posuzovaných sejmutí u stolu:'}
               </span>
               <button type="button" id="btn-clear-draw-hist" style="background: none; border: none; font-size: 0.78rem; color: var(--text-muted); cursor: pointer; text-decoration: underline;">
-                ${isEn ? 'Clear history' : 'Vymazat historii'}
+                ${isEn ? 'Clear log' : 'Vymazat záznam'}
               </button>
             </div>
             <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
@@ -2734,6 +2827,9 @@
     container.querySelectorAll('.btn-preset-chip').forEach(btn => {
       btn.addEventListener('click', () => {
         drawSimulatorState.preset = btn.dataset.preset;
+        if (sim) {
+          drawSimulatorState.result = sim.evaluate(drawSimulatorState.preset, drawSimulatorState.evaluatedCard, isEn);
+        }
         renderDrawSimulator(container);
       });
     });
@@ -2746,49 +2842,87 @@
       });
     }
 
-    const btnDraw = document.getElementById('btn-do-draw');
-    if (btnDraw) {
-      btnDraw.addEventListener('click', () => {
-        if (!window.BANG_TOOLS || !window.BANG_TOOLS.DrawSimulator) return;
-
-        const sim = window.BANG_TOOLS.DrawSimulator;
-        if (drawSimulatorState.luckyDuke) {
-          const c1 = sim.drawCard();
-          const c2 = sim.drawCard();
-          drawSimulatorState.lastCards = [c1, c2];
-          const res1 = sim.evaluate(drawSimulatorState.preset, c1, isEn);
-          const res2 = sim.evaluate(drawSimulatorState.preset, c2, isEn);
-
-          // If one is success and other is failure, highlight success
-          const chosenRes = (res1.status === 'success' && res2.status !== 'success') ? res1 :
-                            (res2.status === 'success' && res1.status !== 'success') ? res2 : res1;
-
-          drawSimulatorState.result = {
-            status: chosenRes.status,
-            titleCs: `🤠 LUCKY DUKE: ${chosenRes.titleCs}`,
-            titleEn: `🤠 LUCKY DUKE: ${chosenRes.titleEn}`,
-            messageCs: `Karty: [${c1.code}] a [${c2.code}]. ${chosenRes.messageCs}`,
-            messageEn: `Cards: [${c1.code}] and [${c2.code}]. ${chosenRes.messageEn}`
-          };
-
+    container.querySelectorAll('.btn-suit-select').forEach(btn => {
+      btn.addEventListener('click', () => {
+        drawSimulatorState.selectedSuit = btn.dataset.suit;
+        if (sim) {
+          drawSimulatorState.evaluatedCard = sim.createCard(drawSimulatorState.selectedSuit, drawSimulatorState.selectedValue);
+          drawSimulatorState.result = sim.evaluate(drawSimulatorState.preset, drawSimulatorState.evaluatedCard, isEn);
+          
           drawSimulatorState.history.unshift({
-            card: c1,
-            presetName: currentPreset.nameCs,
-            status: chosenRes.status
-          });
-        } else {
-          const card = sim.drawCard();
-          drawSimulatorState.lastCards = [card];
-          drawSimulatorState.result = sim.evaluate(drawSimulatorState.preset, card, isEn);
-
-          drawSimulatorState.history.unshift({
-            card,
+            card: drawSimulatorState.evaluatedCard,
             presetName: currentPreset.nameCs,
             status: drawSimulatorState.result.status
           });
-        }
 
-        // Sound effect
+          // Play Sound FX
+          if (window.BANG_TOOLS && window.BANG_TOOLS.SoundFX) {
+            if (drawSimulatorState.preset === 'dynamite' && drawSimulatorState.result.status === 'failure') {
+              window.BANG_TOOLS.SoundFX.playDynamite();
+            } else if (drawSimulatorState.preset === 'jail') {
+              window.BANG_TOOLS.SoundFX.playJail();
+            } else if (drawSimulatorState.preset === 'rattlesnake') {
+              window.BANG_TOOLS.SoundFX.playRattlesnake();
+            } else if (drawSimulatorState.result.status === 'failure') {
+              window.BANG_TOOLS.SoundFX.playShot();
+            } else {
+              window.BANG_TOOLS.SoundFX.playBell();
+            }
+          }
+        }
+        renderDrawSimulator(container);
+      });
+    });
+
+    container.querySelectorAll('.btn-val-select').forEach(btn => {
+      btn.addEventListener('click', () => {
+        drawSimulatorState.selectedValue = btn.dataset.val;
+        if (sim) {
+          drawSimulatorState.evaluatedCard = sim.createCard(drawSimulatorState.selectedSuit, drawSimulatorState.selectedValue);
+          drawSimulatorState.result = sim.evaluate(drawSimulatorState.preset, drawSimulatorState.evaluatedCard, isEn);
+
+          drawSimulatorState.history.unshift({
+            card: drawSimulatorState.evaluatedCard,
+            presetName: currentPreset.nameCs,
+            status: drawSimulatorState.result.status
+          });
+
+          // Play Sound FX
+          if (window.BANG_TOOLS && window.BANG_TOOLS.SoundFX) {
+            if (drawSimulatorState.preset === 'dynamite' && drawSimulatorState.result.status === 'failure') {
+              window.BANG_TOOLS.SoundFX.playDynamite();
+            } else if (drawSimulatorState.preset === 'jail') {
+              window.BANG_TOOLS.SoundFX.playJail();
+            } else if (drawSimulatorState.preset === 'rattlesnake') {
+              window.BANG_TOOLS.SoundFX.playRattlesnake();
+            } else if (drawSimulatorState.result.status === 'failure') {
+              window.BANG_TOOLS.SoundFX.playShot();
+            } else {
+              window.BANG_TOOLS.SoundFX.playBell();
+            }
+          }
+        }
+        renderDrawSimulator(container);
+      });
+    });
+
+    const btnRandom = document.getElementById('btn-random-draw');
+    if (btnRandom) {
+      btnRandom.addEventListener('click', () => {
+        if (!sim) return;
+        const card = sim.drawCard();
+        drawSimulatorState.selectedSuit = card.suitSymbol;
+        drawSimulatorState.selectedValue = card.value;
+        drawSimulatorState.evaluatedCard = card;
+        drawSimulatorState.result = sim.evaluate(drawSimulatorState.preset, card, isEn);
+
+        drawSimulatorState.history.unshift({
+          card,
+          presetName: currentPreset.nameCs,
+          status: drawSimulatorState.result.status
+        });
+
+        // Play Sound FX
         if (window.BANG_TOOLS && window.BANG_TOOLS.SoundFX) {
           if (drawSimulatorState.preset === 'dynamite' && drawSimulatorState.result.status === 'failure') {
             window.BANG_TOOLS.SoundFX.playDynamite();

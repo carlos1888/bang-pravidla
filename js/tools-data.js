@@ -866,6 +866,9 @@
   const VALUES = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
 
   const DrawSimulator = {
+    suits: SUITS,
+    values: VALUES,
+
     drawCard: () => {
       const suit = SUITS[Math.floor(Math.random() * SUITS.length)];
       const val = VALUES[Math.floor(Math.random() * VALUES.length)];
@@ -877,6 +880,120 @@
         value: val,
         code: `${val}${suit.symbol}`
       };
+    },
+
+    createCard: (suitSymbol, val) => {
+      const suit = SUITS.find(s => s.symbol === suitSymbol) || SUITS[0];
+      return {
+        suitSymbol: suit.symbol,
+        suitNameCs: suit.nameCs,
+        suitNameEn: suit.nameEn,
+        color: suit.color,
+        value: val,
+        code: `${val}${suit.symbol}`
+      };
+    },
+
+    getOdds: (presetKey, luckyDuke) => {
+      switch (presetKey) {
+        case 'jail':
+          return {
+            successPct: luckyDuke ? 44.1 : 25.0,
+            failurePct: luckyDuke ? 55.9 : 75.0,
+            successLabelCs: 'Útěk (Srdce ♥)',
+            successLabelEn: 'Escape (Hearts ♥)',
+            failureLabelCs: 'Zůstává ve vězení',
+            failureLabelEn: 'Stays in jail',
+            ratioCs: luckyDuke ? 'cca 1 z 2.3 pokusů (44.1 %)' : 'přesně 1 ze 4 (25.0 %)',
+            ratioEn: luckyDuke ? 'approx 1 in 2.3 (44.1%)' : 'exactly 1 in 4 (25.0%)',
+            tipCs: 'Pravidlo Legend: Místo snímání můžeš odhodit 1 ♥ kartu z ruky a vězení bezpečně zahodit.',
+            tipEn: 'Legends rule: You may discard 1 ♥ card from your hand instead of drawing.'
+          };
+
+        case 'dynamite':
+          return {
+            successPct: luckyDuke ? 97.9 : 84.6,
+            failurePct: luckyDuke ? 2.1 : 15.4,
+            successLabelCs: 'Bezpečný posun',
+            successLabelEn: 'Safe pass',
+            failureLabelCs: 'BUM! Výbuch (Piky ♠ 2–9)',
+            failureLabelEn: 'BOOM! Explodes (Spades ♠ 2–9)',
+            ratioCs: luckyDuke ? 'pouze 1 ze 47 (2.1 % šance na výbuch!)' : 'cca 1 ze 6.5 (15.4 % šance na výbuch)',
+            ratioEn: luckyDuke ? 'only 1 in 47 (2.1% explosion chance!)' : 'approx 1 in 6.5 (15.4% explosion chance)',
+            tipCs: 'Pozor: Piky 10, Spodek (J), Dáma (Q), Král (K) ani Eso (A) výbuch nezpůsobí!',
+            tipEn: 'Note: Spades 10, J, Q, K, and Ace do NOT explode!'
+          };
+
+        case 'barrel':
+          return {
+            successPct: luckyDuke ? 44.1 : 25.0,
+            failurePct: luckyDuke ? 55.9 : 75.0,
+            successLabelCs: 'Zásah odvrácen (Srdce ♥)',
+            successLabelEn: 'Attack dodged (Hearts ♥)',
+            failureLabelCs: 'Neochráněn',
+            failureLabelEn: 'Not dodged',
+            ratioCs: luckyDuke ? 'téměř 1 ze 2 (44.1 % šance na záchranu)' : '1 ze 4 (25.0 % šance na záchranu)',
+            ratioEn: luckyDuke ? 'nearly 1 in 2 (44.1% save chance)' : '1 in 4 (25.0% save chance)',
+            tipCs: 'Barel chrání POUZE proti kartě BANG! Nelze jej použít v duelu, proti indiánům, kulometu ani noži.',
+            tipEn: 'Barrel only works against BANG! cards, not in Duels, against Indians, Gatling, or Knife.'
+          };
+
+        case 'rattlesnake':
+          return {
+            successPct: luckyDuke ? 94.1 : 75.0,
+            failurePct: luckyDuke ? 5.9 : 25.0,
+            successLabelCs: 'Neuštkl (bez zranění)',
+            successLabelEn: 'No bite (safe)',
+            failureLabelCs: 'Uštknutí (Piky ♠)',
+            failureLabelEn: 'Bite (Spades ♠)',
+            ratioCs: luckyDuke ? 'uštkne jen 1 ze 17 pokusů (5.9 %)' : 'uštkne 1 ze 4 pokusů (25.0 %)',
+            ratioEn: luckyDuke ? 'bites only 1 in 17 (5.9%)' : 'bites 1 in 4 (25.0%)',
+            tipCs: 'Uštknutí ubere 1 život. Chřestýš zůstává ležet před hráčem, dokud není odstraněn jinou kartou.',
+            tipEn: 'A bite costs 1 life. Rattlesnake stays in front of the player until removed.'
+          };
+
+        case 'bomb':
+          return {
+            successPct: luckyDuke ? 75.5 : 50.0,
+            failurePct: luckyDuke ? 24.5 : 50.0,
+            successLabelCs: 'Bezpečný posun (Červená ♥/♦)',
+            successLabelEn: 'Safe pass (Red ♥/♦)',
+            failureLabelCs: '-2 žetony nabití (Černá ♠/♣)',
+            failureLabelEn: '-2 charge tokens (Black ♠/♣)',
+            ratioCs: luckyDuke ? 'úbytek jen 1 ze 4 (24.5 %)' : 'přesně 1 ze 2 (50.0 %)',
+            ratioEn: luckyDuke ? 'loss only 1 in 4 (24.5%)' : 'exactly 1 in 2 (50.0%)',
+            tipCs: 'Černá barva ubere 2 žetony nabití. Při poklesu na 0 žetonů Bomba okamžitě vybuchne za 2 životy!',
+            tipEn: 'Black cards deduct 2 charges. Explodes immediately for 2 lives if charges reach 0!'
+          };
+
+        case 'teren':
+          return {
+            successPct: luckyDuke ? 94.1 : 75.0,
+            failurePct: luckyDuke ? 5.9 : 25.0,
+            successLabelCs: 'Přežití s 1 HP (Nepiková)',
+            successLabelEn: 'Survive at 1 HP (Non-spade)',
+            failureLabelCs: 'Eliminace (Piky ♠)',
+            failureLabelEn: 'Elimination (Spades ♠)',
+            ratioCs: luckyDuke ? 'přežije ve více než 9 z 10 případů (94.1 %)' : 'přežije ve 3 ze 4 případů (75.0 %)',
+            ratioEn: luckyDuke ? 'survives in 94.1% of cases' : 'survives in 3 out of 4 cases (75.0%)',
+            tipCs: 'Schopnost Teren Killa se aktivuje při smrtícím zranění. Přežívá na jakoukoliv kartu kromě piků.',
+            tipEn: 'Teren Kill ability triggers upon fatal damage. Survives on any card except Spades.'
+          };
+
+        default:
+          return {
+            successPct: 100,
+            failurePct: 0,
+            successLabelCs: 'Jakákoliv karta',
+            successLabelEn: 'Any card',
+            failureLabelCs: '-',
+            failureLabelEn: '-',
+            ratioCs: 'Běžné sejmutí',
+            ratioEn: 'Standard draw',
+            tipCs: 'Otoč kartu z dobíracího balíčku na stole nebo zadej její hodnotu a barvu pro ověření.',
+            tipEn: 'Reveal card from physical draw pile or pick suit/value to evaluate.'
+          };
+      }
     },
 
     evaluate: (presetKey, card, isEn) => {
