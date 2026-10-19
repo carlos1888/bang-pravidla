@@ -726,6 +726,9 @@
         <button type="button" id="btn-compare-card" class="btn-reset-filters" style="display: inline-flex; align-items: center; gap: 0.4rem; font-weight: 700;">
           ${t.compareCard}
         </button>
+        <button type="button" id="btn-modal-close-action" class="btn-reset-filters" style="display: inline-flex; align-items: center; gap: 0.4rem; font-weight: 700; margin-left: auto;">
+          ✕ ${isEn ? 'Close' : 'Zavřít'}
+        </button>
       </div>
     `;
 
@@ -767,9 +770,14 @@
     const pinBtn = document.getElementById('btn-pin-character');
     if (pinBtn) {
       pinBtn.addEventListener('click', () => {
-        if (isPinned) {
+        const currentlyPinned = state.pinnedCharacter && state.pinnedCharacter.id === card.id;
+        if (currentlyPinned) {
           state.pinnedCharacter = null;
           localStorage.removeItem('bang_pinned_char');
+          pinBtn.innerHTML = t.pinCharacter;
+          pinBtn.style.background = '';
+          pinBtn.style.borderColor = '';
+          pinBtn.style.color = '';
         } else {
           state.pinnedCharacter = {
             id: card.id,
@@ -780,9 +788,12 @@
             maxLives: card.lives || 4
           };
           localStorage.setItem('bang_pinned_char', JSON.stringify(state.pinnedCharacter));
+          pinBtn.innerHTML = t.unpinCharacter;
+          pinBtn.style.background = '#c0392b';
+          pinBtn.style.borderColor = '#c0392b';
+          pinBtn.style.color = '#fff';
         }
         renderPinnedCharacterWidget();
-        openCardModal(card.id);
       });
     }
 
@@ -791,6 +802,11 @@
       compBtn.addEventListener('click', () => {
         openCardComparator(card);
       });
+    }
+
+    const closeActionBtn = document.getElementById('btn-modal-close-action');
+    if (closeActionBtn) {
+      closeActionBtn.addEventListener('click', closeCardModal);
     }
   }
 
@@ -2585,6 +2601,10 @@
 
     if (els.modalClose) {
       els.modalClose.addEventListener('click', closeCardModal);
+      els.modalClose.addEventListener('touchend', (e) => {
+        e.preventDefault();
+        closeCardModal();
+      });
     }
     if (els.cardModal) {
       els.cardModal.addEventListener('click', (e) => {
