@@ -171,6 +171,13 @@ header.app-header {
   gap: 0.75rem;
 }
 
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
 .header-search {
   position: relative;
   min-width: 270px;
@@ -1883,7 +1890,7 @@ footer.app-footer {
 @media (max-width: 768px) {
   /* --- App Header & Navigation --- */
   header.app-header {
-    padding: 0.6rem 0.75rem 0.4rem;
+    padding: 0.45rem 0.65rem 0.35rem;
   }
 
   .header-top {
@@ -1891,32 +1898,42 @@ footer.app-footer {
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    gap: 0.4rem;
+    gap: 0.35rem 0.5rem;
   }
 
   .brand {
     order: 1;
-    gap: 0.5rem;
-    max-width: calc(100% - 110px);
-    overflow: hidden;
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: calc(100% - 108px);
+    overflow: visible;
   }
 
   .brand-logo {
-    height: 30px;
-    max-width: 56px;
+    height: 32px;
+    width: auto;
+    max-width: 52px;
     flex-shrink: 0;
   }
 
   .brand-titles {
     min-width: 0;
+    flex: 1;
   }
 
   .brand-titles h1 {
-    font-size: 1.15rem;
-    letter-spacing: 0.5px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    font-size: clamp(0.85rem, 0.72rem + 1.2vw, 1.05rem);
+    letter-spacing: 0.2px;
+    line-height: 1.15;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+    word-break: normal;
+    overflow-wrap: break-word;
+    margin: 0;
   }
 
   .brand-titles .subtitle {
@@ -1927,34 +1944,49 @@ footer.app-footer {
     display: contents; /* Children participate directly in .header-top flex */
   }
 
-  .lang-switch-group {
+  .header-controls {
     order: 2;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    flex-shrink: 0;
     margin-left: auto;
+  }
+
+  .lang-switch-group {
     padding: 2px;
+    box-shadow: none;
   }
 
   .lang-btn {
-    padding: 0.25rem 0.5rem;
-    font-size: 0.78rem;
+    padding: 0.2rem 0.45rem;
+    font-size: 0.76rem;
   }
 
   #theme-toggle {
-    order: 3;
-    padding: 0.35rem 0.55rem;
+    order: unset;
+    padding: 0.25rem 0.45rem;
     font-size: 0.95rem;
-    margin-left: 0.35rem;
+    min-width: 32px;
+    height: 29px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0;
+    border-radius: var(--radius-sm);
   }
 
   .header-search {
-    order: 4;
+    order: 3;
     width: 100%;
     min-width: 0;
-    margin-top: 0.35rem;
+    margin-top: 0.25rem;
   }
 
   .header-search input {
-    font-size: 0.88rem;
-    padding: 0.48rem 0.85rem 0.48rem 2.1rem;
+    font-size: 0.85rem;
+    padding: 0.42rem 0.8rem 0.42rem 2.05rem;
+    border-radius: 18px;
   }
 
   .header-search .search-icon {
@@ -2574,6 +2606,36 @@ footer.app-footer {
 
   .symbols-grid {
     grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 380px) {
+  header.app-header {
+    padding: 0.4rem 0.5rem 0.3rem;
+  }
+  .brand {
+    gap: 0.35rem;
+    max-width: calc(100% - 96px);
+  }
+  .brand-logo {
+    height: 28px;
+    max-width: 44px;
+  }
+  .brand-titles h1 {
+    font-size: 0.82rem;
+    line-height: 1.12;
+  }
+  .header-controls {
+    gap: 0.25rem;
+  }
+  .lang-btn {
+    padding: 0.18rem 0.38rem;
+    font-size: 0.72rem;
+  }
+  #theme-toggle {
+    min-width: 29px;
+    height: 27px;
+    font-size: 0.85rem;
   }
 }
 

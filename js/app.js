@@ -283,7 +283,12 @@
     // Header & Navigation
     if (els.brandMainTitle) els.brandMainTitle.textContent = t.brandTitle;
     if (els.brandSubtitle) els.brandSubtitle.textContent = t.brandSubtitle;
-    if (els.globalSearch) els.globalSearch.placeholder = t.searchPlaceholder;
+    if (els.globalSearch) {
+      const isMobile = window.innerWidth <= 640;
+      els.globalSearch.placeholder = isMobile
+        ? (isEn ? "Search card, character, rule..." : "Hledat kartu, postavu, pravidlo...")
+        : t.searchPlaceholder;
+    }
     if (els.themeToggle) els.themeToggle.title = t.themeTitle;
 
     const navTexts = {
