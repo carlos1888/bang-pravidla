@@ -776,13 +776,14 @@ window.BANG_CARDS = [
     "type": "brown",
     "typeLabel": "Hnědá karta (okamžitá)",
     "copies": 25,
-    "suit": "mixed",
-    "values": "Kříže, Káry, Piky, Srdce",
+    "suit": "♠ ♥ ♦ ♣",
+    "values": null,
     "range": "Dle zbraně (základ 1)",
     "cost": null,
     "effect": "Ubírá 1 život cílovému hráči na dostřel. Cíl může zásah zrušit kartou Vedle! nebo Barelem. Standardně lze zahrát pouze 1 kartu BANG! za tah.",
     "timing": "Fáze 2 vlastního tahu",
     "rulings": [
+      "V balíčku je 25 karet BANG! ve všech čtyřech barvách: 8× ♣ (2–9), 13× ♦ (2–K, A), 3× ♥ (Q, K, A) a 1× ♠ (A).",
       "Limit 1 za tah se vztahuje pouze na samotné karty BANG!, nikoli na karty s efektem BANG! (Kulomet, Křesadlovka, Derringer).",
       "Zahraná karta se odhazuje vždy, i když byla zrušena.",
       "Vzdálenost se určuje v okamžiku zahrání."
@@ -801,9 +802,10 @@ window.BANG_CARDS = [
     "timingEn": "Phase 2 of own turn",
     "costEn": null,
     "rulingsEn": [
-      "Limit 1 za tah se vztahuje pouze na samotné BANG! card, nikoli na karty s efektem BANG! (Kulomet, Křesadlovka, Derringer).",
-      "Zahraná karta se odhazuje vždy, i když byla zrušena.",
-      "Vzdálenost se určuje v okamžiku zahrání."
+      "The deck contains 25 BANG! cards across all suits: 8× ♣ (2–9), 13× ♦ (2–K, A), 3× ♥ (Q, K, A), and 1× ♠ (A).",
+      "Limit 1 per turn applies only to BANG! cards themselves, not cards causing a BANG! effect (Gatling, Flintlock, Derringer).",
+      "Played card is always discarded, even if cancelled.",
+      "Distance is calculated at the moment of playing."
     ]
   },
   {
@@ -815,13 +817,14 @@ window.BANG_CARDS = [
     "type": "brown",
     "typeLabel": "Hnědá karta (okamžitá)",
     "copies": 12,
-    "suit": "mixed",
-    "values": "Káry, Piky",
+    "suit": "♣ ♠",
+    "values": null,
     "range": null,
     "cost": null,
     "effect": "Ruší efekt BANG! cílený na vás. Lze zahrát okamžitě mimo svůj tah v reakci na útok.",
     "timing": "Mimo tah (v reakci na útok)",
     "rulings": [
+      "V balíčku je 12 karet Vedle!: 5× ♣ (10, J, Q, K, A) a 7× ♠ (2–8).",
       "Lze použít i na odvrácení Kulometu a dalších karet vyvolávajících efekt BANG!.",
       "Nelze použít proti Indiánům! ani v Duelu.",
       "Proti Slab the Killerovi je třeba dodat 2 efekty Vedle!."
@@ -840,9 +843,10 @@ window.BANG_CARDS = [
     "timingEn": "Out of turn (in response to attack)",
     "costEn": null,
     "rulingsEn": [
+      "The deck contains 12 Missed! cards: 5× ♣ (10, J, Q, K, A) and 7× ♠ (2–8).",
       "Can also be used to defend against Gatling and other cards causing a BANG! effect.",
-      "Nelze použít proti Indiánům! ani v Duelu.",
-      "Proti Slab the Killerovi je třeba dodat 2 efekty Vedle!."
+      "Cannot be used against Indians! or in a Duel.",
+      "Against Slab the Killer, 2 Missed! effects are required."
     ]
   },
   {

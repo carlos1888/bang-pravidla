@@ -523,8 +523,15 @@
       else if (card.type === 'feat') borderClass = 'card-feat';
       else if (card.type === 'event') borderClass = 'card-event';
 
-      const isRed = card.suit === '♥' || card.suit === '♦';
-      const suitClass = isRed ? 'suit-red' : 'suit-black';
+      let suitHtml = '';
+      if (card.suit) {
+        let cleanSuit = card.suit === 'mixed' ? '♠ ♥ ♦ ♣' : card.suit;
+        let formatted = cleanSuit
+          .replace(/[♥♦]/g, '<span class="suit-red">$&</span>')
+          .replace(/[♠♣]/g, '<span class="suit-black">$&</span>');
+        let valText = (card.values && !card.values.includes('Kříže')) ? ` ${card.values}` : '';
+        suitHtml = `<span class="card-suit-value">${formatted}${valText}</span>`;
+      }
 
       const cardTitle = isEn ? (card.nameEn || card.name) : card.name;
       const cardBadge = isEn ? (card.expansionNameEn || EXPANSIONS_EN[card.expansion] || card.expansionName) : card.expansionName;
@@ -548,7 +555,7 @@
         <article class="bang-card ${borderClass}" data-id="${card.id}" tabindex="0" role="button" aria-label="Detail ${cardTitle}">
           <div class="card-top-bar">
             <span class="card-badge">${cardBadge}</span>
-            ${card.suit ? `<span class="card-suit-value ${suitClass}">${card.suit} ${card.values || ''}</span>` : ''}
+            ${suitHtml}
           </div>
           ${imageThumbHtml}
           <div class="card-body">
@@ -597,6 +604,16 @@
     const cardCost = isEn ? (card.costEn || card.cost) : card.cost;
     const cardRulings = isEn && card.rulingsEn && card.rulingsEn.length > 0 ? card.rulingsEn : card.rulings;
 
+    let modalSuitHtml = '';
+    if (card.suit) {
+      let cleanSuit = card.suit === 'mixed' ? '♠ ♥ ♦ ♣' : card.suit;
+      let formatted = cleanSuit
+        .replace(/[♥♦]/g, '<span class="suit-red">$&</span>')
+        .replace(/[♠♣]/g, '<span class="suit-black">$&</span>');
+      let valText = (card.values && !card.values.includes('Kříže')) ? ` ${card.values}` : '';
+      modalSuitHtml = `<span class="card-suit-value" style="font-size: 1.15rem; font-weight: 700;">${formatted}${valText}</span>`;
+    }
+
     const rulingsHtml = (cardRulings && cardRulings.length > 0)
       ? `
         <div style="margin-top: 1.25rem; border-top: 2px solid var(--border-color); padding-top: 1rem;">
@@ -633,7 +650,10 @@
         ${imageColHtml}
         <div class="card-modal-info-col">
           <div style="border-bottom: 2px solid var(--border-color); padding-bottom: 0.85rem; margin-bottom: 1.2rem;">
-            <span class="card-badge" style="font-size: 0.85rem; margin-bottom: 0.4rem; display: inline-block;">${cardBadge} • ${cardTypeLabel}</span>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+              <span class="card-badge" style="font-size: 0.85rem; display: inline-block;">${cardBadge} • ${cardTypeLabel}</span>
+              ${modalSuitHtml}
+            </div>
             <h2 style="font-size: 2rem; font-family: 'Georgia', serif; color: var(--text-main); line-height: 1.2;">${cardTitle}</h2>
           </div>
 
