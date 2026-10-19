@@ -348,7 +348,7 @@
           targetBreakdown: [],
           shooterMods: 0,
           shooterBreakdown: [],
-          notes: ['🔔 Zvonice: Všichni hráči se vidí na vzdálenost 1!']
+          notes: ['Zvonice: Všichni hráči se vidí na vzdálenost 1!']
         };
       }
 
@@ -394,218 +394,218 @@
   const CARD_SYNERGIES_DB = {
     'bang': {
       countersCs: [
-        '🛡️ Karta Vedle! (ruší 1 zásah z karty BANG!)',
-        '🛢️ Barel (snímání srdcové barvy ♥ odvrací zásah bez ztráty karty)',
-        '🥋 Úskok / Pancéřová deska / Sombrero / Železný plát (alternativní obrany z rozšíření)',
-        '☕ Bylinkový čaj (při utrpění zásahu okamžitě léčí 1 život)',
-        '🤠 Schopnost Jourdonnaise (má v sobě vestavěný Barel pro každý útok)'
+        'Karta Vedle! (ruší 1 zásah z karty BANG!)',
+        'Barel (snímání srdcové barvy ♥ odvrací zásah bez ztráty karty)',
+        'Úskok / Pancéřová deska / Sombrero / Železný plát (alternativní obrany z rozšíření)',
+        'Bylinkový čaj (při utrpění zásahu okamžitě léčí 1 život)',
+        'Schopnost Jourdonnaise (má v sobě vestavěný Barel pro každý útok)'
       ],
       countersEn: [
-        '🛡️ Missed! card (cancels 1 BANG! hit)',
-        '🛢️ Barrel (drawing Heart ♥ evades hit without discarding cards)',
-        '🥋 Dodge / Iron Plate / Sombrero (expansion defensive alternatives)',
-        '☕ Herbal Tea (instantly restores lost life point upon taking hit)',
-        '🤠 Jourdonnais ability (built-in Barrel on every incoming attack)'
+        'Missed! card (cancels 1 BANG! hit)',
+        'Barrel (drawing Heart ♥ evades hit without discarding cards)',
+        'Dodge / Iron Plate / Sombrero (expansion defensive alternatives)',
+        'Herbal Tea (instantly restores lost life point upon taking hit)',
+        'Jourdonnais ability (built-in Barrel on every incoming attack)'
       ],
       synergiesCs: [
-        '🔫 Willy the Kid (může zahrát libovolný počet karet BANG! za tah)',
-        '💀 Slab the Killer (na odvrácení jeho BANG! jsou nutné 2 efekty Vedle!)',
-        '🔄 Calamity Janet (může hrát libovolnou kartu Vedle! jako BANG!)',
-        '🎯 Doc Holyday (může odhodit libovolné 2 karty za efekt BANG! nad limit)',
-        '⚡ Mexicali Kid (může platit žetony nabití za extra BANG!)'
+        'Willy the Kid (může zahrát libovolný počet karet BANG! za tah)',
+        'Slab the Killer (na odvrácení jeho BANG! jsou nutné 2 efekty Vedle!)',
+        'Calamity Janet (může hrát libovolnou kartu Vedle! jako BANG!)',
+        'Doc Holyday (může odhodit libovolné 2 karty za efekt BANG! nad limit)',
+        'Mexicali Kid (může platit žetony nabití za extra BANG!)'
       ],
       synergiesEn: [
-        '🔫 Willy the Kid (can play unlimited BANG! cards per turn)',
-        '💀 Slab the Killer (requires 2 Missed! effects to cancel)',
-        '🔄 Calamity Janet (can play any Missed! card as a BANG!)',
-        '🎯 Doc Holyday (can discard any 2 cards for extra BANG! effect)',
-        '⚡ Mexicali Kid (spends load tokens for extra BANG!)'
+        'Willy the Kid (can play unlimited BANG! cards per turn)',
+        'Slab the Killer (requires 2 Missed! effects to cancel)',
+        'Calamity Janet (can play any Missed! card as a BANG!)',
+        'Doc Holyday (can discard any 2 cards for extra BANG! effect)',
+        'Mexicali Kid (spends load tokens for extra BANG!)'
       ]
     },
     'vedle': {
       countersCs: [
-        '💀 Slab the Killer (vyžaduje 2 efekty Vedle!, 1 karta nestačí)',
-        '🏹 Indiáni! (karta Vedle! proti nim nefunguje, vyžadují pouze odhození BANG!)'
+        'Slab the Killer (vyžaduje 2 efekty Vedle!, 1 karta nestačí)',
+        'Indiáni! (karta Vedle! proti nim nefunguje, vyžadují pouze odhození BANG!)'
       ],
       countersEn: [
-        '💀 Slab the Killer (requires 2 Missed! effects, 1 is not enough)',
-        '🏹 Indians! (Missed! cannot cancel Indians, requires discarding BANG!)'
+        'Slab the Killer (requires 2 Missed! effects, 1 is not enough)',
+        'Indians! (Missed! cannot cancel Indians, requires discarding BANG!)'
       ],
       synergiesCs: [
-        '🔄 Calamity Janet (může hrát Vedle! jako útočný BANG!)',
-        '🃏 Elena Fuente (může použít jakoukoli kartu ze své ruky jako Vedle!)'
+        'Calamity Janet (může hrát Vedle! jako útočný BANG!)',
+        'Elena Fuente (může použít jakoukoli kartu ze své ruky jako Vedle!)'
       ],
       synergiesEn: [
-        '🔄 Calamity Janet (can play Missed! as BANG!)',
-        '🃏 Elena Fuente (can play any card from hand as Missed!)'
+        'Calamity Janet (can play Missed! as BANG!)',
+        'Elena Fuente (can play any card from hand as Missed!)'
       ]
     },
     'barel': {
       countersCs: [
-        '🔥 Panika! / Cat Balou (odstraní Barel ze stolu před střelbou)',
-        '💃 Belle Star (v jejím tahu soupeřovy vyložené karty jako Barel neplatí)',
-        '💀 Slab the Killer (Barel dá nanejvýš 1 Vedle!, je nutná ještě 2. obrana z ruky)'
+        'Panika! / Cat Balou (odstraní Barel ze stolu před střelbou)',
+        'Belle Star (v jejím tahu soupeřovy vyložené karty jako Barel neplatí)',
+        'Slab the Killer (Barel dá nanejvýš 1 Vedle!, je nutná ještě 2. obrana z ruky)'
       ],
       countersEn: [
-        '🔥 Panic! / Cat Balou (removes Barrel from table before shooting)',
-        '💃 Belle Star (during her turn opponent table cards like Barrel have no effect)',
-        '💀 Slab the Killer (Barrel yields at most 1 Missed!, 2nd defense still required)'
+        'Panic! / Cat Balou (removes Barrel from table before shooting)',
+        'Belle Star (during her turn opponent table cards like Barrel have no effect)',
+        'Slab the Killer (Barrel yields at most 1 Missed!, 2nd defense still required)'
       ],
       synergiesCs: [
-        '🤠 Jourdonnais (má vestavěný Barel – s dalším vyloženým má 2 pokusy na srdce!)',
-        '🍀 Lucky Duke (při snímání otáčí 2 karty a vybírá výhodnější výsledek)'
+        'Jourdonnais (má vestavěný Barel – s dalším vyloženým má 2 pokusy na srdce!)',
+        'Lucky Duke (při snímání otáčí 2 karty a vybírá výhodnější výsledek)'
       ],
       synergiesEn: [
-        '🤠 Jourdonnais (inherent Barrel – with equipped Barrel gets 2 draw checks!)',
-        '🍀 Lucky Duke (draws 2 cards during checks and picks the preferred result)'
+        'Jourdonnais (inherent Barrel – with equipped Barrel gets 2 draw checks!)',
+        'Lucky Duke (draws 2 cards during checks and picks the preferred result)'
       ]
     },
     'dynamit': {
       countersCs: [
-        '🔥 Cat Balou / Panika! (odhození nebo ukradení před výbuchem)',
-        '💣 Plechovka / Kočár / Katastrofa / Odstřelit (bezpečné odstranění ze stolu)'
+        'Cat Balou / Panika! (odhození nebo ukradení před výbuchem)',
+        'Plechovka / Kočár / Katastrofa / Odstřelit (bezpečné odstranění ze stolu)'
       ],
       countersEn: [
-        '🔥 Cat Balou / Panic! (discard or steal before explosion)',
-        '💣 Can-can / Coach / Catastrophe (safe removal from table)'
+        'Cat Balou / Panic! (discard or steal before explosion)',
+        'Can-can / Coach / Catastrophe (safe removal from table)'
       ],
       synergiesCs: [
-        '🍀 Lucky Duke (otáčí 2 karty při snímání – snáze se vyhne pikovým 2–9)',
-        '🪦 Pedro Ramirez (může si vzít vybuchlý/odhozený Dynamit z odhazovacího balíčku)'
+        'Lucky Duke (otáčí 2 karty při snímání – snáze se vyhne pikovým 2–9)',
+        'Pedro Ramirez (může si vzít vybuchlý/odhozený Dynamit z odhazovacího balíčku)'
       ],
       synergiesEn: [
-        '🍀 Lucky Duke (draws 2 cards when checking, evades Spades 2-9 easily)',
-        '🪦 Pedro Ramirez (can draw discarded Dynamite from discard pile)'
+        'Lucky Duke (draws 2 cards when checking, evades Spades 2-9 easily)',
+        'Pedro Ramirez (can draw discarded Dynamite from discard pile)'
       ]
     },
     'vezeni': {
       countersCs: [
-        '♥️ Snímání karty (srdcová barva ♥ = okamžitý úspěšný útěk)',
-        '🌟 Pravidlo Legend (lze z ruky odhodit 1 ♥ kartu a odehrát tah bez snímání!)',
-        '🔥 Cat Balou / Panika! od spojence (např. Pomocník osvobodí Šerifa)'
+        'Snímání karty (srdcová barva ♥ = okamžitý úspěšný útěk)',
+        'Pravidlo Legend (lze z ruky odhodit 1 ♥ kartu a odehrát tah bez snímání!)',
+        'Cat Balou / Panika! od spojence (např. Pomocník osvobodí Šerifa)'
       ],
       countersEn: [
-        '♥️ Card draw check (Hearts ♥ = instant successful escape)',
-        '🌟 Legends Rule (may discard 1 ♥ card from hand to take turn without checking!)',
-        '🔥 Cat Balou / Panic! played by an ally to liberate you'
+        'Card draw check (Hearts ♥ = instant successful escape)',
+        'Legends Rule (may discard 1 ♥ card from hand to take turn without checking!)',
+        'Cat Balou / Panic! played by an ally to liberate you'
       ],
       synergiesCs: [
-        '⚠️ Na Šerifa nelze Vězení nikdy zahrát!',
-        '🎯 Ideální vyřazení nebezpečného Bandity s Volcanicem nebo Slab the Killera'
+        'Na Šerifa nelze Vězení nikdy zahrát!',
+        'Ideální vyřazení nebezpečného Bandity s Volcanicem nebo Slab the Killera'
       ],
       synergiesEn: [
-        '⚠️ Jail can never be played on the Sheriff!',
-        '🎯 Ideal to incapacitate dangerous outlaws or Volcanic users'
+        'Jail can never be played on the Sheriff!',
+        'Ideal to incapacitate dangerous outlaws or Volcanic users'
       ]
     },
     'volcanic': {
       countersCs: [
-        '🔥 Panika! / Cat Balou (zničení zbraně dříve, než hráč spustí salvu)',
-        '💃 Belle Star (ignoruje soupeřovy zbraně)'
+        'Panika! / Cat Balou (zničení zbraně dříve, než hráč spustí salvu)',
+        'Belle Star (ignoruje soupeřovy zbraně)'
       ],
       countersEn: [
-        '🔥 Panic! / Cat Balou (destroy weapon before player unleashes volley)',
-        '💃 Belle Star (ignores opponent cards)'
+        'Panic! / Cat Balou (destroy weapon before player unleashes volley)',
+        'Belle Star (ignores opponent cards)'
       ],
       synergiesCs: [
-        '💨 Suzy Lafayette (vystřílí všechny karty a ihned dobere novou)',
-        '🎯 Doc Holyday (snadné vyprázdnění ruky pro schopnost)',
-        '⚠️ Willy the Kid Volcanic nepotřebuje (má schopnost neomezených BANGů nativně)'
+        'Suzy Lafayette (vystřílí všechny karty a ihned dobere novou)',
+        'Doc Holyday (snadné vyprázdnění ruky pro schopnost)',
+        'Willy the Kid Volcanic nepotřebuje (má schopnost neomezených BANGů nativně)'
       ],
       synergiesEn: [
-        '💨 Suzy Lafayette (discharges entire hand and draws new card instantly)',
-        '🎯 Doc Holyday (easy hand management for ability)',
-        '⚠️ Willy the Kid does not need Volcanic (inherent unlimited BANGs)'
+        'Suzy Lafayette (discharges entire hand and draws new card instantly)',
+        'Doc Holyday (easy hand management for ability)',
+        'Willy the Kid does not need Volcanic (inherent unlimited BANGs)'
       ]
     },
     'pivo': {
       countersCs: [
-        '⚠️ Ve 2 hráčích NEMÁ ŽÁDNÝ ÚČINEK na léčení (ve Zlaté horečce lze směnit za 1 zlato)',
-        '⚠️ Mimo vlastní tah lze zahrát POUZE při smrtelném zásahu (poslední život)'
+        'Ve 2 hráčích NEMÁ ŽÁDNÝ ÚČINEK na léčení (ve Zlaté horečce lze směnit za 1 zlato)',
+        'Mimo vlastní tah lze zahrát POUZE při smrtelném zásahu (poslední život)'
       ],
       countersEn: [
-        '⚠️ When 2 players remain, it has NO HEALING EFFECT (in Gold Rush trades for 1 gold)',
-        '⚠️ Outside your turn, can ONLY be played upon taking lethal damage'
+        'When 2 players remain, it has NO HEALING EFFECT (in Gold Rush trades for 1 gold)',
+        'Outside your turn, can ONLY be played upon taking lethal damage'
       ],
       synergiesCs: [
-        '🍺 Tequila Joe (za každé zahrané Pivo si vyléčí 2 životy místo 1)',
-        '👩 Molly Stark (pokud zahraje kartu mimo tah na záchranu, líže kartu z balíčku)'
+        'Tequila Joe (za každé zahrané Pivo si vyléčí 2 životy místo 1)',
+        'Molly Stark (pokud zahraje kartu mimo tah na záchranu, líže kartu z balíčku)'
       ],
       synergiesEn: [
-        '🍺 Tequila Joe (heals 2 life points per Beer instead of 1)',
-        '👩 Molly Stark (draws a card whenever she plays a card out of turn)'
+        'Tequila Joe (heals 2 life points per Beer instead of 1)',
+        'Molly Stark (draws a card whenever she plays a card out of turn)'
       ]
     },
     'duel': {
       countersCs: [
-        '🔫 Mít v ruce více karet BANG! než vyzyvatel',
-        '🔄 Calamity Janet (může odhazovat karty Vedle! jako BANG!)'
+        'Mít v ruce více karet BANG! než vyzyvatel',
+        'Calamity Janet (může odhazovat karty Vedle! jako BANG!)'
       ],
       countersEn: [
-        '🔫 Keeping more BANG! cards in hand than the challenger',
-        '🔄 Calamity Janet (can discard Missed! as BANG!)'
+        'Keeping more BANG! cards in hand than the challenger',
+        'Calamity Janet (can discard Missed! as BANG!)'
       ],
       synergiesCs: [
-        '🤠 Willy the Kid / Slab the Killer (velká zásoba BANGů v ruce)',
-        '⚠️ Barel ani schopnost Jourdonnaise v Duelu NEFUNGUJÍ!'
+        'Willy the Kid / Slab the Killer (velká zásoba BANGů v ruce)',
+        'Barel ani schopnost Jourdonnaise v Duelu NEFUNGUJÍ!'
       ],
       synergiesEn: [
-        '🤠 Willy the Kid / Slab the Killer (plenty of BANGs in hand)',
-        '⚠️ Barrel and Jourdonnais ability DO NOT WORK in Duel!'
+        'Willy the Kid / Slab the Killer (plenty of BANGs in hand)',
+        'Barrel and Jourdonnais ability DO NOT WORK in Duel!'
       ]
     },
     'indiani': {
       countersCs: [
-        '🔫 Pouze odhození skutečné karty BANG! (Vedle! ani Křesadlovka neplatí!)'
+        'Pouze odhození skutečné karty BANG! (Vedle! ani Křesadlovka neplatí!)'
       ],
       countersEn: [
-        '🔫 Only discarding a genuine BANG! card (Missed! or Flintlock do NOT work!)'
+        'Only discarding a genuine BANG! card (Missed! or Flintlock do NOT work!)'
       ],
       synergiesCs: [
-        '🔄 Calamity Janet (může odhodit Vedle! jako BANG!)',
-        '🏹 Ideální zahrát v okamžiku, kdy soupeři mají málo karet v ruce'
+        'Calamity Janet (může odhodit Vedle! jako BANG!)',
+        'Ideální zahrát v okamžiku, kdy soupeři mají málo karet v ruce'
       ],
       synergiesEn: [
-        '🔄 Calamity Janet (can discard Missed! as BANG!)',
-        '🏹 Perfect timing when opponents have few or no cards in hand'
+        'Calamity Janet (can discard Missed! as BANG!)',
+        'Perfect timing when opponents have few or no cards in hand'
       ]
     },
     'mustang': {
       countersCs: [
-        '🔭 Hledí / Dalekohled (-1 k dosahu střelce)',
-        '🔥 Panika! / Cat Balou'
+        'Hledí / Dalekohled (-1 k dosahu střelce)',
+        'Panika! / Cat Balou'
       ],
       countersEn: [
-        '🔭 Appaloosa / Scope / Binoculars (-1 shooter range)',
-        '🔥 Panic! / Cat Balou'
+        'Appaloosa / Scope / Binoculars (-1 shooter range)',
+        'Panic! / Cat Balou'
       ],
       synergiesCs: [
-        '🤠 Paul Regret (má nativně +1, s Mustangem je pro ostatní na vzdálenost +2!)',
-        '🏕️ Skrýš / Plošinový vůz (kumulativní zvýšení odstupu)'
+        'Paul Regret (má nativně +1, s Mustangem je pro ostatní na vzdálenost +2!)',
+        'Skrýš / Plošinový vůz (kumulativní zvýšení odstupu)'
       ],
       synergiesEn: [
-        '🤠 Paul Regret (inherent +1, with Mustang becomes +2 distance for all!)',
-        '🏕️ Hideout / Flatcar (stackable distance increases)'
+        'Paul Regret (inherent +1, with Mustang becomes +2 distance for all!)',
+        'Hideout / Flatcar (stackable distance increases)'
       ]
     },
     'dostavnik': {
       countersCs: ['Nelze zrušit'],
       countersEn: ['Cannot be canceled'],
       synergiesCs: [
-        '☀️ V rozšíření Divoký západ každé zahrání Dostavníku otáčí NOVOU KARTU DIVOKÉHO ZÁPADU!'
+        'V rozšíření Divoký západ každé zahrání Dostavníku otáčí NOVOU KARTU DIVOKÉHO ZÁPADU!'
       ],
       synergiesEn: [
-        '☀️ In Wild West Show expansion, playing Stagecoach FLIPS A NEW EVENT CARD!'
+        'In Wild West Show expansion, playing Stagecoach FLIPS A NEW EVENT CARD!'
       ]
     },
     'wells fargo': {
       countersCs: ['Nelze zrušit'],
       countersEn: ['Cannot be canceled'],
       synergiesCs: [
-        '☀️ V rozšíření Divoký západ každé zahrání Wells Fargo otáčí NOVOU KARTU DIVOKÉHO ZÁPADU!'
+        'V rozšíření Divoký západ každé zahrání Wells Fargo otáčí NOVOU KARTU DIVOKÉHO ZÁPADU!'
       ],
       synergiesEn: [
-        '☀️ In Wild West Show expansion, playing Wells Fargo FLIPS A NEW EVENT CARD!'
+        'In Wild West Show expansion, playing Wells Fargo FLIPS A NEW EVENT CARD!'
       ]
     }
   };
@@ -629,38 +629,38 @@
     if (type === 'blue' || card.color === 'blue') {
       return {
         counters: isEn
-          ? ['🔥 Cat Balou / Panic! (can discard or steal equipment from play)', '💃 Belle Star (ignores all opponent blue/green cards during her turn)']
-          : ['🔥 Cat Balou / Panika! (odhození nebo krádež vyložené karty ze stolu)', '💃 Belle Star (v jejím tahu vyložené karty soupeřů nefungují)'],
+          ? ['Cat Balou / Panic! (can discard or steal equipment from play)', 'Belle Star (ignores all opponent blue/green cards during her turn)']
+          : ['Cat Balou / Panika! (odhození nebo krádež vyložené karty ze stolu)', 'Belle Star (v jejím tahu vyložené karty soupeřů nefungují)'],
         synergies: isEn
-          ? ['⚡ Armed & Dangerous: Playing blue cards earns +1 load token on dangerous cards!', '⭐ In-play permanence provides long-term tactical advantage']
-          : ['⚡ Ozbrojení a nebezpeční: Vyložení každé modré karty dává +1 žeton nabití na oranžové karty!', '⭐ Trvalé vyložení dává dlouhodobou taktickou výhodu']
+          ? ['Armed & Dangerous: Playing blue cards earns +1 load token on dangerous cards!', 'In-play permanence provides long-term tactical advantage']
+          : ['Ozbrojení a nebezpeční: Vyložení každé modré karty dává +1 žeton nabití na oranžové karty!', 'Trvalé vyložení dává dlouhodobou taktickou výhodu']
       };
     } else if (type === 'green' || card.color === 'green') {
       return {
         counters: isEn
-          ? ['🔥 Cat Balou / Panic! (discard before it can be used next turn)', '⚡ Requires waiting 1 full round before activation']
-          : ['🔥 Cat Balou / Panika! (odhození předtím, než ji hráč může v dalším tahu použít)', '⚡ Vyžaduje počkat 1 celé kolo před použitím'],
+          ? ['Cat Balou / Panic! (discard before it can be used next turn)', 'Requires waiting 1 full round before activation']
+          : ['Cat Balou / Panika! (odhození předtím, než ji hráč může v dalším tahu použít)', 'Vyžaduje počkat 1 celé kolo před použitím'],
         synergies: isEn
-          ? ['🎯 Can be held in play without counting against hand limit in Phase 3!', '🛡️ Instant defensive shield ready on table']
-          : ['🎯 Nepočítá se do limitu karet v ruce ve Fázi 3!', '🛡️ Okamžitý štít připravený na stole k odhození']
+          ? ['Can be held in play without counting against hand limit in Phase 3!', 'Instant defensive shield ready on table']
+          : ['Nepočítá se do limitu karet v ruce ve Fázi 3!', 'Okamžitý štít připravený na stole k odhození']
       };
     } else if (type === 'orange' || card.color === 'orange') {
       return {
         counters: isEn
-          ? ['🧪 Rust card (Rust can drain load tokens and trigger immediate explosion on Bomb!)', '🔥 Cat Balou / Panic!']
-          : ['🧪 Karta Rez (dokáže vysát žetony nabití a u Bomby způsobit okamžitý výbuch!)', '🔥 Cat Balou / Panika!'],
+          ? ['Rust card (Rust can drain load tokens and trigger immediate explosion on Bomb!)', 'Cat Balou / Panic!']
+          : ['Karta Rez (dokáže vysát žetony nabití a u Bomby způsobit okamžitý výbuch!)', 'Cat Balou / Panika!'],
         synergies: isEn
-          ? ['⚡ Discarding cards in Phase 3 charges +1 load token!', '💥 Upgradable brown cards can be boosted with load tokens']
-          : ['⚡ Odhazování přebytečných karet ve Fázi 3 nabíjí +1 žeton nabití!', '💥 Hnědé karty lze vylepšit zaplacením žetonů nabití']
+          ? ['Discarding cards in Phase 3 charges +1 load token!', 'Upgradable brown cards can be boosted with load tokens']
+          : ['Odhazování přebytečných karet ve Fázi 3 nabíjí +1 žeton nabití!', 'Hnědé karty lze vylepšit zaplacením žetonů nabití']
       };
     } else if (type === 'train' || card.isTrain) {
       return {
         counters: isEn
-          ? ['🚫 Railcars can NEVER be taken into hand (Panic forces direct equip)', '🚂 Ironhorse end of line can wipe out all players']
-          : ['🚫 Vagony NIKDY nejdou do ruky (Panika! je nutí vyložit rovnou před hráče)', '🚂 Ironhorse na konečné stanici může zabít všechny současně'],
+          ? ['Railcars can NEVER be taken into hand (Panic forces direct equip)', 'Ironhorse end of line can wipe out all players']
+          : ['Vagony NIKDY nejdou do ruky (Panika! je nutí vyložit rovnou před hráče)', 'Ironhorse na konečné stanici může zabít všechny současně'],
         synergies: isEn
-          ? ['🚂 Free train advance each turn before mandatory wagon purchase', '🎫 High versatility effects on attached railcars']
-          : ['🚂 Posun vlaku o 1 stanici zdarma před povinným nákupem vagonu', '🎫 Vagony dávají silné permanentní či jednorázové bonusy']
+          ? ['Free train advance each turn before mandatory wagon purchase', 'High versatility effects on attached railcars']
+          : ['Posun vlaku o 1 stanici zdarma před povinným nákupem vagonu', 'Vagony dávají silné permanentní či jednorázové bonusy']
       };
     }
 

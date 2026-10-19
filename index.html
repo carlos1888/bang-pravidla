@@ -29,7 +29,7 @@
 
       <div class="header-actions">
         <div class="header-search">
-          <span class="search-icon">🔍</span>
+          <svg class="search-icon-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
           <input type="search" id="global-search" placeholder="Hledat kartu, postavu, pravidlo..." autocomplete="off">
         </div>
         <div class="header-controls">
@@ -38,10 +38,10 @@
             <button id="lang-btn-en" class="lang-btn" data-lang="en" title="English">EN</button>
           </div>
           <button id="sound-toggle" class="btn-icon" title="Zvukové efekty (Zapnuto/Vypnuto)" aria-label="Zvukové efekty">
-            <span id="sound-icon">🔊</span>
+            <svg id="sound-svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
           </button>
           <button id="theme-toggle" class="btn-icon" title="Přepnout tmavý / světlý westernový režim" aria-label="Přepnout motiv">
-            <span>🌙</span>
+            <svg id="theme-svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
           </button>
         </div>
       </div>
@@ -53,22 +53,22 @@
     <!-- MAIN NAV TABS -->
     <nav class="app-nav" aria-label="Hlavní navigace">
       <button class="nav-tab active" data-tab="katalog">
-        <span>🎴</span> <span class="nav-text">Katalog karet</span>
+        <span class="nav-text">Katalog karet</span>
       </button>
       <button class="nav-tab" data-tab="pravidla">
-        <span>📖</span> <span class="nav-text">Pravidla</span>
+        <span class="nav-text">Pravidla</span>
       </button>
       <button class="nav-tab" data-tab="faq">
-        <span>⚖️</span> <span class="nav-text">FAQ</span>
+        <span class="nav-text">FAQ</span>
       </button>
       <button class="nav-tab" data-tab="tah-hrace">
-        <span>⏱️</span> <span class="nav-text">Tah hráče</span>
+        <span class="nav-text">Tah hráče</span>
       </button>
       <button class="nav-tab" data-tab="pomocnik">
-        <span>⚡</span> <span class="nav-text">Rychlý pomocník</span>
+        <span class="nav-text">Rychlý pomocník</span>
       </button>
       <button class="nav-tab" data-tab="nastroje">
-        <span>🛠️</span> <span class="nav-text" id="nav-text-nastroje">Herní nástroje</span>
+        <span class="nav-text" id="nav-text-nastroje">Herní nástroje</span>
       </button>
     </nav>
   </header>
@@ -86,7 +86,6 @@
         <aside class="filter-sidebar" id="filter-sidebar">
           <div class="filter-sidebar-header" id="filter-sidebar-toggle" role="button" tabindex="0" aria-expanded="false" aria-controls="filter-groups-grid">
             <div class="filter-header-left">
-              <span class="filter-icon">⚙️</span>
               <h3 id="label-filter-title">Filtry</h3>
               <span id="active-filters-count" class="active-filters-badge" style="display: none;">0</span>
               <span class="filter-toggle-arrow">▾</span>
@@ -97,7 +96,7 @@
           <div class="filter-groups-grid" id="filter-groups-grid">
             <!-- Expansion Filter -->
             <div class="filter-group">
-              <label for="filter-expansion"><span class="filter-lbl-icon">📦</span> <span id="label-expansion">Rozšíření</span></label>
+              <label for="filter-expansion"><span id="label-expansion">Rozšíření</span></label>
               <select id="filter-expansion" class="filter-select">
                 <option value="all">Všechna rozšíření (258 karet)</option>
                 <option value="base">Základní hra</option>
@@ -116,25 +115,25 @@
 
             <!-- Type Filter -->
             <div class="filter-group">
-              <label for="filter-type"><span class="filter-lbl-icon">🎴</span> <span id="label-type">Typ</span></label>
+              <label for="filter-type"><span id="label-type">Typ</span></label>
               <select id="filter-type" class="filter-select">
                 <option value="all">Všechny typy karet</option>
-                <option value="brown">🟤 Hnědé karty (okamžité)</option>
-                <option value="blue">🔵 Modré karty (vyložené ve hře)</option>
-                <option value="green">🟢 Zelené karty (Město duchů)</option>
-                <option value="orange">🟠 Oranžové karty (Nebezpečné)</option>
-                <option value="black">⚫ Černé vybavení (Zlatá horečka)</option>
-                <option value="character">🤠 Postavy (běžné i legendární)</option>
-                <option value="train">🚂 Vlak, lokomotivy a vagony</option>
-                <option value="feat">📜 Karty činů (Legendy)</option>
-                <option value="event">⚡ Globální události</option>
-                <option value="role">⭐ Karty rolí</option>
+                <option value="brown">Hnědé karty (okamžité)</option>
+                <option value="blue">Modré karty (vyložené ve hře)</option>
+                <option value="green">Zelené karty (Město duchů)</option>
+                <option value="orange">Oranžové karty (Nebezpečné)</option>
+                <option value="black">Černé vybavení (Zlatá horečka)</option>
+                <option value="character">Postavy (běžné i legendární)</option>
+                <option value="train">Vlak, lokomotivy a vagony</option>
+                <option value="feat">Karty činů (Legendy)</option>
+                <option value="event">Globální události</option>
+                <option value="role">Karty rolí</option>
               </select>
             </div>
 
             <!-- Suit Filter -->
             <div class="filter-group">
-              <label for="filter-suit"><span class="filter-lbl-icon">♠️</span> <span id="label-suit">Barva</span></label>
+              <label for="filter-suit"><span id="label-suit">Barva</span></label>
               <select id="filter-suit" class="filter-select">
                 <option value="all">Všechny barvy</option>
                 <option value="♠">♠ Piky</option>
@@ -146,7 +145,7 @@
 
             <!-- Sorting -->
             <div class="filter-group">
-              <label for="sort-cards"><span class="filter-lbl-icon">↕️</span> <span id="label-sort">Řazení</span></label>
+              <label for="sort-cards"><span id="label-sort">Řazení</span></label>
               <select id="sort-cards" class="filter-select">
                 <option value="name-asc">Název (A → Z)</option>
                 <option value="name-desc">Název (Z → A)</option>
@@ -161,18 +160,18 @@
         <div class="catalog-content">
           <!-- Quick Tag Chips -->
           <div class="catalog-quick-tags" id="catalog-quick-tags">
-            <span class="quick-tag-label" id="quick-tag-label">⚡ Tagy:</span>
+            <span class="quick-tag-label" id="quick-tag-label">Filtrovat:</span>
             <div class="quick-tags-scroll">
               <button type="button" class="quick-tag active" data-tag="all">Vše</button>
-              <button type="button" class="quick-tag" data-tag="zbrane">🔫 Zbraně</button>
-              <button type="button" class="quick-tag" data-tag="leceni">❤️ Léčení</button>
-              <button type="button" class="quick-tag" data-tag="obrana">🛡️ Obrana</button>
-              <button type="button" class="quick-tag" data-tag="vzdalenost">🐎 Vzdálenost</button>
-              <button type="button" class="quick-tag" data-tag="snimani">🎴 Snímání</button>
-              <button type="button" class="quick-tag" data-tag="zelene">🟢 Zelené</button>
-              <button type="button" class="quick-tag" data-tag="oranzove">🟠 Oranžové</button>
-              <button type="button" class="quick-tag" data-tag="postavy">🤠 Postavy</button>
-              <button type="button" class="quick-tag" data-tag="udalosti">⚡ Události</button>
+              <button type="button" class="quick-tag" data-tag="zbrane"><img src="assets/symbols/symbol_bang.png" class="tag-symbol-img" alt="">Zbraně</button>
+              <button type="button" class="quick-tag" data-tag="leceni"><img src="assets/symbols/symbol_regain_life.png" class="tag-symbol-img" alt="">Léčení</button>
+              <button type="button" class="quick-tag" data-tag="obrana"><img src="assets/symbols/symbol_missed.png" class="tag-symbol-img" alt="">Obrana</button>
+              <button type="button" class="quick-tag" data-tag="vzdalenost"><img src="assets/symbols/symbol_mustang.png" class="tag-symbol-img" alt="">Vzdálenost</button>
+              <button type="button" class="quick-tag" data-tag="snimani"><img src="assets/symbols/symbol_draw_check.png" class="tag-symbol-img" alt="">Snímání</button>
+              <button type="button" class="quick-tag" data-tag="zelene">Zelené</button>
+              <button type="button" class="quick-tag" data-tag="oranzove">Oranžové</button>
+              <button type="button" class="quick-tag" data-tag="postavy">Postavy</button>
+              <button type="button" class="quick-tag" data-tag="udalosti">Události</button>
             </div>
           </div>
 
@@ -217,8 +216,8 @@
     <!-- ================================================================= -->
     <section id="tab-faq" class="tab-pane">
       <div class="faq-search-box">
-        <h2 id="faq-main-title" style="font-family: 'Georgia', serif; color: var(--color-brown); margin-bottom: 0.5rem;">
-          ⚖️ Arbitr sporných situací &amp; Pravidlové rébusy (50+ řešení)
+        <h2 id="faq-main-title" style="font-family: var(--font-western); color: var(--color-brown); margin-bottom: 0.5rem;">
+          Arbitr sporných situací &amp; Pravidlové rébusy (50+ řešení)
         </h2>
         <p id="faq-main-lead" style="color: var(--text-muted); margin-bottom: 1rem;">
           Okamžité vyhledávání v oficiálních rozhodnutích, neobvyklých kombinacích karet, sporných momentech a časových posloupnostech.
@@ -258,20 +257,20 @@
     <!-- ================================================================= -->
     <section id="tab-nastroje" class="tab-pane">
       <div class="tools-subnav" id="tools-subnav">
-        <button class="tool-subnav-btn active" data-tool="setup"><span>⚙️</span> <span id="tool-label-setup">Příprava hry</span></button>
-        <button class="tool-subnav-btn" data-tool="calc"><span>📏</span> <span id="tool-label-calc">Kalkulačka &amp; Radar</span></button>
-        <button class="tool-subnav-btn" data-tool="draw"><span>⚖️</span> <span id="tool-label-draw">Arbitr &amp; Šance snímání</span></button>
-        <button class="tool-subnav-btn" data-tool="timer"><span>⏱️</span> <span id="tool-label-timer">Hodinky &amp; Duel</span></button>
-        <button class="tool-subnav-btn" data-tool="train"><span>🚂</span> <span id="tool-label-train">Vlaková loupež</span></button>
-        <button class="tool-subnav-btn" data-tool="legends"><span>🌟</span> <span id="tool-label-legends">Legendy &amp; Činy</span></button>
-        <button class="tool-subnav-btn" data-tool="saloon"><span>🪙</span> <span id="tool-label-saloon">Obchod Saloon</span></button>
-        <button class="tool-subnav-btn" data-tool="scenarios"><span>🎲</span> <span id="tool-label-scenarios">Hospodské výzvy</span></button>
-        <button class="tool-subnav-btn" data-tool="events"><span>☀️</span> <span id="tool-label-events">Balíček událostí</span></button>
-        <button class="tool-subnav-btn" data-tool="draft"><span>🎲</span> <span id="tool-label-draft">Losovač rolí a postav</span></button>
-        <button class="tool-subnav-btn" data-tool="tracker"><span>🤠</span> <span id="tool-label-tracker">Virtuální deska</span></button>
-        <button class="tool-subnav-btn" data-tool="matches"><span>🏆</span> <span id="tool-label-matches">Zápisník partií</span></button>
-        <button class="tool-subnav-btn" data-tool="quiz"><span>❓</span> <span id="tool-label-quiz">Kvíz pravidel</span></button>
-        <button class="tool-subnav-btn" data-tool="soundboard"><span>🔊</span> <span id="tool-label-soundboard">Soundboard</span></button>
+        <button class="tool-subnav-btn active" data-tool="setup"><span id="tool-label-setup">Příprava hry</span></button>
+        <button class="tool-subnav-btn" data-tool="calc"><img src="assets/symbols/symbol_reachable_distance.png" class="tool-btn-symbol" alt=""><span id="tool-label-calc">Kalkulačka vzdálenosti</span></button>
+        <button class="tool-subnav-btn" data-tool="draw"><img src="assets/symbols/symbol_draw_check.png" class="tool-btn-symbol" alt=""><span id="tool-label-draw">Arbitr snímání</span></button>
+        <button class="tool-subnav-btn" data-tool="timer"><img src="assets/symbols/symbol_bang.png" class="tool-btn-symbol" alt=""><span id="tool-label-timer">Hodinky &amp; Duel</span></button>
+        <button class="tool-subnav-btn" data-tool="train"><span id="tool-label-train">Vlaková loupež</span></button>
+        <button class="tool-subnav-btn" data-tool="legends"><span id="tool-label-legends">Legendy &amp; Činy</span></button>
+        <button class="tool-subnav-btn" data-tool="saloon"><span id="tool-label-saloon">Obchod Saloon</span></button>
+        <button class="tool-subnav-btn" data-tool="scenarios"><span id="tool-label-scenarios">Hospodské výzvy</span></button>
+        <button class="tool-subnav-btn" data-tool="events"><span id="tool-label-events">Balíček událostí</span></button>
+        <button class="tool-subnav-btn" data-tool="draft"><span id="tool-label-draft">Losovač rolí a postav</span></button>
+        <button class="tool-subnav-btn" data-tool="tracker"><span id="tool-label-tracker">Virtuální deska</span></button>
+        <button class="tool-subnav-btn" data-tool="matches"><span id="tool-label-matches">Zápisník partií</span></button>
+        <button class="tool-subnav-btn" data-tool="quiz"><span id="tool-label-quiz">Kvíz pravidel</span></button>
+        <button class="tool-subnav-btn" data-tool="soundboard"><span id="tool-label-soundboard">Zvukové efekty</span></button>
       </div>
       <div class="tools-content-area" id="tools-content-area">
         <!-- Rendered dynamically via app.js -->

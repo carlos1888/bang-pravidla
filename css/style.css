@@ -127,9 +127,7 @@
 body {
   font-family: var(--font-body);
   background-color: var(--bg-primary);
-  background-image: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.45) 0%, rgba(235, 218, 190, 0.65) 100%), url('../assets/western/saloon_wood.jpg');
-  background-blend-mode: overlay;
-  background-attachment: fixed;
+  background-image: radial-gradient(circle at 50% 0%, #fffbf2 0%, #f6eedb 55%, #ede0c6 100%);
   color: var(--text-main);
   line-height: 1.65;
   min-height: 100vh;
@@ -140,15 +138,13 @@ body {
 
 [data-theme="dark"] body {
   background-color: var(--bg-primary);
-  background-image: radial-gradient(circle at 50% 20%, rgba(85, 42, 20, 0.4) 0%, rgba(15, 8, 4, 0.95) 100%), url('../assets/western/saloon_wood.jpg');
-  background-blend-mode: multiply;
-  background-attachment: fixed;
+  background-image: radial-gradient(circle at 50% 0%, #23160e 0%, #180f0a 60%, #100a06 100%);
 }
 
 /* Custom Western Brass & Wood Scrollbar */
 ::-webkit-scrollbar {
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
 }
 ::-webkit-scrollbar-track {
   background: #2b1509;
@@ -158,26 +154,23 @@ body {
   background: linear-gradient(180deg, #d49a00 0%, #8c5b05 100%);
   border: 2px solid #2b1509;
   border-radius: 6px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(180deg, #ffcc00 0%, #aa720a 100%);
 }
 
 /* ==========================================================================
-   HEADER & SALOON SIGNBOARD
+   HEADER & BRAND
    ========================================================================== */
 header.app-header {
-  background: linear-gradient(180deg, rgba(46, 23, 12, 0.92) 0%, rgba(26, 13, 6, 0.96) 100%), url('../assets/western/saloon_wood_header.jpg');
-  background-size: cover;
-  background-position: center;
+  background: linear-gradient(180deg, #351c0f 0%, #1f1008 100%);
   color: #f7ecd5;
-  padding: 1.15rem 1.5rem 0.65rem;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6), inset 0 -2px 0 #5c3516;
+  padding: 0.95rem 1.5rem 0.45rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
   position: sticky;
   top: 0;
   z-index: 100;
-  border-bottom: 4px solid var(--accent-gold);
+  border-bottom: 3.5px solid var(--accent-gold);
 }
 
 .header-top {
@@ -196,46 +189,38 @@ header.app-header {
   gap: 0.85rem;
   text-decoration: none;
   color: inherit;
-  animation: saloonSignSway 6s ease-in-out infinite alternate;
-  transform-origin: top center;
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: opacity 0.2s ease;
 }
 
 .brand:hover {
-  animation: none;
-  transform: scale(1.05) rotate(-1.5deg);
+  opacity: 0.92;
 }
 
 .brand-logo {
-  height: 46px;
+  height: 42px;
   width: auto;
-  max-width: 90px;
+  max-width: 85px;
   object-fit: contain;
   flex-shrink: 0;
-  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.6));
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.brand:hover .brand-logo {
-  transform: scale(1.1) rotate(-3deg);
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.5));
 }
 
 .brand-titles h1 {
-  font-family: var(--font-western-display);
-  font-size: 2.15rem;
-  letter-spacing: 1.5px;
+  font-family: var(--font-western);
+  font-size: 1.85rem;
+  font-weight: 800;
+  letter-spacing: 0.8px;
   color: #ffcc00;
-  text-shadow: 2px 2px 0px #3d1c05, 4px 4px 0px #1a0a02, 0 0 16px rgba(255,204,0,0.5);
-  line-height: 1;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+  line-height: 1.1;
 }
 
 .brand-titles .subtitle {
   font-family: var(--font-serif);
-  font-size: 0.88rem;
+  font-size: 0.82rem;
   font-style: italic;
-  color: #e5d1b3;
-  letter-spacing: 0.5px;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+  color: #d8c2a5;
+  letter-spacing: 0.3px;
 }
 
 .header-actions {
@@ -279,13 +264,13 @@ header.app-header {
   color: #d1b899;
 }
 
-.header-search .search-icon {
+.header-search .search-icon,
+.header-search .search-icon-svg {
   position: absolute;
   left: 0.85rem;
   top: 50%;
   transform: translateY(-50%);
   color: #ffcc00;
-  font-size: 1.05rem;
   pointer-events: none;
 }
 
@@ -293,7 +278,7 @@ header.app-header {
   background: linear-gradient(180deg, #442412 0%, #291408 100%);
   border: 1.5px solid #8c5b30;
   color: #ffcc00;
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   padding: 0.35rem 0.65rem;
   height: 34px;
   min-width: 38px;
@@ -304,19 +289,22 @@ header.app-header {
   justify-content: center;
   gap: 0.4rem;
   box-shadow: 0 2px 4px rgba(0,0,0,0.4);
-  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: all 0.2s ease;
   line-height: 1;
 }
 
 .btn-icon:hover {
   background: linear-gradient(180deg, #5c331a 0%, #3a1c0b 100%);
   border-color: #ffcc00;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+  transform: translateY(-1px);
 }
 
 .btn-icon:active {
-  transform: translateY(1px);
+  transform: translateY(0);
+}
+
+.btn-icon svg {
+  display: block;
 }
 
 #sound-icon {
@@ -328,50 +316,57 @@ header.app-header {
 }
 
 /* ==========================================================================
-   SALOON SHINGLES NAVIGATION TABS
+   NAVIGATION TABS
    ========================================================================== */
 nav.app-nav {
   max-width: 1400px;
-  margin: 0.85rem auto 0;
+  margin: 0.65rem auto 0;
   display: flex;
-  gap: 0.45rem;
+  gap: 0.35rem;
   overflow-x: auto;
-  padding: 0.25rem 0.25rem 0;
+  padding: 0.2rem 0.2rem 0;
 }
 
 .nav-tab {
-  background: linear-gradient(180deg, #442514 0%, #2b1409 100%);
-  border: 2px solid #6b3d1f;
+  background: rgba(38, 19, 9, 0.65);
+  border: 1.5px solid #5a351a;
   border-bottom: none;
-  color: #f1e2c8;
-  padding: 0.65rem 1.15rem;
+  color: #e5d1b7;
+  padding: 0.55rem 1rem;
   font-family: var(--font-western);
   font-size: 0.95rem;
-  letter-spacing: 0.5px;
-  border-radius: 10px 10px 0 0;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  border-radius: 6px 6px 0 0;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.4rem;
   white-space: nowrap;
-  box-shadow: 0 -2px 6px rgba(0,0,0,0.3);
-  transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: all 0.2s ease;
 }
 
 .nav-tab:hover {
-  color: #fffaee;
-  transform: translateY(-4px) scale(1.03);
-  border-color: #d49a00;
-  box-shadow: 0 -4px 12px rgba(212, 154, 0, 0.35);
+  background: rgba(65, 33, 16, 0.85);
+  color: #ffffff;
+  border-color: #9c6835;
 }
 
 .nav-tab.active {
-  background: linear-gradient(180deg, #f7d046 0%, #d49a00 50%, #9e6b00 100%);
-  color: #211105;
-  border-color: #ffcc00;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-  box-shadow: 0 -4px 14px rgba(255, 204, 0, 0.45);
-  transform: translateY(-2px);
+  background: var(--bg-primary);
+  color: var(--color-brown);
+  border-color: var(--accent-gold);
+  border-bottom: 2px solid var(--bg-primary);
+  margin-bottom: -1px;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 -3px 8px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="dark"] .nav-tab.active {
+  background: var(--bg-primary);
+  color: #ffcc00;
+  border-color: var(--accent-gold);
 }
 
 /* Main Container */
@@ -684,17 +679,17 @@ main.app-main {
 }
 
 /* ==========================================================================
-   AUTHENTIC BANG! COMIC PLAYING CARD COMPONENT
+   AUTHENTIC BANG! PLAYING CARD COMPONENT
    ========================================================================== */
 .bang-card {
-  background: radial-gradient(ellipse at 50% 18%, #ffffff 0%, #fbf5e7 65%, #f1e0bf 100%);
-  border-radius: 14px;
-  border: 3.5px solid var(--border-color);
-  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.75), inset 0 0 0 4px rgba(44, 22, 12, 0.12), 3px 3px 0px rgba(44, 22, 12, 0.75), 0 8px 18px rgba(44, 22, 12, 0.12);
+  background: var(--bg-card);
+  border-radius: 10px;
+  border: 2.5px solid var(--border-color);
+  box-shadow: 0 2px 8px rgba(44, 22, 12, 0.08);
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.28s ease, border-color 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
   cursor: pointer;
   position: relative;
   content-visibility: auto;
@@ -702,26 +697,26 @@ main.app-main {
 }
 
 [data-theme="dark"] .bang-card {
-  background: radial-gradient(ellipse at 50% 18%, #2d1c13 0%, #20130c 70%, #170d07 100%);
-  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.1), inset 0 0 0 4px rgba(0, 0, 0, 0.5), 3px 3px 0px rgba(0, 0, 0, 0.9), 0 8px 18px rgba(0, 0, 0, 0.4);
+  background: var(--bg-card);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.5);
 }
 
 .bang-card:hover {
-  transform: translateY(-8px) scale(1.025) rotate(-0.5deg);
-  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.9), 0 16px 32px rgba(44, 22, 12, 0.25), 0 0 0 2px var(--color-gold), 4px 6px 0px rgba(44, 22, 12, 0.85);
-  border-color: var(--color-gold);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(44, 22, 12, 0.16);
+  border-color: var(--accent-gold);
 }
 
 [data-theme="dark"] .bang-card:hover {
-  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.25), 0 16px 32px rgba(0, 0, 0, 0.7), 0 0 0 2px var(--color-gold), 4px 6px 0px rgba(0, 0, 0, 0.95);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+  border-color: var(--accent-gold);
 }
 
 .bang-card:active {
-  transform: translateY(-2px) scale(0.99);
-  box-shadow: 2px 2px 0px rgba(44, 22, 12, 0.8);
+  transform: translateY(0);
 }
 
-/* Border colors matching expansion decks with comic ink edge */
+/* Border colors matching expansion decks */
 .bang-card.card-brown { border-color: var(--color-brown); }
 .bang-card.card-blue { border-color: var(--color-blue); }
 .bang-card.card-green { border-color: var(--color-green); }
@@ -2584,6 +2579,101 @@ footer.app-footer {
   color: var(--text-muted);
   line-height: 1.55;
   margin: 0;
+}
+
+/* Official BANG! Symbols Integration Everywhere */
+.tag-symbol-img {
+  height: 18px;
+  width: auto;
+  max-width: 26px;
+  object-fit: contain;
+  vertical-align: -2px;
+  margin-right: 0.35rem;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.25));
+}
+
+.tool-btn-symbol {
+  height: 19px;
+  width: auto;
+  max-width: 28px;
+  object-fit: contain;
+  vertical-align: -3px;
+  margin-right: 0.35rem;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+}
+
+.symbol-inline {
+  display: inline-block;
+  vertical-align: -3px;
+  height: 22px;
+  width: auto;
+  max-width: 36px;
+  object-fit: contain;
+  margin: 0 0.25rem;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.25));
+}
+
+.symbol-inline-lg {
+  display: inline-block;
+  vertical-align: -5px;
+  height: 28px;
+  width: auto;
+  max-width: 44px;
+  object-fit: contain;
+  margin: 0 0.35rem;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.rules-symbol-inline {
+  display: inline-block;
+  vertical-align: -4px;
+  height: 24px;
+  width: auto;
+  max-width: 38px;
+  object-fit: contain;
+  margin-right: 0.35rem;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.25));
+}
+
+.preset-symbol-thumb {
+  height: 22px;
+  width: auto;
+  max-width: 34px;
+  object-fit: contain;
+  vertical-align: -3px;
+  margin-right: 0.35rem;
+}
+
+.card-official-symbols-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0.85rem 0;
+  padding: 0.6rem 0.85rem;
+  background: var(--bg-surface);
+  border-radius: 6px;
+  border-left: 3px solid var(--accent-gold);
+}
+
+.card-symbol-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 0.22rem 0.55rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-main);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+
+.card-symbol-pill img {
+  height: 20px;
+  width: auto;
+  object-fit: contain;
 }
 
 /* =========================================================================

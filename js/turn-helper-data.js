@@ -14,7 +14,7 @@
         </div>
         <p>Než si doberete jakoukoli kartu do ruky, musí se nejprve vyhodnotit globální efekty a karty vyložené před vámi na stole:</p>
         <div class="callout callout-info" style="margin: 0.85rem 0;">
-          <h4>👑 Speciální úkony Šerifa (pouze na začátku jeho tahu):</h4>
+          <h4>Speciální úkony Šerifa (pouze na začátku jeho tahu):</h4>
           <ul>
             <li><strong>Od 2. kola hry:</strong> Šerif otočí novou kartu z balíčku událostí (<em>Pravé poledne</em> nebo <em>Pěst plná karet</em>). Tato událost platí pro všechny až do dalšího tahu Šerifa.</li>
             <li><strong>Posun lokomotivy:</strong> Šerif posune lokomotivu o 1 stanici doprava (vlak za sebou táhne vagony).</li>
@@ -26,7 +26,7 @@
         <div class="timing-flow-grid">
           <div class="timing-flow-card">
             <div class="timing-order">Krok 1</div>
-            <h4>🧨 1. Dynamit</h4>
+            <h4><img src="assets/symbols/symbol_dynamite.png" class="rules-symbol-inline" alt=""> 1. Dynamit</h4>
             <div class="timing-flow-condition">
               Snímá se z balíčku:<br>
               <strong>♠ 2–9 = Výbuch!</strong> Hráč ztrácí 3 životy a Dynamit jde do odhozu.<br>
@@ -45,7 +45,7 @@
           </div>
           <div class="timing-flow-card">
             <div class="timing-order">Krok 3</div>
-            <h4>💣 3. Bomba</h4>
+            <h4>3. Bomba</h4>
             <div class="timing-flow-condition">
               Snímá se z balíčku:<br>
               <strong>♥ / ♦ = Předání:</strong> Posouvá se dál hráči po levici.<br>
@@ -54,7 +54,7 @@
           </div>
           <div class="timing-flow-card">
             <div class="timing-order">Krok 4</div>
-            <h4>🐍 4. Chřestýš</h4>
+            <h4>4. Chřestýš</h4>
             <div class="timing-flow-condition">
               Snímá se z balíčku:<br>
               <strong>♠ (Piky) = Zásah!</strong> Hráč okamžitě ztrácí 1 život.<br>
@@ -63,7 +63,7 @@
           </div>
         </div>
         <p style="margin-top: 0.5rem; font-size: 0.94rem; color: var(--text-muted);">
-          🗺️ <strong>Karta Mapa:</strong> Hráč s Mapou se může před dobráním podívat na 2 vrchní karty balíčku a 1 z nich dobrovolně odhodit.
+          <strong>Karta Mapa:</strong> Hráč s Mapou se může před dobráním podívat na 2 vrchní karty balíčku a 1 z nich dobrovolně odhodit.
         </p>
       </div>
 
@@ -77,7 +77,7 @@
         </div>
         <p>Standardně si doberte <strong>2 vrchní karty</strong> z dobíracího balíčku do ruky.</p>
         <h4 style="color: var(--color-brown); margin: 1rem 0 0.5rem; font-size: 1.05rem;">
-          🤠 Postavy se speciálním způsobem lízání:
+          Postavy se speciálním způsobem lízání:
         </h4>
         <div class="draw-characters-grid">
           <div class="draw-char-card">
@@ -126,7 +126,7 @@
         <p>V této fázi můžete provést libovolné množství akcí v libovolném pořadí, dokud máte karty a prostředky:</p>
         <div class="action-categories-grid">
           <div class="action-cat-card" style="border-left: 4px solid var(--color-brown);">
-            <h4>🟤 / 🔵 Běžné karty</h4>
+            <h4>Běžné hnědé a modré karty</h4>
             <ul>
               <li><strong>Hnědé karty:</strong> Zahrajte pro okamžitý efekt a odhoďte.</li>
               <li><strong>Modré karty:</strong> Vyložte před sebe na stůl pro trvalý efekt.</li>
@@ -134,14 +134,14 @@
             </ul>
           </div>
           <div class="action-cat-card" style="border-left: 4px solid var(--color-green);">
-            <h4>🟢 Zelené karty (Město duchů)</h4>
+            <h4>Zelené karty (Město duchů)</h4>
             <ul>
               <li>Vykládají se před hráče, ale <em>nelze je použít v tahu, kdy byly vyloženy</em>.</li>
               <li>V tomto tahu můžete odhodit kteroukoli zelenou kartu vyloženou v dřívějších kolech a ihned aktivovat její efekt.</li>
             </ul>
           </div>
           <div class="action-cat-card" style="border-left: 4px solid var(--color-gold);">
-            <h4>🪙 Zlatá horečka (Zlato &amp; Vybavení)</h4>
+            <h4>Zlatá horečka (Zlato &amp; Vybavení)</h4>
             <ul>
               <li>Kupujte vybavení (černé i hnědé) z nabídky 3 karet za nasbírané valouny zlata.</li>
               <li>Odhazujte vybavení soupeřů za zaplacení jeho nákupní ceny + 1 valoun navíc.</li>
@@ -149,14 +149,14 @@
             </ul>
           </div>
           <div class="action-cat-card" style="border-left: 4px solid var(--color-train);">
-            <h4>🚂 Velká vlaková loupež (Vlak &amp; Vagony)</h4>
+            <h4>Velká vlaková loupež (Vlak &amp; Vagony)</h4>
             <ul>
               <li><strong>Posun vlaku:</strong> Můžete posunout vlak o 1 stanici doprava zdarma, ale pak <em>MUSÍTE</em> koupit přiřazený vagon!</li>
               <li><strong>Nákup vagonu:</strong> Zaplaťte cenu stanice odhozením vyžadovaných karet a vagon vyložte před sebe.</li>
             </ul>
           </div>
           <div class="action-cat-card" style="border-left: 4px solid var(--color-orange);">
-            <h4>🟠 Ozbrojení a nebezpeční (Oranžové karty)</h4>
+            <h4>Ozbrojení a nebezpeční (Oranžové karty)</h4>
             <ul>
               <li>Vyložte oranžovou kartu se 3 žetony nabití.</li>
               <li>Zahráním modré karty přidejte 1 žeton nabití na kteroukoli svou oranžovou kartu.</li>
@@ -164,7 +164,7 @@
             </ul>
           </div>
           <div class="action-cat-card" style="border-left: 4px solid var(--color-legend);">
-            <h4>🌟 Legendy (Činy &amp; Přivlastnění)</h4>
+            <h4>Legendy (Činy &amp; Přivlastnění)</h4>
             <ul>
               <li><strong>Vykonání činu:</strong> Splňte podmínku karty činu a položte na ni 2 své žetony slávy.</li>
               <li><strong>Přivlastnění (strana B):</strong> Pokud jste již Legendou, můžete si čin se svými žetony přivlastnit a ubrat jiné legendě 1 život bez obrany!</li>
@@ -203,7 +203,7 @@
           </div>
         </div>
         <div class="callout callout-purple" style="margin-bottom: 1.25rem;">
-          <h4>🏆 Chlubení se činem (Pokud jste v tahu nevykonali žádný čin):</h4>
+          <h4>Chlubení se činem (Pokud jste v tahu nevykonali žádný čin):</h4>
           <p>Platí i pro hráče, kteří byli uvězněni a nehráli Fázi 1, 2 ani 3!</p>
           <ol style="padding-left: 1.25rem; margin-top: 0.4rem;">
             <li>Vyložte novou kartu činu z dobíracího balíčku činů.</li>
@@ -212,7 +212,7 @@
           </ol>
         </div>
         <div class="callout callout-info">
-          <h4>👑 ZROD LEGENDY (Okamžitá proměna):</h4>
+          <h4>Zrod Legendy (Okamžitá proměna):</h4>
           <p>
             Umístěním svého <strong>posledního (5.) žetonu slávy</strong> se okamžitě stáváte <strong>LEGENDOU</strong>!
             Otočte svou kartu postavy na <strong>stranu B</strong> s novou brutální schopností a <strong>ihned si doplňte životy na 3</strong> (pokud máte méně než 3 životy)!
@@ -237,7 +237,7 @@
         </div>
         <p>Before drawing cards into your hand, global effects and timed cards in front of you must be resolved:</p>
         <div class="callout callout-info" style="margin: 0.85rem 0;">
-          <h4>👑 Special Sheriff Actions (Only at the start of Sheriff's turn):</h4>
+          <h4>Special Sheriff Actions (Only at the start of Sheriff's turn):</h4>
           <ul>
             <li><strong>From Round 2 onwards:</strong> The Sheriff flips a new Event card from the active event deck (<em>High Noon</em> or <em>A Fistful of Cards</em>). This event affects all players until the Sheriff's next turn.</li>
             <li><strong>Advance Locomotive:</strong> The Sheriff moves the locomotive 1 station to the right (the train pulls its railcars behind it).</li>
@@ -249,7 +249,7 @@
         <div class="timing-flow-grid">
           <div class="timing-flow-card">
             <div class="timing-order">Step 1</div>
-            <h4>🧨 1. Dynamite</h4>
+            <h4><img src="assets/symbols/symbol_dynamite.png" class="rules-symbol-inline" alt=""> 1. Dynamite</h4>
             <div class="timing-flow-condition">
               Draw from the deck (check):<br>
               <strong>♠ 2–9 = Explosion!</strong> Lose 3 life points and discard Dynamite.<br>
@@ -268,7 +268,7 @@
           </div>
           <div class="timing-flow-card">
             <div class="timing-order">Step 3</div>
-            <h4>💣 3. Bomb</h4>
+            <h4>3. Bomb</h4>
             <div class="timing-flow-condition">
               Draw from the deck (check):<br>
               <strong>♥ / ♦ = Pass:</strong> Passes to the player on your left.<br>
@@ -277,7 +277,7 @@
           </div>
           <div class="timing-flow-card">
             <div class="timing-order">Step 4</div>
-            <h4>🐍 4. Rattlesnake</h4>
+            <h4>4. Rattlesnake</h4>
             <div class="timing-flow-condition">
               Draw from the deck (check):<br>
               <strong>♠ (Spades) = Hit!</strong> Lose 1 life point immediately.<br>
@@ -286,7 +286,7 @@
           </div>
         </div>
         <p style="margin-top: 0.5rem; font-size: 0.94rem; color: var(--text-muted);">
-          🗺️ <strong>Map Card:</strong> A player with a Map may inspect the top 2 cards of the draw deck before drawing and discard 1.
+          <strong>Map Card:</strong> A player with a Map may inspect the top 2 cards of the draw deck before drawing and discard 1.
         </p>
       </div>
 
@@ -300,7 +300,7 @@
         </div>
         <p>By default, draw <strong>2 top cards</strong> from the draw deck into your hand.</p>
         <h4 style="color: var(--color-brown); margin: 1rem 0 0.5rem; font-size: 1.05rem;">
-          🤠 Characters with Special Drawing Abilities:
+          Characters with Special Drawing Abilities
         </h4>
         <div class="draw-characters-grid">
           <div class="draw-char-card">
@@ -349,7 +349,7 @@
         <p>In this phase, you may perform any number of actions in any order, as long as you have cards and resources:</p>
         <div class="action-categories-grid">
           <div class="action-cat-card" style="border-left: 4px solid var(--color-brown);">
-            <h4>🟤 / 🔵 Core Cards</h4>
+            <h4>Standard Brown &amp; Blue Cards</h4>
             <ul>
               <li><strong>Brown Cards:</strong> Play for immediate effect and discard.</li>
               <li><strong>Blue Cards:</strong> Place in front of you on the table for ongoing effects.</li>
@@ -357,14 +357,14 @@
             </ul>
           </div>
           <div class="action-cat-card" style="border-left: 4px solid var(--color-green);">
-            <h4>🟢 Green Cards (Dodge City)</h4>
+            <h4>Green Cards (Dodge City)</h4>
             <ul>
               <li>Placed in play, but <em>cannot be used on the turn they were played</em>.</li>
               <li>On this turn, you may discard any green card played in previous rounds to trigger its effect immediately.</li>
             </ul>
           </div>
           <div class="action-cat-card" style="border-left: 4px solid var(--color-gold);">
-            <h4>🪙 Gold Rush (Gold &amp; Equipment)</h4>
+            <h4>Gold Rush (Gold &amp; Equipment)</h4>
             <ul>
               <li>Buy equipment (black permanent or brown immediate) from the 3 displayed cards using your Gold Nuggets.</li>
               <li>Discard opponent equipment by paying its purchase cost + 1 Gold Nugget.</li>
@@ -372,14 +372,14 @@
             </ul>
           </div>
           <div class="action-cat-card" style="border-left: 4px solid var(--color-train);">
-            <h4>🚂 The Great Train Robbery (Train &amp; Railcars)</h4>
+            <h4>The Great Train Robbery (Train &amp; Railcars)</h4>
             <ul>
               <li><strong>Advance Train:</strong> You may advance the train 1 station to the right for free, but then you <em>MUST</em> buy the attached railcar!</li>
               <li><strong>Buy Railcar:</strong> Pay the station cost by discarding the required cards and place the railcar in front of you.</li>
             </ul>
           </div>
           <div class="action-cat-card" style="border-left: 4px solid var(--color-orange);">
-            <h4>🟠 Armed &amp; Dangerous (Orange Cards)</h4>
+            <h4>Armed &amp; Dangerous (Orange Cards)</h4>
             <ul>
               <li>Deploy an orange card loaded with 3 tokens.</li>
               <li>Playing any blue card adds 1 load token to any of your orange cards.</li>
@@ -387,7 +387,7 @@
             </ul>
           </div>
           <div class="action-cat-card" style="border-left: 4px solid var(--color-legend);">
-            <h4>🌟 Legends (Feats &amp; Claiming)</h4>
+            <h4>Legends (Feats &amp; Claiming)</h4>
             <ul>
               <li><strong>Accomplish Feat:</strong> Fulfill the condition on an active feat card and place 2 of your Fame tokens on it.</li>
               <li><strong>Claim Feat (Side B):</strong> If you are already a Legend, you may claim a feat with your tokens to deal 1 direct unblockable damage to another legend!</li>
@@ -426,7 +426,7 @@
           </div>
         </div>
         <div class="callout callout-purple" style="margin-bottom: 1.25rem;">
-          <h4>🏆 Boasting of a Feat (If you did not accomplish any feat this turn):</h4>
+          <h4>Boasting of a Feat (If you did not accomplish any feat this turn):</h4>
           <p>Applies even to jailed players who skipped Phases 1, 2, and 3!</p>
           <ol style="padding-left: 1.25rem; margin-top: 0.4rem;">
             <li>Reveal a new feat card from the feat draw deck.</li>
@@ -435,7 +435,7 @@
           </ol>
         </div>
         <div class="callout callout-info">
-          <h4>👑 BIRTH OF A LEGEND (Instant Transformation):</h4>
+          <h4>Birth of a Legend (Instant Transformation):</h4>
           <p>
             Placing your <strong>last (5th) Fame token</strong> instantly transforms your character into a <strong>LEGEND</strong>!
             Flip your character card to <strong>Side B</strong> with its devastating new ability and <strong>immediately restore your life points to 3</strong> (if you have fewer than 3 lives)!
@@ -567,13 +567,13 @@
     </div>
 
     <div class="callout callout-info" style="margin-top: 1.25rem;">
-      <h4 style="margin: 0 0 0.5rem; color: var(--color-brown, #5c3a21); font-size: 1.15rem;">🐎 Sčítání a kombinování karet vzdálenosti</h4>
+      <h4 style="margin: 0 0 0.5rem; color: var(--color-brown, #5c3a21); font-size: 1.15rem;"><img src="assets/symbols/symbol_mustang.png" class="rules-symbol-inline" alt=""> Sčítání a kombinování karet vzdálenosti</h4>
       <p><strong>Ano, všechny tyto karty se sčítají.</strong> Podle oficiálních pravidel karetní hry nesmíte mít před sebou vyložené dvě úplně stejné modré karty (se stejným názvem). Protože má každá z těchto čtyř karet jiný název, můžete je mít vyložené na stole všechny najednou a jejich efekty se kombinují.</p>
       
       <p style="margin-top: 0.75rem; font-weight: 600;">Vzdálenosti se v praxi počítají následovně:</p>
 
       <div style="margin-top: 0.75rem; padding: 0.75rem 1rem; background: rgba(0,0,0,0.03); border-radius: 6px; border-left: 3px solid var(--accent-gold, #c89b3c);">
-        <h5 style="color: var(--color-brown, #5c3a21); margin: 0 0 0.35rem; font-size: 1.05rem;">🤠 Obranné karty (když na vás někdo útočí)</h5>
+        <h5 style="color: var(--color-brown, #5c3a21); margin: 0 0 0.35rem; font-size: 1.05rem;">Obranné karty (když na vás někdo útočí)</h5>
         <p style="margin-bottom: 0.35rem;">Tyto karty zvyšují vzdálenost, na kterou vás vidí ostatní hráči.</p>
         <ul style="margin: 0.25rem 0 0.5rem 1.25rem;">
           <li><strong>Mustang:</strong> Ostatní vás vidí o 1 dál.</li>
@@ -584,7 +584,7 @@
       </div>
 
       <div style="margin-top: 0.75rem; padding: 0.75rem 1rem; background: rgba(0,0,0,0.03); border-radius: 6px; border-left: 3px solid var(--color-brown, #5c3a21);">
-        <h5 style="color: var(--color-brown, #5c3a21); margin: 0 0 0.35rem; font-size: 1.05rem;">🎯 Útočné karty (když útočíte vy)</h5>
+        <h5 style="color: var(--color-brown, #5c3a21); margin: 0 0 0.35rem; font-size: 1.05rem;">Útočné karty (když útočíte vy)</h5>
         <p style="margin-bottom: 0.35rem;">Tyto karty zkracují vzdálenost, na kterou vidíte vy ostatní hráče.</p>
         <ul style="margin: 0.25rem 0 0.5rem 1.25rem;">
           <li><strong>Hledí</strong> (případně Appaloosa v základní hře): Vy vidíte ostatní o 1 blíž.</li>
@@ -968,13 +968,13 @@
     </div>
 
     <div class="callout callout-info" style="margin-top: 1.25rem;">
-      <h4 style="margin: 0 0 0.5rem; color: var(--color-brown, #5c3a21); font-size: 1.15rem;">🐎 Stacking &amp; Combining Distance Modifier Cards</h4>
+      <h4 style="margin: 0 0 0.5rem; color: var(--color-brown, #5c3a21); font-size: 1.15rem; display: flex; align-items: center; gap: 0.4rem;"><img src="assets/symbols/symbol_mustang.png" class="rules-symbol-inline" alt=""> Stacking &amp; Combining Distance Modifier Cards</h4>
       <p><strong>Yes, all of these cards stack.</strong> According to official BANG! rules, you cannot have two identical blue cards (with the same name) in play in front of you. Because each of these cards has a different name, you can have them in play simultaneously and their effects combine.</p>
       
       <p style="margin-top: 0.75rem; font-weight: 600;">In practice, distances are calculated as follows:</p>
 
       <div style="margin-top: 0.75rem; padding: 0.75rem 1rem; background: rgba(0,0,0,0.03); border-radius: 6px; border-left: 3px solid var(--accent-gold, #c89b3c);">
-        <h5 style="color: var(--color-brown, #5c3a21); margin: 0 0 0.35rem; font-size: 1.05rem;">🤠 Defensive Cards (when someone attacks you)</h5>
+        <h5 style="color: var(--color-brown, #5c3a21); margin: 0 0 0.35rem; font-size: 1.05rem; display: flex; align-items: center; gap: 0.4rem;"><img src="assets/symbols/symbol_missed.png" class="rules-symbol-inline" alt=""> Defensive Cards (when someone attacks you)</h5>
         <p style="margin-bottom: 0.35rem;">These cards increase the distance at which other players see you.</p>
         <ul style="margin: 0.25rem 0 0.5rem 1.25rem;">
           <li><strong>Mustang:</strong> Others see you 1 further away.</li>
@@ -985,7 +985,7 @@
       </div>
 
       <div style="margin-top: 0.75rem; padding: 0.75rem 1rem; background: rgba(0,0,0,0.03); border-radius: 6px; border-left: 3px solid var(--color-brown, #5c3a21);">
-        <h5 style="color: var(--color-brown, #5c3a21); margin: 0 0 0.35rem; font-size: 1.05rem;">🎯 Offensive Cards (when you attack)</h5>
+        <h5 style="color: var(--color-brown, #5c3a21); margin: 0 0 0.35rem; font-size: 1.05rem;">Offensive Cards (when you attack)</h5>
         <p style="margin-bottom: 0.35rem;">These cards decrease the distance at which you see other players.</p>
         <ul style="margin: 0.25rem 0 0.5rem 1.25rem;">
           <li><strong>Scope</strong> (or Appaloosa in the base game): You see others 1 closer.</li>

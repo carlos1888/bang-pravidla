@@ -94,7 +94,9 @@
 
   function updateThemeIcon(theme) {
     if (!els.themeToggle) return;
-    els.themeToggle.innerHTML = theme === 'dark' ? '<span>☀️</span>' : '<span>🌙</span>';
+    els.themeToggle.innerHTML = theme === 'dark'
+      ? '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>'
+      : '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>';
   }
 
   // =========================================================================
@@ -225,30 +227,30 @@
 
   const TYPES_EN = {
     'all': 'All Card Types',
-    'brown': '🟤 Brown Cards (Immediate)',
-    'blue': '🔵 Blue Cards (In Play)',
-    'green': '🟢 Green Cards (Dodge City)',
-    'orange': '🟠 Orange Cards (Dangerous)',
-    'black': '⚫ Black Equipment (Gold Rush)',
-    'character': '🤠 Characters (Standard & Legendary)',
-    'train': '🚂 Train, Locomotives & Railcars',
-    'feat': '📜 Feat Cards (Legends)',
-    'event': '⚡ Global Events',
-    'role': '⭐ Role Cards'
+    'brown': 'Brown Cards (Immediate)',
+    'blue': 'Blue Cards (In Play)',
+    'green': 'Green Cards (Dodge City)',
+    'orange': 'Orange Cards (Dangerous)',
+    'black': 'Black Equipment (Gold Rush)',
+    'character': 'Characters (Standard & Legendary)',
+    'train': 'Train, Locomotives & Railcars',
+    'feat': 'Feat Cards (Legends)',
+    'event': 'Global Events',
+    'role': 'Role Cards'
   };
 
   const TYPES_CS = {
     'all': 'Všechny typy karet',
-    'brown': '🟤 Hnědé karty (okamžité)',
-    'blue': '🔵 Modré karty (vyložené ve hře)',
-    'green': '🟢 Zelené karty (Město duchů)',
-    'orange': '🟠 Oranžové karty (Nebezpečné)',
-    'black': '⚫ Černé vybavení (Zlatá horečka)',
-    'character': '🤠 Postavy (běžné i legendární)',
-    'train': '🚂 Vlak, lokomotivy a vagony',
-    'feat': '📜 Karty činů (Legendy)',
-    'event': '⚡ Globální události',
-    'role': '⭐ Karty rolí'
+    'brown': 'Hnědé karty (okamžité)',
+    'blue': 'Modré karty (vyložené ve hře)',
+    'green': 'Zelené karty (Město duchů)',
+    'orange': 'Oranžové karty (Nebezpečné)',
+    'black': 'Černé vybavení (Zlatá horečka)',
+    'character': 'Postavy (běžné i legendární)',
+    'train': 'Vlak, lokomotivy a vagony',
+    'feat': 'Karty činů (Legendy)',
+    'event': 'Globální události',
+    'role': 'Karty rolí'
   };
 
   const SUITS_EN = {
@@ -633,9 +635,9 @@
 
       const metas = [];
       if (card.copies) metas.push(`<span class="card-meta-item meta-copies">${card.copies}× ${t.copiesInDeck}</span>`);
-      if (card.range) metas.push(`<span class="card-meta-item">${t.rangeLabel}: ${card.range}</span>`);
+      if (card.range) metas.push(`<span class="card-meta-item"><img src="assets/symbols/symbol_reachable_distance.png" class="tag-symbol-img" alt="">${t.rangeLabel}: ${card.range}</span>`);
       if (cardCost) metas.push(`<span class="card-meta-item meta-cost">${cardCost}</span>`);
-      if (card.lives) metas.push(`<span class="card-meta-item" style="color: #b71c1c; font-weight: 700;">❤️ ${card.lives} ${t.livesLabel}</span>`);
+      if (card.lives) metas.push(`<span class="card-meta-item" style="color: #b71c1c; font-weight: 700;"><img src="assets/symbols/symbol_life_points.png" class="tag-symbol-img" alt="">${card.lives} ${t.livesLabel}</span>`);
       if (cardTiming) metas.push(`<span class="card-meta-item meta-timing">${cardTiming}</span>`);
 
       const imageThumbHtml = card.image
@@ -677,6 +679,118 @@
   }
 
   // =========================================================================
+  // CARD OFFICIAL SYMBOLS HELPER
+  // =========================================================================
+  function getCardOfficialSymbols(card, isEn) {
+    if (!card) return [];
+    const symbols = [];
+    const nameNorm = (card.name || '').toLowerCase();
+    const effectNorm = ((card.effect || '') + ' ' + (card.effectEn || '')).toLowerCase();
+    const tags = Array.isArray(card.tags) ? card.tags : [];
+
+    if (nameNorm.includes('bang') || tags.includes('bang') || tags.includes('zbrane') || card.range) {
+      symbols.push({
+        src: 'assets/symbols/symbol_bang.png',
+        label: isEn ? 'BANG!' : 'Výstřel BANG!'
+      });
+    }
+
+    if (nameNorm.includes('vedle') || nameNorm.includes('missed') || tags.includes('obrana') || effectNorm.includes('vedle!') || effectNorm.includes('missed!')) {
+      symbols.push({
+        src: 'assets/symbols/symbol_missed.png',
+        label: isEn ? 'Missed!' : 'Vedle! (Obrana)'
+      });
+    }
+
+    if (nameNorm.includes('pivo') || nameNorm.includes('beer') || tags.includes('leceni') || effectNorm.includes('vyléčí') || effectNorm.includes('obnoví 1 život') || effectNorm.includes('regain') || effectNorm.includes('heal')) {
+      symbols.push({
+        src: 'assets/symbols/symbol_regain_life.png',
+        label: isEn ? 'Regain Life' : 'Pivo (Léčení)'
+      });
+    }
+
+    if (nameNorm.includes('barel') || nameNorm.includes('barrel')) {
+      symbols.push({
+        src: 'assets/symbols/symbol_barrel.png',
+        label: isEn ? 'Barrel' : 'Barel'
+      });
+    }
+
+    if (nameNorm.includes('vězení') || nameNorm.includes('vezeni') || nameNorm.includes('jail')) {
+      symbols.push({
+        src: 'assets/symbols/symbol_jail.png',
+        label: isEn ? 'Jail' : 'Vězení'
+      });
+    }
+
+    if (nameNorm.includes('dynamit') || nameNorm.includes('dynamite')) {
+      symbols.push({
+        src: 'assets/symbols/symbol_dynamite.png',
+        label: isEn ? 'Dynamite' : 'Dynamit'
+      });
+    }
+
+    if (nameNorm.includes('mustang') || effectNorm.includes('o 1 větší') || effectNorm.includes('+1 further')) {
+      symbols.push({
+        src: 'assets/symbols/symbol_mustang.png',
+        label: isEn ? 'Mustang (+1)' : 'Mustang (+1)'
+      });
+    }
+
+    if (nameNorm.includes('hledí') || nameNorm.includes('scope') || nameNorm.includes('appaloosa') || effectNorm.includes('o 1 menší') || effectNorm.includes('-1 closer')) {
+      symbols.push({
+        src: 'assets/symbols/symbol_scope.png',
+        label: isEn ? 'Scope (-1)' : 'Hledí (-1)'
+      });
+    }
+
+    if (tags.includes('dobirani') || effectNorm.includes('líznout') || effectNorm.includes('dobrat') || effectNorm.includes('draw a card') || effectNorm.includes('draw 2 cards')) {
+      symbols.push({
+        src: 'assets/symbols/symbol_draw_card.png',
+        label: isEn ? 'Draw Card' : 'Líznutí karty'
+      });
+    }
+
+    if (nameNorm.includes('cat balou') || tags.includes('odhozeni') || effectNorm.includes('odhodit kartu') || effectNorm.includes('discard a card')) {
+      symbols.push({
+        src: 'assets/symbols/symbol_discard_card.png',
+        label: isEn ? 'Discard Card' : 'Odhození karty'
+      });
+    }
+
+    if (tags.includes('snimani') || effectNorm.includes('sejmout') || effectNorm.includes('otočte vrchní kartu') || effectNorm.includes('"draw!"')) {
+      symbols.push({
+        src: 'assets/symbols/symbol_draw_check.png',
+        label: isEn ? 'Check ("Draw!")' : 'Sejmutí karty'
+      });
+    }
+
+    if (card.lives) {
+      symbols.push({
+        src: 'assets/symbols/symbol_life_points.png',
+        label: `${card.lives} ${isEn ? 'Life Points' : 'Životy'}`
+      });
+    }
+
+    if (nameNorm.includes('gatling') || nameNorm.includes('indiáni') || nameNorm.includes('indians') || nameNorm.includes('saloon') || effectNorm.includes('všichni ostatní')) {
+      symbols.push({
+        src: 'assets/symbols/symbol_all_other_players.png',
+        label: isEn ? 'All Other Players' : 'Všichni ostatní hráči'
+      });
+    }
+
+    const unique = [];
+    const seen = new Set();
+    for (const s of symbols) {
+      if (!seen.has(s.src)) {
+        seen.add(s.src);
+        unique.push(s);
+      }
+    }
+    return unique;
+  }
+
+  // =========================================================================
   // OPEN CARD DETAIL MODAL
   // =========================================================================
   function openCardModal(cardId) {
@@ -705,11 +819,26 @@
       modalSuitHtml = `<span class="card-suit-value" style="font-size: 1.15rem; font-weight: 700;">${formatted}${valText}</span>`;
     }
 
+    const cardSymbols = getCardOfficialSymbols(card, isEn);
+    const officialSymbolsHtml = (cardSymbols && cardSymbols.length > 0)
+      ? `
+        <div class="card-official-symbols-row">
+          <span style="font-size: 0.76rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; color: var(--color-brown);">${isEn ? 'Game Symbols:' : 'Herní symboly:'}</span>
+          ${cardSymbols.map(s => `
+            <span class="card-symbol-pill">
+              <img src="${s.src}" alt="${s.label}">
+              <span>${s.label}</span>
+            </span>
+          `).join('')}
+        </div>
+      `
+      : '';
+
     const rulingsHtml = (cardRulings && cardRulings.length > 0)
       ? `
         <div style="margin-top: 1.25rem; border-top: 2px solid var(--border-color); padding-top: 1rem;">
-          <h4 style="color: var(--color-brown); margin-bottom: 0.6rem; display: flex; align-items: center; gap: 0.4rem; font-size: 1.1rem;">
-            <span>⚖️</span> ${t.rulingsHeader}
+          <h4 style="color: var(--color-brown); margin-bottom: 0.6rem; font-size: 1.1rem; font-family: var(--font-western);">
+            ${t.rulingsHeader}
           </h4>
           <ul style="padding-left: 1.25rem; font-size: 0.96rem; line-height: 1.6;">
             ${cardRulings.map(r => `<li style="margin-bottom: 0.5rem;">${r}</li>`).join('')}
@@ -727,7 +856,7 @@
             ${(synData.counters && synData.counters.length > 0) ? `
               <div style="background: var(--bg-surface); padding: 0.9rem; border-radius: 8px; margin-bottom: 0.85rem; border-left: 4px solid #c0392b;">
                 <h4 style="color: #c0392b; margin: 0 0 0.5rem 0; font-size: 0.95rem; display: flex; align-items: center; gap: 0.4rem; font-weight: 700;">
-                  <span>🛡️</span> ${isEn ? 'Counters & Defense (How to negate)' : 'Obrana a protiútoky (Jak se bránit)'}
+                  <img src="assets/symbols/symbol_missed.png" class="tag-symbol-img" alt=""> ${isEn ? 'Counters & Defense (How to negate)' : 'Obrana a protiútoky (Jak se bránit)'}
                 </h4>
                 <ul style="margin: 0; padding-left: 1.2rem; font-size: 0.92rem; line-height: 1.5; color: var(--text-color);">
                   ${synData.counters.map(c => `<li style="margin-bottom: 0.35rem;">${c}</li>`).join('')}
@@ -737,7 +866,7 @@
             ${(synData.synergies && synData.synergies.length > 0) ? `
               <div style="background: var(--bg-surface); padding: 0.9rem; border-radius: 8px; border-left: 4px solid #27ae60;">
                 <h4 style="color: #27ae60; margin: 0 0 0.5rem 0; font-size: 0.95rem; display: flex; align-items: center; gap: 0.4rem; font-weight: 700;">
-                  <span>⚡</span> ${isEn ? 'Key Synergies & Combos' : 'Klíčové synergie a komba'}
+                  ${isEn ? 'Key Synergies & Combos' : 'Klíčové synergie a komba'}
                 </h4>
                 <ul style="margin: 0; padding-left: 1.2rem; font-size: 0.92rem; line-height: 1.5; color: var(--text-color);">
                   ${synData.synergies.map(s => `<li style="margin-bottom: 0.35rem;">${s}</li>`).join('')}
@@ -797,6 +926,8 @@
             </div>
             <h2 class="card-modal-title">${cardTitle}</h2>
           </div>
+
+          ${officialSymbolsHtml}
 
           <div style="background: var(--bg-surface); padding: 1.15rem; border-radius: 8px; margin-bottom: 1.25rem; border-left: 4px solid var(--color-brown);">
             <div style="font-weight: 700; margin-bottom: 0.4rem; color: var(--color-brown); text-transform: uppercase; font-size: 0.82rem; letter-spacing: 0.5px;">${t.effectHeader}</div>
@@ -904,7 +1035,7 @@
       <div style="display: flex; align-items: center; gap: 0.75rem;">
         <div class="pinned-char-lives">
           <button type="button" class="pinned-btn-life" id="btn-pinned-minus" aria-label="Ubrat život">−</button>
-          <span style="font-weight: 800; color: #b71c1c;">❤️ ${char.lives} / ${char.maxLives}</span>
+          <span style="font-weight: 800; color: #b71c1c; display: flex; align-items: center; gap: 0.25rem;"><img src="assets/symbols/symbol_life_points.png" class="rules-symbol-inline" alt=""> ${char.lives} / ${char.maxLives}</span>
           <button type="button" class="pinned-btn-life" id="btn-pinned-plus" aria-label="Přidat život">+</button>
         </div>
         <button type="button" class="pinned-btn-unpin" id="btn-pinned-unpin" title="${isEn ? 'Unpin' : 'Odepnout'}">✕</button>
@@ -1071,16 +1202,16 @@
   // RULES CATEGORIES & RENDER RULES
   // =========================================================================
   const RULES_CATEGORIES = [
-    { id: 'all', cs: '📚 Všechna pravidla', en: '📚 All Rules' },
-    { id: 'base', cs: '🎯 Základní hra BANG!', en: '🎯 BANG! Base Game' },
-    { id: 'dodge-city', cs: '🟢 Dodge City', en: '🟢 Dodge City' },
-    { id: 'high-noon-fistful', cs: '☀️ Pravé poledne & Fistful', en: '☀️ High Noon & Fistful' },
-    { id: 'gold-rush', cs: '🪙 Zlatá horečka', en: '🪙 Gold Rush' },
-    { id: 'armed-dangerous', cs: '🟠 Ozbrojení a nebezpeční', en: '🟠 Armed & Dangerous' },
-    { id: 'train-robbery', cs: '🚂 Velká vlaková loupež', en: '🚂 The Great Train Robbery' },
-    { id: 'legends', cs: '🌟 Legendy', en: '🌟 Legends' },
-    { id: 'valley-wildwest', cs: '💀 Údolí stínů & Divoký západ', en: '💀 Valley & Wild West' },
-    { id: 'dynamite-box', cs: '🧨 Kompletní hra dohromady', en: '🧨 Complete Game' }
+    { id: 'all', cs: 'Všechna pravidla', en: 'All Rules' },
+    { id: 'base', cs: 'Základní hra BANG!', en: 'BANG! Base Game' },
+    { id: 'dodge-city', cs: 'Dodge City', en: 'Dodge City' },
+    { id: 'high-noon-fistful', cs: 'Pravé poledne & Fistful', en: 'High Noon & Fistful' },
+    { id: 'gold-rush', cs: 'Zlatá horečka', en: 'Gold Rush' },
+    { id: 'armed-dangerous', cs: 'Ozbrojení a nebezpeční', en: 'Armed & Dangerous' },
+    { id: 'train-robbery', cs: 'Velká vlaková loupež', en: 'The Great Train Robbery' },
+    { id: 'legends', cs: 'Legendy', en: 'Legends' },
+    { id: 'valley-wildwest', cs: 'Údolí stínů & Divoký západ', en: 'Valley & Wild West' },
+    { id: 'dynamite-box', cs: 'Kompletní hra dohromady', en: 'Complete Game' }
   ];
 
   function renderRulesCategories() {
@@ -1308,7 +1439,7 @@
       els.tahHraceTarget.innerHTML = `
         <div style="margin-bottom: 1.25rem; display: flex; justify-content: flex-end; gap: 0.5rem; flex-wrap: wrap;">
           <button type="button" id="btn-print-cheat-sheet-full" class="tool-subnav-btn" style="font-size: 0.95rem; padding: 0.6rem 1.2rem; cursor: pointer;">
-            🖨️ ${isEn ? 'Print Player Cheat Sheet' : 'Vytisknout tahák pro hráče'}
+            ${isEn ? 'Print Player Cheat Sheet' : 'Vytisknout tahák pro hráče'}
           </button>
           <button type="button" id="btn-toggle-turn-stepper" class="tool-subnav-btn active" style="font-size: 0.95rem; padding: 0.6rem 1.2rem; cursor: pointer;">
             ⏱️ ${isEn ? 'Switch to Step-by-Step Interactive Guide' : 'Přepnout na Interaktivního asistenta (Krok za krokem)'}
@@ -1344,32 +1475,34 @@
             action: null
           },
           {
-            icon: '💣',
+            icon: '<img src="assets/symbols/symbol_dynamite.png" class="symbol-inline-lg" alt="Dynamite">',
+            isImage: true,
             title: isEn ? '2. Dynamite (Highest Priority!)' : '2. Dynamit (nejvyšší priorita!)',
             desc: isEn ? 'Draws top card: Spades 2 to 9 (♠ 2–9) = BOOM! Loses 3 life points! Any other card = passes safely to the left.' : 'Snímá vrchní kartu z balíčku: Piky 2 až 9 (♠ 2–9) = VÝBUCH za 3 životy! Jinak bezpečný posun k hráči vlevo.',
             action: 'dynamite',
-            btnLabel: isEn ? '🎲 Test Dynamite (♠ 2-9)' : '🎲 Otestovat Dynamit (♠ 2–9)'
+            btnLabel: isEn ? 'Test Dynamite (♠ 2–9)' : 'Otestovat Dynamit (♠ 2–9)'
           },
           {
-            icon: '⛓️',
+            icon: '<img src="assets/symbols/symbol_jail.png" class="symbol-inline-lg" alt="Jail">',
+            isImage: true,
             title: isEn ? '3. Jail (Second in Order)' : '3. Vězení (druhé v pořadí)',
             desc: isEn ? 'Draws top card: Hearts (♥) = free escape! Any other suit = lose Phase 1 & 2! (Legends Rule: may discard 1 ♥ card from hand to skip drawing!).' : 'Snímá vrchní kartu: Srdce (♥) = útěk! Jinak ztráta Fáze 1 i Fáze 2. (Pravidlo Legend: Lze z ruky odhodit 1 ♥ kartu a odehrát tah bez snímání!).',
             action: 'jail',
-            btnLabel: isEn ? '🎲 Test Jail (♥ Hearts)' : '🎲 Otestovat Vězení (♥ Srdce)'
+            btnLabel: isEn ? 'Test Jail (♥ Hearts)' : 'Otestovat Vězení (♥ Srdce)'
           },
           {
             icon: '💥',
             title: isEn ? '4. Bomb (Armed & Dangerous)' : '4. Bomba (Ozbrojení a nebezpeční)',
             desc: isEn ? 'Draws: Red (♥/♦) = passes safely; Black (♠/♣) = loses 2 load tokens (explodes for 2 lives if charges reach 0!).' : 'Snímá: Červená (♥/♦) = bezpečný posun dál; Černá (♠/♣) = -2 žetony nabití (při 0 výbuch za 2 životy!).',
             action: 'bomb',
-            btnLabel: isEn ? '🎲 Test Bomb (Red/Black)' : '🎲 Otestovat Bombu (Červená/Černá)'
+            btnLabel: isEn ? 'Test Bomb (Red/Black)' : 'Otestovat Bombu (Červená/Černá)'
           },
           {
             icon: '🐍',
             title: isEn ? '5. Rattlesnake (Valley of Shadows)' : '5. Chřestýš (Údolí stínů)',
             desc: isEn ? 'Draws: Spades (♠) = loses 1 life point. (Note: If player failed in Jail, they do not check for Rattlesnake!).' : 'Snímá: Piky (♠) = ztráta 1 života. (Pozn.: Pokud hráč neuspěl ve Vězení, na Chřestýše již nesnímá!).',
             action: 'rattlesnake',
-            btnLabel: isEn ? '🎲 Test Rattlesnake (♠ Spades)' : '🎲 Otestovat Chřestýše (♠ Piky)'
+            btnLabel: isEn ? 'Test Rattlesnake (♠ Spades)' : 'Otestovat Chřestýše (♠ Piky)'
           },
           {
             icon: '🗺️',
@@ -1386,7 +1519,8 @@
         lead: isEn ? 'Draw 2 cards from the draw deck into your hand:' : 'Doberte standardně 2 karty z lízacího balíčku do ruky:',
         items: [
           {
-            icon: '🃏',
+            icon: '<img src="assets/symbols/symbol_draw_card.png" class="symbol-inline-lg" alt="Draw">',
+            isImage: true,
             title: isEn ? 'Standard Draw' : 'Standardní dobrání',
             desc: isEn ? 'Draw exactly 2 cards from the top of the draw deck.' : 'Doberte přesně 2 vrchní karty z balíčku do ruky.',
             action: null
@@ -1408,7 +1542,8 @@
         lead: isEn ? 'Play any number of cards to assist yourself or eliminate opponents:' : 'Zahrajte libovolné množství karet pro posílení sebe sama či oslabení soupeřů:',
         items: [
           {
-            icon: '🔫',
+            icon: '<img src="assets/symbols/symbol_bang.png" class="symbol-inline-lg" alt="BANG!">',
+            isImage: true,
             title: isEn ? 'Strict BANG! Limit' : 'Přísné pravidlo pro kartu BANG!',
             desc: isEn
               ? 'Maximum 1 genuine BANG! card per turn (unless you equip Volcanic or play Willy the Kid). Gatling, Flintlock, Derringer or Doc Holyday abilities DO NOT count toward the limit!'
@@ -1456,7 +1591,8 @@
         lead: isEn ? 'Check hand limit at the end of active card play:' : 'Kontrola limitu karet na konci vašeho aktivního hraní:',
         items: [
           {
-            icon: '✋',
+            icon: '<img src="assets/symbols/symbol_discard_card.png" class="symbol-inline-lg" alt="Discard">',
+            isImage: true,
             title: isEn ? 'Hand Limit = Current Life Points' : 'Limit karet v ruce = Aktuální počet životů',
             desc: isEn
               ? 'If you have more cards in hand than current lives, you must discard excess cards to the discard pile.'
@@ -1547,7 +1683,7 @@
       <div class="tool-card-box">
         <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.25rem;">
           <div>
-            <h2 style="font-family: 'Rye', 'Georgia', serif; color: var(--color-brown); margin: 0 0 0.35rem 0; font-size: 1.55rem; display: flex; align-items: center; gap: 0.5rem;">
+            <h2 style="font-family: var(--font-western); color: var(--color-brown); margin: 0 0 0.35rem 0; font-size: 1.55rem; display: flex; align-items: center; gap: 0.5rem;">
               <span>⏱️</span> ${isEn ? 'Interactive Turn Assistant (Step-by-Step)' : 'Interaktivní asistent tahu (Krok za krokem)'}
             </h2>
             <p style="color: var(--text-muted); margin: 0; font-size: 0.95rem;">
@@ -1556,10 +1692,10 @@
           </div>
           <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
             <button type="button" id="btn-print-cheat-sheet" class="tool-subnav-btn" style="font-size: 0.9rem; padding: 0.55rem 1rem; cursor: pointer;">
-              🖨️ ${isEn ? 'Print Cheat Sheet' : 'Vytisknout tahák'}
+              ${isEn ? 'Print Cheat Sheet' : 'Vytisknout tahák'}
             </button>
             <button type="button" id="btn-toggle-turn-full" class="tool-subnav-btn" style="font-size: 0.9rem; padding: 0.55rem 1rem; cursor: pointer;">
-              📋 ${isEn ? 'View Full Rules Overview' : 'Zobrazit celá pravidla fází'}
+              ${isEn ? 'View Full Rules Overview' : 'Zobrazit celá pravidla fází'}
             </button>
           </div>
         </div>
@@ -1581,7 +1717,7 @@
               <span class="card-badge" style="background: var(--color-brown); color: #fff; font-size: 0.82rem; padding: 0.25rem 0.65rem; border-radius: 4px; font-weight: 800; text-transform: uppercase;">
                 ${cur.phaseBadge}
               </span>
-              <h3 style="display: inline; margin-left: 0.65rem; font-family: 'Rye', 'Georgia', serif; color: var(--color-brown); font-size: 1.25rem;">
+              <h3 style="display: inline; margin-left: 0.65rem; font-family: var(--font-western); color: var(--color-brown); font-size: 1.25rem;">
                 ${cur.title}
               </h3>
             </div>
@@ -1597,7 +1733,7 @@
           <div style="display: flex; flex-direction: column; gap: 0.85rem;">
             ${cur.items.map(it => `
               <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 0.9rem; display: flex; align-items: flex-start; gap: 0.85rem;">
-                <span style="font-size: 1.6rem; line-height: 1; flex-shrink: 0;">${it.icon}</span>
+                ${it.isImage || (typeof it.icon === "string" && it.icon.startsWith("<img")) ? it.icon : `<span style="font-size: 1.5rem; line-height: 1; flex-shrink: 0;">${it.icon}</span>`}
                 <div style="flex: 1;">
                   <div style="font-weight: 800; font-size: 0.95rem; color: var(--color-brown); margin-bottom: 0.25rem;">
                     ${it.title}
@@ -1627,11 +1763,11 @@
           </button>
 
           <button type="button" id="btn-turn-reset" class="tool-subnav-btn" style="padding: 0.75rem 1.2rem; font-size: 0.9rem; cursor: pointer;">
-            🔄 ${isEn ? 'Start Turn Over' : 'Začít nový tah'}
+            ${isEn ? 'Start Turn Over' : 'Začít nový tah'}
           </button>
 
           <button type="button" id="btn-turn-next" class="tool-subnav-btn active" style="padding: 0.75rem 1.6rem; font-size: 1rem; font-weight: 800; cursor: pointer;">
-            ${turnStepperState.activeStep < 4 ? (isEn ? 'Next Phase ➔' : 'Další fáze ➔') : (isEn ? '🎉 Finish Turn' : '🎉 Dokončit tah')}
+            ${turnStepperState.activeStep < 4 ? (isEn ? 'Next Phase ➔' : 'Další fáze ➔') : (isEn ? 'Finish Turn' : 'Dokončit tah')}
           </button>
         </div>
       </div>
@@ -1730,8 +1866,8 @@
       <div class="cheat-sheet-content" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #1a1a1a;">
         <div style="border-bottom: 2px solid #5a3825; padding-bottom: 0.75rem; margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 0.5rem;">
           <div>
-            <h1 style="font-family: 'Rye', Georgia, serif; font-size: 1.5rem; color: #5a3825; margin: 0 0 0.25rem 0;">
-              🤠 ${isEn ? 'BANG! COMPANION — QUICK PLAYER CHEAT SHEET' : 'BANG! COMPANION — RYCHLÝ HRÁČSKÝ TAHÁK'}
+            <h1 style="font-family: var(--font-western); font-size: 1.5rem; color: #5a3825; margin: 0 0 0.25rem 0;">
+              ${isEn ? 'BANG! COMPANION — QUICK PLAYER CHEAT SHEET' : 'BANG! COMPANION — RYCHLÝ HRÁČSKÝ TAHÁK'}
             </h1>
             <div style="font-size: 0.85rem; color: #555; font-weight: 600;">
               ${isEn ? 'Official turn phase order, weapon ranges, distance calculation, symbols & role matrix' : 'Oficiální pořadí fází tahu, dosahy zbraní, výpočet vzdálenosti, symboly a matice rolí'}
@@ -1747,8 +1883,8 @@
           <div>
             <!-- PHASES -->
             <div style="border: 1.5px solid #5a3825; border-radius: 6px; padding: 0.75rem; margin-bottom: 1rem; background: #fffcf8;">
-              <h3 style="margin: 0 0 0.5rem 0; font-family: 'Rye', Georgia, serif; color: #5a3825; font-size: 1.05rem; border-bottom: 1px solid #d3c4b1; padding-bottom: 0.25rem;">
-                ⏱️ ${isEn ? '1. STRICT TURN PHASES SEQUENCE' : '1. PŘÍSNÉ POŘADÍ FÁZÍ TAHU'}
+              <h3 style="margin: 0 0 0.5rem 0; font-family: var(--font-western); color: #5a3825; font-size: 1.05rem; border-bottom: 1px solid #d3c4b1; padding-bottom: 0.25rem;">
+                1. ${isEn ? 'STRICT TURN PHASES SEQUENCE' : 'PŘÍSNÉ POŘADÍ FÁZÍ TAHU'}
               </h3>
               
               <div style="margin-bottom: 0.5rem;">
@@ -1794,8 +1930,8 @@
 
             <!-- DISTANCE & WEAPONS -->
             <div style="border: 1.5px solid #5a3825; border-radius: 6px; padding: 0.75rem; background: #fffcf8;">
-              <h3 style="margin: 0 0 0.5rem 0; font-family: 'Rye', Georgia, serif; color: #5a3825; font-size: 1.05rem; border-bottom: 1px solid #d3c4b1; padding-bottom: 0.25rem;">
-                🎯 ${isEn ? '2. WEAPONS & DISTANCE CALCULATION' : '2. ZBRANĚ A VÝPOČET VZDÁLENOSTI'}
+              <h3 style="margin: 0 0 0.5rem 0; font-family: var(--font-western); color: #5a3825; font-size: 1.05rem; border-bottom: 1px solid #d3c4b1; padding-bottom: 0.25rem;">
+                <img src="assets/symbols/symbol_reachable_distance.png" class="rules-symbol-inline" alt=""> 2. ${isEn ? 'WEAPONS & DISTANCE CALCULATION' : 'ZBRANĚ A VÝPOČET VZDÁLENOSTI'}
               </h3>
               <table style="width: 100%; border-collapse: collapse; font-size: 0.8rem; margin-bottom: 0.5rem;">
                 <thead>
@@ -1824,8 +1960,8 @@
           <div>
             <!-- ROLES & VICTORY -->
             <div style="border: 1.5px solid #5a3825; border-radius: 6px; padding: 0.75rem; margin-bottom: 1rem; background: #fffcf8;">
-              <h3 style="margin: 0 0 0.5rem 0; font-family: 'Rye', Georgia, serif; color: #5a3825; font-size: 1.05rem; border-bottom: 1px solid #d3c4b1; padding-bottom: 0.25rem;">
-                👥 ${isEn ? '3. ROLES & VICTORY MATRIX' : '3. ROLE A PODMÍNKY VÍTĚZSTVÍ'}
+              <h3 style="margin: 0 0 0.5rem 0; font-family: var(--font-western); color: #5a3825; font-size: 1.05rem; border-bottom: 1px solid #d3c4b1; padding-bottom: 0.25rem;">
+                3. ${isEn ? 'ROLES & VICTORY MATRIX' : 'ROLE A PODMÍNKY VÍTĚZSTVÍ'}
               </h3>
               <table style="width: 100%; border-collapse: collapse; font-size: 0.8rem; margin-bottom: 0.5rem;">
                 <thead>
@@ -1852,24 +1988,24 @@
                 <br>• <strong>${isEn ? 'Renegade:' : 'Odpadlík:'}</strong> ${isEn ? 'Must be the VERY LAST player standing alive with Sheriff, and kill Sheriff in a 1-on-1 duel!' : 'Musí zůstat ÚPLNĚ POSLEDNÍ živý u stolu se Šerifem a zabít ho v duelu 1 na 1!'}
                 <div style="margin-top: 0.4rem; padding: 0.35rem 0.5rem; background: #fff1f0; border-left: 3px solid #c0392b; border-radius: 3px; font-size: 0.78rem;">
                   <strong>${isEn ? 'Rewards & Penalties:' : 'Odměny a tresty:'}</strong><br>
-                  💰 ${isEn ? 'Kill an Outlaw = draw 3 reward cards immediately!' : 'Zabití Bandity (kýmkoli) = okamžité líznutí 3 karet!'}<br>
-                  ⚠️ ${isEn ? 'If Sheriff kills Deputy = Sheriff discards ALL cards in hand & in play!' : 'Pokud Šerif zabije svého Pomocníka = odhodí VŠECHNY karty z ruky i ze stolu!'}
+                  ${isEn ? 'Kill an Outlaw = draw 3 reward cards immediately!' : 'Zabití Bandity (kýmkoli) = okamžité líznutí 3 karet!'}<br>
+                  ${isEn ? 'If Sheriff kills Deputy = Sheriff discards ALL cards in hand & in play!' : 'Pokud Šerif zabije svého Pomocníka = odhodí VŠECHNY karty z ruky i ze stolu!'}
                 </div>
               </div>
             </div>
 
             <!-- KEY SYMBOLS -->
             <div style="border: 1.5px solid #5a3825; border-radius: 6px; padding: 0.75rem; background: #fffcf8;">
-              <h3 style="margin: 0 0 0.5rem 0; font-family: 'Rye', Georgia, serif; color: #5a3825; font-size: 1.05rem; border-bottom: 1px solid #d3c4b1; padding-bottom: 0.25rem;">
-                🎴 ${isEn ? '4. CARD SYMBOLS & EXPANSION TOKENS' : '4. SYMBOLY KARET A ŽETONY'}
+              <h3 style="margin: 0 0 0.5rem 0; font-family: var(--font-western); color: #5a3825; font-size: 1.05rem; border-bottom: 1px solid #d3c4b1; padding-bottom: 0.25rem;">
+                ${isEn ? '4. CARD SYMBOLS & EXPANSION TOKENS' : '4. SYMBOLY KARET A ŽETONY'}
               </h3>
               <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem; font-size: 0.78rem;">
-                <div style="display: flex; align-items: center; gap: 0.35rem;"><span>💥</span> <strong>BANG!</strong>: ${isEn ? '-1 life to target' : '-1 život cíli'}</div>
-                <div style="display: flex; align-items: center; gap: 0.35rem;"><span>🛡️</span> <strong>${isEn ? 'Missed!' : 'Vedle!'}</strong>: ${isEn ? 'Cancels 1 BANG!' : 'Ruší 1 BANG!'}</div>
-                <div style="display: flex; align-items: center; gap: 0.35rem;"><span>🍺</span> <strong>${isEn ? 'Beer' : 'Pivo'}</strong>: ${isEn ? '+1 life (not in 2p)' : '+1 život (ne ve 2p)'}</div>
-                <div style="display: flex; align-items: center; gap: 0.35rem;"><span>🃏</span> <strong>${isEn ? 'Card' : 'Karta'}</strong>: ${isEn ? 'Draw card' : 'Lízni kartu'}</div>
-                <div style="display: flex; align-items: center; gap: 0.35rem;"><span>🤠</span> <strong>${isEn ? 'Hat' : 'Klobouk'}</strong>: ${isEn ? 'Any player reach' : 'Dosah na kohokoli'}</div>
-                <div style="display: flex; align-items: center; gap: 0.35rem;"><span>⏳</span> <strong>${isEn ? 'Green' : 'Zelená'}</strong>: ${isEn ? 'Play next turn' : 'Aktivní od příštího tahu'}</div>
+                <div style="display: flex; align-items: center; gap: 0.35rem;"><img src="assets/symbols/symbol_bang.png" class="tag-symbol-img" alt=""> <strong>BANG!</strong>: ${isEn ? '-1 life to target' : '-1 život cíli'}</div>
+                <div style="display: flex; align-items: center; gap: 0.35rem;"><img src="assets/symbols/symbol_missed.png" class="tag-symbol-img" alt=""> <strong>${isEn ? 'Missed!' : 'Vedle!'}</strong>: ${isEn ? 'Cancels 1 BANG!' : 'Ruší 1 BANG!'}</div>
+                <div style="display: flex; align-items: center; gap: 0.35rem;"><img src="assets/symbols/symbol_regain_life.png" class="tag-symbol-img" alt=""> <strong>${isEn ? 'Beer' : 'Pivo'}</strong>: ${isEn ? '+1 life (not in 2p)' : '+1 život (ne ve 2p)'}</div>
+                <div style="display: flex; align-items: center; gap: 0.35rem;"><img src="assets/symbols/symbol_draw_card.png" class="tag-symbol-img" alt=""> <strong>${isEn ? 'Draw' : 'Lízání'}</strong>: ${isEn ? 'Draw card' : 'Lízni kartu'}</div>
+                <div style="display: flex; align-items: center; gap: 0.35rem;"><img src="assets/symbols/symbol_any_one_player.png" class="tag-symbol-img" alt=""> <strong>${isEn ? 'Any' : 'Kdokoli'}</strong>: ${isEn ? 'Any player reach' : 'Dosah na kohokoli'}</div>
+                <div style="display: flex; align-items: center; gap: 0.35rem;"><img src="assets/symbols/symbol_draw_check.png" class="tag-symbol-img" alt=""> <strong>${isEn ? 'Check' : 'Sejmutí'}</strong>: ${isEn ? 'Deck suit check' : 'Ověření barvy'}</div>
                 <div style="display: flex; align-items: center; gap: 0.35rem;"><span>⚡</span> <strong>${isEn ? 'Orange' : 'Oranžová'}</strong>: ${isEn ? 'Dangerous load' : 'Nebezpečná (nabití)'}</div>
                 <div style="display: flex; align-items: center; gap: 0.35rem;"><span>🪙</span> <strong>${isEn ? 'Nugget' : 'Zlato'}</strong>: ${isEn ? 'Saloon currency' : 'Měna v Saloonu'}</div>
               </div>
@@ -1891,9 +2027,9 @@
       <div style="padding: 0.5rem;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1.5px solid var(--border-color); padding-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
           <div style="display: flex; align-items: center; gap: 0.5rem;">
-            <span style="font-size: 1.6rem;">🖨️</span>
+            
             <div>
-              <h2 style="margin: 0; font-family: 'Rye', Georgia, serif; color: var(--color-brown); font-size: 1.35rem;">
+              <h2 style="margin: 0; font-family: var(--font-western); color: var(--color-brown); font-size: 1.35rem;">
                 ${isEn ? 'Print-Friendly Player Cheat Sheet' : 'Tiskový tahák pro hráče (A4 / PDF)'}
               </h2>
               <div style="font-size: 0.85rem; color: var(--text-muted);">
@@ -1903,7 +2039,7 @@
           </div>
           <div style="display: flex; gap: 0.5rem;">
             <button type="button" id="btn-trigger-print" class="tool-subnav-btn active" style="font-size: 0.95rem; padding: 0.5rem 1.1rem; cursor: pointer; display: inline-flex; align-items: center; gap: 0.4rem; background: var(--color-brown); color: #fff;">
-              🖨️ ${isEn ? 'Print / Save PDF' : 'Vytisknout / Uložit PDF'}
+              ${isEn ? 'Print / Save PDF' : 'Vytisknout / Uložit PDF'}
             </button>
             <button type="button" id="btn-close-cheat-sheet" class="btn-reset-filters" style="font-size: 0.95rem; padding: 0.5rem 0.9rem; cursor: pointer;">
               ✕ ${isEn ? 'Close' : 'Zavřít'}
@@ -1942,7 +2078,7 @@
     els.pomocnikTarget.innerHTML = `
       <div style="display: flex; justify-content: flex-end; margin-bottom: 1.25rem;">
         <button type="button" id="btn-print-cheat-sheet-helper" class="tool-subnav-btn active" style="font-size: 0.95rem; padding: 0.6rem 1.25rem; cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem; background: var(--color-brown); color: #fff;">
-          🖨️ ${isEn ? 'Print Quick Player Cheat Sheet (A4 / PDF)' : 'Vytisknout rychlý tahák pro hráče (A4 / PDF)'}
+          ${isEn ? 'Print Quick Player Cheat Sheet (A4 / PDF)' : 'Vytisknout rychlý tahák pro hráče (A4 / PDF)'}
         </button>
       </div>
       ${isEn ? window.BANG_HELPER_HTML_EN : window.BANG_HELPER_HTML_CS}
@@ -2030,23 +2166,23 @@
     const isAllChecked = totalItems > 0 && checkedCount === totalItems;
 
     const ALL_EXPS = [
-      { id: 'base', nameCs: '🎯 Základní hra', nameEn: '🎯 Base Game' },
-      { id: 'dodge-city', nameCs: '🟢 Dodge City', nameEn: '🟢 Dodge City' },
-      { id: 'gold-rush', nameCs: '🪙 Zlatá horečka', nameEn: '🪙 Gold Rush' },
-      { id: 'armed-dangerous', nameCs: '🟠 Ozbrojení a nebezpeční', nameEn: '🟠 Armed & Dangerous' },
-      { id: 'train-robbery', nameCs: '🚂 Velká vlaková loupež', nameEn: '🚂 The Great Train Robbery' },
-      { id: 'valley-of-shadows', nameCs: '💀 Údolí stínů', nameEn: '💀 Valley of Shadows' },
-      { id: 'high-noon', nameCs: '☀️ Pravé poledne', nameEn: '☀️ High Noon' },
-      { id: 'fistful-of-cards', nameCs: '👊 Pěst plná karet', nameEn: '👊 A Fistful of Cards' },
-      { id: 'wild-west-show', nameCs: '🎪 Divoký západ', nameEn: '🎪 Wild West Show' },
-      { id: 'legends', nameCs: '🌟 Legendy', nameEn: '🌟 Legends' },
-      { id: 'dynamite-box', nameCs: '🧨 Dynamite Box promo', nameEn: '🧨 Dynamite Box Promo' }
+      { id: 'base', nameCs: 'Základní hra', nameEn: 'Base Game' },
+      { id: 'dodge-city', nameCs: 'Dodge City', nameEn: 'Dodge City' },
+      { id: 'gold-rush', nameCs: 'Zlatá horečka', nameEn: 'Gold Rush' },
+      { id: 'armed-dangerous', nameCs: 'Ozbrojení a nebezpeční', nameEn: 'Armed & Dangerous' },
+      { id: 'train-robbery', nameCs: 'Velká vlaková loupež', nameEn: 'The Great Train Robbery' },
+      { id: 'valley-of-shadows', nameCs: 'Údolí stínů', nameEn: 'Valley of Shadows' },
+      { id: 'high-noon', nameCs: 'Pravé poledne', nameEn: 'High Noon' },
+      { id: 'fistful-of-cards', nameCs: 'Pěst plná karet', nameEn: 'A Fistful of Cards' },
+      { id: 'wild-west-show', nameCs: 'Divoký západ', nameEn: 'Wild West Show' },
+      { id: 'legends', nameCs: 'Legendy', nameEn: 'Legends' },
+      { id: 'dynamite-box', nameCs: 'Dynamite Box promo', nameEn: 'Dynamite Box Promo' }
     ];
 
     container.innerHTML = `
       <div class="tool-card-box">
         <div class="tool-card-header">
-          <h2><span>⚙️</span> ${isEn ? 'Table Setup Configurator' : 'Asistent přípravy hry na míru'}</h2>
+          <h2>${isEn ? 'Table Setup Configurator' : 'Asistent přípravy hry na míru'}</h2>
           <p class="tool-card-lead">
             ${isEn
               ? 'Select your player count and active expansions to generate an exact tailored preparation checklist with official rules.'
@@ -2059,7 +2195,7 @@
           <!-- Player Count Selector -->
           <div style="margin-bottom: 1.25rem;">
             <label style="font-weight: 800; font-size: 0.95rem; display: block; margin-bottom: 0.5rem; color: var(--color-brown);">
-              👥 ${isEn ? 'Number of Players (3–8):' : 'Počet hráčů u stolu (3–8):'}
+              ${isEn ? 'Number of Players (3–8):' : 'Počet hráčů u stolu (3–8):'}
             </label>
             <div style="display: flex; gap: 0.45rem; flex-wrap: wrap;">
               ${[3, 4, 5, 6, 7, 8].map(n => `
@@ -2074,7 +2210,7 @@
           <div>
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem; flex-wrap: wrap; gap: 0.5rem;">
               <label style="font-weight: 800; font-size: 0.95rem; color: var(--color-brown);">
-                📦 ${isEn ? 'Active Expansions in Play:' : 'Aktivní rozšíření pro dnešní hru:'}
+                ${isEn ? 'Active Expansions in Play:' : 'Aktivní rozšíření pro dnešní hru:'}
               </label>
               <div style="display: flex; gap: 0.4rem;">
                 <button type="button" id="btn-setup-all-exps" class="tool-subnav-btn" style="padding: 0.35rem 0.75rem; font-size: 0.8rem; cursor: pointer;">
@@ -2101,7 +2237,7 @@
         <div style="background: var(--bg-surface); padding: 1rem 1.25rem; border-radius: var(--radius-md); border: 1.5px solid var(--border-color); margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;">
           <div>
             <div style="font-weight: 800; font-size: 1.05rem; color: var(--color-brown);">
-              ${isAllChecked ? (isEn ? '🎉 Table is Ready to Play!' : '🎉 Stůl je kompletně připraven ke hře!') : (isEn ? '📋 Preparation Checklist' : '📋 Kontrolní seznam přípravy')}
+              ${isAllChecked ? (isEn ? 'Table is Ready to Play!' : 'Stůl je kompletně připraven ke hře!') : (isEn ? 'Preparation Checklist' : 'Kontrolní seznam přípravy')}
             </div>
             <div style="font-size: 0.88rem; color: var(--text-muted);">
               ${isEn ? `${checkedCount} of ${totalItems} steps completed` : `${checkedCount} z ${totalItems} kroků dokončeno`}
@@ -2109,10 +2245,10 @@
           </div>
           <div style="display: flex; gap: 0.6rem;">
             <button type="button" id="btn-setup-reset-checks" class="tool-subnav-btn" style="padding: 0.45rem 0.85rem; font-size: 0.85rem; cursor: pointer;">
-              🔄 ${isEn ? 'Reset Checklist' : 'Resetovat zaškrtnutí'}
+              ${isEn ? 'Reset Checklist' : 'Resetovat zaškrtnutí'}
             </button>
             <button type="button" id="btn-setup-goto-draft" class="tool-subnav-btn active" style="padding: 0.45rem 1.1rem; font-size: 0.95rem; font-weight: 700; cursor: pointer;">
-              🎲 ${isEn ? 'Go to Role & Char Draft ➔' : 'Přejít na losování rolí a postav ➔'}
+              ${isEn ? 'Go to Role & Char Draft ➔' : 'Přejít na losování rolí a postav ➔'}
             </button>
           </div>
         </div>
@@ -2392,14 +2528,14 @@
         equipBadge = `
           <g transform="translate(0, -36)">
             <rect x="-44" y="-10" width="88" height="20" rx="10" fill="#c0392b" stroke="#ffeb3b" stroke-width="1.5" />
-            <text x="0" y="4" text-anchor="middle" font-size="10" font-weight="900" fill="#ffffff">🔫 ${wShort} (${selectedWeapon.range})</text>
+            <text x="0" y="4" text-anchor="middle" font-size="10" font-weight="900" fill="#ffffff">${wShort} (${selectedWeapon.range})</text>
           </g>
         `;
       } else if (isTarget && (calcParams.mustang || calcParams.hideout || calcParams.paulRegret)) {
         const mods = [];
-        if (calcParams.mustang) mods.push('🐴+1');
-        if (calcParams.hideout) mods.push('🏕️+1');
-        if (calcParams.paulRegret) mods.push('🤠+1');
+        if (calcParams.mustang) mods.push('+1 (Mustang)');
+        if (calcParams.hideout) mods.push('+1 (Skrýš)');
+        if (calcParams.paulRegret) mods.push('+1 (Paul)');
         equipBadge = `
           <g transform="translate(0, -36)">
             <rect x="-38" y="-10" width="76" height="20" rx="10" fill="#27ae60" stroke="#ffffff" stroke-width="1.5" />
@@ -2448,7 +2584,7 @@
     container.innerHTML = `
       <div class="tool-card-box">
         <div class="tool-card-header">
-          <h2><span>📏</span> ${isEn ? 'Saloon Distance & Range Radar' : 'Kalkulačka vzdálenosti a bojový radar'}</h2>
+          <h2><img src="assets/symbols/symbol_reachable_distance.png" class="tool-btn-symbol" alt=""> ${isEn ? 'Saloon Distance & Range Radar' : 'Kalkulačka vzdálenosti a bojový radar'}</h2>
           <p class="tool-card-lead">${isEn ? 'Authentic rustic saloon table view with active target radar. Green seats are currently in weapon reach!' : 'Bojový radar saloonového stolu: zeleně označené židle jsou okamžitě v dostřelu zbraně!'}</p>
         </div>
 
@@ -2456,7 +2592,7 @@
           <div class="table-controls-bar">
             <div style="display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap;">
               <span style="font-weight: 800; font-size: 0.92rem; color: var(--color-brown);">
-                👥 ${isEn ? 'Players at table:' : 'Hráčů u stolu:'}
+                ${isEn ? 'Players at table:' : 'Hráčů u stolu:'}
               </span>
               <div style="display: flex; gap: 0.35rem;">
                 ${[3, 4, 5, 6, 7, 8].map(n => `
@@ -2467,10 +2603,10 @@
 
             <div class="table-mode-toggle">
               <button type="button" class="table-mode-btn ${calcParams.mode === 'shooter' ? 'active mode-shooter' : ''}" id="btn-mode-shooter">
-                🤠 ${isEn ? 'Pick Shooter' : 'Zvolit Střelce'}
+                ${isEn ? 'Pick Shooter' : 'Zvolit Střelce'}
               </button>
               <button type="button" class="table-mode-btn ${calcParams.mode === 'target' ? 'active mode-target' : ''}" id="btn-mode-target">
-                🎯 ${isEn ? 'Pick Target' : 'Zvolit Cíl'}
+                ${isEn ? 'Pick Target' : 'Zvolit Cíl'}
               </button>
             </div>
           </div>
@@ -2584,7 +2720,7 @@
                 <!-- Branded Saloon Mark Burned into Wood -->
                 <g opacity="0.45">
                   <text x="350" y="132" text-anchor="middle" font-size="14" fill="#230d04">★</text>
-                  <text x="350" y="148" text-anchor="middle" font-family="'Rye', 'Georgia', serif" font-size="12" font-weight="900" fill="#230d04" letter-spacing="3.5">★ BANG! WESTERN SALOON ★</text>
+                  <text x="350" y="148" text-anchor="middle" font-family="var(--font-western)" font-size="12" font-weight="900" fill="#230d04" letter-spacing="3.5">★ BANG! WESTERN SALOON ★</text>
                 </g>
 
                 <!-- Inset Table Edge Shadow -->
@@ -2609,14 +2745,14 @@
                 <circle cx="-142" cy="32" r="2.5" fill="#d4af37" stroke="#604010" stroke-width="0.8" />
                 <circle cx="142" cy="32" r="2.5" fill="#d4af37" stroke="#604010" stroke-width="0.8" />
 
-                <text x="0" y="-16" text-anchor="middle" font-family="'Rye', 'Georgia', serif" font-size="14" font-weight="bold" fill="#ffeb3b" letter-spacing="0.5">
-                  🎯 ${isEn ? 'TARGET' : 'CÍL'}: ${isEn ? 'PLAYER' : 'HRÁČ'} ${calcParams.targetIdx + 1} (${isEn ? 'DIST' : 'VZDÁL'}: ${calcResult.actualDistance})
+                <text x="0" y="-16" text-anchor="middle" font-family="var(--font-western)" font-size="14" font-weight="bold" fill="#ffeb3b" letter-spacing="0.5">
+                  ${isEn ? 'TARGET' : 'CÍL'}: ${isEn ? 'PLAYER' : 'HRÁČ'} ${calcParams.targetIdx + 1} (${isEn ? 'DIST' : 'VZDÁL'}: ${calcResult.actualDistance})
                 </text>
                 <text x="0" y="4" text-anchor="middle" font-size="11.5" font-weight="900" fill="${calcResult.canBang ? '#2ecc71' : '#e74c3c'}">
-                  ${calcResult.canBang ? (isEn ? '✅ IN WEAPON RANGE (CAN BANG!)' : '✅ V DOSTŘELU ZBRANĚ (LZE BANG!)') : (isEn ? '❌ OUT OF RANGE (CANNOT HIT)' : '❌ MIMO DOSTŘEL ZBRANĚ (NELZE ZASÁHNOUT)')}
+                  ${calcResult.canBang ? (isEn ? 'IN WEAPON RANGE (CAN BANG!)' : 'V DOSTŘELU ZBRANĚ (LZE BANG!)') : (isEn ? 'OUT OF RANGE (CANNOT HIT)' : 'MIMO DOSTŘEL ZBRANĚ (NELZE ZASÁHNOUT)')}
                 </text>
                 <text x="0" y="24" text-anchor="middle" font-size="10" font-weight="bold" fill="#f5deb3">
-                  🟢 ${isEn ? 'In range' : 'Na mušce'} (${inRangeCount}/${calcParams.totalPlayers - 1}): ${inRangeNames.join(', ') || (isEn ? 'none' : 'nikdo')} | 🔴 ${isEn ? 'Out' : 'Mimo'}: ${outRangeNames.join(', ') || (isEn ? 'none' : 'nikdo')}
+                  ${isEn ? 'In range' : 'Na mušce'} (${inRangeCount}/${calcParams.totalPlayers - 1}): ${inRangeNames.join(', ') || (isEn ? 'none' : 'nikdo')} | ${isEn ? 'Out' : 'Mimo'}: ${outRangeNames.join(', ') || (isEn ? 'none' : 'nikdo')}
                 </text>
               </g>
 
@@ -2626,13 +2762,13 @@
           </div>
 
           <div class="table-instruction-hint">
-            💡 ${isEn ? 'Tap any seat to select who is shooting and who is being targeted. The table calculates the shortest direction (clockwise vs counter-clockwise) automatically.' : 'Klepněte na libovolnou židli pro výběr střelce či cíle. Stůl automaticky počítá nejkratší vzdálenost (po směru i proti směru hodinových ručiček).'}
+            ${isEn ? 'Tap any seat to select who is shooting and who is being targeted. The table calculates the shortest direction (clockwise vs counter-clockwise) automatically.' : 'Klepněte na libovolnou židli pro výběr střelce či cíle. Stůl automaticky počítá nejkratší vzdálenost (po směru i proti směru hodinových ručiček).'}
           </div>
         </div>
 
         <div class="calc-grid">
           <div class="calc-panel">
-            <h3><span>🤠</span> ${isEn ? 'Shooter Equipment & Abilities' : 'Výbava střelce & Schopnosti'}</h3>
+            <h3>${isEn ? 'Shooter Equipment & Abilities' : 'Výbava střelce & Schopnosti'}</h3>
             <div style="margin-bottom: 1rem;">
               <label for="calc-weapon" style="display: block; font-weight: 700; font-size: 0.88rem; margin-bottom: 0.35rem;">${isEn ? 'Equipped Weapon:' : 'Vyložená zbraň:'}</label>
               <select id="calc-weapon" class="filter-select" style="width: 100%;">
@@ -2642,37 +2778,37 @@
             <div class="calc-mods-list">
               <label class="calc-checkbox-label">
                 <input type="checkbox" id="chk-appaloosa" ${calcParams.appaloosa ? 'checked' : ''}>
-                <span>🐎 ${isEn ? 'Appaloosa / Scope (-1 distance)' : 'Hledí / Appaloosa (-1 ke vzdálenosti)'}</span>
+                <span><img src="assets/symbols/symbol_scope.png" class="tag-symbol-img" alt="">${isEn ? 'Appaloosa / Scope (-1 distance)' : 'Hledí / Appaloosa (-1 ke vzdálenosti)'}</span>
               </label>
               <label class="calc-checkbox-label">
                 <input type="checkbox" id="chk-binoculars" ${calcParams.binoculars ? 'checked' : ''}>
-                <span>🔭 ${isEn ? 'Binoculars (-1 distance)' : 'Dalekohled (-1 ke vzdálenosti)'}</span>
+                <span>${isEn ? 'Binoculars (-1 distance)' : 'Dalekohled (-1 ke vzdálenosti)'}</span>
               </label>
               <label class="calc-checkbox-label">
                 <input type="checkbox" id="chk-rosedoolan" ${calcParams.roseDoolan ? 'checked' : ''}>
-                <span>👩 ${isEn ? 'Rose Doolan character (-1 distance)' : 'Postava Rose Doolan (-1 ke vzdálenosti)'}</span>
+                <span>${isEn ? 'Rose Doolan character (-1 distance)' : 'Postava Rose Doolan (-1 ke vzdálenosti)'}</span>
               </label>
             </div>
           </div>
 
           <div class="calc-panel">
-            <h3><span>🎯</span> ${isEn ? 'Target Defenses & Abilities' : 'Obrana cíle & Schopnosti'}</h3>
+            <h3>${isEn ? 'Target Defenses & Abilities' : 'Obrana cíle & Schopnosti'}</h3>
             <div class="calc-mods-list" style="margin-top: 0.5rem;">
               <label class="calc-checkbox-label">
                 <input type="checkbox" id="chk-mustang" ${calcParams.mustang ? 'checked' : ''}>
-                <span>🐎 ${isEn ? 'Mustang (+1 distance away)' : 'Mustang (+1 ke vzdálenosti)'}</span>
+                <span><img src="assets/symbols/symbol_mustang.png" class="tag-symbol-img" alt="">${isEn ? 'Mustang (+1 distance away)' : 'Mustang (+1 ke vzdálenosti)'}</span>
               </label>
               <label class="calc-checkbox-label">
                 <input type="checkbox" id="chk-hideout" ${calcParams.hideout ? 'checked' : ''}>
-                <span>🏕️ ${isEn ? 'Hideout (+1 distance away)' : 'Skrýš (+1 ke vzdálenosti)'}</span>
+                <span>${isEn ? 'Hideout (+1 distance away)' : 'Skrýš (+1 ke vzdálenosti)'}</span>
               </label>
               <label class="calc-checkbox-label">
                 <input type="checkbox" id="chk-paulregret" ${calcParams.paulRegret ? 'checked' : ''}>
-                <span>🤠 ${isEn ? 'Paul Regret character (+1 distance away)' : 'Postava Paul Regret (+1 ke vzdálenosti)'}</span>
+                <span>${isEn ? 'Paul Regret character (+1 distance away)' : 'Postava Paul Regret (+1 ke vzdálenosti)'}</span>
               </label>
               <label class="calc-checkbox-label" style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px dashed var(--border-color);">
                 <input type="checkbox" id="chk-zvonice" ${calcParams.zvonice ? 'checked' : ''}>
-                <span>🔔 ${isEn ? 'Event: Church Bell / Zvonice (all dist = 1)' : 'Událost: Zvonice (všichni na vzdálenost 1)'}</span>
+                <span>${isEn ? 'Event: Church Bell / Zvonice (all dist = 1)' : 'Událost: Zvonice (všichni na vzdálenost 1)'}</span>
               </label>
             </div>
           </div>
@@ -2696,15 +2832,15 @@
 
           <div class="calc-verdict-grid">
             <div class="calc-verdict-item ${calcResult.canBang ? 'verdict-success' : 'verdict-fail'}">
-              <span>${calcResult.canBang ? '💥' : '🚫'}</span>
+              <img src="assets/symbols/symbol_bang.png" class="tag-symbol-img" style="height: 22px;" alt="">
               <span>BANG! ${calcResult.canBang ? (isEn ? 'CAN HIT TARGET!' : 'DOSTŘELÍ NA CÍL!') : (isEn ? 'CANNOT HIT (Need ' + calcResult.actualDistance + ')' : 'NEDOSTŘELÍ (chybí ' + (calcResult.actualDistance - calcResult.weaponRange) + ')') }</span>
             </div>
             <div class="calc-verdict-item ${calcResult.canPanic ? 'verdict-success' : 'verdict-fail'}">
-              <span>${calcResult.canPanic ? '🧤' : '🚫'}</span>
+              <img src="assets/symbols/symbol_distance_x.png" class="tag-symbol-img" style="height: 22px;" alt="">
               <span>Panika! ${calcResult.canPanic ? (isEn ? 'CAN BE PLAYED (Dist = 1)' : 'LZE ZAHRÁT (vzdálenost 1)') : (isEn ? 'CANNOT PLAY (Dist > 1)' : 'NELZE ZAHRÁT (vzdálenost ' + calcResult.actualDistance + ')')}</span>
             </div>
             <div class="calc-verdict-item verdict-success">
-              <span>⚔️</span>
+              <img src="assets/symbols/symbol_any_one_player.png" class="tag-symbol-img" style="height: 22px;" alt="">
               <span>Duel / Cat Balou / Indiáni: ${isEn ? 'Always playable' : 'Vždy lze zahrát'}</span>
             </div>
           </div>
@@ -2714,7 +2850,7 @@
               <strong>${isEn ? 'Calculation:' : 'Výpočet:'}</strong> ${isEn ? 'Table seats' : 'Základ u stolu'} (${calcResult.seatDistance}) ${calcResult.targetMods ? `+ ${isEn ? 'Defense' : 'Obrana'} (+${calcResult.targetMods})` : ''} ${calcResult.shooterMods ? `- ${isEn ? 'Sight' : 'Hledí'} (-${calcResult.shooterMods})` : ''} = <strong>${calcResult.actualDistance}</strong>.
             </div>
             <button type="button" class="btn-reset-filters" id="btn-sound-shot" style="display: inline-flex; align-items: center; gap: 0.4rem; font-weight: 800; font-size: 0.95rem; padding: 0.65rem 1.2rem; background: var(--color-brown); color: #fff;">
-              <span>💥</span> ${isEn ? 'Test Shot on Table' : 'Otestovat výstřel na stůl'}
+              <img src="assets/symbols/symbol_bang.png" class="tag-symbol-img" alt=""> ${isEn ? 'Test Shot on Table' : 'Otestovat výstřel na stůl'}
             </button>
           </div>
         </div>
@@ -2926,13 +3062,13 @@
     const values = (sim && sim.values) ? sim.values : ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
 
     const presets = [
-      { id: 'dynamite', nameCs: '💣 Dynamit', nameEn: '💣 Dynamite', targetCs: 'Piky ♠ 2–9 = BUM!', targetEn: 'Spades ♠ 2–9 = BOOM!' },
-      { id: 'jail', nameCs: '⛓️ Vězení', nameEn: '⛓️ Jail', targetCs: 'Srdce ♥ = útěk', targetEn: 'Hearts ♥ = escape' },
-      { id: 'barrel', nameCs: '🛡️ Barel', nameEn: '🛡️ Barrel', targetCs: 'Srdce ♥ = Vedle!', targetEn: 'Hearts ♥ = Missed!' },
-      { id: 'rattlesnake', nameCs: '🐍 Chřestýš', nameEn: '🐍 Rattlesnake', targetCs: 'Piky ♠ = -1 život', targetEn: 'Spades ♠ = -1 life' },
-      { id: 'bomb', nameCs: '💥 Bomba', nameEn: '💥 Bomb', targetCs: 'Černá = -2 žetony', targetEn: 'Black = -2 charges' },
-      { id: 'teren', nameCs: '🤠 Teren Kill', nameEn: '🤠 Teren Kill', targetCs: 'Nepiková = přežití', targetEn: 'Non-spades = survive' },
-      { id: 'general', nameCs: '🃏 Volné ověření', nameEn: '🃏 Free Check', targetCs: 'Jakákoliv karta', targetEn: 'Any card' }
+      { id: 'dynamite', symbol: 'assets/symbols/symbol_dynamite.png', nameCs: 'Dynamit', nameEn: 'Dynamite', targetCs: 'Piky ♠ 2–9 = BUM!', targetEn: 'Spades ♠ 2–9 = BOOM!' },
+      { id: 'jail', symbol: 'assets/symbols/symbol_jail.png', nameCs: 'Vězení', nameEn: 'Jail', targetCs: 'Srdce ♥ = útěk', targetEn: 'Hearts ♥ = escape' },
+      { id: 'barrel', symbol: 'assets/symbols/symbol_barrel.png', nameCs: 'Barel', nameEn: 'Barrel', targetCs: 'Srdce ♥ = Vedle!', targetEn: 'Hearts ♥ = Missed!' },
+      { id: 'rattlesnake', nameCs: 'Chřestýš', nameEn: 'Rattlesnake', targetCs: 'Piky ♠ = -1 život', targetEn: 'Spades ♠ = -1 life' },
+      { id: 'bomb', nameCs: 'Bomba', nameEn: 'Bomb', targetCs: 'Černá = -2 žetony', targetEn: 'Black = -2 charges' },
+      { id: 'teren', nameCs: 'Teren Kill', nameEn: 'Teren Kill', targetCs: 'Nepiková = přežití', targetEn: 'Non-spades = survive' },
+      { id: 'general', symbol: 'assets/symbols/symbol_draw_check.png', nameCs: 'Volné ověření', nameEn: 'Deck Check', targetCs: 'Jakákoliv karta', targetEn: 'Any card' }
     ];
 
     const currentPreset = presets.find(p => p.id === drawSimulatorState.preset) || presets[0];
@@ -2951,7 +3087,7 @@
     container.innerHTML = `
       <div class="tool-card-box">
         <div class="tool-card-header">
-          <h2>⚖️ ${isEn ? 'Draw Arbitrator & Odds Calculator' : 'Arbitr snímání & Kalkulátor šancí'}</h2>
+          <h2><img src="assets/symbols/symbol_draw_check.png" class="tool-btn-symbol" alt=""> ${isEn ? 'Draw Arbitrator & Odds Calculator' : 'Arbitr snímání & Kalkulátor šancí'}</h2>
           <p class="tool-card-lead">
             ${isEn
               ? 'Authoritative rulings for physical cards flipped at the table, dispute prevention, and mathematical survival odds.'
@@ -2969,7 +3105,7 @@
               <button type="button" class="btn-preset-chip ${p.id === drawSimulatorState.preset ? 'active' : ''}" 
                       data-preset="${p.id}"
                       style="padding: 0.55rem 0.9rem; border-radius: 20px; border: 1.5px solid ${p.id === drawSimulatorState.preset ? 'var(--color-gold)' : 'var(--border-color)'}; background: ${p.id === drawSimulatorState.preset ? 'var(--color-gold)' : 'var(--bg-surface)'}; color: ${p.id === drawSimulatorState.preset ? '#fff' : 'inherit'}; cursor: pointer; font-weight: 500; font-size: 0.88rem; transition: all 0.2s ease;">
-                ${isEn ? p.nameEn : p.nameCs}
+                ${p.symbol ? `<img src="${p.symbol}" class="preset-symbol-thumb" alt="">` : ''}${isEn ? p.nameEn : p.nameCs}
                 <span style="opacity: 0.82; font-size: 0.78rem; display: block;">${isEn ? p.targetEn : p.targetCs}</span>
               </button>
             `).join('')}
@@ -2981,7 +3117,7 @@
           <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.8rem; margin-bottom: 1rem;">
             <div>
               <div style="font-weight: bold; font-size: 1.05rem; color: var(--color-brown); display: flex; align-items: center; gap: 0.4rem;">
-                📊 ${isEn ? 'Survival Odds & Risk Analysis' : 'Matematické šance & Analýza rizika'}
+                ${isEn ? 'Survival Odds & Risk Analysis' : 'Matematické šance & Analýza rizika'}
               </div>
               <div style="font-size: 0.82rem; color: var(--text-muted);">
                 ${isEn ? 'Exact probabilities in a standard 52-card deck' : 'Přesné pravděpodobnosti ve standardním balíčku 52 karet'}
@@ -2992,7 +3128,7 @@
             <label style="display: flex; align-items: center; gap: 0.6rem; cursor: pointer; background: var(--bg-card); padding: 0.45rem 0.85rem; border-radius: 20px; border: 1.5px solid ${drawSimulatorState.luckyDuke ? 'var(--color-gold)' : 'var(--border-color)'}; transition: all 0.2s;">
               <input type="checkbox" id="chk-lucky-duke" ${drawSimulatorState.luckyDuke ? 'checked' : ''} style="cursor: pointer; width: 16px; height: 16px;">
               <span style="font-size: 0.88rem; font-weight: bold; color: ${drawSimulatorState.luckyDuke ? 'var(--color-gold)' : 'inherit'};">
-                🤠 ${isEn ? 'Lucky Duke (Draw 2 cards)' : 'Lucky Duke (snímá 2 karty)'}
+                ${isEn ? 'Lucky Duke (Draw 2 cards)' : 'Lucky Duke (snímá 2 karty)'}
               </span>
             </label>
           </div>
@@ -3025,8 +3161,8 @@
           </div>
 
           <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.6rem; font-size: 0.86rem; border-top: 1px dashed var(--border-color); padding-top: 0.75rem;">
-            <div><strong>🎯 ${isEn ? 'Odds Ratio:' : 'Reálný poměr:'}</strong> ${isEn ? odds.ratioEn : odds.ratioCs}</div>
-            <div style="color: var(--text-muted); font-style: italic;">💡 ${isEn ? odds.tipEn : odds.tipCs}</div>
+            <div><strong>${isEn ? 'Odds Ratio:' : 'Reálný poměr:'}</strong> ${isEn ? odds.ratioEn : odds.ratioCs}</div>
+            <div style="color: var(--text-muted); font-style: italic;">${isEn ? odds.tipEn : odds.tipCs}</div>
           </div>
         </div>
 
@@ -3035,7 +3171,7 @@
           <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.8rem; margin-bottom: 1.2rem;">
             <div>
               <div style="font-weight: bold; font-size: 1.05rem; color: var(--color-brown);">
-                🎴 ${isEn ? 'Tabletop Referee: Enter Flipped Card' : 'Rozhodčí: Zadej kartu otočenou ze stolu'}
+                <img src="assets/symbols/symbol_draw_check.png" class="rules-symbol-inline" alt=""> ${isEn ? 'Tabletop Referee: Enter Flipped Card' : 'Rozhodčí: Zadej kartu otočenou ze stolu'}
               </div>
               <div style="font-size: 0.82rem; color: var(--text-muted);">
                 ${isEn ? 'Flipped a physical card from your draw deck at the table? Click its suit & value for an instant authoritative verdict:' : 'Otočili jste kartu z dobíracího balíčku na stole? Zadejte barvu a hodnotu pro bleskový oficiální verdikt:'}
@@ -3043,7 +3179,7 @@
             </div>
 
             <button type="button" id="btn-random-draw" class="btn-primary" style="padding: 0.45rem 1rem; font-size: 0.85rem; border-radius: 20px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 0.4rem;">
-              🎲 ${isEn ? 'Simulate Random Draw' : 'Simulovat náhodné otočení'}
+              ${isEn ? 'Simulate Random Draw' : 'Simulovat náhodné otočení'}
             </button>
           </div>
 
@@ -3434,7 +3570,7 @@
     container.innerHTML = `
       <div class="tool-card-box">
         <div class="tool-card-header">
-          <h2><span>☀️</span> ${isEn ? 'Event Decks (High Noon, Fistful & Wild West Show)' : 'Digitální balíček událostí (Pravé poledne, Fistful & Divoký západ)'}</h2>
+          <h2>${isEn ? 'Event Decks (High Noon, Fistful & Wild West Show)' : 'Digitální balíček událostí (Pravé poledne, Fistful & Divoký západ)'}</h2>
           <p class="tool-card-lead">${isEn ? 'Official 2-Deck Rules: Sheriff turns round events (High Noon / Fistful) at the start of each round. Wild West Show sits independently in the center and is revealed ONLY when Stagecoach or Wells Fargo is played.' : 'Oficiální pravidlový systém 2 balíčků: Šerif otáčí balíček kol (Pravé poledne / Pěst plná karet) na začátku každého kola hry. Samostatný balíček Divokého západu leží uprostřed stolu a otáčí se POUZE při zahrání karty Dostavník nebo Wells Fargo.'}</p>
         </div>
 
@@ -3726,7 +3862,7 @@
       container.innerHTML = `
         <div class="tool-card-box">
           <div class="tool-card-header">
-            <h2><span>🎲</span> ${isEn ? 'Role & Character Draft' : 'Losovač rolí a postav'}</h2>
+            <h2>${isEn ? 'Role & Character Draft' : 'Losovač rolí a postav'}</h2>
             <p class="tool-card-lead">${isEn ? 'Secret "Pass the Phone" mode: each player privately discovers their role and chooses from 2 dealt characters.' : 'Režim „Předej mobil“ pro tajné losování: každý hráč v soukromí zjistí svou roli a vybere si ze 2 nabídnutých postav.'}</p>
           </div>
 
@@ -3906,7 +4042,7 @@
       container.innerHTML = `
         <div class="tool-card-box">
           <div class="tool-card-header">
-            <h2><span>🎉</span> ${isEn ? 'Draft Completed! Game Ready!' : 'Losování dokončeno! Hra je připravena!'}</h2>
+            <h2>${isEn ? 'Draft Completed! Game Ready!' : 'Losování dokončeno! Hra je připravena!'}</h2>
             <p class="tool-card-lead">${isEn ? 'Sheriff plays first and reveals their card publicly. All other roles remain strictly secret.' : 'Šerif hraje jako první a otočí kartu lícem nahoru. Všechny ostatní role zůstávají tajné!'}</p>
           </div>
 
@@ -3963,7 +4099,7 @@
     container.innerHTML = `
       <div class="tool-card-box">
         <div class="tool-card-header">
-          <h2><span>🤠</span> ${isEn ? 'Virtual Player Board & Resource Tracker' : 'Virtuální deska a sledovač surovin'}</h2>
+          <h2>${isEn ? 'Virtual Player Board & Resource Tracker' : 'Virtuální deska a sledovač surovin'}</h2>
           <p class="tool-card-lead">${isEn ? 'Track lives, gold nuggets, charge cubes, and end-of-turn hand card limit right on your screen.' : 'Sledování životů, zlatých valounů, žetonů nabití a limitu karet na konci tahu přímo na displeji mobilu či tabletu.'}</p>
         </div>
 
@@ -4122,7 +4258,7 @@
       <div class="tool-card-box">
         <div class="tool-card-header" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
           <div>
-            <h2>🏆 ${isEn ? 'Match Tracker & Party Stats' : 'Zápisník partií & statistiky party'}</h2>
+            <h2>${isEn ? 'Match Tracker & Party Stats' : 'Zápisník partií & statistiky party'}</h2>
             <p class="tool-card-lead">
               ${isEn 
                 ? 'Record your game results, track win rates by role (Law, Outlaws, Renegade), and immortalize your table’s MVP gunfighters!'
@@ -4467,7 +4603,7 @@
       <div class="tool-card-box">
         <div class="tool-card-header" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
           <div>
-            <h2>⏱️ ${isEn ? 'Saloon Turn Clock & Duel Timer' : 'Šerifovy hodinky & Rychlý Duel'}</h2>
+            <h2><img src="assets/symbols/symbol_bang.png" class="tool-btn-symbol" alt=""> ${isEn ? 'Saloon Turn Clock & Duel Timer' : 'Šerifovy hodinky & Rychlý Duel'}</h2>
             <p class="tool-card-lead">
               ${isEn
                 ? 'Keep game pace fast, prevent analysis paralysis, and run rapid-fire 5-second countdowns for duels.'
@@ -4477,11 +4613,11 @@
           <div style="display: flex; gap: 0.5rem;">
             <button type="button" class="btn-timer-mode ${timerState.mode === 'turn' ? 'active' : ''}" data-mode="turn"
                     style="padding: 0.55rem 1rem; border-radius: 20px; border: 1.5px solid ${timerState.mode === 'turn' ? 'var(--color-gold)' : 'var(--border-color)'}; background: ${timerState.mode === 'turn' ? 'var(--color-gold)' : 'var(--bg-surface)'}; color: ${timerState.mode === 'turn' ? '#fff' : 'inherit'}; cursor: pointer; font-weight: bold; font-size: 0.88rem;">
-              ⏱️ ${isEn ? 'Turn Clock' : 'Hodinky tahu'}
+              ${isEn ? 'Turn Clock' : 'Hodinky tahu'}
             </button>
             <button type="button" class="btn-timer-mode ${timerState.mode === 'duel' ? 'active' : ''}" data-mode="duel"
                     style="padding: 0.55rem 1rem; border-radius: 20px; border: 1.5px solid ${timerState.mode === 'duel' ? 'var(--color-gold)' : 'var(--border-color)'}; background: ${timerState.mode === 'duel' ? 'var(--color-gold)' : 'var(--bg-surface)'}; color: ${timerState.mode === 'duel' ? '#fff' : 'inherit'}; cursor: pointer; font-weight: bold; font-size: 0.88rem;">
-              ⚔️ ${isEn ? 'Quick Duel (5s)' : 'Bleskový Duel (5s)'}
+              <img src="assets/symbols/symbol_bang.png" class="rules-symbol-inline" alt=""> ${isEn ? 'Quick Duel (5s)' : 'Bleskový Duel (5s)'}
             </button>
           </div>
         </div>
@@ -4509,15 +4645,15 @@
             <div style="display: flex; justify-content: center; gap: 0.8rem;">
               ${!timerState.isRunning ? `
                 <button type="button" id="btn-timer-start" class="btn-primary" style="padding: 0.75rem 2rem; border-radius: 30px; font-weight: bold; font-size: 1.1rem; cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem;">
-                  ▶️ ${isEn ? 'Start Turn' : 'Spustit tah'}
+                  ${isEn ? 'Start Turn' : 'Spustit tah'}
                 </button>
               ` : `
                 <button type="button" id="btn-timer-pause" style="padding: 0.75rem 2rem; border-radius: 30px; font-weight: bold; font-size: 1.1rem; cursor: pointer; background: #e67e22; color: #fff; border: none; display: inline-flex; align-items: center; gap: 0.5rem;">
-                  ⏸️ ${isEn ? 'Pause' : 'Pozastavit'}
+                  ${isEn ? 'Pause' : 'Pozastavit'}
                 </button>
               `}
               <button type="button" id="btn-timer-reset" style="padding: 0.75rem 1.4rem; border-radius: 30px; font-weight: bold; font-size: 1.1rem; cursor: pointer; background: var(--bg-surface); border: 1px solid var(--border-color);">
-                🔄 ${isEn ? 'Reset' : 'Reset'}
+                ${isEn ? 'Reset' : 'Reset'}
               </button>
             </div>
           </div>
@@ -4539,10 +4675,10 @@
                   ${timerState.duelTime1}s
                 </div>
                 <button type="button" id="btn-duel-p1" class="btn-primary" style="width: 100%; padding: 1rem; font-size: 1.1rem; font-weight: bold; border-radius: 8px; cursor: pointer; margin-bottom: 0.6rem;" ${timerState.duelActivePlayer !== 1 || !timerState.duelRunning ? 'disabled style="opacity:0.4; cursor:not-allowed;"' : ''}>
-                  💥 ${isEn ? 'DISCARD BANG!' : 'ODHODIT BANG!'}
+                  ${isEn ? 'DISCARD BANG!' : 'ODHODIT BANG!'}
                 </button>
                 <button type="button" class="btn-duel-giveup" data-p="1" style="background: none; border: none; font-size: 0.82rem; color: #e74c3c; cursor: pointer; text-decoration: underline;">
-                  🏳️ ${isEn ? 'No BANG! / Hit!' : 'Nemám BANG! / Zásah!'}
+                  ${isEn ? 'No BANG! / Hit!' : 'Nemám BANG! / Zásah!'}
                 </button>
               </div>
 
@@ -4554,10 +4690,10 @@
                   ${timerState.duelTime2}s
                 </div>
                 <button type="button" id="btn-duel-p2" class="btn-primary" style="width: 100%; padding: 1rem; font-size: 1.1rem; font-weight: bold; border-radius: 8px; cursor: pointer; margin-bottom: 0.6rem;" ${timerState.duelActivePlayer !== 2 || !timerState.duelRunning ? 'disabled style="opacity:0.4; cursor:not-allowed;"' : ''}>
-                  💥 ${isEn ? 'DISCARD BANG!' : 'ODHODIT BANG!'}
+                  ${isEn ? 'DISCARD BANG!' : 'ODHODIT BANG!'}
                 </button>
                 <button type="button" class="btn-duel-giveup" data-p="2" style="background: none; border: none; font-size: 0.82rem; color: #e74c3c; cursor: pointer; text-decoration: underline;">
-                  🏳️ ${isEn ? 'No BANG! / Hit!' : 'Nemám BANG! / Zásah!'}
+                  ${isEn ? 'No BANG! / Hit!' : 'Nemám BANG! / Zásah!'}
                 </button>
               </div>
             </div>
@@ -4581,7 +4717,7 @@
                 </button>
               ` : `
                 <button type="button" id="btn-duel-stop" style="padding: 0.75rem 1.5rem; border-radius: 30px; font-weight: bold; cursor: pointer; background: var(--bg-surface); border: 1px solid var(--border-color);">
-                  🛑 ${isEn ? 'Cancel Duel' : 'Ukončit duel'}
+                  ${isEn ? 'Cancel Duel' : 'Ukončit duel'}
                 </button>
               `}
             </div>
@@ -4775,7 +4911,7 @@
       <div class="tool-card-box">
         <div class="tool-card-header" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
           <div>
-            <h2>🚂 ${isEn ? 'The Great Train Robbery Board' : 'Vlaková souprava & Stanice'}</h2>
+            <h2>${isEn ? 'The Great Train Robbery Board' : 'Vlaková souprava & Stanice'}</h2>
             <p class="tool-card-lead">
               ${isEn
                 ? 'Manage train movement, railcars, station arrivals, and decoupling costs right from your device without table clutter.'
@@ -4784,10 +4920,10 @@
           </div>
           <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
             <button type="button" id="btn-toggle-loco" style="padding: 0.55rem 0.95rem; border-radius: 8px; border: 1.5px solid var(--border-color); background: var(--bg-surface); cursor: pointer; font-weight: bold; font-size: 0.88rem;">
-              🔄 ${isEn ? 'Flip Locomotive (Leland / Ironhorse)' : 'Otočit lokomotivu'}
+              ${isEn ? 'Flip Locomotive (Leland / Ironhorse)' : 'Otočit lokomotivu'}
             </button>
             <button type="button" id="btn-next-station" style="padding: 0.55rem 0.95rem; border-radius: 8px; border: 1.5px solid var(--border-color); background: var(--bg-surface); cursor: pointer; font-weight: bold; font-size: 0.88rem;">
-              🏁 ${isEn ? 'Next Station' : 'Další stanice'}
+              ${isEn ? 'Next Station' : 'Další stanice'}
             </button>
           </div>
         </div>
@@ -4798,7 +4934,7 @@
             ${isEn ? 'Sheriff Turn Action' : 'Akce na konci tahu Šerifa'} • ${isEn ? 'Total Moves:' : 'Ujetých kroků:'} <strong>${trainData.movesCount}</strong>
           </div>
           <button type="button" id="btn-advance-train" class="btn-primary" style="padding: 1rem 2.5rem; font-size: 1.25rem; font-weight: bold; border-radius: 30px; border: 2px solid #ffcc00; cursor: pointer; display: inline-flex; align-items: center; gap: 0.6rem; box-shadow: 0 6px 20px rgba(0,0,0,0.5); transition: transform 0.15s;">
-            🚂 ${isEn ? 'ADVANCE TRAIN (End of Sheriff Turn)' : 'POSUNOUT VLAK (Konec tahu Šerifa)'}
+            ${isEn ? 'ADVANCE TRAIN (End of Sheriff Turn)' : 'POSUNOUT VLAK (Konec tahu Šerifa)'}
           </button>
         </div>
 
@@ -4807,7 +4943,7 @@
           <!-- ACTIVE LOCOMOTIVE -->
           <div style="background: var(--bg-surface); border: 2px solid #d35400; border-radius: 12px; padding: 1.25rem;">
             <div style="font-size: 0.82rem; font-weight: bold; color: #d35400; text-transform: uppercase; margin-bottom: 0.4rem;">
-              🚂 ${isEn ? 'Active Locomotive' : 'Aktivní lokomotiva soupravy'}
+              ${isEn ? 'Active Locomotive' : 'Aktivní lokomotiva soupravy'}
             </div>
             <div style="display: flex; gap: 1rem; align-items: flex-start;">
               ${trainData.locomotive && trainData.locomotive.image ? `
@@ -4825,7 +4961,7 @@
           <!-- ACTIVE STATION -->
           <div style="background: var(--bg-surface); border: 2px solid #2980b9; border-radius: 12px; padding: 1.25rem;">
             <div style="font-size: 0.82rem; font-weight: bold; color: #2980b9; text-transform: uppercase; margin-bottom: 0.4rem;">
-              🏁 ${isEn ? 'Current Station' : 'Aktuální stanice'}
+              ${isEn ? 'Current Station' : 'Aktuální stanice'}
             </div>
             <div style="display: flex; gap: 1rem; align-items: flex-start;">
               ${trainData.activeStation && trainData.activeStation.image ? `
@@ -4835,7 +4971,7 @@
                 <h3 style="margin-bottom: 0.35rem; color: var(--color-brown); font-family: 'Georgia', serif;">${trainData.activeStation ? trainData.activeStation.name : 'Stanice'}</h3>
                 ${trainData.activeStation && trainData.activeStation.cost ? `
                   <div style="font-size: 0.85rem; font-weight: bold; color: #e67e22; margin-bottom: 0.3rem;">
-                    🪙 ${isEn ? 'Cost:' : 'Cena za odpojení:'} ${trainData.activeStation.cost}
+                    ${isEn ? 'Cost:' : 'Cena za odpojení:'} ${trainData.activeStation.cost}
                   </div>
                 ` : ''}
                 <div style="font-size: 0.85rem; line-height: 1.45; color: var(--text-muted);">
@@ -4850,7 +4986,7 @@
         <div>
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
             <h3 style="font-family: 'Georgia', serif; font-size: 1.15rem; color: var(--color-brown); display: flex; align-items: center; gap: 0.4rem;">
-              🚃 ${isEn ? 'Attached Railcars (Wagons on Track):' : 'Napojené vagony na kolejích:'}
+              ${isEn ? 'Attached Railcars (Wagons on Track):' : 'Napojené vagony na kolejích:'}
             </h3>
             <span style="font-size: 0.82rem; color: var(--text-muted);">
               ${isEn ? 'Wagons left in deck:' : 'Vagonů v balíčku:'} ${trainData.wagonDeck ? trainData.wagonDeck.length : 0}
@@ -4971,7 +5107,7 @@
       <div class="tool-card-box">
         <div class="tool-card-header" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
           <div>
-            <h2>🌟 ${isEn ? 'Legends & Feats Tracker' : 'Správce činů a slávy pro Legendy'}</h2>
+            <h2>${isEn ? 'Legends & Feats Tracker' : 'Správce činů a slávy pro Legendy'}</h2>
             <p class="tool-card-lead">
               ${isEn
                 ? 'Track Fame tokens, manage Feat cards, usurpation by rivals, and legendary side flips without table chaos.'
@@ -5162,7 +5298,7 @@
       <div class="tool-card-box">
         <div class="tool-card-header" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
           <div>
-            <h2>🪙 ${isEn ? 'Gold Rush Saloon Armory' : 'Obchod a výloha Zlaté horečky'}</h2>
+            <h2>${isEn ? 'Gold Rush Saloon Armory' : 'Obchod a výloha Zlaté horečky'}</h2>
             <p class="tool-card-lead">
               ${isEn
                 ? 'Storefront of 3 equipment cards bought for gold nuggets. Buy a card to automatically draw a fresh replacement from the deck.'
@@ -5171,10 +5307,10 @@
           </div>
           <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
             <button type="button" id="btn-refresh-store" style="padding: 0.55rem 0.95rem; border-radius: 8px; border: 1.5px solid var(--border-color); background: var(--bg-surface); cursor: pointer; font-weight: bold; font-size: 0.88rem;">
-              🔄 ${isEn ? 'Refresh 3 Cards' : 'Vyložit 3 nové karty'}
+              ${isEn ? 'Refresh 3 Cards' : 'Vyložit 3 nové karty'}
             </button>
             <button type="button" id="btn-shuffle-store" style="padding: 0.55rem 0.95rem; border-radius: 8px; border: 1.5px solid var(--border-color); background: var(--bg-surface); cursor: pointer; font-weight: bold; font-size: 0.88rem;">
-              🔀 ${isEn ? 'Reshuffle Deck' : 'Zamíchat balíček'}
+              ${isEn ? 'Reshuffle Deck' : 'Zamíchat balíček'}
             </button>
           </div>
         </div>
@@ -5182,10 +5318,10 @@
         <!-- STORE STATUS BAR -->
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; font-size: 0.85rem; color: var(--text-muted); background: var(--bg-surface); padding: 0.6rem 1rem; border-radius: 8px; border: 1px solid var(--border-color);">
           <div>
-            📦 ${isEn ? 'Cards in Equipment Deck:' : 'Zbývá v balíčku vybavení:'} <strong>${storeState.deck.length}</strong>
+            ${isEn ? 'Cards in Equipment Deck:' : 'Zbývá v balíčku vybavení:'} <strong>${storeState.deck.length}</strong>
           </div>
           <div>
-            🗑️ ${isEn ? 'Cards in Discard Pile:' : 'V odhazovacím balíčku:'} <strong>${storeState.discard.length}</strong>
+            ${isEn ? 'Cards in Discard Pile:' : 'V odhazovacím balíčku:'} <strong>${storeState.discard.length}</strong>
           </div>
         </div>
 
@@ -5312,7 +5448,7 @@
       <div class="tool-card-box">
         <div class="tool-card-header" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.25rem;">
           <div>
-            <h2>🎲 ${isEn ? 'Bounty Challenges & House Rules' : 'Hospodské výzvy & Speciální scénáře'}</h2>
+            <h2>${isEn ? 'Bounty Challenges & House Rules' : 'Hospodské výzvy & Speciální scénáře'}</h2>
             <p class="tool-card-lead">
               ${isEn
                 ? 'Spice up games for veteran tables with thematic house rules and bounties (Dry Well, Fast Colts, Saloon Poker, etc.).'
@@ -5321,13 +5457,13 @@
           </div>
           <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;">
             <button type="button" id="btn-draw-1-scenario" class="tool-subnav-btn ${!isAllMode && scenariosState.drawCount === 1 ? 'active' : ''}" style="padding: 0.6rem 1.15rem; cursor: pointer; font-weight: 700; font-size: 0.9rem;">
-              🎲 ${isEn ? 'Draw 1 Challenge' : 'Vylosovat 1 výzvu'}
+              ${isEn ? 'Draw 1 Challenge' : 'Vylosovat 1 výzvu'}
             </button>
             <button type="button" id="btn-draw-2-scenario" class="tool-subnav-btn ${!isAllMode && scenariosState.drawCount === 2 ? 'active' : ''}" style="padding: 0.6rem 1.15rem; cursor: pointer; font-weight: 700; font-size: 0.9rem;">
-              🎲🎲 ${isEn ? 'Draw 2 Challenges' : 'Vylosovat 2 výzvy'}
+              ${isEn ? 'Draw 2 Challenges' : 'Vylosovat 2 výzvy'}
             </button>
             <button type="button" id="btn-toggle-all-scenarios" class="tool-subnav-btn ${isAllMode ? 'active' : ''}" style="padding: 0.6rem 1.15rem; cursor: pointer; font-weight: 700; font-size: 0.9rem;">
-              📜 ${isEn ? 'All 12 Challenges' : 'Všech 12 výzev (katalog)'}
+              ${isEn ? 'All 12 Challenges' : 'Všech 12 výzev (katalog)'}
             </button>
           </div>
         </div>
@@ -5337,28 +5473,28 @@
           <div style="background: var(--bg-surface); border: 2px solid var(--color-gold); border-radius: var(--radius-md); padding: 0.85rem 1.15rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
             <div>
               <div style="font-weight: 800; font-size: 1rem; color: var(--color-brown); display: flex; align-items: center; gap: 0.5rem;">
-                <span>🎯</span> ${isEn ? `Active Match Rule (${scenariosState.drawnScenarios.length} Challenge${scenariosState.drawnScenarios.length > 1 ? 's' : ''} Drawn)` : `Aktivní pravidla hry (Vylosováno: ${scenariosState.drawnScenarios.length} ${scenariosState.drawnScenarios.length > 1 ? 'výzvy' : 'výzva'})`}
+                ${isEn ? `Active Match Rule (${scenariosState.drawnScenarios.length} Challenge${scenariosState.drawnScenarios.length > 1 ? 's' : ''} Drawn)` : `Aktivní pravidla hry (Vylosováno: ${scenariosState.drawnScenarios.length} ${scenariosState.drawnScenarios.length > 1 ? 'výzvy' : 'výzva'})`}
               </div>
               <div style="font-size: 0.86rem; color: var(--text-muted); margin-top: 0.2rem;">
                 ${isEn ? 'This special rule applies to all players at the table for the entire match.' : 'Tato speciální výzva platí globálně pro všechny hráče u stolu po celou dobu partie.'}
               </div>
             </div>
             <button type="button" id="btn-reroll-current" class="tool-subnav-btn" style="padding: 0.45rem 0.95rem; font-size: 0.85rem; cursor: pointer; font-weight: 700; display: inline-flex; align-items: center; gap: 0.35rem; background: var(--color-brown); color: #fff;">
-              🔄 ${isEn ? 'Reroll Again' : 'Přelosovat znovu'}
+              ${isEn ? 'Reroll Again' : 'Přelosovat znovu'}
             </button>
           </div>
         ` : `
           <div style="background: var(--bg-surface); border: 2px solid var(--border-color); border-radius: var(--radius-md); padding: 0.85rem 1.15rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
             <div>
               <div style="font-weight: 800; font-size: 1rem; color: var(--color-brown); display: flex; align-items: center; gap: 0.5rem;">
-                <span>📜</span> ${isEn ? 'Catalog of All 12 Balanced House Rules & Challenges' : 'Katalog všech 12 vybalancovaných hospodských výzev'}
+                ${isEn ? 'Catalog of All 12 Balanced House Rules & Challenges' : 'Katalog všech 12 vybalancovaných hospodských výzev'}
               </div>
               <div style="font-size: 0.86rem; color: var(--text-muted); margin-top: 0.2rem;">
                 ${isEn ? 'Click "Activate for this game" on any card below to play with it, or draw randomly with the buttons above.' : 'Vyberte si libovolnou výzvu a klikněte na "Aktivovat do hry", nebo použijte losovací tlačítka nahoře.'}
               </div>
             </div>
             <button type="button" id="btn-back-to-drawn" class="tool-subnav-btn active" style="padding: 0.45rem 0.95rem; font-size: 0.85rem; cursor: pointer; font-weight: 700; background: var(--color-brown); color: #fff;">
-              🎯 ${isEn ? 'Back to Active Game' : 'Zpět k vylosované hře'}
+              ${isEn ? 'Back to Active Game' : 'Zpět k vylosované hře'}
             </button>
           </div>
         `}
@@ -5370,7 +5506,7 @@
               <div>
                 ${!isAllMode ? `
                   <div style="background: var(--color-gold); color: #1a1a1a; font-weight: 900; font-size: 0.72rem; padding: 0.2rem 0.6rem; border-radius: 4px; display: inline-block; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px;">
-                    ⭐ ${isEn ? 'ACTIVE FOR THIS GAME' : 'AKTIVNÍ VÝZVA PRO TUTO PARTII'}
+                    ${isEn ? 'ACTIVE FOR THIS GAME' : 'AKTIVNÍ VÝZVA PRO TUTO PARTII'}
                   </div>
                 ` : ''}
 
@@ -5378,10 +5514,10 @@
                   <span style="background: rgba(212, 172, 13, 0.2); color: var(--color-brown); border: 1px solid var(--color-gold); font-size: 0.75rem; font-weight: bold; padding: 0.2rem 0.6rem; border-radius: 12px;">
                     ${isEn ? s.tagEn : s.tagCs}
                   </span>
-                  <span style="font-size: 1.35rem;">📜</span>
+                  
                 </div>
 
-                <h3 style="font-family: 'Rye', 'Georgia', serif; font-size: 1.35rem; color: var(--color-brown); margin: 0 0 0.6rem 0;">
+                <h3 style="font-family: var(--font-western); font-size: 1.35rem; color: var(--color-brown); margin: 0 0 0.6rem 0;">
                   ${isEn ? s.titleEn : s.titleCs}
                 </h3>
 
@@ -5392,12 +5528,12 @@
 
               <div>
                 <div style="font-size: 0.8rem; font-style: italic; color: var(--text-muted); border-top: 1px dashed var(--border-color); padding-top: 0.6rem;">
-                  💡 ${isEn ? 'Applies globally to all players for the duration of the match.' : 'Pravidlo platí globálně pro všechny hráče u stolu po celou dobu partie.'}
+                  ${isEn ? 'Applies globally to all players for the duration of the match.' : 'Pravidlo platí globálně pro všechny hráče u stolu po celou dobu partie.'}
                 </div>
 
                 ${isAllMode ? `
                   <button type="button" class="btn-activate-scenario" data-id="${s.id}" style="margin-top: 0.85rem; width: 100%; padding: 0.55rem 0.85rem; border-radius: 6px; border: 1.5px solid var(--color-brown); background: var(--bg-surface); color: var(--color-brown); font-weight: 800; font-size: 0.88rem; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; transition: all 0.2s ease;">
-                    🎯 ${isEn ? 'Activate this challenge for game' : 'Aktivovat tuto výzvu do hry'}
+                    ${isEn ? 'Activate this challenge for game' : 'Aktivovat tuto výzvu do hry'}
                   </button>
                 ` : ''}
               </div>
@@ -5534,7 +5670,7 @@
     container.innerHTML = `
       <div class="tool-card-box">
         <div class="tool-card-header">
-          <h2><span>🏆</span> ${isEn ? 'BANG! Official Rules Quiz' : 'Westernový kvíz pravidel BANG!'}</h2>
+          <h2>${isEn ? 'BANG! Official Rules Quiz' : 'Westernový kvíz pravidel BANG!'}</h2>
           <p class="tool-card-lead">${isEn ? 'Test your expertise on official rulings, conflict situations, and tricky timing sequences.' : 'Otestujte své znalosti oficiálních pravidel a záludných sporných momentů.'}</p>
         </div>
 
@@ -5614,10 +5750,12 @@
       { id: 'shot', icon: '💥', nameCs: 'Výstřel', nameEn: 'Gunshot', action: () => window.BANG_TOOLS.SoundFX.playShot() },
       { id: 'ricochet', icon: '⚡', nameCs: 'Odraz kulky', nameEn: 'Ricochet', action: () => window.BANG_TOOLS.SoundFX.playRicochet() },
       { id: 'dynamite', icon: '🧨', nameCs: 'Dynamit', nameEn: 'Dynamite', action: () => window.BANG_TOOLS.SoundFX.playDynamite() },
-      { id: 'gatling', icon: '🔫', nameCs: 'Gatling', nameEn: 'Gatling', action: () => window.BANG_TOOLS.SoundFX.playGatling() },
+      { id: 'gatling', icon: '<img src="assets/symbols/symbol_bang.png" class="symbol-inline-lg" alt="BANG!">',
+            isImage: true, nameCs: 'Gatling', nameEn: 'Gatling', action: () => window.BANG_TOOLS.SoundFX.playGatling() },
       { id: 'indians', icon: '🏹', nameCs: 'Indiáni!', nameEn: 'Indians!', action: () => window.BANG_TOOLS.SoundFX.playIndians() },
       { id: 'rattlesnake', icon: '🐍', nameCs: 'Chřestýš', nameEn: 'Rattlesnake', action: () => window.BANG_TOOLS.SoundFX.playRattlesnake() },
-      { id: 'jail', icon: '⛓️', nameCs: 'Vězení', nameEn: 'Jail', action: () => window.BANG_TOOLS.SoundFX.playJail() },
+      { id: 'jail', icon: '<img src="assets/symbols/symbol_jail.png" class="symbol-inline-lg" alt="Jail">',
+            isImage: true, nameCs: 'Vězení', nameEn: 'Jail', action: () => window.BANG_TOOLS.SoundFX.playJail() },
       { id: 'duel', icon: '⚔️', nameCs: 'Duel', nameEn: 'Duel', action: () => window.BANG_TOOLS.SoundFX.playDuel() },
       { id: 'beer', icon: '🍺', nameCs: 'Pivo', nameEn: 'Beer', action: () => window.BANG_TOOLS.SoundFX.playBeer() },
       { id: 'saloon', icon: '🎹', nameCs: 'Saloon piáno', nameEn: 'Saloon Piano', action: () => window.BANG_TOOLS.SoundFX.playSaloon() },
@@ -5632,7 +5770,7 @@
     container.innerHTML = `
       <div class="tool-card-box">
         <div class="tool-card-header">
-          <h2><span>🔊</span> ${isEn ? 'Wild West Soundboard' : 'Westernový Soundboard'}</h2>
+          <h2>${isEn ? 'Wild West Soundboard' : 'Westernový Soundboard'}</h2>
           <p class="tool-card-lead">${isEn ? 'Cinematic sound effects from the Wild West and BANG! game: Colt .45, Gatling, Indians!, Rattlesnake, Duel, Jail, and cold beer. Fully cached for 100% offline play.' : 'Filmové a herní zvukové efekty ze hry BANG! a Divokého západu: Colt .45, Gatling, Indiáni!, Chřestýš, Duel, Vězení i poctivé vychlazené pivo. Funguje 100% i offline bez internetu.'}</p>
         </div>
 
@@ -5684,7 +5822,9 @@
       els.soundToggle.addEventListener('click', () => {
         state.soundEnabled = !state.soundEnabled;
         localStorage.setItem('bang_sound', state.soundEnabled ? 'true' : 'false');
-        if (els.soundIcon) els.soundIcon.textContent = state.soundEnabled ? '🔊' : '🔇';
+        els.soundToggle.innerHTML = state.soundEnabled
+          ? '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>'
+          : '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>';
         if (window.BANG_TOOLS && window.BANG_TOOLS.SoundFX) {
           window.BANG_TOOLS.SoundFX.toggle(state.soundEnabled);
         }
