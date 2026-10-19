@@ -2507,5 +2507,30 @@
     "id": "token-wooden-dynamite",
     "path": "assets/cards/11_extra_karty/wooden-dynamite.webp",
     "name": "token-wooden-dynamite"
+  },
+  {
+    "id": "feat-posledni-hrdina",
+    "path": "assets/cards/10_legendy/the-last-hero-legend.webp",
+    "name": "feat-posledni-hrdina"
+  },
+  {
+    "id": "feat-pohranici",
+    "path": "assets/cards/10_legendy/the-frontier-legend.webp",
+    "name": "feat-pohranici"
+  },
+  {
+    "id": "feat-zdeseny-vykrik",
+    "path": "assets/cards/10_legendy/wilhelm-scream-legend.webp",
+    "name": "feat-zdeseny-vykrik"
+  },
+  {
+    "id": "feat-zranena-pycha",
+    "path": "assets/cards/10_legendy/wounded-pride-legend.webp",
+    "name": "feat-zranena-pycha"
+  },
+  {
+    "id": "feat-dobra-spolecnost",
+    "path": "assets/cards/10_legendy/good-company-legend.webp",
+    "name": "feat-dobra-spolecnost"
   }
 ]

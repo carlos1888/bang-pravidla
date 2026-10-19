@@ -7873,10 +7873,10 @@ window.BANG_CARDS = [
       "prázdná ruka",
       "pohraničí"
     ],
-    "image": null,
+    "image": "assets/cards/10_legendy/the-frontier-legend.webp",
     "expansionNameEn": "Legends",
     "typeLabelEn": "Feat Card (Legends)",
-    "effectEn": "Feat: The Frontier. Accomplish: eliminate a player. Reward: 2 Fame tokens.",
+    "effectEn": "Discard your entire hand (even if you have 0 cards).",
     "timingEn": "Phase 2 of own turn",
     "costEn": "Empty your hand",
     "rulingsEn": [
@@ -7910,10 +7910,10 @@ window.BANG_CARDS = [
       "dobrá společnost",
       "dvojice karet"
     ],
-    "image": null,
+    "image": "assets/cards/10_legendy/good-company-legend.webp",
     "expansionNameEn": "Legends",
     "typeLabelEn": "Feat Card (Legends)",
-    "effectEn": "Feat: Good Company. Accomplish: have 3 cards in play. Reward: 2 Fame tokens.",
+    "effectEn": "Discard a card, then play a card with the same name (or vice versa).",
     "timingEn": "Phase 2 of own turn",
     "costEn": "Cards with the same name",
     "rulingsEn": [
@@ -7947,10 +7947,10 @@ window.BANG_CARDS = [
       "modrá karta",
       "poslední hrdina"
     ],
-    "image": null,
+    "image": "assets/cards/10_legendy/the-last-hero-legend.webp",
     "expansionNameEn": "Legends",
     "typeLabelEn": "Feat Card (Legends)",
-    "effectEn": "Feat: The Last Hero. Accomplish: survive lethal damage with Beer. Reward: 2 Fame tokens.",
+    "effectEn": "Discard a blue card in play.",
     "timingEn": "Phase 2 of own turn",
     "costEn": "Discard 1 blue card from in play",
     "rulingsEn": [
@@ -7999,7 +7999,7 @@ window.BANG_CARDS = [
   {
     "id": "feat-zdeseny-vykrik",
     "name": "Čin: Zděšený výkřik",
-    "nameEn": "Feat: Terrified Scream",
+    "nameEn": "Feat: Wilhelm Scream",
     "expansion": "legends",
     "expansionName": "Legendy",
     "type": "feat",
@@ -8021,10 +8021,10 @@ window.BANG_CARDS = [
       "dálkový zásah",
       "zděšený výkřik"
     ],
-    "image": null,
+    "image": "assets/cards/10_legendy/wilhelm-scream-legend.webp",
     "expansionNameEn": "Legends",
     "typeLabelEn": "Feat Card (Legends)",
-    "effectEn": "Feat: Terrified Scream. Accomplish: hit 2 players with BANG!s in 1 turn. Reward: 2 Fame tokens.",
+    "effectEn": "Play a BANG! card at distance 2 or more.",
     "timingEn": "Phase 2 of own turn",
     "costEn": "Hit at range",
     "rulingsEn": [
@@ -8193,10 +8193,10 @@ window.BANG_CARDS = [
       "zrušený bang",
       "zraněná pýcha"
     ],
-    "image": null,
+    "image": "assets/cards/10_legendy/wounded-pride-legend.webp",
     "expansionNameEn": "Legends",
     "typeLabelEn": "Feat Card (Legends)",
-    "effectEn": "Feat: Wounded Pride. Accomplish: cancel an attack with Missed!. Reward: 2 Fame tokens.",
+    "effectEn": "Another player causes one of your BANG! cards to miss.",
     "timingEn": "Phase 2 of own turn when shooting",
     "costEn": "Cancel a BANG!",
     "rulingsEn": [
