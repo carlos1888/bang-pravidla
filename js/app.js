@@ -1424,9 +1424,10 @@
       }
 
       seatsSvg += `
-        <g class="table-seat-node ${isShooter ? 'is-shooter' : ''} ${isTarget ? 'is-target' : ''}" data-seat="${i}" transform="translate(${sx}, ${sy})">
-          <circle r="32" fill="#3d2314" stroke="${strokeColor}" stroke-width="${strokeWidth}" />
-          <circle r="26" fill="${fillColor}" />
+        <g class="table-seat-node ${isShooter ? 'is-shooter' : ''} ${isTarget ? 'is-target' : ''}" data-seat="${i}" transform="translate(${sx}, ${sy})" role="button" tabindex="0" aria-label="${roleTitle} ${i + 1}">
+          <circle r="38" fill="transparent" class="seat-hit-area" />
+          <circle r="32" class="seat-rim" fill="#3d2314" stroke="${strokeColor}" stroke-width="${strokeWidth}" />
+          <circle r="26" class="seat-felt" fill="${fillColor}" />
           <text x="0" y="-2" text-anchor="middle" font-size="20">${icon}</text>
           <text x="0" y="15" text-anchor="middle" font-size="10" font-weight="900" fill="${titleColor}">${roleTitle}</text>
           ${distBadge}
@@ -1659,9 +1660,9 @@
       });
     }
 
-    // Handle Seat Click
+    // Handle Seat Click / Keyboard
     container.querySelectorAll('.table-seat-node[data-seat]').forEach(seatNode => {
-      seatNode.addEventListener('click', () => {
+      const handleSelect = () => {
         const seat = parseInt(seatNode.dataset.seat, 10);
         if (calcParams.mode === 'shooter') {
           if (seat !== calcParams.targetIdx) {
@@ -1682,6 +1683,14 @@
           }
         }
         renderDistanceCalc(container);
+      };
+
+      seatNode.addEventListener('click', handleSelect);
+      seatNode.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          handleSelect();
+        }
       });
     });
 
