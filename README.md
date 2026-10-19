@@ -20,14 +20,19 @@ Tento repozitář obsahuje komplexní pravidlový systém, encyklopedii karet a 
 * **Legendy (Legends)** (16 legendárních postav, žetony slávy, karty činů, přivlastnění činů, úpravy základních pravidel)
 * **Dynamite Box Bonusy a Promo** (Dřevěná patrona dynamitu, postavy Johnny Kisch, Uncle Will, Claus „The Saint“, Annie Versary, Emiliano, Nová identita, Želízka)
 
-### 🛠️ Herní nástroje (Companion Tools)
-Aplikace obsahuje řadu praktických nástrojů přímo ke stolu:
-* 🎯 **Kalkulačka vzdáleností:** Vizuální westernový stůl v saloonu pro přesný výpočet vzdáleností a dostřelů zbraní s vlivem karet (Mustang, Hledí, Skrýš...).
-* 📋 **Virtuální deska hráčů:** Přehledná tabule pro správu životů, rolí a postav u stolu.
+### 🛠️ Herní nástroje (BANG! Companion Tools)
+Aplikace obsahuje ucelenou sadu interaktivních nástrojů přímo ke stolu:
+* ⚙️ **Asistent přípravy hry na míru (Setup Configurator):** Interaktivní konfigurátor pro 3–8 hráčů s libovolnou kombinací rozšíření. Vypočítá přesné složení skrytých rolí (včetně varianty pro 3 hráče a 2. odpadlíka pro 8 hráčů), speciální pravidla rozdávání karet a interaktivní odškrtávací checklist před zahájením duelu.
+* 🎯 **Kalkulačka vzdáleností & Bojový radar:** Vizuální westernový stůl v saloonu pro 3–8 hráčů. Zobrazuje nejen vzdálenost mezi dvěma hráči, ale slouží jako **živý radar dostřelu všech cílů u stolu současně** (zelené zaměřovače na zasažitelné soupeře, modré indikátory pro Paniku a detailní střelecký protokol).
+* 🎴 **Simulátor snímání karet („Draw!“ Simulator):** Férové a bleskové virtuální snímání karty z 52karetního balíčku. Obsahuje přednastavené situace pro Vězení, Dynamit, Barel, Chřestýše, Bombu, schopnost Teren Killa i volné snímání, včetně podpory speciální schopnosti Lucky Dukea (snímání 2 karet).
+* 🏆 **Zápisník partií & statistiky party (Match Tracker):** Trvalé lokální ukládání odehraných bitev (100% offline v zařízení). Počítá poměry výher Zákona, Banditů, Odpadlíků a Železného oře, zaznamenává hvězdy zápasu (MVP) i památné momenty s možností exportu do JSON.
+* 📜 **Interaktivní průvodce tahem (Turn Flow Stepper):** Krok za krokem provede fázemi tahu hráče (Fáze 0: Kontrola pastí, Fáze 1: Dobírání, Fáze 2: Hraní karet, Fáze 3: Odhazování přebytků a Fáze 4: Konec tahu) s živými testovacími tlačítky pro Vězení, Dynamit, Bombu a Chřestýše.
+* ⚔️ **Rádce pro synergie a obranu:** V detailu každé z 258 karet nabízí doporučené obranné protiútoky a taktické kombinace s ostatními kartami či postavami.
+* 🎴 **Balíček událostí s nezávislými stoly:** Nezávislé losování událostí – Šerifský balíček (autentická kombinace *Pravé poledne* a *Pěst plná karet* s finální kartou dle pravidel) a samostatný balíček *Divoký západ* (otáčený nezávisle při Dostavníku / Wells Fargo).
 * 🎲 **Losování rolí a postav (Draft):** Rychlé a férové náhodné rozlosování pro 3–8 hráčů.
-* 🎴 **Balíček událostí:** Nezávislé losování událostí – Šerifský balíček (kombinace *Pravé poledne* a *Pěst plná karet* s finální kartou dle oficiálních pravidel) a samostatný balíček *Divoký západ* (otáčený při zahrání Dostavníku / Wells Fargo).
+* 📋 **Virtuální deska hráčů:** Přehledná tabule pro správu životů, rolí, postav, zlata a nábojů u stolu.
 * 🤠 **Kvíz pravidel:** Prověření znalostí záludných a pokročilých herních pravidel.
-* 🔊 **Western Soundboard:** 16 atmosférických westernových zvukových efektů pro oživení atmosféry u hry.
+* 🔊 **Western Soundboard:** Atmosférické westernové zvukové efekty pro oživení atmosféry u hry.
 
 
 ---

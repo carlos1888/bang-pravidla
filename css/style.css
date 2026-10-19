@@ -4147,3 +4147,36 @@ footer.app-footer {
   font-style: italic;
 }
 
+/* ==========================================================================
+   DRAW SIMULATOR & COMPANION EXTENSIONS
+   ========================================================================== */
+@keyframes cardPop {
+  0% {
+    transform: scale(0.7) translateY(20px) rotate(-4deg);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.05) translateY(-5px) rotate(1deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+.draw-sim-card.animate-card-pop {
+  animation: cardPop 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.btn-preset-chip:hover {
+  border-color: var(--color-gold) !important;
+  transform: translateY(-2px);
+}
+
+.btn-winner-opt:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+

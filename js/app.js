@@ -320,13 +320,30 @@
       'pravidla': t.navPravidla,
       'faq': t.navFaq,
       'tah-hrace': t.navTah,
-      'pomocnik': t.navPomocnik
+      'pomocnik': t.navPomocnik,
+      'nastroje': t.navNastroje
     };
 
     els.tabs.forEach(tab => {
       const tabId = tab.dataset.tab;
       const span = tab.querySelector('.nav-text');
       if (span && navTexts[tabId]) span.textContent = navTexts[tabId];
+    });
+
+    const toolLabels = {
+      'setup': isEn ? 'Setup Assistant' : 'Příprava hry',
+      'calc': isEn ? 'Calculator & Radar' : 'Kalkulačka & Radar',
+      'draw': isEn ? 'Draw! Simulator' : 'Snímání karet',
+      'events': isEn ? 'Event Deck' : 'Balíček událostí',
+      'draft': isEn ? 'Role & Char Draft' : 'Losovač rolí a postav',
+      'tracker': isEn ? 'Virtual Board' : 'Virtuální deska',
+      'matches': isEn ? 'Match Tracker' : 'Zápisník partií',
+      'quiz': isEn ? 'Rules Quiz' : 'Kvíz pravidel',
+      'soundboard': isEn ? 'Soundboard' : 'Soundboard'
+    };
+    Object.entries(toolLabels).forEach(([id, text]) => {
+      const el = document.getElementById(`tool-label-${id}`);
+      if (el) el.textContent = text;
     });
 
     // Filters
@@ -696,6 +713,37 @@
       `
       : '';
 
+    let synergiesHtml = '';
+    if (window.BANG_TOOLS && window.BANG_TOOLS.getCardSynergiesAndCounters) {
+      const synData = window.BANG_TOOLS.getCardSynergiesAndCounters(card, isEn);
+      if (synData && ((synData.counters && synData.counters.length > 0) || (synData.synergies && synData.synergies.length > 0))) {
+        synergiesHtml = `
+          <div class="card-modal-synergies-wrap" style="margin-top: 1.25rem; border-top: 2px solid var(--border-color); padding-top: 1rem;">
+            ${(synData.counters && synData.counters.length > 0) ? `
+              <div style="background: var(--bg-surface); padding: 0.9rem; border-radius: 8px; margin-bottom: 0.85rem; border-left: 4px solid #c0392b;">
+                <h4 style="color: #c0392b; margin: 0 0 0.5rem 0; font-size: 0.95rem; display: flex; align-items: center; gap: 0.4rem; font-weight: 700;">
+                  <span>🛡️</span> ${isEn ? 'Counters & Defense (How to negate)' : 'Obrana a protiútoky (Jak se bránit)'}
+                </h4>
+                <ul style="margin: 0; padding-left: 1.2rem; font-size: 0.92rem; line-height: 1.5; color: var(--text-color);">
+                  ${synData.counters.map(c => `<li style="margin-bottom: 0.35rem;">${c}</li>`).join('')}
+                </ul>
+              </div>
+            ` : ''}
+            ${(synData.synergies && synData.synergies.length > 0) ? `
+              <div style="background: var(--bg-surface); padding: 0.9rem; border-radius: 8px; border-left: 4px solid #27ae60;">
+                <h4 style="color: #27ae60; margin: 0 0 0.5rem 0; font-size: 0.95rem; display: flex; align-items: center; gap: 0.4rem; font-weight: 700;">
+                  <span>⚡</span> ${isEn ? 'Key Synergies & Combos' : 'Klíčové synergie a komba'}
+                </h4>
+                <ul style="margin: 0; padding-left: 1.2rem; font-size: 0.92rem; line-height: 1.5; color: var(--text-color);">
+                  ${synData.synergies.map(s => `<li style="margin-bottom: 0.35rem;">${s}</li>`).join('')}
+                </ul>
+              </div>
+            ` : ''}
+          </div>
+        `;
+      }
+    }
+
     const tagsHtml = (card.tags && card.tags.length > 0)
       ? `
         <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.25rem;">
@@ -758,6 +806,7 @@
           </div>
 
           ${rulingsHtml}
+          ${synergiesHtml}
           ${tagsHtml}
           ${modalActionsHtml}
         </div>
@@ -1237,12 +1286,419 @@
   }
 
   // =========================================================================
-  // RENDER TURN GUIDE & QUICK HELPER (BILINGUAL)
+  // RENDER TURN GUIDE & QUICK HELPER (BILINGUAL & INTERACTIVE STEPPER)
   // =========================================================================
+  const turnStepperState = {
+    mode: 'stepper', // 'stepper' or 'full'
+    activeStep: 0,
+    quickTestResult: null
+  };
+
   function renderTurnGuide() {
     if (!els.tahHraceTarget) return;
+    const container = els.tahHraceTarget;
     const isEn = state.lang === 'en';
-    els.tahHraceTarget.innerHTML = isEn ? window.BANG_TURN_HTML_EN : window.BANG_TURN_HTML_CS;
+
+    if (turnStepperState.mode === 'full') {
+      els.tahHraceTarget.innerHTML = `
+        <div style="margin-bottom: 1.25rem; display: flex; justify-content: flex-end;">
+          <button type="button" id="btn-toggle-turn-stepper" class="tool-subnav-btn active" style="font-size: 0.95rem; padding: 0.6rem 1.2rem; cursor: pointer;">
+            ⏱️ ${isEn ? 'Switch to Step-by-Step Interactive Guide' : 'Přepnout na Interaktivního asistenta (Krok za krokem)'}
+          </button>
+        </div>
+        ${isEn ? window.BANG_TURN_HTML_EN : window.BANG_TURN_HTML_CS}
+      `;
+      const btn = document.getElementById('btn-toggle-turn-stepper');
+      if (btn) {
+        btn.addEventListener('click', () => {
+          turnStepperState.mode = 'stepper';
+          renderTurnGuide();
+        });
+      }
+      return;
+    }
+
+    const STEPS = [
+      {
+        num: 0,
+        phaseBadge: isEn ? 'PHASE 0' : 'FÁZE 0',
+        title: isEn ? 'Global Events & Timed Cards Sequence' : 'Globální události & Přísné pořadí časovaných karet',
+        lead: isEn ? 'Official strict sequence evaluated BEFORE drawing cards:' : 'Přísné oficiální pořadí vyhodnocení PŘED lízáním karet:',
+        items: [
+          {
+            icon: '☀️',
+            title: isEn ? '1. Sheriff (From Round 2)' : '1. Šerif (od 2. kola hry)',
+            desc: isEn ? 'Flips new global event (High Noon / Fistful deck) and advances locomotive by 1 station to the right.' : 'Otočí novou kartu události (balíček High Noon / Fistful) a posune lokomotivu o 1 stanici vpravo.',
+            action: null
+          },
+          {
+            icon: '💣',
+            title: isEn ? '2. Dynamite (Highest Priority!)' : '2. Dynamit (nejvyšší priorita!)',
+            desc: isEn ? 'Draws top card: Spades 2 to 9 (♠ 2–9) = BOOM! Loses 3 life points! Any other card = passes safely to the left.' : 'Snímá vrchní kartu z balíčku: Piky 2 až 9 (♠ 2–9) = VÝBUCH za 3 životy! Jinak bezpečný posun k hráči vlevo.',
+            action: 'dynamite',
+            btnLabel: isEn ? '🎲 Test Dynamite (♠ 2-9)' : '🎲 Otestovat Dynamit (♠ 2–9)'
+          },
+          {
+            icon: '⛓️',
+            title: isEn ? '3. Jail (Second in Order)' : '3. Vězení (druhé v pořadí)',
+            desc: isEn ? 'Draws top card: Hearts (♥) = free escape! Any other suit = lose Phase 1 & 2! (Legends Rule: may discard 1 ♥ card from hand to skip drawing!).' : 'Snímá vrchní kartu: Srdce (♥) = útěk! Jinak ztráta Fáze 1 i Fáze 2. (Pravidlo Legend: Lze z ruky odhodit 1 ♥ kartu a odehrát tah bez snímání!).',
+            action: 'jail',
+            btnLabel: isEn ? '🎲 Test Jail (♥ Hearts)' : '🎲 Otestovat Vězení (♥ Srdce)'
+          },
+          {
+            icon: '💥',
+            title: isEn ? '4. Bomb (Armed & Dangerous)' : '4. Bomba (Ozbrojení a nebezpeční)',
+            desc: isEn ? 'Draws: Red (♥/♦) = passes safely; Black (♠/♣) = loses 2 load tokens (explodes for 2 lives if charges reach 0!).' : 'Snímá: Červená (♥/♦) = bezpečný posun dál; Černá (♠/♣) = -2 žetony nabití (při 0 výbuch za 2 životy!).',
+            action: 'bomb',
+            btnLabel: isEn ? '🎲 Test Bomb (Red/Black)' : '🎲 Otestovat Bombu (Červená/Černá)'
+          },
+          {
+            icon: '🐍',
+            title: isEn ? '5. Rattlesnake (Valley of Shadows)' : '5. Chřestýš (Údolí stínů)',
+            desc: isEn ? 'Draws: Spades (♠) = loses 1 life point. (Note: If player failed in Jail, they do not check for Rattlesnake!).' : 'Snímá: Piky (♠) = ztráta 1 života. (Pozn.: Pokud hráč neuspěl ve Vězení, na Chřestýše již nesnímá!).',
+            action: 'rattlesnake',
+            btnLabel: isEn ? '🎲 Test Rattlesnake (♠ Spades)' : '🎲 Otestovat Chřestýše (♠ Piky)'
+          },
+          {
+            icon: '🗺️',
+            title: isEn ? '6. Map' : '6. Mapa',
+            desc: isEn ? 'Look at top 2 cards of the draw deck, you may discard 1.' : 'Prohlédnutí 2 vrchních karet z lízacího balíčku, 1 lze odhodit.',
+            action: null
+          }
+        ]
+      },
+      {
+        num: 1,
+        phaseBadge: isEn ? 'PHASE 1' : 'FÁZE 1',
+        title: isEn ? 'Draw Cards (Fáze lízání)' : 'Dobrání karet (Fáze lízání)',
+        lead: isEn ? 'Draw 2 cards from the draw deck into your hand:' : 'Doberte standardně 2 karty z lízacího balíčku do ruky:',
+        items: [
+          {
+            icon: '🃏',
+            title: isEn ? 'Standard Draw' : 'Standardní dobrání',
+            desc: isEn ? 'Draw exactly 2 cards from the top of the draw deck.' : 'Doberte přesně 2 vrchní karty z balíčku do ruky.',
+            action: null
+          },
+          {
+            icon: '🤠',
+            title: isEn ? 'Character Draw Abilities' : 'Speciální schopnosti postav při lízání',
+            desc: isEn
+              ? 'Jesse Jones (1st from opponent hand), Pedro Ramirez (1st from discard), Kit Carlson (draws 3, puts 1 back), Black Jack (if 2nd card is ♥/♦ draws 3rd!), Bill Noface (draws 1 + 1 per wound), Pixie Pete (draws 3).'
+              : 'Jesse Jones (1. kartu z ruky soupeře), Pedro Ramirez (1. kartu z odhazovacího balíčku), Kit Carlson (bere 3, 1 vrací), Black Jack (druhá karta červená = líže 3. kartu!), Bill Noface (1 karta + 1 za každé zranění), Pixie Pete (bere 3 karty).',
+            action: null
+          }
+        ]
+      },
+      {
+        num: 2,
+        phaseBadge: isEn ? 'PHASE 2' : 'FÁZE 2',
+        title: isEn ? 'Play Cards & Expansion Actions' : 'Zahrání karet a akce z rozšíření',
+        lead: isEn ? 'Play any number of cards to assist yourself or eliminate opponents:' : 'Zahrajte libovolné množství karet pro posílení sebe sama či oslabení soupeřů:',
+        items: [
+          {
+            icon: '🔫',
+            title: isEn ? 'Strict BANG! Limit' : 'Přísné pravidlo pro kartu BANG!',
+            desc: isEn
+              ? 'Maximum 1 genuine BANG! card per turn (unless you equip Volcanic or play Willy the Kid). Gatling, Flintlock, Derringer or Doc Holyday abilities DO NOT count toward the limit!'
+              : 'Můžete zahrát maximálně 1 skutečnou kartu BANG! za tah (pokud nemáte vyložený Volcanic nebo nejste Willy the Kid). Kulomet, Křesadlovka, Derringer ani schopnost Doca Holydaye se do limitu NEPOČÍTAJÍ!',
+            action: null
+          },
+          {
+            icon: '🚂',
+            title: isEn ? 'The Great Train Robbery (Train Advance)' : 'Velká vlaková loupež (Posun vlaku & Nákup)',
+            desc: isEn
+              ? 'Advance train 1 station to the right for FREE. Then you MUST purchase the railcar attached to that station by paying its station cost (discard cards or load tokens).'
+              : 'Posun vlaku o 1 stanici vpravo ZDARMA. Následně si MUSÍTE koupit vagon přiřazený ke stanici za cenu na stanici (odhozením karty z ruky nebo zaplacením žetonů nabití).',
+            action: null
+          },
+          {
+            icon: '🪙',
+            title: isEn ? 'Gold Rush (Gold Nuggets & Equipment)' : 'Zlatá horečka (Nákup vybavení & Zlato)',
+            desc: isEn
+              ? 'Buy black equipment cards from the 3 displayed using gold nuggets. Discard Beer to gain 1 nugget. Discard opponent equipment by paying its cost + 1 nugget.'
+              : 'Nákup z nabídky 3 karet vybavení zaplacením valounů zlata. Směna karty Pivo za 1 valoun. Odhození vybavení soupeře za cenu karty + 1 valoun.',
+            action: null
+          },
+          {
+            icon: '⚡',
+            title: isEn ? 'Armed & Dangerous (Dangerous Cards & Charging)' : 'Ozbrojení a nebezpeční (Oranžové karty)',
+            desc: isEn
+              ? 'Equip orange dangerous cards with 3 load tokens. Pay load tokens to trigger dangerous effects or upgrade brown cards. Playing any blue card earns +1 load token!'
+              : 'Vykládání oranžových nebezpečných karet se 3 žetony nabití. Placení žetonů za efekty. Za každou nově vyloženou modrou kartu získáte +1 žeton nabití!',
+            action: null
+          },
+          {
+            icon: '📜',
+            title: isEn ? 'Legends (Performing Feats)' : 'Legendy (Vykonání činu)',
+            desc: isEn
+              ? 'Perform an active feat on the table: place 2 Fame Tokens on the card. If you are a Legend (Side B): claiming a feat inflicts 1 uncancelable damage on another legend!'
+              : 'Splnění podmínky činu na stole: položte 2 žetony slávy na kartu činu. Pokud jste již Legendou (strana B): přivlastnění činu způsobí 1 nezvratné zranění jiné legendě!',
+            action: null
+          }
+        ]
+      },
+      {
+        num: 3,
+        phaseBadge: isEn ? 'PHASE 3' : 'FÁZE 3',
+        title: isEn ? 'Discard Excess & Charge' : 'Odhození přebytku & Nabíjení',
+        lead: isEn ? 'Check hand limit at the end of active card play:' : 'Kontrola limitu karet na konci vašeho aktivního hraní:',
+        items: [
+          {
+            icon: '✋',
+            title: isEn ? 'Hand Limit = Current Life Points' : 'Limit karet v ruce = Aktuální počet životů',
+            desc: isEn
+              ? 'If you have more cards in hand than current lives, you must discard excess cards to the discard pile.'
+              : 'Pokud máte v ruce více karet než aktuálních životů, musíte nadbytečné karty odhodit na odhazovací balíček.',
+            action: null
+          },
+          {
+            icon: '🌟',
+            title: isEn ? 'IMPORTANT: Legends Rule for 1 Life!' : 'DŮLEŽITÉ: Pravidlo Legend pro 1 život!',
+            desc: isEn
+              ? 'In the Legends expansion, any player reduced to only 1 life point is permitted to hold 2 CARDS in hand (instead of 1)!'
+              : 'V rozšíření Legendy platí oficiální pravidlo, že hráč s pouze 1 životem smí držet v ruce 2 KARTY (nikoli pouze 1)!',
+            action: null
+          },
+          {
+            icon: '⚡',
+            title: isEn ? 'Charging (Armed & Dangerous)' : 'Nabíjení (Ozbrojení a nebezpeční)',
+            desc: isEn
+              ? 'For EACH card you are forced to discard in this phase, you immediately gain +1 LOAD TOKEN on your character or dangerous card!'
+              : 'Za KAŽDOU kartu, kterou v této fázi musíte z ruky odhodit, okamžitě získáte +1 ŽETON NABITÍ na svou postavu nebo Nebezpečnou kartu!',
+            action: null
+          }
+        ]
+      },
+      {
+        num: 4,
+        phaseBadge: isEn ? 'PHASE 4' : 'FÁZE 4',
+        title: isEn ? 'End of Turn & Boasting Feats' : 'Konec tahu & Chlubení se činem',
+        lead: isEn ? 'Final wrap-up before passing turn to the next player:' : 'Závěrečné vyhodnocení před předáním tahu hráči po levici:',
+        items: [
+          {
+            icon: '🗣️',
+            title: isEn ? 'Boasting Feats (Legends)' : 'Chlubení se činem (Legendy)',
+            desc: isEn
+              ? 'If you DID NOT perform a feat this turn (even if you were jailed!), turn a new Feat card from the deck and place 1 of your Fame Tokens on any active feat!'
+              : 'Pokud jste v tomto tahu NEVYKONAL čin (i pokud jste byli ve Vězení!), otočte nový čin z balíčku a položte 1 svůj žeton slávy na vyložený čin!',
+            action: null
+          },
+          {
+            icon: '👑',
+            title: isEn ? 'LEGEND IS BORN (5th Fame Token)' : 'ZROD LEGENDY (5. žeton slávy)',
+            desc: isEn
+              ? 'The moment you place your 5th Fame Token, you become a Legend! Flip your character card to Side B and immediately restore your lives to 3!'
+              : 'V okamžiku, kdy položíte svůj 5. žeton slávy, stáváte se Legendou! Otočte kartu postavy na stranu B a ihned si doplňte své životy na 3!',
+            action: null
+          },
+          {
+            icon: '👋',
+            title: isEn ? 'Pass Turn' : 'Předání tahu',
+            desc: isEn
+              ? 'Jimmy Texas draws a card. Don Bell draws for an extra turn (Hearts/Diamonds = extra turn). Turn passes clockwise to next living player.'
+              : 'Jimmy Texas líže kartu. Don Bell snímá na extra tah (♥/♦ = další tah). Tah přechází na dalšího živého hráče po levici.',
+            action: null
+          }
+        ]
+      }
+    ];
+
+    const cur = STEPS[turnStepperState.activeStep] || STEPS[0];
+
+    // Quick test result markup
+    let testBoxHtml = '';
+    if (turnStepperState.quickTestResult) {
+      const q = turnStepperState.quickTestResult;
+      const isSuccess = q.evalRes.status === 'success';
+      const isFail = q.evalRes.status === 'failure';
+      const bgColor = isSuccess ? '#1e7e34' : (isFail ? '#c0392b' : '#3d2614');
+
+      testBoxHtml = `
+        <div style="background: ${bgColor}; color: #ffffff; padding: 1.15rem; border-radius: 8px; margin-top: 1.25rem; box-shadow: 0 4px 12px rgba(0,0,0,0.25); animation: fadeIn 0.3s ease;">
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.5rem;">
+            <div style="display: flex; align-items: center; gap: 0.65rem;">
+              <span style="font-size: 2rem; background: #ffffff; color: ${q.card.color === 'red' ? '#c0392b' : '#1a1a1a'}; padding: 0.2rem 0.65rem; border-radius: 6px; font-weight: 900; box-shadow: 0 2px 6px rgba(0,0,0,0.3);">
+                ${q.card.value}${q.card.suitSymbol}
+              </span>
+              <div>
+                <div style="font-weight: 900; font-size: 1.05rem; letter-spacing: 0.5px;">${isEn ? q.evalRes.titleEn : q.evalRes.titleCs}</div>
+                <div style="font-size: 0.88rem; opacity: 0.9;">${isEn ? q.evalRes.messageEn : q.evalRes.messageCs}</div>
+              </div>
+            </div>
+            <button type="button" id="btn-close-quick-test" style="background: rgba(0,0,0,0.3); color: #fff; border: 1px solid rgba(255,255,255,0.4); border-radius: 4px; padding: 0.3rem 0.6rem; cursor: pointer;">✕</button>
+          </div>
+        </div>
+      `;
+    }
+
+    els.tahHraceTarget.innerHTML = `
+      <div class="tool-card-box">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.25rem;">
+          <div>
+            <h2 style="font-family: 'Rye', 'Georgia', serif; color: var(--color-brown); margin: 0 0 0.35rem 0; font-size: 1.55rem; display: flex; align-items: center; gap: 0.5rem;">
+              <span>⏱️</span> ${isEn ? 'Interactive Turn Assistant (Step-by-Step)' : 'Interaktivní asistent tahu (Krok za krokem)'}
+            </h2>
+            <p style="color: var(--text-muted); margin: 0; font-size: 0.95rem;">
+              ${isEn ? 'Follow the exact official sequence of phases during your turn.' : 'Procházejte krok za krokem přísné oficiální pořadí akcí ve vašem tahu.'}
+            </p>
+          </div>
+          <button type="button" id="btn-toggle-turn-full" class="tool-subnav-btn" style="font-size: 0.9rem; padding: 0.55rem 1rem; cursor: pointer;">
+            📋 ${isEn ? 'View Full Rules Overview' : 'Zobrazit celá pravidla fází'}
+          </button>
+        </div>
+
+        <!-- Step Indicator Tabs -->
+        <div class="turn-stepper-tabs" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.5rem; margin-bottom: 1.5rem;">
+          ${STEPS.map((s, idx) => `
+            <button type="button" class="turn-step-pill ${idx === turnStepperState.activeStep ? 'active' : ''}" data-step="${idx}" style="padding: 0.75rem 0.5rem; text-align: center; border-radius: 8px; border: 1.5px solid ${idx === turnStepperState.activeStep ? 'var(--color-brown)' : 'var(--border-color)'}; background: ${idx === turnStepperState.activeStep ? 'var(--color-brown)' : 'var(--bg-surface)'}; color: ${idx === turnStepperState.activeStep ? '#fff' : 'var(--text-color)'}; font-weight: 700; font-size: 0.88rem; cursor: pointer; transition: all 0.2s ease;">
+              <div style="font-size: 0.72rem; text-transform: uppercase; opacity: 0.85;">${s.phaseBadge}</div>
+              <div style="font-size: 0.92rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${[isEn ? '0. Events' : '0. Příprava', isEn ? '1. Draw' : '1. Dobrání', isEn ? '2. Play' : '2. Hraní', isEn ? '3. Discard' : '3. Odhození', isEn ? '4. End' : '4. Konec'][idx]}</div>
+            </button>
+          `).join('')}
+        </div>
+
+        <!-- Active Step Card -->
+        <div style="background: var(--bg-surface); border: 2px solid var(--border-color); border-radius: var(--radius-md); padding: 1.5rem; margin-bottom: 1.5rem;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; border-bottom: 2px solid var(--border-color); padding-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
+            <div>
+              <span class="card-badge" style="background: var(--color-brown); color: #fff; font-size: 0.82rem; padding: 0.25rem 0.65rem; border-radius: 4px; font-weight: 800; text-transform: uppercase;">
+                ${cur.phaseBadge}
+              </span>
+              <h3 style="display: inline; margin-left: 0.65rem; font-family: 'Rye', 'Georgia', serif; color: var(--color-brown); font-size: 1.25rem;">
+                ${cur.title}
+              </h3>
+            </div>
+            <span style="font-weight: 800; font-size: 0.9rem; color: var(--text-muted);">
+              ${isEn ? `Step ${cur.num + 1} of 5` : `Krok ${cur.num + 1} z 5`}
+            </span>
+          </div>
+
+          <p style="font-size: 0.98rem; font-weight: 700; color: var(--color-brown); margin-bottom: 1rem;">
+            ${cur.lead}
+          </p>
+
+          <div style="display: flex; flex-direction: column; gap: 0.85rem;">
+            ${cur.items.map(it => `
+              <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 0.9rem; display: flex; align-items: flex-start; gap: 0.85rem;">
+                <span style="font-size: 1.6rem; line-height: 1; flex-shrink: 0;">${it.icon}</span>
+                <div style="flex: 1;">
+                  <div style="font-weight: 800; font-size: 0.95rem; color: var(--color-brown); margin-bottom: 0.25rem;">
+                    ${it.title}
+                  </div>
+                  <div style="font-size: 0.92rem; line-height: 1.5; color: var(--text-color);">
+                    ${it.desc}
+                  </div>
+                  ${it.action ? `
+                    <div style="margin-top: 0.6rem;">
+                      <button type="button" class="btn-quick-test tool-subnav-btn active" data-action="${it.action}" style="font-size: 0.84rem; padding: 0.4rem 0.85rem; font-weight: 700; cursor: pointer;">
+                        ${it.btnLabel}
+                      </button>
+                    </div>
+                  ` : ''}
+                </div>
+              </div>
+            `).join('')}
+          </div>
+
+          ${testBoxHtml}
+        </div>
+
+        <!-- Stepper Navigation Bar -->
+        <div style="display: flex; justify-content: space-between; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+          <button type="button" id="btn-turn-prev" class="tool-subnav-btn" style="padding: 0.75rem 1.4rem; font-size: 0.95rem; font-weight: 700; cursor: pointer; ${turnStepperState.activeStep === 0 ? 'opacity: 0.4; pointer-events: none;' : ''}">
+            ⬅️ ${isEn ? 'Previous Phase' : 'Předchozí fáze'}
+          </button>
+
+          <button type="button" id="btn-turn-reset" class="tool-subnav-btn" style="padding: 0.75rem 1.2rem; font-size: 0.9rem; cursor: pointer;">
+            🔄 ${isEn ? 'Start Turn Over' : 'Začít nový tah'}
+          </button>
+
+          <button type="button" id="btn-turn-next" class="tool-subnav-btn active" style="padding: 0.75rem 1.6rem; font-size: 1rem; font-weight: 800; cursor: pointer;">
+            ${turnStepperState.activeStep < 4 ? (isEn ? 'Next Phase ➔' : 'Další fáze ➔') : (isEn ? '🎉 Finish Turn' : '🎉 Dokončit tah')}
+          </button>
+        </div>
+      </div>
+    `;
+
+    // Event listeners
+    const toggleBtn = document.getElementById('btn-toggle-turn-full');
+    if (toggleBtn) {
+      toggleBtn.addEventListener('click', () => {
+        turnStepperState.mode = 'full';
+        renderTurnGuide();
+      });
+    }
+
+    container.querySelectorAll('.turn-step-pill').forEach(btn => {
+      btn.addEventListener('click', () => {
+        turnStepperState.activeStep = parseInt(btn.dataset.step, 10);
+        turnStepperState.quickTestResult = null;
+        renderTurnGuide();
+      });
+    });
+
+    const prevBtn = document.getElementById('btn-turn-prev');
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        if (turnStepperState.activeStep > 0) {
+          turnStepperState.activeStep--;
+          turnStepperState.quickTestResult = null;
+          renderTurnGuide();
+        }
+      });
+    }
+
+    const nextBtn = document.getElementById('btn-turn-next');
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        if (turnStepperState.activeStep < 4) {
+          turnStepperState.activeStep++;
+          turnStepperState.quickTestResult = null;
+          renderTurnGuide();
+        } else {
+          turnStepperState.activeStep = 0;
+          turnStepperState.quickTestResult = null;
+          renderTurnGuide();
+        }
+      });
+    }
+
+    const resetBtn = document.getElementById('btn-turn-reset');
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        turnStepperState.activeStep = 0;
+        turnStepperState.quickTestResult = null;
+        renderTurnGuide();
+      });
+    }
+
+    container.querySelectorAll('.btn-quick-test').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const action = btn.dataset.action;
+        if (window.BANG_TOOLS && window.BANG_TOOLS.DrawSimulator) {
+          const card = window.BANG_TOOLS.DrawSimulator.drawCard();
+          const evalRes = window.BANG_TOOLS.DrawSimulator.evaluate(action, card, isEn);
+          turnStepperState.quickTestResult = { card, evalRes };
+
+          // Play sound
+          if (window.BANG_TOOLS.SoundFX) {
+            if (action === 'dynamite' && evalRes.status === 'failure') window.BANG_TOOLS.SoundFX.playDynamite();
+            else if (evalRes.status === 'success') window.BANG_TOOLS.SoundFX.playBeer();
+            else window.BANG_TOOLS.SoundFX.playShot();
+          }
+
+          renderTurnGuide();
+        }
+      });
+    });
+
+    const closeTestBtn = document.getElementById('btn-close-quick-test');
+    if (closeTestBtn) {
+      closeTestBtn.addEventListener('click', () => {
+        turnStepperState.quickTestResult = null;
+        renderTurnGuide();
+      });
+    }
   }
 
   function renderQuickHelper() {
@@ -1305,6 +1761,215 @@
     finished: false
   };
 
+  // =========================================================================
+  // SETUP ASSISTANT STATE & RENDERER
+  // =========================================================================
+  const setupState = {
+    players: 5,
+    expansions: [
+      'base', 'dodge-city', 'gold-rush', 'armed-dangerous',
+      'train-robbery', 'valley-of-shadows', 'high-noon',
+      'fistful-of-cards', 'wild-west-show', 'legends', 'dynamite-box'
+    ],
+    checkedItems: {}
+  };
+
+  function renderSetupAssistant(container) {
+    const isEn = state.lang === 'en';
+    const checklist = window.BANG_TOOLS ? window.BANG_TOOLS.getSetupChecklist(setupState.players, setupState.expansions, isEn) : [];
+
+    const totalItems = checklist.length;
+    const checkedCount = checklist.filter(it => setupState.checkedItems[it.id]).length;
+    const isAllChecked = totalItems > 0 && checkedCount === totalItems;
+
+    const ALL_EXPS = [
+      { id: 'base', nameCs: '🎯 Základní hra', nameEn: '🎯 Base Game' },
+      { id: 'dodge-city', nameCs: '🟢 Dodge City', nameEn: '🟢 Dodge City' },
+      { id: 'gold-rush', nameCs: '🪙 Zlatá horečka', nameEn: '🪙 Gold Rush' },
+      { id: 'armed-dangerous', nameCs: '🟠 Ozbrojení a nebezpeční', nameEn: '🟠 Armed & Dangerous' },
+      { id: 'train-robbery', nameCs: '🚂 Velká vlaková loupež', nameEn: '🚂 The Great Train Robbery' },
+      { id: 'valley-of-shadows', nameCs: '💀 Údolí stínů', nameEn: '💀 Valley of Shadows' },
+      { id: 'high-noon', nameCs: '☀️ Pravé poledne', nameEn: '☀️ High Noon' },
+      { id: 'fistful-of-cards', nameCs: '👊 Pěst plná karet', nameEn: '👊 A Fistful of Cards' },
+      { id: 'wild-west-show', nameCs: '🎪 Divoký západ', nameEn: '🎪 Wild West Show' },
+      { id: 'legends', nameCs: '🌟 Legendy', nameEn: '🌟 Legends' },
+      { id: 'dynamite-box', nameCs: '🧨 Dynamite Box promo', nameEn: '🧨 Dynamite Box Promo' }
+    ];
+
+    container.innerHTML = `
+      <div class="tool-card-box">
+        <div class="tool-card-header">
+          <h2><span>⚙️</span> ${isEn ? 'Table Setup Configurator' : 'Asistent přípravy hry na míru'}</h2>
+          <p class="tool-card-lead">
+            ${isEn
+              ? 'Select your player count and active expansions to generate an exact tailored preparation checklist with official rules.'
+              : 'Zvolte počet hráčů a aktivní rozšíření pro vygenerování přesného oficiálního plánu přípravy stolu.'}
+          </p>
+        </div>
+
+        <!-- Configuration Bar -->
+        <div style="background: var(--bg-surface); padding: 1.25rem; border-radius: var(--radius-md); border: 1.5px solid var(--border-color); margin-bottom: 1.5rem;">
+          <!-- Player Count Selector -->
+          <div style="margin-bottom: 1.25rem;">
+            <label style="font-weight: 800; font-size: 0.95rem; display: block; margin-bottom: 0.5rem; color: var(--color-brown);">
+              👥 ${isEn ? 'Number of Players (3–8):' : 'Počet hráčů u stolu (3–8):'}
+            </label>
+            <div style="display: flex; gap: 0.45rem; flex-wrap: wrap;">
+              ${[3, 4, 5, 6, 7, 8].map(n => `
+                <button type="button" class="seat-btn ${n === setupState.players ? 'active-shooter' : ''}" data-setup-players="${n}" style="font-size: 1.1rem; padding: 0.5rem 1rem; cursor: pointer;">
+                  ${n} ${isEn ? 'players' : (n === 3 || n === 4 ? 'hráči' : 'hráčů')}
+                </button>
+              `).join('')}
+            </div>
+          </div>
+
+          <!-- Expansion Toggles -->
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem; flex-wrap: wrap; gap: 0.5rem;">
+              <label style="font-weight: 800; font-size: 0.95rem; color: var(--color-brown);">
+                📦 ${isEn ? 'Active Expansions in Play:' : 'Aktivní rozšíření pro dnešní hru:'}
+              </label>
+              <div style="display: flex; gap: 0.4rem;">
+                <button type="button" id="btn-setup-all-exps" class="tool-subnav-btn" style="padding: 0.35rem 0.75rem; font-size: 0.8rem; cursor: pointer;">
+                  ${isEn ? 'All Expansions' : 'Všechna rozšíření'}
+                </button>
+                <button type="button" id="btn-setup-base-only" class="tool-subnav-btn" style="padding: 0.35rem 0.75rem; font-size: 0.8rem; cursor: pointer;">
+                  ${isEn ? 'Base Only' : 'Pouze základ'}
+                </button>
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.5rem;">
+              ${ALL_EXPS.map(exp => `
+                <label class="calc-checkbox-label" style="background: var(--bg-card); padding: 0.45rem 0.65rem; border-radius: 6px; border: 1px solid var(--border-color); font-size: 0.88rem; cursor: pointer;">
+                  <input type="checkbox" data-setup-exp="${exp.id}" ${setupState.expansions.includes(exp.id) ? 'checked' : ''} ${exp.id === 'base' ? 'disabled checked' : ''}>
+                  <span>${isEn ? exp.nameEn : exp.nameCs}</span>
+                </label>
+              `).join('')}
+            </div>
+          </div>
+        </div>
+
+        <!-- Progress Indicator -->
+        <div style="background: var(--bg-surface); padding: 1rem 1.25rem; border-radius: var(--radius-md); border: 1.5px solid var(--border-color); margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;">
+          <div>
+            <div style="font-weight: 800; font-size: 1.05rem; color: var(--color-brown);">
+              ${isAllChecked ? (isEn ? '🎉 Table is Ready to Play!' : '🎉 Stůl je kompletně připraven ke hře!') : (isEn ? '📋 Preparation Checklist' : '📋 Kontrolní seznam přípravy')}
+            </div>
+            <div style="font-size: 0.88rem; color: var(--text-muted);">
+              ${isEn ? `${checkedCount} of ${totalItems} steps completed` : `${checkedCount} z ${totalItems} kroků dokončeno`}
+            </div>
+          </div>
+          <div style="display: flex; gap: 0.6rem;">
+            <button type="button" id="btn-setup-reset-checks" class="tool-subnav-btn" style="padding: 0.45rem 0.85rem; font-size: 0.85rem; cursor: pointer;">
+              🔄 ${isEn ? 'Reset Checklist' : 'Resetovat zaškrtnutí'}
+            </button>
+            <button type="button" id="btn-setup-goto-draft" class="tool-subnav-btn active" style="padding: 0.45rem 1.1rem; font-size: 0.95rem; font-weight: 700; cursor: pointer;">
+              🎲 ${isEn ? 'Go to Role & Char Draft ➔' : 'Přejít na losování rolí a postav ➔'}
+            </button>
+          </div>
+        </div>
+
+        <!-- Checklist Items -->
+        <div style="display: flex; flex-direction: column; gap: 0.85rem;">
+          ${checklist.map(item => {
+            const isChecked = !!setupState.checkedItems[item.id];
+            return `
+              <div style="background: ${isChecked ? 'rgba(39, 174, 96, 0.08)' : 'var(--bg-surface)'}; border: 1.5px solid ${isChecked ? '#27ae60' : 'var(--border-color)'}; border-radius: var(--radius-md); padding: 1.15rem; display: flex; align-items: flex-start; gap: 1rem; transition: all 0.2s ease;">
+                <input type="checkbox" data-check-id="${item.id}" ${isChecked ? 'checked' : ''} style="width: 22px; height: 22px; margin-top: 0.15rem; cursor: pointer; accent-color: #27ae60;">
+                <div style="flex: 1;">
+                  <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.35rem; flex-wrap: wrap;">
+                    <div style="font-weight: 900; font-size: 1.05rem; color: ${isChecked ? '#27ae60' : 'var(--color-brown)'}; text-decoration: ${isChecked ? 'line-through' : 'none'};">
+                      ${item.title}
+                    </div>
+                    <span style="font-size: 0.78rem; font-weight: 700; background: var(--bg-card); color: var(--text-muted); padding: 0.2rem 0.5rem; border-radius: 4px; border: 1px solid var(--border-color);">
+                      ${item.category}
+                    </span>
+                  </div>
+                  <div style="font-size: 0.92rem; line-height: 1.5; color: var(--text-color); margin-bottom: ${item.roles ? '0.75rem' : '0'};">
+                    ${item.desc}
+                  </div>
+                  ${item.roles ? `
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.5rem; margin-top: 0.5rem;">
+                      ${item.roles.map(r => `
+                        <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 6px; padding: 0.55rem 0.75rem; font-size: 0.88rem;">
+                          <div style="font-weight: 800; color: ${r.role === 'sheriff' ? '#f39c12' : (r.role === 'deputy' ? '#2980b9' : (r.role === 'renegade' ? '#8e44ad' : '#c0392b'))};">
+                            ${r.nameCs}
+                          </div>
+                          <div style="font-size: 0.8rem; color: var(--text-muted);">${r.goalCs}</div>
+                        </div>
+                      `).join('')}
+                    </div>
+                  ` : ''}
+                </div>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      </div>
+    `;
+
+    // Event listeners for Setup Assistant
+    container.querySelectorAll('[data-setup-players]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        setupState.players = parseInt(btn.dataset.setupPlayers, 10);
+        renderSetupAssistant(container);
+      });
+    });
+
+    container.querySelectorAll('[data-setup-exp]').forEach(chk => {
+      chk.addEventListener('change', () => {
+        const id = chk.dataset.setupExp;
+        if (chk.checked) {
+          if (!setupState.expansions.includes(id)) setupState.expansions.push(id);
+        } else {
+          setupState.expansions = setupState.expansions.filter(x => x !== id);
+        }
+        renderSetupAssistant(container);
+      });
+    });
+
+    const allBtn = document.getElementById('btn-setup-all-exps');
+    if (allBtn) {
+      allBtn.addEventListener('click', () => {
+        setupState.expansions = ALL_EXPS.map(x => x.id);
+        renderSetupAssistant(container);
+      });
+    }
+
+    const baseBtn = document.getElementById('btn-setup-base-only');
+    if (baseBtn) {
+      baseBtn.addEventListener('click', () => {
+        setupState.expansions = ['base'];
+        renderSetupAssistant(container);
+      });
+    }
+
+    container.querySelectorAll('[data-check-id]').forEach(chk => {
+      chk.addEventListener('change', () => {
+        setupState.checkedItems[chk.dataset.checkId] = chk.checked;
+        renderSetupAssistant(container);
+      });
+    });
+
+    const resetChecksBtn = document.getElementById('btn-setup-reset-checks');
+    if (resetChecksBtn) {
+      resetChecksBtn.addEventListener('click', () => {
+        setupState.checkedItems = {};
+        renderSetupAssistant(container);
+      });
+    }
+
+    const gotoDraftBtn = document.getElementById('btn-setup-goto-draft');
+    if (gotoDraftBtn) {
+      gotoDraftBtn.addEventListener('click', () => {
+        state.activeTool = 'draft';
+        draftState.playerCount = setupState.players;
+        renderTools();
+      });
+    }
+  }
+
   function renderTools() {
     if (!els.toolsContentArea) return;
 
@@ -1314,14 +1979,20 @@
       });
     }
 
-    if (state.activeTool === 'calc') {
+    if (state.activeTool === 'setup') {
+      renderSetupAssistant(els.toolsContentArea);
+    } else if (state.activeTool === 'calc') {
       renderDistanceCalc(els.toolsContentArea);
+    } else if (state.activeTool === 'draw') {
+      renderDrawSimulator(els.toolsContentArea);
     } else if (state.activeTool === 'events') {
       renderEventDeck(els.toolsContentArea);
     } else if (state.activeTool === 'draft') {
       renderRoleDraft(els.toolsContentArea);
     } else if (state.activeTool === 'tracker') {
       renderPlayerBoard(els.toolsContentArea);
+    } else if (state.activeTool === 'matches') {
+      renderMatchTracker(els.toolsContentArea);
     } else if (state.activeTool === 'quiz') {
       renderRulesQuiz(els.toolsContentArea);
     } else if (state.activeTool === 'soundboard') {
@@ -1359,6 +2030,9 @@
 
     const seatCoords = [];
     let seatsSvg = '';
+    let inRangeCount = 0;
+    const inRangeNames = [];
+    const outRangeNames = [];
 
     for (let i = 0; i < calcParams.totalPlayers; i++) {
       const theta = (2 * Math.PI * i / calcParams.totalPlayers) - (Math.PI / 2);
@@ -1368,7 +2042,33 @@
 
       const isShooter = i === calcParams.shooterIdx;
       const isTarget = i === calcParams.targetIdx;
-      const seatDist = window.BANG_TOOLS.DistanceCalc.getSeatDistance(calcParams.shooterIdx, i, calcParams.totalPlayers);
+
+      const seatCalc = window.BANG_TOOLS.DistanceCalc.calculate({
+        shooterIdx: calcParams.shooterIdx,
+        targetIdx: i,
+        totalPlayers: calcParams.totalPlayers,
+        shooterWeaponRange: selectedWeapon.range,
+        shooterAppaloosa: calcParams.appaloosa,
+        shooterBinoculars: calcParams.binoculars,
+        shooterRoseDoolan: calcParams.roseDoolan,
+        targetMustang: (i === calcParams.targetIdx) ? calcParams.mustang : false,
+        targetHideout: (i === calcParams.targetIdx) ? calcParams.hideout : false,
+        targetPaulRegret: (i === calcParams.targetIdx) ? calcParams.paulRegret : false,
+        globalZvonice: calcParams.zvonice
+      });
+
+      const inRange = seatCalc.canBang;
+      const canPanic = seatCalc.canPanic;
+      const pLabel = `${isEn ? 'P' : 'H'}${i + 1}`;
+
+      if (!isShooter) {
+        if (inRange) {
+          inRangeCount++;
+          inRangeNames.push(pLabel);
+        } else {
+          outRangeNames.push(pLabel);
+        }
+      }
 
       let strokeColor = '#5c3a21';
       let strokeWidth = '2';
@@ -1379,18 +2079,34 @@
 
       if (isShooter) {
         strokeColor = '#f39c12';
-        strokeWidth = '4';
+        strokeWidth = '4.5';
         fillColor = '#c0392b';
         icon = '🤠';
         roleTitle = isEn ? 'SHOOTER' : 'STŘELEC';
         titleColor = '#ffeb3b';
       } else if (isTarget) {
-        strokeColor = '#ffffff';
-        strokeWidth = '4';
-        fillColor = '#2980b9';
-        icon = '🎯';
-        roleTitle = isEn ? 'TARGET' : 'CÍL';
-        titleColor = '#ffffff';
+        strokeColor = inRange ? '#2ecc71' : '#e74c3c';
+        strokeWidth = '5';
+        fillColor = inRange ? '#145a32' : '#641e16';
+        icon = inRange ? '🎯' : '🚫';
+        roleTitle = isEn ? (inRange ? 'TARGET' : 'TARGET (OUT)') : (inRange ? 'CÍL' : 'CÍL (MIMO)');
+        titleColor = inRange ? '#a9dfbf' : '#f5b7b1';
+      } else {
+        if (inRange) {
+          strokeColor = '#27ae60';
+          strokeWidth = '3';
+          fillColor = '#194d33';
+          icon = '🟢';
+          roleTitle = `${isEn ? 'P' : 'H'}${i + 1} (${isEn ? 'Reach' : 'Dosah'})`;
+          titleColor = '#2ecc71';
+        } else {
+          strokeColor = '#7f1d1d';
+          strokeWidth = '1.8';
+          fillColor = '#2c1212';
+          icon = '🔴';
+          roleTitle = `${isEn ? 'P' : 'H'}${i + 1}`;
+          titleColor = '#e74c3c';
+        }
       }
 
       // Distance indicator badge for non-shooters
@@ -1398,10 +2114,18 @@
       if (!isShooter) {
         distBadge = `
           <g transform="translate(0, 36)">
-            <rect x="-30" y="-10" width="60" height="20" rx="10" fill="${isTarget ? '#2980b9' : '#1c262f'}" stroke="${isTarget ? '#ffffff' : '#8b5a2b'}" stroke-width="1.5" />
-            <text x="0" y="4" text-anchor="middle" font-size="11" font-weight="bold" fill="#ffffff">${isEn ? 'Dist' : 'Vzdál'}: ${seatDist}</text>
+            <rect x="-38" y="-10" width="76" height="20" rx="10" fill="${inRange ? '#1e7e34' : '#78281f'}" stroke="${isTarget ? '#ffffff' : (inRange ? '#2ecc71' : '#e74c3c')}" stroke-width="${isTarget ? '2.5' : '1.2'}" />
+            <text x="0" y="4" text-anchor="middle" font-size="10.5" font-weight="900" fill="#ffffff">${inRange ? '🟢' : '🔴'} ${isEn ? 'Dist' : 'Vzd'}: ${seatCalc.actualDistance}</text>
           </g>
         `;
+        if (canPanic) {
+          distBadge += `
+            <g transform="translate(0, 58)">
+              <rect x="-32" y="-7" width="64" height="15" rx="7" fill="#1b4f72" stroke="#5dade2" stroke-width="1" />
+              <text x="0" y="4" text-anchor="middle" font-size="9" font-weight="900" fill="#d4e6f1">🔵 Panika! (1)</text>
+            </g>
+          `;
+        }
       }
 
       // Equipment chips above seat
@@ -1457,8 +2181,8 @@
     container.innerHTML = `
       <div class="tool-card-box">
         <div class="tool-card-header">
-          <h2><span>📏</span> ${isEn ? 'Saloon Distance & Range Calculator' : 'Kalkulačka vzdálenosti a dostřelu u stolu'}</h2>
-          <p class="tool-card-lead">${isEn ? 'Authentic rustic saloon table view as featured in the BANG! rules. Click any seat to designate Shooter or Target!' : 'Věrná vizualizace stolu ve westernovém saloonu podle pravidel hry BANG!. Klepněte na libovolnou židli pro výběr Střelce či Cíle!'}</p>
+          <h2><span>📏</span> ${isEn ? 'Saloon Distance & Range Radar' : 'Kalkulačka vzdálenosti a bojový radar'}</h2>
+          <p class="tool-card-lead">${isEn ? 'Authentic rustic saloon table view with active target radar. Green seats are currently in weapon reach!' : 'Bojový radar saloonového stolu: zeleně označené židle jsou okamžitě v dostřelu zbraně!'}</p>
         </div>
 
         <div class="saloon-table-container">
@@ -1468,7 +2192,7 @@
                 👥 ${isEn ? 'Players at table:' : 'Hráčů u stolu:'}
               </span>
               <div style="display: flex; gap: 0.35rem;">
-                ${[4, 5, 6, 7, 8].map(n => `
+                ${[3, 4, 5, 6, 7, 8].map(n => `
                   <button type="button" class="seat-btn ${n === calcParams.totalPlayers ? 'active-shooter' : ''}" data-total="${n}">${n}</button>
                 `).join('')}
               </div>
@@ -1609,23 +2333,23 @@
               <!-- Center Distance Readout Plaque (Rustic Forged Iron & Brass) -->
               <g transform="translate(350, 230)">
                 <!-- Outer Iron Plaque Plate -->
-                <rect x="-142" y="-39" width="284" height="78" rx="10" fill="#1a0e07" stroke="#936d2a" stroke-width="2.5" />
+                <rect x="-155" y="-45" width="310" height="90" rx="10" fill="#1a0e07" stroke="#936d2a" stroke-width="2.5" />
                 <!-- Inner Dark Walnut Inlay -->
-                <rect x="-137" y="-34" width="274" height="68" rx="7" fill="#261309" stroke="#482914" stroke-width="1.2" />
+                <rect x="-150" y="-40" width="300" height="80" rx="7" fill="#261309" stroke="#482914" stroke-width="1.2" />
                 <!-- Corner Brass Screws -->
-                <circle cx="-130" cy="-27" r="2.5" fill="#d4af37" stroke="#604010" stroke-width="0.8" />
-                <circle cx="130" cy="-27" r="2.5" fill="#d4af37" stroke="#604010" stroke-width="0.8" />
-                <circle cx="-130" cy="27" r="2.5" fill="#d4af37" stroke="#604010" stroke-width="0.8" />
-                <circle cx="130" cy="27" r="2.5" fill="#d4af37" stroke="#604010" stroke-width="0.8" />
+                <circle cx="-142" cy="-32" r="2.5" fill="#d4af37" stroke="#604010" stroke-width="0.8" />
+                <circle cx="142" cy="-32" r="2.5" fill="#d4af37" stroke="#604010" stroke-width="0.8" />
+                <circle cx="-142" cy="32" r="2.5" fill="#d4af37" stroke="#604010" stroke-width="0.8" />
+                <circle cx="142" cy="32" r="2.5" fill="#d4af37" stroke="#604010" stroke-width="0.8" />
 
-                <text x="0" y="-10" text-anchor="middle" font-family="'Rye', 'Georgia', serif" font-size="15" font-weight="bold" fill="#ffeb3b" letter-spacing="0.5">
-                  🎯 ${isEn ? 'EFFECTIVE DISTANCE' : 'SKUTEČNÁ VZDÁLENOST'}: ${calcResult.actualDistance} ${isEn ? (calcResult.actualDistance === 1 ? 'SEAT' : 'SEATS') : (calcResult.actualDistance === 1 ? 'MÍSTO' : (calcResult.actualDistance < 5 ? 'MÍSTA' : 'MÍST'))}
+                <text x="0" y="-16" text-anchor="middle" font-family="'Rye', 'Georgia', serif" font-size="14" font-weight="bold" fill="#ffeb3b" letter-spacing="0.5">
+                  🎯 ${isEn ? 'TARGET' : 'CÍL'}: ${isEn ? 'PLAYER' : 'HRÁČ'} ${calcParams.targetIdx + 1} (${isEn ? 'DIST' : 'VZDÁL'}: ${calcResult.actualDistance})
                 </text>
-                <text x="0" y="11" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#f5deb3">
-                  ↻ ${isEn ? 'Clockwise' : 'Po směru'}: ${dir.clockwise} | ↺ ${isEn ? 'Counter-CW' : 'Proti směru'}: ${dir.counterClockwise}
+                <text x="0" y="4" text-anchor="middle" font-size="11.5" font-weight="900" fill="${calcResult.canBang ? '#2ecc71' : '#e74c3c'}">
+                  ${calcResult.canBang ? (isEn ? '✅ IN WEAPON RANGE (CAN BANG!)' : '✅ V DOSTŘELU ZBRANĚ (LZE BANG!)') : (isEn ? '❌ OUT OF RANGE (CANNOT HIT)' : '❌ MIMO DOSTŘEL ZBRANĚ (NELZE ZASÁHNOUT)')}
                 </text>
-                <text x="0" y="26" text-anchor="middle" font-size="10.5" fill="#e6b84d">
-                  ${isEn ? 'Shortest table distance' : 'Základ u stolu (nejkratší)'}: ${dir.shortest} ${isEn ? 'seats' : (dir.shortest === 1 ? 'místo' : 'místa')}
+                <text x="0" y="24" text-anchor="middle" font-size="10" font-weight="bold" fill="#f5deb3">
+                  🟢 ${isEn ? 'In range' : 'Na mušce'} (${inRangeCount}/${calcParams.totalPlayers - 1}): ${inRangeNames.join(', ') || (isEn ? 'none' : 'nikdo')} | 🔴 ${isEn ? 'Out' : 'Mimo'}: ${outRangeNames.join(', ') || (isEn ? 'none' : 'nikdo')}
                 </text>
               </g>
 
@@ -1846,6 +2570,248 @@
         } else {
           window.BANG_TOOLS.SoundFX.playRicochet();
         }
+      });
+    }
+  }
+
+  // =========================================================================
+  // 3. DRAW SIMULATOR ("SEJMUTÍ KARTY")
+  // =========================================================================
+  const drawSimulatorState = {
+    preset: 'jail',
+    luckyDuke: false,
+    lastCards: null,
+    result: null,
+    history: []
+  };
+
+  function renderDrawSimulator(container) {
+    const isEn = state.lang === 'en';
+    const presets = [
+      { id: 'jail', nameCs: '⛓️ Vězení', nameEn: '⛓️ Jail', targetCs: 'Srdce ♥ = útěk', targetEn: 'Hearts ♥ = escape' },
+      { id: 'dynamite', nameCs: '💣 Dynamit', nameEn: '💣 Dynamite', targetCs: 'Piky ♠ 2–9 = BUM!', targetEn: 'Spades ♠ 2–9 = BOOM!' },
+      { id: 'barrel', nameCs: '🛡️ Barel', nameEn: '🛡️ Barrel', targetCs: 'Srdce ♥ = Vedle!', targetEn: 'Hearts ♥ = Missed!' },
+      { id: 'rattlesnake', nameCs: '🐍 Chřestýš', nameEn: '🐍 Rattlesnake', targetCs: 'Piky ♠ = -1 život', targetEn: 'Spades ♠ = -1 life' },
+      { id: 'bomb', nameCs: '💥 Bomba', nameEn: '💥 Bomb', targetCs: 'Černá = -2 žetony', targetEn: 'Black = -2 charges' },
+      { id: 'teren', nameCs: '🤠 Teren Kill', nameEn: '🤠 Teren Kill', targetCs: 'Nepiková = přežití s 1 HP', targetEn: 'Non-spades = survive' },
+      { id: 'general', nameCs: '🃏 Volné snímání', nameEn: '🃏 Free Draw', targetCs: 'Jakákoliv karta', targetEn: 'Any card' }
+    ];
+
+    const currentPreset = presets.find(p => p.id === drawSimulatorState.preset) || presets[0];
+
+    container.innerHTML = `
+      <div class="tool-card-box">
+        <div class="tool-card-header">
+          <h2>🎴 ${isEn ? 'Card Draw Simulator („Draw!“)' : 'Simulátor snímání karet („Draw!“)'}</h2>
+          <p class="tool-card-lead">
+            ${isEn
+              ? 'Instant test for Jail, Dynamite, Barrel, Rattlesnake, and character abilities without physical deck shuffling.'
+              : 'Okamžité a férové vyhodnocení Vězení, Dynamitu, Barelu, Chřestýše i schopností postav přímo u stolu.'}
+          </p>
+        </div>
+
+        <!-- PRESET CHIPS -->
+        <div style="margin-bottom: 1.5rem;">
+          <div style="font-weight: bold; font-size: 0.95rem; margin-bottom: 0.5rem; color: var(--color-brown);">
+            ${isEn ? '1. Select Test Situation:' : '1. Zvol situaci k vyhodnocení:'}
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+            ${presets.map(p => `
+              <button type="button" class="btn-preset-chip ${p.id === drawSimulatorState.preset ? 'active' : ''}" 
+                      data-preset="${p.id}"
+                      style="padding: 0.5rem 0.85rem; border-radius: 20px; border: 1.5px solid ${p.id === drawSimulatorState.preset ? 'var(--color-gold)' : 'var(--border-color)'}; background: ${p.id === drawSimulatorState.preset ? 'var(--color-gold)' : 'var(--bg-surface)'}; color: ${p.id === drawSimulatorState.preset ? '#fff' : 'inherit'}; cursor: pointer; font-weight: 500; font-size: 0.88rem; transition: all 0.2s ease;">
+                ${isEn ? p.nameEn : p.nameCs}
+                <span style="opacity: 0.8; font-size: 0.78rem; display: block;">${isEn ? p.targetEn : p.targetCs}</span>
+              </button>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- LUCKY DUKE OPTION -->
+        <div style="margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: space-between; background: var(--bg-surface); padding: 0.85rem 1.2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+          <div>
+            <div style="font-weight: bold; font-size: 0.95rem;">
+              🤠 ${isEn ? 'Lucky Duke (Special Ability)' : 'Lucky Duke (Speciální schopnost)'}
+            </div>
+            <div style="font-size: 0.82rem; color: var(--text-muted);">
+              ${isEn ? 'Draw 2 cards simultaneously and choose the favorable outcome.' : 'Sejme 2 karty najednou a hráč si vybere tu výhodnější.'}
+            </div>
+          </div>
+          <label style="position: relative; display: inline-block; width: 48px; height: 26px; cursor: pointer;">
+            <input type="checkbox" id="chk-lucky-duke" ${drawSimulatorState.luckyDuke ? 'checked' : ''} style="opacity: 0; width: 0; height: 0;">
+            <span style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: ${drawSimulatorState.luckyDuke ? 'var(--color-gold)' : '#ccc'}; transition: .3s; border-radius: 26px;">
+              <span style="position: absolute; content: ''; height: 20px; width: 20px; left: ${drawSimulatorState.luckyDuke ? '24px' : '4px'}; bottom: 3px; background-color: white; transition: .3s; border-radius: 50%;"></span>
+            </span>
+          </label>
+        </div>
+
+        <!-- DRAW STAGE & CARDS AREA -->
+        <div style="background: radial-gradient(circle at center, #2e4d34 0%, #172b1d 100%); border-radius: 12px; padding: 2rem 1rem; text-align: center; margin-bottom: 1.5rem; box-shadow: inset 0 2px 10px rgba(0,0,0,0.5); min-height: 260px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+          ${!drawSimulatorState.lastCards ? `
+            <div style="color: rgba(255,255,255,0.7); font-size: 1.1rem; font-style: italic; margin-bottom: 1.5rem;">
+              ${isEn ? 'Click the button below to draw from a fresh 52-card deck!' : 'Klikni na tlačítko níže pro sejmutí karty z balíčku 52 karet!'}
+            </div>
+          ` : `
+            <div style="display: flex; gap: 1.5rem; justify-content: center; align-items: center; flex-wrap: wrap; margin-bottom: 1.5rem;">
+              ${drawSimulatorState.lastCards.map((c, idx) => {
+                const isRed = c.color === 'red';
+                const cardColor = isRed ? '#d32f2f' : '#222222';
+                return `
+                  <div class="draw-sim-card animate-card-pop" style="width: 140px; height: 210px; background: #fffcf0; border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.6); border: 2px solid #3d2b1f; display: flex; flex-direction: column; justify-content: space-between; padding: 12px; position: relative; user-select: none;">
+                    <div style="text-align: left; line-height: 1; color: ${cardColor}; font-weight: bold; font-size: 1.35rem;">
+                      <div>${c.value}</div>
+                      <div style="font-size: 1.45rem;">${c.suitSymbol}</div>
+                    </div>
+                    <div style="text-align: center; font-size: 3.5rem; line-height: 1; color: ${cardColor};">
+                      ${c.suitSymbol}
+                    </div>
+                    <div style="text-align: right; line-height: 1; color: ${cardColor}; font-weight: bold; font-size: 1.35rem; transform: rotate(180deg);">
+                      <div>${c.value}</div>
+                      <div style="font-size: 1.45rem;">${c.suitSymbol}</div>
+                    </div>
+                    ${drawSimulatorState.luckyDuke ? `
+                      <div style="position: absolute; top: -10px; right: -10px; background: var(--color-brown); color: #fff; font-size: 0.72rem; font-weight: bold; padding: 2px 7px; border-radius: 10px; border: 1px solid #ffcc00;">
+                        #${idx + 1}
+                      </div>
+                    ` : ''}
+                  </div>
+                `;
+              }).join('')}
+            </div>
+          `}
+
+          <!-- MAIN DRAW BUTTON -->
+          <button type="button" id="btn-do-draw" style="background: linear-gradient(135deg, #f59e0b, #d97706); color: #fff; font-size: 1.25rem; font-weight: bold; font-family: 'Georgia', serif; padding: 0.9rem 2.2rem; border-radius: 30px; border: 2px solid #ffcc00; box-shadow: 0 6px 16px rgba(0,0,0,0.4); cursor: pointer; display: inline-flex; align-items: center; gap: 0.6rem; transition: transform 0.15s, box-shadow 0.15s;">
+            🎴 ${isEn ? 'DRAW CARD („DRAW!“)' : 'SEJMOUT KARTU („DRAW!“)'}
+          </button>
+        </div>
+
+        <!-- OUTCOME RESULT BANNER -->
+        ${drawSimulatorState.result ? `
+          <div style="margin-bottom: 1.5rem; padding: 1.25rem 1.5rem; border-radius: 10px; border: 2px solid ${
+            drawSimulatorState.result.status === 'success' ? '#2ecc71' : drawSimulatorState.result.status === 'failure' ? '#e74c3c' : '#f39c12'
+          }; background: ${
+            drawSimulatorState.result.status === 'success' ? 'rgba(46, 204, 113, 0.12)' : drawSimulatorState.result.status === 'failure' ? 'rgba(231, 76, 60, 0.12)' : 'rgba(243, 156, 18, 0.12)'
+          };">
+            <div style="font-size: 1.15rem; font-weight: bold; color: ${
+              drawSimulatorState.result.status === 'success' ? '#27ae60' : drawSimulatorState.result.status === 'failure' ? '#c0392b' : '#d35400'
+            }; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.4rem;">
+              ${drawSimulatorState.result.status === 'success' ? '✅' : drawSimulatorState.result.status === 'failure' ? '❌' : 'ℹ️'}
+              ${isEn ? drawSimulatorState.result.titleEn : drawSimulatorState.result.titleCs}
+            </div>
+            <div style="font-size: 0.95rem; line-height: 1.5;">
+              ${isEn ? drawSimulatorState.result.messageEn : drawSimulatorState.result.messageCs}
+            </div>
+          </div>
+        ` : ''}
+
+        <!-- DRAW HISTORY STRIP -->
+        ${drawSimulatorState.history.length > 0 ? `
+          <div style="border-top: 1px solid var(--border-color); padding-top: 1rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem;">
+              <span style="font-size: 0.85rem; font-weight: bold; color: var(--text-muted); text-transform: uppercase;">
+                ${isEn ? 'Recent Draws History:' : 'Poslední sejmutí v této partii:'}
+              </span>
+              <button type="button" id="btn-clear-draw-hist" style="background: none; border: none; font-size: 0.78rem; color: var(--text-muted); cursor: pointer; text-decoration: underline;">
+                ${isEn ? 'Clear history' : 'Vymazat historii'}
+              </button>
+            </div>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              ${drawSimulatorState.history.slice(0, 8).map(h => `
+                <div style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 6px; padding: 0.35rem 0.65rem; font-size: 0.82rem; display: flex; align-items: center; gap: 0.4rem;">
+                  <strong style="color: ${h.card.color === 'red' ? '#d32f2f' : 'inherit'};">${h.card.code}</strong>
+                  <span style="font-size: 0.75rem; opacity: 0.75;">(${h.presetName})</span>
+                  <span>${h.status === 'success' ? '✅' : h.status === 'failure' ? '❌' : '•'}</span>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        ` : ''}
+      </div>
+    `;
+
+    // Bind event listeners
+    container.querySelectorAll('.btn-preset-chip').forEach(btn => {
+      btn.addEventListener('click', () => {
+        drawSimulatorState.preset = btn.dataset.preset;
+        renderDrawSimulator(container);
+      });
+    });
+
+    const chkDuke = document.getElementById('chk-lucky-duke');
+    if (chkDuke) {
+      chkDuke.addEventListener('change', () => {
+        drawSimulatorState.luckyDuke = chkDuke.checked;
+        renderDrawSimulator(container);
+      });
+    }
+
+    const btnDraw = document.getElementById('btn-do-draw');
+    if (btnDraw) {
+      btnDraw.addEventListener('click', () => {
+        if (!window.BANG_TOOLS || !window.BANG_TOOLS.DrawSimulator) return;
+
+        const sim = window.BANG_TOOLS.DrawSimulator;
+        if (drawSimulatorState.luckyDuke) {
+          const c1 = sim.drawCard();
+          const c2 = sim.drawCard();
+          drawSimulatorState.lastCards = [c1, c2];
+          const res1 = sim.evaluate(drawSimulatorState.preset, c1, isEn);
+          const res2 = sim.evaluate(drawSimulatorState.preset, c2, isEn);
+
+          // If one is success and other is failure, highlight success
+          const chosenRes = (res1.status === 'success' && res2.status !== 'success') ? res1 :
+                            (res2.status === 'success' && res1.status !== 'success') ? res2 : res1;
+
+          drawSimulatorState.result = {
+            status: chosenRes.status,
+            titleCs: `🤠 LUCKY DUKE: ${chosenRes.titleCs}`,
+            titleEn: `🤠 LUCKY DUKE: ${chosenRes.titleEn}`,
+            messageCs: `Karty: [${c1.code}] a [${c2.code}]. ${chosenRes.messageCs}`,
+            messageEn: `Cards: [${c1.code}] and [${c2.code}]. ${chosenRes.messageEn}`
+          };
+
+          drawSimulatorState.history.unshift({
+            card: c1,
+            presetName: currentPreset.nameCs,
+            status: chosenRes.status
+          });
+        } else {
+          const card = sim.drawCard();
+          drawSimulatorState.lastCards = [card];
+          drawSimulatorState.result = sim.evaluate(drawSimulatorState.preset, card, isEn);
+
+          drawSimulatorState.history.unshift({
+            card,
+            presetName: currentPreset.nameCs,
+            status: drawSimulatorState.result.status
+          });
+        }
+
+        // Sound effect
+        if (window.BANG_TOOLS && window.BANG_TOOLS.SoundFX) {
+          if (drawSimulatorState.preset === 'dynamite' && drawSimulatorState.result.status === 'failure') {
+            window.BANG_TOOLS.SoundFX.playDynamite();
+          } else if (drawSimulatorState.preset === 'jail') {
+            window.BANG_TOOLS.SoundFX.playJail();
+          } else if (drawSimulatorState.preset === 'rattlesnake') {
+            window.BANG_TOOLS.SoundFX.playRattlesnake();
+          } else if (drawSimulatorState.result.status === 'failure') {
+            window.BANG_TOOLS.SoundFX.playShot();
+          } else {
+            window.BANG_TOOLS.SoundFX.playBell();
+          }
+        }
+
+        renderDrawSimulator(container);
+      });
+    }
+
+    const btnClear = document.getElementById('btn-clear-draw-hist');
+    if (btnClear) {
+      btnClear.addEventListener('click', () => {
+        drawSimulatorState.history = [];
+        renderDrawSimulator(container);
       });
     }
   }
@@ -2661,6 +3627,358 @@
       trackerState.hand++;
       renderPlayerBoard(container);
     });
+  }
+
+  // =========================================================================
+  // 6. MATCH TRACKER & PARTY STATISTICS
+  // =========================================================================
+  const matchTrackerState = {
+    showForm: false,
+    form: {
+      winner: 'sheriff',
+      playersCount: 5,
+      sheriffChar: '',
+      mvpChar: '',
+      durationMin: 35,
+      notes: ''
+    }
+  };
+
+  function renderMatchTracker(container) {
+    const isEn = state.lang === 'en';
+    const tracker = window.BANG_TOOLS ? window.BANG_TOOLS.MatchTracker : null;
+    const matches = tracker ? tracker.getAll() : [];
+    const stats = tracker ? tracker.getStats() : {
+      total: 0, sheriffWins: 0, outlawWins: 0, renegadeWins: 0, ironhorseWins: 0,
+      sheriffPct: 0, outlawPct: 0, renegadePct: 0, ironhorsePct: 0, topMvp: []
+    };
+
+    const allChars = (window.BANG_CARDS || [])
+      .filter(c => c.type === 'character')
+      .sort((a, b) => a.name.localeCompare(b.name));
+
+    container.innerHTML = `
+      <div class="tool-card-box">
+        <div class="tool-card-header" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <h2>🏆 ${isEn ? 'Match Tracker & Party Stats' : 'Zápisník partií & statistiky party'}</h2>
+            <p class="tool-card-lead">
+              ${isEn 
+                ? 'Record your game results, track win rates by role (Law, Outlaws, Renegade), and immortalize your table’s MVP gunfighters!'
+                : 'Zapisujte výsledky svých her, sledujte poměr výher jednotlivých rolí a zjistěte, který pistolník je ve vaší partě nejúspěšnější!'}
+            </p>
+          </div>
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            <button type="button" id="btn-toggle-match-form" class="btn-primary" style="padding: 0.6rem 1.1rem; font-size: 0.95rem; border-radius: 8px; font-weight: bold; display: flex; align-items: center; gap: 0.4rem; cursor: pointer;">
+              ${matchTrackerState.showForm ? (isEn ? '✖ Close Form' : '✖ Zavřít formulář') : (isEn ? '➕ Record New Match' : '➕ Zapsat novou partii')}
+            </button>
+            ${matches.length > 0 ? `
+              <button type="button" id="btn-export-matches" style="background: var(--bg-surface); border: 1px solid var(--border-color); padding: 0.6rem 0.9rem; font-size: 0.88rem; border-radius: 8px; cursor: pointer;">
+                📥 ${isEn ? 'Export JSON' : 'Export JSON'}
+              </button>
+              <button type="button" id="btn-clear-matches" style="background: var(--bg-surface); border: 1px solid #e74c3c; color: #e74c3c; padding: 0.6rem 0.9rem; font-size: 0.88rem; border-radius: 8px; cursor: pointer;">
+                🗑️ ${isEn ? 'Clear All' : 'Smazat vše'}
+              </button>
+            ` : ''}
+          </div>
+        </div>
+
+        <!-- SUMMARY STATS OVERVIEW -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+          <!-- LAW / SHERIFF -->
+          <div style="background: var(--bg-surface); border: 2px solid #f1c40f; border-radius: 10px; padding: 1.2rem; text-align: center; box-shadow: var(--shadow-sm);">
+            <div style="font-size: 2rem; margin-bottom: 0.3rem;">⭐️</div>
+            <div style="font-weight: bold; color: var(--color-brown); font-size: 0.95rem;">${isEn ? 'Law (Sheriff)' : 'Zákon (Šerif)'}</div>
+            <div style="font-size: 1.8rem; font-weight: bold; color: #d4ac0d; margin: 0.3rem 0;">${stats.sheriffPct}%</div>
+            <div style="font-size: 0.82rem; color: var(--text-muted);">${stats.sheriffWins} ${isEn ? 'wins' : 'výher'} / ${stats.total}</div>
+          </div>
+
+          <!-- OUTLAWS -->
+          <div style="background: var(--bg-surface); border: 2px solid #e74c3c; border-radius: 10px; padding: 1.2rem; text-align: center; box-shadow: var(--shadow-sm);">
+            <div style="font-size: 2rem; margin-bottom: 0.3rem;">💀</div>
+            <div style="font-weight: bold; color: var(--color-brown); font-size: 0.95rem;">${isEn ? 'Outlaws' : 'Bandité'}</div>
+            <div style="font-size: 1.8rem; font-weight: bold; color: #c0392b; margin: 0.3rem 0;">${stats.outlawPct}%</div>
+            <div style="font-size: 0.82rem; color: var(--text-muted);">${stats.outlawWins} ${isEn ? 'wins' : 'výher'} / ${stats.total}</div>
+          </div>
+
+          <!-- RENEGADE -->
+          <div style="background: var(--bg-surface); border: 2px solid #9b59b6; border-radius: 10px; padding: 1.2rem; text-align: center; box-shadow: var(--shadow-sm);">
+            <div style="font-size: 2rem; margin-bottom: 0.3rem;">🤠</div>
+            <div style="font-weight: bold; color: var(--color-brown); font-size: 0.95rem;">${isEn ? 'Renegade' : 'Odpadlík'}</div>
+            <div style="font-size: 1.8rem; font-weight: bold; color: #8e44ad; margin: 0.3rem 0;">${stats.renegadePct}%</div>
+            <div style="font-size: 0.82rem; color: var(--text-muted);">${stats.renegadeWins} ${isEn ? 'wins' : 'výher'} / ${stats.total}</div>
+          </div>
+
+          <!-- IRONHORSE (TRAIN EXPANSION) -->
+          <div style="background: var(--bg-surface); border: 2px solid #e67e22; border-radius: 10px; padding: 1.2rem; text-align: center; box-shadow: var(--shadow-sm);">
+            <div style="font-size: 2rem; margin-bottom: 0.3rem;">🚂</div>
+            <div style="font-weight: bold; color: var(--color-brown); font-size: 0.95rem;">${isEn ? 'Ironhorse' : 'Železný oř'}</div>
+            <div style="font-size: 1.8rem; font-weight: bold; color: #d35400; margin: 0.3rem 0;">${stats.ironhorsePct}%</div>
+            <div style="font-size: 0.82rem; color: var(--text-muted);">${stats.ironhorseWins} ${isEn ? 'wins' : 'výher'} / ${stats.total}</div>
+          </div>
+        </div>
+
+        <!-- TOP MVP HEROES STRIP -->
+        ${stats.topMvp && stats.topMvp.length > 0 ? `
+          <div style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem;">
+            <div style="font-size: 0.92rem; font-weight: bold; color: var(--color-brown); display: flex; align-items: center; gap: 0.4rem;">
+              🎖️ ${isEn ? 'Most Frequent MVP Gunfighters:' : 'Nejčastější hvězdy zápasu (MVP):'}
+            </div>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              ${stats.topMvp.map(m => `
+                <span style="background: rgba(212, 172, 13, 0.15); border: 1px solid #d4ac0d; border-radius: 16px; padding: 0.25rem 0.75rem; font-size: 0.85rem; font-weight: 500;">
+                  🤠 ${m.name} <strong>(${m.count}×)</strong>
+                </span>
+              `).join('')}
+            </div>
+          </div>
+        ` : ''}
+
+        <!-- FORM MODAL / COLLAPSIBLE -->
+        ${matchTrackerState.showForm ? `
+          <div style="background: var(--bg-surface); border: 2px solid var(--color-gold); border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; box-shadow: var(--shadow-md);">
+            <h3 style="font-family: 'Georgia', serif; color: var(--color-brown); margin-bottom: 1.25rem; font-size: 1.2rem; display: flex; align-items: center; gap: 0.5rem;">
+              📝 ${isEn ? 'Record Game Result' : 'Záznam odehrané hry'}
+            </h3>
+
+            <!-- WINNER SELECTOR -->
+            <div style="margin-bottom: 1.25rem;">
+              <label style="display: block; font-weight: bold; font-size: 0.9rem; margin-bottom: 0.5rem;">
+                ${isEn ? 'Winning Team / Role:' : 'Vítězná strana / role:'}
+              </label>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.6rem;">
+                ${[
+                  { id: 'sheriff', labelCs: '⭐️ Šerif & Zákon', labelEn: '⭐️ Law & Sheriff', color: '#f1c40f' },
+                  { id: 'outlaws', labelCs: '💀 Bandité', labelEn: '💀 Outlaws', color: '#e74c3c' },
+                  { id: 'renegade', labelCs: '🤠 Odpadlík', labelEn: '🤠 Renegade', color: '#9b59b6' },
+                  { id: 'ironhorse', labelCs: '🚂 Železný oř', labelEn: '🚂 Ironhorse', color: '#e67e22' }
+                ].map(r => `
+                  <button type="button" class="btn-winner-opt ${matchTrackerState.form.winner === r.id ? 'active' : ''}"
+                          data-winner="${r.id}"
+                          style="padding: 0.75rem; border-radius: 8px; border: 2px solid ${matchTrackerState.form.winner === r.id ? r.color : 'var(--border-color)'}; background: ${matchTrackerState.form.winner === r.id ? r.color : 'var(--bg-card)'}; color: ${matchTrackerState.form.winner === r.id ? '#fff' : 'inherit'}; cursor: pointer; font-weight: bold; font-size: 0.9rem; transition: all 0.2s;">
+                    ${isEn ? r.labelEn : r.labelCs}
+                  </button>
+                `).join('')}
+              </div>
+            </div>
+
+            <!-- ROW: PLAYERS & DURATION -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.25rem;">
+              <div>
+                <label style="display: block; font-weight: bold; font-size: 0.9rem; margin-bottom: 0.4rem;">
+                  👥 ${isEn ? 'Number of Players:' : 'Počet hráčů:'}
+                </label>
+                <select id="inp-match-players" style="width: 100%; padding: 0.6rem 0.8rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-card); font-size: 0.95rem;">
+                  ${[3, 4, 5, 6, 7, 8].map(n => `
+                    <option value="${n}" ${matchTrackerState.form.playersCount === n ? 'selected' : ''}>
+                      ${n} ${isEn ? 'players' : 'hráčů'}
+                    </option>
+                  `).join('')}
+                </select>
+              </div>
+
+              <div>
+                <label style="display: block; font-weight: bold; font-size: 0.9rem; margin-bottom: 0.4rem;">
+                  ⏱️ ${isEn ? 'Duration (minutes):' : 'Doba hry (minuty):'}
+                </label>
+                <input type="number" id="inp-match-duration" value="${matchTrackerState.form.durationMin}" min="5" max="300" step="5" style="width: 100%; padding: 0.6rem 0.8rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-card); font-size: 0.95rem;">
+              </div>
+            </div>
+
+            <!-- ROW: SHERIFF CHAR & MVP CHAR -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.25rem;">
+              <div>
+                <label style="display: block; font-weight: bold; font-size: 0.9rem; margin-bottom: 0.4rem;">
+                  ⭐️ ${isEn ? 'Sheriff Character:' : 'Postava Šerifa:'}
+                </label>
+                <select id="inp-match-sheriff" style="width: 100%; padding: 0.6rem 0.8rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-card); font-size: 0.95rem;">
+                  <option value="">${isEn ? '-- Select Sheriff --' : '-- Vyber Šerifa --'}</option>
+                  ${allChars.map(c => `
+                    <option value="${c.name}" ${matchTrackerState.form.sheriffChar === c.name ? 'selected' : ''}>${c.name}</option>
+                  `).join('')}
+                </select>
+              </div>
+
+              <div>
+                <label style="display: block; font-weight: bold; font-size: 0.9rem; margin-bottom: 0.4rem;">
+                  🎖️ ${isEn ? 'MVP / Match Hero:' : 'MVP / Hvězda zápasu:'}
+                </label>
+                <select id="inp-match-mvp" style="width: 100%; padding: 0.6rem 0.8rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-card); font-size: 0.95rem;">
+                  <option value="">${isEn ? '-- Select MVP --' : '-- Vyber MVP --'}</option>
+                  ${allChars.map(c => `
+                    <option value="${c.name}" ${matchTrackerState.form.mvpChar === c.name ? 'selected' : ''}>${c.name}</option>
+                  `).join('')}
+                </select>
+              </div>
+            </div>
+
+            <!-- NOTES -->
+            <div style="margin-bottom: 1.5rem;">
+              <label style="display: block; font-weight: bold; font-size: 0.9rem; margin-bottom: 0.4rem;">
+                💬 ${isEn ? 'Notes / Epic Moments:' : 'Poznámka / Památné okamžiky:'}
+              </label>
+              <input type="text" id="inp-match-notes" placeholder="${isEn ? 'e.g. Dynamite killed 2 players in round 3!' : 'např. Šerif přežil s 1 HP, Dynamit explodoval v duelu!'}" value="${matchTrackerState.form.notes}" style="width: 100%; padding: 0.6rem 0.8rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-card); font-size: 0.95rem;">
+            </div>
+
+            <div style="display: flex; gap: 0.8rem; justify-content: flex-end;">
+              <button type="button" id="btn-cancel-match" style="padding: 0.65rem 1.25rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-card); cursor: pointer; font-weight: 500;">
+                ${isEn ? 'Cancel' : 'Zrušit'}
+              </button>
+              <button type="button" id="btn-save-match" class="btn-primary" style="padding: 0.65rem 1.5rem; border-radius: 6px; font-weight: bold; cursor: pointer;">
+                💾 ${isEn ? 'Save Match' : 'Uložit partii'}
+              </button>
+            </div>
+          </div>
+        ` : ''}
+
+        <!-- MATCH HISTORY LIST -->
+        <div>
+          <h3 style="font-family: 'Georgia', serif; font-size: 1.15rem; color: var(--color-brown); margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">
+            📜 ${isEn ? 'Recorded Matches' : 'Odehrané partie'} (${matches.length})
+          </h3>
+
+          ${matches.length === 0 ? `
+            <div style="text-align: center; padding: 3rem 1rem; background: var(--bg-surface); border-radius: 10px; border: 1px dashed var(--border-color); color: var(--text-muted);">
+              <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">📭</div>
+              <div style="font-size: 1.05rem; font-weight: bold; margin-bottom: 0.3rem;">
+                ${isEn ? 'No matches recorded yet!' : 'Zatím žádné odehrané partie v zápisníku!'}
+              </div>
+              <div style="font-size: 0.9rem;">
+                ${isEn ? 'Click "Record New Match" above to save your first game.' : 'Klikněte na "Zapsat novou partii" výše a uložte svůj první výsledek.'}
+              </div>
+            </div>
+          ` : `
+            <div style="display: flex; flex-direction: column; gap: 0.85rem;">
+              ${matches.map(m => {
+                const winnerBadge = {
+                  sheriff: { icon: '⭐️', labelCs: 'Zákon / Šerif', labelEn: 'Law / Sheriff', color: '#f1c40f', bg: 'rgba(241, 196, 15, 0.15)' },
+                  outlaws: { icon: '💀', labelCs: 'Bandité', labelEn: 'Outlaws', color: '#e74c3c', bg: 'rgba(231, 76, 60, 0.15)' },
+                  renegade: { icon: '🤠', labelCs: 'Odpadlík', labelEn: 'Renegade', color: '#9b59b6', bg: 'rgba(155, 89, 182, 0.15)' },
+                  ironhorse: { icon: '🚂', labelCs: 'Železný oř', labelEn: 'Ironhorse', color: '#e67e22', bg: 'rgba(230, 126, 34, 0.15)' }
+                }[m.winner] || { icon: '🏆', labelCs: 'Neznámý', labelEn: 'Unknown', color: '#999', bg: 'rgba(0,0,0,0.05)' };
+
+                return `
+                  <div style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 10px; padding: 1rem 1.25rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                    <div>
+                      <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.35rem;">
+                        <span style="background: ${winnerBadge.bg}; color: ${winnerBadge.color}; border: 1px solid ${winnerBadge.color}; border-radius: 16px; padding: 0.2rem 0.65rem; font-weight: bold; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.3rem;">
+                          ${winnerBadge.icon} ${isEn ? winnerBadge.labelEn : winnerBadge.labelCs}
+                        </span>
+                        <span style="font-size: 0.82rem; color: var(--text-muted);">
+                          📅 ${m.dateFormatted || ''} • 👥 ${m.playersCount || '?'} ${isEn ? 'players' : 'hráčů'} • ⏱️ ${m.durationMin || '?'} min
+                        </span>
+                      </div>
+                      <div style="font-size: 0.88rem; display: flex; gap: 1.2rem; flex-wrap: wrap;">
+                        ${m.sheriffChar ? `<span>⭐️ <strong>${isEn ? 'Sheriff' : 'Šerif'}:</strong> ${m.sheriffChar}</span>` : ''}
+                        ${m.mvpChar ? `<span>🎖️ <strong>MVP:</strong> ${m.mvpChar}</span>` : ''}
+                      </div>
+                      ${m.notes ? `
+                        <div style="font-size: 0.84rem; font-style: italic; color: var(--text-muted); margin-top: 0.35rem;">
+                          "${m.notes}"
+                        </div>
+                      ` : ''}
+                    </div>
+
+                    <button type="button" class="btn-del-match" data-id="${m.id}" title="${isEn ? 'Delete match' : 'Smazat záznam'}" style="background: none; border: none; font-size: 1.1rem; opacity: 0.6; cursor: pointer; padding: 0.4rem; transition: opacity 0.2s;">
+                      🗑️
+                    </button>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+          `}
+        </div>
+      </div>
+    `;
+
+    // Event listeners
+    const btnToggle = document.getElementById('btn-toggle-match-form');
+    if (btnToggle) {
+      btnToggle.addEventListener('click', () => {
+        matchTrackerState.showForm = !matchTrackerState.showForm;
+        renderMatchTracker(container);
+      });
+    }
+
+    const btnCancel = document.getElementById('btn-cancel-match');
+    if (btnCancel) {
+      btnCancel.addEventListener('click', () => {
+        matchTrackerState.showForm = false;
+        renderMatchTracker(container);
+      });
+    }
+
+    container.querySelectorAll('.btn-winner-opt').forEach(btn => {
+      btn.addEventListener('click', () => {
+        matchTrackerState.form.winner = btn.dataset.winner;
+        renderMatchTracker(container);
+      });
+    });
+
+    const btnSave = document.getElementById('btn-save-match');
+    if (btnSave) {
+      btnSave.addEventListener('click', () => {
+        const inpPlayers = document.getElementById('inp-match-players');
+        const inpDuration = document.getElementById('inp-match-duration');
+        const inpSheriff = document.getElementById('inp-match-sheriff');
+        const inpMvp = document.getElementById('inp-match-mvp');
+        const inpNotes = document.getElementById('inp-match-notes');
+
+        const matchData = {
+          winner: matchTrackerState.form.winner,
+          playersCount: inpPlayers ? parseInt(inpPlayers.value, 10) : matchTrackerState.form.playersCount,
+          durationMin: inpDuration ? parseInt(inpDuration.value, 10) : matchTrackerState.form.durationMin,
+          sheriffChar: inpSheriff ? inpSheriff.value : '',
+          mvpChar: inpMvp ? inpMvp.value : '',
+          notes: inpNotes ? inpNotes.value.trim() : ''
+        };
+
+        if (tracker) {
+          tracker.save(matchData);
+        }
+
+        matchTrackerState.showForm = false;
+        matchTrackerState.form.notes = '';
+        renderMatchTracker(container);
+      });
+    }
+
+    container.querySelectorAll('.btn-del-match').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const matchId = btn.dataset.id;
+        if (confirm(isEn ? 'Delete this match entry?' : 'Opravdu smazat tento záznam partie?')) {
+          if (tracker) {
+            tracker.delete(matchId);
+          }
+          renderMatchTracker(container);
+        }
+      });
+    });
+
+    const btnExport = document.getElementById('btn-export-matches');
+    if (btnExport) {
+      btnExport.addEventListener('click', () => {
+        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(matches, null, 2));
+        const downloadAnchor = document.createElement('a');
+        downloadAnchor.setAttribute("href", dataStr);
+        downloadAnchor.setAttribute("download", `bang_matches_${new Date().toISOString().slice(0,10)}.json`);
+        document.body.appendChild(downloadAnchor);
+        downloadAnchor.click();
+        downloadAnchor.remove();
+      });
+    }
+
+    const btnClear = document.getElementById('btn-clear-matches');
+    if (btnClear) {
+      btnClear.addEventListener('click', () => {
+        if (confirm(isEn ? 'Permanently delete ALL recorded matches?' : 'Opravdu trvale smazat celou historii zápisníku?')) {
+          if (tracker) {
+            tracker.clear();
+          }
+          renderMatchTracker(container);
+        }
+      });
+    }
   }
 
   // 5. RULES QUIZ
