@@ -102,7 +102,7 @@
   // =========================================================================
   const I18N = {
     cs: {
-      brandTitle: "BANG! Companion",
+      brandTitle: "Companion",
       brandSubtitle: "Kompletní pravidla, encyklopedie karet & herní pomocník",
       searchPlaceholder: "Hledat kartu, postavu, pravidlo... (stiskni /)",
       themeTitle: "Přepnout tmavý / světlý westernový režim",
@@ -147,7 +147,7 @@
       scrollTopTitle: "Zpět nahoru"
     },
     en: {
-      brandTitle: "BANG! Companion",
+      brandTitle: "Companion",
       brandSubtitle: "Complete rules, card encyclopedia & tabletop companion",
       searchPlaceholder: "Search card, character, rule... (press /)",
       themeTitle: "Toggle dark / light western theme",
