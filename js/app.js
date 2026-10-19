@@ -11,6 +11,7 @@
     selectedType: 'all',
     selectedSuit: 'all',
     sortBy: 'name-asc',
+    activeRulesCategory: 'all',
     activeFaqCategory: 'all',
     faqQuery: '',
     selectedCard: null
@@ -49,6 +50,7 @@
     cardModal: document.getElementById('card-modal'),
     modalBody: document.getElementById('modal-body'),
     modalClose: document.getElementById('modal-close'),
+    rulesCategoriesContainer: document.getElementById('rules-categories-container'),
     rulesTocHeader: document.getElementById('rules-toc-header'),
     rulesContentTarget: document.getElementById('rules-content-target'),
     rulesTocTarget: document.getElementById('rules-toc-target'),
@@ -365,6 +367,7 @@
 
     // Render all components
     renderCards();
+    renderRulesCategories();
     renderRules();
     renderFaqCategories();
     renderFaq();
@@ -717,15 +720,60 @@
   }
 
   // =========================================================================
-  // RENDER RULES
+  // RULES CATEGORIES & RENDER RULES
   // =========================================================================
+  const RULES_CATEGORIES = [
+    { id: 'all', cs: '📚 Všechna pravidla', en: '📚 All Rules' },
+    { id: 'base', cs: '🎯 Základní hra BANG!', en: '🎯 BANG! Base Game' },
+    { id: 'dodge-city', cs: '🟢 Dodge City', en: '🟢 Dodge City' },
+    { id: 'high-noon-fistful', cs: '☀️ Pravé poledne & Fistful', en: '☀️ High Noon & Fistful' },
+    { id: 'gold-rush', cs: '🪙 Zlatá horečka', en: '🪙 Gold Rush' },
+    { id: 'armed-dangerous', cs: '🟠 Ozbrojení a nebezpeční', en: '🟠 Armed & Dangerous' },
+    { id: 'train-robbery', cs: '🚂 Velká vlaková loupež', en: '🚂 The Great Train Robbery' },
+    { id: 'legends', cs: '🌟 Legendy', en: '🌟 Legends' },
+    { id: 'valley-wildwest', cs: '💀 Údolí stínů & Divoký západ', en: '💀 Valley & Wild West' },
+    { id: 'dynamite-box', cs: '🧨 Kompletní hra dohromady', en: '🧨 Complete Game' }
+  ];
+
+  function renderRulesCategories() {
+    if (!els.rulesCategoriesContainer) return;
+    const isEn = state.lang === 'en';
+
+    els.rulesCategoriesContainer.innerHTML = RULES_CATEGORIES.map(cat => `
+      <button class="rules-cat-btn ${state.activeRulesCategory === cat.id ? 'active' : ''}" data-cat-id="${cat.id}">
+        ${isEn ? cat.en : cat.cs}
+      </button>
+    `).join('');
+
+    els.rulesCategoriesContainer.querySelectorAll('.rules-cat-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        els.rulesCategoriesContainer.querySelectorAll('.rules-cat-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        state.activeRulesCategory = btn.dataset.catId;
+        renderRules();
+        scrollToRulesToc();
+      });
+    });
+  }
+
   function renderRules() {
     if (!els.rulesContentTarget) return;
     const isEn = state.lang === 'en';
-    const rules = (isEn && window.BANG_RULES_EN) ? window.BANG_RULES_EN : (window.BANG_RULES || []);
+    const allRules = (isEn && window.BANG_RULES_EN) ? window.BANG_RULES_EN : (window.BANG_RULES || []);
+
+    const rules = state.activeRulesCategory === 'all'
+      ? allRules
+      : allRules.filter(sec => sec.category === state.activeRulesCategory);
 
     if (els.rulesTocHeader) {
-      els.rulesTocHeader.textContent = isEn ? 'Table of Contents' : 'Obsah pravidel';
+      const activeCat = RULES_CATEGORIES.find(c => c.id === state.activeRulesCategory);
+      if (state.activeRulesCategory === 'all') {
+        els.rulesTocHeader.textContent = isEn ? 'Table of Contents' : 'Obsah pravidel';
+      } else {
+        els.rulesTocHeader.textContent = isEn
+          ? `Contents: ${activeCat ? activeCat.en : ''}`
+          : `Obsah: ${activeCat ? activeCat.cs : ''}`;
+      }
     }
 
     if (els.rulesTocTarget) {
@@ -734,6 +782,19 @@
           <a href="#${sec.id}" class="rules-toc-link ${idx === 0 ? 'active' : ''}">${sec.title}</a>
         </li>
       `).join('');
+
+      els.rulesTocTarget.querySelectorAll('.rules-toc-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+          const targetId = link.getAttribute('href').replace('#', '');
+          const targetEl = document.getElementById(targetId);
+          if (targetEl) {
+            e.preventDefault();
+            els.rulesTocTarget.querySelectorAll('.rules-toc-link').forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+            scrollToElement(targetEl, 14);
+          }
+        });
+      });
     }
 
     els.rulesContentTarget.innerHTML = rules.map(sec => `
@@ -746,6 +807,14 @@
         </div>
       </section>
     `).join('');
+
+    // Attach back to TOC event listeners
+    els.rulesContentTarget.querySelectorAll('.btn-back-to-toc').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        scrollToRulesToc();
+      });
+    });
   }
 
   // =========================================================================
