@@ -194,7 +194,7 @@
   };
 
   const EXPANSIONS_EN = {
-    'all': 'All Expansions (250 items)',
+    'all': 'All Expansions (258 items)',
     'base': 'Base Game',
     'dodge-city': 'Dodge City (Green Cards)',
     'gold-rush': 'Gold Rush (Equipment & Gold)',
@@ -209,7 +209,7 @@
   };
 
   const EXPANSIONS_CS = {
-    'all': 'Všechna rozšíření (250 karet)',
+    'all': 'Všechna rozšíření (258 karet)',
     'base': 'Základní hra',
     'dodge-city': 'Město duchů (Zelené karty)',
     'gold-rush': 'Zlatá horečka (Vybavení a zlato)',
@@ -1858,6 +1858,8 @@
         filtered = allEventCards.filter(c => c.expansion === 'high-noon');
       } else if (eventDeckState.filterSet === 'fistful') {
         filtered = allEventCards.filter(c => c.expansion === 'fistful-of-cards');
+      } else if (eventDeckState.filterSet === 'wild-west-show') {
+        filtered = allEventCards.filter(c => c.expansion === 'wild-west-show');
       } else if (eventDeckState.filterSet === 'both') {
         filtered = allEventCards.filter(c => ['high-noon', 'fistful-of-cards'].includes(c.expansion));
       }
@@ -1867,8 +1869,10 @@
         c.name === 'Pravé poledne' || 
         c.name === 'Pěst plná karet' || 
         c.name === 'Pěst plná karet (Fistful)' ||
+        c.name === 'Divoký západ (Wild West Show)' ||
         c.nameEn === 'High Noon' ||
-        c.nameEn === 'A Fistful of Cards'
+        c.nameEn === 'A Fistful of Cards' ||
+        c.nameEn === 'Wild West Show'
       );
       if (climaxIdx !== -1) {
         const climaxCard = shuffled.splice(climaxIdx, 1)[0];
@@ -1893,17 +1897,18 @@
     container.innerHTML = `
       <div class="tool-card-box">
         <div class="tool-card-header">
-          <h2><span>☀️</span> ${isEn ? 'Event Deck (High Noon & Fistful of Cards)' : 'Digitální balíček událostí (Pravé poledne & Fistful)'}</h2>
-          <p class="tool-card-lead">${isEn ? 'Sheriff turns a new global event card at the start of each round. The climax card is automatically placed on the bottom.' : 'Šerif na začátku každého kola hry otočí novou událost. Finální karta je automaticky zamíchána na spodek balíčku dle oficiálních pravidel.'}</p>
+          <h2><span>☀️</span> ${isEn ? 'Event Deck (High Noon, Fistful & Wild West Show)' : 'Digitální balíček událostí (Pravé poledne, Fistful & Divoký západ)'}</h2>
+          <p class="tool-card-lead">${isEn ? 'Sheriff turns a new global event card at the start of each round (or when a Stagecoach / Wells Fargo is played in Wild West Show). The climax card is automatically placed on the bottom.' : 'Šerif na začátku každého kola hry otočí novou událost (nebo při zahrání Dostavníku / Wells Fargo v Divokém západu). Finální karta je automaticky zamíchána na spodek balíčku dle oficiálních pravidel.'}</p>
         </div>
 
         <div class="events-deck-container">
           <div class="events-controls-bar">
             <select id="event-set-select" class="filter-select">
-              <option value="both" ${eventDeckState.filterSet === 'both' ? 'selected' : ''}>☀️ ${isEn ? 'High Noon & Fistful together' : 'Pravé poledne & Pěst plná karet'}</option>
-              <option value="high-noon" ${eventDeckState.filterSet === 'high-noon' ? 'selected' : ''}>☀️ ${isEn ? 'High Noon only' : 'Pouze Pravé poledne'}</option>
-              <option value="fistful" ${eventDeckState.filterSet === 'fistful' ? 'selected' : ''}>💀 ${isEn ? 'A Fistful of Cards only' : 'Pouze Pěst plná karet'}</option>
-              <option value="all" ${eventDeckState.filterSet === 'all' ? 'selected' : ''}>🏜️ ${isEn ? 'All Expansions (incl. Wild West Show)' : 'Všechny (včetně Divokého západu)'}</option>
+              <option value="both" ${eventDeckState.filterSet === 'both' ? 'selected' : ''}>☀️ ${isEn ? 'High Noon & Fistful together (28 cards)' : 'Pravé poledne & Pěst plná karet (28 karet)'}</option>
+              <option value="high-noon" ${eventDeckState.filterSet === 'high-noon' ? 'selected' : ''}>☀️ ${isEn ? 'High Noon only (13 cards)' : 'Pouze Pravé poledne (13 karet)'}</option>
+              <option value="fistful" ${eventDeckState.filterSet === 'fistful' ? 'selected' : ''}>💀 ${isEn ? 'A Fistful of Cards only (15 cards)' : 'Pouze Pěst plná karet (15 karet)'}</option>
+              <option value="wild-west-show" ${eventDeckState.filterSet === 'wild-west-show' ? 'selected' : ''}>🎪 ${isEn ? 'Wild West Show only (10 cards)' : 'Pouze Divoký západ (10 karet)'}</option>
+              <option value="all" ${eventDeckState.filterSet === 'all' ? 'selected' : ''}>🏜️ ${isEn ? 'All Expansions (38 cards)' : 'Všechna rozšíření dohromady (38 karet)'}</option>
             </select>
             <button type="button" class="btn-reset-filters" id="btn-shuffle-events" style="font-weight: 700;">
               🔄 ${isEn ? 'Shuffle New Deck' : 'Zamíchat nový balíček'}
