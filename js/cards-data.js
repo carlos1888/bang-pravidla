@@ -1441,7 +1441,7 @@ window.BANG_CARDS = [
       "dostřel 1",
       "základ"
     ],
-    "image": null,
+    "image": "assets/cards/01_zakladni_hra/colt-45.webp",
     "expansionNameEn": "Base Game",
     "typeLabelEn": "Blue Card (In Play)",
     "effectEn": "Default weapon pictured on player board. Range 1.",

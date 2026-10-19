@@ -2542,5 +2542,10 @@
     "id": "railcar-lounge-car",
     "path": "assets/cards/05_velka_vlakova_loupez/lounge-car.webp",
     "name": "railcar-lounge-car"
+  },
+  {
+    "id": "weapon-colt-45",
+    "path": "assets/cards/01_zakladni_hra/colt-45.webp",
+    "name": "weapon-colt-45"
   }
 ]
