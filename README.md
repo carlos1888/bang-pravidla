@@ -24,6 +24,13 @@ Tento repozitář obsahuje komplexní pravidlový systém, encyklopedii karet a 
 Aplikace obsahuje ucelenou sadu interaktivních nástrojů přímo ke stolu:
 * ⚙️ **Asistent přípravy hry na míru (Setup Configurator):** Interaktivní konfigurátor pro 3–8 hráčů s libovolnou kombinací rozšíření. Vypočítá přesné složení skrytých rolí (včetně varianty pro 3 hráče a 2. odpadlíka pro 8 hráčů), speciální pravidla rozdávání karet a interaktivní odškrtávací checklist před zahájením duelu.
 * 🎯 **Kalkulačka vzdáleností & Bojový radar:** Vizuální westernový stůl v saloonu pro 3–8 hráčů. Zobrazuje nejen vzdálenost mezi dvěma hráči, ale slouží jako **živý radar dostřelu všech cílů u stolu současně** (zelené zaměřovače na zasažitelné soupeře, modré indikátory pro Paniku a detailní střelecký protokol).
+* 🎭 **Zápisník podezření pro Šerifa (Bluff & Deduction Tracker):** Přímo v saloonovém stole kalkulačky vzdáleností umožňuje Šerifovi zaznamenávat podezření pro každou židli u stolu (Neznámý, Pomocník, Bandita, Odpadlík, Mrtvý) pro dedukci identity soupeřů.
+* 🚂 **Virtuální stanice & souprava pro Velkou vlakovou loupež (Train Board):** Interaktivní kolejnice s lokomotivou (Leland / Ironhorse), 8 vagony a 13 stanicemi. Posun vlaku, odpřahování vagonů a nákupy přímo na obrazovce.
+* 🌟 **Správce činů a slávy pro Legendy (Legends Feat Tracker):** Kompletní správa 16 legendárních postav, sledování žetonů slávy (1–5) a stavu 3 vyložených činů (nevykonaný, splněný, přivlastněný jiným hráčem) s automatickým přechodem na Stranu B po 5. žetonu!
+* ⏱️ **Šerifovy hodinky & Rychlý Duel (Turn & Duel Timer):** Nastavitelný odpočet tahu hráče (30s–120s) a bleskový šachový střídavý 5s odpočet pro napínavé Duely u stolu s obřími reakčními tlačítky a zvukem výstřelu.
+* 🪙 **Saloon & Obchod s vybavením (Gold Rush Armory):** Interaktivní výloha 3 karet vybavení pro Zlatou horečku s cenami, nákupem za valouny, automatickým doplňováním a přehledem odhozených karet.
+* 🎲 **Generátor hospodských výzev a scénářů (Bounty & House Rules):** 12 vyladěných hospodských scénářů a tematických pravidel (Krvavý polední masakr, Lovec odměn, Noční přestřelka, Zlatá horečka...).
+* 🖨️ **Tiskový tahový tahák pro nováčky (Print-friendly Cheat Sheet):** Optimalizovaný formát pro okamžitý tisk na A4 / PDF přímo z prohlížeče (přehled fází 0–4, tabulka zbraní a vzdáleností, symboly karet a matice rolí pro 4–8 hráčů).
 * ⚖️ **Arbitr snímání & Kalkulátor šancí na přežití:** Řešitel herních sporů a strategický rádce přímo ke stolu. Umožňuje zadat kartu fyzicky otočenou z dobíracího balíčku na stole pro nezpochybnitelný oficiální verdikt (Vězení, Dynamit, Barel, Chřestýš, Bomba, Teren Kill). Zobrazuje přesné matematické šance na přežití / úspěch včetně dynamického přepočtu pro schopnost Lucky Dukea (snímání 2 karet).
 * 🏆 **Zápisník partií & statistiky party (Match Tracker):** Trvalé lokální ukládání odehraných bitev (100% offline v zařízení). Počítá poměry výher Zákona, Banditů, Odpadlíků a Železného oře, zaznamenává hvězdy zápasu (MVP) i památné momenty s možností exportu do JSON.
 * 📜 **Interaktivní průvodce tahem (Turn Flow Stepper):** Krok za krokem provede fázemi tahu hráče (Fáze 0: Kontrola pastí, Fáze 1: Dobírání, Fáze 2: Hraní karet, Fáze 3: Odhazování přebytků a Fáze 4: Konec tahu) s živými testovacími tlačítky pro Vězení, Dynamit, Bombu a Chřestýše.
@@ -33,6 +40,7 @@ Aplikace obsahuje ucelenou sadu interaktivních nástrojů přímo ke stolu:
 * 📋 **Virtuální deska hráčů:** Přehledná tabule pro správu životů, rolí, postav, zlata a nábojů u stolu.
 * 🤠 **Kvíz pravidel:** Prověření znalostí záludných a pokročilých herních pravidel.
 * 🔊 **Western Soundboard:** Atmosférické westernové zvukové efekty pro oživení atmosféry u hry.
+
 
 
 ---

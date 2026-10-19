@@ -1238,6 +1238,256 @@
     }
   };
 
+  // =========================================================================
+  // 8. BOUNTY & HOUSE RULES SCENARIOS DATABASE
+  // =========================================================================
+  const BANG_SCENARIOS = [
+    {
+      id: 'dry-well',
+      titleCs: '🏜️ Vyschlá studna',
+      titleEn: '🏜️ Dry Well',
+      descCs: 'V saloonu dochází zásoby. Karty Pivo léčí život pouze tehdy, pokud u stolu zbývají poslední 3 nebo 2 hráči. Do té doby nemají žádný léčivý efekt.',
+      descEn: 'Saloon supplies are low. Beer cards heal only when 2 or 3 players remain alive. Until then, they provide no healing.',
+      tagCs: 'Pivo & Léčení',
+      tagEn: 'Beer & Healing'
+    },
+    {
+      id: 'hot-lead',
+      titleCs: '💨 Rychlé kolty',
+      titleEn: '💨 Fast Colts',
+      descCs: 'Prach a sucho v saloonu. Všechny zbraně (včetně základního Coltu .45) mají pro všechny hráče dostřel zvýšený o +1.',
+      descEn: 'All weapons (including the default Colt .45) have their range increased by +1 for all players.',
+      tagCs: 'Dostřel & Zbraně',
+      tagEn: 'Range & Weapons'
+    },
+    {
+      id: 'double-tap',
+      titleCs: '⚡ Rychlá spoušť',
+      titleEn: '⚡ Double Tap',
+      descCs: 'Každý hráč může ve své Fázi 2 zahrát až 2 karty BANG! za tah (i bez zbraně Volcanic). Volcanic umožňuje neomezeně.',
+      descEn: 'Every player may play up to 2 BANG! cards per turn in Phase 2 without needing a Volcanic.',
+      tagCs: 'Boj',
+      tagEn: 'Combat'
+    },
+    {
+      id: 'sandstorm',
+      titleCs: '🌪️ Písečná bouře',
+      titleEn: '🌪️ Sandstorm',
+      descCs: 'Zvířený písek snižuje viditelnost. Minimální vzdálenost mezi libovolnými dvěma hráči je vždy alespoň 2 (i pro sousedy u stolu). Panika! ani Cat Balou na vzdálenost 1 nelze zahrát.',
+      descEn: 'Swirling dust blocks vision. Minimum distance between any two players is 2. Panic! cannot be played.',
+      tagCs: 'Vzdálenost',
+      tagEn: 'Distance'
+    },
+    {
+      id: 'bounty-hunter',
+      titleCs: '💰 Vypsaná odměna',
+      titleEn: '💰 Wanted Bounty',
+      descCs: 'Za každého vyřazeného Banditu získá jeho přemožitel kromě standardních 3 karet navíc 1 valoun zlata (nebo 1 kartu navíc, pokud se hraje bez Zlaté horečky).',
+      descEn: 'Eliminating an Outlaw grants 1 extra Gold Nugget (or 1 extra card) on top of the regular 3 cards.',
+      tagCs: 'Odměny',
+      tagEn: 'Bounties'
+    },
+    {
+      id: 'duel-at-sundown',
+      titleCs: '⚔️ Západ slunce v O.K. Corralu',
+      titleEn: '⚔️ Sunset at the O.K. Corral',
+      descCs: 'Karta Duel je posvátná. Pokud hráč v duelu ztratí život, vítěz duelu si okamžitě dobere 1 kartu z balíčku jako trofej.',
+      descEn: 'Duels are sacred. When a player loses a life in a Duel, the victor immediately draws 1 card as a trophy.',
+      tagCs: 'Duel',
+      tagEn: 'Duel'
+    },
+    {
+      id: 'wild-poker',
+      titleCs: '🃏 Saloonový hazard',
+      titleEn: '🃏 Saloon Poker',
+      descCs: 'Na začátku své Fáze 1 se hráč může vzdát běžného dobírání 2 karet a místo toho odhodit až 3 libovolné karty z ruky a dobrat stejný počet + 1 kartu navíc.',
+      descEn: 'At the start of Phase 1, you may discard up to 3 cards from hand and draw that many + 1 extra instead of drawing 2.',
+      tagCs: 'Karty & Dobírání',
+      tagEn: 'Cards'
+    },
+    {
+      id: 'sheriff-decree',
+      titleCs: '⭐️ Šerifovo stanné právo',
+      titleEn: '⭐️ Sheriff Martial Law',
+      descCs: 'Šerif nemůže být uvržen do Vězení (ani kartou Želízka). Pokud je Vězení zahráno na Šerifa, je okamžitě bez efektu odhozeno.',
+      descEn: 'The Sheriff is immune to Jail and Handcuffs. Any Jail played on the Sheriff is discarded without effect.',
+      tagCs: 'Zákon',
+      tagEn: 'Law'
+    },
+    {
+      id: 'dynamite-fever',
+      titleCs: '🧨 Výbušná horečka',
+      titleEn: '🧨 Dynamite Fever',
+      descCs: 'Dynamit exploduje na piky ♠ 2 až 10 (místo 2–9). Exploze je ještě nebezpečnější!',
+      descEn: 'Dynamite explodes on Spades 2 through 10 (instead of 2-9). Even deadlier!',
+      tagCs: 'Dynamit',
+      tagEn: 'Dynamite'
+    },
+    {
+      id: 'dead-mans-hand',
+      titleCs: '💀 Karty mrtvého muže',
+      titleEn: '💀 Dead Man\'s Hand',
+      descCs: 'Když je jakýkoliv hráč vyřazen, jeho vyložené modré karty se neodhodí, ale položí se lícem nahoru do středu stolu. Kdo zahraje kartu Panika! na vzdálenost 1, může si vzít kartu ze středu.',
+      descEn: 'When any player dies, their in-play blue cards stay in the center of the table. Panic! can claim them.',
+      tagCs: 'Hřbitov',
+      tagEn: 'Graveyard'
+    },
+    {
+      id: 'tequila-sunrise',
+      titleCs: '🍹 Tequila Sunrise',
+      titleEn: '🍹 Tequila Sunrise',
+      descCs: 'Karta Pivo může být zahrána na libovolného jiného hráče (i mimo svůj tah), aby mu vyléčila 1 život jako dar.',
+      descEn: 'Beer cards may be played on ANY other player at any time to restore 1 life as a friendly gift.',
+      tagCs: 'Pivo',
+      tagEn: 'Beer'
+    },
+    {
+      id: 'ricochet-fever',
+      titleCs: '🎯 Odražené kulky',
+      titleEn: '🎯 Ricochet Master',
+      descCs: 'Když se hráč úspěšně ubrání kartou Vedle! nebo Barelem, může odhodit ještě jednu kartu z ruky a odrazit kulku na hráče po své pravici (ten se musí také bránit).',
+      descEn: 'When successfully dodging an attack with Missed!/Barrel, you may discard 1 card to deflect the bullet rightward.',
+      tagCs: 'Obrana',
+      tagEn: 'Defense'
+    }
+  ];
+
+  // =========================================================================
+  // 9. TRAIN ROBBERY ENGINE (LOCOMOTIVE, WAGONS & STATIONS)
+  // =========================================================================
+  let trainState = null;
+
+  const TrainManager = {
+    init: (locoId = 'train-leland', wagonCount = 4) => {
+      const allCards = window.BANG_CARDS || [];
+      const wagons = allCards.filter(c => c.type === 'railcar' && c.id !== 'train-ironhorse' && c.id !== 'train-leland');
+      const stations = allCards.filter(c => c.type === 'station');
+      const loco = allCards.find(c => c.id === locoId) || allCards.find(c => c.id === 'train-leland');
+
+      // Shuffle wagons and stations
+      const shuffledWagons = [...wagons].sort(() => Math.random() - 0.5);
+      const shuffledStations = [...stations].sort(() => Math.random() - 0.5);
+
+      trainState = {
+        locomotive: loco,
+        activeWagons: shuffledWagons.slice(0, wagonCount),
+        wagonDeck: shuffledWagons.slice(wagonCount),
+        activeStation: shuffledStations[0] || null,
+        stationDeck: shuffledStations.slice(1),
+        stationIndex: 0,
+        movesCount: 0,
+        totalStationsCount: stations.length
+      };
+      return trainState;
+    },
+
+    getState: () => {
+      if (!trainState) TrainManager.init();
+      return trainState;
+    },
+
+    advance: () => {
+      if (!trainState) TrainManager.init();
+      trainState.movesCount++;
+      if (trainState.movesCount % 3 === 0 && trainState.stationDeck.length > 0) {
+        trainState.activeStation = trainState.stationDeck.shift();
+        trainState.stationIndex++;
+        return { status: 'new_station', station: trainState.activeStation, moves: trainState.movesCount };
+      }
+      return { status: 'advanced', moves: trainState.movesCount };
+    },
+
+    detachWagon: (slotIdx) => {
+      if (!trainState || !trainState.activeWagons[slotIdx]) return null;
+      const detached = trainState.activeWagons[slotIdx];
+      if (trainState.wagonDeck.length > 0) {
+        trainState.activeWagons[slotIdx] = trainState.wagonDeck.shift();
+      } else {
+        trainState.activeWagons.splice(slotIdx, 1);
+      }
+      return detached;
+    },
+
+    nextStation: () => {
+      if (!trainState) TrainManager.init();
+      if (trainState.stationDeck.length > 0) {
+        trainState.activeStation = trainState.stationDeck.shift();
+        trainState.stationIndex++;
+        return trainState.activeStation;
+      }
+      return null;
+    },
+
+    toggleLocomotive: () => {
+      if (!trainState) TrainManager.init();
+      const allCards = window.BANG_CARDS || [];
+      const currentId = trainState.locomotive ? trainState.locomotive.id : 'train-leland';
+      const targetId = currentId === 'train-leland' ? 'train-ironhorse' : 'train-leland';
+      trainState.locomotive = allCards.find(c => c.id === targetId) || trainState.locomotive;
+      return trainState.locomotive;
+    }
+  };
+
+  // =========================================================================
+  // 10. GOLD RUSH ARMORY / SALOON STORE ENGINE
+  // =========================================================================
+  let goldRushStoreState = null;
+
+  const GoldRushStore = {
+    init: () => {
+      const allCards = window.BANG_CARDS || [];
+      const equipCards = allCards.filter(c => c.expansion === 'gold-rush' && (c.type === 'black' || c.type === 'brown-equipment'));
+      const shuffled = [...equipCards].sort(() => Math.random() - 0.5);
+
+      goldRushStoreState = {
+        storefront: shuffled.slice(0, 3),
+        deck: shuffled.slice(3),
+        discard: []
+      };
+      return goldRushStoreState;
+    },
+
+    getState: () => {
+      if (!goldRushStoreState) GoldRushStore.init();
+      return goldRushStoreState;
+    },
+
+    buyCard: (slotIdx) => {
+      if (!goldRushStoreState || !goldRushStoreState.storefront[slotIdx]) return null;
+      const bought = goldRushStoreState.storefront[slotIdx];
+      goldRushStoreState.discard.push(bought);
+
+      if (goldRushStoreState.deck.length > 0) {
+        goldRushStoreState.storefront[slotIdx] = goldRushStoreState.deck.shift();
+      } else if (goldRushStoreState.discard.length > 1) {
+        const toRecycle = goldRushStoreState.discard.slice(0, -1).sort(() => Math.random() - 0.5);
+        goldRushStoreState.discard = [bought];
+        goldRushStoreState.deck = toRecycle;
+        goldRushStoreState.storefront[slotIdx] = goldRushStoreState.deck.shift();
+      } else {
+        goldRushStoreState.storefront.splice(slotIdx, 1);
+      }
+      return bought;
+    },
+
+    refreshStore: () => {
+      if (!goldRushStoreState) GoldRushStore.init();
+      goldRushStoreState.storefront.forEach(c => goldRushStoreState.discard.push(c));
+      goldRushStoreState.storefront = [];
+
+      for (let i = 0; i < 3; i++) {
+        if (goldRushStoreState.deck.length === 0 && goldRushStoreState.discard.length > 0) {
+          goldRushStoreState.deck = [...goldRushStoreState.discard].sort(() => Math.random() - 0.5);
+          goldRushStoreState.discard = [];
+        }
+        if (goldRushStoreState.deck.length > 0) {
+          goldRushStoreState.storefront.push(goldRushStoreState.deck.shift());
+        }
+      }
+      return goldRushStoreState;
+    }
+  };
+
   // Export to window
   window.BANG_TOOLS = {
     SoundFX,
@@ -1246,8 +1496,12 @@
     getCardSynergiesAndCounters,
     getSetupChecklist,
     DrawSimulator,
-    MatchTracker
+    MatchTracker,
+    Scenarios: BANG_SCENARIOS,
+    TrainManager,
+    GoldRushStore
   };
 
 })();
+
 
