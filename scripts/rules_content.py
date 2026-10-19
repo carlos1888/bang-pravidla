@@ -251,6 +251,33 @@ RULES_SECTIONS = [
   <div class="concept-example">
     <strong>ZLATÉ PRAVIDLO:</strong> Zbraně <strong>nemění skutečnou vzdálenost</strong> mezi hráči! Představují pouze dostřel pro kartu BANG!. Kartu <em>Panika!</em> (dosah 1) tedy s Winchesterem na hráče ve vzdálenosti 2 nezahrajete, pokud nemáte Hledí!
   </div>
+
+  <div class="concept-example" style="margin-top: 1rem; border-left: 4px solid var(--accent-gold, #c89b3c);">
+    <h4 style="margin: 0 0 0.5rem; color: var(--color-brown, #5c3a21); font-size: 1.1rem;">🐎 Sčítání a kombinování karet vzdálenosti</h4>
+    <p><strong>Ano, všechny tyto karty se sčítají.</strong> Podle oficiálních pravidel karetní hry nesmíte mít před sebou vyložené dvě úplně stejné modré karty (se stejným názvem). Protože má každá z těchto čtyř karet jiný název, můžete je mít vyložené na stole všechny najednou a jejich efekty se kombinují.</p>
+    <p style="margin-top: 0.5rem;"><strong>Vzdálenosti se v praxi počítají následovně:</strong></p>
+    
+    <div style="margin-top: 0.75rem;">
+      <h5 style="color: var(--color-brown, #5c3a21); font-size: 1rem; margin: 0 0 0.25rem;">🤠 Obranné karty (když na vás někdo útočí)</h5>
+      <p style="margin-bottom: 0.25rem;">Tyto karty zvyšují vzdálenost, na kterou vás vidí ostatní hráči:</p>
+      <ul style="margin: 0.25rem 0 0.5rem 1.25rem;">
+        <li><strong>Mustang:</strong> Ostatní vás vidí o 1 dál.</li>
+        <li><strong>Skrýš</strong> (případně Barel v základní hře*): Ostatní vás vidí o 1 dál.</li>
+      </ul>
+      <p><strong>Výsledek:</strong> Pokud máte vyloženého Mustanga i Skrýš, ostatní hráči vás vidí celkově o 2 dál. Hráč, který sedí hned vedle vás (základní vzdálenost 1), na vás potřebuje zbraň s dostřelem minimálně 3.</p>
+      <p style="font-size: 0.85rem; color: var(--color-brown, #5c3a21); opacity: 0.85; margin-top: 0.35rem;"><em>*Pravidlová poznámka: Barel v základní hře poskytuje šanci na sejmutí Vedle!, vzdálenost k vám přímo zvyšují Mustang a Skrýš (či schopnost postavy Paul Regret).</em></p>
+    </div>
+
+    <div style="margin-top: 1rem;">
+      <h5 style="color: var(--color-brown, #5c3a21); font-size: 1rem; margin: 0 0 0.25rem;">🎯 Útočné karty (když útočíte vy)</h5>
+      <p style="margin-bottom: 0.25rem;">Tyto karty zkracují vzdálenost, na kterou vidíte vy ostatní hráče:</p>
+      <ul style="margin: 0.25rem 0 0.5rem 1.25rem;">
+        <li><strong>Hledí</strong> (případně Appaloosa v základní hře): Vy vidíte ostatní o 1 blíž.</li>
+        <li><strong>Dalekohled:</strong> Vy vidíte ostatní o 1 blíž.</li>
+      </ul>
+      <p><strong>Výsledek:</strong> Pokud máte vyložené Hledí i Dalekohled, vidíte všechny hráče o 2 blíž. Hráče na reálnou vzdálenost 3 tak vidíte na vzdálenost 1 a stačí vám k útoku (např. kartou Bang! nebo Panika) základní zbraň Colt .45.</p>
+    </div>
+  </div>
 </div>
 
 <div class="concept-card">

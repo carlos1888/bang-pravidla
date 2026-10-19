@@ -566,6 +566,34 @@
       </table>
     </div>
 
+    <div class="callout callout-info" style="margin-top: 1.25rem;">
+      <h4 style="margin: 0 0 0.5rem; color: var(--color-brown, #5c3a21); font-size: 1.15rem;">🐎 Sčítání a kombinování karet vzdálenosti</h4>
+      <p><strong>Ano, všechny tyto karty se sčítají.</strong> Podle oficiálních pravidel karetní hry nesmíte mít před sebou vyložené dvě úplně stejné modré karty (se stejným názvem). Protože má každá z těchto čtyř karet jiný název, můžete je mít vyložené na stole všechny najednou a jejich efekty se kombinují.</p>
+      
+      <p style="margin-top: 0.75rem; font-weight: 600;">Vzdálenosti se v praxi počítají následovně:</p>
+
+      <div style="margin-top: 0.75rem; padding: 0.75rem 1rem; background: rgba(0,0,0,0.03); border-radius: 6px; border-left: 3px solid var(--accent-gold, #c89b3c);">
+        <h5 style="color: var(--color-brown, #5c3a21); margin: 0 0 0.35rem; font-size: 1.05rem;">🤠 Obranné karty (když na vás někdo útočí)</h5>
+        <p style="margin-bottom: 0.35rem;">Tyto karty zvyšují vzdálenost, na kterou vás vidí ostatní hráči.</p>
+        <ul style="margin: 0.25rem 0 0.5rem 1.25rem;">
+          <li><strong>Mustang:</strong> Ostatní vás vidí o 1 dál.</li>
+          <li><strong>Skrýš</strong> (případně Barel v základní hře*): Ostatní vás vidí o 1 dál.</li>
+        </ul>
+        <p><strong>Výsledek:</strong> Pokud máte vyloženého Mustanga i Skrýš, ostatní hráči vás vidí celkově o 2 dál. Hráč, který sedí hned vedle vás (základní vzdálenost 1), na vás potřebuje zbraň s dostřelem minimálně 3.</p>
+        <p style="font-size: 0.85rem; color: var(--color-brown, #5c3a21); opacity: 0.85; margin: 0.35rem 0 0;"><em>*Pravidlová poznámka: Barel v základní hře poskytuje šanci na sejmutí Vedle!, vzdálenost k vám přímo zvyšují Mustang a Skrýš (či schopnost postavy Paul Regret).</em></p>
+      </div>
+
+      <div style="margin-top: 0.75rem; padding: 0.75rem 1rem; background: rgba(0,0,0,0.03); border-radius: 6px; border-left: 3px solid var(--color-brown, #5c3a21);">
+        <h5 style="color: var(--color-brown, #5c3a21); margin: 0 0 0.35rem; font-size: 1.05rem;">🎯 Útočné karty (když útočíte vy)</h5>
+        <p style="margin-bottom: 0.35rem;">Tyto karty zkracují vzdálenost, na kterou vidíte vy ostatní hráče.</p>
+        <ul style="margin: 0.25rem 0 0.5rem 1.25rem;">
+          <li><strong>Hledí</strong> (případně Appaloosa v základní hře): Vy vidíte ostatní o 1 blíž.</li>
+          <li><strong>Dalekohled:</strong> Vy vidíte ostatní o 1 blíž.</li>
+        </ul>
+        <p><strong>Výsledek:</strong> Pokud máte vyložené Hledí i Dalekohled, vidíte všechny hráče o 2 blíž. Hráče na reálnou vzdálenost 3 tak vidíte na vzdálenost 1 a stačí vám k útoku (např. kartou Bang! nebo Panika) základní zbraň Colt .45.</p>
+      </div>
+    </div>
+
     <h3 style="color: var(--color-brown); font-size: 1.3rem; margin: 2rem 0 0.5rem;">
       3. Pravidla pro Pivo v různých herních situacích
     </h3>
@@ -794,6 +822,34 @@
           </tr>
         </tbody>
       </table>
+    </div>
+
+    <div class="callout callout-info" style="margin-top: 1.25rem;">
+      <h4 style="margin: 0 0 0.5rem; color: var(--color-brown, #5c3a21); font-size: 1.15rem;">🐎 Stacking &amp; Combining Distance Modifier Cards</h4>
+      <p><strong>Yes, all of these cards stack.</strong> According to official BANG! rules, you cannot have two identical blue cards (with the same name) in play in front of you. Because each of these cards has a different name, you can have them in play simultaneously and their effects combine.</p>
+      
+      <p style="margin-top: 0.75rem; font-weight: 600;">In practice, distances are calculated as follows:</p>
+
+      <div style="margin-top: 0.75rem; padding: 0.75rem 1rem; background: rgba(0,0,0,0.03); border-radius: 6px; border-left: 3px solid var(--accent-gold, #c89b3c);">
+        <h5 style="color: var(--color-brown, #5c3a21); margin: 0 0 0.35rem; font-size: 1.05rem;">🤠 Defensive Cards (when someone attacks you)</h5>
+        <p style="margin-bottom: 0.35rem;">These cards increase the distance at which other players see you.</p>
+        <ul style="margin: 0.25rem 0 0.5rem 1.25rem;">
+          <li><strong>Mustang:</strong> Others see you 1 further away.</li>
+          <li><strong>Hideout:</strong> Others see you 1 further away.</li>
+        </ul>
+        <p><strong>Result:</strong> If you have both Mustang and Hideout in play, other players see you 2 further away in total. A player sitting right next to you (base distance 1) needs a weapon with a range of at least 3 to target you.</p>
+        <p style="font-size: 0.85rem; color: var(--color-brown, #5c3a21); opacity: 0.85; margin: 0.35rem 0 0;"><em>*Rules Note: Barrel in the base game provides a chance to draw for a Missed! effect, whereas Mustang and Hideout (or Paul Regret) modify physical distance.</em></p>
+      </div>
+
+      <div style="margin-top: 0.75rem; padding: 0.75rem 1rem; background: rgba(0,0,0,0.03); border-radius: 6px; border-left: 3px solid var(--color-brown, #5c3a21);">
+        <h5 style="color: var(--color-brown, #5c3a21); margin: 0 0 0.35rem; font-size: 1.05rem;">🎯 Offensive Cards (when you attack)</h5>
+        <p style="margin-bottom: 0.35rem;">These cards decrease the distance at which you see other players.</p>
+        <ul style="margin: 0.25rem 0 0.5rem 1.25rem;">
+          <li><strong>Scope</strong> (or Appaloosa in the base game): You see others 1 closer.</li>
+          <li><strong>Binoculars:</strong> You see others 1 closer.</li>
+        </ul>
+        <p><strong>Result:</strong> If you have both Scope and Binoculars in play, you see all players 2 closer. A player at actual distance 3 is seen at distance 1, so the default Colt .45 is sufficient to attack them (e.g. with BANG! or Panic!).</p>
+      </div>
     </div>
 
     <h3 style="color: var(--color-brown); font-size: 1.3rem; margin: 2rem 0 0.5rem;">
