@@ -112,11 +112,11 @@
       navTah: "Tah hráče",
       navPomocnik: "Rychlý pomocník",
       navNastroje: "Herní nástroje",
-      quickTagsLabel: "⚡ Rychlé tagy:",
+      quickTagsLabel: "⚡ Tagy:",
       pinCharacter: "⭐ Připnout jako moji postavu",
       unpinCharacter: "✕ Odepnout postavu",
       compareCard: "⚖️ Porovnat s jinou kartou",
-      filterTitle: "Filtry karet",
+      filterTitle: "Filtry",
       filterReset: "Resetovat",
       filterExpansion: "Rozšíření",
       filterType: "Typ a barva karty",
@@ -157,11 +157,11 @@
       navTah: "Player Turn",
       navPomocnik: "Quick Helper",
       navNastroje: "Game Tools",
-      quickTagsLabel: "⚡ Quick Tags:",
+      quickTagsLabel: "⚡ Tags:",
       pinCharacter: "⭐ Pin as My Character",
       unpinCharacter: "✕ Unpin Character",
       compareCard: "⚖️ Compare with Another Card",
-      filterTitle: "Card Filters",
+      filterTitle: "Filters",
       filterReset: "Reset",
       filterExpansion: "Expansion",
       filterType: "Card Type & Color",
@@ -331,6 +331,7 @@
 
     // Filters
     if (els.labelFilterTitle) els.labelFilterTitle.textContent = t.filterTitle;
+    if (els.quickTagLabel) els.quickTagLabel.textContent = t.quickTagsLabel;
     if (els.btnResetFilters) els.btnResetFilters.textContent = t.filterReset;
     if (els.labelExpansion) els.labelExpansion.textContent = t.filterExpansion;
     if (els.labelType) els.labelType.textContent = t.filterType;
