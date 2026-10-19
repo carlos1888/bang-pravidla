@@ -7984,7 +7984,7 @@ window.BANG_CARDS = [
       "oregonská stezka",
       "fáze 1"
     ],
-    "image": null,
+    "image": "assets/cards/10_legendy/the-oregon-trail-legend.webp",
     "expansionNameEn": "Legends",
     "typeLabelEn": "Feat Card (Legends)",
     "effectEn": "Feat: Oregon Trail. Accomplish: hold 5 cards in hand at turn end. Reward: 2 Fame tokens.",
@@ -8056,7 +8056,7 @@ window.BANG_CARDS = [
       "zbraně",
       "padesát pistolí"
     ],
-    "image": null,
+    "image": "assets/cards/10_legendy/fifty-guns-legend.webp",
     "expansionNameEn": "Legends",
     "typeLabelEn": "Feat Card (Legends)",
     "effectEn": "Feat: Fifty Pistols. Accomplish: equip weapon Range 3+. Reward: 2 Fame tokens.",
@@ -8125,7 +8125,7 @@ window.BANG_CARDS = [
       "dvojité zranění",
       "banda"
     ],
-    "image": null,
+    "image": "assets/cards/10_legendy/old-west-gang-legend.webp",
     "expansionNameEn": "Legends",
     "typeLabelEn": "Feat Card (Legends)",
     "effectEn": "Feat: Old West Gang. Accomplish: have 2 Fame tokens on feats. Reward: 2 Fame tokens.",
@@ -8159,7 +8159,7 @@ window.BANG_CARDS = [
       "obětování života",
       "bezejmenný muž"
     ],
-    "image": null,
+    "image": "assets/cards/10_legendy/the-man-with-no-name-legend.webp",
     "expansionNameEn": "Legends",
     "typeLabelEn": "Feat Card (Legends)",
     "effectEn": "Feat: The Man with No Name. Accomplish: lose 1 life point voluntarily. Reward: 2 Fame tokens.",
@@ -8483,7 +8483,7 @@ window.BANG_CARDS = [
       "dynamite box",
       "dynamite patrona"
     ],
-    "image": null,
+    "image": "assets/cards/11_extra_karty/wooden-dynamite.webp",
     "expansionNameEn": "Dynamite Box & Promo",
     "typeLabelEn": "Blue Card (In Play)",
     "effectEn": "Blue card. Wooden Dynamite marker: passes left; explodes on ♠ 2–9 for 3 damage.",

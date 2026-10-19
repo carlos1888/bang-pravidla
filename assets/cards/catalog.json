@@ -2482,5 +2482,30 @@
     "height": 548,
     "origBytes": 411273,
     "webpBytes": 21860
+  },
+  {
+    "id": "feat-oregonska-stezka",
+    "path": "assets/cards/10_legendy/the-oregon-trail-legend.webp",
+    "name": "feat-oregonska-stezka"
+  },
+  {
+    "id": "feat-padesat-pistoli",
+    "path": "assets/cards/10_legendy/fifty-guns-legend.webp",
+    "name": "feat-padesat-pistoli"
+  },
+  {
+    "id": "feat-bezejmenny-muz",
+    "path": "assets/cards/10_legendy/the-man-with-no-name-legend.webp",
+    "name": "feat-bezejmenny-muz"
+  },
+  {
+    "id": "feat-banda-ze-stareho-zapadu",
+    "path": "assets/cards/10_legendy/old-west-gang-legend.webp",
+    "name": "feat-banda-ze-stareho-zapadu"
+  },
+  {
+    "id": "token-wooden-dynamite",
+    "path": "assets/cards/11_extra_karty/wooden-dynamite.webp",
+    "name": "token-wooden-dynamite"
   }
 ]
