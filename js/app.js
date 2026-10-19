@@ -5249,7 +5249,8 @@
         if (!store) return;
         store.refreshStore();
         if (window.BANG_TOOLS && window.BANG_TOOLS.SoundFX) {
-          window.BANG_TOOLS.SoundFX.playShuffle();
+          if (typeof window.BANG_TOOLS.SoundFX.playShuffle === 'function') window.BANG_TOOLS.SoundFX.playShuffle();
+          else if (typeof window.BANG_TOOLS.SoundFX.playWhip === 'function') window.BANG_TOOLS.SoundFX.playWhip();
         }
         renderGoldRushArmory(container);
       });
@@ -5261,7 +5262,8 @@
         if (!store) return;
         store.init();
         if (window.BANG_TOOLS && window.BANG_TOOLS.SoundFX) {
-          window.BANG_TOOLS.SoundFX.playShuffle();
+          if (typeof window.BANG_TOOLS.SoundFX.playShuffle === 'function') window.BANG_TOOLS.SoundFX.playShuffle();
+          else if (typeof window.BANG_TOOLS.SoundFX.playWhip === 'function') window.BANG_TOOLS.SoundFX.playWhip();
         }
         renderGoldRushArmory(container);
       });
@@ -5273,23 +5275,42 @@
   // =========================================================================
   const scenariosState = {
     drawnScenarios: [],
-    viewMode: 'drawn'
+    viewMode: 'drawn', // 'drawn' or 'all'
+    drawCount: 1
   };
 
   function renderScenariosGenerator(container) {
     const isEn = state.lang === 'en';
     const allScenarios = (window.BANG_TOOLS && window.BANG_TOOLS.Scenarios) ? window.BANG_TOOLS.Scenarios : [];
 
+    const playSoundSafe = (fnName) => {
+      try {
+        if (window.BANG_TOOLS && window.BANG_TOOLS.SoundFX) {
+          if (typeof window.BANG_TOOLS.SoundFX[fnName] === 'function') {
+            window.BANG_TOOLS.SoundFX[fnName]();
+          } else if (typeof window.BANG_TOOLS.SoundFX.playShuffle === 'function') {
+            window.BANG_TOOLS.SoundFX.playShuffle();
+          } else if (typeof window.BANG_TOOLS.SoundFX.playWhip === 'function') {
+            window.BANG_TOOLS.SoundFX.playWhip();
+          }
+        }
+      } catch (e) {
+        console.warn('[SoundFX] Ignored audio error:', e);
+      }
+    };
+
     // Draw initial if empty
     if (scenariosState.drawnScenarios.length === 0 && allScenarios.length > 0) {
-      scenariosState.drawnScenarios = [allScenarios[Math.floor(Math.random() * allScenarios.length)]];
+      const shuffled = [...allScenarios].sort(() => Math.random() - 0.5);
+      scenariosState.drawnScenarios = shuffled.slice(0, scenariosState.drawCount || 1);
     }
 
-    const displayedList = scenariosState.viewMode === 'all' ? allScenarios : scenariosState.drawnScenarios;
+    const isAllMode = scenariosState.viewMode === 'all';
+    const displayedList = isAllMode ? allScenarios : scenariosState.drawnScenarios;
 
     container.innerHTML = `
       <div class="tool-card-box">
-        <div class="tool-card-header" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
+        <div class="tool-card-header" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.25rem;">
           <div>
             <h2>🎲 ${isEn ? 'Bounty Challenges & House Rules' : 'Hospodské výzvy & Speciální scénáře'}</h2>
             <p class="tool-card-lead">
@@ -5298,42 +5319,87 @@
                 : 'Osvěžte hru pro zkušené pistolníky tématickými miniscénáři a výzvami pro dnešní partii.'}
             </p>
           </div>
-          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-            <button type="button" id="btn-draw-1-scenario" class="btn-primary" style="padding: 0.55rem 1rem; border-radius: 8px; font-weight: bold; font-size: 0.88rem; cursor: pointer;">
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;">
+            <button type="button" id="btn-draw-1-scenario" class="tool-subnav-btn ${!isAllMode && scenariosState.drawCount === 1 ? 'active' : ''}" style="padding: 0.6rem 1.15rem; cursor: pointer; font-weight: 700; font-size: 0.9rem;">
               🎲 ${isEn ? 'Draw 1 Challenge' : 'Vylosovat 1 výzvu'}
             </button>
-            <button type="button" id="btn-draw-2-scenario" style="padding: 0.55rem 1rem; border-radius: 8px; border: 1.5px solid var(--border-color); background: var(--bg-surface); cursor: pointer; font-weight: bold; font-size: 0.88rem;">
+            <button type="button" id="btn-draw-2-scenario" class="tool-subnav-btn ${!isAllMode && scenariosState.drawCount === 2 ? 'active' : ''}" style="padding: 0.6rem 1.15rem; cursor: pointer; font-weight: 700; font-size: 0.9rem;">
               🎲🎲 ${isEn ? 'Draw 2 Challenges' : 'Vylosovat 2 výzvy'}
             </button>
-            <button type="button" id="btn-toggle-all-scenarios" style="padding: 0.55rem 1rem; border-radius: 8px; border: 1.5px solid var(--border-color); background: var(--bg-surface); cursor: pointer; font-weight: bold; font-size: 0.88rem;">
-              📜 ${scenariosState.viewMode === 'all' ? (isEn ? 'Show Drawn Only' : 'Zobrazit vylosované') : (isEn ? 'Browse All 12' : 'Prohlížet všech 12')}
+            <button type="button" id="btn-toggle-all-scenarios" class="tool-subnav-btn ${isAllMode ? 'active' : ''}" style="padding: 0.6rem 1.15rem; cursor: pointer; font-weight: 700; font-size: 0.9rem;">
+              📜 ${isEn ? 'All 12 Challenges' : 'Všech 12 výzev (katalog)'}
             </button>
           </div>
         </div>
 
+        <!-- STATUS BANNER -->
+        ${!isAllMode ? `
+          <div style="background: var(--bg-surface); border: 2px solid var(--color-gold); border-radius: var(--radius-md); padding: 0.85rem 1.15rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+            <div>
+              <div style="font-weight: 800; font-size: 1rem; color: var(--color-brown); display: flex; align-items: center; gap: 0.5rem;">
+                <span>🎯</span> ${isEn ? `Active Match Rule (${scenariosState.drawnScenarios.length} Challenge${scenariosState.drawnScenarios.length > 1 ? 's' : ''} Drawn)` : `Aktivní pravidla hry (Vylosováno: ${scenariosState.drawnScenarios.length} ${scenariosState.drawnScenarios.length > 1 ? 'výzvy' : 'výzva'})`}
+              </div>
+              <div style="font-size: 0.86rem; color: var(--text-muted); margin-top: 0.2rem;">
+                ${isEn ? 'This special rule applies to all players at the table for the entire match.' : 'Tato speciální výzva platí globálně pro všechny hráče u stolu po celou dobu partie.'}
+              </div>
+            </div>
+            <button type="button" id="btn-reroll-current" class="tool-subnav-btn" style="padding: 0.45rem 0.95rem; font-size: 0.85rem; cursor: pointer; font-weight: 700; display: inline-flex; align-items: center; gap: 0.35rem; background: var(--color-brown); color: #fff;">
+              🔄 ${isEn ? 'Reroll Again' : 'Přelosovat znovu'}
+            </button>
+          </div>
+        ` : `
+          <div style="background: var(--bg-surface); border: 2px solid var(--border-color); border-radius: var(--radius-md); padding: 0.85rem 1.15rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+            <div>
+              <div style="font-weight: 800; font-size: 1rem; color: var(--color-brown); display: flex; align-items: center; gap: 0.5rem;">
+                <span>📜</span> ${isEn ? 'Catalog of All 12 Balanced House Rules & Challenges' : 'Katalog všech 12 vybalancovaných hospodských výzev'}
+              </div>
+              <div style="font-size: 0.86rem; color: var(--text-muted); margin-top: 0.2rem;">
+                ${isEn ? 'Click "Activate for this game" on any card below to play with it, or draw randomly with the buttons above.' : 'Vyberte si libovolnou výzvu a klikněte na "Aktivovat do hry", nebo použijte losovací tlačítka nahoře.'}
+              </div>
+            </div>
+            <button type="button" id="btn-back-to-drawn" class="tool-subnav-btn active" style="padding: 0.45rem 0.95rem; font-size: 0.85rem; cursor: pointer; font-weight: 700; background: var(--color-brown); color: #fff;">
+              🎯 ${isEn ? 'Back to Active Game' : 'Zpět k vylosované hře'}
+            </button>
+          </div>
+        `}
+
         <!-- SCENARIOS LIST -->
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
           ${displayedList.map(s => `
-            <div style="background: radial-gradient(circle at top left, var(--bg-surface) 0%, var(--bg-card) 100%); border: 2px solid var(--color-gold); border-radius: 12px; padding: 1.5rem; position: relative; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between;">
+            <div style="background: radial-gradient(circle at top left, var(--bg-surface) 0%, var(--bg-card) 100%); border: 2px solid ${!isAllMode ? 'var(--color-gold)' : 'var(--border-color)'}; border-radius: 12px; padding: 1.5rem; position: relative; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.2s ease;">
               <div>
+                ${!isAllMode ? `
+                  <div style="background: var(--color-gold); color: #1a1a1a; font-weight: 900; font-size: 0.72rem; padding: 0.2rem 0.6rem; border-radius: 4px; display: inline-block; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px;">
+                    ⭐ ${isEn ? 'ACTIVE FOR THIS GAME' : 'AKTIVNÍ VÝZVA PRO TUTO PARTII'}
+                  </div>
+                ` : ''}
+
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
                   <span style="background: rgba(212, 172, 13, 0.2); color: var(--color-brown); border: 1px solid var(--color-gold); font-size: 0.75rem; font-weight: bold; padding: 0.2rem 0.6rem; border-radius: 12px;">
                     ${isEn ? s.tagEn : s.tagCs}
                   </span>
-                  <span style="font-size: 1.25rem;">📜</span>
+                  <span style="font-size: 1.35rem;">📜</span>
                 </div>
 
-                <h3 style="font-family: 'Georgia', serif; font-size: 1.3rem; color: var(--color-brown); margin-bottom: 0.6rem;">
+                <h3 style="font-family: 'Rye', 'Georgia', serif; font-size: 1.35rem; color: var(--color-brown); margin: 0 0 0.6rem 0;">
                   ${isEn ? s.titleEn : s.titleCs}
                 </h3>
 
-                <p style="font-size: 0.92rem; line-height: 1.55; color: var(--text-main); margin-bottom: 1rem;">
+                <p style="font-size: 0.94rem; line-height: 1.55; color: var(--text-main); margin-bottom: 1rem;">
                   ${isEn ? s.descEn : s.descCs}
                 </p>
               </div>
 
-              <div style="font-size: 0.8rem; font-style: italic; color: var(--text-muted); border-top: 1px dashed var(--border-color); padding-top: 0.6rem;">
-                💡 ${isEn ? 'Applies globally to all players for the duration of the match.' : 'Pravidlo platí globálně pro všechny hráče u stolu po celou dobu partie.'}
+              <div>
+                <div style="font-size: 0.8rem; font-style: italic; color: var(--text-muted); border-top: 1px dashed var(--border-color); padding-top: 0.6rem;">
+                  💡 ${isEn ? 'Applies globally to all players for the duration of the match.' : 'Pravidlo platí globálně pro všechny hráče u stolu po celou dobu partie.'}
+                </div>
+
+                ${isAllMode ? `
+                  <button type="button" class="btn-activate-scenario" data-id="${s.id}" style="margin-top: 0.85rem; width: 100%; padding: 0.55rem 0.85rem; border-radius: 6px; border: 1.5px solid var(--color-brown); background: var(--bg-surface); color: var(--color-brown); font-weight: 800; font-size: 0.88rem; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; transition: all 0.2s ease;">
+                    🎯 ${isEn ? 'Activate this challenge for game' : 'Aktivovat tuto výzvu do hry'}
+                  </button>
+                ` : ''}
               </div>
             </div>
           `).join('')}
@@ -5346,9 +5412,10 @@
     if (btn1) {
       btn1.addEventListener('click', () => {
         scenariosState.viewMode = 'drawn';
+        scenariosState.drawCount = 1;
         const shuffled = [...allScenarios].sort(() => Math.random() - 0.5);
         scenariosState.drawnScenarios = shuffled.slice(0, 1);
-        if (window.BANG_TOOLS && window.BANG_TOOLS.SoundFX) window.BANG_TOOLS.SoundFX.playShuffle();
+        playSoundSafe('playShuffle');
         renderScenariosGenerator(container);
       });
     }
@@ -5357,9 +5424,21 @@
     if (btn2) {
       btn2.addEventListener('click', () => {
         scenariosState.viewMode = 'drawn';
+        scenariosState.drawCount = 2;
         const shuffled = [...allScenarios].sort(() => Math.random() - 0.5);
         scenariosState.drawnScenarios = shuffled.slice(0, 2);
-        if (window.BANG_TOOLS && window.BANG_TOOLS.SoundFX) window.BANG_TOOLS.SoundFX.playShuffle();
+        playSoundSafe('playShuffle');
+        renderScenariosGenerator(container);
+      });
+    }
+
+    const btnReroll = document.getElementById('btn-reroll-current');
+    if (btnReroll) {
+      btnReroll.addEventListener('click', () => {
+        const count = scenariosState.drawCount || 1;
+        const shuffled = [...allScenarios].sort(() => Math.random() - 0.5);
+        scenariosState.drawnScenarios = shuffled.slice(0, count);
+        playSoundSafe('playShuffle');
         renderScenariosGenerator(container);
       });
     }
@@ -5367,10 +5446,32 @@
     const btnAll = document.getElementById('btn-toggle-all-scenarios');
     if (btnAll) {
       btnAll.addEventListener('click', () => {
-        scenariosState.viewMode = scenariosState.viewMode === 'all' ? 'drawn' : 'all';
+        scenariosState.viewMode = 'all';
         renderScenariosGenerator(container);
       });
     }
+
+    const btnBack = document.getElementById('btn-back-to-drawn');
+    if (btnBack) {
+      btnBack.addEventListener('click', () => {
+        scenariosState.viewMode = 'drawn';
+        renderScenariosGenerator(container);
+      });
+    }
+
+    container.querySelectorAll('.btn-activate-scenario').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const scenarioId = btn.dataset.id;
+        const found = allScenarios.find(s => s.id === scenarioId);
+        if (found) {
+          scenariosState.drawnScenarios = [found];
+          scenariosState.drawCount = 1;
+          scenariosState.viewMode = 'drawn';
+          playSoundSafe('playShot');
+          renderScenariosGenerator(container);
+        }
+      });
+    });
   }
 
   // 5. RULES QUIZ

@@ -71,7 +71,8 @@
     playIndians: () => playAudioFile('indians'),
     playRattlesnake: () => playAudioFile('rattlesnake'),
     playJail: () => playAudioFile('jail'),
-    playDuel: () => playAudioFile('duel')
+    playDuel: () => playAudioFile('duel'),
+    playShuffle: () => playAudioFile('whip')
   };
 
   // =========================================================================
