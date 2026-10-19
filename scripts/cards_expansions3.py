@@ -251,9 +251,32 @@ EXPANSIONS3_CARDS = [
     },
 
     # =========================================================================
-    # DIVOKÝ ZÁPAD (WILD WEST SHOW)
+    # DIVOKÝ ZÁPAD (WILD WEST SHOW) - 18 KARET (8 POSTAV + 10 UDÁLOSTÍ)
     # =========================================================================
     # --- POSTAVY ---
+    {
+        "id": "char-big-spencer",
+        "name": "Big Spencer",
+        "nameEn": "Big Spencer",
+        "expansion": "wild-west-show",
+        "expansionName": "Divoký západ",
+        "type": "character",
+        "typeLabel": "Postava",
+        "copies": 1,
+        "lives": 9,
+        "suit": None,
+        "values": None,
+        "range": None,
+        "cost": None,
+        "effect": "Začíná hru s 9 životy a 5 kartami! Nesmí však vůbec zahrát kartu Vedle! (ani Barel).",
+        "timing": "Celá hra",
+        "rulings": [
+            "Nesmí hrát karty Vedle! pro obranu.",
+            "Nemůže se vyhnout zásahu Barelem.",
+            "Začíná hru s 5 kartami v ruce."
+        ],
+        "tags": ["postava", "9 životů", "zákaz vedle", "big spencer"]
+    },
     {
         "id": "char-flint-westwood",
         "name": "Flint Westwood",
@@ -275,6 +298,28 @@ EXPANSIONS3_CARDS = [
             "Pokud má protihráč v ruce pouze 1 kartu, dostanete pouze ji."
         ],
         "tags": ["postava", "výměna karet", "krádež", "flint westwood"]
+    },
+    {
+        "id": "char-gary-looter",
+        "name": "Gary Looter",
+        "nameEn": "Gary Looter",
+        "expansion": "wild-west-show",
+        "expansionName": "Divoký západ",
+        "type": "character",
+        "typeLabel": "Postava",
+        "copies": 1,
+        "lives": 5,
+        "suit": None,
+        "values": None,
+        "range": None,
+        "cost": None,
+        "effect": "Na konci tahu každého jiného hráče si vezme všechny karty, které tento hráč musel odhodit ve Fázi 3 kvůli limitu životů.",
+        "timing": "Fáze 3 tahu jiného hráče",
+        "rulings": [
+            "Bere pouze karty odhozené v důsledku limitu životů ve Fázi 3.",
+            "Neplatí pro karty zahrané nebo odhozené jako cena za efekt."
+        ],
+        "tags": ["postava", "sbírání odhozených karet", "gary looter"]
     },
     {
         "id": "char-greygory-deck",
@@ -312,7 +357,7 @@ EXPANSIONS3_CARDS = [
         "values": None,
         "range": None,
         "cost": None,
-        "effect": "Kdykoli některý hráč u stolu sejme („Draw!“), John Pain si sejmutou kartu vezme do své ruky (pokud má v ruce méně než 6 karet).",
+        "effect": "Kdykoli některý hráč u stolu sejme („Draw!“), John Pain si sejmutou kartu vezme do své ruky (pokud má v ruce méně než 6 karet a karta není Srdce ♥).",
         "timing": "Kdykoli kdokoli sejme",
         "rulings": [
             "Kartu nemůže použít okamžitě; musí počkat, dokud se nevyhodnotí původní efekt.",
@@ -365,47 +410,30 @@ EXPANSIONS3_CARDS = [
         ],
         "tags": ["postava", "přežití smrti", "teren kill", "hazard"]
     },
+    {
+        "id": "char-youl-grinner",
+        "name": "Youl Grinner",
+        "nameEn": "Youl Grinner",
+        "expansion": "wild-west-show",
+        "expansionName": "Divoký západ",
+        "type": "character",
+        "typeLabel": "Postava",
+        "copies": 1,
+        "lives": 4,
+        "suit": None,
+        "values": None,
+        "range": "Všichni hráči",
+        "cost": None,
+        "effect": "Na začátku svého tahu: každý hráč, který má v ruce více karet než Youl Grinner, mu musí dát 1 kartu ze své ruky dle vlastního výběru.",
+        "timing": "Začátek Fáze 1 vlastního tahu",
+        "rulings": [
+            "Platí před dobráním obvyklých 2 karet.",
+            "Hráči s méně nebo stejným počtem karet kartu nedávají."
+        ],
+        "tags": ["postava", "odebírání karet", "youl grinner"]
+    },
 
     # --- UDÁLOSTI DIVOKÉHO ZÁPADU ---
-    {
-        "id": "event-wild-west-show",
-        "name": "Divoký západ (Wild West Show)",
-        "nameEn": "Wild West Show",
-        "expansion": "wild-west-show",
-        "expansionName": "Divoký západ",
-        "type": "event",
-        "typeLabel": "Globální událost (finální)",
-        "copies": 1,
-        "suit": None,
-        "values": None,
-        "range": "Všichni hráči",
-        "cost": None,
-        "effect": "Cílem všech hráčů se stává: „Zůstaň poslední naživu ve hře!“. Každý hraje sám za sebe jako Odpadlík! Pokud padne Šerif, hra pokračuje dál.",
-        "timing": "Trvale až do konce partie",
-        "rulings": [
-            "Běžná pravidla rolí zůstávají (na Šerifa nelze hrát Vězení, za zabití Bandity je 3 karty odměna).",
-            "Vítězství je čistě individuální."
-        ],
-        "tags": ["událost", "finální", "všichni proti všem", "divoký západ"]
-    },
-    {
-        "id": "event-showdown",
-        "name": "Zúčtování",
-        "nameEn": "Showdown",
-        "expansion": "wild-west-show",
-        "expansionName": "Divoký západ",
-        "type": "event",
-        "typeLabel": "Globální událost",
-        "copies": 1,
-        "suit": None,
-        "values": None,
-        "range": "Všichni hráči",
-        "cost": None,
-        "effect": "Každá karta z ruky může být zahrána jako karta BANG!. Každá karta BANG! může být zahrána jako karta Vedle!.",
-        "timing": "Celé trvání události",
-        "rulings": ["Totální přestřelka, kde se jakákoli karta promění v kulku."],
-        "tags": ["událost", "zúčtování", "univerzální bang a vedle"]
-    },
     {
         "id": "event-bone-orchard",
         "name": "Hřbitov",
@@ -430,9 +458,9 @@ EXPANSIONS3_CARDS = [
         "tags": ["událost", "hřbitov", "krchov", "bone-orchard", "oživování", "zombie", "dostavník", "wells-fargo"]
     },
     {
-        "id": "event-miss-susanna",
-        "name": "Slečna Zuzana",
-        "nameEn": "Miss Susanna",
+        "id": "event-darling-valentine",
+        "name": "Darling Valentine",
+        "nameEn": "Darling Valentine",
         "expansion": "wild-west-show",
         "expansionName": "Divoký západ",
         "type": "event",
@@ -442,10 +470,34 @@ EXPANSIONS3_CARDS = [
         "values": None,
         "range": "Všichni hráči",
         "cost": None,
-        "effect": "Během svého tahu musí každý hráč zahrát alespoň 3 karty. Kdo to neudělá, ztrácí na konci tahu 1 život!",
-        "timing": "Vlastní tah",
-        "rulings": ["Nepůsobí na hráče, kteří musí přeskočit svůj tah v důsledku Vězení."],
-        "tags": ["událost", "slečna zuzana", "povinnost hrát 3 karty"]
+        "effect": "Na začátku svého tahu každý hráč odhodí všechny karty z ruky a dobere si stejný počet nových karet z balíčku.",
+        "timing": "Začátek Fáze 1 vlastního tahu",
+        "rulings": [
+            "Odhozené karty jdou do odhazovacího balíčku.",
+            "Poté hráč standardně pokračuje dobráním svých obvyklých karet."
+        ],
+        "tags": ["událost", "darling valentine", "obměna ruky", "divoký západ"]
+    },
+    {
+        "id": "event-dorothy-rage",
+        "name": "Dorothy Rage",
+        "nameEn": "Dorothy Rage",
+        "expansion": "wild-west-show",
+        "expansionName": "Divoký západ",
+        "type": "event",
+        "typeLabel": "Globální událost",
+        "copies": 1,
+        "suit": None,
+        "values": None,
+        "range": "Libovolný jiný hráč",
+        "cost": None,
+        "effect": "Během svého tahu může aktivní hráč přinutit libovolného jiného hráče zahrát jednu kartu z ruky dle své volby.",
+        "timing": "Fáze 2 vlastního tahu",
+        "rulings": [
+            "Aktivní hráč určí vybranou kartu z ruky soupeře a určí cíl.",
+            "Lze použít jednou za tah."
+        ],
+        "tags": ["událost", "dorothy rage", "vynucení zahrání", "divoký západ"]
     },
     {
         "id": "event-gag",
@@ -464,6 +516,126 @@ EXPANSIONS3_CARDS = [
         "timing": "Celé trvání události",
         "rulings": ["Platí i pro mimotahové komentáře a hlášení karet."],
         "tags": ["událost", "roubík", "zákaz mluvení", "zábava"]
+    },
+    {
+        "id": "event-helena-zontero",
+        "name": "Helena Zontero",
+        "nameEn": "Helena Zontero",
+        "expansion": "wild-west-show",
+        "expansionName": "Divoký západ",
+        "type": "event",
+        "typeLabel": "Globální událost",
+        "copies": 1,
+        "suit": None,
+        "values": None,
+        "range": "Všichni hráči kromě Šerifa",
+        "cost": None,
+        "effect": "Když přijde Helena Zontero do hry, „sejme se!“: otočí-li se srdce ♥ nebo káry ♦, seberou se všechny role kromě Šerifa, zamíchají a znovu náhodně rozdají!",
+        "timing": "Okamžitě při vstupu do hry",
+        "rulings": [
+            "Šerif zůstává beze změny.",
+            "Pomocníci, Bandité a Odpadlíci si mohou náhle vyměnit role i cíle!"
+        ],
+        "tags": ["událost", "helena zontero", "promíchání rolí", "divoký západ"]
+    },
+    {
+        "id": "event-lady-rose-of-texas",
+        "name": "Lady Rose of Texas",
+        "nameEn": "Lady Rose of Texas",
+        "expansion": "wild-west-show",
+        "expansionName": "Divoký západ",
+        "type": "event",
+        "typeLabel": "Globální událost",
+        "copies": 1,
+        "suit": None,
+        "values": None,
+        "range": "Hráč po pravici",
+        "cost": None,
+        "effect": "Během svého tahu si hráč může vyměnit místo u stolu s hráčem po své pravici. Hráč, který byl vyměněn, vynechá svůj příští tah.",
+        "timing": "Fáze 2 vlastního tahu",
+        "rulings": [
+            "Výměna pozic u stolu změní vzdálenosti pro všechny hráče.",
+            "Přeskočený tah hráče po pravici platí pro jeho následující kolo."
+        ],
+        "tags": ["událost", "lady rose of texas", "výměna míst", "přeskočení tahu", "divoký západ"]
+    },
+    {
+        "id": "event-miss-susanna",
+        "name": "Slečna Zuzana",
+        "nameEn": "Miss Susanna",
+        "expansion": "wild-west-show",
+        "expansionName": "Divoký západ",
+        "type": "event",
+        "typeLabel": "Globální událost",
+        "copies": 1,
+        "suit": None,
+        "values": None,
+        "range": "Všichni hráči",
+        "cost": None,
+        "effect": "Během svého tahu musí každý hráč zahrát alespoň 3 karty. Kdo to neudělá, ztrácí na konci tahu 1 život!",
+        "timing": "Vlastní tah",
+        "rulings": ["Nepůsobí na hráče, kteří musí přeskočit svůj tah v důsledku Vězení."],
+        "tags": ["událost", "slečna zuzana", "povinnost hrát 3 karty", "divoký západ"]
+    },
+    {
+        "id": "event-sacagaway",
+        "name": "Sacagaway",
+        "nameEn": "Sacagaway",
+        "expansion": "wild-west-show",
+        "expansionName": "Divoký západ",
+        "type": "event",
+        "typeLabel": "Globální událost",
+        "copies": 1,
+        "suit": None,
+        "values": None,
+        "range": "Všichni hráči",
+        "cost": None,
+        "effect": "Všichni hráči hrají s otevřenými kartami na ruce (všichni vidí karty všech ostatních). Karty se drží vyložené lícem nahoru.",
+        "timing": "Celé trvání události",
+        "rulings": [
+            "Karty rolí zůstávají tajné; odkrývají se pouze hrací karty v ruce.",
+            "Každý přesně ví, jaké karty protihráči drží."
+        ],
+        "tags": ["událost", "sacagaway", "odhalené karty", "divoký západ"]
+    },
+    {
+        "id": "event-showdown",
+        "name": "Zúčtování",
+        "nameEn": "Showdown",
+        "expansion": "wild-west-show",
+        "expansionName": "Divoký západ",
+        "type": "event",
+        "typeLabel": "Globální událost",
+        "copies": 1,
+        "suit": None,
+        "values": None,
+        "range": "Všichni hráči",
+        "cost": None,
+        "effect": "Každá karta z ruky může být zahrána jako karta BANG!. Každá karta BANG! může být zahrána jako karta Vedle!.",
+        "timing": "Celé trvání události",
+        "rulings": ["Totální přestřelka, kde se jakákoli karta promění v kulku."],
+        "tags": ["událost", "zúčtování", "univerzální bang a vedle", "divoký západ"]
+    },
+    {
+        "id": "event-wild-west-show",
+        "name": "Divoký západ (Wild West Show)",
+        "nameEn": "Wild West Show",
+        "expansion": "wild-west-show",
+        "expansionName": "Divoký západ",
+        "type": "event",
+        "typeLabel": "Globální událost (finální)",
+        "copies": 1,
+        "suit": None,
+        "values": None,
+        "range": "Všichni hráči",
+        "cost": None,
+        "effect": "Cílem všech hráčů se stává: „Zůstaň poslední naživu ve hře!“. Každý hraje sám za sebe jako Odpadlík! Pokud padne Šerif, hra pokračuje dál.",
+        "timing": "Trvale až do konce partie",
+        "rulings": [
+            "Běžná pravidla rolí zůstávají (na Šerifa nelze hrát Vězení, za zabití Bandity je 3 karty odměna).",
+            "Vítězství je čistě individuální."
+        ],
+        "tags": ["událost", "finální", "všichni proti všem", "divoký západ"]
     },
 
     # =========================================================================

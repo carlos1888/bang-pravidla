@@ -602,20 +602,29 @@ CARDS_EN = {
   "event-russian-roulette": {
     "effect": "Event. Starting with Sheriff, players alternately discard a Missed! or lose 2 life points."
   },
+  "char-big-spencer": {
+    "effect": "Starts with 9 life points and 5 cards! Cannot play Missed! cards (nor evade hits using a Barrel)."
+  },
   "char-flint-westwood": {
     "effect": "On his turn, may trade 1 card from hand for 2 random cards from another player's hand."
   },
+  "char-gary-looter": {
+    "effect": "At the end of each other player's turn, draws all excess cards that player had to discard in Phase 3."
+  },
   "char-greygory-deck": {
-    "effect": "At the start of his turn, may draw 2 character cards and choose which one to use this round."
+    "effect": "At the start of his turn, draws 2 character cards and gains both of their abilities for the round."
   },
   "char-john-pain": {
-    "effect": "Whenever any player draws (check), takes the flipped card into his hand if he has under 6 cards."
+    "effect": "Whenever any player draws! a check: takes the card into hand if he has under 6 cards and it is not Hearts ♥."
   },
   "char-lee-van-kliff": {
     "effect": "On his turn, may discard a BANG! to repeat the effect of the brown card he just played."
   },
   "char-teren-kill": {
-    "effect": "Whenever he would be eliminated, draws (check): on anything except Spades \u2660, stays alive with 1 life."
+    "effect": "Whenever he would be eliminated, draws! (check): on anything except Spades ♠, stays alive with 1 life and draws 1 card."
+  },
+  "char-youl-grinner": {
+    "effect": "Before Phase 1: each player who has more cards in hand than Youl Grinner must give him 1 card of their choice."
   },
   "event-wild-west-show": {
     "effect": "Event. The goal of all players becomes: be the last one alive! Roles are suspended."
@@ -626,11 +635,26 @@ CARDS_EN = {
   "event-bone-orchard": {
     "effect": "Event. When an eliminated player's turn arrives, they return to the game with 1 life point and draw 2 cards. Role is played face-up. If still alive when this event leaves play, they remain permanently in the game!"
   },
-  "event-miss-susanna": {
-    "effect": "Event. Each player must play at least 3 cards on their turn or lose 1 life point."
+  "event-darling-valentine": {
+    "effect": "Event. At the start of their turn, each player discards their hand and draws that many new cards."
+  },
+  "event-dorothy-rage": {
+    "effect": "Event. Active player can force any other player to play a card of the active player's choice from their hand."
   },
   "event-gag": {
     "effect": "Event. Players cannot talk. Whoever speaks loses 1 life point."
+  },
+  "event-helena-zontero": {
+    "effect": "Event. When revealed, draw!: on Hearts ♥ or Diamonds ♦, gather all active roles except Sheriff, shuffle and redeal randomly!"
+  },
+  "event-lady-rose-of-texas": {
+    "effect": "Event. Active player may swap seats with the player on their right. The swapped player skips their next turn."
+  },
+  "event-miss-susanna": {
+    "effect": "Event. Each player must play at least 3 cards on their turn or lose 1 life point."
+  },
+  "event-sacagaway": {
+    "effect": "Event. All players play with their hands revealed (everyone sees all other cards). Roles remain secret."
   },
   "legend-bart-cassidy": {
     "effect": "Legendary Bart Cassidy (Side B). Whenever he loses a life point, draws 2 cards from deck."
