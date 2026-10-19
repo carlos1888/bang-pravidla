@@ -1366,12 +1366,12 @@
       const isTarget = i === calcParams.targetIdx;
       const seatDist = window.BANG_TOOLS.DistanceCalc.getSeatDistance(calcParams.shooterIdx, i, calcParams.totalPlayers);
 
-      let strokeColor = '#8b5a2b';
+      let strokeColor = '#5c3a21';
       let strokeWidth = '2';
-      let fillColor = '#2b170e';
+      let fillColor = '#3a2012';
       let icon = '👤';
       let roleTitle = `${isEn ? 'Player' : 'Hráč'} ${i + 1}`;
-      let titleColor = '#d2b48c';
+      let titleColor = '#e8d3b9';
 
       if (isShooter) {
         strokeColor = '#f39c12';
@@ -1426,8 +1426,8 @@
       seatsSvg += `
         <g class="table-seat-node ${isShooter ? 'is-shooter' : ''} ${isTarget ? 'is-target' : ''}" data-seat="${i}" transform="translate(${sx}, ${sy})" role="button" tabindex="0" aria-label="${roleTitle} ${i + 1}">
           <circle r="38" fill="transparent" class="seat-hit-area" />
-          <circle r="32" class="seat-rim" fill="#3d2314" stroke="${strokeColor}" stroke-width="${strokeWidth}" />
-          <circle r="26" class="seat-felt" fill="${fillColor}" />
+          <circle r="32" class="seat-rim" fill="#221107" stroke="${strokeColor}" stroke-width="${strokeWidth}" />
+          <circle r="26" class="seat-cushion seat-felt" fill="${fillColor}" />
           <text x="0" y="-2" text-anchor="middle" font-size="20">${icon}</text>
           <text x="0" y="15" text-anchor="middle" font-size="10" font-weight="900" fill="${titleColor}">${roleTitle}</text>
           ${distBadge}
@@ -1440,21 +1440,21 @@
     const targetPos = seatCoords[calcParams.targetIdx] || { x: cx, y: cy + rySeat };
     const sightlineClass = calcResult.canBang ? 'sightline-in-range' : 'sightline-out-range';
 
-    // Decorative brass rivet studs around table rim
+    // Decorative forged iron & brass rivets around table rim
     let studsSvg = '';
-    const numStuds = 28;
+    const numStuds = 32;
     for (let s = 0; s < numStuds; s++) {
       const a = (2 * Math.PI * s / numStuds);
-      const stX = Math.round(cx + 216 * Math.cos(a));
-      const stY = Math.round(cy + 136 * Math.sin(a));
-      studsSvg += `<circle cx="${stX}" cy="${stY}" r="2.5" fill="#d4af37" opacity="0.85" />`;
+      const stX = Math.round(cx + 217 * Math.cos(a));
+      const stY = Math.round(cy + 138 * Math.sin(a));
+      studsSvg += `<circle cx="${stX}" cy="${stY}" r="3" fill="#1e1109" stroke="#422919" stroke-width="0.8" /><circle cx="${stX - 0.7}" cy="${stY - 0.7}" r="1" fill="#8c6245" opacity="0.75" />`;
     }
 
     container.innerHTML = `
       <div class="tool-card-box">
         <div class="tool-card-header">
           <h2><span>📏</span> ${isEn ? 'Saloon Distance & Range Calculator' : 'Kalkulačka vzdálenosti a dostřelu u stolu'}</h2>
-          <p class="tool-card-lead">${isEn ? 'Authentic round poker table view as featured in the BANG! rules. Click any seat to designate Shooter or Target!' : 'Věrná vizualizace stolu podle oficiálních pravidel hry BANG!. Klepněte na libovolnou židli pro výběr Střelce či Cíle!'}</p>
+          <p class="tool-card-lead">${isEn ? 'Authentic rustic saloon table view as featured in the BANG! rules. Click any seat to designate Shooter or Target!' : 'Věrná vizualizace stolu ve westernovém saloonu podle pravidel hry BANG!. Klepněte na libovolnou židli pro výběr Střelce či Cíle!'}</p>
         </div>
 
         <div class="saloon-table-container">
@@ -1483,34 +1483,118 @@
           <div class="saloon-table-svg-wrap">
             <svg class="saloon-table-svg" viewBox="0 0 700 460">
               <defs>
-                <radialGradient id="tableWoodGrad" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stop-color="#4d2711" />
-                  <stop offset="85%" stop-color="#2c1409" />
-                  <stop offset="100%" stop-color="#190a04" />
+                <!-- Heavy Table Outer Timber Bevel Rim -->
+                <radialGradient id="tableWoodRimGrad" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#4f2b15" />
+                  <stop offset="75%" stop-color="#341b0c" />
+                  <stop offset="92%" stop-color="#221006" />
+                  <stop offset="100%" stop-color="#120702" />
                 </radialGradient>
-                <radialGradient id="tableFeltGrad" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stop-color="#246e3b" />
-                  <stop offset="70%" stop-color="#184e29" />
-                  <stop offset="100%" stop-color="#0e341b" />
+
+                <!-- Inset Edge Shadow for Wooden Tabletop Depth -->
+                <radialGradient id="tableEdgeShadow" cx="50%" cy="50%" r="50%">
+                  <stop offset="84%" stop-color="rgba(15, 6, 2, 0)" />
+                  <stop offset="100%" stop-color="rgba(15, 6, 2, 0.75)" />
                 </radialGradient>
+
+                <!-- Clip Path for Table Planks -->
+                <clipPath id="saloonTableClip">
+                  <ellipse cx="350" cy="230" rx="202" ry="124" />
+                </clipPath>
               </defs>
 
-              <!-- Table Drop Shadow -->
-              <ellipse cx="350" cy="236" rx="228" ry="148" fill="rgba(0,0,0,0.3)" />
+              <!-- Table Cast Shadow -->
+              <ellipse cx="350" cy="238" rx="230" ry="150" fill="rgba(0,0,0,0.38)" />
 
-              <!-- Outer Wood Table Rim -->
-              <ellipse cx="350" cy="230" rx="224" ry="144" fill="url(#tableWoodGrad)" stroke="#140803" stroke-width="5" />
+              <!-- Outer Heavy Timber Rim -->
+              <ellipse cx="350" cy="230" rx="226" ry="146" fill="url(#tableWoodRimGrad)" stroke="#110602" stroke-width="4.5" />
 
-              <!-- Brass Studs -->
+              <!-- Inset Wood Groove Line on Rim -->
+              <ellipse cx="350" cy="230" rx="207" ry="129" fill="none" stroke="#1d0d05" stroke-width="1.8" />
+
+              <!-- Forged Iron Studs on Rim -->
               ${studsSvg}
 
-              <!-- Inner Poker Green Felt -->
-              <ellipse cx="350" cy="230" rx="198" ry="120" fill="url(#tableFeltGrad)" stroke="#348a4f" stroke-width="2.5" />
+              <!-- Inner Wood Planks Surface -->
+              <g clip-path="url(#saloonTableClip)">
+                <!-- Base Plank Fills (6 weathered saloon oak planks) -->
+                <rect x="100" y="100" width="500" height="42" fill="#543017" />
+                <rect x="100" y="142" width="500" height="42" fill="#623a1c" />
+                <rect x="100" y="184" width="500" height="44" fill="#4d2b13" />
+                <rect x="100" y="228" width="500" height="44" fill="#5a3419" />
+                <rect x="100" y="272" width="500" height="42" fill="#47260f" />
+                <rect x="100" y="314" width="500" height="48" fill="#583318" />
 
-              <!-- Watermark -->
-              <text x="350" y="145" text-anchor="middle" font-family="'Georgia', serif" font-size="14" font-weight="900" fill="rgba(255,255,255,0.07)" letter-spacing="4">
-                ★ BANG! SALOON POKER TABLE ★
-              </text>
+                <!-- Wood Grain Texture Lines -->
+                <path d="M 140 120 Q 250 115 360 122 T 560 118" stroke="rgba(255,240,210,0.08)" stroke-width="1.6" fill="none" />
+                <path d="M 130 134 Q 280 130 430 136 T 570 132" stroke="rgba(0,0,0,0.22)" stroke-width="1.8" fill="none" />
+                <path d="M 130 162 Q 280 168 430 160 T 570 166" stroke="rgba(255,240,210,0.07)" stroke-width="1.5" fill="none" />
+                <path d="M 125 176 Q 240 172 370 178 T 575 174" stroke="rgba(0,0,0,0.2)" stroke-width="1.8" fill="none" />
+                <path d="M 125 204 Q 240 199 370 207 T 575 202" stroke="rgba(255,240,210,0.09)" stroke-width="1.5" fill="none" />
+                <path d="M 130 219 Q 270 223 420 216 T 570 220" stroke="rgba(0,0,0,0.22)" stroke-width="2" fill="none" />
+                <path d="M 130 250 Q 270 256 420 248 T 570 253" stroke="rgba(255,240,210,0.08)" stroke-width="1.5" fill="none" />
+                <path d="M 135 264 Q 260 260 380 267 T 565 262" stroke="rgba(0,0,0,0.24)" stroke-width="1.8" fill="none" />
+                <path d="M 140 292 Q 260 287 380 295 T 560 290" stroke="rgba(255,240,210,0.07)" stroke-width="1.5" fill="none" />
+                <path d="M 150 306 Q 290 311 440 304 T 550 308" stroke="rgba(0,0,0,0.2)" stroke-width="1.8" fill="none" />
+                <path d="M 160 334 Q 280 341 430 333 T 540 338" stroke="rgba(255,240,210,0.08)" stroke-width="1.6" fill="none" />
+
+                <!-- Plank Seams & Grooves -->
+                <line x1="120" y1="142" x2="580" y2="142" stroke="#180b04" stroke-width="2.5" />
+                <line x1="120" y1="143.5" x2="580" y2="143.5" stroke="rgba(255,230,180,0.14)" stroke-width="0.9" />
+
+                <line x1="120" y1="184" x2="580" y2="184" stroke="#180b04" stroke-width="2.5" />
+                <line x1="120" y1="185.5" x2="580" y2="185.5" stroke="rgba(255,230,180,0.14)" stroke-width="0.9" />
+
+                <line x1="120" y1="228" x2="580" y2="228" stroke="#180b04" stroke-width="2.5" />
+                <line x1="120" y1="229.5" x2="580" y2="229.5" stroke="rgba(255,230,180,0.14)" stroke-width="0.9" />
+
+                <line x1="120" y1="272" x2="580" y2="272" stroke="#180b04" stroke-width="2.5" />
+                <line x1="120" y1="273.5" x2="580" y2="273.5" stroke="rgba(255,230,180,0.14)" stroke-width="0.9" />
+
+                <line x1="120" y1="314" x2="580" y2="314" stroke="#180b04" stroke-width="2.5" />
+                <line x1="120" y1="315.5" x2="580" y2="315.5" stroke="rgba(255,230,180,0.14)" stroke-width="0.9" />
+
+                <!-- Forged Iron Plank Nails -->
+                <rect x="210" y="140" width="5" height="4" rx="1" fill="#140b06" stroke="#3b2315" stroke-width="0.8" />
+                <rect x="490" y="140" width="5" height="4" rx="1" fill="#140b06" stroke="#3b2315" stroke-width="0.8" />
+                <rect x="210" y="226" width="5" height="4" rx="1" fill="#140b06" stroke="#3b2315" stroke-width="0.8" />
+                <rect x="490" y="226" width="5" height="4" rx="1" fill="#140b06" stroke="#3b2315" stroke-width="0.8" />
+                <rect x="210" y="312" width="5" height="4" rx="1" fill="#140b06" stroke="#3b2315" stroke-width="0.8" />
+                <rect x="490" y="312" width="5" height="4" rx="1" fill="#140b06" stroke="#3b2315" stroke-width="0.8" />
+
+                <!-- Natural Wood Knots -->
+                <g opacity="0.9">
+                  <ellipse cx="230" cy="163" rx="13" ry="7" fill="#2d1508" stroke="#1c0c04" stroke-width="1.2" />
+                  <ellipse cx="230" cy="163" rx="6" ry="3.5" fill="#160802" />
+                  <path d="M 212 163 Q 230 152 248 163" stroke="rgba(0,0,0,0.3)" stroke-width="1.4" fill="none" />
+                  <path d="M 212 163 Q 230 174 248 163" stroke="rgba(0,0,0,0.3)" stroke-width="1.4" fill="none" />
+                </g>
+                <g opacity="0.9">
+                  <ellipse cx="480" cy="250" rx="14" ry="7.5" fill="#2b1407" stroke="#1c0b03" stroke-width="1.2" />
+                  <ellipse cx="480" cy="250" rx="7" ry="3.5" fill="#150702" />
+                  <path d="M 460 250 Q 480 238 500 250" stroke="rgba(0,0,0,0.3)" stroke-width="1.4" fill="none" />
+                  <path d="M 460 250 Q 480 262 500 250" stroke="rgba(0,0,0,0.3)" stroke-width="1.4" fill="none" />
+                </g>
+
+                <!-- Saloon Condensation Watermarks (Beer & Whiskey Rings) -->
+                <ellipse cx="275" cy="168" rx="22" ry="16" fill="none" stroke="rgba(25, 9, 3, 0.45)" stroke-width="2.8" stroke-dasharray="14 4 8 2" transform="rotate(-15 275 168)" />
+                <ellipse cx="275" cy="168" rx="19.5" ry="14" fill="none" stroke="rgba(25, 9, 3, 0.22)" stroke-width="1.2" transform="rotate(-15 275 168)" />
+
+                <ellipse cx="435" cy="295" rx="24" ry="16" fill="none" stroke="rgba(25, 9, 3, 0.4)" stroke-width="2.5" stroke-dasharray="12 4 9 3" transform="rotate(20 435 295)" />
+
+                <!-- Knife Scratches / Duel Graze Marks -->
+                <path d="M 185 244 L 218 239" stroke="rgba(15, 6, 2, 0.6)" stroke-width="1.8" />
+                <path d="M 495 195 L 518 202" stroke="rgba(15, 6, 2, 0.55)" stroke-width="1.5" />
+
+                <!-- Branded Saloon Mark Burned into Wood -->
+                <g opacity="0.45">
+                  <text x="350" y="132" text-anchor="middle" font-size="14" fill="#230d04">★</text>
+                  <text x="350" y="148" text-anchor="middle" font-family="'Rye', 'Georgia', serif" font-size="12" font-weight="900" fill="#230d04" letter-spacing="3.5">★ BANG! WESTERN SALOON ★</text>
+                </g>
+
+                <!-- Inset Table Edge Shadow -->
+                <ellipse cx="350" cy="230" rx="202" ry="124" fill="url(#tableEdgeShadow)" />
+              </g>
 
               <!-- Sightline / Line of Fire -->
               <line x1="${shooterPos.x}" y1="${shooterPos.y}" x2="${targetPos.x}" y2="${targetPos.y}" class="${sightlineClass}" />
@@ -1518,21 +1602,30 @@
               <!-- Bullet on Sightline -->
               <circle id="svg-bullet" cx="${shooterPos.x}" cy="${shooterPos.y}" r="6" fill="#ffd700" stroke="#d35400" stroke-width="2" style="opacity: 0; pointer-events: none;" />
 
-              <!-- Center Distance Readout Plate -->
+              <!-- Center Distance Readout Plaque (Rustic Forged Iron & Brass) -->
               <g transform="translate(350, 230)">
-                <rect x="-140" y="-38" width="280" height="76" rx="12" fill="#0c2615" stroke="#d4af37" stroke-width="2" />
-                <text x="0" y="-10" text-anchor="middle" font-family="'Georgia', serif" font-size="16" font-weight="bold" fill="#ffd700">
+                <!-- Outer Iron Plaque Plate -->
+                <rect x="-142" y="-39" width="284" height="78" rx="10" fill="#1a0e07" stroke="#936d2a" stroke-width="2.5" />
+                <!-- Inner Dark Walnut Inlay -->
+                <rect x="-137" y="-34" width="274" height="68" rx="7" fill="#261309" stroke="#482914" stroke-width="1.2" />
+                <!-- Corner Brass Screws -->
+                <circle cx="-130" cy="-27" r="2.5" fill="#d4af37" stroke="#604010" stroke-width="0.8" />
+                <circle cx="130" cy="-27" r="2.5" fill="#d4af37" stroke="#604010" stroke-width="0.8" />
+                <circle cx="-130" cy="27" r="2.5" fill="#d4af37" stroke="#604010" stroke-width="0.8" />
+                <circle cx="130" cy="27" r="2.5" fill="#d4af37" stroke="#604010" stroke-width="0.8" />
+
+                <text x="0" y="-10" text-anchor="middle" font-family="'Rye', 'Georgia', serif" font-size="15" font-weight="bold" fill="#ffeb3b" letter-spacing="0.5">
                   🎯 ${isEn ? 'EFFECTIVE DISTANCE' : 'SKUTEČNÁ VZDÁLENOST'}: ${calcResult.actualDistance} ${isEn ? (calcResult.actualDistance === 1 ? 'SEAT' : 'SEATS') : (calcResult.actualDistance === 1 ? 'MÍSTO' : (calcResult.actualDistance < 5 ? 'MÍSTA' : 'MÍST'))}
                 </text>
-                <text x="0" y="12" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#ffffff" opacity="0.95">
+                <text x="0" y="11" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#f5deb3">
                   ↻ ${isEn ? 'Clockwise' : 'Po směru'}: ${dir.clockwise} | ↺ ${isEn ? 'Counter-CW' : 'Proti směru'}: ${dir.counterClockwise}
                 </text>
-                <text x="0" y="27" text-anchor="middle" font-size="10.5" fill="#a3d9a5">
+                <text x="0" y="26" text-anchor="middle" font-size="10.5" fill="#e6b84d">
                   ${isEn ? 'Shortest table distance' : 'Základ u stolu (nejkratší)'}: ${dir.shortest} ${isEn ? 'seats' : (dir.shortest === 1 ? 'místo' : 'místa')}
                 </text>
               </g>
 
-              <!-- Player Chairs -->
+              <!-- Player Chairs / Saloon Stools -->
               ${seatsSvg}
             </svg>
           </div>
