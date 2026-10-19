@@ -10,11 +10,15 @@
     selectedExpansion: 'all',
     selectedType: 'all',
     selectedSuit: 'all',
+    selectedQuickTag: 'all',
     sortBy: 'name-asc',
     activeRulesCategory: 'all',
     activeFaqCategory: 'all',
     faqQuery: '',
-    selectedCard: null
+    selectedCard: null,
+    activeTool: 'calc',
+    pinnedCharacter: JSON.parse(localStorage.getItem('bang_pinned_char') || 'null'),
+    soundEnabled: localStorage.getItem('bang_sound') !== 'false'
   };
 
   // DOM Elements
@@ -23,6 +27,14 @@
     panes: document.querySelectorAll('.tab-pane'),
     globalSearch: document.getElementById('global-search'),
     themeToggle: document.getElementById('theme-toggle'),
+    soundToggle: document.getElementById('sound-toggle'),
+    soundIcon: document.getElementById('sound-icon'),
+    pinnedCharacterWidget: document.getElementById('pinned-character-widget'),
+    catalogQuickTags: document.getElementById('catalog-quick-tags'),
+    quickTagLabel: document.getElementById('quick-tag-label'),
+    navTextNastroje: document.getElementById('nav-text-nastroje'),
+    toolsSubnav: document.getElementById('tools-subnav'),
+    toolsContentArea: document.getElementById('tools-content-area'),
     langBtnCs: document.getElementById('lang-btn-cs'),
     langBtnEn: document.getElementById('lang-btn-en'),
     brandMainTitle: document.getElementById('brand-main-title'),
@@ -99,6 +111,11 @@
       navFaq: "FAQ",
       navTah: "Tah hráče",
       navPomocnik: "Rychlý pomocník",
+      navNastroje: "Herní nástroje",
+      quickTagsLabel: "⚡ Rychlé tagy:",
+      pinCharacter: "⭐ Připnout jako moji postavu",
+      unpinCharacter: "✕ Odepnout postavu",
+      compareCard: "⚖️ Porovnat s jinou kartou",
       filterTitle: "Filtry karet",
       filterReset: "Resetovat",
       filterExpansion: "Rozšíření",
@@ -139,6 +156,11 @@
       navFaq: "FAQ",
       navTah: "Player Turn",
       navPomocnik: "Quick Helper",
+      navNastroje: "Game Tools",
+      quickTagsLabel: "⚡ Quick Tags:",
+      pinCharacter: "⭐ Pin as My Character",
+      unpinCharacter: "✕ Unpin Character",
+      compareCard: "⚖️ Compare with Another Card",
       filterTitle: "Card Filters",
       filterReset: "Reset",
       filterExpansion: "Expansion",
@@ -398,12 +420,16 @@
       pane.classList.toggle('active', pane.id === `tab-${tabId}`);
     });
 
+    if (tabId === 'nastroje') {
+      renderTools();
+    }
+
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   function initRouting() {
     const hash = window.location.hash.replace('#', '');
-    if (hash && ['katalog', 'pravidla', 'faq', 'tah-hrace', 'pomocnik'].includes(hash)) {
+    if (hash && ['katalog', 'pravidla', 'faq', 'tah-hrace', 'pomocnik', 'nastroje'].includes(hash)) {
       setTab(hash);
     }
   }
@@ -446,6 +472,39 @@
         if (!card.suit || !card.suit.includes(state.selectedSuit)) return false;
       }
 
+      // Quick Tag Filter
+      if (state.selectedQuickTag && state.selectedQuickTag !== 'all') {
+        const tag = state.selectedQuickTag;
+        const normName = normalizeString(card.name + ' ' + (card.nameEn || ''));
+        const normEffect = normalizeString(card.effect + ' ' + (card.effectEn || ''));
+        const tags = (card.tags || []).map(t => normalizeString(t));
+
+        if (tag === 'zbrane') {
+          const isWeapon = card.range || (card.type === 'blue' && (normName.includes('colt') || normName.includes('volcanic') || normName.includes('schofield') || normName.includes('remington') || normName.includes('carabine') || normName.includes('winchester') || tags.includes('zbran')));
+          if (!isWeapon) return false;
+        } else if (tag === 'leceni') {
+          const isHeal = normEffect.includes('zivot') || normEffect.includes('vylec') || normEffect.includes('heal') || normEffect.includes('life') || normName.includes('pivo') || normName.includes('beer') || normName.includes('saloon') || normName.includes('tequila') || normName.includes('whisky');
+          if (!isHeal) return false;
+        } else if (tag === 'obrana') {
+          const isDef = normName.includes('vedle') || normName.includes('missed') || normName.includes('barel') || normName.includes('barrel') || normName.includes('mustang') || normName.includes('skrys') || normName.includes('hideout') || normName.includes('sombrero') || normName.includes('bible') || normName.includes('zelezny') || normName.includes('iron') || tags.includes('obrana');
+          if (!isDef) return false;
+        } else if (tag === 'vzdalenost') {
+          const isDist = normEffect.includes('vzdalenost') || normEffect.includes('distance') || normName.includes('mustang') || normName.includes('skrys') || normName.includes('hledi') || normName.includes('appaloosa') || normName.includes('dalekohled') || normName.includes('scope');
+          if (!isDist) return false;
+        } else if (tag === 'snimani') {
+          const isDraw = normEffect.includes('sejm') || normEffect.includes('snime') || normEffect.includes('draw!') || normName.includes('barel') || normName.includes('vezeni') || normName.includes('dynamit') || normName.includes('jail');
+          if (!isDraw) return false;
+        } else if (tag === 'zelene') {
+          if (card.type !== 'green') return false;
+        } else if (tag === 'oranzove') {
+          if (card.type !== 'orange') return false;
+        } else if (tag === 'postavy') {
+          if (!['character', 'legend-character'].includes(card.type)) return false;
+        } else if (tag === 'udalosti') {
+          if (card.type !== 'event') return false;
+        }
+      }
+
       if (state.searchQuery.trim()) {
         const qNorm = normalizeString(state.searchQuery);
         const tokens = qNorm.split(/\s+/).filter(Boolean);
@@ -482,6 +541,7 @@
     if (state.selectedExpansion !== 'all') count++;
     if (state.selectedType !== 'all') count++;
     if (state.selectedSuit !== 'all') count++;
+    if (state.selectedQuickTag !== 'all') count++;
     if (state.sortBy !== 'name-asc') count++;
 
     if (count > 0) {
@@ -653,6 +713,22 @@
       `
       : '';
 
+    const isCharacter = ['character', 'legend-character'].includes(card.type);
+    const isPinned = state.pinnedCharacter && state.pinnedCharacter.id === card.id;
+
+    const modalActionsHtml = `
+      <div style="display: flex; flex-wrap: wrap; gap: 0.65rem; margin-top: 1.5rem; border-top: 2px solid var(--border-color); padding-top: 1.25rem;">
+        ${isCharacter ? `
+          <button type="button" id="btn-pin-character" class="btn-reset-filters" style="display: inline-flex; align-items: center; gap: 0.4rem; font-weight: 700; ${isPinned ? 'background: #c0392b; border-color: #c0392b; color: #fff;' : ''}">
+            ${isPinned ? t.unpinCharacter : t.pinCharacter}
+          </button>
+        ` : ''}
+        <button type="button" id="btn-compare-card" class="btn-reset-filters" style="display: inline-flex; align-items: center; gap: 0.4rem; font-weight: 700;">
+          ${t.compareCard}
+        </button>
+      </div>
+    `;
+
     els.modalBody.innerHTML = `
       <div class="card-modal-layout ${card.image ? 'has-image' : 'no-image'}">
         ${imageColHtml}
@@ -679,6 +755,7 @@
 
           ${rulingsHtml}
           ${tagsHtml}
+          ${modalActionsHtml}
         </div>
       </div>
     `;
@@ -686,6 +763,35 @@
     els.cardModal.classList.toggle('has-image', !!card.image);
     els.cardModal.classList.add('active');
     document.body.style.overflow = 'hidden';
+
+    const pinBtn = document.getElementById('btn-pin-character');
+    if (pinBtn) {
+      pinBtn.addEventListener('click', () => {
+        if (isPinned) {
+          state.pinnedCharacter = null;
+          localStorage.removeItem('bang_pinned_char');
+        } else {
+          state.pinnedCharacter = {
+            id: card.id,
+            name: card.name,
+            nameEn: card.nameEn,
+            image: card.image,
+            lives: card.lives || 4,
+            maxLives: card.lives || 4
+          };
+          localStorage.setItem('bang_pinned_char', JSON.stringify(state.pinnedCharacter));
+        }
+        renderPinnedCharacterWidget();
+        openCardModal(card.id);
+      });
+    }
+
+    const compBtn = document.getElementById('btn-compare-card');
+    if (compBtn) {
+      compBtn.addEventListener('click', () => {
+        openCardComparator(card);
+      });
+    }
   }
 
   function closeCardModal() {
@@ -693,6 +799,167 @@
     els.cardModal.classList.remove('has-image');
     document.body.style.overflow = '';
     state.selectedCard = null;
+  }
+
+  // =========================================================================
+  // PINNED CHARACTER WIDGET
+  // =========================================================================
+  function renderPinnedCharacterWidget() {
+    if (!els.pinnedCharacterWidget) return;
+    const char = state.pinnedCharacter;
+    if (!char) {
+      els.pinnedCharacterWidget.style.display = 'none';
+      els.pinnedCharacterWidget.innerHTML = '';
+      return;
+    }
+    const isEn = state.lang === 'en';
+    const charName = isEn ? (char.nameEn || char.name) : char.name;
+    const thumbHtml = char.image ? `<img src="${char.image}" alt="${charName}" class="pinned-char-thumb">` : '🤠';
+
+    els.pinnedCharacterWidget.style.display = 'flex';
+    els.pinnedCharacterWidget.innerHTML = `
+      <div class="pinned-char-left" id="pinned-char-click" title="${isEn ? 'Open character detail' : 'Otevřít detail postavy'}">
+        ${thumbHtml}
+        <div>
+          <div style="font-size: 0.72rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">${isEn ? 'My Character' : 'Moje postava'}</div>
+          <div class="pinned-char-title">${charName}</div>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <div class="pinned-char-lives">
+          <button type="button" class="pinned-btn-life" id="btn-pinned-minus" aria-label="Ubrat život">−</button>
+          <span style="font-weight: 800; color: #b71c1c;">❤️ ${char.lives} / ${char.maxLives}</span>
+          <button type="button" class="pinned-btn-life" id="btn-pinned-plus" aria-label="Přidat život">+</button>
+        </div>
+        <button type="button" class="pinned-btn-unpin" id="btn-pinned-unpin" title="${isEn ? 'Unpin' : 'Odepnout'}">✕</button>
+      </div>
+    `;
+
+    const clickArea = document.getElementById('pinned-char-click');
+    if (clickArea) clickArea.addEventListener('click', () => openCardModal(char.id));
+
+    const minusBtn = document.getElementById('btn-pinned-minus');
+    if (minusBtn) {
+      minusBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (char.lives > 0) {
+          char.lives--;
+          localStorage.setItem('bang_pinned_char', JSON.stringify(char));
+          renderPinnedCharacterWidget();
+        }
+      });
+    }
+
+    const plusBtn = document.getElementById('btn-pinned-plus');
+    if (plusBtn) {
+      plusBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (char.lives < char.maxLives + 2) {
+          char.lives++;
+          localStorage.setItem('bang_pinned_char', JSON.stringify(char));
+          renderPinnedCharacterWidget();
+        }
+      });
+    }
+
+    const unpinBtn = document.getElementById('btn-pinned-unpin');
+    if (unpinBtn) {
+      unpinBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        state.pinnedCharacter = null;
+        localStorage.removeItem('bang_pinned_char');
+        renderPinnedCharacterWidget();
+      });
+    }
+  }
+
+  // =========================================================================
+  // CARD COMPARATOR
+  // =========================================================================
+  function openCardComparator(card1, card2 = null) {
+    if (!card2) {
+      card2 = window.BANG_CARDS.find(c => c.id !== card1.id && c.type === card1.type) || window.BANG_CARDS.find(c => c.id !== card1.id);
+    }
+    const isEn = state.lang === 'en';
+    const t = I18N[state.lang] || I18N.cs;
+
+    const renderCardCol = (c) => {
+      if (!c) return '';
+      const title = isEn ? (c.nameEn || c.name) : c.name;
+      const badge = isEn ? (c.expansionNameEn || EXPANSIONS_EN[c.expansion] || c.expansionName) : c.expansionName;
+      const typeLabel = isEn ? (c.typeLabelEn || TYPES_EN[c.type] || c.typeLabel) : c.typeLabel;
+      const effect = isEn ? (c.effectEn || c.effect) : c.effect;
+      const rulings = isEn && c.rulingsEn && c.rulingsEn.length > 0 ? c.rulingsEn : c.rulings;
+
+      return `
+        <div style="background: var(--bg-surface); border: 1.5px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem;">
+          <div style="text-align: center; margin-bottom: 1rem;">
+            ${c.image ? `<img src="${c.image}" alt="${title}" style="max-height: 160px; object-fit: contain; border-radius: 6px; border: 1px solid var(--border-color); margin-bottom: 0.5rem;">` : ''}
+            <div style="font-size: 0.8rem; color: var(--color-brown); font-weight: 700; text-transform: uppercase;">${badge} • ${typeLabel}</div>
+            <h3 style="font-family: 'Georgia', serif; font-size: 1.4rem; color: var(--text-main); margin: 0.25rem 0;">${title}</h3>
+            ${c.lives ? `<div style="color: #b71c1c; font-weight: 700;">❤️ ${c.lives} ${t.livesLabel}</div>` : ''}
+            ${c.range ? `<div style="font-weight: 700; font-size: 0.9rem;">${t.rangeLabel}: ${c.range}</div>` : ''}
+          </div>
+          <div style="background: var(--bg-card); padding: 0.85rem; border-radius: 6px; border-left: 3px solid var(--color-brown); font-size: 0.95rem; line-height: 1.5; margin-bottom: 1rem;">
+            ${effect}
+          </div>
+          ${(rulings && rulings.length > 0) ? `
+            <div style="font-size: 0.85rem; line-height: 1.5; border-top: 1px dashed var(--border-color); padding-top: 0.75rem;">
+              <strong style="color: var(--color-brown);">${t.rulingsHeader}</strong>
+              <ul style="padding-left: 1.15rem; margin-top: 0.35rem;">
+                ${rulings.map(r => `<li>${r}</li>`).join('')}
+              </ul>
+            </div>
+          ` : ''}
+        </div>
+      `;
+    };
+
+    els.modalBody.innerHTML = `
+      <div style="padding: 0.5rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--border-color); padding-bottom: 0.85rem; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.75rem;">
+          <h2 style="font-family: 'Georgia', serif; font-size: 1.6rem; color: var(--color-brown); margin: 0;">
+            ⚖️ ${isEn ? 'Card Comparison' : 'Porovnání karet'}
+          </h2>
+          <button type="button" class="btn-reset-filters" id="btn-back-to-single" style="font-weight: 700;">
+            ← ${isEn ? 'Back to Card Detail' : 'Zpět na detail karty'}
+          </button>
+        </div>
+
+        <div style="margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+          <label for="comp-select-2" style="font-weight: 700; font-size: 0.92rem;">
+            ${isEn ? 'Compare against:' : 'Porovnat s kartou:'}
+          </label>
+          <select id="comp-select-2" class="filter-select" style="max-width: 340px;">
+            ${window.BANG_CARDS.map(c => `
+              <option value="${c.id}" ${card2 && c.id === card2.id ? 'selected' : ''}>
+                ${isEn ? (c.nameEn || c.name) : c.name} (${isEn ? (c.expansionNameEn || c.expansionName) : c.expansionName})
+              </option>
+            `).join('')}
+          </select>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
+          ${renderCardCol(card1)}
+          ${renderCardCol(card2)}
+        </div>
+      </div>
+    `;
+
+    document.getElementById('btn-back-to-single').addEventListener('click', () => {
+      openCardModal(card1.id);
+    });
+
+    document.getElementById('comp-select-2').addEventListener('change', (e) => {
+      const nextCard2 = window.BANG_CARDS.find(c => c.id === e.target.value);
+      if (nextCard2) {
+        openCardComparator(card1, nextCard2);
+      }
+    });
+
+    els.cardModal.classList.remove('has-image');
+    els.cardModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
   }
 
   // =========================================================================
@@ -958,6 +1225,1004 @@
   }
 
   // =========================================================================
+  // TOOLS CONTROLLER & SUB-VIEWS (100% Client-Side, No Database)
+  // =========================================================================
+  const calcParams = {
+    totalPlayers: 5,
+    shooterIdx: 0,
+    targetIdx: 2,
+    weaponId: 'colt',
+    appaloosa: false,
+    binoculars: false,
+    roseDoolan: false,
+    mustang: false,
+    hideout: false,
+    paulRegret: false,
+    zvonice: false
+  };
+
+  const eventDeckState = {
+    filterSet: 'both',
+    deck: [],
+    currentIndex: -1
+  };
+
+  const draftState = {
+    step: 'setup',
+    playerCount: 5,
+    expansions: ['base', 'dodge-city'],
+    currentIdx: 0,
+    players: [],
+    revealed: false
+  };
+
+  const trackerState = {
+    lives: 4,
+    maxLives: 4,
+    isSheriff: false,
+    gold: 0,
+    cubes: 0,
+    hand: 4
+  };
+
+  const quizState = {
+    questions: [],
+    idx: 0,
+    score: 0,
+    answered: false,
+    selectedOption: null,
+    finished: false
+  };
+
+  function renderTools() {
+    if (!els.toolsContentArea) return;
+
+    if (els.toolsSubnav) {
+      els.toolsSubnav.querySelectorAll('.tool-subnav-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.tool === state.activeTool);
+      });
+    }
+
+    if (state.activeTool === 'calc') {
+      renderDistanceCalc(els.toolsContentArea);
+    } else if (state.activeTool === 'events') {
+      renderEventDeck(els.toolsContentArea);
+    } else if (state.activeTool === 'draft') {
+      renderRoleDraft(els.toolsContentArea);
+    } else if (state.activeTool === 'tracker') {
+      renderPlayerBoard(els.toolsContentArea);
+    } else if (state.activeTool === 'quiz') {
+      renderRulesQuiz(els.toolsContentArea);
+    } else if (state.activeTool === 'soundboard') {
+      renderSoundboard(els.toolsContentArea);
+    }
+  }
+
+  // 1. DISTANCE CALCULATOR
+  function renderDistanceCalc(container) {
+    const isEn = state.lang === 'en';
+    const weapons = window.BANG_TOOLS ? window.BANG_TOOLS.DistanceCalc.weapons : [];
+    const selectedWeapon = weapons.find(w => w.id === calcParams.weaponId) || weapons[0] || { range: 1 };
+
+    const calcResult = window.BANG_TOOLS.DistanceCalc.calculate({
+      seatDistance: window.BANG_TOOLS.DistanceCalc.getSeatDistance(calcParams.shooterIdx, calcParams.targetIdx, calcParams.totalPlayers),
+      shooterWeaponRange: selectedWeapon.range,
+      shooterAppaloosa: calcParams.appaloosa,
+      shooterBinoculars: calcParams.binoculars,
+      shooterRoseDoolan: calcParams.roseDoolan,
+      targetMustang: calcParams.mustang,
+      targetHideout: calcParams.hideout,
+      targetPaulRegret: calcParams.paulRegret,
+      globalZvonice: calcParams.zvonice
+    });
+
+    let seatButtonsHtml = '';
+    for (let i = 0; i < calcParams.totalPlayers; i++) {
+      const isShooter = i === calcParams.shooterIdx;
+      const isTarget = i === calcParams.targetIdx;
+      let cls = 'seat-btn';
+      let roleLabel = `${i + 1}`;
+      if (isShooter) {
+        cls += ' active-shooter';
+        roleLabel = `🤠 ${isEn ? 'Shooter' : 'Střelec'} (${i + 1})`;
+      } else if (isTarget) {
+        cls += ' active-target';
+        roleLabel = `🎯 ${isEn ? 'Target' : 'Cíl'} (${i + 1})`;
+      }
+      seatButtonsHtml += `<button type="button" class="${cls}" data-seat="${i}">${roleLabel}</button>`;
+    }
+
+    container.innerHTML = `
+      <div class="tool-card-box">
+        <div class="tool-card-header">
+          <h2><span>📏</span> ${isEn ? 'Distance & Range Calculator' : 'Kalkulačka vzdálenosti a dostřelu'}</h2>
+          <p class="tool-card-lead">${isEn ? 'Resolve shooting disputes instantly with active seat distance, weapon range, scopes and defensive horses.' : 'Okamžité vyřešení sporu u stolu: výpočet skutečné vzdálenosti, dosahu zbraně, modifikátorů a karet Panika! či BANG!.'}</p>
+        </div>
+
+        <div style="margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+          <label style="font-weight: 700; font-size: 0.95rem;">${isEn ? 'Players seated around table:' : 'Počet hráčů u stolu:'}</label>
+          <div style="display: flex; gap: 0.35rem;">
+            ${[4, 5, 6, 7, 8].map(n => `
+              <button type="button" class="seat-btn ${n === calcParams.totalPlayers ? 'active-shooter' : ''}" data-total="${n}">${n}</button>
+            `).join('')}
+          </div>
+        </div>
+
+        <div style="margin-bottom: 1.5rem;">
+          <div style="font-weight: 700; font-size: 0.92rem; margin-bottom: 0.5rem; color: var(--color-brown);">
+            ${isEn ? 'Click to select Shooter (red) and Target (blue):' : 'Kliknutím zvolte Střelce (červený) a Cíl (modrý):'}
+          </div>
+          <div class="seat-picker-wrap" id="calc-seats-wrap">
+            ${seatButtonsHtml}
+          </div>
+        </div>
+
+        <div class="calc-grid">
+          <div class="calc-panel">
+            <h3><span>🤠</span> ${isEn ? 'Shooter Equipment & Abilities' : 'Výbava střelce & Schopnosti'}</h3>
+            <div style="margin-bottom: 1rem;">
+              <label for="calc-weapon" style="display: block; font-weight: 700; font-size: 0.88rem; margin-bottom: 0.35rem;">${isEn ? 'Equipped Weapon:' : 'Vyložená zbraň:'}</label>
+              <select id="calc-weapon" class="filter-select" style="width: 100%;">
+                ${weapons.map(w => `<option value="${w.id}" ${w.id === calcParams.weaponId ? 'selected' : ''}>${isEn ? w.nameEn : w.nameCs}</option>`).join('')}
+              </select>
+            </div>
+            <div class="calc-mods-list">
+              <label class="calc-checkbox-label">
+                <input type="checkbox" id="chk-appaloosa" ${calcParams.appaloosa ? 'checked' : ''}>
+                <span>🐎 ${isEn ? 'Appaloosa / Scope (-1 distance)' : 'Hledí / Appaloosa (-1 ke vzdálenosti)'}</span>
+              </label>
+              <label class="calc-checkbox-label">
+                <input type="checkbox" id="chk-binoculars" ${calcParams.binoculars ? 'checked' : ''}>
+                <span>🔭 ${isEn ? 'Binoculars (-1 distance)' : 'Dalekohled (-1 ke vzdálenosti)'}</span>
+              </label>
+              <label class="calc-checkbox-label">
+                <input type="checkbox" id="chk-rosedoolan" ${calcParams.roseDoolan ? 'checked' : ''}>
+                <span>👩 ${isEn ? 'Rose Doolan character (-1 distance)' : 'Postava Rose Doolan (-1 ke vzdálenosti)'}</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="calc-panel">
+            <h3><span>🎯</span> ${isEn ? 'Target Defenses & Abilities' : 'Obrana cíle & Schopnosti'}</h3>
+            <div class="calc-mods-list" style="margin-top: 0.5rem;">
+              <label class="calc-checkbox-label">
+                <input type="checkbox" id="chk-mustang" ${calcParams.mustang ? 'checked' : ''}>
+                <span>🐎 ${isEn ? 'Mustang (+1 distance away)' : 'Mustang (+1 ke vzdálenosti)'}</span>
+              </label>
+              <label class="calc-checkbox-label">
+                <input type="checkbox" id="chk-hideout" ${calcParams.hideout ? 'checked' : ''}>
+                <span>🏕️ ${isEn ? 'Hideout (+1 distance away)' : 'Skrýš (+1 ke vzdálenosti)'}</span>
+              </label>
+              <label class="calc-checkbox-label">
+                <input type="checkbox" id="chk-paulregret" ${calcParams.paulRegret ? 'checked' : ''}>
+                <span>🤠 ${isEn ? 'Paul Regret character (+1 distance away)' : 'Postava Paul Regret (+1 ke vzdálenosti)'}</span>
+              </label>
+              <label class="calc-checkbox-label" style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px dashed var(--border-color);">
+                <input type="checkbox" id="chk-zvonice" ${calcParams.zvonice ? 'checked' : ''}>
+                <span>🔔 ${isEn ? 'Event: Church Bell / Zvonice (all dist = 1)' : 'Událost: Zvonice (všichni na vzdálenost 1)'}</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="calc-result-box">
+          <div class="calc-stat-row">
+            <div class="calc-stat-card">
+              <div class="calc-stat-num">${calcResult.seatDistance}</div>
+              <div class="calc-stat-lbl">${isEn ? 'Base Table Distance' : 'Míst v kruhu'}</div>
+            </div>
+            <div class="calc-stat-card">
+              <div class="calc-stat-num" style="color: #2980b9;">${calcResult.actualDistance}</div>
+              <div class="calc-stat-lbl">${isEn ? 'Effective Distance' : 'Skutečná vzdálenost'}</div>
+            </div>
+            <div class="calc-stat-card">
+              <div class="calc-stat-num" style="color: #c0392b;">${calcResult.weaponRange}</div>
+              <div class="calc-stat-lbl">${isEn ? 'Weapon Range' : 'Dostřel zbraně'}</div>
+            </div>
+          </div>
+
+          <div class="calc-verdict-grid">
+            <div class="calc-verdict-item ${calcResult.canBang ? 'verdict-success' : 'verdict-fail'}">
+              <span>${calcResult.canBang ? '💥' : '🚫'}</span>
+              <span>BANG! ${calcResult.canBang ? (isEn ? 'CAN HIT TARGET!' : 'DOSTŘELÍ NA CÍL!') : (isEn ? 'CANNOT HIT (Need ' + calcResult.actualDistance + ')' : 'NEDOSTŘELÍ (chybí ' + (calcResult.actualDistance - calcResult.weaponRange) + ')') }</span>
+            </div>
+            <div class="calc-verdict-item ${calcResult.canPanic ? 'verdict-success' : 'verdict-fail'}">
+              <span>${calcResult.canPanic ? '🧤' : '🚫'}</span>
+              <span>Panika! ${calcResult.canPanic ? (isEn ? 'CAN BE PLAYED (Dist = 1)' : 'LZE ZAHRÁT (vzdálenost 1)') : (isEn ? 'CANNOT PLAY (Dist > 1)' : 'NELZE ZAHRÁT (vzdálenost ' + calcResult.actualDistance + ')')}</span>
+            </div>
+            <div class="calc-verdict-item verdict-success">
+              <span>⚔️</span>
+              <span>Duel / Cat Balou / Indiáni: ${isEn ? 'Always playable' : 'Vždy lze zahrát'}</span>
+            </div>
+          </div>
+
+          <div style="margin-top: 1.25rem; font-size: 0.9rem; color: var(--text-muted); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+            <div>
+              <strong>${isEn ? 'Formula:' : 'Vzorec:'}</strong> ${isEn ? 'Base' : 'Kruh'} (${calcResult.seatDistance}) ${calcResult.targetMods ? `+ Obrana (+${calcResult.targetMods})` : ''} ${calcResult.shooterMods ? `- Hledí (-${calcResult.shooterMods})` : ''} = <strong>${calcResult.actualDistance}</strong>.
+            </div>
+            <button type="button" class="btn-reset-filters" id="btn-sound-shot" style="display: inline-flex; align-items: center; gap: 0.4rem; font-weight: 700;">
+              <span>💥</span> ${isEn ? 'Test Gunshot' : 'Otestovat výstřel'}
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+
+    container.querySelectorAll('[data-total]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        calcParams.totalPlayers = parseInt(btn.dataset.total, 10);
+        if (calcParams.shooterIdx >= calcParams.totalPlayers) calcParams.shooterIdx = 0;
+        if (calcParams.targetIdx >= calcParams.totalPlayers) calcParams.targetIdx = 1;
+        renderDistanceCalc(container);
+      });
+    });
+
+    container.querySelectorAll('.seat-btn[data-seat]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const seat = parseInt(btn.dataset.seat, 10);
+        if (seat === calcParams.shooterIdx) return;
+        if (seat !== calcParams.targetIdx) {
+          calcParams.targetIdx = seat;
+        } else {
+          calcParams.targetIdx = calcParams.shooterIdx;
+          calcParams.shooterIdx = seat;
+        }
+        renderDistanceCalc(container);
+      });
+    });
+
+    const wSelect = document.getElementById('calc-weapon');
+    if (wSelect) {
+      wSelect.addEventListener('change', (e) => {
+        calcParams.weaponId = e.target.value;
+        renderDistanceCalc(container);
+      });
+    }
+
+    const bindChk = (id, key) => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.addEventListener('change', (e) => {
+          calcParams[key] = e.target.checked;
+          renderDistanceCalc(container);
+        });
+      }
+    };
+
+    bindChk('chk-appaloosa', 'appaloosa');
+    bindChk('chk-binoculars', 'binoculars');
+    bindChk('chk-rosedoolan', 'roseDoolan');
+    bindChk('chk-mustang', 'mustang');
+    bindChk('chk-hideout', 'hideout');
+    bindChk('chk-paulregret', 'paulRegret');
+    bindChk('chk-zvonice', 'zvonice');
+
+    const shotBtn = document.getElementById('btn-sound-shot');
+    if (shotBtn) {
+      shotBtn.addEventListener('click', () => {
+        if (calcResult.canBang) {
+          window.BANG_TOOLS.SoundFX.playShot();
+        } else {
+          window.BANG_TOOLS.SoundFX.playRicochet();
+        }
+      });
+    }
+  }
+
+  // 2. EVENT DECK
+  function renderEventDeck(container) {
+    const isEn = state.lang === 'en';
+    const allEventCards = window.BANG_CARDS.filter(c => c.type === 'event');
+
+    const initEventDeck = () => {
+      let filtered = allEventCards;
+      if (eventDeckState.filterSet === 'high-noon') {
+        filtered = allEventCards.filter(c => c.expansion === 'high-noon');
+      } else if (eventDeckState.filterSet === 'fistful') {
+        filtered = allEventCards.filter(c => c.expansion === 'fistful-of-cards');
+      } else if (eventDeckState.filterSet === 'both') {
+        filtered = allEventCards.filter(c => ['high-noon', 'fistful-of-cards'].includes(c.expansion));
+      }
+
+      const shuffled = [...filtered].sort(() => Math.random() - 0.5);
+      const climaxIdx = shuffled.findIndex(c => c.name === 'Pravé poledne' || c.name === 'Pěst plná karet');
+      if (climaxIdx !== -1) {
+        const climaxCard = shuffled.splice(climaxIdx, 1)[0];
+        shuffled.push(climaxCard);
+      }
+
+      eventDeckState.deck = shuffled;
+      eventDeckState.currentIndex = 0;
+    };
+
+    if (eventDeckState.deck.length === 0) {
+      initEventDeck();
+    }
+
+    const currentCard = eventDeckState.deck[eventDeckState.currentIndex] || eventDeckState.deck[0];
+    const title = isEn ? (currentCard.nameEn || currentCard.name) : currentCard.name;
+    const badge = isEn ? (currentCard.expansionNameEn || currentCard.expansionName) : currentCard.expansionName;
+    const effect = isEn ? (currentCard.effectEn || currentCard.effect) : currentCard.effect;
+    const timing = isEn ? (currentCard.timingEn || currentCard.timing) : currentCard.timing;
+    const rulings = isEn && currentCard.rulingsEn && currentCard.rulingsEn.length > 0 ? currentCard.rulingsEn : currentCard.rulings;
+
+    container.innerHTML = `
+      <div class="tool-card-box">
+        <div class="tool-card-header">
+          <h2><span>☀️</span> ${isEn ? 'Event Deck (High Noon & Fistful of Cards)' : 'Digitální balíček událostí (Pravé poledne & Fistful)'}</h2>
+          <p class="tool-card-lead">${isEn ? 'Sheriff turns a new global event card at the start of each round. The climax card is automatically placed on the bottom.' : 'Šerif na začátku každého kola hry otočí novou událost. Finální karta je automaticky zamíchána na spodek balíčku dle oficiálních pravidel.'}</p>
+        </div>
+
+        <div class="events-deck-container">
+          <div class="events-controls-bar">
+            <select id="event-set-select" class="filter-select">
+              <option value="both" ${eventDeckState.filterSet === 'both' ? 'selected' : ''}>☀️ ${isEn ? 'High Noon & Fistful together' : 'Pravé poledne & Pěst plná karet'}</option>
+              <option value="high-noon" ${eventDeckState.filterSet === 'high-noon' ? 'selected' : ''}>☀️ ${isEn ? 'High Noon only' : 'Pouze Pravé poledne'}</option>
+              <option value="fistful" ${eventDeckState.filterSet === 'fistful' ? 'selected' : ''}>💀 ${isEn ? 'A Fistful of Cards only' : 'Pouze Pěst plná karet'}</option>
+              <option value="all" ${eventDeckState.filterSet === 'all' ? 'selected' : ''}>🏜️ ${isEn ? 'All Expansions (incl. Wild West Show)' : 'Všechny (včetně Divokého západu)'}</option>
+            </select>
+            <button type="button" class="btn-reset-filters" id="btn-shuffle-events" style="font-weight: 700;">
+              🔄 ${isEn ? 'Shuffle New Deck' : 'Zamíchat nový balíček'}
+            </button>
+          </div>
+
+          <div class="event-big-card">
+            <div class="event-card-top">
+              <span class="event-round-badge">
+                ${isEn ? 'Round' : 'Kolo'} ${eventDeckState.currentIndex + 1} / ${eventDeckState.deck.length}
+              </span>
+              <span style="font-size: 0.85rem; font-weight: 700; opacity: 0.95;">${badge}</span>
+            </div>
+            ${currentCard.image ? `
+              <div style="background: var(--bg-surface); text-align: center; padding: 1.25rem 0.5rem; border-bottom: 1px solid var(--border-color);">
+                <img src="${currentCard.image}" alt="${title}" style="max-height: 220px; object-fit: contain; border-radius: 8px; box-shadow: var(--shadow-sm);">
+              </div>
+            ` : ''}
+            <div class="event-card-body">
+              <h3 class="event-card-title">${title}</h3>
+              <div class="event-card-timing">⏱️ ${timing}</div>
+              <div class="event-card-effect">${effect}</div>
+              ${(rulings && rulings.length > 0) ? `
+                <div style="font-size: 0.88rem; line-height: 1.6; border-top: 1px dashed var(--border-color); padding-top: 0.75rem;">
+                  <strong style="color: var(--color-brown);">${isEn ? 'Official Rulings:' : 'Přesný výklad pravidla:'}</strong>
+                  <ul style="padding-left: 1.2rem; margin-top: 0.35rem;">
+                    ${rulings.map(r => `<li>${r}</li>`).join('')}
+                  </ul>
+                </div>
+              ` : ''}
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 0.85rem; flex-wrap: wrap; justify-content: center;">
+            <button type="button" class="tool-subnav-btn" id="btn-prev-event" ${eventDeckState.currentIndex <= 0 ? 'disabled style="opacity: 0.5;"' : ''}>
+              ← ${isEn ? 'Previous Round' : 'Předchozí kolo'}
+            </button>
+            <button type="button" class="tool-subnav-btn active" id="btn-next-event" ${eventDeckState.currentIndex >= eventDeckState.deck.length - 1 ? 'disabled style="opacity: 0.5;"' : ''}>
+              ${isEn ? 'Next Event (New Round)' : 'Další událost (Nové kolo)'} ➔
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+
+    document.getElementById('event-set-select').addEventListener('change', (e) => {
+      eventDeckState.filterSet = e.target.value;
+      initEventDeck();
+      renderEventDeck(container);
+    });
+
+    document.getElementById('btn-shuffle-events').addEventListener('click', () => {
+      initEventDeck();
+      window.BANG_TOOLS.SoundFX.playBell();
+      renderEventDeck(container);
+    });
+
+    const prevBtn = document.getElementById('btn-prev-event');
+    if (prevBtn && eventDeckState.currentIndex > 0) {
+      prevBtn.addEventListener('click', () => {
+        eventDeckState.currentIndex--;
+        renderEventDeck(container);
+      });
+    }
+
+    const nextBtn = document.getElementById('btn-next-event');
+    if (nextBtn && eventDeckState.currentIndex < eventDeckState.deck.length - 1) {
+      nextBtn.addEventListener('click', () => {
+        eventDeckState.currentIndex++;
+        window.BANG_TOOLS.SoundFX.playBell();
+        renderEventDeck(container);
+      });
+    }
+  }
+
+  // 3. ROLE & CHARACTER DRAFT
+  function renderRoleDraft(container) {
+    const isEn = state.lang === 'en';
+
+    const getRolesDistribution = (n) => {
+      const roles = ['sheriff'];
+      if (n === 4) { roles.push('renegade', 'outlaw', 'outlaw'); }
+      else if (n === 5) { roles.push('deputy', 'renegade', 'outlaw', 'outlaw'); }
+      else if (n === 6) { roles.push('deputy', 'renegade', 'outlaw', 'outlaw', 'outlaw'); }
+      else if (n === 7) { roles.push('deputy', 'deputy', 'renegade', 'outlaw', 'outlaw', 'outlaw'); }
+      else if (n === 8) { roles.push('deputy', 'deputy', 'renegade', 'renegade', 'outlaw', 'outlaw', 'outlaw'); }
+      return roles.sort(() => Math.random() - 0.5);
+    };
+
+    const startDraft = () => {
+      const roles = getRolesDistribution(draftState.playerCount);
+      const availableChars = window.BANG_CARDS.filter(c =>
+        ['character', 'legend-character'].includes(c.type) &&
+        (draftState.expansions.includes(c.expansion) || draftState.expansions.includes('all'))
+      ).sort(() => Math.random() - 0.5);
+
+      draftState.players = [];
+      for (let i = 0; i < draftState.playerCount; i++) {
+        const c1 = availableChars.pop();
+        const c2 = availableChars.pop();
+        draftState.players.push({
+          num: i + 1,
+          name: `${isEn ? 'Player' : 'Hráč'} ${i + 1}`,
+          role: roles[i],
+          choices: [c1, c2].filter(Boolean),
+          chosenChar: null
+        });
+      }
+
+      draftState.currentIdx = 0;
+      draftState.revealed = false;
+      draftState.step = 'turn';
+    };
+
+    if (draftState.step === 'setup') {
+      container.innerHTML = `
+        <div class="tool-card-box">
+          <div class="tool-card-header">
+            <h2><span>🎲</span> ${isEn ? 'Role & Character Draft' : 'Losovač rolí a postav'}</h2>
+            <p class="tool-card-lead">${isEn ? 'Secret "Pass the Phone" mode: each player privately discovers their role and chooses from 2 dealt characters.' : 'Režim „Předej mobil“ pro tajné losování: každý hráč v soukromí zjistí svou roli a vybere si ze 2 nabídnutých postav.'}</p>
+          </div>
+
+          <div class="draft-card-wrap">
+            <div style="background: var(--bg-surface); padding: 1.5rem; border-radius: var(--radius-md); border: 1.5px solid var(--border-color); margin-bottom: 1.5rem; text-align: left;">
+              <div style="margin-bottom: 1.25rem;">
+                <label style="font-weight: 700; font-size: 0.95rem; display: block; margin-bottom: 0.5rem;">${isEn ? 'Number of Players (4–8):' : 'Počet hráčů (4–8):'}</label>
+                <div style="display: flex; gap: 0.45rem;">
+                  ${[4, 5, 6, 7, 8].map(n => `
+                    <button type="button" class="seat-btn ${n === draftState.playerCount ? 'active-shooter' : ''}" data-draft-n="${n}">${n}</button>
+                  `).join('')}
+                </div>
+              </div>
+
+              <div style="margin-bottom: 1.25rem;">
+                <label style="font-weight: 700; font-size: 0.95rem; display: block; margin-bottom: 0.5rem;">${isEn ? 'Include Character Expansions:' : 'Zahrnout postavy z rozšíření:'}</label>
+                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                  <label class="calc-checkbox-label"><input type="checkbox" data-exp="base" ${draftState.expansions.includes('base') ? 'checked' : ''}> <span>🎯 Základní hra (16 postav)</span></label>
+                  <label class="calc-checkbox-label"><input type="checkbox" data-exp="dodge-city" ${draftState.expansions.includes('dodge-city') ? 'checked' : ''}> <span>🟢 Dodge City (15 postav)</span></label>
+                  <label class="calc-checkbox-label"><input type="checkbox" data-exp="gold-rush" ${draftState.expansions.includes('gold-rush') ? 'checked' : ''}> <span>🪙 Zlatá horečka (8 postav)</span></label>
+                  <label class="calc-checkbox-label"><input type="checkbox" data-exp="armed-dangerous" ${draftState.expansions.includes('armed-dangerous') ? 'checked' : ''}> <span>🟠 Ozbrojení a nebezpeční (8 postav)</span></label>
+                  <label class="calc-checkbox-label"><input type="checkbox" data-exp="train-robbery" ${draftState.expansions.includes('train-robbery') ? 'checked' : ''}> <span>🚂 Velká vlaková loupež (8 postav)</span></label>
+                  <label class="calc-checkbox-label"><input type="checkbox" data-exp="valley-of-shadows" ${draftState.expansions.includes('valley-of-shadows') ? 'checked' : ''}> <span>💀 Údolí stínů (8 postav)</span></label>
+                  <label class="calc-checkbox-label"><input type="checkbox" data-exp="wild-west-show" ${draftState.expansions.includes('wild-west-show') ? 'checked' : ''}> <span>🎪 Divoký západ (8 postav)</span></label>
+                  <label class="calc-checkbox-label"><input type="checkbox" data-exp="legends" ${draftState.expansions.includes('legends') ? 'checked' : ''}> <span>🌟 Legendy (16 legendárních postav)</span></label>
+                </div>
+              </div>
+            </div>
+
+            <button type="button" class="tool-subnav-btn active" id="btn-start-draft" style="font-size: 1.1rem; padding: 0.85rem 2rem;">
+              🎲 ${isEn ? 'Start Secret Draft' : 'Zahájit tajné losování'}
+            </button>
+          </div>
+        </div>
+      `;
+
+      container.querySelectorAll('[data-draft-n]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          draftState.playerCount = parseInt(btn.dataset.draftN, 10);
+          renderRoleDraft(container);
+        });
+      });
+
+      container.querySelectorAll('[data-exp]').forEach(chk => {
+        chk.addEventListener('change', () => {
+          const exp = chk.dataset.exp;
+          if (chk.checked && !draftState.expansions.includes(exp)) draftState.expansions.push(exp);
+          if (!chk.checked) draftState.expansions = draftState.expansions.filter(e => e !== exp);
+          if (draftState.expansions.length === 0) draftState.expansions = ['base'];
+        });
+      });
+
+      document.getElementById('btn-start-draft').addEventListener('click', () => {
+        startDraft();
+        renderRoleDraft(container);
+      });
+      return;
+    }
+
+    if (draftState.step === 'turn') {
+      const p = draftState.players[draftState.currentIdx];
+
+      if (!draftState.revealed) {
+        container.innerHTML = `
+          <div class="tool-card-box">
+            <div class="draft-card-wrap">
+              <div style="font-size: 0.9rem; font-weight: 800; color: var(--color-brown); text-transform: uppercase; margin-bottom: 0.5rem;">
+                ${isEn ? 'Secret Hand-Off' : 'Tajné předání'} (${draftState.currentIdx + 1} / ${draftState.playerCount})
+              </div>
+              <h2 style="font-family: 'Georgia', serif; font-size: 2.2rem; color: var(--text-main); margin-bottom: 1rem;">
+                📱 ${isEn ? 'Pass device to' : 'Předejte zařízení hráči:'} <strong>${p.name}</strong>
+              </h2>
+              <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 1.05rem;">
+                ${isEn ? 'Ensure nobody else is looking at the screen, then tap below to reveal your secret role and select your character.' : 'Ujistěte se, že se nikdo jiný nedívá na displej, a klepnutím odhalte svou tajnou roli a výběr postav.'}
+              </p>
+
+              <div class="draft-mystery-box" id="btn-reveal-turn">
+                <div style="font-size: 3.5rem; margin-bottom: 0.5rem;">🔒</div>
+                <h3 style="font-family: 'Georgia', serif; font-size: 1.5rem; color: var(--color-brown); margin-bottom: 0.25rem;">
+                  ${isEn ? 'Tap to Reveal Role & Characters' : 'Klepnutím odhalit roli a postavy'}
+                </h3>
+                <div style="color: var(--text-muted); font-size: 0.88rem;">${isEn ? 'For your eyes only!' : 'Pouze pro tvé oči!'}</div>
+              </div>
+            </div>
+          </div>
+        `;
+
+        document.getElementById('btn-reveal-turn').addEventListener('click', () => {
+          draftState.revealed = true;
+          renderRoleDraft(container);
+        });
+        return;
+      }
+
+      let roleInfo = { title: '💀 Bandita', color: '#c0392b', desc: isEn ? 'Eliminate the Sheriff!' : 'Zlikviduj Šerifa za každou cenu!' };
+      if (p.role === 'sheriff') {
+        roleInfo = { title: '⭐️ ŠERIF', color: '#f39c12', desc: isEn ? 'PUBLIC ROLE: Reveal this card to everyone immediately! You get +1 max life and play first.' : 'VEŘEJNÁ ROLE: Tuto kartu ihned otoč všem lícem nahoru! Máš +1 život navíc a hraješ jako první.' };
+      } else if (p.role === 'deputy') {
+        roleInfo = { title: '🛡️ Pomocník šerifa', color: '#2980b9', desc: isEn ? 'Protect the Sheriff and eliminate Outlaws & Renegade.' : 'Chraň Šerifa za každou cenu a pomoz mu zvítězit!' };
+      } else if (p.role === 'renegade') {
+        roleInfo = { title: '🗡️ Odpadlík', color: '#8e44ad', desc: isEn ? 'Be the last one standing – eliminate the Sheriff in a final 1v1 duel!' : 'Zůstaň jako poslední živý ve hře – Šerifa musíš zabít až úplně naposledy 1 na 1!' };
+      }
+
+      container.innerHTML = `
+        <div class="tool-card-box">
+          <div class="draft-card-wrap">
+            <div style="font-size: 0.85rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase;">
+              ${p.name} (${draftState.currentIdx + 1} / ${draftState.playerCount})
+            </div>
+
+            <div style="background: ${roleInfo.color}; color: #ffffff; padding: 1.25rem 1.5rem; border-radius: var(--radius-md); margin: 1rem 0 1.5rem; box-shadow: var(--shadow-md);">
+              <div style="font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.9;">${isEn ? 'Your Role:' : 'Tvoje role:'}</div>
+              <h2 style="font-family: 'Georgia', serif; font-size: 2.2rem; margin: 0.35rem 0;">${roleInfo.title}</h2>
+              <div style="font-size: 0.95rem; opacity: 0.95; line-height: 1.4;">${roleInfo.desc}</div>
+            </div>
+
+            <h3 style="font-family: 'Georgia', serif; font-size: 1.3rem; color: var(--color-brown); margin-bottom: 0.75rem;">
+              ${isEn ? 'Choose 1 of 2 dealt characters:' : 'Vyber si 1 ze 2 nabízených postav:'}
+            </h3>
+
+            <div class="draft-chars-grid">
+              ${p.choices.map((c) => {
+                const cTitle = isEn ? (c.nameEn || c.name) : c.name;
+                const cEffect = isEn ? (c.effectEn || c.effect) : c.effect;
+                const isSelected = p.chosenChar && p.chosenChar.id === c.id;
+                return `
+                  <div class="draft-char-choice ${isSelected ? 'selected' : ''}" data-char-id="${c.id}">
+                    <div style="text-align: center; margin-bottom: 0.75rem;">
+                      ${c.image ? `<img src="${c.image}" alt="${cTitle}" style="max-height: 140px; object-fit: contain; border-radius: 6px; margin-bottom: 0.4rem;">` : ''}
+                      <h4 style="font-family: 'Georgia', serif; font-size: 1.2rem; margin: 0.2rem 0; color: var(--text-main);">${cTitle}</h4>
+                      <div style="color: #b71c1c; font-weight: 800; font-size: 0.95rem;">❤️ ${c.lives} ${isEn ? 'lives' : 'životy'}</div>
+                    </div>
+                    <div style="font-size: 0.9rem; line-height: 1.5; color: var(--text-main); background: var(--bg-surface); padding: 0.65rem; border-radius: 4px; border-left: 3px solid var(--color-brown);">
+                      ${cEffect}
+                    </div>
+                    <button type="button" class="tool-subnav-btn ${isSelected ? 'active' : ''}" style="width: 100%; margin-top: 0.75rem; justify-content: center;">
+                      ${isSelected ? (isEn ? '✓ Selected' : '✓ Zvoleno') : (isEn ? 'Select Character' : 'Zvolit tuto postavu')}
+                    </button>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+
+            <button type="button" class="tool-subnav-btn active" id="btn-confirm-turn" ${!p.chosenChar ? 'disabled style="opacity: 0.5;"' : ''} style="font-size: 1.1rem; padding: 0.85rem 2rem;">
+              ${draftState.currentIdx < draftState.playerCount - 1 ? (isEn ? 'Confirm & Pass to Next Player ➔' : 'Potvrdit a předat dalšímu hráči ➔') : (isEn ? 'Finish Draft ➔' : 'Dokončit losování ➔')}
+            </button>
+          </div>
+        </div>
+      `;
+
+      container.querySelectorAll('.draft-char-choice').forEach(cardEl => {
+        cardEl.addEventListener('click', () => {
+          const charId = cardEl.dataset.charId;
+          p.chosenChar = p.choices.find(c => c.id === charId);
+          renderRoleDraft(container);
+        });
+      });
+
+      const confirmBtn = document.getElementById('btn-confirm-turn');
+      if (confirmBtn && p.chosenChar) {
+        confirmBtn.addEventListener('click', () => {
+          if (draftState.currentIdx < draftState.playerCount - 1) {
+            draftState.currentIdx++;
+            draftState.revealed = false;
+          } else {
+            draftState.step = 'summary';
+          }
+          renderRoleDraft(container);
+        });
+      }
+      return;
+    }
+
+    if (draftState.step === 'summary') {
+      const sheriffPlayer = draftState.players.find(p => p.role === 'sheriff');
+
+      container.innerHTML = `
+        <div class="tool-card-box">
+          <div class="tool-card-header">
+            <h2><span>🎉</span> ${isEn ? 'Draft Completed! Game Ready!' : 'Losování dokončeno! Hra je připravena!'}</h2>
+            <p class="tool-card-lead">${isEn ? 'Sheriff plays first and reveals their card publicly. All other roles remain strictly secret.' : 'Šerif hraje jako první a otočí kartu lícem nahoru. Všechny ostatní role zůstávají tajné!'}</p>
+          </div>
+
+          <div class="draft-card-wrap">
+            ${sheriffPlayer ? `
+              <div style="background: linear-gradient(135deg, #f39c12 0%, #d35400 100%); color: #ffffff; padding: 1.5rem; border-radius: var(--radius-md); margin-bottom: 1.5rem; box-shadow: var(--shadow-md);">
+                <div style="font-size: 0.85rem; font-weight: 800; text-transform: uppercase;">${isEn ? 'Public Sheriff of the Town:' : 'Veřejný Šerif pro tuto hru:'}</div>
+                <h2 style="font-family: 'Georgia', serif; font-size: 2.2rem; margin: 0.4rem 0;">⭐ ${sheriffPlayer.name}</h2>
+                <div style="font-size: 1.15rem; font-weight: 700;">
+                  ${isEn ? 'Character:' : 'Postava:'} ${sheriffPlayer.chosenChar ? (isEn ? (sheriffPlayer.chosenChar.nameEn || sheriffPlayer.chosenChar.name) : sheriffPlayer.chosenChar.name) : ''}
+                  (+1 ${isEn ? 'bonus life' : 'život navíc'} = ${(sheriffPlayer.chosenChar ? sheriffPlayer.chosenChar.lives : 4) + 1} ❤️)
+                </div>
+              </div>
+            ` : ''}
+
+            <div style="text-align: left; background: var(--bg-surface); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); margin-bottom: 1.5rem;">
+              <h4 style="font-family: 'Georgia', serif; font-size: 1.15rem; color: var(--color-brown); margin-bottom: 0.75rem;">
+                ${isEn ? 'Confidential Role Reminders (Tap to peek):' : 'Nápověda pro zapomnětlivé (Klepnutím diskrétně zkontroluj):'}
+              </h4>
+              <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                ${draftState.players.map(p => `
+                  <details style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 6px; padding: 0.6rem 0.85rem;">
+                    <summary style="font-weight: 700; cursor: pointer; color: var(--text-main);">
+                      🔒 ${p.name} (${p.chosenChar ? (isEn ? (p.chosenChar.nameEn || p.chosenChar.name) : p.chosenChar.name) : ''})
+                    </summary>
+                    <div style="margin-top: 0.5rem; font-size: 0.92rem; color: var(--color-brown); font-weight: 800; border-top: 1px dashed var(--border-color); padding-top: 0.5rem;">
+                      ${isEn ? 'Secret Role:' : 'Tajná role:'} ${p.role.toUpperCase()}
+                    </div>
+                  </details>
+                `).join('')}
+              </div>
+            </div>
+
+            <button type="button" class="btn-reset-filters" id="btn-restart-draft" style="font-weight: 700; font-size: 1rem; padding: 0.75rem 1.5rem;">
+              🔄 ${isEn ? 'Start New Draft' : 'Spustit nové losování'}
+            </button>
+          </div>
+        </div>
+      `;
+
+      document.getElementById('btn-restart-draft').addEventListener('click', () => {
+        draftState.step = 'setup';
+        renderRoleDraft(container);
+      });
+    }
+  }
+
+  // 4. VIRTUAL PLAYER BOARD
+  function renderPlayerBoard(container) {
+    const isEn = state.lang === 'en';
+    const effectiveMaxLives = trackerState.maxLives + (trackerState.isSheriff ? 1 : 0);
+    const handWarning = trackerState.hand > trackerState.lives;
+
+    container.innerHTML = `
+      <div class="tool-card-box">
+        <div class="tool-card-header">
+          <h2><span>🤠</span> ${isEn ? 'Virtual Player Board & Resource Tracker' : 'Virtuální deska a sledovač surovin'}</h2>
+          <p class="tool-card-lead">${isEn ? 'Track lives, gold nuggets, charge cubes, and end-of-turn hand card limit right on your screen.' : 'Sledování životů, zlatých valounů, žetonů nabití a limitu karet na konci tahu přímo na displeji mobilu či tabletu.'}</p>
+        </div>
+
+        <div style="margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;">
+          <label class="calc-checkbox-label" style="font-weight: 700; font-size: 1.05rem;">
+            <input type="checkbox" id="chk-tracker-sheriff" ${trackerState.isSheriff ? 'checked' : ''}>
+            <span>⭐️ ${isEn ? 'I am the Sheriff (+1 max life)' : 'Jsem Šerif (+1 max život navíc)'}</span>
+          </label>
+          <button type="button" class="btn-reset-filters" id="btn-reset-tracker">
+            🔄 ${isEn ? 'Reset Tracker' : 'Resetovat desku'}
+          </button>
+        </div>
+
+        <div class="tracker-board-grid">
+          <div class="tracker-tile" style="border-top: 4px solid #c0392b;">
+            <div class="tracker-tile-title">❤️ ${isEn ? 'Life Points (Bullets)' : 'Životy (Náboje)'}</div>
+            <div class="tracker-counter-val" style="color: #c0392b;">${trackerState.lives} <span style="font-size: 1.4rem; color: var(--text-muted); font-weight: normal;">/ ${effectiveMaxLives}</span></div>
+            <div class="tracker-btns-row">
+              <button type="button" class="btn-counter" id="btn-lives-minus">−</button>
+              <button type="button" class="btn-counter" id="btn-lives-plus">+</button>
+            </div>
+          </div>
+
+          <div class="tracker-tile" style="border-top: 4px solid #f39c12;">
+            <div class="tracker-tile-title">🪙 ${isEn ? 'Gold Nuggets (Gold Rush)' : 'Zlaté valouny (Zlatá horečka)'}</div>
+            <div class="tracker-counter-val" style="color: #f39c12;">${trackerState.gold}</div>
+            <div class="tracker-btns-row">
+              <button type="button" class="btn-counter" id="btn-gold-minus">−</button>
+              <button type="button" class="btn-counter" id="btn-gold-plus">+</button>
+            </div>
+          </div>
+
+          <div class="tracker-tile" style="border-top: 4px solid #e67e22;">
+            <div class="tracker-tile-title">🟧 ${isEn ? 'Load Cubes (Armed & Dangerous)' : 'Žetony nabití (Ozbrojení)'}</div>
+            <div class="tracker-counter-val" style="color: #e67e22;">${trackerState.cubes}</div>
+            <div class="tracker-btns-row">
+              <button type="button" class="btn-counter" id="btn-cubes-minus">−</button>
+              <button type="button" class="btn-counter" id="btn-cubes-plus">+</button>
+            </div>
+          </div>
+
+          <div class="tracker-tile" style="border-top: 4px solid #2980b9;">
+            <div class="tracker-tile-title">🃏 ${isEn ? 'Cards in Hand' : 'Karet v ruce'}</div>
+            <div class="tracker-counter-val" style="color: #2980b9;">${trackerState.hand}</div>
+            <div class="tracker-btns-row">
+              <button type="button" class="btn-counter" id="btn-hand-minus">−</button>
+              <button type="button" class="btn-counter" id="btn-hand-plus">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 1.5rem; padding: 1rem 1.25rem; border-radius: var(--radius-sm); font-weight: 700; display: flex; align-items: center; gap: 0.6rem; ${handWarning ? 'background: rgba(192, 57, 43, 0.15); border: 1.5px solid #c0392b; color: #c0392b;' : 'background: rgba(39, 174, 96, 0.15); border: 1.5px solid #27ae60; color: #27ae60;'}">
+          <span>${handWarning ? '⚠️' : '✅'}</span>
+          <span>
+            ${handWarning
+              ? (isEn ? `Discard warning: You have ${trackerState.hand} cards in hand, but only ${trackerState.lives} lives! Discard ${trackerState.hand - trackerState.lives} cards at turn end.` : `Pozor na limit: Máš v ruce ${trackerState.hand} karet, ale jen ${trackerState.lives} životů! Ve 3. fázi musíš odhodit ${trackerState.hand - trackerState.lives} karet.`)
+              : (isEn ? `Hand limit OK: You can keep up to ${trackerState.lives} cards in hand at end of turn.` : `Limit v pořádku: Na konci tahu ve 3. fázi smíš v ruce držet až ${trackerState.lives} karet.`)}
+          </span>
+        </div>
+      </div>
+    `;
+
+    document.getElementById('chk-tracker-sheriff').addEventListener('change', (e) => {
+      trackerState.isSheriff = e.target.checked;
+      renderPlayerBoard(container);
+    });
+
+    document.getElementById('btn-reset-tracker').addEventListener('click', () => {
+      trackerState.lives = 4;
+      trackerState.gold = 0;
+      trackerState.cubes = 0;
+      trackerState.hand = 4;
+      renderPlayerBoard(container);
+    });
+
+    document.getElementById('btn-lives-minus').addEventListener('click', () => {
+      if (trackerState.lives > 0) {
+        trackerState.lives--;
+        window.BANG_TOOLS.SoundFX.playShot();
+        renderPlayerBoard(container);
+      }
+    });
+
+    document.getElementById('btn-lives-plus').addEventListener('click', () => {
+      if (trackerState.lives < effectiveMaxLives + 2) {
+        trackerState.lives++;
+        window.BANG_TOOLS.SoundFX.playBeer();
+        renderPlayerBoard(container);
+      }
+    });
+
+    document.getElementById('btn-gold-minus').addEventListener('click', () => {
+      if (trackerState.gold > 0) {
+        trackerState.gold--;
+        renderPlayerBoard(container);
+      }
+    });
+
+    document.getElementById('btn-gold-plus').addEventListener('click', () => {
+      trackerState.gold++;
+      window.BANG_TOOLS.SoundFX.playCoin();
+      renderPlayerBoard(container);
+    });
+
+    document.getElementById('btn-cubes-minus').addEventListener('click', () => {
+      if (trackerState.cubes > 0) {
+        trackerState.cubes--;
+        renderPlayerBoard(container);
+      }
+    });
+
+    document.getElementById('btn-cubes-plus').addEventListener('click', () => {
+      trackerState.cubes++;
+      renderPlayerBoard(container);
+    });
+
+    document.getElementById('btn-hand-minus').addEventListener('click', () => {
+      if (trackerState.hand > 0) {
+        trackerState.hand--;
+        renderPlayerBoard(container);
+      }
+    });
+
+    document.getElementById('btn-hand-plus').addEventListener('click', () => {
+      trackerState.hand++;
+      renderPlayerBoard(container);
+    });
+  }
+
+  // 5. RULES QUIZ
+  function renderRulesQuiz(container) {
+    const isEn = state.lang === 'en';
+    const questions = window.BANG_TOOLS ? window.BANG_TOOLS.QuizQuestions : [];
+
+    const initQuiz = () => {
+      quizState.questions = [...questions].sort(() => Math.random() - 0.5).slice(0, 10);
+      quizState.idx = 0;
+      quizState.score = 0;
+      quizState.answered = false;
+      quizState.selectedOption = null;
+      quizState.finished = false;
+    };
+
+    if (quizState.questions.length === 0) {
+      initQuiz();
+    }
+
+    if (quizState.finished) {
+      let rankTitle = isEn ? '🤠 Prairie Greenhorn' : '🌵 Zelenáč z prérie';
+      if (quizState.score === 10) rankTitle = isEn ? '🏆 Legendary Gunslinger of the West!' : '🏆 Legendární šerif Divokého západu!';
+      else if (quizState.score >= 8) rankTitle = isEn ? '⭐ Feared Deputy' : '⭐ Obávaný zástupce šerifa';
+      else if (quizState.score >= 5) rankTitle = isEn ? '🤠 Experienced Gunslinger' : '🤠 Zkušený pistolník';
+
+      container.innerHTML = `
+        <div class="tool-card-box">
+          <div class="quiz-container" style="text-align: center; padding: 2rem 1rem;">
+            <div style="font-size: 4rem; margin-bottom: 0.5rem;">🏆</div>
+            <h2 style="font-family: 'Georgia', serif; font-size: 2.2rem; color: var(--color-brown); margin-bottom: 0.5rem;">
+              ${isEn ? 'Quiz Finished!' : 'Kvíz dokončen!'}
+            </h2>
+            <div style="font-size: 2.5rem; font-weight: 900; color: var(--text-main); margin-bottom: 0.75rem;">
+              ${quizState.score} / ${quizState.questions.length}
+            </div>
+            <div style="font-size: 1.3rem; font-weight: 800; color: var(--color-brown); margin-bottom: 1.5rem;">
+              ${rankTitle}
+            </div>
+            <button type="button" class="tool-subnav-btn active" id="btn-restart-quiz" style="font-size: 1.1rem; padding: 0.85rem 2rem;">
+              🔄 ${isEn ? 'Play Again' : 'Hrát znovu'}
+            </button>
+          </div>
+        </div>
+      `;
+
+      document.getElementById('btn-restart-quiz').addEventListener('click', () => {
+        initQuiz();
+        renderRulesQuiz(container);
+      });
+      return;
+    }
+
+    const q = quizState.questions[quizState.idx];
+    const qText = isEn ? q.questionEn : q.questionCs;
+    const qOpts = isEn ? q.optionsEn : q.optionsCs;
+    const qExp = isEn ? q.explanationEn : q.explanationCs;
+    const progressPct = ((quizState.idx) / quizState.questions.length) * 100;
+
+    container.innerHTML = `
+      <div class="tool-card-box">
+        <div class="tool-card-header">
+          <h2><span>🏆</span> ${isEn ? 'BANG! Official Rules Quiz' : 'Westernový kvíz pravidel BANG!'}</h2>
+          <p class="tool-card-lead">${isEn ? 'Test your expertise on official rulings, conflict situations, and tricky timing sequences.' : 'Otestujte své znalosti oficiálních pravidel a záludných sporných momentů.'}</p>
+        </div>
+
+        <div class="quiz-container">
+          <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 0.88rem; margin-bottom: 0.4rem; color: var(--text-muted);">
+            <span>${isEn ? 'Question' : 'Otázka'} ${quizState.idx + 1} / ${quizState.questions.length}</span>
+            <span>${isEn ? 'Score:' : 'Skóre:'} ${quizState.score}</span>
+          </div>
+
+          <div class="quiz-progress-bar">
+            <div class="quiz-progress-fill" style="width: ${progressPct}%;"></div>
+          </div>
+
+          <div class="quiz-question-text">${qText}</div>
+
+          <div class="quiz-options-list">
+            ${qOpts.map((opt, optIdx) => {
+              let cls = 'quiz-opt-btn';
+              if (quizState.answered) {
+                if (optIdx === q.correctIndex) cls += ' correct';
+                else if (optIdx === quizState.selectedOption) cls += ' wrong';
+              }
+              return `<button type="button" class="${cls}" data-opt="${optIdx}" ${quizState.answered ? 'disabled' : ''}>${opt}</button>`;
+            }).join('')}
+          </div>
+
+          ${quizState.answered ? `
+            <div class="quiz-explanation-box">
+              <strong style="color: var(--color-brown); display: block; margin-bottom: 0.35rem;">
+                ${quizState.selectedOption === q.correctIndex ? (isEn ? '✓ Correct!' : '✓ Správně!') : (isEn ? '✕ Incorrect!' : '✕ Špatně!')}
+              </strong>
+              <div>${qExp}</div>
+            </div>
+
+            <div style="text-align: right;">
+              <button type="button" class="tool-subnav-btn active" id="btn-next-quiz-q" style="font-size: 1rem; padding: 0.75rem 1.75rem;">
+                ${quizState.idx < quizState.questions.length - 1 ? (isEn ? 'Next Question ➔' : 'Další otázka ➔') : (isEn ? 'View Final Score ➔' : 'Zobrazit výsledek ➔')}
+              </button>
+            </div>
+          ` : ''}
+        </div>
+      </div>
+    `;
+
+    container.querySelectorAll('.quiz-opt-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (quizState.answered) return;
+        const chosen = parseInt(btn.dataset.opt, 10);
+        quizState.selectedOption = chosen;
+        quizState.answered = true;
+        if (chosen === q.correctIndex) {
+          quizState.score++;
+          window.BANG_TOOLS.SoundFX.playCoin();
+        } else {
+          window.BANG_TOOLS.SoundFX.playRicochet();
+        }
+        renderRulesQuiz(container);
+      });
+    });
+
+    const nextQBtn = document.getElementById('btn-next-quiz-q');
+    if (nextQBtn) {
+      nextQBtn.addEventListener('click', () => {
+        if (quizState.idx < quizState.questions.length - 1) {
+          quizState.idx++;
+          quizState.answered = false;
+          quizState.selectedOption = null;
+        } else {
+          quizState.finished = true;
+        }
+        renderRulesQuiz(container);
+      });
+    }
+  }
+
+  // 6. WESTERN SOUNDBOARD
+  function renderSoundboard(container) {
+    const isEn = state.lang === 'en';
+    const sounds = [
+      { id: 'shot', icon: '💥', nameCs: 'Výstřel BANG!', nameEn: 'Gunshot BANG!', descCs: 'Výstřel z revolveru Colt .45', descEn: 'Colt .45 revolver shot', action: () => window.BANG_TOOLS.SoundFX.playShot() },
+      { id: 'dynamite', icon: '🧨', nameCs: 'Dynamit', nameEn: 'Dynamite', descCs: 'Syčení zápalné šňůry a exploze', descEn: 'Fuse hiss & blast explosion', action: () => window.BANG_TOOLS.SoundFX.playDynamite() },
+      { id: 'beer', icon: '🍺', nameCs: 'Pivo / Saloon', nameEn: 'Beer / Saloon', descCs: 'Cinknutí sklenic na zdraví', descEn: 'Glass clink & toast', action: () => window.BANG_TOOLS.SoundFX.playBeer() },
+      { id: 'train', icon: '🚂', nameCs: 'Parní vlak', nameEn: 'Steam Train', descCs: 'Píšťala lokomotivy', descEn: 'Locomotive whistle', action: () => window.BANG_TOOLS.SoundFX.playTrain() },
+      { id: 'bell', icon: '🔔', nameCs: 'Zvonice', nameEn: 'Church Bell', descCs: 'Westernový zvon', descEn: 'Western church bell', action: () => window.BANG_TOOLS.SoundFX.playBell() },
+      { id: 'coin', icon: '💰', nameCs: 'Zlatý valoun', nameEn: 'Gold Nugget', descCs: 'Cinknutí ryzího zlata', descEn: 'Gold coin clink', action: () => window.BANG_TOOLS.SoundFX.playCoin() },
+      { id: 'ricochet', icon: '⚡', nameCs: 'Odrážka (Ricochet)', nameEn: 'Ricochet', descCs: 'Hvízdnutí kulky o skálu', descEn: 'Bullet ricochet whistle', action: () => window.BANG_TOOLS.SoundFX.playRicochet() }
+    ];
+
+    container.innerHTML = `
+      <div class="tool-card-box">
+        <div class="tool-card-header">
+          <h2><span>🔊</span> ${isEn ? 'Western Soundboard (Web Audio Synthesizer)' : 'Westernový Soundboard (Zvukové efekty)'}</h2>
+          <p class="tool-card-lead">${isEn ? 'Pure browser audio synthesis – works offline with zero external audio files. Tap any tile to play.' : '100% nativní zvuková syntéza v prohlížeči. Běží bez stahování audio souborů a funguje i offline.'}</p>
+        </div>
+
+        <div class="soundboard-grid">
+          ${sounds.map(s => `
+            <div class="sound-tile" data-snd="${s.id}">
+              <span class="sound-tile-icon">${s.icon}</span>
+              <div class="sound-tile-name">${isEn ? s.nameEn : s.nameCs}</div>
+              <div class="sound-tile-desc">${isEn ? s.descEn : s.descCs}</div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+
+    container.querySelectorAll('.sound-tile').forEach(tile => {
+      tile.addEventListener('click', () => {
+        const sid = tile.dataset.snd;
+        const targetSnd = sounds.find(s => s.id === sid);
+        if (targetSnd) targetSnd.action();
+      });
+    });
+  }
+
+  // =========================================================================
   // EVENTS INITIALIZATION
   // =========================================================================
   function initEvents() {
@@ -967,6 +2232,17 @@
 
     if (els.themeToggle) {
       els.themeToggle.addEventListener('click', toggleTheme);
+    }
+
+    if (els.soundToggle) {
+      els.soundToggle.addEventListener('click', () => {
+        state.soundEnabled = !state.soundEnabled;
+        localStorage.setItem('bang_sound', state.soundEnabled ? 'true' : 'false');
+        if (els.soundIcon) els.soundIcon.textContent = state.soundEnabled ? '🔊' : '🔇';
+        if (window.BANG_TOOLS && window.BANG_TOOLS.SoundFX) {
+          window.BANG_TOOLS.SoundFX.toggle(state.soundEnabled);
+        }
+      });
     }
 
     if (els.langBtnCs) {
@@ -983,6 +2259,30 @@
           setTab('katalog');
         }
         renderCards();
+      });
+    }
+
+    // Quick Tag Buttons
+    if (els.catalogQuickTags) {
+      els.catalogQuickTags.querySelectorAll('.quick-tag').forEach(btn => {
+        btn.addEventListener('click', () => {
+          els.catalogQuickTags.querySelectorAll('.quick-tag').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          state.selectedQuickTag = btn.dataset.tag;
+          renderCards();
+        });
+      });
+    }
+
+    // Tools Subnav Buttons
+    if (els.toolsSubnav) {
+      els.toolsSubnav.querySelectorAll('.tool-subnav-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          els.toolsSubnav.querySelectorAll('.tool-subnav-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          state.activeTool = btn.dataset.tool;
+          renderTools();
+        });
       });
     }
 
@@ -1020,6 +2320,7 @@
         state.selectedExpansion = 'all';
         state.selectedType = 'all';
         state.selectedSuit = 'all';
+        state.selectedQuickTag = 'all';
         state.sortBy = 'name-asc';
 
         if (els.globalSearch) els.globalSearch.value = '';
@@ -1027,6 +2328,12 @@
         if (els.filterType) els.filterType.value = 'all';
         if (els.filterSuit) els.filterSuit.value = 'all';
         if (els.sortCards) els.sortCards.value = 'name-asc';
+
+        if (els.catalogQuickTags) {
+          els.catalogQuickTags.querySelectorAll('.quick-tag').forEach(b => {
+            b.classList.toggle('active', b.dataset.tag === 'all');
+          });
+        }
 
         renderCards();
       });
@@ -1135,8 +2442,23 @@
   // DOMContentLoaded
   document.addEventListener('DOMContentLoaded', () => {
     initTheme();
+    if (els.soundIcon) {
+      els.soundIcon.textContent = state.soundEnabled ? '🔊' : '🔇';
+      if (window.BANG_TOOLS && window.BANG_TOOLS.SoundFX) {
+        window.BANG_TOOLS.SoundFX.toggle(state.soundEnabled);
+      }
+    }
     initEvents();
     setLanguage(state.lang);
     initRouting();
+
+    // Register Service Worker for Offline PWA
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./sw.js').then((reg) => {
+        console.log('[PWA] Service Worker registered with scope:', reg.scope);
+      }).catch((err) => {
+        console.warn('[PWA] Service Worker registration failed:', err);
+      });
+    }
   });
 })();

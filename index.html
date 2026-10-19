@@ -7,6 +7,9 @@
   <meta name="description" content="Kompletní detailní pravidla pro hraní hry BANG! s Dynamite Boxem a rozšířením Legendy. Katalog všech karet s filtry, řešitel sporných situací a interaktivní průvodce tahem.">
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" type="image/png" href="assets/bang-logo.png">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#5c2c16">
+  <link rel="apple-touch-icon" href="assets/icon-192.png">
 </head>
 <body>
 
@@ -31,12 +34,18 @@
             <button id="lang-btn-cs" class="lang-btn active" data-lang="cs" title="Čeština">CZ</button>
             <button id="lang-btn-en" class="lang-btn" data-lang="en" title="English">EN</button>
           </div>
+          <button id="sound-toggle" class="btn-icon" title="Zvukové efekty (Zapnuto/Vypnuto)" aria-label="Zvukové efekty">
+            <span id="sound-icon">🔊</span>
+          </button>
           <button id="theme-toggle" class="btn-icon" title="Přepnout tmavý / světlý westernový režim" aria-label="Přepnout motiv">
             <span>🌙</span>
           </button>
         </div>
       </div>
     </div>
+
+    <!-- PINNED ACTIVE CHARACTER BAR (IF ANY) -->
+    <div id="pinned-character-widget" class="pinned-char-widget" style="display: none;"></div>
 
     <!-- MAIN NAV TABS -->
     <nav class="app-nav" aria-label="Hlavní navigace">
@@ -54,6 +63,9 @@
       </button>
       <button class="nav-tab" data-tab="pomocnik">
         <span>⚡</span> <span class="nav-text">Rychlý pomocník</span>
+      </button>
+      <button class="nav-tab" data-tab="nastroje">
+        <span>🛠️</span> <span class="nav-text" id="nav-text-nastroje">Herní nástroje</span>
       </button>
     </nav>
   </header>
@@ -144,6 +156,23 @@
 
         <!-- Cards View -->
         <div class="catalog-content">
+          <!-- Quick Tag Chips -->
+          <div class="catalog-quick-tags" id="catalog-quick-tags">
+            <span class="quick-tag-label" id="quick-tag-label">⚡ Rychlé tagy:</span>
+            <div class="quick-tags-scroll">
+              <button type="button" class="quick-tag active" data-tag="all">Vše</button>
+              <button type="button" class="quick-tag" data-tag="zbrane">🔫 Zbraně</button>
+              <button type="button" class="quick-tag" data-tag="leceni">❤️ Léčení</button>
+              <button type="button" class="quick-tag" data-tag="obrana">🛡️ Obrana</button>
+              <button type="button" class="quick-tag" data-tag="vzdalenost">🐎 Vzdálenost</button>
+              <button type="button" class="quick-tag" data-tag="snimani">🎴 Snímání</button>
+              <button type="button" class="quick-tag" data-tag="zelene">🟢 Zelené</button>
+              <button type="button" class="quick-tag" data-tag="oranzove">🟠 Oranžové</button>
+              <button type="button" class="quick-tag" data-tag="postavy">🤠 Postavy</button>
+              <button type="button" class="quick-tag" data-tag="udalosti">⚡ Události</button>
+            </div>
+          </div>
+
           <div class="results-header">
             <div id="results-count" class="results-count">Načítání karet...</div>
           </div>
@@ -221,6 +250,23 @@
       </div>
     </section>
 
+    <!-- ================================================================= -->
+    <!-- TAB 6: HERNÍ NÁSTROJE -->
+    <!-- ================================================================= -->
+    <section id="tab-nastroje" class="tab-pane">
+      <div class="tools-subnav" id="tools-subnav">
+        <button class="tool-subnav-btn active" data-tool="calc"><span>📏</span> <span id="tool-label-calc">Kalkulačka vzdálenosti</span></button>
+        <button class="tool-subnav-btn" data-tool="events"><span>☀️</span> <span id="tool-label-events">Balíček událostí</span></button>
+        <button class="tool-subnav-btn" data-tool="draft"><span>🎲</span> <span id="tool-label-draft">Losovač rolí a postav</span></button>
+        <button class="tool-subnav-btn" data-tool="tracker"><span>🤠</span> <span id="tool-label-tracker">Virtuální deska</span></button>
+        <button class="tool-subnav-btn" data-tool="quiz"><span>🏆</span> <span id="tool-label-quiz">Kvíz pravidel</span></button>
+        <button class="tool-subnav-btn" data-tool="soundboard"><span>🔊</span> <span id="tool-label-soundboard">Soundboard</span></button>
+      </div>
+      <div class="tools-content-area" id="tools-content-area">
+        <!-- Rendered dynamically via app.js -->
+      </div>
+    </section>
+
   </main>
 
   <!-- CARD DETAIL MODAL DIALOG -->
@@ -259,6 +305,7 @@
   <script src="js/rules-data.js"></script>
   <script src="js/faq-data.js"></script>
   <script src="js/turn-helper-data.js"></script>
+  <script src="js/tools-data.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
