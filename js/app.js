@@ -2445,7 +2445,7 @@
     container.innerHTML = `
       <div class="tool-card-box">
         <div class="tool-card-header">
-          <h2><span>🔊</span> ${isEn ? 'Wild West Soundboard' : 'Westernový Soundboard (Autentické zvuky)'}</h2>
+          <h2><span>🔊</span> ${isEn ? 'Wild West Soundboard' : 'Westernový Soundboard'}</h2>
           <p class="tool-card-lead">${isEn ? 'Cinematic sound effects from the Wild West: real Colt .45 gunshots, ricochets, saloon piano, and dynamite. Fully cached for 100% offline play.' : 'Skutečné filmové zvukové efekty Divokého západu: výstřely z Coltu .45, odrazy kulek, saloonové piáno i dynamit. Funguje 100% i offline bez internetu.'}</p>
         </div>
 
