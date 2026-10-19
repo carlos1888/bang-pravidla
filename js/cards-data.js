@@ -5079,10 +5079,10 @@ window.BANG_CARDS = [
       "plošinový vůz",
       "oslabení soupeře"
     ],
-    "image": null,
+    "image": "assets/cards/05_velka_vlakova_loupez/lumber-flatcar.webp",
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Railcar",
-    "effectEn": "Railcar. Other players see you at distance +1.",
+    "effectEn": "Play on anyone. You see all other players at distance +1.",
     "timingEn": "Upon purchase; placed in front of player",
     "costEn": "Station cost upon purchase",
     "rulingsEn": [
@@ -5102,7 +5102,7 @@ window.BANG_CARDS = [
     "values": null,
     "range": null,
     "cost": "Cena stanice při nákupu",
-    "effect": "Doberte si 2 vrchní karty vagonů přímo z balíčku vagonů a vyložte je před sebe. Nepočítají se do limitu 1 vagon za tah.",
+    "effect": "Odhoďte tento vagon: doberte si 2 vagony z balíčku, vyložte 1 před sebe a 1 před jiného hráče.",
     "timing": "Při nákupu",
     "rulings": [
       "Pokud je Šerif a dobere Vagon duchů, musí ho dát jinému hráči."
@@ -5112,10 +5112,10 @@ window.BANG_CARDS = [
       "dobírání vagonů",
       "salonní vůz"
     ],
-    "image": null,
+    "image": "assets/cards/05_velka_vlakova_loupez/lounge-car.webp",
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Railcar",
-    "effectEn": "Railcar. On your turn, discard 1 card to regain 1 life point.",
+    "effectEn": "Discard this to draw 2 Railcars from the deck, put 1 into play in front of you and put the other in front of another player.",
     "timingEn": "Upon purchase",
     "costEn": "Station cost upon purchase",
     "rulingsEn": [
@@ -5333,9 +5333,9 @@ window.BANG_CARDS = [
     ]
   },
   {
-    "id": "station-silverado",
-    "name": "Stanice Silverado",
-    "nameEn": "Silverado",
+    "id": "station-crown-s-hole",
+    "name": "Stanice Crown's Hole",
+    "nameEn": "Crown's Hole",
     "expansion": "train-robbery",
     "expansionName": "Velká vlaková loupež",
     "type": "station",
@@ -5353,12 +5353,13 @@ window.BANG_CARDS = [
     "tags": [
       "stanice",
       "cena",
-      "odhoď pivo"
+      "odhoď pivo",
+      "crowns hole"
     ],
-    "image": null,
+    "image": "assets/cards/05_velka_vlakova_loupez/crown-s-hole.webp",
     "expansionNameEn": "The Great Train Robbery",
     "typeLabelEn": "Station",
-    "effectEn": "Station tile. Purchase cost: discard 1 Diamond ♦ card. Grants the attached railcar.",
+    "effectEn": "Station tile. Purchase cost: discard 1 Beer card. Grants the attached railcar.",
     "timingEn": "Phase 2 when buying a railcar",
     "costEn": "Discard a Beer card",
     "rulingsEn": [

@@ -2532,5 +2532,15 @@
     "id": "feat-dobra-spolecnost",
     "path": "assets/cards/10_legendy/good-company-legend.webp",
     "name": "feat-dobra-spolecnost"
+  },
+  {
+    "id": "railcar-lumber-flatcar",
+    "path": "assets/cards/05_velka_vlakova_loupez/lumber-flatcar.webp",
+    "name": "railcar-lumber-flatcar"
+  },
+  {
+    "id": "railcar-lounge-car",
+    "path": "assets/cards/05_velka_vlakova_loupez/lounge-car.webp",
+    "name": "railcar-lounge-car"
   }
 ]
