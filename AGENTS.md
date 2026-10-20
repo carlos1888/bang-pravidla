@@ -39,11 +39,12 @@ bang-pravidla/
 │   └── tools-data.js           # Databáze synergií, zbraní, kvízových otázek, stanic vlaku a scénářů
 │
 ├── assets/
-│   ├── images-manifest.json    # Automaticky generovaný seznam všech 318 obrázků pro SW precaching
+│   ├── images-manifest.json    # Automaticky generovaný seznam všech 341 obrázků pro SW precaching
 │   ├── bang-logo.webp / .png   # Oficiální logo hry BANG!
+│   ├── icons/                  # 23 autentických komiksových westernových ikon (pivo, vězení, bič, barel, kohoutek, nůž, rvačka...)
 │   ├── symbols/                # 16 originálních symbolů karet BANG! stažených z Dized (PNG)
 │   ├── western/                # Textury saloonových prken, šerifské hvězdy a wanted plakátů
-│   ├── audio/                  # 16 westernových zvukových efektů (výstřel, ricochet, pivo, vlak, zvon...)
+│   ├── audio/                  # 20 westernových zvukových efektů (výstřel, odraz kulky, pivo, vězení, bič, barel, nůž, rvačka...)
 │   └── cards/                  # 293 webp/jpg náhledů všech hracích karet rozdělených do podsložek dle expanzí
 │
 ├── scripts/
@@ -99,7 +100,7 @@ Přepínání nástrojů probíhá přes subnavigaci `#tools-subnav` s atributem
 | `tracker` | **Virtuální deska** (Player Board) | Osobní deska hráče: sledování životů, karet v ruce, valounů zlata a žetonů nabití přímo na displeji mobilu. | `renderPlayerBoard()` |
 | `matches` | **Zápisník partií** (Match Tracker) | Záznam odehraných her (datum, vítězná frakce, počet hráčů, MVP postava, délka, poznámky). Trvalé uložení v `localStorage`, výpočet win-rate statistik a export do JSON. | `renderMatchTracker()` |
 | `quiz` | **Kvíz pravidel** (Rules Quiz) | 10 náhodných testových otázek z pokročilých a záludných herních situací se zpětnou vazbou a vyhodnocením hodnosti (Zelenáč až Legendární šerif). | `renderRulesQuiz()` |
-| `soundboard` | **Westernový Soundboard** (Sound FX) | Rychlá tlačítka pro přehrání 16 atmosférických westernových zvuků (výstřel, ricochet, dynamit, cinkot zlaťáků, Wilhelmův křik, parní vlak...). | `renderSoundboard()` |
+| `soundboard` | **Westernový Soundboard** (Sound FX) | Rychlá tlačítka pro přehrání 20 atmosférických westernových zvuků (výstřel, odraz kulky, natažení kohoutku, dynamit, gatling, barel, bowie nůž, saloon rvačka, indiáni, duel, vězení, chřestýš, pivo, saloon piáno, umíráček, parní vlak, zlaťáky, bič, mustang, Wilhelmův křik) s dedikovanými westernovými komiksovými ikonami. | `renderSoundboard()` |
 
 ---
 
@@ -128,8 +129,8 @@ Karty mají barevné rámečky a štítky přesně odpovídající fyzickým bal
 - **Fialové karty (Události):** `#882d9e` (Fialová) — `.card-event`
 - **Červené karty (Postavy):** `#b71c1c` (Červená) — `.card-character`
 
-### 5.3. Oficiální symboly karet (assets/symbols/)
-Místo generických emoji se na webu používá **16 oficiálních symbolů z pravidel Dized**:
+### 5.3. Oficiální symboly karet a westernové ikony
+1. **16 oficiálních symbolů z pravidel Dized (`assets/symbols/`):**
 - `symbol_bang.png`: Výstřel BANG!
 - `symbol_missed.png`: Vedle! (obrana)
 - `symbol_regain_life.png`: Pivo / Obnovení života
@@ -146,6 +147,32 @@ Místo generických emoji se na webu používá **16 oficiálních symbolů z pr
 - `symbol_mustang.png`: Mustang (+1 vzdálenost)
 - `symbol_scope.png`: Hledí (-1 vzdálenost)
 - `symbol_life_points.png`: Životy / Mosazný náboj
+
+2. **23 autentických komiksových westernových ikon (`assets/icons/`):**
+Vygenerované dedikovaným subagentem `bang-icon-artist` v komiksovém stylu BANG! (tučné černé linky, saloonová paleta, čisté průhledné pozadí):
+- `icon_beer.png`: Sklenice piva s hustou bílou pěnou (nahradila generické emoji)
+- `icon_jail.png`: Těžké železné mříže cely s mosazným visacím zámkem a klíči
+- `icon_whip.png`: Kožený pletený bič
+- `icon_barrel.png`: Dubový barel s odraženou kulkou
+- `icon_cock.png`: Natažený kohoutek a válec revolveru Colt .45
+- `icon_stagecoach.png`: Loukoťové kolo dostavníku a kovaná truhla Wells Fargo
+- `icon_knife.png`: Ocelový lovecký nůž Bowie
+- `icon_brawl.png`: Hospodská rvačka s letící láhví whiskey a rozbitou stoličkou
+- `icon_indians.png`: Zkřížený indiánský tomahawk a opeřený šíp
+- `icon_graveyard.png`: Hrobařská lopata zapíchnutá v hlíně u dřevěného kříže
+- `icon_gatling.png`: Vícehlavňový ručně klikový kulomet Gatling
+- `icon_horse.png`: Divoký cválající mustang
+- `icon_coins.png`: Plátěný měšec rozsypávající valouny zlata
+- `icon_dynamite.png`: Svazek červených dynamitů se sršícím doutnákem
+- `icon_train.png`: Parní lokomotiva valící dým
+- `icon_rattlesnake.png`: Chřestýš s varovným ocasním chřestítkem
+- `icon_gunshot.png`: Výstřel z revolveru s plamenem z hlavně
+- `icon_ricochet.png`: Odraz kulky od podkovy se žlutými jiskrami
+- `icon_bell.png`: Zvonice na dřevěném trámu
+- `icon_saloon.png`: Honky-tonk saloonové pianino s klávesami
+- `icon_wilhelm.png`: Kreslený bandita s otevřenou pusou a letícím kloboukem
+- `icon_cards.png`: Ruka držící vějíř westernových karet BANG! a Dynamit
+- `icon_sheriff.png`: Šesticípá mosazná šerifská hvězda
 
 > **Helper v `app.js`:** Funkce `getCardOfficialSymbols(card, isEn)` automaticky detekuje a generuje příslušné štítky se symboly pro každou kartu na základě jejího typu, dosahu, životů a tagů.
 

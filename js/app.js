@@ -1491,7 +1491,8 @@
         lead: isEn ? 'Official strict sequence evaluated BEFORE drawing cards:' : 'Přísné oficiální pořadí vyhodnocení PŘED lízáním karet:',
         items: [
           {
-            icon: '☀️',
+            icon: '<img src="assets/icons/icon_sheriff.png" class="symbol-inline-lg" alt="Sheriff">',
+            isImage: true,
             title: isEn ? '1. Sheriff (From Round 2)' : '1. Šerif (od 2. kola hry)',
             desc: isEn ? 'Flips new global event (High Noon / Fistful deck) and advances locomotive by 1 station to the right.' : 'Otočí novou kartu události (balíček High Noon / Fistful) a posune lokomotivu o 1 stanici vpravo.',
             action: null
@@ -1513,21 +1514,24 @@
             btnLabel: isEn ? 'Test Jail (♥ Hearts)' : 'Otestovat Vězení (♥ Srdce)'
           },
           {
-            icon: '💥',
+            icon: '<img src="assets/icons/icon_dynamite.png" class="symbol-inline-lg" alt="Bomb">',
+            isImage: true,
             title: isEn ? '4. Bomb (Armed & Dangerous)' : '4. Bomba (Ozbrojení a nebezpeční)',
             desc: isEn ? 'Draws: Red (♥/♦) = passes safely; Black (♠/♣) = loses 2 load tokens (explodes for 2 lives if charges reach 0!).' : 'Snímá: Červená (♥/♦) = bezpečný posun dál; Černá (♠/♣) = -2 žetony nabití (při 0 výbuch za 2 životy!).',
             action: 'bomb',
             btnLabel: isEn ? 'Test Bomb (Red/Black)' : 'Otestovat Bombu (Červená/Černá)'
           },
           {
-            icon: '🐍',
+            icon: '<img src="assets/icons/icon_rattlesnake.png" class="symbol-inline-lg" alt="Rattlesnake">',
+            isImage: true,
             title: isEn ? '5. Rattlesnake (Valley of Shadows)' : '5. Chřestýš (Údolí stínů)',
             desc: isEn ? 'Draws: Spades (♠) = loses 1 life point. (Note: If player failed in Jail, they do not check for Rattlesnake!).' : 'Snímá: Piky (♠) = ztráta 1 života. (Pozn.: Pokud hráč neuspěl ve Vězení, na Chřestýše již nesnímá!).',
             action: 'rattlesnake',
             btnLabel: isEn ? 'Test Rattlesnake (♠ Spades)' : 'Otestovat Chřestýše (♠ Piky)'
           },
           {
-            icon: '🗺️',
+            icon: '<img src="assets/icons/icon_stagecoach.png" class="symbol-inline-lg" alt="Map">',
+            isImage: true,
             title: isEn ? '6. Map' : '6. Mapa',
             desc: isEn ? 'Look at top 2 cards of the draw deck, you may discard 1.' : 'Prohlédnutí 2 vrchních karet z lízacího balíčku, 1 lze odhodit.',
             action: null
@@ -1548,7 +1552,8 @@
             action: null
           },
           {
-            icon: '🤠',
+            icon: '<img src="assets/icons/icon_sheriff.png" class="symbol-inline-lg" alt="Abilities">',
+            isImage: true,
             title: isEn ? 'Character Draw Abilities' : 'Speciální schopnosti postav při lízání',
             desc: isEn
               ? 'Jesse Jones (1st from opponent hand), Pedro Ramirez (1st from discard), Kit Carlson (draws 3, puts 1 back), Black Jack (if 2nd card is ♥/♦ draws 3rd!), Bill Noface (draws 1 + 1 per wound), Pixie Pete (draws 3).'
@@ -1573,7 +1578,8 @@
             action: null
           },
           {
-            icon: '🚂',
+            icon: '<img src="assets/icons/icon_train.png" class="symbol-inline-lg" alt="Train">',
+            isImage: true,
             title: isEn ? 'The Great Train Robbery (Train Advance)' : 'Velká vlaková loupež (Posun vlaku & Nákup)',
             desc: isEn
               ? 'Advance train 1 station to the right for FREE. Then you MUST purchase the railcar attached to that station by paying its station cost (discard cards or load tokens).'
@@ -1581,7 +1587,8 @@
             action: null
           },
           {
-            icon: '🪙',
+            icon: '<img src="assets/icons/icon_coins.png" class="symbol-inline-lg" alt="Gold">',
+            isImage: true,
             title: isEn ? 'Gold Rush (Gold Nuggets & Equipment)' : 'Zlatá horečka (Nákup vybavení & Zlato)',
             desc: isEn
               ? 'Buy black equipment cards from the 3 displayed using gold nuggets. Discard Beer to gain 1 nugget. Discard opponent equipment by paying its cost + 1 nugget.'
@@ -1589,7 +1596,8 @@
             action: null
           },
           {
-            icon: '⚡',
+            icon: '<img src="assets/icons/icon_cock.png" class="symbol-inline-lg" alt="Load">',
+            isImage: true,
             title: isEn ? 'Armed & Dangerous (Dangerous Cards & Charging)' : 'Ozbrojení a nebezpeční (Oranžové karty)',
             desc: isEn
               ? 'Equip orange dangerous cards with 3 load tokens. Pay load tokens to trigger dangerous effects or upgrade brown cards. Playing any blue card earns +1 load token!'
@@ -1597,7 +1605,8 @@
             action: null
           },
           {
-            icon: '📜',
+            icon: '<img src="assets/icons/icon_cards.png" class="symbol-inline-lg" alt="Legends">',
+            isImage: true,
             title: isEn ? 'Legends (Performing Feats)' : 'Legendy (Vykonání činu)',
             desc: isEn
               ? 'Perform an active feat on the table: place 2 Fame Tokens on the card. If you are a Legend (Side B): claiming a feat inflicts 1 uncancelable damage on another legend!'
@@ -1622,7 +1631,8 @@
             action: null
           },
           {
-            icon: '🌟',
+            icon: '<img src="assets/icons/icon_sheriff.png" class="symbol-inline-lg" alt="Legend">',
+            isImage: true,
             title: isEn ? 'IMPORTANT: Legends Rule for 1 Life!' : 'DŮLEŽITÉ: Pravidlo Legend pro 1 život!',
             desc: isEn
               ? 'In the Legends expansion, any player reduced to only 1 life point is permitted to hold 2 CARDS in hand (instead of 1)!'
@@ -1630,7 +1640,8 @@
             action: null
           },
           {
-            icon: '⚡',
+            icon: '<img src="assets/icons/icon_cock.png" class="symbol-inline-lg" alt="Charging">',
+            isImage: true,
             title: isEn ? 'Charging (Armed & Dangerous)' : 'Nabíjení (Ozbrojení a nebezpeční)',
             desc: isEn
               ? 'For EACH card you are forced to discard in this phase, you immediately gain +1 LOAD TOKEN on your character or dangerous card!'
@@ -1646,7 +1657,8 @@
         lead: isEn ? 'Final wrap-up before passing turn to the next player:' : 'Závěrečné vyhodnocení před předáním tahu hráči po levici:',
         items: [
           {
-            icon: '🗣️',
+            icon: '<img src="assets/icons/icon_cards.png" class="symbol-inline-lg" alt="Boasting">',
+            isImage: true,
             title: isEn ? 'Boasting Feats (Legends)' : 'Chlubení se činem (Legendy)',
             desc: isEn
               ? 'If you DID NOT perform a feat this turn (even if you were jailed!), turn a new Feat card from the deck and place 1 of your Fame Tokens on any active feat!'
@@ -1654,7 +1666,8 @@
             action: null
           },
           {
-            icon: '👑',
+            icon: '<img src="assets/icons/icon_sheriff.png" class="symbol-inline-lg" alt="Legend">',
+            isImage: true,
             title: isEn ? 'LEGEND IS BORN (5th Fame Token)' : 'ZROD LEGENDY (5. žeton slávy)',
             desc: isEn
               ? 'The moment you place your 5th Fame Token, you become a Legend! Flip your character card to Side B and immediately restore your lives to 3!'
@@ -5953,37 +5966,39 @@
   function renderSoundboard(container) {
     const isEn = state.lang === 'en';
     const sounds = [
-      { id: 'shot', icon: '💥', nameCs: 'Výstřel', nameEn: 'Gunshot', action: () => window.BANG_TOOLS.SoundFX.playShot() },
-      { id: 'ricochet', icon: '⚡', nameCs: 'Odraz kulky', nameEn: 'Ricochet', action: () => window.BANG_TOOLS.SoundFX.playRicochet() },
-      { id: 'dynamite', icon: '🧨', nameCs: 'Dynamit', nameEn: 'Dynamite', action: () => window.BANG_TOOLS.SoundFX.playDynamite() },
-      { id: 'gatling', icon: '<img src="assets/symbols/symbol_bang.png" class="symbol-inline-lg" alt="BANG!">',
-            isImage: true, nameCs: 'Gatling', nameEn: 'Gatling', action: () => window.BANG_TOOLS.SoundFX.playGatling() },
-      { id: 'indians', icon: '🏹', nameCs: 'Indiáni!', nameEn: 'Indians!', action: () => window.BANG_TOOLS.SoundFX.playIndians() },
-      { id: 'rattlesnake', icon: '🐍', nameCs: 'Chřestýš', nameEn: 'Rattlesnake', action: () => window.BANG_TOOLS.SoundFX.playRattlesnake() },
-      { id: 'jail', icon: '<img src="assets/symbols/symbol_jail.png" class="symbol-inline-lg" alt="Jail">',
-            isImage: true, nameCs: 'Vězení', nameEn: 'Jail', action: () => window.BANG_TOOLS.SoundFX.playJail() },
-      { id: 'duel', icon: '⚔️', nameCs: 'Duel', nameEn: 'Duel', action: () => window.BANG_TOOLS.SoundFX.playDuel() },
-      { id: 'beer', icon: '🍺', nameCs: 'Pivo', nameEn: 'Beer', action: () => window.BANG_TOOLS.SoundFX.playBeer() },
-      { id: 'saloon', icon: '🎹', nameCs: 'Saloon piáno', nameEn: 'Saloon Piano', action: () => window.BANG_TOOLS.SoundFX.playSaloon() },
-      { id: 'bell', icon: '🔔', nameCs: 'Umíráček', nameEn: 'Church Bell', action: () => window.BANG_TOOLS.SoundFX.playBell() },
-      { id: 'train', icon: '🚂', nameCs: 'Parní vlak', nameEn: 'Steam Train', action: () => window.BANG_TOOLS.SoundFX.playTrain() },
-      { id: 'coin', icon: '💰', nameCs: 'Zlaťáky', nameEn: 'Gold Coins', action: () => window.BANG_TOOLS.SoundFX.playCoin() },
-      { id: 'whip', icon: '🤠', nameCs: 'Bič', nameEn: 'Bullwhip', action: () => window.BANG_TOOLS.SoundFX.playWhip() },
-      { id: 'horse', icon: '🐎', nameCs: 'Kůň', nameEn: 'Mustang', action: () => window.BANG_TOOLS.SoundFX.playHorse() },
-      { id: 'wilhelm', icon: '😱', nameCs: 'Wilhelmův křik', nameEn: 'Wilhelm Scream', action: () => window.BANG_TOOLS.SoundFX.playWilhelm() }
+      { id: 'shot', icon: 'assets/icons/icon_gunshot.png', nameCs: 'Výstřel', nameEn: 'Gunshot', action: () => window.BANG_TOOLS.SoundFX.playShot() },
+      { id: 'ricochet', icon: 'assets/icons/icon_ricochet.png', nameCs: 'Odraz kulky', nameEn: 'Ricochet', action: () => window.BANG_TOOLS.SoundFX.playRicochet() },
+      { id: 'cock', icon: 'assets/icons/icon_cock.png', nameCs: 'Natažení kohoutku', nameEn: 'Revolver Cock', action: () => window.BANG_TOOLS.SoundFX.playCock() },
+      { id: 'dynamite', icon: 'assets/icons/icon_dynamite.png', nameCs: 'Dynamit', nameEn: 'Dynamite', action: () => window.BANG_TOOLS.SoundFX.playDynamite() },
+      { id: 'gatling', icon: 'assets/icons/icon_gatling.png', nameCs: 'Gatling', nameEn: 'Gatling Gun', action: () => window.BANG_TOOLS.SoundFX.playGatling() },
+      { id: 'barrel', icon: 'assets/icons/icon_barrel.png', nameCs: 'Barel', nameEn: 'Oak Barrel', action: () => window.BANG_TOOLS.SoundFX.playBarrel() },
+      { id: 'knife', icon: 'assets/icons/icon_knife.png', nameCs: 'Lovecký nůž', nameEn: 'Bowie Knife', action: () => window.BANG_TOOLS.SoundFX.playKnife() },
+      { id: 'brawl', icon: 'assets/icons/icon_brawl.png', nameCs: 'Saloon rvačka', nameEn: 'Saloon Brawl', action: () => window.BANG_TOOLS.SoundFX.playBrawl() },
+      { id: 'indians', icon: 'assets/icons/icon_indians.png', nameCs: 'Indiáni!', nameEn: 'Indians!', action: () => window.BANG_TOOLS.SoundFX.playIndians() },
+      { id: 'duel', icon: 'assets/icons/icon_cards.png', nameCs: 'Duel', nameEn: 'Duel', action: () => window.BANG_TOOLS.SoundFX.playDuel() },
+      { id: 'jail', icon: 'assets/icons/icon_jail.png', nameCs: 'Vězení', nameEn: 'Jail', action: () => window.BANG_TOOLS.SoundFX.playJail() },
+      { id: 'rattlesnake', icon: 'assets/icons/icon_rattlesnake.png', nameCs: 'Chřestýš', nameEn: 'Rattlesnake', action: () => window.BANG_TOOLS.SoundFX.playRattlesnake() },
+      { id: 'beer', icon: 'assets/icons/icon_beer.png', nameCs: 'Pivo', nameEn: 'Cold Beer', action: () => window.BANG_TOOLS.SoundFX.playBeer() },
+      { id: 'saloon', icon: 'assets/icons/icon_saloon.png', nameCs: 'Saloon piáno', nameEn: 'Saloon Piano', action: () => window.BANG_TOOLS.SoundFX.playSaloon() },
+      { id: 'bell', icon: 'assets/icons/icon_bell.png', nameCs: 'Umíráček', nameEn: 'Church Bell', action: () => window.BANG_TOOLS.SoundFX.playBell() },
+      { id: 'train', icon: 'assets/icons/icon_train.png', nameCs: 'Parní vlak', nameEn: 'Steam Train', action: () => window.BANG_TOOLS.SoundFX.playTrain() },
+      { id: 'coins', icon: 'assets/icons/icon_coins.png', nameCs: 'Zlaťáky', nameEn: 'Gold Coins', action: () => window.BANG_TOOLS.SoundFX.playCoin() },
+      { id: 'whip', icon: 'assets/icons/icon_whip.png', nameCs: 'Bič', nameEn: 'Bullwhip', action: () => window.BANG_TOOLS.SoundFX.playWhip() },
+      { id: 'horse', icon: 'assets/icons/icon_horse.png', nameCs: 'Mustang', nameEn: 'Mustang Horse', action: () => window.BANG_TOOLS.SoundFX.playHorse() },
+      { id: 'wilhelm', icon: 'assets/icons/icon_wilhelm.png', nameCs: 'Wilhelmův křik', nameEn: 'Wilhelm Scream', action: () => window.BANG_TOOLS.SoundFX.playWilhelm() }
     ];
 
     container.innerHTML = `
       <div class="tool-card-box">
         <div class="tool-card-header">
           <h2>${isEn ? 'Wild West Soundboard' : 'Westernový Soundboard'}</h2>
-          <p class="tool-card-lead">${isEn ? 'Cinematic sound effects from the Wild West and BANG! game: Colt .45, Gatling, Indians!, Rattlesnake, Duel, Jail, and cold beer. Fully cached for 100% offline play.' : 'Filmové a herní zvukové efekty ze hry BANG! a Divokého západu: Colt .45, Gatling, Indiáni!, Chřestýš, Duel, Vězení i poctivé vychlazené pivo. Funguje 100% i offline bez internetu.'}</p>
+          <p class="tool-card-lead">${isEn ? 'Authentic comic-style sound effects from BANG! and the Wild West: Colt .45, Gatling, Indians!, Duel, Jail, Oak Barrel, Bowie Knife, Saloon Brawl, and foaming cold beer. Fully cached for 100% offline play.' : 'Autentické komiksové zvukové efekty ze hry BANG! a Divokého západu: Colt .45, Gatling, Indiáni!, Duel, Vězení, Barel, Nůž, Hospodská rvačka i poctivé vychlazené pivo. Funguje 100% i offline bez internetu.'}</p>
         </div>
 
         <div class="soundboard-grid">
           ${sounds.map(s => `
             <div class="sound-tile" data-snd="${s.id}" role="button" tabindex="0" title="${isEn ? s.nameEn : s.nameCs}" aria-label="${isEn ? s.nameEn : s.nameCs}">
-              <span class="sound-tile-icon">${s.icon}</span>
+              <span class="sound-tile-icon"><img src="${s.icon}" class="sound-icon-img" alt="${isEn ? s.nameEn : s.nameCs}" width="48" height="48" loading="lazy"></span>
               <div class="sound-tile-name">${isEn ? s.nameEn : s.nameCs}</div>
             </div>
           `).join('')}

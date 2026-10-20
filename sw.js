@@ -1,5 +1,5 @@
 // BANG! Companion Service Worker (PWA Offline Support & Asset Caching)
-const APP_CACHE_NAME = 'bang-app-v32';
+const APP_CACHE_NAME = 'bang-app-v33';
 const IMAGE_CACHE_NAME = 'bang-images-v1';
 
 // Core Application Shell Assets
@@ -41,7 +41,11 @@ const STATIC_ASSETS = [
   './assets/symbols/symbol_life_points.png',
   './assets/audio/gunshot.mp3',
   './assets/audio/ricochet.m4a',
+  './assets/audio/cock.m4a',
   './assets/audio/dynamite.m4a',
+  './assets/audio/barrel.m4a',
+  './assets/audio/knife.m4a',
+  './assets/audio/brawl.m4a',
   './assets/audio/beer.m4a',
   './assets/audio/church_bell.m4a',
   './assets/audio/steam_train.m4a',
