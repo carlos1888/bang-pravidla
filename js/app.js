@@ -2202,7 +2202,7 @@
   // TOOLS CONTROLLER & SUB-VIEWS (100% Client-Side, No Database)
   // =========================================================================
   const calcParams = {
-    totalPlayers: 5,
+    totalPlayers: 8,
     shooterIdx: 0,
     targetIdx: 2,
     mode: 'target',
@@ -2663,13 +2663,14 @@
         `;
       }
 
-      const susp = (calcParams.suspicions && calcParams.suspicions[i]) || (i === 0 ? 'sheriff' : 'unknown');
-      const suspIcon = susp === 'deputy' ? '⭐️' : susp === 'outlaw' ? '💀' : susp === 'renegade' ? '🤠' : susp === 'dead' ? '☠️' : '';
+      const susp = (calcParams.suspicions && calcParams.suspicions[i]) || (i === 0 && calcParams.totalPlayers > 3 ? 'sheriff' : (calcParams.totalPlayers === 3 && i === 0 ? 'deputy' : 'unknown'));
+      const suspIcon = susp === 'deputy' ? '🛡️' : susp === 'outlaw' ? '💀' : susp === 'renegade' ? '🗡️' : susp === 'dead' ? '☠️' : (susp === 'sheriff' ? '⭐️' : '');
       if (!isShooter && !isTarget) {
-        if (susp === 'deputy') strokeColor = '#2ecc71';
-        else if (susp === 'outlaw') strokeColor = '#e74c3c';
-        else if (susp === 'renegade') strokeColor = '#9b59b6';
+        if (susp === 'deputy') strokeColor = '#27ae60';
+        else if (susp === 'outlaw') strokeColor = '#c0392b';
+        else if (susp === 'renegade') strokeColor = '#8e44ad';
         else if (susp === 'dead') strokeColor = '#7f8c8d';
+        else if (susp === 'sheriff') strokeColor = '#d49a00';
       }
 
       seatsSvg += `
@@ -2975,39 +2976,90 @@
         </div>
 
         <!-- SHERIFF SUSPICION & BLUFF TRACKER STRIP -->
-        <div style="margin-top: 1.5rem; background: var(--bg-surface); border: 1.5px solid var(--border-color); border-radius: 10px; padding: 1.25rem; box-shadow: var(--shadow-sm);">
-          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 0.85rem;">
+        <div class="sheriff-bluff-tracker" style="margin-top: 1.5rem; background: var(--bg-surface); border: 2px solid var(--border-color); border-radius: 12px; padding: 1.25rem; box-shadow: var(--shadow-sm);">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 0.85rem;">
             <div>
-              <div style="font-weight: bold; font-size: 0.98rem; color: var(--color-brown); display: flex; align-items: center; gap: 0.4rem;">
-                🎭 ${isEn ? 'Sheriff Bluff & Deduction Tracker:' : 'Zápisník podezření pro Šerifa (Kdo je kdo u stolu):'}
+              <div style="font-weight: 800; font-size: 1.05rem; color: var(--color-brown); display: flex; align-items: center; gap: 0.45rem; font-family: var(--font-western);">
+                🎭 ${isEn ? 'Sheriff Suspect & Deduction Notebook (Who is Who at the Table):' : 'Zápisník podezření pro Šerifa (Kdo je kdo u stolu):'}
               </div>
-              <div style="font-size: 0.82rem; color: var(--text-muted);">
-                ${isEn ? 'Click player chips below to cycle role suspicions (Deputy, Outlaw, Renegade, Dead, Unknown):' : 'Klepněte na hráče níže pro přepínání podezření o jeho skryté roli (zobrazí se i u stolu):'}
+              <div style="font-size: 0.84rem; color: var(--text-muted); margin-top: 0.15rem;">
+                ${isEn ? 'Use the dropdowns below to tag each player seat with suspected roles. The saloon table view updates dynamically:' : 'Rozbalovacím výběrem u každé židle označte své podezření o roli hráče (zobrazuje se živě i na saloonovém stole):'}
               </div>
             </div>
-            <button type="button" id="btn-clear-suspicions" style="background: none; border: none; font-size: 0.78rem; color: var(--text-muted); cursor: pointer; text-decoration: underline;">
-              ${isEn ? 'Reset suspicions' : 'Resetovat podezření'}
-            </button>
+            <div style="display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap;">
+              <button type="button" id="btn-clear-suspicions" class="btn-secondary" style="font-size: 0.8rem; padding: 0.35rem 0.75rem; cursor: pointer;">
+                🔄 ${isEn ? 'Reset Suspicions' : 'Resetovat podezření'}
+              </button>
+            </div>
           </div>
 
-          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <!-- Role Quotas & Deduction Counter Bar -->
+          ${(() => {
+            const roleQuotas = {
+              3: { sheriff: 0, deputy: 1, outlaw: 1, renegade: 1 },
+              4: { sheriff: 1, deputy: 0, outlaw: 2, renegade: 1 },
+              5: { sheriff: 1, deputy: 1, outlaw: 2, renegade: 1 },
+              6: { sheriff: 1, deputy: 1, outlaw: 3, renegade: 1 },
+              7: { sheriff: 1, deputy: 2, outlaw: 3, renegade: 1 },
+              8: { sheriff: 1, deputy: 2, outlaw: 3, renegade: 2 }
+            };
+            const expectedRoles = roleQuotas[calcParams.totalPlayers] || roleQuotas[8];
+            const counts = { sheriff: 0, deputy: 0, outlaw: 0, renegade: 0, dead: 0, unknown: 0 };
+            for (let i = 0; i < calcParams.totalPlayers; i++) {
+              const susp = (calcParams.suspicions && calcParams.suspicions[i]) || (i === 0 && calcParams.totalPlayers > 3 ? 'sheriff' : (calcParams.totalPlayers === 3 && i === 0 ? 'deputy' : 'unknown'));
+              counts[susp] = (counts[susp] || 0) + 1;
+            }
+
+            return `
+              <div style="background: rgba(44, 22, 12, 0.06); border: 1px dashed var(--border-color); border-radius: 8px; padding: 0.55rem 0.85rem; margin-bottom: 1rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.6rem; font-size: 0.85rem;">
+                <div style="font-weight: 800; color: var(--text-main); display: inline-flex; align-items: center; gap: 0.35rem;">
+                  <span>📊 ${isEn ? `Roles for ${calcParams.totalPlayers} players:` : `Rozdělení pro ${calcParams.totalPlayers} hráčů:`}</span>
+                </div>
+                <div style="display: flex; gap: 0.65rem; flex-wrap: wrap; font-weight: 700;">
+                  ${expectedRoles.sheriff > 0 || counts.sheriff > 0 ? `<span style="color: #b78103;">⭐️ ${isEn ? 'Sheriff' : 'Šerif'}: ${counts.sheriff}/${expectedRoles.sheriff}</span>` : ''}
+                  <span style="color: #27ae60;">🛡️ ${isEn ? 'Deputy' : 'Pomocník'}: ${counts.deputy}/${expectedRoles.deputy}</span>
+                  <span style="color: #c0392b;">💀 ${isEn ? 'Outlaw' : 'Bandité'}: ${counts.outlaw}/${expectedRoles.outlaw}</span>
+                  <span style="color: #8e44ad;">🗡️ ${isEn ? 'Renegade' : 'Odpadlík'}: ${counts.renegade}/${expectedRoles.renegade}</span>
+                  ${counts.dead ? `<span style="color: #7f8c8d;">☠️ ${isEn ? 'Dead' : 'Mrtví'}: ${counts.dead}</span>` : ''}
+                  <span style="color: var(--text-muted);">❓ ${isEn ? 'Unknown' : 'Neznámí'}: ${counts.unknown}</span>
+                </div>
+              </div>
+            `;
+          })()}
+
+          <!-- Suspect Seat Cards Grid with DROPDOWN SELECTS -->
+          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 0.65rem;">
             ${Array.from({ length: calcParams.totalPlayers }, (_, i) => {
-              const susp = (calcParams.suspicions && calcParams.suspicions[i]) || (i === 0 ? 'sheriff' : 'unknown');
+              const susp = (calcParams.suspicions && calcParams.suspicions[i]) || (i === 0 && calcParams.totalPlayers > 3 ? 'sheriff' : (calcParams.totalPlayers === 3 && i === 0 ? 'deputy' : 'unknown'));
               const badges = {
-                sheriff: { icon: '⭐️', labelCs: 'Šerif', labelEn: 'Sheriff', color: '#f1c40f', bg: 'rgba(241, 196, 15, 0.15)' },
-                deputy: { icon: '⭐️', labelCs: 'Pomocník', labelEn: 'Deputy', color: '#2ecc71', bg: 'rgba(46, 204, 113, 0.15)' },
-                outlaw: { icon: '💀', labelCs: 'Bandita', labelEn: 'Outlaw', color: '#e74c3c', bg: 'rgba(231, 76, 60, 0.15)' },
-                renegade: { icon: '🤠', labelCs: 'Odpadlík', labelEn: 'Renegade', color: '#9b59b6', bg: 'rgba(155, 89, 182, 0.15)' },
-                dead: { icon: '☠️', labelCs: 'Mrtvý', labelEn: 'Dead', color: '#7f8c8d', bg: 'rgba(127, 140, 141, 0.15)' },
-                unknown: { icon: '❓', labelCs: 'Neznámý', labelEn: 'Unknown', color: '#95a5a6', bg: 'var(--bg-card)' }
+                sheriff: { icon: '⭐️', labelCs: 'Šerif', labelEn: 'Sheriff', color: '#d49a00', bg: 'rgba(241, 196, 15, 0.16)' },
+                deputy: { icon: '🛡️', labelCs: 'Pomocník (Vice)', labelEn: 'Deputy', color: '#27ae60', bg: 'rgba(46, 204, 113, 0.15)' },
+                outlaw: { icon: '💀', labelCs: 'Bandita', labelEn: 'Outlaw', color: '#c0392b', bg: 'rgba(231, 76, 60, 0.15)' },
+                renegade: { icon: '🗡️', labelCs: 'Odpadlík', labelEn: 'Renegade', color: '#8e44ad', bg: 'rgba(155, 89, 182, 0.15)' },
+                dead: { icon: '☠️', labelCs: 'Mrtvý / Vyřazen', labelEn: 'Dead / Out', color: '#7f8c8d', bg: 'rgba(127, 140, 141, 0.15)' },
+                unknown: { icon: '❓', labelCs: 'Neznámý / Podezřelý', labelEn: 'Unknown', color: '#8c6547', bg: 'var(--bg-card)' }
               };
               const b = badges[susp] || badges.unknown;
               return `
-                <button type="button" class="btn-seat-suspicion" data-seat="${i}"
-                        style="padding: 0.45rem 0.8rem; border-radius: 8px; border: 1.5px solid ${b.color}; background: ${b.bg}; color: inherit; cursor: ${i === 0 ? 'default' : 'pointer'}; font-size: 0.85rem; font-weight: bold; display: flex; align-items: center; gap: 0.4rem; transition: all 0.2s;">
-                  <span>${i === 0 ? '👑' : `#${i + 1}`}</span>
-                  <span>${b.icon} ${isEn ? b.labelEn : b.labelCs}</span>
-                </button>
+                <div class="seat-suspect-card" data-seat="${i}"
+                     style="background: ${b.bg}; border: 2px solid ${b.color}; border-radius: 8px; padding: 0.65rem 0.75rem; display: flex; flex-direction: column; gap: 0.45rem; box-shadow: 0 2px 4px rgba(0,0,0,0.06); transition: border-color 0.2s, background-color 0.2s;">
+                  <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-weight: 800; font-size: 0.88rem; color: var(--text-main); font-family: var(--font-western);">
+                      ${(i === 0 && calcParams.totalPlayers > 3) ? '👑 ' + (isEn ? 'Seat 1 (Sheriff)' : 'Židle 1 (Šerif)') : `#${i + 1} ` + (isEn ? `Player ${i + 1}` : `Hráč ${i + 1}`)}
+                    </span>
+                    <span style="font-size: 0.95rem;">${b.icon}</span>
+                  </div>
+                  <select class="seat-suspicion-select" data-seat="${i}"
+                          aria-label="${isEn ? `Role suspicion for player ${i + 1}` : `Podezření pro hráče ${i + 1}`}"
+                          style="width: 100%; padding: 0.45rem 0.5rem; font-size: 16px; font-weight: 700; border-radius: 6px; border: 1.5px solid ${b.color}; background: var(--bg-card); color: var(--text-main); cursor: pointer; outline: none; -webkit-appearance: menulist;">
+                    <option value="unknown" ${susp === 'unknown' ? 'selected' : ''}>❓ ${isEn ? 'Unknown' : 'Neznámý / Podezřelý'}</option>
+                    <option value="sheriff" ${susp === 'sheriff' ? 'selected' : ''}>⭐️ ${isEn ? 'Sheriff' : 'Šerif'}</option>
+                    <option value="deputy" ${susp === 'deputy' ? 'selected' : ''}>🛡️ ${isEn ? 'Deputy' : 'Pomocník'}</option>
+                    <option value="outlaw" ${susp === 'outlaw' ? 'selected' : ''}>💀 ${isEn ? 'Outlaw' : 'Bandita'}</option>
+                    <option value="renegade" ${susp === 'renegade' ? 'selected' : ''}>🗡️ ${isEn ? 'Renegade' : 'Odpadlík'}</option>
+                    <option value="dead" ${susp === 'dead' ? 'selected' : ''}>☠️ ${isEn ? 'Dead / Out' : 'Mrtvý / Vyřazen'}</option>
+                  </select>
+                </div>
               `;
             }).join('')}
           </div>
@@ -3134,15 +3186,12 @@
       });
     }
 
-    // Handle Suspicion Tracker Clicks
-    container.querySelectorAll('.btn-seat-suspicion').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const seat = parseInt(btn.dataset.seat, 10);
-        if (seat === 0) return; // Sheriff seat is immutable
-        const cycle = ['unknown', 'deputy', 'outlaw', 'renegade', 'dead'];
-        const current = (calcParams.suspicions && calcParams.suspicions[seat]) || 'unknown';
-        const nextIdx = (cycle.indexOf(current) + 1) % cycle.length;
-        calcParams.suspicions[seat] = cycle[nextIdx];
+    // Handle Suspicion Tracker Changes (Dropdown Selects)
+    container.querySelectorAll('.seat-suspicion-select').forEach(sel => {
+      sel.addEventListener('change', () => {
+        const seat = parseInt(sel.dataset.seat, 10);
+        if (!calcParams.suspicions) calcParams.suspicions = {};
+        calcParams.suspicions[seat] = sel.value;
         renderDistanceCalc(container);
       });
     });
