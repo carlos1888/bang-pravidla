@@ -5092,23 +5092,47 @@ button.btn-secondary:active {
   padding: 0 0.5rem;
 }
 
+.table-players-selector {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(14, 7, 3, 0.75);
+  border: 1.5px solid rgba(212, 175, 55, 0.45);
+  padding: 0.4rem 0.95rem;
+  border-radius: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  flex-wrap: wrap;
+}
+
+.table-controls-label {
+  font-family: var(--font-western);
+  font-weight: 800;
+  font-size: 1rem;
+  color: #ffeb3b;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+  letter-spacing: 0.4px;
+  display: inline-flex;
+  align-items: center;
+}
+
 .table-mode-toggle {
   display: inline-flex;
-  background: var(--bg-card);
-  border: 1.5px solid var(--border-color);
+  background: rgba(14, 7, 3, 0.75);
+  border: 1.5px solid rgba(212, 175, 55, 0.45);
   border-radius: 30px;
   padding: 4px;
   gap: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .table-mode-btn {
   background: transparent;
   border: none;
-  padding: 0.45rem 1rem;
+  padding: 0.45rem 1.05rem;
   border-radius: 24px;
   font-size: 0.88rem;
-  font-weight: 700;
-  color: var(--text-muted);
+  font-weight: 800;
+  color: #eedcc7;
   cursor: pointer;
   transition: all 0.2s ease;
   display: inline-flex;
@@ -5117,15 +5141,15 @@ button.btn-secondary:active {
 }
 
 .table-mode-btn.active.mode-shooter {
-  background: #c0392b;
+  background: linear-gradient(180deg, #e74c3c 0%, #c0392b 100%);
   color: #ffffff;
-  box-shadow: 0 2px 8px rgba(192, 57, 43, 0.4);
+  box-shadow: 0 2px 8px rgba(192, 57, 43, 0.5);
 }
 
 .table-mode-btn.active.mode-target {
-  background: #2980b9;
+  background: linear-gradient(180deg, #3498db 0%, #2980b9 100%);
   color: #ffffff;
-  box-shadow: 0 2px 8px rgba(41, 128, 185, 0.4);
+  box-shadow: 0 2px 8px rgba(41, 128, 185, 0.5);
 }
 
 .saloon-table-svg-wrap {
@@ -5233,10 +5257,22 @@ button.btn-secondary:active {
 
 .table-instruction-hint {
   text-align: center;
-  font-size: 0.88rem;
-  color: var(--text-muted);
-  margin-top: 0.75rem;
-  font-style: italic;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #f7ecd5;
+  background: rgba(14, 7, 3, 0.78);
+  border: 1.5px solid rgba(212, 175, 55, 0.35);
+  border-radius: 20px;
+  padding: 0.55rem 1.25rem;
+  margin: 1.15rem auto 0.25rem;
+  max-width: 660px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  line-height: 1.5;
 }
 
 /* ==========================================================================

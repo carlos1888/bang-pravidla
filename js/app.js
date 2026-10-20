@@ -2710,8 +2710,8 @@
 
         <div class="saloon-table-container">
           <div class="table-controls-bar">
-            <div style="display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap;">
-              <span style="font-weight: 800; font-size: 0.92rem; color: var(--color-brown);">
+            <div class="table-players-selector">
+              <span class="table-controls-label">
                 ${isEn ? 'Players at table:' : 'Hráčů u stolu:'}
               </span>
               <div style="display: flex; gap: 0.35rem;">
@@ -2882,7 +2882,8 @@
           </div>
 
           <div class="table-instruction-hint">
-            ${isEn ? 'Tap any seat to select who is shooting and who is being targeted. The table calculates the shortest direction (clockwise vs counter-clockwise) automatically.' : 'Klepněte na libovolnou židli pro výběr střelce či cíle. Stůl automaticky počítá nejkratší vzdálenost (po směru i proti směru hodinových ručiček).'}
+            <span>💡</span>
+            <span>${isEn ? 'Tap any seat to select who is shooting and who is being targeted. The table calculates the shortest direction (clockwise vs counter-clockwise) automatically.' : 'Klepněte na libovolnou židli pro výběr střelce či cíle. Stůl automaticky počítá nejkratší vzdálenost (po směru i proti směru hodinových ručiček).'}</span>
           </div>
         </div>
 
