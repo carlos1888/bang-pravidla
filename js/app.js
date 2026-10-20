@@ -1538,7 +1538,7 @@
             ${isEn ? 'Print Player Cheat Sheet' : 'Vytisknout tahák pro hráče'}
           </button>
           <button type="button" id="btn-toggle-turn-stepper" class="tool-subnav-btn active" style="font-size: 0.95rem; padding: 0.6rem 1.2rem; cursor: pointer;">
-            ⏱️ ${isEn ? 'Switch to Step-by-Step Interactive Guide' : 'Přepnout na Interaktivního asistenta (Krok za krokem)'}
+            ${isEn ? 'Switch to Step-by-Step Interactive Guide' : 'Přepnout na Interaktivního asistenta (Krok za krokem)'}
           </button>
         </div>
         ${isEn ? window.BANG_TURN_HTML_EN : window.BANG_TURN_HTML_CS}
@@ -1792,8 +1792,8 @@
       <div class="tool-card-box">
         <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.25rem;">
           <div>
-            <h2 style="font-family: var(--font-western); color: var(--color-brown); margin: 0 0 0.35rem 0; font-size: 1.55rem; display: flex; align-items: center; gap: 0.5rem;">
-              <span>⏱️</span> ${isEn ? 'Interactive Turn Assistant (Step-by-Step)' : 'Interaktivní asistent tahu (Krok za krokem)'}
+            <h2 style="font-family: var(--font-western); color: var(--color-brown); margin: 0 0 0.35rem 0; font-size: 1.55rem;">
+              ${isEn ? 'Interactive Turn Assistant (Step-by-Step)' : 'Interaktivní asistent tahu (Krok za krokem)'}
             </h2>
             <p style="color: var(--text-muted); margin: 0; font-size: 0.95rem;">
               ${isEn ? 'Follow the exact official sequence of phases during your turn.' : 'Procházejte krok za krokem přísné oficiální pořadí akcí ve vašem tahu.'}
