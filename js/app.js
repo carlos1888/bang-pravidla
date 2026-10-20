@@ -2899,7 +2899,7 @@
             <div class="calc-mods-list">
               <label class="calc-checkbox-label">
                 <input type="checkbox" id="chk-appaloosa" ${calcParams.appaloosa ? 'checked' : ''}>
-                <span><img src="assets/symbols/symbol_scope.png" class="tag-symbol-img" alt="">${isEn ? 'Appaloosa / Scope (-1 distance)' : 'Hledí / Appaloosa (-1 ke vzdálenosti)'}</span>
+                <span>${isEn ? 'Appaloosa / Scope (-1 distance)' : 'Hledí / Appaloosa (-1 ke vzdálenosti)'}</span>
               </label>
               <label class="calc-checkbox-label">
                 <input type="checkbox" id="chk-binoculars" ${calcParams.binoculars ? 'checked' : ''}>
@@ -2917,7 +2917,7 @@
             <div class="calc-mods-list" style="margin-top: 0.5rem;">
               <label class="calc-checkbox-label">
                 <input type="checkbox" id="chk-mustang" ${calcParams.mustang ? 'checked' : ''}>
-                <span><img src="assets/symbols/symbol_mustang.png" class="tag-symbol-img" alt="">${isEn ? 'Mustang (+1 distance away)' : 'Mustang (+1 ke vzdálenosti)'}</span>
+                <span>${isEn ? 'Mustang (+1 distance away)' : 'Mustang (+1 ke vzdálenosti)'}</span>
               </label>
               <label class="calc-checkbox-label">
                 <input type="checkbox" id="chk-hideout" ${calcParams.hideout ? 'checked' : ''}>
