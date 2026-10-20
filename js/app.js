@@ -1131,7 +1131,7 @@
       <div style="display: flex; align-items: center; gap: 0.75rem;">
         <div class="pinned-char-lives">
           <button type="button" class="pinned-btn-life" id="btn-pinned-minus" aria-label="Ubrat život">−</button>
-          <span style="font-weight: 800; color: #ff5252; display: flex; align-items: center; gap: 0.35rem; font-size: 0.95rem; font-family: var(--font-western); letter-spacing: 0.5px;"><img src="assets/symbols/symbol_life_points.png" class="rules-symbol-inline" alt=""> ${char.lives} / ${char.maxLives}</span>
+          <span style="font-weight: 800; color: #ff5252; display: flex; align-items: center; gap: 0.35rem; font-size: 0.98rem; font-family: var(--font-western); letter-spacing: 0.5px;">❤️ ${char.lives} / ${char.maxLives}</span>
           <button type="button" class="pinned-btn-life" id="btn-pinned-plus" aria-label="Přidat život">+</button>
         </div>
         <button type="button" class="pinned-btn-unpin" id="btn-pinned-unpin" title="${isEn ? 'Unpin' : 'Odepnout'}">✕</button>
