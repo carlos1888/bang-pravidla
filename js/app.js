@@ -637,7 +637,7 @@
       if (card.copies) metas.push(`<span class="card-meta-item meta-copies">${card.copies}× ${t.copiesInDeck}</span>`);
       if (card.range) metas.push(`<span class="card-meta-item"><img src="assets/symbols/symbol_reachable_distance.png" class="tag-symbol-img" alt="">${t.rangeLabel}: ${card.range}</span>`);
       if (cardCost) metas.push(`<span class="card-meta-item meta-cost">${cardCost}</span>`);
-      if (card.lives) metas.push(`<span class="card-meta-item" style="color: #b71c1c; font-weight: 700;"><img src="assets/symbols/symbol_life_points.png" class="tag-symbol-img" alt="">${card.lives} ${t.livesLabel}</span>`);
+      if (card.lives) metas.push(`<span class="card-meta-item card-meta-lives"><img src="assets/symbols/symbol_life_points.png" class="tag-symbol-img" alt="">${card.lives} ${t.livesLabel}</span>`);
       if (cardTiming) metas.push(`<span class="card-meta-item meta-timing">${cardTiming}</span>`);
 
       const imageThumbHtml = card.image
