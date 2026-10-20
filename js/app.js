@@ -950,22 +950,22 @@
         synergiesHtml = `
           <div class="card-modal-synergies-wrap" style="margin-top: 1.25rem; border-top: 2px solid var(--border-color); padding-top: 1rem;">
             ${(synData.counters && synData.counters.length > 0) ? `
-              <div style="background: var(--bg-surface); padding: 0.9rem; border-radius: 8px; margin-bottom: 0.85rem; border-left: 4px solid #c0392b;">
-                <h4 style="color: #c0392b; margin: 0 0 0.5rem 0; font-size: 0.95rem; display: flex; align-items: center; gap: 0.4rem; font-weight: 700;">
+              <div class="card-counters-card">
+                <h4>
                   <img src="assets/symbols/symbol_missed.png" class="tag-symbol-img" alt=""> ${isEn ? 'Counters & Defense (How to negate)' : 'Obrana a protiútoky (Jak se bránit)'}
                 </h4>
-                <ul style="margin: 0; padding-left: 1.2rem; font-size: 0.92rem; line-height: 1.5; color: var(--text-color);">
-                  ${synData.counters.map(c => `<li style="margin-bottom: 0.35rem;">${c}</li>`).join('')}
+                <ul>
+                  ${synData.counters.map(c => `<li>${c}</li>`).join('')}
                 </ul>
               </div>
             ` : ''}
             ${(synData.synergies && synData.synergies.length > 0) ? `
-              <div style="background: var(--bg-surface); padding: 0.9rem; border-radius: 8px; border-left: 4px solid #27ae60;">
-                <h4 style="color: #27ae60; margin: 0 0 0.5rem 0; font-size: 0.95rem; display: flex; align-items: center; gap: 0.4rem; font-weight: 700;">
+              <div class="card-synergies-card">
+                <h4>
                   ${isEn ? 'Key Synergies & Combos' : 'Klíčové synergie a komba'}
                 </h4>
-                <ul style="margin: 0; padding-left: 1.2rem; font-size: 0.92rem; line-height: 1.5; color: var(--text-color);">
-                  ${synData.synergies.map(s => `<li style="margin-bottom: 0.35rem;">${s}</li>`).join('')}
+                <ul>
+                  ${synData.synergies.map(s => `<li>${s}</li>`).join('')}
                 </ul>
               </div>
             ` : ''}
@@ -998,14 +998,14 @@
     const modalActionsHtml = `
       <div style="display: flex; flex-wrap: wrap; gap: 0.65rem; margin-top: 1.5rem; border-top: 2px solid var(--border-color); padding-top: 1.25rem;">
         ${isCharacter ? `
-          <button type="button" id="btn-pin-character" class="btn-reset-filters" style="display: inline-flex; align-items: center; gap: 0.4rem; font-weight: 700; ${isPinned ? 'background: #c0392b; border-color: #c0392b; color: #fff;' : ''}">
+          <button type="button" id="btn-pin-character" class="btn-pin-character ${isPinned ? 'pinned' : ''}">
             ${isPinned ? t.unpinCharacter : t.pinCharacter}
           </button>
         ` : ''}
-        <button type="button" id="btn-compare-card" class="btn-reset-filters" style="display: inline-flex; align-items: center; gap: 0.4rem; font-weight: 700;">
+        <button type="button" id="btn-compare-card" class="btn-reset-filters" style="font-weight: 700;">
           ${t.compareCard}
         </button>
-        <button type="button" id="btn-modal-close-action" class="btn-reset-filters" style="display: inline-flex; align-items: center; gap: 0.4rem; font-weight: 700; margin-left: auto;">
+        <button type="button" id="btn-modal-close-action" class="btn-reset-filters" style="font-weight: 700; margin-left: auto;">
           ✕ ${isEn ? 'Close' : 'Zavřít'}
         </button>
       </div>
@@ -1031,10 +1031,10 @@
           </div>
 
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.75rem; font-size: 0.9rem; margin-bottom: 1rem;">
-            ${cardTiming ? `<div style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 0.65rem; border-radius: 6px;"><strong>${t.timingLabel}:</strong><br>${cardTiming}</div>` : ''}
-            ${cardCost ? `<div style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 0.65rem; border-radius: 6px;"><strong>${t.costLabel}:</strong><br>${cardCost}</div>` : ''}
-            ${card.range ? `<div style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 0.65rem; border-radius: 6px;"><strong>${t.rangeLabel}:</strong><br>${card.range}</div>` : ''}
-            ${card.copies ? `<div style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 0.65rem; border-radius: 6px;"><strong>${t.copiesInDeck}:</strong><br>${card.copies}×</div>` : ''}
+            ${cardTiming ? `<div class="card-detail-stat-box"><strong>${t.timingLabel}:</strong><br>${cardTiming}</div>` : ''}
+            ${cardCost ? `<div class="card-detail-stat-box"><strong>${t.costLabel}:</strong><br>${cardCost}</div>` : ''}
+            ${card.range ? `<div class="card-detail-stat-box"><strong>${t.rangeLabel}:</strong><br>${card.range}</div>` : ''}
+            ${card.copies ? `<div class="card-detail-stat-box"><strong>${t.copiesInDeck}:</strong><br>${card.copies}×</div>` : ''}
           </div>
 
           ${rulingsHtml}
@@ -1124,14 +1124,14 @@
       <div class="pinned-char-left" id="pinned-char-click" title="${isEn ? 'Open character detail' : 'Otevřít detail postavy'}">
         ${thumbHtml}
         <div>
-          <div style="font-size: 0.72rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">${isEn ? 'My Character' : 'Moje postava'}</div>
+          <div class="pinned-char-label">${isEn ? 'My Character' : 'Moje postava'}</div>
           <div class="pinned-char-title">${charName}</div>
         </div>
       </div>
       <div style="display: flex; align-items: center; gap: 0.75rem;">
         <div class="pinned-char-lives">
           <button type="button" class="pinned-btn-life" id="btn-pinned-minus" aria-label="Ubrat život">−</button>
-          <span style="font-weight: 800; color: #b71c1c; display: flex; align-items: center; gap: 0.25rem;"><img src="assets/symbols/symbol_life_points.png" class="rules-symbol-inline" alt=""> ${char.lives} / ${char.maxLives}</span>
+          <span style="font-weight: 800; color: #ff5252; display: flex; align-items: center; gap: 0.35rem; font-size: 0.95rem; font-family: var(--font-western); letter-spacing: 0.5px;"><img src="assets/symbols/symbol_life_points.png" class="rules-symbol-inline" alt=""> ${char.lives} / ${char.maxLives}</span>
           <button type="button" class="pinned-btn-life" id="btn-pinned-plus" aria-label="Přidat život">+</button>
         </div>
         <button type="button" class="pinned-btn-unpin" id="btn-pinned-unpin" title="${isEn ? 'Unpin' : 'Odepnout'}">✕</button>
@@ -3339,7 +3339,7 @@
             </div>
 
             <button type="button" id="btn-random-draw" class="tool-subnav-btn active" style="padding: 0.5rem 1.1rem; font-size: 0.88rem; border-radius: 20px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 0.4rem;">
-              🎲 ${isEn ? 'Simulate Random Draw' : 'Simulovat náhodné otočení'}
+              ${isEn ? 'Simulate Random Draw' : 'Simulovat náhodné otočení'}
             </button>
           </div>
 
@@ -3360,9 +3360,9 @@
                 const mainColor = isRed ? '#d32f2f' : '#222222';
                 return `
                   <button type="button" class="btn-suit-select" data-suit="${s.symbol}"
-                          style="padding: 0.65rem 0.5rem; border-radius: 8px; border: 2.5px solid ${isSelected ? mainColor : 'var(--border-color)'}; background: ${isSelected ? mainColor : 'var(--bg-card)'}; color: ${isSelected ? '#ffffff' : mainColor}; cursor: pointer; font-weight: bold; font-size: 1.05rem; display: flex; align-items: center; justify-content: center; gap: 0.4rem; transition: all 0.15s; box-shadow: ${isSelected ? 'var(--shadow-sm)' : 'none'};">
+                          style="border-color: ${isSelected ? mainColor : 'var(--border-color)'}; background: ${isSelected ? mainColor : 'var(--bg-card)'}; color: ${isSelected ? '#ffffff' : mainColor}; box-shadow: ${isSelected ? '0 4px 10px rgba(0,0,0,0.25)' : 'none'};">
                     <span style="font-size: 1.4rem;">${s.symbol}</span>
-                    <span style="font-size: 0.85rem;">${isEn ? s.nameEn : s.nameCs}</span>
+                    <span style="font-size: 0.88rem;">${isEn ? s.nameEn : s.nameCs}</span>
                   </button>
                 `;
               }).join('')}
@@ -3384,7 +3384,7 @@
                 const isSelected = v === drawSimulatorState.selectedValue;
                 return `
                   <button type="button" class="btn-val-select" data-val="${v}"
-                          style="flex: 1; min-width: 38px; height: 42px; border-radius: 6px; border: 2px solid ${isSelected ? 'var(--color-gold)' : 'var(--border-color)'}; background: ${isSelected ? 'var(--color-gold)' : 'var(--bg-card)'}; color: ${isSelected ? '#fff' : 'inherit'}; cursor: pointer; font-weight: bold; font-size: 1rem; display: flex; align-items: center; justify-content: center; transition: all 0.15s; box-shadow: ${isSelected ? 'var(--shadow-sm)' : 'none'};">
+                          style="border-color: ${isSelected ? 'var(--color-gold)' : 'var(--border-color)'}; background: ${isSelected ? 'var(--color-gold)' : 'var(--bg-card)'}; color: ${isSelected ? '#fff' : 'inherit'}; box-shadow: ${isSelected ? '0 3px 8px rgba(0,0,0,0.25)' : 'none'};">
                     ${v}
                   </button>
                 `;
@@ -3395,14 +3395,14 @@
           <!-- CONFIRM RECORD BUTTON -->
           <div style="display: flex; justify-content: center; padding-top: 0.75rem; border-top: 1px dashed var(--border-color);">
             <button type="button" id="btn-confirm-draw" class="tool-subnav-btn active" style="font-size: 1rem; padding: 0.75rem 1.75rem; border-radius: 25px; box-shadow: var(--shadow-sm); display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer;">
-              ⚖️ ${isEn ? `Record This Draw to Protocol (${drawSimulatorState.selectedSuit} ${drawSimulatorState.selectedValue})` : `Zaznamenat sejmutí do protokolu (${drawSimulatorState.selectedSuit} ${drawSimulatorState.selectedValue})`}
+              ${isEn ? `Record This Draw (${drawSimulatorState.selectedSuit} ${drawSimulatorState.selectedValue})` : `Zaznamenat sejmutí do protokolu (${drawSimulatorState.selectedSuit} ${drawSimulatorState.selectedValue})`}
             </button>
           </div>
         </div>
 
         <!-- 4. OFFICIAL VERDICT BANNER -->
         ${drawSimulatorState.evaluatedCard && drawSimulatorState.result ? `
-          <div style="background: radial-gradient(circle at center, #2e4d34 0%, #172b1d 100%); border-radius: 12px; padding: 1.75rem 1.25rem; text-align: center; margin-bottom: 1.5rem; box-shadow: inset 0 2px 10px rgba(0,0,0,0.5); display: flex; flex-direction: column; align-items: center; justify-content: center;">
+          <div style="background: radial-gradient(ellipse at center, #2e170a 0%, #170b04 100%); border: 2px solid #5a3014; border-radius: 12px; padding: 1.75rem 1.25rem; text-align: center; margin-bottom: 1.5rem; box-shadow: inset 0 2px 10px rgba(0,0,0,0.6); display: flex; flex-direction: column; align-items: center; justify-content: center;">
             
             <div style="display: flex; gap: 1.5rem; justify-content: center; align-items: center; flex-wrap: wrap; margin-bottom: 1.25rem;">
               <!-- CARD GRAPHIC -->
@@ -3428,7 +3428,7 @@
               drawSimulatorState.result.status === 'success' ? 'rgba(46, 204, 113, 0.92)' : drawSimulatorState.result.status === 'failure' ? 'rgba(231, 76, 60, 0.92)' : 'rgba(243, 156, 18, 0.92)'
             }; color: #ffffff; text-shadow: 0 1px 3px rgba(0,0,0,0.5);">
               <div style="font-size: 1.2rem; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-bottom: 0.4rem;">
-                ${drawSimulatorState.result.status === 'success' ? '✅' : drawSimulatorState.result.status === 'failure' ? '❌' : 'ℹ️'}
+                ${drawSimulatorState.result.status === 'success' ? '✓' : drawSimulatorState.result.status === 'failure' ? '✕' : 'ℹ'}
                 ${isEn ? drawSimulatorState.result.titleEn : drawSimulatorState.result.titleCs}
               </div>
               <div style="font-size: 0.96rem; line-height: 1.5; font-weight: 500;">
@@ -3447,7 +3447,7 @@
                 <span style="font-size: 0.78rem; font-weight: normal; opacity: 0.8;">(${drawSimulatorState.history.length})</span>
               </span>
               <button type="button" id="btn-clear-draw-hist" style="background: none; border: none; font-size: 0.8rem; color: #c0392b; cursor: pointer; text-decoration: underline; font-weight: bold;">
-                🗑️ ${isEn ? 'Clear log' : 'Vymazat záznam'}
+                ${isEn ? 'Clear log' : 'Vymazat záznam'}
               </button>
             </div>
 
@@ -4605,14 +4605,14 @@
           </div>
           <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
             <button type="button" id="btn-toggle-match-form" class="btn-primary" style="padding: 0.6rem 1.1rem; font-size: 0.95rem; border-radius: 8px; font-weight: bold; display: flex; align-items: center; gap: 0.4rem; cursor: pointer;">
-              ${matchTrackerState.showForm ? (isEn ? '✖ Close Form' : '✖ Zavřít formulář') : (isEn ? '➕ Record New Match' : '➕ Zapsat novou partii')}
+              ${matchTrackerState.showForm ? (isEn ? 'Close Form' : 'Zavřít formulář') : (isEn ? 'Record New Match' : 'Zapsat novou partii')}
             </button>
             ${matches.length > 0 ? `
               <button type="button" id="btn-export-matches" style="background: var(--bg-surface); border: 1px solid var(--border-color); padding: 0.6rem 0.9rem; font-size: 0.88rem; border-radius: 8px; cursor: pointer;">
-                📥 ${isEn ? 'Export JSON' : 'Export JSON'}
+                ${isEn ? 'Export JSON' : 'Export JSON'}
               </button>
               <button type="button" id="btn-clear-matches" style="background: var(--bg-surface); border: 1px solid #e74c3c; color: #e74c3c; padding: 0.6rem 0.9rem; font-size: 0.88rem; border-radius: 8px; cursor: pointer;">
-                🗑️ ${isEn ? 'Clear All' : 'Smazat vše'}
+                ${isEn ? 'Clear All' : 'Smazat vše'}
               </button>
             ` : ''}
           </div>
@@ -4622,33 +4622,29 @@
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
           <!-- LAW / SHERIFF -->
           <div style="background: var(--bg-surface); border: 2px solid #f1c40f; border-radius: 10px; padding: 1.2rem; text-align: center; box-shadow: var(--shadow-sm);">
-            <div style="font-size: 2rem; margin-bottom: 0.3rem;">⭐️</div>
-            <div style="font-weight: bold; color: var(--color-brown); font-size: 0.95rem;">${isEn ? 'Law (Sheriff)' : 'Zákon (Šerif)'}</div>
-            <div style="font-size: 1.8rem; font-weight: bold; color: #d4ac0d; margin: 0.3rem 0;">${stats.sheriffPct}%</div>
+            <div style="font-weight: 800; color: #d4ac0d; font-family: var(--font-western); font-size: 1.15rem; letter-spacing: 0.5px;">★ ${isEn ? 'Law (Sheriff)' : 'Zákon (Šerif)'} ★</div>
+            <div style="font-size: 2rem; font-weight: bold; color: #d4ac0d; margin: 0.35rem 0;">${stats.sheriffPct}%</div>
             <div style="font-size: 0.82rem; color: var(--text-muted);">${stats.sheriffWins} ${isEn ? 'wins' : 'výher'} / ${stats.total}</div>
           </div>
 
           <!-- OUTLAWS -->
           <div style="background: var(--bg-surface); border: 2px solid #e74c3c; border-radius: 10px; padding: 1.2rem; text-align: center; box-shadow: var(--shadow-sm);">
-            <div style="font-size: 2rem; margin-bottom: 0.3rem;">💀</div>
-            <div style="font-weight: bold; color: var(--color-brown); font-size: 0.95rem;">${isEn ? 'Outlaws' : 'Bandité'}</div>
-            <div style="font-size: 1.8rem; font-weight: bold; color: #c0392b; margin: 0.3rem 0;">${stats.outlawPct}%</div>
+            <div style="font-weight: 800; color: #c0392b; font-family: var(--font-western); font-size: 1.15rem; letter-spacing: 0.5px;">⚔️ ${isEn ? 'Outlaws' : 'Bandité'}</div>
+            <div style="font-size: 2rem; font-weight: bold; color: #c0392b; margin: 0.35rem 0;">${stats.outlawPct}%</div>
             <div style="font-size: 0.82rem; color: var(--text-muted);">${stats.outlawWins} ${isEn ? 'wins' : 'výher'} / ${stats.total}</div>
           </div>
 
           <!-- RENEGADE -->
           <div style="background: var(--bg-surface); border: 2px solid #9b59b6; border-radius: 10px; padding: 1.2rem; text-align: center; box-shadow: var(--shadow-sm);">
-            <div style="font-size: 2rem; margin-bottom: 0.3rem;">🤠</div>
-            <div style="font-weight: bold; color: var(--color-brown); font-size: 0.95rem;">${isEn ? 'Renegade' : 'Odpadlík'}</div>
-            <div style="font-size: 1.8rem; font-weight: bold; color: #8e44ad; margin: 0.3rem 0;">${stats.renegadePct}%</div>
+            <div style="font-weight: 800; color: #8e44ad; font-family: var(--font-western); font-size: 1.15rem; letter-spacing: 0.5px;">🎯 ${isEn ? 'Renegade' : 'Odpadlík'}</div>
+            <div style="font-size: 2rem; font-weight: bold; color: #8e44ad; margin: 0.35rem 0;">${stats.renegadePct}%</div>
             <div style="font-size: 0.82rem; color: var(--text-muted);">${stats.renegadeWins} ${isEn ? 'wins' : 'výher'} / ${stats.total}</div>
           </div>
 
           <!-- IRONHORSE (TRAIN EXPANSION) -->
           <div style="background: var(--bg-surface); border: 2px solid #e67e22; border-radius: 10px; padding: 1.2rem; text-align: center; box-shadow: var(--shadow-sm);">
-            <div style="font-size: 2rem; margin-bottom: 0.3rem;">🚂</div>
-            <div style="font-weight: bold; color: var(--color-brown); font-size: 0.95rem;">${isEn ? 'Ironhorse' : 'Železný oř'}</div>
-            <div style="font-size: 1.8rem; font-weight: bold; color: #d35400; margin: 0.3rem 0;">${stats.ironhorsePct}%</div>
+            <div style="font-weight: 800; color: #d35400; font-family: var(--font-western); font-size: 1.15rem; letter-spacing: 0.5px;">⚙️ ${isEn ? 'Ironhorse' : 'Železný oř'}</div>
+            <div style="font-size: 2rem; font-weight: bold; color: #d35400; margin: 0.35rem 0;">${stats.ironhorsePct}%</div>
             <div style="font-size: 0.82rem; color: var(--text-muted);">${stats.ironhorseWins} ${isEn ? 'wins' : 'výher'} / ${stats.total}</div>
           </div>
         </div>
@@ -4656,13 +4652,13 @@
         <!-- TOP MVP HEROES STRIP -->
         ${stats.topMvp && stats.topMvp.length > 0 ? `
           <div style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem;">
-            <div style="font-size: 0.92rem; font-weight: bold; color: var(--color-brown); display: flex; align-items: center; gap: 0.4rem;">
-              🎖️ ${isEn ? 'Most Frequent MVP Gunfighters:' : 'Nejčastější hvězdy zápasu (MVP):'}
+            <div style="font-size: 0.92rem; font-weight: bold; color: var(--color-brown); display: flex; align-items: center; gap: 0.4rem; font-family: var(--font-western); letter-spacing: 0.3px;">
+              ${isEn ? 'Most Frequent MVP Gunfighters:' : 'Nejčastější hvězdy zápasu (MVP):'}
             </div>
             <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
               ${stats.topMvp.map(m => `
-                <span style="background: rgba(212, 172, 13, 0.15); border: 1px solid #d4ac0d; border-radius: 16px; padding: 0.25rem 0.75rem; font-size: 0.85rem; font-weight: 500;">
-                  🤠 ${m.name} <strong>(${m.count}×)</strong>
+                <span style="background: rgba(212, 172, 13, 0.15); border: 1px solid #d4ac0d; border-radius: 16px; padding: 0.25rem 0.75rem; font-size: 0.85rem; font-weight: 700; color: var(--color-brown);">
+                  ${m.name} <strong>(${m.count}×)</strong>
                 </span>
               `).join('')}
             </div>
@@ -4672,8 +4668,8 @@
         <!-- FORM MODAL / COLLAPSIBLE -->
         ${matchTrackerState.showForm ? `
           <div style="background: var(--bg-surface); border: 2px solid var(--color-gold); border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; box-shadow: var(--shadow-md);">
-            <h3 style="font-family: 'Georgia', serif; color: var(--color-brown); margin-bottom: 1.25rem; font-size: 1.2rem; display: flex; align-items: center; gap: 0.5rem;">
-              📝 ${isEn ? 'Record Game Result' : 'Záznam odehrané hry'}
+            <h3 style="font-family: var(--font-western); color: var(--color-brown); margin-bottom: 1.25rem; font-size: 1.25rem;">
+              ${isEn ? 'Record Game Result' : 'Záznam odehrané hry'}
             </h3>
 
             <!-- WINNER SELECTOR -->
@@ -4683,10 +4679,10 @@
               </label>
               <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.6rem;">
                 ${[
-                  { id: 'sheriff', labelCs: '⭐️ Šerif & Zákon', labelEn: '⭐️ Law & Sheriff', color: '#f1c40f' },
-                  { id: 'outlaws', labelCs: '💀 Bandité', labelEn: '💀 Outlaws', color: '#e74c3c' },
-                  { id: 'renegade', labelCs: '🤠 Odpadlík', labelEn: '🤠 Renegade', color: '#9b59b6' },
-                  { id: 'ironhorse', labelCs: '🚂 Železný oř', labelEn: '🚂 Ironhorse', color: '#e67e22' }
+                  { id: 'sheriff', labelCs: '★ Šerif & Zákon', labelEn: '★ Law & Sheriff', color: '#f1c40f' },
+                  { id: 'outlaws', labelCs: '⚔️ Bandité', labelEn: '⚔️ Outlaws', color: '#e74c3c' },
+                  { id: 'renegade', labelCs: '🎯 Odpadlík', labelEn: '🎯 Renegade', color: '#9b59b6' },
+                  { id: 'ironhorse', labelCs: '⚙️ Železný oř', labelEn: '⚙️ Ironhorse', color: '#e67e22' }
                 ].map(r => `
                   <button type="button" class="btn-winner-opt ${matchTrackerState.form.winner === r.id ? 'active' : ''}"
                           data-winner="${r.id}"
@@ -4701,7 +4697,7 @@
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.25rem;">
               <div>
                 <label style="display: block; font-weight: bold; font-size: 0.9rem; margin-bottom: 0.4rem;">
-                  👥 ${isEn ? 'Number of Players:' : 'Počet hráčů:'}
+                  ${isEn ? 'Number of Players:' : 'Počet hráčů:'}
                 </label>
                 <select id="inp-match-players" style="width: 100%; padding: 0.6rem 0.8rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-card); font-size: 0.95rem;">
                   ${[3, 4, 5, 6, 7, 8].map(n => `
@@ -4714,7 +4710,7 @@
 
               <div>
                 <label style="display: block; font-weight: bold; font-size: 0.9rem; margin-bottom: 0.4rem;">
-                  ⏱️ ${isEn ? 'Duration (minutes):' : 'Doba hry (minuty):'}
+                  ${isEn ? 'Duration (minutes):' : 'Doba hry (minuty):'}
                 </label>
                 <input type="number" id="inp-match-duration" value="${matchTrackerState.form.durationMin}" min="5" max="300" step="5" style="width: 100%; padding: 0.6rem 0.8rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-card); font-size: 0.95rem;">
               </div>
@@ -4724,7 +4720,7 @@
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.25rem;">
               <div>
                 <label style="display: block; font-weight: bold; font-size: 0.9rem; margin-bottom: 0.4rem;">
-                  ⭐️ ${isEn ? 'Sheriff Character:' : 'Postava Šerifa:'}
+                  ${isEn ? 'Sheriff Character:' : 'Postava Šerifa:'}
                 </label>
                 <select id="inp-match-sheriff" style="width: 100%; padding: 0.6rem 0.8rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-card); font-size: 0.95rem;">
                   <option value="">${isEn ? '-- Select Sheriff --' : '-- Vyber Šerifa --'}</option>
@@ -4736,7 +4732,7 @@
 
               <div>
                 <label style="display: block; font-weight: bold; font-size: 0.9rem; margin-bottom: 0.4rem;">
-                  🎖️ ${isEn ? 'MVP / Match Hero:' : 'MVP / Hvězda zápasu:'}
+                  ${isEn ? 'MVP / Match Hero:' : 'MVP / Hvězda zápasu:'}
                 </label>
                 <select id="inp-match-mvp" style="width: 100%; padding: 0.6rem 0.8rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-card); font-size: 0.95rem;">
                   <option value="">${isEn ? '-- Select MVP --' : '-- Vyber MVP --'}</option>
@@ -4750,7 +4746,7 @@
             <!-- NOTES -->
             <div style="margin-bottom: 1.5rem;">
               <label style="display: block; font-weight: bold; font-size: 0.9rem; margin-bottom: 0.4rem;">
-                💬 ${isEn ? 'Notes / Epic Moments:' : 'Poznámka / Památné okamžiky:'}
+                ${isEn ? 'Notes / Epic Moments:' : 'Poznámka / Památné okamžiky:'}
               </label>
               <input type="text" id="inp-match-notes" placeholder="${isEn ? 'e.g. Dynamite killed 2 players in round 3!' : 'např. Šerif přežil s 1 HP, Dynamit explodoval v duelu!'}" value="${matchTrackerState.form.notes}" style="width: 100%; padding: 0.6rem 0.8rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-card); font-size: 0.95rem;">
             </div>
@@ -4760,7 +4756,7 @@
                 ${isEn ? 'Cancel' : 'Zrušit'}
               </button>
               <button type="button" id="btn-save-match" class="btn-primary" style="padding: 0.65rem 1.5rem; border-radius: 6px; font-weight: bold; cursor: pointer;">
-                💾 ${isEn ? 'Save Match' : 'Uložit partii'}
+                ${isEn ? 'Save Match' : 'Uložit partii'}
               </button>
             </div>
           </div>
@@ -4768,13 +4764,12 @@
 
         <!-- MATCH HISTORY LIST -->
         <div>
-          <h3 style="font-family: 'Georgia', serif; font-size: 1.15rem; color: var(--color-brown); margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">
-            📜 ${isEn ? 'Recorded Matches' : 'Odehrané partie'} (${matches.length})
+          <h3 style="font-family: var(--font-western); font-size: 1.25rem; color: var(--color-brown); margin-bottom: 1rem; border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem;">
+            ${isEn ? 'Recorded Matches' : 'Odehrané partie'} (${matches.length})
           </h3>
 
           ${matches.length === 0 ? `
             <div style="text-align: center; padding: 3rem 1rem; background: var(--bg-surface); border-radius: 10px; border: 1px dashed var(--border-color); color: var(--text-muted);">
-              <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">📭</div>
               <div style="font-size: 1.05rem; font-weight: bold; margin-bottom: 0.3rem;">
                 ${isEn ? 'No matches recorded yet!' : 'Zatím žádné odehrané partie v zápisníku!'}
               </div>
@@ -4786,26 +4781,26 @@
             <div style="display: flex; flex-direction: column; gap: 0.85rem;">
               ${matches.map(m => {
                 const winnerBadge = {
-                  sheriff: { icon: '⭐️', labelCs: 'Zákon / Šerif', labelEn: 'Law / Sheriff', color: '#f1c40f', bg: 'rgba(241, 196, 15, 0.15)' },
-                  outlaws: { icon: '💀', labelCs: 'Bandité', labelEn: 'Outlaws', color: '#e74c3c', bg: 'rgba(231, 76, 60, 0.15)' },
-                  renegade: { icon: '🤠', labelCs: 'Odpadlík', labelEn: 'Renegade', color: '#9b59b6', bg: 'rgba(155, 89, 182, 0.15)' },
-                  ironhorse: { icon: '🚂', labelCs: 'Železný oř', labelEn: 'Ironhorse', color: '#e67e22', bg: 'rgba(230, 126, 34, 0.15)' }
-                }[m.winner] || { icon: '🏆', labelCs: 'Neznámý', labelEn: 'Unknown', color: '#999', bg: 'rgba(0,0,0,0.05)' };
+                  sheriff: { stampClass: 'stamp-sheriff', labelCs: '★ Zákon / Šerif', labelEn: '★ Law / Sheriff' },
+                  outlaws: { stampClass: 'stamp-outlaws', labelCs: '⚔️ Bandité', labelEn: '⚔️ Outlaws' },
+                  renegade: { stampClass: 'stamp-renegade', labelCs: '🎯 Odpadlík', labelEn: '🎯 Renegade' },
+                  ironhorse: { stampClass: 'stamp-ironhorse', labelCs: '⚙️ Železný oř', labelEn: '⚙️ Ironhorse' }
+                }[m.winner] || { stampClass: 'stamp-sheriff', labelCs: 'Neznámý', labelEn: 'Unknown' };
 
                 return `
-                  <div style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 10px; padding: 1rem 1.25rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                  <div class="match-history-card">
                     <div>
-                      <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.35rem;">
-                        <span style="background: ${winnerBadge.bg}; color: ${winnerBadge.color}; border: 1px solid ${winnerBadge.color}; border-radius: 16px; padding: 0.2rem 0.65rem; font-weight: bold; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.3rem;">
-                          ${winnerBadge.icon} ${isEn ? winnerBadge.labelEn : winnerBadge.labelCs}
+                      <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem; flex-wrap: wrap;">
+                        <span class="faction-stamp ${winnerBadge.stampClass}">
+                          ${isEn ? winnerBadge.labelEn : winnerBadge.labelCs}
                         </span>
-                        <span style="font-size: 0.82rem; color: var(--text-muted);">
-                          📅 ${m.dateFormatted || ''} • 👥 ${m.playersCount || '?'} ${isEn ? 'players' : 'hráčů'} • ⏱️ ${m.durationMin || '?'} min
+                        <span style="font-size: 0.82rem; color: var(--text-muted); font-weight: 600;">
+                          ${m.dateFormatted || ''} • ${m.playersCount || '?'} ${isEn ? 'players' : 'hráčů'} • ${m.durationMin || '?'} min
                         </span>
                       </div>
                       <div style="font-size: 0.88rem; display: flex; gap: 1.2rem; flex-wrap: wrap;">
-                        ${m.sheriffChar ? `<span>⭐️ <strong>${isEn ? 'Sheriff' : 'Šerif'}:</strong> ${m.sheriffChar}</span>` : ''}
-                        ${m.mvpChar ? `<span>🎖️ <strong>MVP:</strong> ${m.mvpChar}</span>` : ''}
+                        ${m.sheriffChar ? `<span><strong>${isEn ? 'Sheriff' : 'Šerif'}:</strong> ${m.sheriffChar}</span>` : ''}
+                        ${m.mvpChar ? `<span><strong>MVP:</strong> ${m.mvpChar}</span>` : ''}
                       </div>
                       ${m.notes ? `
                         <div style="font-size: 0.84rem; font-style: italic; color: var(--text-muted); margin-top: 0.35rem;">
@@ -4814,8 +4809,8 @@
                       ` : ''}
                     </div>
 
-                    <button type="button" class="btn-del-match" data-id="${m.id}" title="${isEn ? 'Delete match' : 'Smazat záznam'}" style="background: none; border: none; font-size: 1.1rem; opacity: 0.6; cursor: pointer; padding: 0.4rem; transition: opacity 0.2s;">
-                      🗑️
+                    <button type="button" class="btn-del-match" data-id="${m.id}" title="${isEn ? 'Delete match' : 'Smazat záznam'}" style="background: none; border: 1.5px solid var(--border-color); border-radius: 6px; font-size: 0.85rem; color: var(--text-muted); cursor: pointer; padding: 0.35rem 0.65rem; transition: all 0.2s; font-weight: 700;">
+                      ✕ ${isEn ? 'Delete' : 'Smazat'}
                     </button>
                   </div>
                 `;
@@ -5336,8 +5331,8 @@
                     ${isEn ? (w.effectEn || w.effect) : w.effect}
                   </div>
                 </div>
-                <button type="button" class="btn-detach-wagon" data-idx="${idx}" style="width: 100%; padding: 0.45rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-card); cursor: pointer; font-size: 0.82rem; font-weight: bold;">
-                  ✂️ ${isEn ? 'Detach / Claim' : 'Odpojit / Koupit'}
+                <button type="button" class="btn-detach-wagon" data-idx="${idx}">
+                  ${isEn ? 'Detach / Claim Railcar' : 'Odpojit / Koupit vagon'}
                 </button>
               </div>
             `).join('') : `
