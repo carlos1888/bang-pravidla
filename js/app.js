@@ -362,6 +362,16 @@
     if (els.labelSuit) els.labelSuit.textContent = t.filterSuit;
     if (els.labelSort) els.labelSort.textContent = t.filterSort;
 
+    // Hero Stats Strip
+    const heroCards = document.getElementById('hero-stat-cards');
+    if (heroCards) heroCards.textContent = isEn ? 'Cards' : 'Karet';
+    const heroExp = document.getElementById('hero-stat-exp');
+    if (heroExp) heroExp.textContent = isEn ? 'Expansions' : 'Rozšíření';
+    const heroTools = document.getElementById('hero-stat-tools');
+    if (heroTools) heroTools.textContent = isEn ? 'Game Tools' : 'Herních nástrojů';
+    const heroOffline = document.getElementById('hero-stat-offline');
+    if (heroOffline) heroOffline.textContent = isEn ? '100% Offline Tabletop' : '100% Offline u stolu';
+
     // Quick Tag Buttons Translation
     const quickTagDict = {
       all: isEn ? 'All' : 'Vše',
