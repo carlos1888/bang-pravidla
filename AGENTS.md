@@ -85,6 +85,9 @@ Aplikace je rozdělena do 6 hlavních sekcí přístupných přes horní navigac
 
 Přepínání nástrojů probíhá přes subnavigaci `#tools-subnav` s atributem `data-tool="<id>"`:
 
+> ⚠️ **STRIKTNÍ PRAVIDLO: ZÁKAZ IKONEK V `#tools-subnav`:**
+> Uživatel si výslovně nepřeje žádné ikonky u tlačítek kategorií herních nástrojů v `#tools-subnav`. Tlačítka musí obsahovat **VÝHRADNĚ čistý textový popisek** (název nástroje). **NIKDY sem nevkládejte žádné `<img>`, SVG ani emoji ikonky!**
+
 | ID nástroje | Název (CZ / EN) | Účel a herní mechanika | Klíčový kód v `app.js` |
 |---|---|---|---|
 | `setup` | **Asistent přípravy hry** (Setup Assistant) | Zvolí se počet hráčů (3–8) a aktivní rozšíření. Vypočítá přesné role u stolu, specifická pravidla rozdávání karet a vygeneruje interaktivní odškrtávací checklist před zahájením duelu. | `renderSetupAssistant()` |
