@@ -3231,13 +3231,13 @@
     const values = (sim && sim.values) ? sim.values : ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
 
     const presets = [
-      { id: 'dynamite', symbol: 'assets/symbols/symbol_dynamite.png', nameCs: 'Dynamit', nameEn: 'Dynamite', targetCs: 'Piky ♠ 2–9 = BUM!', targetEn: 'Spades ♠ 2–9 = BOOM!' },
-      { id: 'jail', symbol: 'assets/symbols/symbol_jail.png', nameCs: 'Vězení', nameEn: 'Jail', targetCs: 'Srdce ♥ = útěk', targetEn: 'Hearts ♥ = escape' },
-      { id: 'barrel', symbol: 'assets/symbols/symbol_barrel.png', nameCs: 'Barel', nameEn: 'Barrel', targetCs: 'Srdce ♥ = Vedle!', targetEn: 'Hearts ♥ = Missed!' },
+      { id: 'dynamite', nameCs: 'Dynamit', nameEn: 'Dynamite', targetCs: 'Piky ♠ 2–9 = BUM!', targetEn: 'Spades ♠ 2–9 = BOOM!' },
+      { id: 'jail', nameCs: 'Vězení', nameEn: 'Jail', targetCs: 'Srdce ♥ = útěk', targetEn: 'Hearts ♥ = escape' },
+      { id: 'barrel', nameCs: 'Barel', nameEn: 'Barrel', targetCs: 'Srdce ♥ = Vedle!', targetEn: 'Hearts ♥ = Missed!' },
       { id: 'rattlesnake', nameCs: 'Chřestýš', nameEn: 'Rattlesnake', targetCs: 'Piky ♠ = -1 život', targetEn: 'Spades ♠ = -1 life' },
       { id: 'bomb', nameCs: 'Bomba', nameEn: 'Bomb', targetCs: 'Černá = -2 žetony', targetEn: 'Black = -2 charges' },
       { id: 'teren', nameCs: 'Teren Kill', nameEn: 'Teren Kill', targetCs: 'Nepiková = přežití', targetEn: 'Non-spades = survive' },
-      { id: 'general', symbol: 'assets/symbols/symbol_draw_check.png', nameCs: 'Volné ověření', nameEn: 'Deck Check', targetCs: 'Jakákoliv karta', targetEn: 'Any card' }
+      { id: 'general', nameCs: 'Volné ověření', nameEn: 'Deck Check', targetCs: 'Jakákoliv karta', targetEn: 'Any card' }
     ];
 
     const currentPreset = presets.find(p => p.id === drawSimulatorState.preset) || presets[0];
@@ -3276,7 +3276,7 @@
               <button type="button" class="btn-preset-chip ${p.id === drawSimulatorState.preset ? 'active' : ''}" 
                       data-preset="${p.id}"
                       style="padding: 0.55rem 0.9rem; border-radius: 20px; border: 1.5px solid ${p.id === drawSimulatorState.preset ? 'var(--color-gold)' : 'var(--border-color)'}; background: ${p.id === drawSimulatorState.preset ? 'var(--color-gold)' : 'var(--bg-surface)'}; color: ${p.id === drawSimulatorState.preset ? '#fff' : 'inherit'}; cursor: pointer; font-weight: 500; font-size: 0.88rem; transition: all 0.2s ease;">
-                ${p.symbol ? `<img src="${p.symbol}" class="preset-symbol-thumb" alt="">` : ''}${isEn ? p.nameEn : p.nameCs}
+                ${isEn ? p.nameEn : p.nameCs}
                 <span style="opacity: 0.82; font-size: 0.78rem; display: block;">${isEn ? p.targetEn : p.targetCs}</span>
               </button>
             `).join('')}
