@@ -6076,6 +6076,9 @@
           els.catalogQuickTags.querySelectorAll('.quick-tag').forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
           state.selectedQuickTag = btn.dataset.tag;
+          try {
+            btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+          } catch (err) {}
           renderCards();
         });
       });
