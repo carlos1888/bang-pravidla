@@ -1,5 +1,5 @@
 // BANG! Companion Service Worker (PWA Offline Support & Asset Caching)
-const APP_CACHE_NAME = 'bang-app-v41';
+const APP_CACHE_NAME = 'bang-app-v42';
 const IMAGE_CACHE_NAME = 'bang-images-v1';
 
 // Core Application Shell Assets

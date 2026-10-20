@@ -362,16 +362,6 @@
     if (els.labelSuit) els.labelSuit.textContent = t.filterSuit;
     if (els.labelSort) els.labelSort.textContent = t.filterSort;
 
-    // Hero Stats Strip
-    const heroCards = document.getElementById('hero-stat-cards');
-    if (heroCards) heroCards.textContent = isEn ? 'Cards' : 'Karet';
-    const heroExp = document.getElementById('hero-stat-exp');
-    if (heroExp) heroExp.textContent = isEn ? 'Expansions' : 'Rozšíření';
-    const heroTools = document.getElementById('hero-stat-tools');
-    if (heroTools) heroTools.textContent = isEn ? 'Game Tools' : 'Herních nástrojů';
-    const heroOffline = document.getElementById('hero-stat-offline');
-    if (heroOffline) heroOffline.textContent = isEn ? '100% Offline Tabletop' : '100% Offline u stolu';
-
     // Quick Tag Buttons Translation
     const quickTagDict = {
       all: isEn ? 'All' : 'Vše',
@@ -444,14 +434,11 @@
       els.scrollTopText.textContent = t.scrollTopText || (isEn ? 'Top' : 'Nahoru');
     }
 
-    // Render all components
-    renderCards();
-    renderRulesCategories();
-    renderRules();
-    renderFaqCategories();
-    renderFaq();
-    renderTurnGuide();
-    renderQuickHelper();
+    // Track rendered tabs for true lazy-rendering (drastically accelerates Safari startup)
+    Object.keys(renderedTabs).forEach(k => { renderedTabs[k] = false; });
+
+    // Render ONLY the current active tab
+    renderTabContent(state.activeTab || 'katalog');
 
     if (state.selectedCard) {
       openCardModal(state.selectedCard.id);
@@ -459,8 +446,41 @@
   }
 
   // =========================================================================
-  // TAB NAVIGATION & HASH ROUTING
+  // TAB NAVIGATION & HASH ROUTING (Lazy Component Rendering)
   // =========================================================================
+  const renderedTabs = {
+    katalog: false,
+    pravidla: false,
+    faq: false,
+    'tah-hrace': false,
+    pomocnik: false,
+    nastroje: false
+  };
+
+  function renderTabContent(tabId) {
+    if (tabId === 'katalog') {
+      renderCards(true);
+      renderedTabs.katalog = true;
+    } else if (tabId === 'pravidla') {
+      renderRulesCategories();
+      renderRules();
+      renderedTabs.pravidla = true;
+    } else if (tabId === 'faq') {
+      renderFaqCategories();
+      renderFaq();
+      renderedTabs.faq = true;
+    } else if (tabId === 'tah-hrace') {
+      renderTurnGuide();
+      renderedTabs['tah-hrace'] = true;
+    } else if (tabId === 'pomocnik') {
+      renderQuickHelper();
+      renderedTabs.pomocnik = true;
+    } else if (tabId === 'nastroje') {
+      renderTools();
+      renderedTabs.nastroje = true;
+    }
+  }
+
   function setTab(tabId) {
     state.activeTab = tabId;
     window.location.hash = tabId;
@@ -469,7 +489,9 @@
       const isActive = tab.dataset.tab === tabId;
       tab.classList.toggle('active', isActive);
       if (isActive) {
-        tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        try {
+          tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        } catch (_) {}
       }
     });
 
@@ -477,11 +499,11 @@
       pane.classList.toggle('active', pane.id === `tab-${tabId}`);
     });
 
-    if (tabId === 'nastroje') {
-      renderTools();
+    if (!renderedTabs[tabId]) {
+      renderTabContent(tabId);
     }
 
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'instant' });
   }
 
   function initRouting() {
@@ -610,9 +632,81 @@
   }
 
   // =========================================================================
-  // RENDER CARDS GRID (Pure Text, Color Borders, No English under Czech)
+  // RENDER CARDS GRID (High-Performance Chunked Infinite Scroll)
   // =========================================================================
-  function renderCards() {
+  const CARD_BATCH_SIZE = 28;
+  let renderedCardsCount = CARD_BATCH_SIZE;
+  let cardsSentinelObserver = null;
+
+  function renderCardHtml(card, isEn, t) {
+    let borderClass = 'card-brown';
+    if (card.type === 'blue') borderClass = 'card-blue';
+    else if (card.type === 'green') borderClass = 'card-green';
+    else if (card.type === 'orange') borderClass = 'card-orange';
+    else if (card.type === 'black') borderClass = 'card-black';
+    else if (card.type === 'brown-equipment') borderClass = 'card-gold';
+    else if (card.type === 'character') borderClass = 'card-character';
+    else if (card.type === 'legend-character') borderClass = 'card-legend';
+    else if (card.type === 'railcar') borderClass = 'card-train';
+    else if (card.type === 'station') borderClass = 'card-station';
+    else if (card.type === 'feat') borderClass = 'card-feat';
+    else if (card.type === 'event') borderClass = 'card-event';
+
+    let suitHtml = '';
+    if (card.suit) {
+      let cleanSuit = card.suit === 'mixed' ? '♠ ♥ ♦ ♣' : card.suit;
+      let formatted = cleanSuit
+        .replace(/[♥♦]/g, '<span class="suit-red">$&</span>')
+        .replace(/[♠♣]/g, '<span class="suit-black">$&</span>');
+      let valText = (card.values && !card.values.includes('Kříže')) ? ` ${card.values}` : '';
+      suitHtml = `<span class="card-suit-value">${formatted}${valText}</span>`;
+    }
+
+    const cardTitle = isEn ? (card.nameEn || card.name) : card.name;
+    const cardBadge = isEn ? (card.expansionNameEn || EXPANSIONS_EN[card.expansion] || card.expansionName) : card.expansionName;
+    const cardTypeLabel = isEn ? (card.typeLabelEn || TYPES_EN[card.type] || card.typeLabel) : card.typeLabel;
+    const cardEffect = isEn ? (card.effectEn || card.effect) : card.effect;
+    const cardTiming = isEn ? (card.timingEn || card.timing) : card.timing;
+    const cardCost = isEn ? (card.costEn || card.cost) : card.cost;
+
+    const metas = [];
+    if (card.copies) metas.push(`<span class="card-meta-item meta-copies">${card.copies}× ${t.copiesInDeck}</span>`);
+    if (card.range) metas.push(`<span class="card-meta-item"><img src="assets/symbols/symbol_reachable_distance.png" class="tag-symbol-img" alt="">${t.rangeLabel}: ${card.range}</span>`);
+    if (cardCost) metas.push(`<span class="card-meta-item meta-cost">${cardCost}</span>`);
+    if (card.lives) metas.push(`<span class="card-meta-item card-meta-lives"><img src="assets/symbols/symbol_life_points.png" class="tag-symbol-img" alt="">${card.lives} ${t.livesLabel}</span>`);
+    if (cardTiming) metas.push(`<span class="card-meta-item meta-timing">${cardTiming}</span>`);
+
+    const imageThumbHtml = card.image
+      ? `<div class="card-thumb-wrap"><img src="${card.image}" alt="${cardTitle}" class="card-thumb-img" loading="lazy" decoding="async" onerror="this.parentElement.style.display='none'"></div>`
+      : '';
+
+    return `
+      <article class="bang-card ${borderClass}" data-id="${card.id}" tabindex="0" role="button" aria-label="Detail ${cardTitle}">
+        <div class="card-top-bar">
+          <span class="card-badge">${cardBadge}</span>
+          ${suitHtml}
+        </div>
+        ${imageThumbHtml}
+        <div class="card-body">
+          <div class="card-title-group">
+            <h3 class="card-title">${cardTitle}</h3>
+          </div>
+          <div class="card-effect-box">
+            ${cardEffect}
+          </div>
+          <div class="card-meta-list">
+            <span class="card-meta-item" style="font-weight: 700;">${cardTypeLabel}</span>
+            ${metas.join('')}
+          </div>
+        </div>
+      </article>
+    `;
+  }
+
+  function renderCards(resetPagination = true) {
+    if (resetPagination) {
+      renderedCardsCount = CARD_BATCH_SIZE;
+    }
     updateActiveFiltersBadge();
     if (!els.cardsGrid) return;
     const cards = getFilteredCards();
@@ -624,6 +718,10 @@
     }
 
     if (cards.length === 0) {
+      if (cardsSentinelObserver) {
+        cardsSentinelObserver.disconnect();
+        cardsSentinelObserver = null;
+      }
       els.cardsGrid.innerHTML = `
         <div style="grid-column: 1 / -1; text-align: center; padding: 3rem 1rem; color: var(--text-muted);">
           <div style="font-size: 3rem; margin-bottom: 0.5rem;">🌵</div>
@@ -634,80 +732,46 @@
       return;
     }
 
-    els.cardsGrid.innerHTML = cards.map(card => {
-      let borderClass = 'card-brown';
-      if (card.type === 'blue') borderClass = 'card-blue';
-      else if (card.type === 'green') borderClass = 'card-green';
-      else if (card.type === 'orange') borderClass = 'card-orange';
-      else if (card.type === 'black') borderClass = 'card-black';
-      else if (card.type === 'brown-equipment') borderClass = 'card-gold';
-      else if (card.type === 'character') borderClass = 'card-character';
-      else if (card.type === 'legend-character') borderClass = 'card-legend';
-      else if (card.type === 'railcar') borderClass = 'card-train';
-      else if (card.type === 'station') borderClass = 'card-station';
-      else if (card.type === 'feat') borderClass = 'card-feat';
-      else if (card.type === 'event') borderClass = 'card-event';
+    const visibleCards = cards.slice(0, renderedCardsCount);
+    const hasMore = renderedCardsCount < cards.length;
 
-      let suitHtml = '';
-      if (card.suit) {
-        let cleanSuit = card.suit === 'mixed' ? '♠ ♥ ♦ ♣' : card.suit;
-        let formatted = cleanSuit
-          .replace(/[♥♦]/g, '<span class="suit-red">$&</span>')
-          .replace(/[♠♣]/g, '<span class="suit-black">$&</span>');
-        let valText = (card.values && !card.values.includes('Kříže')) ? ` ${card.values}` : '';
-        suitHtml = `<span class="card-suit-value">${formatted}${valText}</span>`;
-      }
-
-      const cardTitle = isEn ? (card.nameEn || card.name) : card.name;
-      const cardBadge = isEn ? (card.expansionNameEn || EXPANSIONS_EN[card.expansion] || card.expansionName) : card.expansionName;
-      const cardTypeLabel = isEn ? (card.typeLabelEn || TYPES_EN[card.type] || card.typeLabel) : card.typeLabel;
-      const cardEffect = isEn ? (card.effectEn || card.effect) : card.effect;
-      const cardTiming = isEn ? (card.timingEn || card.timing) : card.timing;
-      const cardCost = isEn ? (card.costEn || card.cost) : card.cost;
-
-      const metas = [];
-      if (card.copies) metas.push(`<span class="card-meta-item meta-copies">${card.copies}× ${t.copiesInDeck}</span>`);
-      if (card.range) metas.push(`<span class="card-meta-item"><img src="assets/symbols/symbol_reachable_distance.png" class="tag-symbol-img" alt="">${t.rangeLabel}: ${card.range}</span>`);
-      if (cardCost) metas.push(`<span class="card-meta-item meta-cost">${cardCost}</span>`);
-      if (card.lives) metas.push(`<span class="card-meta-item card-meta-lives"><img src="assets/symbols/symbol_life_points.png" class="tag-symbol-img" alt="">${card.lives} ${t.livesLabel}</span>`);
-      if (cardTiming) metas.push(`<span class="card-meta-item meta-timing">${cardTiming}</span>`);
-
-      const imageThumbHtml = card.image
-        ? `<div class="card-thumb-wrap"><img src="${card.image}" alt="${cardTitle}" class="card-thumb-img" loading="lazy" decoding="async" onerror="this.parentElement.style.display='none'"></div>`
-        : '';
-
-      return `
-        <article class="bang-card ${borderClass}" data-id="${card.id}" tabindex="0" role="button" aria-label="Detail ${cardTitle}">
-          <div class="card-top-bar">
-            <span class="card-badge">${cardBadge}</span>
-            ${suitHtml}
-          </div>
-          ${imageThumbHtml}
-          <div class="card-body">
-            <div class="card-title-group">
-              <h3 class="card-title">${cardTitle}</h3>
-            </div>
-            <div class="card-effect-box">
-              ${cardEffect}
-            </div>
-            <div class="card-meta-list">
-              <span class="card-meta-item" style="font-weight: 700;">${cardTypeLabel}</span>
-              ${metas.join('')}
-            </div>
-          </div>
-        </article>
+    let sentinelHtml = '';
+    if (hasMore) {
+      sentinelHtml = `
+        <div id="cards-load-sentinel" style="grid-column: 1 / -1; display: flex; justify-content: center; align-items: center; padding: 1.5rem 0;">
+          <button id="btn-load-more" type="button" class="btn-secondary" style="font-size: 0.9rem; padding: 0.5rem 1.4rem;">
+            ${isEn ? `Show more cards (${renderedCardsCount} of ${cards.length})...` : `Zobrazit další karty (${renderedCardsCount} z ${cards.length})...`}
+          </button>
+        </div>
       `;
-    }).join('');
+    }
 
-    els.cardsGrid.querySelectorAll('.bang-card').forEach(el => {
-      el.addEventListener('click', () => openCardModal(el.dataset.id));
-      el.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          openCardModal(el.dataset.id);
-        }
-      });
-    });
+    els.cardsGrid.innerHTML = visibleCards.map(c => renderCardHtml(c, isEn, t)).join('') + sentinelHtml;
+
+    if (cardsSentinelObserver) {
+      cardsSentinelObserver.disconnect();
+      cardsSentinelObserver = null;
+    }
+
+    if (hasMore) {
+      const sentinel = document.getElementById('cards-load-sentinel');
+      const btn = document.getElementById('btn-load-more');
+      if (btn) {
+        btn.addEventListener('click', () => {
+          renderedCardsCount += CARD_BATCH_SIZE;
+          renderCards(false);
+        });
+      }
+      if (sentinel && 'IntersectionObserver' in window) {
+        cardsSentinelObserver = new IntersectionObserver((entries) => {
+          if (entries[0] && entries[0].isIntersecting) {
+            renderedCardsCount += CARD_BATCH_SIZE;
+            renderCards(false);
+          }
+        }, { rootMargin: '400px 0px' });
+        cardsSentinelObserver.observe(sentinel);
+      }
+    }
   }
 
   // =========================================================================
@@ -6044,8 +6108,16 @@
   }
 
   // =========================================================================
-  // EVENTS INITIALIZATION
+  // EVENTS INITIALIZATION (Optimized with Event Delegation & Input Debouncing)
   // =========================================================================
+  function debounce(fn, waitMs = 120) {
+    let timer = null;
+    return function(...args) {
+      clearTimeout(timer);
+      timer = setTimeout(() => fn.apply(this, args), waitMs);
+    };
+  }
+
   function initEvents() {
     els.tabs.forEach(tab => {
       tab.addEventListener('click', () => setTab(tab.dataset.tab));
@@ -6075,13 +6147,36 @@
       els.langBtnEn.addEventListener('click', () => setLanguage('en'));
     }
 
+    // High-performance event delegation on cards grid
+    if (els.cardsGrid) {
+      els.cardsGrid.addEventListener('click', (e) => {
+        const cardEl = e.target.closest('.bang-card');
+        if (cardEl && cardEl.dataset.id) {
+          openCardModal(cardEl.dataset.id);
+        }
+      });
+      els.cardsGrid.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          const cardEl = e.target.closest('.bang-card');
+          if (cardEl && cardEl.dataset.id) {
+            e.preventDefault();
+            openCardModal(cardEl.dataset.id);
+          }
+        }
+      });
+    }
+
     if (els.globalSearch) {
+      const debouncedSearch = debounce(() => {
+        renderCards(true);
+      }, 120);
+
       els.globalSearch.addEventListener('input', (e) => {
         state.searchQuery = e.target.value;
         if (state.activeTab !== 'katalog') {
           setTab('katalog');
         }
-        renderCards();
+        debouncedSearch();
       });
     }
 
@@ -6189,9 +6284,13 @@
     }
 
     if (els.faqSearch) {
+      const debouncedFaqSearch = debounce(() => {
+        renderFaq();
+      }, 120);
+
       els.faqSearch.addEventListener('input', (e) => {
         state.faqQuery = e.target.value;
-        renderFaq();
+        debouncedFaqSearch();
       });
     }
 
