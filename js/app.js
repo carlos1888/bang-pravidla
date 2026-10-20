@@ -4444,16 +4444,16 @@
         <div style="margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;">
           <label class="calc-checkbox-label" style="font-weight: 700; font-size: 1.05rem;">
             <input type="checkbox" id="chk-tracker-sheriff" ${trackerState.isSheriff ? 'checked' : ''}>
-            <span>⭐️ ${isEn ? 'I am the Sheriff (+1 max life)' : 'Jsem Šerif (+1 max život navíc)'}</span>
+            <span>${isEn ? 'I am the Sheriff (+1 max life)' : 'Jsem Šerif (+1 max život navíc)'}</span>
           </label>
           <button type="button" class="btn-reset-filters" id="btn-reset-tracker">
-            🔄 ${isEn ? 'Reset Tracker' : 'Resetovat desku'}
+            ${isEn ? 'Reset Tracker' : 'Resetovat desku'}
           </button>
         </div>
 
         <div class="tracker-board-grid">
           <div class="tracker-tile" style="border-top: 4px solid #c0392b;">
-            <div class="tracker-tile-title">❤️ ${isEn ? 'Life Points (Bullets)' : 'Životy (Náboje)'}</div>
+            <div class="tracker-tile-title"><span style="color: #ff3344; font-size: 1.15rem; line-height: 1;">❤️</span> ${isEn ? 'Life Points (Hearts)' : 'Životy (Srdce)'}</div>
             <div class="tracker-counter-val" style="color: #c0392b;">${trackerState.lives} <span style="font-size: 1.4rem; color: var(--text-muted); font-weight: normal;">/ ${effectiveMaxLives}</span></div>
             <div class="tracker-btns-row">
               <button type="button" class="btn-counter" id="btn-lives-minus">−</button>
@@ -4462,7 +4462,7 @@
           </div>
 
           <div class="tracker-tile" style="border-top: 4px solid #f39c12;">
-            <div class="tracker-tile-title">🪙 ${isEn ? 'Gold Nuggets (Gold Rush)' : 'Zlaté valouny (Zlatá horečka)'}</div>
+            <div class="tracker-tile-title"><img src="assets/icons/icon_coins.png" class="rules-symbol-inline" alt=""> ${isEn ? 'Gold Nuggets (Gold Rush)' : 'Zlaté valouny (Zlatá horečka)'}</div>
             <div class="tracker-counter-val" style="color: #f39c12;">${trackerState.gold}</div>
             <div class="tracker-btns-row">
               <button type="button" class="btn-counter" id="btn-gold-minus">−</button>
@@ -4471,7 +4471,7 @@
           </div>
 
           <div class="tracker-tile" style="border-top: 4px solid #e67e22;">
-            <div class="tracker-tile-title">🟧 ${isEn ? 'Load Cubes (Armed & Dangerous)' : 'Žetony nabití (Ozbrojení)'}</div>
+            <div class="tracker-tile-title"><span class="charge-cube-badge"></span> ${isEn ? 'Load Tokens (Armed & Dangerous)' : 'Žetony nabití (Ozbrojení)'}</div>
             <div class="tracker-counter-val" style="color: #e67e22;">${trackerState.cubes}</div>
             <div class="tracker-btns-row">
               <button type="button" class="btn-counter" id="btn-cubes-minus">−</button>
@@ -4480,7 +4480,7 @@
           </div>
 
           <div class="tracker-tile" style="border-top: 4px solid #2980b9;">
-            <div class="tracker-tile-title">🃏 ${isEn ? 'Cards in Hand' : 'Karet v ruce'}</div>
+            <div class="tracker-tile-title"><img src="assets/icons/icon_cards.png" class="rules-symbol-inline" alt=""> ${isEn ? 'Cards in Hand' : 'Karet v ruce'}</div>
             <div class="tracker-counter-val" style="color: #2980b9;">${trackerState.hand}</div>
             <div class="tracker-btns-row">
               <button type="button" class="btn-counter" id="btn-hand-minus">−</button>
@@ -4490,7 +4490,7 @@
         </div>
 
         <div style="margin-top: 1.5rem; padding: 1rem 1.25rem; border-radius: var(--radius-sm); font-weight: 700; display: flex; align-items: center; gap: 0.6rem; ${handWarning ? 'background: rgba(192, 57, 43, 0.15); border: 1.5px solid #c0392b; color: #c0392b;' : 'background: rgba(39, 174, 96, 0.15); border: 1.5px solid #27ae60; color: #27ae60;'}">
-          <span>${handWarning ? '⚠️' : '✅'}</span>
+          <span style="font-size: 1.2rem; font-weight: 900;">${handWarning ? '!' : '✓'}</span>
           <span>
             ${handWarning
               ? (isEn ? `Discard warning: You have ${trackerState.hand} cards in hand, but only ${trackerState.lives} lives! Discard ${trackerState.hand - trackerState.lives} cards at turn end.` : `Pozor na limit: Máš v ruce ${trackerState.hand} karet, ale jen ${trackerState.lives} životů! Ve 3. fázi musíš odhodit ${trackerState.hand - trackerState.lives} karet.`)
@@ -4989,38 +4989,40 @@
           <!-- DUEL CLOCK VIEW -->
           <div>
             <div style="text-align: center; margin-bottom: 1.5rem;">
-              <span style="background: rgba(231, 76, 60, 0.15); color: #e74c3c; border: 1px solid #e74c3c; padding: 0.35rem 1rem; border-radius: 20px; font-weight: bold; font-size: 0.95rem;">
-                ⚔️ ${isEn ? 'Duel in Progress' : 'Přestřelka v duelu'} • ${isEn ? 'Rounds:' : 'Výměn:'} ${timerState.duelRounds}
+              <span style="background: rgba(231, 76, 60, 0.15); color: #e74c3c; border: 1.5px solid #e74c3c; padding: 0.35rem 1.15rem; border-radius: 9999px; font-weight: 800; font-size: 0.95rem; font-family: var(--font-western); letter-spacing: 0.5px;">
+                ${isEn ? 'Duel in Progress' : 'Přestřelka v duelu'} • ${isEn ? 'Rounds:' : 'Výměn:'} ${timerState.duelRounds}
               </span>
             </div>
 
             <div class="duel-split-container">
               <!-- PLAYER 1 -->
               <div class="duel-player-card ${timerState.duelActivePlayer === 1 && timerState.duelRunning ? 'active-turn' : ''}">
-                <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🤠</div>
-                <div style="font-weight: bold; font-size: 1.2rem; color: var(--color-brown);">${isEn ? 'Player 1' : 'Hráč 1 (Vyzývatel)'}</div>
-                <div style="font-size: 3.5rem; font-family: 'Impact', monospace; font-weight: bold; color: ${timerState.duelTime1 <= 2 ? '#e74c3c' : 'inherit'}; margin: 0.5rem 0;">
+                <div style="font-weight: 800; font-size: 1.25rem; font-family: var(--font-western); color: var(--color-brown); margin-bottom: 0.35rem; letter-spacing: 0.5px;">
+                  ★ ${isEn ? 'Player 1 (Challenger)' : 'Hráč 1 (Vyzývatel)'} ★
+                </div>
+                <div style="font-size: 3.5rem; font-family: var(--font-western); font-weight: 900; color: ${timerState.duelTime1 <= 2 ? '#e74c3c' : 'var(--text-main)'}; margin: 0.5rem 0; line-height: 1;">
                   ${timerState.duelTime1}s
                 </div>
-                <button type="button" id="btn-duel-p1" class="btn-primary" style="width: 100%; padding: 1rem; font-size: 1.1rem; font-weight: bold; border-radius: 8px; cursor: pointer; margin-bottom: 0.6rem;" ${timerState.duelActivePlayer !== 1 || !timerState.duelRunning ? 'disabled style="opacity:0.4; cursor:not-allowed;"' : ''}>
+                <button type="button" id="btn-duel-p1" class="btn-duel-action" ${timerState.duelActivePlayer !== 1 || !timerState.duelRunning ? 'disabled' : ''}>
                   ${isEn ? 'DISCARD BANG!' : 'ODHODIT BANG!'}
                 </button>
-                <button type="button" class="btn-duel-giveup" data-p="1" style="background: none; border: none; font-size: 0.82rem; color: #e74c3c; cursor: pointer; text-decoration: underline;">
+                <button type="button" class="btn-duel-giveup" data-p="1" style="background: none; border: none; font-size: 0.84rem; color: #e74c3c; cursor: pointer; text-decoration: underline; font-weight: 700;">
                   ${isEn ? 'No BANG! / Hit!' : 'Nemám BANG! / Zásah!'}
                 </button>
               </div>
 
               <!-- PLAYER 2 -->
               <div class="duel-player-card ${timerState.duelActivePlayer === 2 && timerState.duelRunning ? 'active-turn' : ''}">
-                <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🤠</div>
-                <div style="font-weight: bold; font-size: 1.2rem; color: var(--color-brown);">${isEn ? 'Player 2' : 'Hráč 2 (Obránce)'}</div>
-                <div style="font-size: 3.5rem; font-family: 'Impact', monospace; font-weight: bold; color: ${timerState.duelTime2 <= 2 ? '#e74c3c' : 'inherit'}; margin: 0.5rem 0;">
+                <div style="font-weight: 800; font-size: 1.25rem; font-family: var(--font-western); color: var(--color-brown); margin-bottom: 0.35rem; letter-spacing: 0.5px;">
+                  ★ ${isEn ? 'Player 2 (Defender)' : 'Hráč 2 (Obránce)'} ★
+                </div>
+                <div style="font-size: 3.5rem; font-family: var(--font-western); font-weight: 900; color: ${timerState.duelTime2 <= 2 ? '#e74c3c' : 'var(--text-main)'}; margin: 0.5rem 0; line-height: 1;">
                   ${timerState.duelTime2}s
                 </div>
-                <button type="button" id="btn-duel-p2" class="btn-primary" style="width: 100%; padding: 1rem; font-size: 1.1rem; font-weight: bold; border-radius: 8px; cursor: pointer; margin-bottom: 0.6rem;" ${timerState.duelActivePlayer !== 2 || !timerState.duelRunning ? 'disabled style="opacity:0.4; cursor:not-allowed;"' : ''}>
+                <button type="button" id="btn-duel-p2" class="btn-duel-action" ${timerState.duelActivePlayer !== 2 || !timerState.duelRunning ? 'disabled' : ''}>
                   ${isEn ? 'DISCARD BANG!' : 'ODHODIT BANG!'}
                 </button>
-                <button type="button" class="btn-duel-giveup" data-p="2" style="background: none; border: none; font-size: 0.82rem; color: #e74c3c; cursor: pointer; text-decoration: underline;">
+                <button type="button" class="btn-duel-giveup" data-p="2" style="background: none; border: none; font-size: 0.84rem; color: #e74c3c; cursor: pointer; text-decoration: underline; font-weight: 700;">
                   ${isEn ? 'No BANG! / Hit!' : 'Nemám BANG! / Zásah!'}
                 </button>
               </div>
@@ -5028,11 +5030,11 @@
 
             <!-- DUEL CONTROLS / RESULT -->
             ${timerState.duelWinner ? `
-              <div style="background: rgba(46, 204, 113, 0.15); border: 2px solid #2ecc71; border-radius: 10px; padding: 1rem; text-align: center; margin-bottom: 1.5rem;">
-                <div style="font-size: 1.25rem; font-weight: bold; color: #27ae60;">
-                  🏆 ${isEn ? `Duel Won by Player ${timerState.duelWinner}!` : `Duel vyhrál Hráč ${timerState.duelWinner}!`}
+              <div style="background: rgba(46, 204, 113, 0.15); border: 2px solid #2ecc71; border-radius: 10px; padding: 1.2rem; text-align: center; margin-bottom: 1.5rem;">
+                <div style="font-size: 1.35rem; font-weight: 900; font-family: var(--font-western); color: #27ae60; letter-spacing: 0.5px;">
+                  ${isEn ? `Duel Won by Player ${timerState.duelWinner}!` : `Duel vyhrál Hráč ${timerState.duelWinner}!`}
                 </div>
-                <div style="font-size: 0.9rem; margin-top: 0.25rem;">
+                <div style="font-size: 0.95rem; margin-top: 0.35rem; font-weight: 600;">
                   ${isEn ? `The other player was hit and loses 1 life point!` : `Poražený hráč byl zasažen a ztrácí 1 život!`}
                 </div>
               </div>
@@ -5040,8 +5042,8 @@
 
             <div style="display: flex; justify-content: center; gap: 0.8rem;">
               ${!timerState.duelRunning ? `
-                <button type="button" id="btn-duel-start" class="btn-primary" style="padding: 0.75rem 2rem; border-radius: 30px; font-weight: bold; font-size: 1.1rem; cursor: pointer;">
-                  ⚔️ ${isEn ? 'Start Duel!' : 'Zahájit Duel!'}
+                <button type="button" id="btn-duel-start" class="btn-primary" style="padding: 0.75rem 2.2rem; border-radius: 30px; font-weight: bold; font-size: 1.1rem; cursor: pointer;">
+                  ${isEn ? 'Start Duel!' : 'Zahájit Duel!'}
                 </button>
               ` : `
                 <button type="button" id="btn-duel-stop" style="padding: 0.75rem 1.5rem; border-radius: 30px; font-weight: bold; cursor: pointer; background: var(--bg-surface); border: 1px solid var(--border-color);">
@@ -5946,26 +5948,26 @@
     }
 
     if (quizState.finished) {
-      let rankTitle = isEn ? '🤠 Prairie Greenhorn' : '🌵 Zelenáč z prérie';
-      if (quizState.score === 10) rankTitle = isEn ? '🏆 Legendary Gunslinger of the West!' : '🏆 Legendární šerif Divokého západu!';
-      else if (quizState.score >= 8) rankTitle = isEn ? '⭐ Feared Deputy' : '⭐ Obávaný zástupce šerifa';
-      else if (quizState.score >= 5) rankTitle = isEn ? '🤠 Experienced Gunslinger' : '🤠 Zkušený pistolník';
+      let rankTitle = isEn ? 'Prairie Greenhorn' : 'Zelenáč z prérie';
+      if (quizState.score === 10) rankTitle = isEn ? 'Legendary Gunslinger of the West!' : 'Legendární šerif Divokého západu!';
+      else if (quizState.score >= 8) rankTitle = isEn ? 'Feared Deputy' : 'Obávaný zástupce šerifa';
+      else if (quizState.score >= 5) rankTitle = isEn ? 'Experienced Gunslinger' : 'Zkušený pistolník';
 
       container.innerHTML = `
         <div class="tool-card-box">
           <div class="quiz-container" style="text-align: center; padding: 2rem 1rem;">
-            <div style="font-size: 4rem; margin-bottom: 0.5rem;">🏆</div>
-            <h2 style="font-family: 'Georgia', serif; font-size: 2.2rem; color: var(--color-brown); margin-bottom: 0.5rem;">
+            <img src="assets/icons/icon_sheriff.png" alt="Sheriff" style="width: 80px; height: 80px; margin: 0 auto 0.75rem; display: block; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.35));">
+            <h2 style="font-family: var(--font-western); font-size: 2.2rem; color: var(--color-brown); margin-bottom: 0.5rem;">
               ${isEn ? 'Quiz Finished!' : 'Kvíz dokončen!'}
             </h2>
-            <div style="font-size: 2.5rem; font-weight: 900; color: var(--text-main); margin-bottom: 0.75rem;">
+            <div style="font-size: 2.5rem; font-weight: 900; color: var(--text-main); margin-bottom: 0.75rem; font-family: var(--font-western);">
               ${quizState.score} / ${quizState.questions.length}
             </div>
-            <div style="font-size: 1.3rem; font-weight: 800; color: var(--color-brown); margin-bottom: 1.5rem;">
+            <div style="font-size: 1.3rem; font-weight: 800; color: var(--color-brown); margin-bottom: 1.5rem; font-family: var(--font-western); letter-spacing: 0.5px;">
               ${rankTitle}
             </div>
             <button type="button" class="tool-subnav-btn active" id="btn-restart-quiz" style="font-size: 1.1rem; padding: 0.85rem 2rem;">
-              🔄 ${isEn ? 'Play Again' : 'Hrát znovu'}
+              ${isEn ? 'Play Again' : 'Hrát znovu'}
             </button>
           </div>
         </div>
