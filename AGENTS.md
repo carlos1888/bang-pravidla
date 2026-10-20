@@ -61,6 +61,9 @@ bang-pravidla/
 
 Aplikace je rozdělena do 6 hlavních sekcí přístupných přes horní navigaci `.app-nav`:
 
+> ⚠️ **STRIKTNÍ PRAVIDLO: ZÁKAZ IKONEK V HLAVNÍM MENU (`.app-nav` / `.nav-tab`):**
+> Uživatel si výslovně nepřeje ŽÁDNÉ ikonky u tlačítek hlavního menu (Katalog karet, Pravidla, FAQ, Tah hráče, Rychlý pomocník, Herní nástroje). Tlačítka `.nav-tab` musí obsahovat **VÝHRADNĚ čistý textový popisek** (`<span class="nav-text">...</span>`). **NIKDY do tlačítek hlavního menu nevkládejte žádné `<img>`, SVG ani emoji ikonky!**
+
 1. **`katalog` (Katalog karet):**
    - Prohlížeč všech 258 karet s dynamickým fulltextovým vyhledáváním a vícenásobným filtrováním (dle rozšíření, typu karty, barvy balíčku, dosahu, životů, tagů).
    - Kliknutí na kartu otevírá detailní interaktivní modál se synergiemi, protiútoky, oficiálními symboly a možností připnutí postavy na spodní lištu.
