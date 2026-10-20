@@ -91,10 +91,13 @@ Přepínání nástrojů probíhá přes subnavigaci `#tools-subnav` s atributem
 > ⚠️ **STRIKTNÍ PRAVIDLO: ZÁKAZ IKONEK V `#tools-subnav`:**
 > Uživatel si výslovně nepřeje žádné ikonky u tlačítek kategorií herních nástrojů v `#tools-subnav`. Tlačítka musí obsahovat **VÝHRADNĚ čistý textový popisek** (název nástroje). **NIKDY sem nevkládejte žádné `<img>`, SVG ani emoji ikonky!**
 
+> ⚠️ **STRIKTNÍ PRAVIDLO: ZÁKAZ POKEROVÉHO MOTIVU (POKER / ZELENÉ SUKNO):**
+> Aplikace je stylizována VÝHRADNĚ do atmosféry drsného westernu (Spaghetti Western, saloonové dřevo, dubová prkna, kování, pergamen, mosaz, šerifské hvězdy). **NIKDY a za žádných okolností nepoužívejte pokerové zelené sukno, pokerové stoly ani slovo „poker“ v designu UI.** Stůl v kalkulačce vzdálenosti musí být VŽDY autentický, masivní dřevěný saloonový stůl z dubových prken!
+
 | ID nástroje | Název (CZ / EN) | Účel a herní mechanika | Klíčový kód v `app.js` |
 |---|---|---|---|
 | `setup` | **Asistent přípravy hry** (Setup Assistant) | Zvolí se počet hráčů (3–8) a aktivní rozšíření. Vypočítá přesné role u stolu, specifická pravidla rozdávání karet a vygeneruje interaktivní odškrtávací checklist před zahájením duelu. | `renderSetupAssistant()` |
-| `calc` | **Kalkulačka vzdálenosti & Radar** (Distance Calc) | Vizuální pokerový stůl v saloonu pro 3–8 hráčů. Zobrazuje vzdálenost mezi střelcem a cílem + **radar zasažitelnosti všech hráčů u stolu současně** (zelená = v dosahu, modrá = dosah Paniky, červená = mimo dosah). Zohledňuje Mustang, Skrýš, Hledí i Paula Regreta. Obsahuje **Zápisník podezření pro Šerifa** (bluff tracker pro role). | `renderDistanceCalc()` |
+| `calc` | **Kalkulačka vzdálenosti & Radar** (Distance Calc) | Vizuální masivní dřevěný saloonový stůl pro 3–8 hráčů. Zobrazuje vzdálenost mezi střelcem a cílem + **radar zasažitelnosti všech hráčů u stolu současně** (zelená = v dosahu, modrá = dosah Paniky, červená = mimo dosah). Zohledňuje Mustang, Skrýš, Hledí i Paula Regreta. Obsahuje **Zápisník podezření pro Šerifa** (bluff tracker pro role). | `renderDistanceCalc()` |
 | `draw` | **Arbitr snímání & Šance** (Draw Arbitrator) | Řešitel herních sporů. Zadá se barva (♠ ♥ ♦ ♣) a hodnota karty otočené z dobíracího balíčku na stole. Vyhodnotí verdikt pro Dynamit, Vězení, Barel, Bombu, Chřestýše atd. Počítá exaktní matematickou pravděpodobnost přežití včetně schopnosti Lucky Dukea (snímání 2 karet). | `renderDrawSimulator()` |
 | `timer` | **Šerifovy hodinky & Rychlý Duel** (Turn & Duel Timer) | Časovač tahu (30s–120s) a bleskový 5sekundový střídavý odpočet pro napínavé Duely s velkými reakčními tlačítky a zvukovými efekty výstřelu. | `renderTurnTimer()` |
 | `train` | **Velká vlaková loupež** (Train Board) | Virtuální vlaková souprava: lokomotiva (Leland / Ironhorse), 8 připojených vagonů a 13 stanic. Simuluje posun vlaku na konci tahu Šerifa, nákup vagonů za cenu stanice a přechod na konečnou stanici. | `renderTrainBoard()` |

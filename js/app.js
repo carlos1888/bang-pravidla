@@ -2512,7 +2512,7 @@
     }
   }
 
-  // 1. DISTANCE CALCULATOR WITH SALOON POKER TABLE
+  // 1. DISTANCE CALCULATOR WITH AUTHENTIC SALOON WOODEN TABLE
   function renderDistanceCalc(container) {
     const isEn = state.lang === 'en';
     const weapons = window.BANG_TOOLS ? window.BANG_TOOLS.DistanceCalc.weapons : [];
@@ -2742,13 +2742,6 @@
                   <stop offset="100%" stop-color="#120702" />
                 </radialGradient>
 
-                <!-- Deep Emerald Saloon Poker Felt Gradient -->
-                <radialGradient id="pokerFeltGrad" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stop-color="#1b5333" />
-                  <stop offset="68%" stop-color="#113a23" />
-                  <stop offset="100%" stop-color="#092013" />
-                </radialGradient>
-
                 <!-- Inset Edge Shadow for Wooden Tabletop Depth -->
                 <radialGradient id="tableEdgeShadow" cx="50%" cy="50%" r="50%">
                   <stop offset="84%" stop-color="rgba(15, 6, 2, 0)" />
@@ -2773,23 +2766,70 @@
               <!-- Forged Iron Studs on Rim -->
               ${studsSvg}
 
-              <!-- Inner Saloon Table Surface with Emerald Poker Felt Mat -->
+              <!-- Inner Saloon Heavy Timber Planks Surface -->
               <g clip-path="url(#saloonTableClip)">
-                <!-- Base Timber Floor Underneath -->
-                <rect x="100" y="100" width="500" height="260" fill="#361c0d" />
+                <!-- Base Saloon Weathered Timber Planks -->
+                <rect x="100" y="100" width="500" height="42" fill="#543017" />
+                <rect x="100" y="142" width="500" height="42" fill="#623a1c" />
+                <rect x="100" y="184" width="500" height="44" fill="#4d2b13" />
+                <rect x="100" y="228" width="500" height="44" fill="#5a3419" />
+                <rect x="100" y="272" width="500" height="42" fill="#47260f" />
+                <rect x="100" y="314" width="500" height="48" fill="#583318" />
 
-                <!-- Saloon Emerald Poker Felt Mat Inlay -->
-                <ellipse cx="350" cy="230" rx="200" ry="122" fill="url(#pokerFeltGrad)" stroke="#092013" stroke-width="2" />
+                <!-- Wood Grain Texture Lines -->
+                <path d="M 140 120 Q 250 115 360 122 T 560 118" stroke="rgba(255,240,210,0.09)" stroke-width="1.6" fill="none" />
+                <path d="M 130 134 Q 280 130 430 136 T 570 132" stroke="rgba(0,0,0,0.22)" stroke-width="1.8" fill="none" />
+                <path d="M 130 162 Q 280 168 430 160 T 570 166" stroke="rgba(255,240,210,0.08)" stroke-width="1.5" fill="none" />
+                <path d="M 125 176 Q 240 172 370 178 T 575 174" stroke="rgba(0,0,0,0.2)" stroke-width="1.8" fill="none" />
+                <path d="M 125 204 Q 240 199 370 207 T 575 202" stroke="rgba(255,240,210,0.09)" stroke-width="1.5" fill="none" />
+                <path d="M 130 219 Q 270 223 420 216 T 570 220" stroke="rgba(0,0,0,0.22)" stroke-width="2" fill="none" />
+                <path d="M 130 250 Q 270 256 420 248 T 570 253" stroke="rgba(255,240,210,0.08)" stroke-width="1.5" fill="none" />
+                <path d="M 135 264 Q 260 260 380 267 T 565 262" stroke="rgba(0,0,0,0.24)" stroke-width="1.8" fill="none" />
+                <path d="M 140 292 Q 260 287 380 295 T 560 290" stroke="rgba(255,240,210,0.08)" stroke-width="1.5" fill="none" />
+                <path d="M 150 306 Q 290 311 440 304 T 550 308" stroke="rgba(0,0,0,0.2)" stroke-width="1.8" fill="none" />
+                <path d="M 160 334 Q 280 341 430 333 T 540 338" stroke="rgba(255,240,210,0.09)" stroke-width="1.6" fill="none" />
 
-                <!-- Gold Stitched Seam along Felt Edge -->
-                <ellipse cx="350" cy="230" rx="192" ry="114" fill="none" stroke="rgba(212, 175, 55, 0.45)" stroke-width="1.2" stroke-dasharray="6 4" />
+                <!-- Plank Seams & Grooves -->
+                <line x1="120" y1="142" x2="580" y2="142" stroke="#180b04" stroke-width="2.5" />
+                <line x1="120" y1="143.5" x2="580" y2="143.5" stroke="rgba(255,230,180,0.14)" stroke-width="0.9" />
 
-                <!-- Subtle Center Highlight on Felt -->
-                <ellipse cx="350" cy="230" rx="150" ry="85" fill="rgba(35, 95, 55, 0.22)" />
+                <line x1="120" y1="184" x2="580" y2="184" stroke="#180b04" stroke-width="2.5" />
+                <line x1="120" y1="185.5" x2="580" y2="185.5" stroke="rgba(255,230,180,0.14)" stroke-width="0.9" />
 
-                <!-- Saloon Gold Seal on Felt -->
-                <g opacity="0.38">
-                  <text x="350" y="146" text-anchor="middle" font-family="var(--font-western)" font-size="11" font-weight="900" fill="#ffd54f" letter-spacing="3.5">★ BANG! SALOON POKER TABLE ★</text>
+                <line x1="120" y1="228" x2="580" y2="228" stroke="#180b04" stroke-width="2.5" />
+                <line x1="120" y1="229.5" x2="580" y2="229.5" stroke="rgba(255,230,180,0.14)" stroke-width="0.9" />
+
+                <line x1="120" y1="272" x2="580" y2="272" stroke="#180b04" stroke-width="2.5" />
+                <line x1="120" y1="273.5" x2="580" y2="273.5" stroke="rgba(255,230,180,0.14)" stroke-width="0.9" />
+
+                <line x1="120" y1="314" x2="580" y2="314" stroke="#180b04" stroke-width="2.5" />
+                <line x1="120" y1="315.5" x2="580" y2="315.5" stroke="rgba(255,230,180,0.14)" stroke-width="0.9" />
+
+                <!-- Forged Iron Plank Nails -->
+                <rect x="210" y="140" width="5" height="4" rx="1" fill="#140b06" stroke="#3b2315" stroke-width="0.8" />
+                <rect x="490" y="140" width="5" height="4" rx="1" fill="#140b06" stroke="#3b2315" stroke-width="0.8" />
+                <rect x="210" y="226" width="5" height="4" rx="1" fill="#140b06" stroke="#3b2315" stroke-width="0.8" />
+                <rect x="490" y="226" width="5" height="4" rx="1" fill="#140b06" stroke="#3b2315" stroke-width="0.8" />
+                <rect x="210" y="312" width="5" height="4" rx="1" fill="#140b06" stroke="#3b2315" stroke-width="0.8" />
+                <rect x="490" y="312" width="5" height="4" rx="1" fill="#140b06" stroke="#3b2315" stroke-width="0.8" />
+
+                <!-- Natural Wood Knots -->
+                <g opacity="0.9">
+                  <ellipse cx="230" cy="163" rx="13" ry="7" fill="#2d1508" stroke="#1c0c04" stroke-width="1.2" />
+                  <ellipse cx="230" cy="163" rx="6" ry="3.5" fill="#160802" />
+                  <path d="M 212 163 Q 230 152 248 163" stroke="rgba(0,0,0,0.3)" stroke-width="1.4" fill="none" />
+                  <path d="M 212 163 Q 230 174 248 163" stroke="rgba(0,0,0,0.3)" stroke-width="1.4" fill="none" />
+                </g>
+                <g opacity="0.9">
+                  <ellipse cx="480" cy="250" rx="14" ry="7.5" fill="#2b1407" stroke="#1c0b03" stroke-width="1.2" />
+                  <ellipse cx="480" cy="250" rx="7" ry="3.5" fill="#150702" />
+                  <path d="M 460 250 Q 480 238 500 250" stroke="rgba(0,0,0,0.3)" stroke-width="1.4" fill="none" />
+                  <path d="M 460 250 Q 480 262 500 250" stroke="rgba(0,0,0,0.3)" stroke-width="1.4" fill="none" />
+                </g>
+
+                <!-- Saloon Timber Branding -->
+                <g opacity="0.45">
+                  <text x="350" y="146" text-anchor="middle" font-family="var(--font-western)" font-size="11" font-weight="900" fill="#ffecb3" letter-spacing="3.5">★ BANG! WILD WEST SALOON TABLE ★</text>
                 </g>
 
                 <!-- Inset Table Edge Shadow -->
