@@ -4529,6 +4529,17 @@ button.btn-secondary:active {
   background: rgba(139, 69, 19, 0.06);
 }
 
+.btn-draft-count:hover {
+  border-color: var(--color-brown) !important;
+  transform: translateY(-2px);
+}
+
+.btn-cancel-draft:hover {
+  border-color: var(--color-brown) !important;
+  color: var(--color-brown) !important;
+  background: var(--bg-surface) !important;
+}
+
 /* ==========================================================================
    PLAYER BOARD / TRACKER STYLES
    ========================================================================== */

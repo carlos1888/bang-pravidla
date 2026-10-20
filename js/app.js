@@ -2348,6 +2348,10 @@
       gotoDraftBtn.addEventListener('click', () => {
         state.activeTool = 'draft';
         draftState.playerCount = setupState.players;
+        draftState.step = 'setup';
+        draftState.revealed = false;
+        draftState.players = [];
+        draftState.currentIdx = 0;
         renderTools();
       });
     }
@@ -3081,6 +3085,8 @@
     // Ensure initial card evaluation
     if (!drawSimulatorState.evaluatedCard && sim) {
       drawSimulatorState.evaluatedCard = sim.createCard(drawSimulatorState.selectedSuit, drawSimulatorState.selectedValue);
+    }
+    if (sim && drawSimulatorState.evaluatedCard) {
       drawSimulatorState.result = sim.evaluate(drawSimulatorState.preset, drawSimulatorState.evaluatedCard, isEn);
     }
 
@@ -3167,26 +3173,31 @@
         </div>
 
         <!-- 3. TABLE CARD REFEREE: SELECT SUIT & VALUE -->
-        <div style="background: var(--bg-surface); border: 1.5px solid var(--border-color); border-radius: 12px; padding: 1.25rem 1.5rem; margin-bottom: 1.5rem;">
+        <div style="background: var(--bg-surface); border: 1.5px solid var(--border-color); border-radius: 12px; padding: 1.25rem 1.5rem; margin-bottom: 1.5rem; box-shadow: var(--shadow-sm);">
           <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.8rem; margin-bottom: 1.2rem;">
             <div>
-              <div style="font-weight: bold; font-size: 1.05rem; color: var(--color-brown);">
+              <div style="font-weight: bold; font-size: 1.05rem; color: var(--color-brown); display: flex; align-items: center; gap: 0.4rem;">
                 <img src="assets/symbols/symbol_draw_check.png" class="rules-symbol-inline" alt=""> ${isEn ? 'Tabletop Referee: Enter Flipped Card' : 'Rozhodčí: Zadej kartu otočenou ze stolu'}
               </div>
               <div style="font-size: 0.82rem; color: var(--text-muted);">
-                ${isEn ? 'Flipped a physical card from your draw deck at the table? Click its suit & value for an instant authoritative verdict:' : 'Otočili jste kartu z dobíracího balíčku na stole? Zadejte barvu a hodnotu pro bleskový oficiální verdikt:'}
+                ${isEn ? 'Select card suit & value. The live verdict updates immediately below. Click "Record This Draw" to log it.' : 'Zvolte barvu a hodnotu karty otočené z balíčku. Verdikt se zobrazuje živě níže. Tlačítkem jej zapíšete do protokolu.'}
               </div>
             </div>
 
-            <button type="button" id="btn-random-draw" class="btn-primary" style="padding: 0.45rem 1rem; font-size: 0.85rem; border-radius: 20px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 0.4rem;">
-              ${isEn ? 'Simulate Random Draw' : 'Simulovat náhodné otočení'}
+            <button type="button" id="btn-random-draw" class="tool-subnav-btn active" style="padding: 0.5rem 1.1rem; font-size: 0.88rem; border-radius: 20px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 0.4rem;">
+              🎲 ${isEn ? 'Simulate Random Draw' : 'Simulovat náhodné otočení'}
             </button>
           </div>
 
           <!-- SUIT SELECTOR (4 SUITS) -->
-          <div style="margin-bottom: 1rem;">
-            <div style="font-size: 0.82rem; font-weight: bold; color: var(--text-muted); margin-bottom: 0.4rem; text-transform: uppercase;">
-              ${isEn ? 'A) Card Suit:' : 'A) Barva karty:'}
+          <div style="margin-bottom: 1.1rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+              <span style="font-size: 0.82rem; font-weight: bold; color: var(--text-muted); text-transform: uppercase;">
+                ${isEn ? 'A) Card Suit:' : 'A) Barva karty:'}
+              </span>
+              <span style="font-size: 0.82rem; font-weight: bold; color: var(--color-brown);">
+                ${isEn ? 'Selected:' : 'Vybráno:'} ${drawSimulatorState.selectedSuit}
+              </span>
             </div>
             <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.6rem;">
               ${suits.map(s => {
@@ -3195,8 +3206,8 @@
                 const mainColor = isRed ? '#d32f2f' : '#222222';
                 return `
                   <button type="button" class="btn-suit-select" data-suit="${s.symbol}"
-                          style="padding: 0.65rem 0.5rem; border-radius: 8px; border: 2px solid ${isSelected ? mainColor : 'var(--border-color)'}; background: ${isSelected ? mainColor : 'var(--bg-card)'}; color: ${isSelected ? '#ffffff' : mainColor}; cursor: pointer; font-weight: bold; font-size: 1rem; display: flex; align-items: center; justify-content: center; gap: 0.4rem; transition: all 0.15s; box-shadow: ${isSelected ? 'var(--shadow-sm)' : 'none'};">
-                    <span style="font-size: 1.35rem;">${s.symbol}</span>
+                          style="padding: 0.65rem 0.5rem; border-radius: 8px; border: 2.5px solid ${isSelected ? mainColor : 'var(--border-color)'}; background: ${isSelected ? mainColor : 'var(--bg-card)'}; color: ${isSelected ? '#ffffff' : mainColor}; cursor: pointer; font-weight: bold; font-size: 1.05rem; display: flex; align-items: center; justify-content: center; gap: 0.4rem; transition: all 0.15s; box-shadow: ${isSelected ? 'var(--shadow-sm)' : 'none'};">
+                    <span style="font-size: 1.4rem;">${s.symbol}</span>
                     <span style="font-size: 0.85rem;">${isEn ? s.nameEn : s.nameCs}</span>
                   </button>
                 `;
@@ -3205,21 +3216,33 @@
           </div>
 
           <!-- VALUE SELECTOR (13 VALUES) -->
-          <div>
-            <div style="font-size: 0.82rem; font-weight: bold; color: var(--text-muted); margin-bottom: 0.4rem; text-transform: uppercase;">
-              ${isEn ? 'B) Card Value (Rank):' : 'B) Hodnota karty:'}
+          <div style="margin-bottom: 1.25rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+              <span style="font-size: 0.82rem; font-weight: bold; color: var(--text-muted); text-transform: uppercase;">
+                ${isEn ? 'B) Card Value (Rank):' : 'B) Hodnota karty:'}
+              </span>
+              <span style="font-size: 0.82rem; font-weight: bold; color: var(--color-brown);">
+                ${isEn ? 'Selected:' : 'Vybráno:'} ${drawSimulatorState.selectedValue}
+              </span>
             </div>
             <div style="display: flex; gap: 0.35rem; flex-wrap: wrap;">
               ${values.map(v => {
                 const isSelected = v === drawSimulatorState.selectedValue;
                 return `
                   <button type="button" class="btn-val-select" data-val="${v}"
-                          style="flex: 1; min-width: 38px; height: 38px; border-radius: 6px; border: 1.5px solid ${isSelected ? 'var(--color-gold)' : 'var(--border-color)'}; background: ${isSelected ? 'var(--color-gold)' : 'var(--bg-card)'}; color: ${isSelected ? '#fff' : 'inherit'}; cursor: pointer; font-weight: bold; font-size: 0.95rem; display: flex; align-items: center; justify-content: center; transition: all 0.15s;">
+                          style="flex: 1; min-width: 38px; height: 42px; border-radius: 6px; border: 2px solid ${isSelected ? 'var(--color-gold)' : 'var(--border-color)'}; background: ${isSelected ? 'var(--color-gold)' : 'var(--bg-card)'}; color: ${isSelected ? '#fff' : 'inherit'}; cursor: pointer; font-weight: bold; font-size: 1rem; display: flex; align-items: center; justify-content: center; transition: all 0.15s; box-shadow: ${isSelected ? 'var(--shadow-sm)' : 'none'};">
                     ${v}
                   </button>
                 `;
               }).join('')}
             </div>
+          </div>
+
+          <!-- CONFIRM RECORD BUTTON -->
+          <div style="display: flex; justify-content: center; padding-top: 0.75rem; border-top: 1px dashed var(--border-color);">
+            <button type="button" id="btn-confirm-draw" class="tool-subnav-btn active" style="font-size: 1rem; padding: 0.75rem 1.75rem; border-radius: 25px; box-shadow: var(--shadow-sm); display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+              ⚖️ ${isEn ? `Record This Draw to Protocol (${drawSimulatorState.selectedSuit} ${drawSimulatorState.selectedValue})` : `Zaznamenat sejmutí do protokolu (${drawSimulatorState.selectedSuit} ${drawSimulatorState.selectedValue})`}
+            </button>
           </div>
         </div>
 
@@ -3263,20 +3286,31 @@
 
         <!-- 5. DRAW HISTORY STRIP -->
         ${drawSimulatorState.history.length > 0 ? `
-          <div style="border-top: 1px solid var(--border-color); padding-top: 1rem;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem;">
+          <div style="border-top: 1px solid var(--border-color); padding-top: 1rem; margin-top: 1rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem; flex-wrap: wrap; gap: 0.5rem;">
               <span style="font-size: 0.85rem; font-weight: bold; color: var(--text-muted); text-transform: uppercase;">
                 ${isEn ? 'Arbitration Log (Recent Table Draws):' : 'Záznam posuzovaných sejmutí u stolu:'}
+                <span style="font-size: 0.78rem; font-weight: normal; opacity: 0.8;">(${drawSimulatorState.history.length})</span>
               </span>
-              <button type="button" id="btn-clear-draw-hist" style="background: none; border: none; font-size: 0.78rem; color: var(--text-muted); cursor: pointer; text-decoration: underline;">
-                ${isEn ? 'Clear log' : 'Vymazat záznam'}
+              <button type="button" id="btn-clear-draw-hist" style="background: none; border: none; font-size: 0.8rem; color: #c0392b; cursor: pointer; text-decoration: underline; font-weight: bold;">
+                🗑️ ${isEn ? 'Clear log' : 'Vymazat záznam'}
               </button>
             </div>
+
+            ${drawSimulatorState.luckyDuke ? `
+              <div style="background: rgba(243, 156, 18, 0.12); border: 1px dashed var(--color-gold); border-radius: 6px; padding: 0.4rem 0.75rem; margin-bottom: 0.6rem; font-size: 0.82rem; color: var(--color-brown); font-weight: 600;">
+                ${drawSimulatorState.history.length % 2 === 1
+                  ? (isEn ? '🍀 Lucky Duke: 1st card recorded! Flip & record your 2nd card to compare.' : '🍀 Lucky Duke: 1. karta zaznamenána! Sejměte a zaznamenejte 2. kartu a porovnejte.')
+                  : (isEn ? '🍀 Lucky Duke: Both cards recorded! Pick the favorable result.' : '🍀 Lucky Duke: Obě karty zaznamenány! Zvolte příznivější výsledek.')}
+              </div>
+            ` : ''}
+
             <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-              ${drawSimulatorState.history.slice(0, 8).map(h => `
-                <div style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 6px; padding: 0.35rem 0.65rem; font-size: 0.82rem; display: flex; align-items: center; gap: 0.4rem;">
-                  <strong style="color: ${h.card.color === 'red' ? '#d32f2f' : 'inherit'};">${h.card.code}</strong>
-                  <span style="font-size: 0.75rem; opacity: 0.75;">(${h.presetName})</span>
+              ${drawSimulatorState.history.slice(0, 10).map((h, idx) => `
+                <div style="background: var(--bg-surface); border: 1.5px solid ${h.status === 'success' ? '#2ecc71' : h.status === 'failure' ? '#e74c3c' : 'var(--border-color)'}; border-radius: 8px; padding: 0.4rem 0.75rem; font-size: 0.85rem; display: flex; align-items: center; gap: 0.45rem; box-shadow: var(--shadow-sm);">
+                  <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: bold;">#${drawSimulatorState.history.length - idx}</span>
+                  <strong style="color: ${h.card.color === 'red' ? '#d32f2f' : 'inherit'}; font-size: 0.95rem;">${h.card.code}</strong>
+                  <span style="font-size: 0.78rem; opacity: 0.8;">(${h.presetName})</span>
                   <span>${h.status === 'success' ? '✅' : h.status === 'failure' ? '❌' : '•'}</span>
                 </div>
               `).join('')}
@@ -3290,7 +3324,7 @@
     container.querySelectorAll('.btn-preset-chip').forEach(btn => {
       btn.addEventListener('click', () => {
         drawSimulatorState.preset = btn.dataset.preset;
-        if (sim) {
+        if (sim && drawSimulatorState.evaluatedCard) {
           drawSimulatorState.result = sim.evaluate(drawSimulatorState.preset, drawSimulatorState.evaluatedCard, isEn);
         }
         renderDrawSimulator(container);
@@ -3305,52 +3339,48 @@
       });
     }
 
+    // Suit selection updates staged card and live verdict WITHOUT premature history logging or sound FX
     container.querySelectorAll('.btn-suit-select').forEach(btn => {
       btn.addEventListener('click', () => {
         drawSimulatorState.selectedSuit = btn.dataset.suit;
         if (sim) {
           drawSimulatorState.evaluatedCard = sim.createCard(drawSimulatorState.selectedSuit, drawSimulatorState.selectedValue);
           drawSimulatorState.result = sim.evaluate(drawSimulatorState.preset, drawSimulatorState.evaluatedCard, isEn);
-          
-          drawSimulatorState.history.unshift({
-            card: drawSimulatorState.evaluatedCard,
-            presetName: currentPreset.nameCs,
-            status: drawSimulatorState.result.status
-          });
-
-          // Play Sound FX
-          if (window.BANG_TOOLS && window.BANG_TOOLS.SoundFX) {
-            if (drawSimulatorState.preset === 'dynamite' && drawSimulatorState.result.status === 'failure') {
-              window.BANG_TOOLS.SoundFX.playDynamite();
-            } else if (drawSimulatorState.preset === 'jail') {
-              window.BANG_TOOLS.SoundFX.playJail();
-            } else if (drawSimulatorState.preset === 'rattlesnake') {
-              window.BANG_TOOLS.SoundFX.playRattlesnake();
-            } else if (drawSimulatorState.result.status === 'failure') {
-              window.BANG_TOOLS.SoundFX.playShot();
-            } else {
-              window.BANG_TOOLS.SoundFX.playBell();
-            }
-          }
         }
         renderDrawSimulator(container);
       });
     });
 
+    // Value selection updates staged card and live verdict WITHOUT premature history logging or sound FX
     container.querySelectorAll('.btn-val-select').forEach(btn => {
       btn.addEventListener('click', () => {
         drawSimulatorState.selectedValue = btn.dataset.val;
         if (sim) {
           drawSimulatorState.evaluatedCard = sim.createCard(drawSimulatorState.selectedSuit, drawSimulatorState.selectedValue);
           drawSimulatorState.result = sim.evaluate(drawSimulatorState.preset, drawSimulatorState.evaluatedCard, isEn);
+        }
+        renderDrawSimulator(container);
+      });
+    });
 
-          drawSimulatorState.history.unshift({
-            card: drawSimulatorState.evaluatedCard,
-            presetName: currentPreset.nameCs,
-            status: drawSimulatorState.result.status
-          });
+    // Confirm button explicitly commits the card to the arbitration protocol and triggers Sound FX
+    const btnConfirm = document.getElementById('btn-confirm-draw');
+    if (btnConfirm) {
+      btnConfirm.addEventListener('click', () => {
+        if (!sim) return;
+        if (!drawSimulatorState.evaluatedCard) {
+          drawSimulatorState.evaluatedCard = sim.createCard(drawSimulatorState.selectedSuit, drawSimulatorState.selectedValue);
+        }
+        drawSimulatorState.result = sim.evaluate(drawSimulatorState.preset, drawSimulatorState.evaluatedCard, isEn);
 
-          // Play Sound FX
+        drawSimulatorState.history.unshift({
+          card: drawSimulatorState.evaluatedCard,
+          presetName: isEn ? currentPreset.nameEn : currentPreset.nameCs,
+          status: drawSimulatorState.result.status
+        });
+
+        // Play Sound FX safely
+        try {
           if (window.BANG_TOOLS && window.BANG_TOOLS.SoundFX) {
             if (drawSimulatorState.preset === 'dynamite' && drawSimulatorState.result.status === 'failure') {
               window.BANG_TOOLS.SoundFX.playDynamite();
@@ -3364,11 +3394,15 @@
               window.BANG_TOOLS.SoundFX.playBell();
             }
           }
+        } catch (e) {
+          console.warn('Audio playback error:', e);
         }
+
         renderDrawSimulator(container);
       });
-    });
+    }
 
+    // Random draw simulates physical deck flip, stages it, logs it to history, and plays Sound FX
     const btnRandom = document.getElementById('btn-random-draw');
     if (btnRandom) {
       btnRandom.addEventListener('click', () => {
@@ -3381,23 +3415,27 @@
 
         drawSimulatorState.history.unshift({
           card,
-          presetName: currentPreset.nameCs,
+          presetName: isEn ? currentPreset.nameEn : currentPreset.nameCs,
           status: drawSimulatorState.result.status
         });
 
-        // Play Sound FX
-        if (window.BANG_TOOLS && window.BANG_TOOLS.SoundFX) {
-          if (drawSimulatorState.preset === 'dynamite' && drawSimulatorState.result.status === 'failure') {
-            window.BANG_TOOLS.SoundFX.playDynamite();
-          } else if (drawSimulatorState.preset === 'jail') {
-            window.BANG_TOOLS.SoundFX.playJail();
-          } else if (drawSimulatorState.preset === 'rattlesnake') {
-            window.BANG_TOOLS.SoundFX.playRattlesnake();
-          } else if (drawSimulatorState.result.status === 'failure') {
-            window.BANG_TOOLS.SoundFX.playShot();
-          } else {
-            window.BANG_TOOLS.SoundFX.playBell();
+        // Play Sound FX safely
+        try {
+          if (window.BANG_TOOLS && window.BANG_TOOLS.SoundFX) {
+            if (drawSimulatorState.preset === 'dynamite' && drawSimulatorState.result.status === 'failure') {
+              window.BANG_TOOLS.SoundFX.playDynamite();
+            } else if (drawSimulatorState.preset === 'jail') {
+              window.BANG_TOOLS.SoundFX.playJail();
+            } else if (drawSimulatorState.preset === 'rattlesnake') {
+              window.BANG_TOOLS.SoundFX.playRattlesnake();
+            } else if (drawSimulatorState.result.status === 'failure') {
+              window.BANG_TOOLS.SoundFX.playShot();
+            } else {
+              window.BANG_TOOLS.SoundFX.playBell();
+            }
           }
+        } catch (e) {
+          console.warn('Audio playback error:', e);
         }
 
         renderDrawSimulator(container);
@@ -3824,6 +3862,9 @@
     const isEn = state.lang === 'en';
 
     const getRolesDistribution = (n) => {
+      if (n === 3) {
+        return ['deputy', 'renegade', 'outlaw'].sort(() => Math.random() - 0.5);
+      }
       const roles = ['sheriff'];
       if (n === 4) { roles.push('renegade', 'outlaw', 'outlaw'); }
       else if (n === 5) { roles.push('deputy', 'renegade', 'outlaw', 'outlaw'); }
@@ -3862,23 +3903,86 @@
       container.innerHTML = `
         <div class="tool-card-box">
           <div class="tool-card-header">
-            <h2>${isEn ? 'Role & Character Draft' : 'Losovač rolí a postav'}</h2>
-            <p class="tool-card-lead">${isEn ? 'Secret "Pass the Phone" mode: each player privately discovers their role and chooses from 2 dealt characters.' : 'Režim „Předej mobil“ pro tajné losování: každý hráč v soukromí zjistí svou roli a vybere si ze 2 nabídnutých postav.'}</p>
+            <h2><span style="font-size: 1.5rem;">🎲</span> ${isEn ? 'Role & Character Draft' : 'Losovač rolí a postav'}</h2>
+            <p class="tool-card-lead">
+              ${isEn
+                ? 'Secret "Pass the Phone" mode: choose player count (3–8), discover your secret role, and pick from 2 dealt characters.'
+                : 'Režim „Předej mobil“ pro tajné losování: zvolte počet hráčů (3–8), v soukromí zjistěte svou roli a vyberte si ze 2 nabídnutých postav.'}
+            </p>
           </div>
 
           <div class="draft-card-wrap">
-            <div style="background: var(--bg-surface); padding: 1.5rem; border-radius: var(--radius-md); border: 1.5px solid var(--border-color); margin-bottom: 1.5rem; text-align: left;">
-              <div style="margin-bottom: 1.25rem;">
-                <label style="font-weight: 700; font-size: 0.95rem; display: block; margin-bottom: 0.5rem;">${isEn ? 'Number of Players (4–8):' : 'Počet hráčů (4–8):'}</label>
-                <div style="display: flex; gap: 0.45rem;">
-                  ${[4, 5, 6, 7, 8].map(n => `
-                    <button type="button" class="seat-btn ${n === draftState.playerCount ? 'active-shooter' : ''}" data-draft-n="${n}">${n}</button>
-                  `).join('')}
+            <div style="background: var(--bg-surface); padding: 1.5rem; border-radius: var(--radius-md); border: 1.5px solid var(--border-color); margin-bottom: 1.5rem; text-align: left; box-shadow: var(--shadow-sm);">
+              
+              <!-- 1. POČET HRÁČŮ -->
+              <div style="margin-bottom: 1.5rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.65rem;">
+                  <label style="font-weight: 800; font-size: 1rem; color: var(--color-brown);">
+                    1. ${isEn ? 'Number of Players at Table (3–8):' : 'Počet hráčů u stolu (3–8):'}
+                  </label>
+                  <span style="background: var(--color-gold); color: #fff; font-size: 0.82rem; font-weight: 800; padding: 0.2rem 0.75rem; border-radius: 12px;">
+                    ${isEn ? 'Selected:' : 'Zvoleno:'} ${draftState.playerCount} ${isEn ? 'players' : (draftState.playerCount === 3 || draftState.playerCount === 4 ? 'hráči' : 'hráčů')}
+                  </span>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(85px, 1fr)); gap: 0.5rem; margin-bottom: 0.85rem;">
+                  ${[3, 4, 5, 6, 7, 8].map(n => {
+                    const isSel = n === draftState.playerCount;
+                    return `
+                      <button type="button" class="btn-draft-count" data-draft-n="${n}"
+                              style="padding: 0.7rem 0.4rem; border-radius: 8px; border: 2px solid ${isSel ? 'var(--color-gold)' : 'var(--border-color)'}; background: ${isSel ? 'var(--color-brown)' : 'var(--bg-card)'}; color: ${isSel ? '#ffffff' : 'var(--text-main)'}; cursor: pointer; font-weight: 800; font-size: 0.95rem; text-align: center; transition: all 0.15s; box-shadow: ${isSel ? 'var(--shadow-sm)' : 'none'};">
+                        <div style="font-size: 1.15rem; margin-bottom: 0.15rem;">👥 ${n}</div>
+                        <div style="font-size: 0.75rem; opacity: 0.9;">${isEn ? (n === 1 ? 'player' : 'players') : (n === 3 || n === 4 ? 'hráči' : 'hráčů')}</div>
+                      </button>
+                    `;
+                  }).join('')}
+                </div>
+
+                <!-- LIVE ROLE BREAKDOWN PREVIEW -->
+                <div style="background: var(--bg-card); border: 1.5px dashed var(--border-color); border-radius: 8px; padding: 0.85rem 1rem;">
+                  <div style="font-size: 0.8rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.45rem;">
+                    ${isEn ? `Roles dealt for ${draftState.playerCount} players:` : `Rozdělení rolí pro ${draftState.playerCount} hráčů:`}
+                  </div>
+                  <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; font-size: 0.86rem; align-items: center;">
+                    ${draftState.playerCount === 3 ? `
+                      <span style="background: rgba(41, 128, 185, 0.12); color: #2980b9; border: 1px solid #2980b9; padding: 0.25rem 0.6rem; border-radius: 12px; font-weight: 700;">🛡️ 1× ${isEn ? 'Deputy' : 'Pomocník'}</span>
+                      <span style="background: rgba(142, 68, 173, 0.12); color: #8e44ad; border: 1px solid #8e44ad; padding: 0.25rem 0.6rem; border-radius: 12px; font-weight: 700;">🗡️ 1× ${isEn ? 'Renegade' : 'Odpadlík'}</span>
+                      <span style="background: rgba(192, 57, 43, 0.12); color: #c0392b; border: 1px solid #c0392b; padding: 0.25rem 0.6rem; border-radius: 12px; font-weight: 700;">💀 1× ${isEn ? 'Outlaw' : 'Bandita'}</span>
+                      <span style="font-size: 0.78rem; color: var(--text-muted); font-style: italic;">(${isEn ? 'Goal ring: Deputy ➔ Renegade ➔ Outlaw ➔ Deputy' : 'Kruh cílů: Pomocník ➔ Odpadlík ➔ Bandita ➔ Pomocník'})</span>
+                    ` : draftState.playerCount === 4 ? `
+                      <span style="background: rgba(243, 156, 18, 0.15); color: #d35400; border: 1px solid #f39c12; padding: 0.25rem 0.6rem; border-radius: 12px; font-weight: 700;">⭐️ 1× ${isEn ? 'Sheriff' : 'Šerif'}</span>
+                      <span style="background: rgba(142, 68, 173, 0.12); color: #8e44ad; border: 1px solid #8e44ad; padding: 0.25rem 0.6rem; border-radius: 12px; font-weight: 700;">🗡️ 1× ${isEn ? 'Renegade' : 'Odpadlík'}</span>
+                      <span style="background: rgba(192, 57, 43, 0.12); color: #c0392b; border: 1px solid #c0392b; padding: 0.25rem 0.6rem; border-radius: 12px; font-weight: 700;">💀 2× ${isEn ? 'Outlaws' : 'Bandité'}</span>
+                    ` : draftState.playerCount === 5 ? `
+                      <span style="background: rgba(243, 156, 18, 0.15); color: #d35400; border: 1px solid #f39c12; padding: 0.25rem 0.6rem; border-radius: 12px; font-weight: 700;">⭐️ 1× ${isEn ? 'Sheriff' : 'Šerif'}</span>
+                      <span style="background: rgba(41, 128, 185, 0.12); color: #2980b9; border: 1px solid #2980b9; padding: 0.25rem 0.6rem; border-radius: 12px; font-weight: 700;">🛡️ 1× ${isEn ? 'Deputy' : 'Pomocník'}</span>
+                      <span style="background: rgba(142, 68, 173, 0.12); color: #8e44ad; border: 1px solid #8e44ad; padding: 0.25rem 0.6rem; border-radius: 12px; font-weight: 700;">🗡️ 1× ${isEn ? 'Renegade' : 'Odpadlík'}</span>
+                      <span style="background: rgba(192, 57, 43, 0.12); color: #c0392b; border: 1px solid #c0392b; padding: 0.25rem 0.6rem; border-radius: 12px; font-weight: 700;">💀 2× ${isEn ? 'Outlaws' : 'Bandité'}</span>
+                    ` : draftState.playerCount === 6 ? `
+                      <span style="background: rgba(243, 156, 18, 0.15); color: #d35400; border: 1px solid #f39c12; padding: 0.25rem 0.6rem; border-radius: 12px; font-weight: 700;">⭐️ 1× ${isEn ? 'Sheriff' : 'Šerif'}</span>
+                      <span style="background: rgba(41, 128, 185, 0.12); color: #2980b9; border: 1px solid #2980b9; padding: 0.25rem 0.6rem; border-radius: 12px; font-weight: 700;">🛡️ 1× ${isEn ? 'Deputy' : 'Pomocník'}</span>
+                      <span style="background: rgba(142, 68, 173, 0.12); color: #8e44ad; border: 1px solid #8e44ad; padding: 0.25rem 0.6rem; border-radius: 12px; font-weight: 700;">🗡️ 1× ${isEn ? 'Renegade' : 'Odpadlík'}</span>
+                      <span style="background: rgba(192, 57, 43, 0.12); color: #c0392b; border: 1px solid #c0392b; padding: 0.25rem 0.6rem; border-radius: 12px; font-weight: 700;">💀 3× ${isEn ? 'Outlaws' : 'Bandité'}</span>
+                    ` : draftState.playerCount === 7 ? `
+                      <span style="background: rgba(243, 156, 18, 0.15); color: #d35400; border: 1px solid #f39c12; padding: 0.25rem 0.6rem; border-radius: 12px; font-weight: 700;">⭐️ 1× ${isEn ? 'Sheriff' : 'Šerif'}</span>
+                      <span style="background: rgba(41, 128, 185, 0.12); color: #2980b9; border: 1px solid #2980b9; padding: 0.25rem 0.6rem; border-radius: 12px; font-weight: 700;">🛡️ 2× ${isEn ? 'Deputies' : 'Pomocníci'}</span>
+                      <span style="background: rgba(142, 68, 173, 0.12); color: #8e44ad; border: 1px solid #8e44ad; padding: 0.25rem 0.6rem; border-radius: 12px; font-weight: 700;">🗡️ 1× ${isEn ? 'Renegade' : 'Odpadlík'}</span>
+                      <span style="background: rgba(192, 57, 43, 0.12); color: #c0392b; border: 1px solid #c0392b; padding: 0.25rem 0.6rem; border-radius: 12px; font-weight: 700;">💀 3× ${isEn ? 'Outlaws' : 'Bandité'}</span>
+                    ` : `
+                      <span style="background: rgba(243, 156, 18, 0.15); color: #d35400; border: 1px solid #f39c12; padding: 0.25rem 0.6rem; border-radius: 12px; font-weight: 700;">⭐️ 1× ${isEn ? 'Sheriff' : 'Šerif'}</span>
+                      <span style="background: rgba(41, 128, 185, 0.12); color: #2980b9; border: 1px solid #2980b9; padding: 0.25rem 0.6rem; border-radius: 12px; font-weight: 700;">🛡️ 2× ${isEn ? 'Deputies' : 'Pomocníci'}</span>
+                      <span style="background: rgba(142, 68, 173, 0.12); color: #8e44ad; border: 1px solid #8e44ad; padding: 0.25rem 0.6rem; border-radius: 12px; font-weight: 700;">🗡️ 2× ${isEn ? 'Renegades' : 'Odpadlíci'}</span>
+                      <span style="background: rgba(192, 57, 43, 0.12); color: #c0392b; border: 1px solid #c0392b; padding: 0.25rem 0.6rem; border-radius: 12px; font-weight: 700;">💀 3× ${isEn ? 'Outlaws' : 'Bandité'}</span>
+                    `}
+                  </div>
                 </div>
               </div>
 
-              <div style="margin-bottom: 1.25rem;">
-                <label style="font-weight: 700; font-size: 0.95rem; display: block; margin-bottom: 0.5rem;">${isEn ? 'Include Character Expansions:' : 'Zahrnout postavy z rozšíření:'}</label>
+              <!-- 2. ROZŠÍŘENÍ POSTAV -->
+              <div style="margin-bottom: 1.5rem;">
+                <label style="font-weight: 800; font-size: 1rem; display: block; margin-bottom: 0.5rem; color: var(--color-brown);">
+                  2. ${isEn ? 'Include Character Expansions:' : 'Zahrnout postavy z rozšíření:'}
+                </label>
                 <div style="display: flex; flex-direction: column; gap: 0.5rem;">
                   <label class="calc-checkbox-label"><input type="checkbox" data-exp="base" ${draftState.expansions.includes('base') ? 'checked' : ''}> <span>🎯 Základní hra (16 postav)</span></label>
                   <label class="calc-checkbox-label"><input type="checkbox" data-exp="dodge-city" ${draftState.expansions.includes('dodge-city') ? 'checked' : ''}> <span>🟢 Dodge City (15 postav)</span></label>
@@ -3892,8 +3996,8 @@
               </div>
             </div>
 
-            <button type="button" class="tool-subnav-btn active" id="btn-start-draft" style="font-size: 1.1rem; padding: 0.85rem 2rem;">
-              🎲 ${isEn ? 'Start Secret Draft' : 'Zahájit tajné losování'}
+            <button type="button" class="tool-subnav-btn active" id="btn-start-draft" style="font-size: 1.1rem; padding: 0.85rem 2.2rem; cursor: pointer;">
+              🎲 ${isEn ? `Start Secret Draft (${draftState.playerCount} Players)` : `Zahájit tajné losování (${draftState.playerCount} hráčů)`}
             </button>
           </div>
         </div>
@@ -3929,9 +4033,15 @@
         container.innerHTML = `
           <div class="tool-card-box">
             <div class="draft-card-wrap">
-              <div style="font-size: 0.9rem; font-weight: 800; color: var(--color-brown); text-transform: uppercase; margin-bottom: 0.5rem;">
-                ${isEn ? 'Secret Hand-Off' : 'Tajné předání'} (${draftState.currentIdx + 1} / ${draftState.playerCount})
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.5rem; border-bottom: 1px dashed var(--border-color); padding-bottom: 0.75rem;">
+                <div style="font-size: 0.88rem; font-weight: 800; color: var(--color-brown); text-transform: uppercase;">
+                  ${isEn ? 'Secret Pass-the-Phone' : 'Tajné předání'} (${draftState.currentIdx + 1} / ${draftState.playerCount} ${isEn ? 'players' : 'hráčů'})
+                </div>
+                <button type="button" class="btn-cancel-draft" style="background: none; border: 1.5px solid var(--border-color); border-radius: 20px; padding: 0.35rem 0.85rem; font-size: 0.82rem; font-weight: bold; color: var(--text-muted); cursor: pointer; display: inline-flex; align-items: center; gap: 0.35rem;">
+                  ⚙️ ${isEn ? 'Change Player Count' : 'Změnit počet hráčů / Zrušit'}
+                </button>
               </div>
+
               <h2 style="font-family: 'Georgia', serif; font-size: 2.2rem; color: var(--text-main); margin-bottom: 1rem;">
                 📱 ${isEn ? 'Pass device to' : 'Předejte zařízení hráči:'} <strong>${p.name}</strong>
               </h2>
@@ -3954,26 +4064,70 @@
           draftState.revealed = true;
           renderRoleDraft(container);
         });
+
+        const cancelBtn = container.querySelector('.btn-cancel-draft');
+        if (cancelBtn) {
+          cancelBtn.addEventListener('click', () => {
+            draftState.step = 'setup';
+            draftState.revealed = false;
+            draftState.players = [];
+            draftState.currentIdx = 0;
+            renderRoleDraft(container);
+          });
+        }
         return;
       }
 
       let roleInfo = { title: '💀 Bandita', color: '#c0392b', desc: isEn ? 'Eliminate the Sheriff!' : 'Zlikviduj Šerifa za každou cenu!' };
-      if (p.role === 'sheriff') {
-        roleInfo = { title: '⭐️ ŠERIF', color: '#f39c12', desc: isEn ? 'PUBLIC ROLE: Reveal this card to everyone immediately! You get +1 max life and play first.' : 'VEŘEJNÁ ROLE: Tuto kartu ihned otoč všem lícem nahoru! Máš +1 život navíc a hraješ jako první.' };
-      } else if (p.role === 'deputy') {
-        roleInfo = { title: '🛡️ Pomocník šerifa', color: '#2980b9', desc: isEn ? 'Protect the Sheriff and eliminate Outlaws & Renegade.' : 'Chraň Šerifa za každou cenu a pomoz mu zvítězit!' };
-      } else if (p.role === 'renegade') {
-        roleInfo = { title: '🗡️ Odpadlík', color: '#8e44ad', desc: isEn ? 'Be the last one standing – eliminate the Sheriff in a final 1v1 duel!' : 'Zůstaň jako poslední živý ve hře – Šerifa musíš zabít až úplně naposledy 1 na 1!' };
+      if (draftState.playerCount === 3) {
+        if (p.role === 'deputy') {
+          roleInfo = {
+            title: '🛡️ Pomocník šerifa',
+            color: '#2980b9',
+            desc: isEn 
+              ? '3-PLAYER GOAL: Your objective is to personally eliminate the RENEGADE! (Cards targeting Sheriff target you).' 
+              : 'CÍL PRO 3 HRÁČE: Tvým úkolem je osobně zlikvidovat ODPADLÍKA! (Karty cílící na Šerifa se vztahují na tebe).'
+          };
+        } else if (p.role === 'renegade') {
+          roleInfo = {
+            title: '🗡️ Odpadlík',
+            color: '#8e44ad',
+            desc: isEn 
+              ? '3-PLAYER GOAL: Your objective is to personally eliminate the OUTLAW!' 
+              : 'CÍL PRO 3 HRÁČE: Tvým úkolem je osobně zlikvidovat BANDITU!'
+          };
+        } else if (p.role === 'outlaw') {
+          roleInfo = {
+            title: '💀 Bandita',
+            color: '#c0392b',
+            desc: isEn 
+              ? '3-PLAYER GOAL: Your objective is to personally eliminate the DEPUTY!' 
+              : 'CÍL PRO 3 HRÁČE: Tvým úkolem je osobně zlikvidovat POMOCNÍKA ŠERIFA!'
+          };
+        }
+      } else {
+        if (p.role === 'sheriff') {
+          roleInfo = { title: '⭐️ ŠERIF', color: '#f39c12', desc: isEn ? 'PUBLIC ROLE: Reveal this card to everyone immediately! You get +1 max life and play first.' : 'VEŘEJNÁ ROLE: Tuto kartu ihned otoč všem lícem nahoru! Máš +1 život navíc a hraješ jako první.' };
+        } else if (p.role === 'deputy') {
+          roleInfo = { title: '🛡️ Pomocník šerifa', color: '#2980b9', desc: isEn ? 'Protect the Sheriff and eliminate Outlaws & Renegade.' : 'Chraň Šerifa za každou cenu a pomoz mu zvítězit!' };
+        } else if (p.role === 'renegade') {
+          roleInfo = { title: '🗡️ Odpadlík', color: '#8e44ad', desc: isEn ? 'Be the last one standing – eliminate the Sheriff in a final 1v1 duel!' : 'Zůstaň jako poslední živý ve hře – Šerifa musíš zabít až úplně naposledy 1 na 1!' };
+        }
       }
 
       container.innerHTML = `
         <div class="tool-card-box">
           <div class="draft-card-wrap">
-            <div style="font-size: 0.85rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase;">
-              ${p.name} (${draftState.currentIdx + 1} / ${draftState.playerCount})
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.5rem; border-bottom: 1px dashed var(--border-color); padding-bottom: 0.75rem;">
+              <div style="font-size: 0.85rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase;">
+                ${p.name} (${draftState.currentIdx + 1} / ${draftState.playerCount} ${isEn ? 'players' : 'hráčů'})
+              </div>
+              <button type="button" class="btn-cancel-draft" style="background: none; border: 1.5px solid var(--border-color); border-radius: 20px; padding: 0.35rem 0.85rem; font-size: 0.82rem; font-weight: bold; color: var(--text-muted); cursor: pointer; display: inline-flex; align-items: center; gap: 0.35rem;">
+                ⚙️ ${isEn ? 'Change Player Count' : 'Změnit počet hráčů / Zrušit'}
+              </button>
             </div>
 
-            <div style="background: ${roleInfo.color}; color: #ffffff; padding: 1.25rem 1.5rem; border-radius: var(--radius-md); margin: 1rem 0 1.5rem; box-shadow: var(--shadow-md);">
+            <div style="background: ${roleInfo.color}; color: #ffffff; padding: 1.25rem 1.5rem; border-radius: var(--radius-md); margin: 0.5rem 0 1.5rem; box-shadow: var(--shadow-md);">
               <div style="font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.9;">${isEn ? 'Your Role:' : 'Tvoje role:'}</div>
               <h2 style="font-family: 'Georgia', serif; font-size: 2.2rem; margin: 0.35rem 0;">${roleInfo.title}</h2>
               <div style="font-size: 0.95rem; opacity: 0.95; line-height: 1.4;">${roleInfo.desc}</div>
@@ -4033,6 +4187,17 @@
           renderRoleDraft(container);
         });
       }
+
+      const cancelBtn = container.querySelector('.btn-cancel-draft');
+      if (cancelBtn) {
+        cancelBtn.addEventListener('click', () => {
+          draftState.step = 'setup';
+          draftState.revealed = false;
+          draftState.players = [];
+          draftState.currentIdx = 0;
+          renderRoleDraft(container);
+        });
+      }
       return;
     }
 
@@ -4043,11 +4208,27 @@
         <div class="tool-card-box">
           <div class="tool-card-header">
             <h2>${isEn ? 'Draft Completed! Game Ready!' : 'Losování dokončeno! Hra je připravena!'}</h2>
-            <p class="tool-card-lead">${isEn ? 'Sheriff plays first and reveals their card publicly. All other roles remain strictly secret.' : 'Šerif hraje jako první a otočí kartu lícem nahoru. Všechny ostatní role zůstávají tajné!'}</p>
+            <p class="tool-card-lead">
+              ${draftState.playerCount === 3
+                ? (isEn ? '3-Player Circle of Goals! All players reveal their roles or keep them secret according to chosen house rules.' : 'Kruh cílů pro 3 hráče! Každý hráč zná svůj unikátní cíl pro okamžité vítězství.')
+                : (isEn ? 'Sheriff plays first and reveals their card publicly. All other roles remain strictly secret.' : 'Šerif hraje jako první a otočí kartu lícem nahoru. Všechny ostatní role zůstávají tajné!')}
+            </p>
           </div>
 
           <div class="draft-card-wrap">
-            ${sheriffPlayer ? `
+            ${draftState.playerCount === 3 ? `
+              <div style="background: linear-gradient(135deg, #2980b9 0%, #8e44ad 100%); color: #ffffff; padding: 1.5rem; border-radius: var(--radius-md); margin-bottom: 1.5rem; box-shadow: var(--shadow-md);">
+                <div style="font-size: 0.85rem; font-weight: 800; text-transform: uppercase;">${isEn ? '3-Player Circle of Goals (No Sheriff):' : 'Kruh cílů pro 3 hráče (Hra bez Šerifa):'}</div>
+                <h2 style="font-family: 'Georgia', serif; font-size: 1.6rem; margin: 0.4rem 0 0.8rem;">
+                  🛡️ Pomocník ➔ 🗡️ Odpadlík ➔ 💀 Bandita ➔ 🛡️ Pomocník
+                </h2>
+                <div style="font-size: 0.95rem; opacity: 0.95; line-height: 1.4;">
+                  ${isEn
+                    ? 'Deputy must kill Renegade, Renegade must kill Outlaw, Outlaw must kill Deputy. The player who personally kills their target wins immediately!'
+                    : 'Pomocník musí osobně zabít Odpadlíka, Odpadlík Banditu a Bandita Pomocníka. Kdo osobně zasadí smrtelnou ránu svému cíli, okamžitě vítězí!'}
+                </div>
+              </div>
+            ` : sheriffPlayer ? `
               <div style="background: linear-gradient(135deg, #f39c12 0%, #d35400 100%); color: #ffffff; padding: 1.5rem; border-radius: var(--radius-md); margin-bottom: 1.5rem; box-shadow: var(--shadow-md);">
                 <div style="font-size: 0.85rem; font-weight: 800; text-transform: uppercase;">${isEn ? 'Public Sheriff of the Town:' : 'Veřejný Šerif pro tuto hru:'}</div>
                 <h2 style="font-family: 'Georgia', serif; font-size: 2.2rem; margin: 0.4rem 0;">⭐ ${sheriffPlayer.name}</h2>
@@ -4076,7 +4257,7 @@
               </div>
             </div>
 
-            <button type="button" class="btn-reset-filters" id="btn-restart-draft" style="font-weight: 700; font-size: 1rem; padding: 0.75rem 1.5rem;">
+            <button type="button" class="btn-reset-filters" id="btn-restart-draft" style="font-weight: 700; font-size: 1rem; padding: 0.75rem 1.5rem; cursor: pointer;">
               🔄 ${isEn ? 'Start New Draft' : 'Spustit nové losování'}
             </button>
           </div>
@@ -4085,6 +4266,9 @@
 
       document.getElementById('btn-restart-draft').addEventListener('click', () => {
         draftState.step = 'setup';
+        draftState.revealed = false;
+        draftState.players = [];
+        draftState.currentIdx = 0;
         renderRoleDraft(container);
       });
     }
