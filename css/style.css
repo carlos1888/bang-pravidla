@@ -3506,6 +3506,39 @@ footer.app-footer {
     padding-right: 3.25rem;
   }
 
+  /* --- Tools Subnav (Herní nástroje) Mobile Single Row --- */
+  #tab-nastroje {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .tools-subnav {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    gap: 0.45rem !important;
+    padding: 6px 4px 10px 4px !important;
+    margin-bottom: 1.15rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .tools-subnav::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .tool-subnav-btn {
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
+    font-size: 0.84rem !important;
+    padding: 0.45rem 0.85rem !important;
+  }
+
   /* --- Footer --- */
   footer.app-footer {
     padding: 1.5rem 0.85rem;
@@ -3931,30 +3964,6 @@ footer.app-footer {
   padding: 6px 2px 10px 2px;
 }
 
-@media (max-width: 900px) {
-  .tools-subnav {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    gap: 0.45rem;
-    padding: 6px 4px 10px 4px;
-    margin-bottom: 1.15rem;
-  }
-
-  .tools-subnav::-webkit-scrollbar {
-    display: none;
-  }
-
-  .tool-subnav-btn {
-    flex-shrink: 0;
-    white-space: nowrap;
-    font-size: 0.82rem;
-    padding: 0.45rem 0.85rem;
-  }
-}
-
 .tool-subnav-btn {
   background: linear-gradient(180deg, #faf2e2 0%, #ecd9b7 100%);
   border: 2px solid #6b3d1f;
@@ -3973,6 +3982,10 @@ footer.app-footer {
   box-shadow: 0 4px 0 #542b10, 0 3px 8px rgba(0,0,0,0.12);
   transition: background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
   position: relative;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
 }
 
 .tool-subnav-btn:hover {
@@ -4017,6 +4030,41 @@ footer.app-footer {
   color: #1a0c04;
   border-color: #ffcc00;
   box-shadow: 0 4px 0 #140803, 0 0 18px rgba(255, 204, 0, 0.5);
+}
+
+/* Mobile & Tablet Tools Subnav: Single Horizontal Scrolling Pill Bar */
+@media (max-width: 900px) {
+  #tab-nastroje {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .tools-subnav {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    gap: 0.45rem !important;
+    padding: 6px 4px 10px 4px !important;
+    margin-bottom: 1.15rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .tools-subnav::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .tool-subnav-btn {
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
+    font-size: 0.84rem !important;
+    padding: 0.45rem 0.85rem !important;
+  }
 }
 
 /* Primary and Secondary Western Comic Buttons */
