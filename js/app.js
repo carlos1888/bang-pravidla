@@ -362,6 +362,28 @@
     if (els.labelSuit) els.labelSuit.textContent = t.filterSuit;
     if (els.labelSort) els.labelSort.textContent = t.filterSort;
 
+    // Quick Tag Buttons Translation
+    const quickTagDict = {
+      all: isEn ? 'All' : 'Vše',
+      zbrane: isEn ? 'Weapons' : 'Zbraně',
+      leceni: isEn ? 'Healing' : 'Léčení',
+      obrana: isEn ? 'Defense' : 'Obrana',
+      vzdalenost: isEn ? 'Distance' : 'Vzdálenost',
+      snimani: isEn ? 'Draw Check' : 'Snímání',
+      zelene: isEn ? 'Green' : 'Zelené',
+      oranzove: isEn ? 'Orange' : 'Oranžové',
+      postavy: isEn ? 'Characters' : 'Postavy',
+      udalosti: isEn ? 'Events' : 'Události'
+    };
+    if (els.catalogQuickTags) {
+      els.catalogQuickTags.querySelectorAll('.quick-tag').forEach(btn => {
+        const tag = btn.dataset.tag;
+        if (quickTagDict[tag]) {
+          btn.textContent = quickTagDict[tag];
+        }
+      });
+    }
+
     // Options translation
     const expDict = isEn ? EXPANSIONS_EN : EXPANSIONS_CS;
     if (els.filterExpansion) {
