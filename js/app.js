@@ -5720,9 +5720,6 @@
         if (!store) return;
         const slotIdx = parseInt(b.dataset.slot, 10);
         store.buyCard(slotIdx);
-        if (window.BANG_TOOLS && window.BANG_TOOLS.SoundFX) {
-          window.BANG_TOOLS.SoundFX.playCoin();
-        }
         renderGoldRushArmory(container);
       });
     });
@@ -5732,10 +5729,6 @@
       btnRef.addEventListener('click', () => {
         if (!store) return;
         store.refreshStore();
-        if (window.BANG_TOOLS && window.BANG_TOOLS.SoundFX) {
-          if (typeof window.BANG_TOOLS.SoundFX.playShuffle === 'function') window.BANG_TOOLS.SoundFX.playShuffle();
-          else if (typeof window.BANG_TOOLS.SoundFX.playWhip === 'function') window.BANG_TOOLS.SoundFX.playWhip();
-        }
         renderGoldRushArmory(container);
       });
     }
@@ -5745,10 +5738,6 @@
       btnShuf.addEventListener('click', () => {
         if (!store) return;
         store.init();
-        if (window.BANG_TOOLS && window.BANG_TOOLS.SoundFX) {
-          if (typeof window.BANG_TOOLS.SoundFX.playShuffle === 'function') window.BANG_TOOLS.SoundFX.playShuffle();
-          else if (typeof window.BANG_TOOLS.SoundFX.playWhip === 'function') window.BANG_TOOLS.SoundFX.playWhip();
-        }
         renderGoldRushArmory(container);
       });
     }
