@@ -75,6 +75,7 @@
   --shadow-comic: 3px 3px 0px rgba(0, 0, 0, 0.9);
   --shadow-comic-lg: 5px 5px 0px rgba(0, 0, 0, 0.9);
 
+  --color-brown: #e59866;
   --color-brown-bg: #3a2012;
   --color-blue-bg: #112236;
   --color-green-bg: #122b15;
@@ -112,9 +113,6 @@
 body {
   font-family: var(--font-body);
   background-color: var(--bg-primary);
-  background-image: url('../assets/western/saloon_wood.jpg');
-  background-repeat: repeat;
-  background-size: 380px auto;
   color: var(--text-main);
   line-height: 1.65;
   min-height: 100vh;
@@ -123,10 +121,7 @@ body {
 }
 
 [data-theme="dark"] body {
-  background-color: #180f0a;
-  background-image: url('../assets/western/saloon_wood.jpg');
-  background-repeat: repeat;
-  background-size: 380px auto;
+  background-color: var(--bg-primary);
 }
 
 /* Custom Western Brass & Wood Scrollbar */
@@ -667,21 +662,40 @@ main.app-main {
   }
 }
 
-/* Results Header */
+/* Results Header & Counter Box */
 .results-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 1.25rem;
+  padding: 0.65rem 1.15rem;
+  background: linear-gradient(180deg, #ffffff 0%, #fbf5e8 100%);
+  border: 2px solid #6b3d1f;
+  border-radius: var(--radius-md);
+  box-shadow: 2px 2px 0px rgba(44, 22, 12, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.8);
   flex-wrap: wrap;
   gap: 0.75rem;
 }
 
+[data-theme="dark"] .results-header {
+  background: linear-gradient(180deg, #2a1910 0%, #1f120b 100%);
+  border-color: #6d3f21;
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.8), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
 .results-count {
-  font-size: 1rem;
-  font-weight: 600;
+  font-family: var(--font-western);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--color-brown);
+  letter-spacing: 0.35px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+[data-theme="dark"] .results-count {
+  color: #ffcc00;
 }
 
 /* Card Grid */
@@ -1834,6 +1848,11 @@ main.app-main {
   margin-bottom: 1rem;
 }
 
+[data-theme="dark"] .concept-card h3 {
+  color: var(--accent-gold);
+  border-bottom-color: var(--border-color);
+}
+
 .concept-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -2224,6 +2243,37 @@ footer.app-footer {
 /* =========================================================================
    RESPONSIVE TABLES & CHEAT SHEET STYLES
    ========================================================================= */
+#pomocnik-target {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+#pomocnik-target h3 {
+  font-family: var(--font-western);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--color-brown) !important;
+  margin: 2rem 0 0.85rem;
+  letter-spacing: 0.4px;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1.15rem;
+  background: linear-gradient(180deg, #ffffff 0%, #fbf5e8 100%);
+  border: 2px solid var(--border-color);
+  border-left: 6px solid var(--color-brown);
+  border-radius: var(--radius-md);
+  box-shadow: 2px 2px 0px rgba(44, 22, 12, 0.25), inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+}
+
+[data-theme="dark"] #pomocnik-target h3 {
+  background: linear-gradient(180deg, #2a1910 0%, #1f120b 100%);
+  border-color: #5d381e;
+  border-left-color: var(--accent-gold);
+  color: #ffcc00 !important;
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.8), inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
 .table-responsive {
   width: 100%;
   overflow-x: auto;

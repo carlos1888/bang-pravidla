@@ -714,7 +714,7 @@
     const t = I18N[state.lang] || I18N.cs;
     
     if (els.resultsCount) {
-      els.resultsCount.textContent = t.showingResults(cards.length, window.BANG_CARDS.length);
+      els.resultsCount.innerHTML = `<img src="assets/icons/icon_cards.png" alt="" style="width: 22px; height: 22px; object-fit: contain; flex-shrink: 0; filter: drop-shadow(0 1px 1px rgba(0,0,0,0.25));"><span>${t.showingResults(cards.length, window.BANG_CARDS.length)}</span>`;
     }
 
     if (cards.length === 0) {
