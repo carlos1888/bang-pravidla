@@ -1,24 +1,24 @@
 /* BANG! Dynamite Box & Legendy — Animated Western Comic Stylesheet */
 :root {
-  --font-western: 'Rokkitt', 'Alfa Slab One', Palatino, 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
-  --font-western-display: 'Alfa Slab One', 'Rokkitt', Georgia, serif;
+  --font-western: 'Rokkitt', Palatino, 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
+  --font-western-display: 'Rokkitt', 'Alfa Slab One', Georgia, serif;
   --font-serif: 'Playfair Display', Palatino, 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
   --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 
-  --bg-primary: #f6eedb;
-  --bg-secondary: #e8d7b7;
-  --bg-card: #fdf8ee;
-  --bg-surface: #faf2e1;
-  --text-main: #2b1810;
-  --text-muted: #6e5038;
+  --bg-primary: #f6efe2;
+  --bg-secondary: #eadcc6;
+  --bg-card: #ffffff;
+  --bg-surface: #fbf6ee;
+  --text-main: #180e06;
+  --text-muted: #422a18;
   --text-light: #ffffff;
-  --border-color: #c9ad84;
-  --border-dark: #4a2812;
+  --border-color: #cfbeaa;
+  --border-dark: #3a1e0b;
   --border-gold: #c69214;
 
-  --shadow-sm: 0 2px 6px rgba(43, 24, 16, 0.1);
-  --shadow-md: 0 6px 18px rgba(43, 24, 16, 0.16);
-  --shadow-lg: 0 14px 34px rgba(43, 24, 16, 0.25);
+  --shadow-sm: 0 2px 6px rgba(43, 24, 16, 0.08);
+  --shadow-md: 0 6px 18px rgba(43, 24, 16, 0.12);
+  --shadow-lg: 0 14px 34px rgba(43, 24, 16, 0.18);
   --shadow-comic: 3px 3px 0px rgba(44, 22, 12, 0.85);
   --shadow-comic-lg: 5px 5px 0px rgba(44, 22, 12, 0.85);
 
@@ -27,7 +27,7 @@
   --radius-lg: 16px;
 
   /* Card Type Theme Colors matching BANG! expansions */
-  --color-brown: #8b4513;
+  --color-brown: #7b3c10;
   --color-brown-bg: #faefe4;
   --color-blue: #1b58a1;
   --color-blue-bg: #edf4fc;
@@ -92,24 +92,9 @@
 /* ==========================================================================
    ANIMATIONS & WESTERN MICRO-INTERACTIONS
    ========================================================================== */
-@keyframes saloonSignSway {
-  0% { transform: rotate(0deg); }
-  25% { transform: rotate(0.85deg); }
-  50% { transform: rotate(-0.75deg); }
-  75% { transform: rotate(0.4deg); }
-  100% { transform: rotate(0deg); }
-}
-
 @keyframes fuseSparkPulse {
   0%, 100% { box-shadow: 0 0 6px #ffcc00, 0 0 12px #d85a10; }
   50% { box-shadow: 0 0 14px #ff3300, 0 0 24px #ffbb00; }
-}
-
-@keyframes gunshotRecoil {
-  0% { transform: scale(1); }
-  30% { transform: scale(0.96) translateY(2px) rotate(-1deg); }
-  70% { transform: scale(1.03) translateY(-3px) rotate(0.5deg); }
-  100% { transform: scale(1) translateY(0) rotate(0); }
 }
 
 @keyframes goldGlint {
@@ -127,16 +112,15 @@
 body {
   font-family: var(--font-body);
   background-color: var(--bg-primary);
-  background-image: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.52) 0%, rgba(235, 218, 190, 0.72) 100%), url('../assets/western/saloon_wood.jpg');
+  background-image: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.65) 0%, rgba(246, 239, 226, 0.85) 100%), url('../assets/western/saloon_wood.jpg');
   background-blend-mode: overlay;
-  background-attachment: fixed;
-  background-size: cover, 512px 512px;
+  background-repeat: repeat;
+  background-size: cover, 400px auto;
   color: var(--text-main);
   line-height: 1.65;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  box-shadow: inset 0 0 100px rgba(44, 22, 12, 0.25);
   transition: background-color 0.25s ease, color 0.25s ease;
 }
 
@@ -144,15 +128,14 @@ body {
   background-color: var(--bg-primary);
   background-image: radial-gradient(circle at 50% 20%, rgba(85, 42, 20, 0.45) 0%, rgba(15, 8, 4, 0.96) 100%), url('../assets/western/saloon_wood.jpg');
   background-blend-mode: multiply;
-  background-attachment: fixed;
-  background-size: cover, 512px 512px;
-  box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.8);
+  background-repeat: repeat;
+  background-size: cover, 400px auto;
 }
 
 /* Custom Western Brass & Wood Scrollbar */
 ::-webkit-scrollbar {
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
 }
 ::-webkit-scrollbar-track {
   background: #2b1509;
@@ -172,16 +155,16 @@ body {
    HEADER & SALOON SIGNBOARD
    ========================================================================== */
 header.app-header {
-  background: linear-gradient(180deg, rgba(46, 23, 12, 0.92) 0%, rgba(26, 13, 6, 0.96) 100%), url('../assets/western/saloon_wood_header.jpg');
+  background: linear-gradient(180deg, rgba(46, 23, 12, 0.95) 0%, rgba(26, 13, 6, 0.98) 100%), url('../assets/western/saloon_wood_header.jpg');
   background-size: cover;
   background-position: center;
   color: #f7ecd5;
-  padding: 1.15rem 1.5rem 0.65rem;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6), inset 0 -2px 0 #5c3516;
+  padding: 1rem 1.5rem 0.5rem;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5), inset 0 -2px 0 #5c3516;
   position: sticky;
   top: 0;
   z-index: 100;
-  border-bottom: 4px solid var(--accent-gold);
+  border-bottom: 3.5px solid var(--accent-gold);
 }
 
 .header-top {
@@ -200,37 +183,35 @@ header.app-header {
   gap: 0.85rem;
   text-decoration: none;
   color: inherit;
-  animation: saloonSignSway 6s ease-in-out infinite alternate;
-  transform-origin: top center;
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: opacity 0.2s ease;
 }
 
 .brand:hover {
-  animation: none;
-  transform: scale(1.05) rotate(-1.5deg);
+  opacity: 0.95;
 }
 
 .brand-logo {
-  height: 48px;
+  height: 46px;
   width: auto;
-  max-width: 95px;
+  max-width: 90px;
   object-fit: contain;
   flex-shrink: 0;
-  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.6));
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.6));
+  transition: transform 0.2s ease, filter 0.2s ease;
 }
 
 .brand:hover .brand-logo {
-  transform: scale(1.1) rotate(-3deg);
+  transform: scale(1.04);
+  filter: drop-shadow(0 3px 8px rgba(255, 204, 0, 0.45));
 }
 
 .brand-titles h1 {
   font-family: var(--font-western-display);
   font-size: 1.95rem;
   font-weight: 800;
-  letter-spacing: 1px;
+  letter-spacing: 0.8px;
   color: #ffcc00;
-  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.85), 0 0 12px rgba(255, 204, 0, 0.35);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.85), 0 0 10px rgba(255, 204, 0, 0.3);
   line-height: 1.1;
 }
 
@@ -363,8 +344,8 @@ nav.app-nav {
   align-items: center;
   gap: 0.5rem;
   white-space: nowrap;
-  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.6);
-  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5);
+  transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
 }
 
@@ -373,7 +354,7 @@ nav.app-nav {
   color: #ffffff;
   border-color: var(--accent-gold);
   transform: translateY(-2px);
-  box-shadow: 3px 4px 0px rgba(0, 0, 0, 0.7);
+  box-shadow: 2px 3px 0px rgba(0, 0, 0, 0.6);
 }
 
 .nav-tab.active {
@@ -384,9 +365,9 @@ nav.app-nav {
   margin-bottom: -1px;
   position: relative;
   z-index: 2;
-  box-shadow: 0 -4px 0 #542b10, 0 0 16px rgba(255, 204, 0, 0.45);
+  box-shadow: 0 -3px 0 #542b10, 0 0 14px rgba(255, 204, 0, 0.4);
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 
 [data-theme="dark"] .nav-tab.active {
@@ -710,14 +691,14 @@ main.app-main {
    AUTHENTIC BANG! COMIC PLAYING CARD COMPONENT
    ========================================================================== */
 .bang-card {
-  background: radial-gradient(ellipse at 50% 18%, #ffffff 0%, #fbf5e7 65%, #f1e0bf 100%);
-  border-radius: 14px;
-  border: 3.5px solid var(--border-color);
-  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.75), inset 0 0 0 4px rgba(44, 22, 12, 0.12), 4px 4px 0px rgba(44, 22, 12, 0.8), 0 8px 18px rgba(44, 22, 12, 0.15);
+  background: radial-gradient(ellipse at 50% 18%, #ffffff 0%, #fbf6ec 65%, #f4e7cf 100%);
+  border-radius: 12px;
+  border: 3px solid var(--border-color);
+  box-shadow: 0 4px 14px rgba(44, 22, 12, 0.08), 2px 2px 0px rgba(44, 22, 12, 0.5);
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.28s ease, border-color 0.2s ease;
+  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s ease, border-color 0.2s ease;
   cursor: pointer;
   position: relative;
   content-visibility: auto;
@@ -726,23 +707,22 @@ main.app-main {
 
 [data-theme="dark"] .bang-card {
   background: radial-gradient(ellipse at 50% 18%, #2d1c13 0%, #20130c 70%, #170d07 100%);
-  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.1), inset 0 0 0 4px rgba(0, 0, 0, 0.5), 4px 4px 0px rgba(0, 0, 0, 0.95), 0 8px 18px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6), 2px 2px 0px rgba(0, 0, 0, 0.85);
 }
 
 .bang-card:hover {
-  transform: translateY(-8px) scale(1.025) rotate(-0.5deg);
-  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.9), 0 16px 32px rgba(44, 22, 12, 0.25), 0 0 0 2px var(--color-gold), 5px 7px 0px rgba(44, 22, 12, 0.85);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 26px rgba(44, 22, 12, 0.18), 3px 4px 0px rgba(44, 22, 12, 0.65), 0 0 0 2px var(--color-gold);
   border-color: var(--color-gold);
 }
 
 [data-theme="dark"] .bang-card:hover {
-  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.25), 0 16px 32px rgba(0, 0, 0, 0.7), 0 0 0 2px var(--color-gold), 5px 7px 0px rgba(0, 0, 0, 0.95);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.75), 3px 4px 0px rgba(0, 0, 0, 0.95), 0 0 0 2px var(--color-gold);
   border-color: var(--color-gold);
 }
 
 .bang-card:active {
-  transform: translateY(-2px) scale(0.99);
-  box-shadow: 2px 2px 0px rgba(44, 22, 12, 0.85);
+  transform: translateY(0);
 }
 
 /* Border colors matching authentic BANG! expansion card decks */
@@ -838,13 +818,13 @@ main.app-main {
   height: auto;
   object-fit: contain;
   border-radius: 8px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
-  transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .bang-card:hover .card-thumb-img {
-  transform: scale(1.08) rotate(1.2deg);
-  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.32);
+  transform: scale(1.04);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28);
 }
 
 .card-body {
@@ -860,16 +840,15 @@ main.app-main {
 
 .card-title {
   font-family: var(--font-western);
-  font-size: 1.25rem;
-  letter-spacing: 0.5px;
+  font-size: 1.28rem;
+  letter-spacing: 0.3px;
   line-height: 1.25;
-  color: var(--color-brown);
-  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.1);
+  color: #2b1408;
+  font-weight: 800;
 }
 
 [data-theme="dark"] .card-title {
   color: #ffcc00;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
 }
 
 .card-title-en {
@@ -881,20 +860,22 @@ main.app-main {
 }
 
 .card-effect-box {
-  background: rgba(255, 255, 255, 0.65);
-  border: 1.5px solid var(--border-color);
+  background: #ffffff;
+  border: 1.5px solid #dcd0be;
   border-radius: var(--radius-sm);
-  padding: 0.85rem 0.95rem;
-  font-size: 0.92rem;
-  line-height: 1.52;
+  padding: 0.85rem 1rem;
+  font-size: 0.94rem;
+  line-height: 1.56;
+  color: #190e06;
   margin-bottom: 0.85rem;
   flex: 1;
-  box-shadow: inset 0 1px 3px rgba(44, 22, 12, 0.05);
+  box-shadow: inset 0 1px 2px rgba(44, 22, 12, 0.04);
 }
 
 [data-theme="dark"] .card-effect-box {
-  background: rgba(30, 18, 12, 0.8);
+  background: rgba(24, 14, 9, 0.85);
   border-color: #5d381e;
+  color: #f7ecd5;
 }
 
 .card-meta-list {
@@ -1010,7 +991,7 @@ main.app-main {
   justify-content: center;
   color: #2b1406;
   box-shadow: 0 4px 0 #4a2810, 0 4px 10px rgba(0, 0, 0, 0.35);
-  transition: all 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: all 0.18s cubic-bezier(0.2, 0.8, 0.2, 1);
   pointer-events: auto;
   margin: 0;
   padding: 0;
@@ -1361,7 +1342,7 @@ main.app-main {
   display: block;
   padding: 0.4rem 0.6rem;
   border-radius: var(--radius-sm);
-  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
   border: 1px solid transparent;
 }
 
@@ -1448,7 +1429,7 @@ main.app-main {
   padding: 0.4rem 0.9rem;
   border-radius: 16px;
   cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
@@ -1535,7 +1516,7 @@ main.app-main {
   padding: 1.35rem 1.25rem;
   position: relative;
   box-shadow: 0 4px 14px rgba(43, 24, 16, 0.12);
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease, border-color 0.2s ease;
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease, border-color 0.2s ease;
   overflow: hidden;
 }
 
@@ -1759,7 +1740,7 @@ main.app-main {
   padding: 1.35rem 1.25rem;
   align-items: flex-start;
   box-shadow: 0 3px 10px rgba(43, 24, 16, 0.06);
-  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .step-box:hover {
@@ -2004,7 +1985,7 @@ main.app-main {
   background: var(--bg-surface);
   color: var(--text-main);
   outline: none;
-  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
   box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
 }
 
@@ -2029,7 +2010,7 @@ main.app-main {
   padding: 0.45rem 0.95rem;
   border-radius: 18px;
   cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
   box-shadow: 0 2px 0 var(--border-color);
 }
 
@@ -2543,7 +2524,7 @@ footer.app-footer {
   padding: 1.35rem 1.15rem;
   text-align: center;
   box-shadow: 0 4px 12px rgba(43, 24, 16, 0.08);
-  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s ease, border-color 0.2s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -2589,7 +2570,7 @@ footer.app-footer {
   height: auto;
   object-fit: contain;
   filter: drop-shadow(0 3px 6px rgba(44, 22, 12, 0.4));
-  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .symbol-card:hover .symbol-real-img {
@@ -2722,7 +2703,7 @@ footer.app-footer {
   font-family: var(--font-western);
   color: var(--color-brown);
   box-shadow: 1.5px 1.5px 0px rgba(44, 22, 12, 0.35);
-  transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: transform 0.18s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .card-symbol-pill:hover {
@@ -3743,7 +3724,7 @@ footer.app-footer {
   white-space: nowrap;
   flex-shrink: 0;
   box-shadow: 2px 2px 0px rgba(44, 22, 12, 0.6);
-  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
@@ -3921,7 +3902,7 @@ footer.app-footer {
   align-items: center;
   gap: 0.45rem;
   box-shadow: 0 4px 0 #542b10, 0 4px 10px rgba(0,0,0,0.15);
-  transition: all 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: all 0.18s cubic-bezier(0.2, 0.8, 0.2, 1);
   position: relative;
 }
 
@@ -3982,7 +3963,7 @@ button.btn-primary {
   align-items: center;
   justify-content: center;
   gap: 0.45rem;
-  transition: all 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: all 0.18s cubic-bezier(0.2, 0.8, 0.2, 1);
   position: relative;
   text-decoration: none;
 }
@@ -4016,7 +3997,7 @@ button.btn-secondary {
   align-items: center;
   justify-content: center;
   gap: 0.45rem;
-  transition: all 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: all 0.18s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .btn-secondary:hover,
@@ -4054,7 +4035,7 @@ button.btn-secondary:active {
   transform: rotate(-3deg);
   background: rgba(192, 57, 43, 0.08);
   box-shadow: 1.5px 1.5px 0px rgba(0,0,0,0.15);
-  animation: wantedStamp 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: wantedStamp 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 @keyframes wantedStamp {
@@ -4716,7 +4697,7 @@ button.btn-secondary:active {
   padding: 0.85rem 0.5rem;
   text-align: center;
   cursor: pointer;
-  transition: all 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: all 0.18s cubic-bezier(0.2, 0.8, 0.2, 1);
   box-shadow: 0 4px 0 #542b10, 0 4px 10px rgba(0,0,0,0.12);
   user-select: none;
   display: flex;
@@ -5078,7 +5059,7 @@ button.btn-secondary:active {
   border-radius: 12px;
   padding: 1.5rem;
   text-align: center;
-  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
   box-shadow: 0 4px 14px rgba(43,24,16,0.1);
   position: relative;
 }
@@ -5123,7 +5104,7 @@ button.btn-secondary:active {
   flex-direction: column;
   justify-content: space-between;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
   position: relative;
 }
 

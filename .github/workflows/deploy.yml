@@ -26,6 +26,12 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Run Brotli (Level 11) & Gzip Pre-compression
+        run: node scripts/compress.js
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

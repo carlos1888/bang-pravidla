@@ -1,6 +1,8 @@
-// BANG! Companion Service Worker (PWA Offline Support)
-const CACHE_NAME = 'bang-pravidla-v29';
+// BANG! Companion Service Worker (PWA Offline Support & Asset Caching)
+const APP_CACHE_NAME = 'bang-app-v30';
+const IMAGE_CACHE_NAME = 'bang-images-v1';
 
+// Core Application Shell Assets
 const STATIC_ASSETS = [
   './',
   './index.html',
@@ -12,6 +14,7 @@ const STATIC_ASSETS = [
   './js/turn-helper-data.js',
   './js/tools-data.js',
   './js/app.js',
+  './assets/images-manifest.json',
   './assets/bang-logo.webp',
   './assets/bang-logo.png',
   './assets/icon-192.png',
@@ -54,11 +57,46 @@ const STATIC_ASSETS = [
   './assets/audio/duel.m4a'
 ];
 
+// Helper: Progressive background pre-caching of all image assets
+async function precacheAllImages() {
+  try {
+    const cache = await caches.open(IMAGE_CACHE_NAME);
+    const res = await fetch('./assets/images-manifest.json');
+    if (!res.ok) return;
+    const imageList = await res.json();
+    if (!Array.isArray(imageList)) return;
+
+    // Batch fetching in small chunks to avoid saturating network or CPU
+    const batchSize = 12;
+    for (let i = 0; i < imageList.length; i += batchSize) {
+      const batch = imageList.slice(i, i + batchSize);
+      await Promise.allSettled(
+        batch.map(async (imgUrl) => {
+          const match = await cache.match(imgUrl);
+          if (!match) {
+            try {
+              const resp = await fetch(imgUrl, { mode: 'cors' });
+              if (resp && resp.status === 200) {
+                await cache.put(imgUrl, resp);
+              }
+            } catch (e) {
+              // Ignore single image fetch failure; will be retrieved on demand
+            }
+          }
+        })
+      );
+    }
+    console.log(`[SW] Precached all ${imageList.length} images into ${IMAGE_CACHE_NAME}`);
+  } catch (err) {
+    console.warn('[SW] Progressive image precaching background task notice:', err);
+  }
+}
+
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
+    caches.open(APP_CACHE_NAME).then((cache) => {
       return cache.addAll(STATIC_ASSETS).catch((err) => {
-        console.warn('[SW] Cache addAll failed for some assets:', err);
+        console.warn('[SW] Cache addAll notice for some static assets:', err);
       });
     }).then(() => self.skipWaiting())
   );
@@ -69,34 +107,54 @@ self.addEventListener('activate', (event) => {
     caches.keys().then((keys) => {
       return Promise.all(
         keys.map((key) => {
-          if (key !== CACHE_NAME) {
+          // Only clean old app shell versions, preserve image cache
+          if (key !== APP_CACHE_NAME && key !== IMAGE_CACHE_NAME) {
             return caches.delete(key);
           }
         })
       );
-    }).then(() => self.clients.claim())
+    }).then(() => {
+      // Trigger background image pre-caching once activated
+      precacheAllImages();
+      return self.clients.claim();
+    })
   );
 });
 
 self.addEventListener('fetch', (event) => {
-  // Only handle GET requests
   if (event.request.method !== 'GET') return;
 
   const url = new URL(event.request.url);
 
-  // For same-origin requests
+  // 1. Same-Origin Assets
   if (url.origin === location.origin) {
-    // Media & Audio: Cache first, fallback to network and cache dynamic
-    if (url.pathname.includes('/assets/') || 
-        url.pathname.endsWith('.webp') || url.pathname.endsWith('.png') || url.pathname.endsWith('.jpg') ||
-        url.pathname.endsWith('.mp3') || url.pathname.endsWith('.m4a') || url.pathname.endsWith('.ogg')) {
+    const isImage = (
+      url.pathname.includes('/assets/') ||
+      url.pathname.endsWith('.webp') ||
+      url.pathname.endsWith('.png') ||
+      url.pathname.endsWith('.jpg') ||
+      url.pathname.endsWith('.jpeg') ||
+      url.pathname.endsWith('.svg') ||
+      url.pathname.endsWith('.ico')
+    );
+
+    const isAudio = (
+      url.pathname.endsWith('.mp3') ||
+      url.pathname.endsWith('.m4a') ||
+      url.pathname.endsWith('.ogg') ||
+      url.pathname.endsWith('.wav')
+    );
+
+    // Images & Audio: Cache-First strategy (serve immediately from memory/disk cache, fetch on miss)
+    if (isImage || isAudio) {
+      const targetCache = isImage ? IMAGE_CACHE_NAME : APP_CACHE_NAME;
       event.respondWith(
         caches.match(event.request).then((cached) => {
           if (cached) return cached;
           return fetch(event.request).then((response) => {
             if (response && response.status === 200) {
               const clone = response.clone();
-              caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
+              caches.open(targetCache).then((c) => c.put(event.request, clone));
             }
             return response;
           }).catch(() => cached);
@@ -105,18 +163,35 @@ self.addEventListener('fetch', (event) => {
       return;
     }
 
-    // HTML, JS, CSS: Stale-While-Revalidate (serve cache immediately, update in background)
+    // HTML, JS, CSS: Stale-While-Revalidate (fast load + background code update)
     event.respondWith(
       caches.match(event.request).then((cached) => {
         const fetchPromise = fetch(event.request).then((networkResponse) => {
           if (networkResponse && networkResponse.status === 200) {
             const clone = networkResponse.clone();
-            caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
+            caches.open(APP_CACHE_NAME).then((c) => c.put(event.request, clone));
           }
           return networkResponse;
         }).catch(() => cached);
 
         return cached || fetchPromise;
+      })
+    );
+    return;
+  }
+
+  // 2. Third-Party Fonts (Google Fonts stylesheets and font binaries)
+  if (url.origin.includes('fonts.googleapis.com') || url.origin.includes('fonts.gstatic.com')) {
+    event.respondWith(
+      caches.match(event.request).then((cached) => {
+        if (cached) return cached;
+        return fetch(event.request).then((response) => {
+          if (response && response.status === 200) {
+            const clone = response.clone();
+            caches.open(APP_CACHE_NAME).then((c) => c.put(event.request, clone));
+          }
+          return response;
+        });
       })
     );
   }
