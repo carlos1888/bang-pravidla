@@ -714,7 +714,7 @@
     const t = I18N[state.lang] || I18N.cs;
     
     if (els.resultsCount) {
-      els.resultsCount.innerHTML = `<img src="assets/icons/icon_cards.png" alt="" style="width: 22px; height: 22px; object-fit: contain; flex-shrink: 0; filter: drop-shadow(0 1px 1px rgba(0,0,0,0.25));"><span>${t.showingResults(cards.length, window.BANG_CARDS.length)}</span>`;
+      els.resultsCount.textContent = t.showingResults(cards.length, window.BANG_CARDS.length);
     }
 
     if (cards.length === 0) {
@@ -2704,7 +2704,7 @@
     container.innerHTML = `
       <div class="tool-card-box">
         <div class="tool-card-header">
-          <h2><img src="assets/symbols/symbol_reachable_distance.png" class="tool-btn-symbol" alt=""> ${isEn ? 'Saloon Distance & Range Radar' : 'Kalkulačka vzdálenosti a bojový radar'}</h2>
+          <h2>${isEn ? 'Saloon Distance & Range Radar' : 'Kalkulačka vzdálenosti a bojový radar'}</h2>
           <p class="tool-card-lead">${isEn ? 'Authentic rustic saloon table view with active target radar. Green seats are currently in weapon reach!' : 'Bojový radar saloonového stolu: zeleně označené židle jsou okamžitě v dostřelu zbraně!'}</p>
         </div>
 
@@ -3258,7 +3258,7 @@
     container.innerHTML = `
       <div class="tool-card-box">
         <div class="tool-card-header">
-          <h2><img src="assets/symbols/symbol_draw_check.png" class="tool-btn-symbol" alt=""> ${isEn ? 'Draw Arbitrator & Odds Calculator' : 'Arbitr snímání & Kalkulátor šancí'}</h2>
+          <h2>${isEn ? 'Draw Arbitrator & Odds Calculator' : 'Arbitr snímání & Kalkulátor šancí'}</h2>
           <p class="tool-card-lead">
             ${isEn
               ? 'Authoritative rulings for physical cards flipped at the table, dispute prevention, and mathematical survival odds.'
@@ -4068,7 +4068,7 @@
       container.innerHTML = `
         <div class="tool-card-box">
           <div class="tool-card-header">
-            <h2><span style="font-size: 1.5rem;">🎲</span> ${isEn ? 'Role & Character Draft' : 'Losovač rolí a postav'}</h2>
+            <h2>${isEn ? 'Role & Character Draft' : 'Losovač rolí a postav'}</h2>
             <p class="tool-card-lead">
               ${isEn
                 ? 'Secret "Pass the Phone" mode: choose player count (3–8), discover your secret role, and pick from 2 dealt characters.'
@@ -4952,7 +4952,7 @@
       <div class="tool-card-box">
         <div class="tool-card-header" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
           <div>
-            <h2><img src="assets/symbols/symbol_bang.png" class="tool-btn-symbol" alt=""> ${isEn ? 'Saloon Turn Clock & Duel Timer' : 'Šerifovy hodinky & Rychlý Duel'}</h2>
+            <h2>${isEn ? 'Saloon Turn Clock & Duel Timer' : 'Šerifovy hodinky & Rychlý Duel'}</h2>
             <p class="tool-card-lead">
               ${isEn
                 ? 'Keep game pace fast, prevent analysis paralysis, and run rapid-fire 5-second countdowns for duels.'
