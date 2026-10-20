@@ -2397,7 +2397,13 @@
 
     if (els.toolsSubnav) {
       els.toolsSubnav.querySelectorAll('.tool-subnav-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.tool === state.activeTool);
+        const isActive = btn.dataset.tool === state.activeTool;
+        btn.classList.toggle('active', isActive);
+        if (isActive && state.activeTab === 'nastroje') {
+          try {
+            btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+          } catch (err) {}
+        }
       });
     }
 
@@ -5997,7 +6003,7 @@
 
         <div class="soundboard-grid">
           ${sounds.map(s => `
-            <div class="sound-tile" data-snd="${s.id}" role="button" tabindex="0" title="${isEn ? s.nameEn : s.nameCs}" aria-label="${isEn ? s.nameEn : s.nameCs}">
+            <div class="sound-tile" data-snd="${s.id}" role="button" tabindex="0" aria-label="${isEn ? s.nameEn : s.nameCs}">
               <span class="sound-tile-icon"><img src="${s.icon}" class="sound-icon-img" alt="${isEn ? s.nameEn : s.nameCs}" width="48" height="48" loading="lazy"></span>
               <div class="sound-tile-name">${isEn ? s.nameEn : s.nameCs}</div>
             </div>
@@ -6091,6 +6097,9 @@
           els.toolsSubnav.querySelectorAll('.tool-subnav-btn').forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
           state.activeTool = btn.dataset.tool;
+          try {
+            btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+          } catch (err) {}
           renderTools();
         });
       });
