@@ -4950,23 +4950,21 @@
 
     container.innerHTML = `
       <div class="tool-card-box">
-        <div class="tool-card-header" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
-          <div>
-            <h2>${isEn ? 'Saloon Turn Clock & Duel Timer' : 'Šerifovy hodinky & Rychlý Duel'}</h2>
-            <p class="tool-card-lead">
-              ${isEn
-                ? 'Keep game pace fast, prevent analysis paralysis, and run rapid-fire 5-second countdowns for duels.'
-                : 'Udržujte rychlé tempo hry, zamezte zdlouhavému přemýšlení a zažijte napínavé 5vteřinové duely.'}
-            </p>
-          </div>
-          <div style="display: flex; gap: 0.5rem;">
+        <div class="tool-card-header" style="text-align: center;">
+          <h2>${isEn ? 'Saloon Turn Clock & Duel Timer' : 'Šerifovy hodinky & Rychlý Duel'}</h2>
+          <p class="tool-card-lead">
+            ${isEn
+              ? 'Keep game pace fast, prevent analysis paralysis, and run rapid-fire 5-second countdowns for duels.'
+              : 'Udržujte rychlé tempo hry, zamezte zdlouhavému přemýšlení a zažijte napínavé 5vteřinové duely.'}
+          </p>
+          <div style="display: flex; justify-content: center; align-items: center; gap: 0.75rem; margin-top: 1.15rem; flex-wrap: wrap;">
             <button type="button" class="btn-timer-mode ${timerState.mode === 'turn' ? 'active' : ''}" data-mode="turn"
-                    style="padding: 0.55rem 1rem; border-radius: 20px; border: 1.5px solid ${timerState.mode === 'turn' ? 'var(--color-gold)' : 'var(--border-color)'}; background: ${timerState.mode === 'turn' ? 'var(--color-gold)' : 'var(--bg-surface)'}; color: ${timerState.mode === 'turn' ? '#fff' : 'inherit'}; cursor: pointer; font-weight: bold; font-size: 0.88rem;">
+                    style="padding: 0.6rem 1.4rem; border-radius: 24px; border: 2px solid ${timerState.mode === 'turn' ? 'var(--color-gold)' : 'var(--border-color)'}; background: ${timerState.mode === 'turn' ? 'var(--color-gold)' : 'var(--bg-surface)'}; color: ${timerState.mode === 'turn' ? '#fff' : 'inherit'}; cursor: pointer; font-weight: 800; font-size: 0.95rem; display: inline-flex; align-items: center; justify-content: center; text-align: center; box-shadow: var(--shadow-sm); transition: all 0.2s ease;">
               ${isEn ? 'Turn Clock' : 'Hodinky tahu'}
             </button>
             <button type="button" class="btn-timer-mode ${timerState.mode === 'duel' ? 'active' : ''}" data-mode="duel"
-                    style="padding: 0.55rem 1rem; border-radius: 20px; border: 1.5px solid ${timerState.mode === 'duel' ? 'var(--color-gold)' : 'var(--border-color)'}; background: ${timerState.mode === 'duel' ? 'var(--color-gold)' : 'var(--bg-surface)'}; color: ${timerState.mode === 'duel' ? '#fff' : 'inherit'}; cursor: pointer; font-weight: bold; font-size: 0.88rem;">
-              <img src="assets/symbols/symbol_bang.png" class="rules-symbol-inline" alt=""> ${isEn ? 'Quick Duel (5s)' : 'Bleskový Duel (5s)'}
+                    style="padding: 0.6rem 1.4rem; border-radius: 24px; border: 2px solid ${timerState.mode === 'duel' ? 'var(--color-gold)' : 'var(--border-color)'}; background: ${timerState.mode === 'duel' ? 'var(--color-gold)' : 'var(--bg-surface)'}; color: ${timerState.mode === 'duel' ? '#fff' : 'inherit'}; cursor: pointer; font-weight: 800; font-size: 0.95rem; display: inline-flex; align-items: center; justify-content: center; text-align: center; box-shadow: var(--shadow-sm); transition: all 0.2s ease;">
+              ${isEn ? 'Quick Duel (5s)' : 'Bleskový Duel (5s)'}
             </button>
           </div>
         </div>
