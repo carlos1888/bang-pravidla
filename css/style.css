@@ -6141,6 +6141,30 @@ button.btn-secondary:active {
 }
 
 /* ==========================================================================
+   SETUP PRESETS & DECK BALANCER
+   ========================================================================== */
+.preset-setup-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.preset-setup-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  border-color: var(--color-gold) !important;
+}
+
+/* ==========================================================================
+   SALOON MINI-GAMES & DUEL
+   ========================================================================== */
+@keyframes duel-flash {
+  0% { background: #c0392b; box-shadow: 0 0 25px #e74c3c; }
+  50% { background: #e74c3c; box-shadow: 0 0 40px #f39c12; }
+  100% { background: #c0392b; box-shadow: 0 0 25px #e74c3c; }
+}
+#duel-tap-arena.duel-fire {
+  animation: duel-flash 0.5s infinite;
+}
+
+/* ==========================================================================
    PRINT FRIENDLY CHEAT SHEET STYLES
    ========================================================================== */
 #printable-cheat-sheet-root {

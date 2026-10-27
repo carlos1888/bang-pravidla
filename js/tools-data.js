@@ -898,8 +898,253 @@
       });
     }
 
+    // Afterlife rules indicator in checklist
+    if (hasGold || enabledExpansions.includes('valley-of-shadows') || enabledExpansions.includes('wild-west-show') || hasLegends) {
+      checklist.push({
+        id: 'step-afterlife-check',
+        category: isEn ? 'Afterlife & Ghosts' : 'Pravidla pro mrtvé hráče',
+        title: isEn ? 'Active Ghost & Resurrection Rules' : 'Aktivní pravidla pro vyřazené hráče',
+        desc: isEn
+          ? `Eliminated players do not just leave! Check the Afterlife Helper in Quick Helper tab to review Shadow Gunmen, Ghost card, and posthumous Feats rules.`
+          : `Vyřazení hráči neodchází od stolu! V záložce Rychlý pomocník si prohlédněte pravidla Stínových střelců (Zlatá horečka), karty Duch a posmrtných Činů.`
+      });
+    }
+
     return checklist;
   }
+
+  // =========================================================================
+  // 5B. SETUP PRESETS & COLLISION BALANCER
+  // =========================================================================
+  const SETUP_PRESETS = [
+    {
+      id: 'fast-shootout',
+      nameCs: 'Blesková přestřelka',
+      nameEn: 'Fast Shootout',
+      time: '20–30 min',
+      descCs: 'Základ + Pravé poledne. Bleskové tempo, žádné zdržování, vysoká úmrtnost a rychlý konec.',
+      descEn: 'Base Game + High Noon. Lightning pace, high lethality, fast game.',
+      expansions: ['base', 'high-noon'],
+      tagCs: 'Rychlá hra (zahřátí)',
+      tagEn: 'Quick Game (Warmup)'
+    },
+    {
+      id: 'gold-rails',
+      nameCs: 'Zlatá horečka na kolejích',
+      nameEn: 'Gold & Iron Rails',
+      time: '45–60 min',
+      descCs: 'Základ + Zlatá horečka + Velká vlaková loupež. Bohatá ekonomika, valouny zlata, nákup černých karet a posun vlakové soupravy.',
+      descEn: 'Base Game + Gold Rush + The Great Train Robbery. Rich economy, nuggets, black equipment cards and train cars.',
+      expansions: ['base', 'gold-rush', 'train-robbery'],
+      tagCs: 'Ekonomika a nákupy',
+      tagEn: 'Economy & Shopping'
+    },
+    {
+      id: 'epic-legends',
+      nameCs: 'Legendární duely',
+      nameEn: 'Epic Legends Duel',
+      time: '60–80 min',
+      descCs: 'Základ + Dodge City + Ozbrojení a nebezpeční + Legendy. Vrcholná taktická hra, zelené i oranžové karty a hrdinské Činy.',
+      descEn: 'Base Game + Dodge City + Armed & Dangerous + Legends. Peak tactical depth, green & orange cards, and heroic Feats.',
+      expansions: ['base', 'dodge-city', 'armed-dangerous', 'legends'],
+      tagCs: 'Taktická hra pro experty',
+      tagEn: 'Tactical for Experts'
+    },
+    {
+      id: 'mexican-shadows',
+      nameCs: 'Stíny a Divoký západ',
+      nameEn: 'Shadows & Wild West',
+      time: '40–50 min',
+      descCs: 'Základ + Údolí stínů + Divoký západ. Oživování mrtvých, duchové, drsné zbraně a nečekané události.',
+      descEn: 'Base Game + Valley of Shadows + Wild West Show. Resurrection, ghosts, gritty guns and wild global events.',
+      expansions: ['base', 'valley-of-shadows', 'wild-west-show'],
+      tagCs: 'Návraty ze záhrobí',
+      tagEn: 'Afterlife & Chaos'
+    },
+    {
+      id: 'dynamite-allin',
+      nameCs: 'Dynamite Box All-In',
+      nameEn: 'Dynamite Box All-In',
+      time: '90+ min',
+      descCs: 'Všech 10 rozšíření najednou pro maratonský herní večer. Doporučujeme hlídat čas tahů!',
+      descEn: 'All 10 expansions active at once for an epic marathon game night.',
+      expansions: ['base', 'dodge-city', 'gold-rush', 'armed-dangerous', 'train-robbery', 'valley-of-shadows', 'high-noon', 'fistful-of-cards', 'wild-west-show', 'legends', 'dynamite-box'],
+      tagCs: 'Kompletní maraton',
+      tagEn: 'Full Marathon'
+    }
+  ];
+
+  function detectSetupConflicts(expansions, isEn) {
+    const alerts = [];
+    const hasWWS = expansions.includes('wild-west-show');
+    const hasHN = expansions.includes('high-noon');
+    const hasFOC = expansions.includes('fistful-of-cards');
+    const hasGold = expansions.includes('gold-rush');
+    const hasValley = expansions.includes('valley-of-shadows');
+    const hasLegends = expansions.includes('legends');
+    const hasTrain = expansions.includes('train-robbery');
+    const hasArmed = expansions.includes('armed-dangerous');
+
+    if (hasWWS && (hasHN || hasFOC)) {
+      alerts.push({
+        type: 'warning',
+        titleCs: '⚠️ Dva nezávislé balíčky událostí',
+        titleEn: '⚠️ Two Separate Event Decks',
+        descCs: 'Máte aktivní události Šerifa (Pravé poledne / Pěst) i Divoký západ. Tyto balíčky se NIKDY nemíchají dohromady! Šerif otáčí kartu ze svého balíčku na začátku svého tahu, zatímco karty Divokého západu se otáčí POUZE při zahrání karet Dostavník nebo Wells Fargo.',
+        descEn: 'Sheriff Events (High Noon/Fistful) and Wild West Show are separate decks! Never shuffle them together. Wild West Show cards only flip when Stagecoach or Wells Fargo is played.'
+      });
+    }
+
+    if (hasGold && hasValley) {
+      alerts.push({
+        type: 'info',
+        titleCs: '👻 Interakce oživování a duchů',
+        titleEn: '👻 Resurrection & Ghost Interaction',
+        descCs: 'Hráč vyřazený jako Stínový střelec (Zlatá horečka) hraje dočasně pouze ve svém tahu. Pokud na něj někdo zahraje kartu Duch (Údolí stínů), vrací se do hry natrvalo bez životů.',
+        descEn: 'A player eliminated as Shadow Gunman (Gold Rush) only plays temporarily on their turn. If Ghost (Valley of Shadows) is played on them, they stay permanently in play without lives.'
+      });
+    }
+
+    if (hasLegends && expansions.length > 1) {
+      alerts.push({
+        type: 'info',
+        titleCs: '⚖️ Zvláštní pravidlo Legend pro Vězení',
+        titleEn: '⚖️ Legends Jail Rule Exemption',
+        descCs: 'Hráč uvězněný ve Vězení nemusí snímat – může dobrovolně z ruky odhodit 1 Srdcovou (♥) kartu a odehrát celý svůj tah normálně bez ztráty fází.',
+        descEn: 'A player in Jail may voluntarily discard 1 Heart (♥) card from hand instead of drawing to skip Jail and play normally.'
+      });
+    }
+
+    const heavyCount = [hasTrain, hasArmed, hasGold, hasLegends].filter(Boolean).length;
+    if (heavyCount >= 3) {
+      alerts.push({
+        type: 'caution',
+        titleCs: '⏳ Vysoká komplexita stolu & Čas tahů',
+        titleEn: '⏳ High Table Complexity',
+        descCs: 'Na stole máte současně více komplexních mechanik (vagony, žetony nabití, valouny zlata či činy). Doporučujeme hlídat čas tahů pomocí Šerifových hodinek (nástroj Hodinky & Duel).',
+        descEn: 'Multiple resource systems in play (train cars, load tokens, gold nuggets, feats). We recommend using the Turn Timer to keep games brisk.'
+      });
+    }
+
+    if (alerts.length === 0) {
+      alerts.push({
+        type: 'success',
+        titleCs: '✓ Skvěle vyvážená kombinace',
+        titleEn: '✓ Well-Balanced Deck Setup',
+        descCs: 'Zvolená kombinace rozšíření je plynulá, bez kolizí pravidel a zaručuje skvělý herní zážitek.',
+        descEn: 'This combination has no rule conflicts and provides great gameplay pacing.'
+      });
+    }
+
+    return alerts;
+  }
+
+  // =========================================================================
+  // 5C. AFTERLIFE ASSISTANT RULES DATABASE
+  // =========================================================================
+  const AFTERLIFE_RULES = [
+    {
+      id: 'gold-rush-shadows',
+      expId: 'gold-rush',
+      titleCs: 'Zlatá horečka — Stínoví střelci (Shadow Gunmen)',
+      titleEn: 'Gold Rush — Shadow Gunmen',
+      icon: 'assets/icons/icon_sheriff.png',
+      summaryCs: 'Vyřazený hráč neodchází od stolu! Dočasně ožívá v každém svém tahu se 2 kartami.',
+      summaryEn: 'Eliminated players stay at the table! Temporarily return each turn with 2 cards.',
+      rulesCs: [
+        'Když hráč ztratí poslední život, odhodí všechny karty z ruky a ze hry (jako obvykle).',
+        'V každém svém následujícím tahu dočasně ožije: dobere 2 karty z lízacího balíčku do ruky.',
+        'Může normálně hrát karty (včetně BANG!, vybavení, nákupů za zlato).',
+        'Nemá žádné životní body a nemůže být během tahu jiného hráče zraněn ani zabit.',
+        'Na konci svého tahu odhodí VŠECHNY zbývající karty z ruky a ze stolu a opět „zemře“.'
+      ],
+      rulesEn: [
+        'When a player loses their last life, they discard all cards in hand and in play.',
+        'On each of their subsequent turns, they temporarily re-enter: draw 2 cards from draw deck.',
+        'They can play cards normally (BANG!, equipment, gold purchases).',
+        'They have 0 life points and cannot be damaged or killed outside their turn.',
+        'At the end of their turn, they discard ALL remaining cards in hand and in play.'
+      ]
+    },
+    {
+      id: 'valley-ghosts',
+      expId: 'valley-of-shadows',
+      titleCs: 'Údolí stínů — Karta Duch & Hřbitov',
+      titleEn: 'Valley of Shadows — Ghost & Graveyard',
+      icon: 'assets/icons/icon_graveyard.png',
+      summaryCs: 'Modrá karta Duch udrží vyřazeného hráče ve hře bez životů.',
+      summaryEn: 'Blue Ghost card keeps an eliminated player in play without lives.',
+      rulesCs: [
+        'Karta Duch (Ghost, modrý okraj): Lze zahrát na libovolného vyřazeného hráče.',
+        'Tento hráč se vrací do hry bez životů: líže standardně 2 karty na začátku tahu a hraje normálně.',
+        'Nemůže ztratit životy (ani získat Pivem). Pokud je však karta Duch zničena (Cat Balou, Panika), hráč opět okamžitě umírá.',
+        'Karta Hřbitov (Graveyard): Umožňuje oživení při sejmutí karty.'
+      ],
+      rulesEn: [
+        'Ghost (blue card): Can be played on any eliminated player.',
+        'This player returns to play without lives: draws standard 2 cards and plays normally.',
+        'Cannot lose or gain lives. If Ghost is discarded (Cat Balou/Panic), player dies immediately.',
+        'Graveyard card allows dead players to return to life on a draw check.'
+      ]
+    },
+    {
+      id: 'wws-ghost-town',
+      expId: 'wild-west-show',
+      titleCs: 'Divoký západ — Globální událost Město duchů',
+      titleEn: 'Wild West Show — Ghost Town Event',
+      icon: 'assets/icons/icon_brawl.png',
+      summaryCs: 'Během této události všichni mrtví hráči ožijí a lížou 3 karty!',
+      summaryEn: 'All dead players temporarily resurrect and draw 3 cards during this event!',
+      rulesCs: [
+        'Když vstoupí v platnost událost Město duchů (Ghost Town), všichni vyřazení hráči se vrátí do hry.',
+        'Ve své Fázi 1 doberou 3 karty namísto 2.',
+        'Nemohou být eliminováni. Na konci kola po odehrání všech tahů se opět vrací mezi vyřazené.'
+      ],
+      rulesEn: [
+        'When Ghost Town event is active, all eliminated players temporarily return.',
+        'They draw 3 cards instead of 2 in Phase 1.',
+        'Cannot be eliminated. Once the round ends, they return to the cemetery.'
+      ]
+    },
+    {
+      id: 'legends-feats',
+      expId: 'legends',
+      titleCs: 'Legendy — Posmrtné dokončení činů',
+      titleEn: 'Legends — Posthumous Feats',
+      icon: 'assets/icons/icon_cards.png',
+      summaryCs: 'Vyřazená Legenda dál pomáhá svému týmu skrze karty Činů.',
+      summaryEn: 'Eliminated Legends continue assisting their faction through Feat cards.',
+      rulesCs: [
+        'Když je hráč hrající za Legendu vyřazen, jeho vyložené nedokončené karty Činů zůstávají na stole.',
+        'Spoluhráči ze stejné frakce (např. zbývající Bandité) mohou tyto Činy dokončit a využít jejich legendární odměnu pro vítězství.',
+        'Pokud Legenda padne, hráč, který ji vyřadil, nezískává žádné žetony slávy.'
+      ],
+      rulesEn: [
+        'When a Legend player is eliminated, their unfinished Feat cards remain on the table.',
+        'Teammates of the same faction can complete these Feats to gain victory bonuses.',
+        'The killer of a Legend does not claim their Fame tokens.'
+      ]
+    },
+    {
+      id: 'base-bounties',
+      expId: 'base',
+      titleCs: 'Základní hra — Odměny a tresty za zabití',
+      titleEn: 'Base Game — Kill Bounties & Penalties',
+      icon: 'assets/icons/icon_coins.png',
+      summaryCs: '3 karty za zabití Bandity, trest odhození všech karet za zabití Vice Šerifem.',
+      summaryEn: '3 cards for killing an Outlaw; Sheriff discards all cards if killing a Deputy.',
+      rulesCs: [
+        'Zabití Bandity: Kdokoliv (včetně Bandity) zabije Banditu, okamžitě líže 3 karty jako odměnu.',
+        'Pokud Bandita zemře na Dynamit, odměnu 3 karet nezískává nikdo!',
+        'Trest pro Šerifa: Pokud Šerif zabije svého Zástupce (Vice), musí okamžitě odhodit všechny karty z ruky i ze stolu!'
+      ],
+      rulesEn: [
+        'Killing an Outlaw: The killer immediately draws 3 cards as a bounty.',
+        'If an Outlaw dies by Dynamite, no one draws the bounty!',
+        'Sheriff penalty: If Sheriff eliminates a Deputy, Sheriff must discard all cards in hand and in play!'
+      ]
+    }
+  ];
 
   // =========================================================================
   // 6. DRAW! SIMULATOR ENGINE (FRENCH 52-CARD DECK & RULE PRESETS)
@@ -1535,6 +1780,235 @@
     }
   };
 
+  // =========================================================================
+  // 10. SALOON MINI-GAMES ENGINE (RUSSIAN ROULETTE & QUICK DRAW)
+  // =========================================================================
+  const RouletteEngine = {
+    chambersCount: 6,
+    bulletChamber: Math.floor(Math.random() * 6),
+    currentChamber: 0,
+    fired: false,
+    shotsFired: 0,
+
+    spin: () => {
+      RouletteEngine.bulletChamber = Math.floor(Math.random() * 6);
+      RouletteEngine.currentChamber = 0;
+      RouletteEngine.fired = false;
+      RouletteEngine.shotsFired = 0;
+      return {
+        bulletChamber: RouletteEngine.bulletChamber,
+        currentChamber: RouletteEngine.currentChamber
+      };
+    },
+
+    pullTrigger: () => {
+      if (RouletteEngine.fired) {
+        RouletteEngine.spin();
+      }
+      const chamber = RouletteEngine.currentChamber;
+      const isLive = chamber === RouletteEngine.bulletChamber;
+      RouletteEngine.shotsFired++;
+      RouletteEngine.currentChamber = (RouletteEngine.currentChamber + 1) % 6;
+      if (isLive) {
+        RouletteEngine.fired = true;
+      }
+      return {
+        chamber,
+        isLive,
+        shotsFired: RouletteEngine.shotsFired,
+        remainingChambers: 6 - RouletteEngine.shotsFired
+      };
+    }
+  };
+
+  // =========================================================================
+  // 11. LEAGUE & CAMPAIGN ENGINE (PERSISTENT MULTI-SESSION TRACKER)
+  // =========================================================================
+  const LEAGUE_STORAGE_KEY = 'bang_companion_league_v1';
+
+  const LeagueTracker = {
+    getData: () => {
+      try {
+        const raw = localStorage.getItem(LEAGUE_STORAGE_KEY);
+        return raw ? JSON.parse(raw) : {
+          seasonName: 'Saloonová liga 2026',
+          players: [
+            { id: 'p_1', name: 'Šerif Carlos', points: 14, games: 4, wins: 3, kills: 5, outlawWins: 1, renegadeWins: 0 },
+            { id: 'p_2', name: 'Rychlý Petr', points: 11, games: 4, wins: 2, kills: 4, outlawWins: 2, renegadeWins: 0 },
+            { id: 'p_3', name: 'Divoká Lucka', points: 8, games: 3, wins: 2, kills: 2, outlawWins: 1, renegadeWins: 0 }
+          ],
+          history: []
+        };
+      } catch (e) {
+        return { seasonName: 'Saloonová liga 2026', players: [], history: [] };
+      }
+    },
+
+    saveData: (data) => {
+      try {
+        localStorage.setItem(LEAGUE_STORAGE_KEY, JSON.stringify(data));
+        return true;
+      } catch (e) {
+        return false;
+      }
+    },
+
+    addPlayer: (name) => {
+      const data = LeagueTracker.getData();
+      const trimmed = (name || '').trim();
+      if (!trimmed) return data;
+      const newP = {
+        id: 'p_' + Date.now(),
+        name: trimmed,
+        points: 0,
+        games: 0,
+        wins: 0,
+        kills: 0,
+        outlawWins: 0,
+        renegadeWins: 0
+      };
+      data.players.push(newP);
+      LeagueTracker.saveData(data);
+      return data;
+    },
+
+    removePlayer: (id) => {
+      const data = LeagueTracker.getData();
+      data.players = data.players.filter(p => p.id !== id);
+      LeagueTracker.saveData(data);
+      return data;
+    },
+
+    recordMatchResult: (matchResult) => {
+      const data = LeagueTracker.getData();
+      const isOutlawWin = matchResult.winnerFaction === 'outlaw';
+      const isRenegadeWin = matchResult.winnerFaction === 'renegade';
+      const isSheriffWin = matchResult.winnerFaction === 'sheriff';
+
+      data.players.forEach(p => {
+        if (matchResult.participants && matchResult.participants.includes(p.id)) {
+          p.games = (p.games || 0) + 1;
+        }
+        const won = matchResult.winners && matchResult.winners.includes(p.id);
+        if (won) {
+          p.wins = (p.wins || 0) + 1;
+          if (isRenegadeWin) {
+            p.points = (p.points || 0) + 6;
+            p.renegadeWins = (p.renegadeWins || 0) + 1;
+          } else if (isSheriffWin) {
+            p.points = (p.points || 0) + 4;
+          } else {
+            p.points = (p.points || 0) + 3;
+            if (isOutlawWin) p.outlawWins = (p.outlawWins || 0) + 1;
+          }
+        }
+        const kills = (matchResult.kills && matchResult.kills[p.id]) || 0;
+        p.kills = (p.kills || 0) + kills;
+        p.points = (p.points || 0) + kills;
+      });
+
+      data.history.unshift({
+        id: 'lh_' + Date.now(),
+        date: new Date().toLocaleDateString(),
+        ...matchResult
+      });
+
+      LeagueTracker.saveData(data);
+      return data;
+    },
+
+    resetSeason: (newName) => {
+      const data = LeagueTracker.getData();
+      data.seasonName = newName || data.seasonName;
+      data.players.forEach(p => {
+        p.points = 0;
+        p.games = 0;
+        p.wins = 0;
+        p.kills = 0;
+        p.outlawWins = 0;
+        p.renegadeWins = 0;
+      });
+      data.history = [];
+      LeagueTracker.saveData(data);
+      return data;
+    },
+
+    getPlayerTitle: (p, isEn) => {
+      if (!p) return isEn ? 'Greenhorn' : 'Zelenáč';
+      if ((p.points || 0) >= 20) return isEn ? '★ Town Mayor' : '★ Starosta města';
+      if ((p.kills || 0) >= 5) return isEn ? '💀 Bounty Hunter' : '💀 Lovec odměn';
+      if ((p.outlawWins || 0) >= 3) return isEn ? '💣 Most Wanted Outlaw' : '💣 Nejhledanější bandita kraje';
+      if ((p.renegadeWins || 0) >= 1) return isEn ? '🎯 Shadow Renegade' : '🎯 Mistr intrik (Odpadlík)';
+      if ((p.wins || 0) >= 3) return isEn ? '⭐ Deputy Sheriff' : '⭐ Šerifova pravá ruka';
+      if ((p.games || 0) >= 3) return isEn ? '🌵 Saloon Veteran' : '🌵 Saloonový veterán';
+      return isEn ? '🤠 Greenhorn' : '🤠 Zelenáč';
+    },
+
+    generateMatchTelegram: (m, isEn) => {
+      const factionNames = {
+        sheriff: isEn ? '★ Law & Sheriff' : '★ Šerif a Pomocníci zákona',
+        outlaws: isEn ? '⚔️ Outlaws' : '⚔️ Bandité',
+        renegade: isEn ? '🎯 Renegade' : '🎯 Odpadlík',
+        ironhorse: isEn ? '⚙️ Ironhorse' : '⚙️ Železný oř'
+      };
+      const faction = factionNames[m.winner] || (isEn ? 'Unknown' : 'Neznámá');
+      if (isEn) {
+        return `🤠 *BANG! SALOON DISPATCH* 🤠\n` +
+               `-------------------------------\n` +
+               `🏆 *Victorious Faction:* ${faction}\n` +
+               `👥 *Players:* ${m.playersCount || '?'} | ⏱️ *Duration:* ${m.durationMin || '?'} min\n` +
+               (m.sheriffChar ? `★ *Sheriff:* ${m.sheriffChar}\n` : '') +
+               (m.mvpChar ? `🌟 *MVP Hero:* ${m.mvpChar}\n` : '') +
+               (m.notes ? `📜 *Notes:* "${m.notes}"\n` : '') +
+               `-------------------------------\n` +
+               `📍 Logged in BANG! Companion\n` +
+               `https://carlos1888.github.io/bang-pravidla/`;
+      } else {
+        return `🤠 *BANG! TELEGRAM ZE SALOONU* 🤠\n` +
+               `-------------------------------\n` +
+               `🏆 *Vítězná strana:* ${faction}\n` +
+               `👥 *Počet hráčů:* ${m.playersCount || '?'} | ⏱️ *Délka:* ${m.durationMin || '?'} min\n` +
+               (m.sheriffChar ? `★ *Šerif:* ${m.sheriffChar}\n` : '') +
+               (m.mvpChar ? `🌟 *Hvězda zápasu (MVP):* ${m.mvpChar}\n` : '') +
+               (m.notes ? `📜 *Zápis:* "${m.notes}"\n` : '') +
+               `-------------------------------\n` +
+               `📍 Zaznamenáno v aplikaci BANG! Companion\n` +
+               `https://carlos1888.github.io/bang-pravidla/`;
+      }
+    },
+
+    generateLeagueTelegram: (leagueData, isEn) => {
+      const sorted = [...(leagueData.players || [])].sort((a, b) => (b.points || 0) - (a.points || 0));
+      if (isEn) {
+        let msg = `🏆 *BANG! SEASON LEAGUE STANDINGS* 🏆\n` +
+                  `Season: ${leagueData.seasonName || 'Saloon League'}\n` +
+                  `-------------------------------\n`;
+        sorted.forEach((p, idx) => {
+          const medal = idx === 0 ? '🥇' : idx === 1 ? '🥈' : idx === 2 ? '🥉' : `${idx + 1}.`;
+          const title = LeagueTracker.getPlayerTitle(p, true);
+          msg += `${medal} *${p.name}* — ${p.points || 0} pts (${p.wins || 0}W / ${p.kills || 0} kills) [${title}]\n`;
+        });
+        msg += `-------------------------------\n` +
+               `🔫 Ready your Colts for the next game night!\n` +
+               `https://carlos1888.github.io/bang-pravidla/`;
+        return msg;
+      } else {
+        let msg = `🏆 *AKTUÁLNÍ TABULKA LIGY BANG!* 🏆\n` +
+                  `Sezóna: ${leagueData.seasonName || 'Saloonová liga'}\n` +
+                  `-------------------------------\n`;
+        sorted.forEach((p, idx) => {
+          const medal = idx === 0 ? '🥇' : idx === 1 ? '🥈' : idx === 2 ? '🥉' : `${idx + 1}.`;
+          const title = LeagueTracker.getPlayerTitle(p, false);
+          msg += `${medal} *${p.name}* — ${p.points || 0} b (${p.wins || 0} výher, ${p.kills || 0} zářezů) [${title}]\n`;
+        });
+        msg += `-------------------------------\n` +
+               `🔫 Připravte si kolty na příští herní večer!\n` +
+               `https://carlos1888.github.io/bang-pravidla/`;
+        return msg;
+      }
+    }
+  };
+
   // Export to window
   window.BANG_TOOLS = {
     SoundFX,
@@ -1542,8 +2016,13 @@
     DistanceCalc,
     getCardSynergiesAndCounters,
     getSetupChecklist,
+    SetupPresets: SETUP_PRESETS,
+    detectSetupConflicts,
+    AfterlifeRules: AFTERLIFE_RULES,
     DrawSimulator,
     MatchTracker,
+    LeagueTracker,
+    RouletteEngine,
     Scenarios: BANG_SCENARIOS,
     TrainManager,
     GoldRushStore

@@ -346,7 +346,8 @@
       'tracker': isEn ? 'Virtual Board' : 'Virtuální deska',
       'matches': isEn ? 'Match Tracker' : 'Zápisník partií',
       'quiz': isEn ? 'Rules Quiz' : 'Kvíz pravidel',
-      'soundboard': isEn ? 'Soundboard' : 'Soundboard'
+      'soundboard': isEn ? 'Soundboard' : 'Soundboard',
+      'minigames': isEn ? 'Saloon Mini-Games' : 'Saloonové minihry'
     };
     Object.entries(toolLabels).forEach(([id, text]) => {
       const el = document.getElementById(`tool-label-${id}`);
@@ -1525,11 +1526,16 @@
   // =========================================================================
   // Shared sound evaluator for draw checks (Tah hráče, Arbitr snímání)
   function playDrawSound(preset, status) {
+    if (typeof drawSimulatorState !== 'undefined' && drawSimulatorState.soundMuted) return;
     if (!window.BANG_TOOLS || !window.BANG_TOOLS.SoundFX) return;
     const sfx = window.BANG_TOOLS.SoundFX;
     if (preset === 'dynamite') {
-      if (status === 'failure') sfx.playDynamite(); // Exploded! (♠ 2-9)
-      else sfx.playRicochet(); // Passed safely to player on left
+      if (status === 'failure') {
+        sfx.playCock();
+        setTimeout(() => sfx.playDynamite(), 200); // Sršící doutnák & výbuch
+      } else {
+        sfx.playRicochet(); // Passed safely to player on left
+      }
     } else if (preset === 'jail') {
       if (status === 'failure') sfx.playJail(); // Still in jail (heavy iron door slams shut)
       else sfx.playHorse(); // Escaped jail (rode away on horseback)
@@ -2212,6 +2218,78 @@
     window.BANG_TOOLS.openPrintCheatSheet = openPrintCheatSheet;
   }
 
+  const afterlifeState = {
+    selectedExp: 'all'
+  };
+
+  function renderAfterlifeSection(isEn) {
+    const rules = (window.BANG_TOOLS && window.BANG_TOOLS.AfterlifeRules) || [];
+    const filterOptions = [
+      { id: 'all', labelCs: 'Všechna pravidla smrti', labelEn: 'All Afterlife Rules' },
+      { id: 'gold-rush', labelCs: 'Zlatá horečka', labelEn: 'Gold Rush' },
+      { id: 'valley-of-shadows', labelCs: 'Údolí stínů', labelEn: 'Valley of Shadows' },
+      { id: 'wild-west-show', labelCs: 'Divoký západ', labelEn: 'Wild West Show' },
+      { id: 'legends', labelCs: 'Legendy', labelEn: 'Legends' },
+      { id: 'base', labelCs: 'Základní hra', labelEn: 'Base Game' }
+    ];
+
+    const filtered = afterlifeState.selectedExp === 'all'
+      ? rules
+      : rules.filter(r => r.expId === afterlifeState.selectedExp);
+
+    return `
+      <div class="afterlife-assistant-container" style="margin-bottom: 2rem; background: var(--bg-surface); border: 2px solid var(--color-brown); border-radius: var(--radius-lg); padding: 1.5rem; box-shadow: var(--shadow-md);">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.25rem;">
+          <div>
+            <h2 style="font-family: var(--font-western); color: var(--color-brown); font-size: 1.45rem; margin-bottom: 0.35rem; display: flex; align-items: center; gap: 0.5rem;">
+              👻 ${isEn ? 'Eliminated Players & Afterlife Assistant' : 'Asistent pro vyřazené hráče (Pravidla po smrti & Duchové)'}
+            </h2>
+            <p style="font-size: 0.92rem; color: var(--text-muted); margin: 0; line-height: 1.45;">
+              ${isEn 
+                ? 'Eliminated early? Check if your active expansions let you return as a ghost, aid your allies from the grave, or take revenge!' 
+                : 'Byl jsi vyřazen ze hry hned zkraje? Zjisti, jaká pravidla platí pro mrtvé hráče v aktivních rozšířeních — Stínoví střelci, karty duchů, oživení i posmrtné činy!'}
+            </p>
+          </div>
+        </div>
+
+        <!-- Filter chips -->
+        <div style="display: flex; gap: 0.45rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
+          ${filterOptions.map(opt => `
+            <button type="button" class="tool-subnav-btn ${afterlifeState.selectedExp === opt.id ? 'active' : ''} btn-afterlife-filter" 
+                    data-afterlife-filter="${opt.id}" 
+                    style="font-size: 0.82rem; padding: 0.4rem 0.85rem; cursor: pointer; border-radius: 20px;">
+              ${isEn ? opt.labelEn : opt.labelCs}
+            </button>
+          `).join('')}
+        </div>
+
+        <!-- Rules Grid -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.15rem;">
+          ${filtered.map(r => `
+            <div style="background: var(--bg-card); border: 1.5px solid var(--border-color); border-radius: 10px; padding: 1.15rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: var(--shadow-sm);">
+              <div>
+                <div style="display: flex; align-items: center; gap: 0.65rem; margin-bottom: 0.75rem;">
+                  <img src="${r.icon}" alt="" style="width: 28px; height: 28px; object-fit: contain; flex-shrink: 0;">
+                  <h3 style="font-family: var(--font-western); font-size: 1.12rem; color: var(--color-brown); margin: 0;">
+                    ${isEn ? r.titleEn : r.titleCs}
+                  </h3>
+                </div>
+                <div style="background: rgba(123, 60, 16, 0.08); border-left: 3.5px solid var(--color-brown); padding: 0.55rem 0.8rem; border-radius: 4px; font-size: 0.88rem; font-weight: 700; color: var(--color-brown); margin-bottom: 0.85rem;">
+                  ${isEn ? r.summaryEn : r.summaryCs}
+                </div>
+                <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.85rem; line-height: 1.5; color: var(--text-color);">
+                  ${(isEn ? r.rulesEn : r.rulesCs).map(rule => `
+                    <li style="margin-bottom: 0.45rem;">${rule}</li>
+                  `).join('')}
+                </ul>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }
+
   function renderQuickHelper() {
     if (!els.pomocnikTarget) return;
     const isEn = state.lang === 'en';
@@ -2221,12 +2299,20 @@
           ${isEn ? 'Print Quick Player Cheat Sheet (A4 / PDF)' : 'Vytisknout rychlý tahák pro hráče (A4 / PDF)'}
         </button>
       </div>
+      ${renderAfterlifeSection(isEn)}
       ${isEn ? window.BANG_HELPER_HTML_EN : window.BANG_HELPER_HTML_CS}
     `;
     const btn = document.getElementById('btn-print-cheat-sheet-helper');
     if (btn) {
       btn.addEventListener('click', openPrintCheatSheet);
     }
+
+    els.pomocnikTarget.querySelectorAll('.btn-afterlife-filter').forEach(btnF => {
+      btnF.addEventListener('click', () => {
+        afterlifeState.selectedExp = btnF.dataset.afterlifeFilter;
+        renderQuickHelper();
+      });
+    });
   }
 
   // =========================================================================
@@ -2300,6 +2386,8 @@
   function renderSetupAssistant(container) {
     const isEn = state.lang === 'en';
     const checklist = window.BANG_TOOLS ? window.BANG_TOOLS.getSetupChecklist(setupState.players, setupState.expansions, isEn) : [];
+    const conflicts = window.BANG_TOOLS && window.BANG_TOOLS.detectSetupConflicts ? window.BANG_TOOLS.detectSetupConflicts(setupState.expansions, isEn) : [];
+    const presets = window.BANG_TOOLS && window.BANG_TOOLS.SetupPresets ? window.BANG_TOOLS.SetupPresets : [];
 
     const totalItems = checklist.length;
     const checkedCount = checklist.filter(it => setupState.checkedItems[it.id]).length;
@@ -2322,41 +2410,72 @@
     container.innerHTML = `
       <div class="tool-card-box">
         <div class="tool-card-header">
-          <h2>${isEn ? 'Table Setup Configurator' : 'Asistent přípravy hry na míru'}</h2>
+          <h2>${isEn ? 'Table Setup Configurator & Deck Balancer' : 'Asistent přípravy hry & Balancér balíčků'}</h2>
           <p class="tool-card-lead">
             ${isEn
-              ? 'Select your player count and active expansions to generate an exact tailored preparation checklist with official rules.'
-              : 'Zvolte počet hráčů a aktivní rozšíření pro vygenerování přesného oficiálního plánu přípravy stolu.'}
+              ? 'Select verified game pack presets or customize active expansions. The system automatically detects rule conflicts and balances table pacing.'
+              : 'Zvolte ověřené herní sestavy nebo si nakombinujte vlastní rozšíření. Systém automaticky detekuje kolize pravidel a hlídá tempo stolu.'}
           </p>
         </div>
 
         <!-- Configuration Bar -->
         <div style="background: var(--bg-surface); padding: 1.25rem; border-radius: var(--radius-md); border: 1.5px solid var(--border-color); margin-bottom: 1.5rem;">
-          <!-- Player Count Selector -->
-          <div style="margin-bottom: 1.25rem;">
+          <!-- 1. Player Count Selector -->
+          <div style="margin-bottom: 1.35rem;">
             <label style="font-weight: 800; font-size: 0.95rem; display: block; margin-bottom: 0.5rem; color: var(--color-brown);">
               ${isEn ? 'Number of Players (3–8):' : 'Počet hráčů u stolu (3–8):'}
             </label>
             <div style="display: flex; gap: 0.45rem; flex-wrap: wrap;">
               ${[3, 4, 5, 6, 7, 8].map(n => `
-                <button type="button" class="seat-btn ${n === setupState.players ? 'active-shooter' : ''}" data-setup-players="${n}" style="font-size: 1.1rem; padding: 0.5rem 1rem; cursor: pointer;">
+                <button type="button" class="seat-btn ${n === setupState.players ? 'active-shooter' : ''}" data-setup-players="${n}" style="font-size: 1.05rem; padding: 0.48rem 0.95rem; cursor: pointer;">
                   ${n} ${isEn ? 'players' : (n === 3 || n === 4 ? 'hráči' : 'hráčů')}
                 </button>
               `).join('')}
             </div>
           </div>
 
-          <!-- Expansion Toggles -->
+          <!-- 2. Recommended Presets (Deck Balancer) -->
+          <div style="margin-bottom: 1.35rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem;">
+              <label style="font-weight: 800; font-size: 0.95rem; color: var(--color-brown);">
+                ⚖️ ${isEn ? 'Recommended Game Setups (Deck Balancer):' : 'Doporučené sestavy rozšíření (Balancér balíčků):'}
+              </label>
+              <span style="font-size: 0.78rem; color: var(--text-muted); font-style: italic;">
+                ${isEn ? 'Tap to instantly configure verified balanced sets' : 'Klepnutím okamžitě nastavíte vyvážený balíček'}
+              </span>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 0.65rem;">
+              ${presets.map(preset => {
+                const isCurrent = preset.expansions.length === setupState.expansions.length && preset.expansions.every(e => setupState.expansions.includes(e));
+                return `
+                  <div class="preset-setup-card ${isCurrent ? 'active' : ''}" data-preset-id="${preset.id}" style="background: ${isCurrent ? 'rgba(212, 154, 0, 0.14)' : 'var(--bg-card)'}; border: 1.5px solid ${isCurrent ? 'var(--color-gold)' : 'var(--border-color)'}; border-radius: 8px; padding: 0.75rem; cursor: pointer; transition: all 0.2s ease; box-shadow: ${isCurrent ? '0 3px 8px rgba(0,0,0,0.15)' : 'none'};">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 0.35rem; margin-bottom: 0.3rem;">
+                      <strong style="font-size: 0.92rem; color: ${isCurrent ? '#8a5900' : 'var(--color-brown)'};">${isEn ? preset.nameEn : preset.nameCs}</strong>
+                      <span style="font-size: 0.74rem; background: var(--bg-surface); padding: 0.15rem 0.45rem; border-radius: 4px; border: 1px solid var(--border-color); white-space: nowrap; font-weight: 700;">⏱️ ${preset.time}</span>
+                    </div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.35; margin-bottom: 0.45rem;">
+                      ${isEn ? preset.descEn : preset.descCs}
+                    </div>
+                    <div style="font-size: 0.74rem; font-weight: 800; color: ${isCurrent ? '#b37e00' : 'var(--color-brown)'};">
+                      ${isEn ? preset.tagEn : preset.tagCs}
+                    </div>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+          </div>
+
+          <!-- 3. Expansion Checkboxes -->
           <div>
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem; flex-wrap: wrap; gap: 0.5rem;">
               <label style="font-weight: 800; font-size: 0.95rem; color: var(--color-brown);">
-                ${isEn ? 'Active Expansions in Play:' : 'Aktivní rozšíření pro dnešní hru:'}
+                ${isEn ? 'Custom Expansion Toggle:' : 'Vlastní výběr aktivních rozšíření:'}
               </label>
               <div style="display: flex; gap: 0.4rem;">
-                <button type="button" id="btn-setup-all-exps" class="tool-subnav-btn" style="padding: 0.35rem 0.75rem; font-size: 0.8rem; cursor: pointer;">
+                <button type="button" id="btn-setup-all-exps" class="tool-subnav-btn" style="padding: 0.32rem 0.7rem; font-size: 0.78rem; cursor: pointer;">
                   ${isEn ? 'All Expansions' : 'Všechna rozšíření'}
                 </button>
-                <button type="button" id="btn-setup-base-only" class="tool-subnav-btn" style="padding: 0.35rem 0.75rem; font-size: 0.8rem; cursor: pointer;">
+                <button type="button" id="btn-setup-base-only" class="tool-subnav-btn" style="padding: 0.32rem 0.7rem; font-size: 0.78rem; cursor: pointer;">
                   ${isEn ? 'Base Only' : 'Pouze základ'}
                 </button>
               </div>
@@ -2368,6 +2487,21 @@
                   <input type="checkbox" data-setup-exp="${exp.id}" ${setupState.expansions.includes(exp.id) ? 'checked' : ''} ${exp.id === 'base' ? 'disabled checked' : ''}>
                   <span>${isEn ? exp.nameEn : exp.nameCs}</span>
                 </label>
+              `).join('')}
+            </div>
+          </div>
+
+          <!-- 4. Rule Collision & Balance Detector -->
+          <div style="margin-top: 1.25rem; border-top: 1px dashed var(--border-color); padding-top: 0.85rem;">
+            <div style="font-size: 0.84rem; font-weight: 800; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.5rem; letter-spacing: 0.4px;">
+              ${isEn ? 'Rule Collision & Table Balance Detector:' : 'Detektor kolizí pravidel a vyvážení stolu:'}
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+              ${conflicts.map(c => `
+                <div style="border-radius: 8px; padding: 0.65rem 0.95rem; font-size: 0.86rem; line-height: 1.45; border: 1.5px solid ${c.type === 'warning' ? '#e67e22' : (c.type === 'caution' ? '#f39c12' : (c.type === 'success' ? '#27ae60' : '#2980b9'))}; background: ${c.type === 'warning' ? 'rgba(230, 126, 34, 0.08)' : (c.type === 'caution' ? 'rgba(243, 156, 18, 0.08)' : (c.type === 'success' ? 'rgba(39, 174, 96, 0.08)' : 'rgba(41, 128, 185, 0.08)'))};">
+                  <strong style="color: ${c.type === 'warning' ? '#d35400' : (c.type === 'caution' ? '#b37e00' : (c.type === 'success' ? '#219653' : '#1b4965'))};">${isEn ? c.titleEn : c.titleCs}</strong>
+                  <div style="margin-top: 0.2rem; color: var(--text-color);">${isEn ? c.descEn : c.descCs}</div>
+                </div>
               `).join('')}
             </div>
           </div>
@@ -2437,6 +2571,17 @@
       btn.addEventListener('click', () => {
         setupState.players = parseInt(btn.dataset.setupPlayers, 10);
         renderSetupAssistant(container);
+      });
+    });
+
+    container.querySelectorAll('.preset-setup-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const pid = card.dataset.presetId;
+        const targetPreset = presets.find(p => p.id === pid);
+        if (targetPreset) {
+          setupState.expansions = [...targetPreset.expansions];
+          renderSetupAssistant(container);
+        }
       });
     });
 
@@ -2543,6 +2688,8 @@
       renderRulesQuiz(els.toolsContentArea);
     } else if (state.activeTool === 'soundboard') {
       renderSoundboard(els.toolsContentArea);
+    } else if (state.activeTool === 'minigames') {
+      renderMiniGames(els.toolsContentArea);
     }
   }
 
@@ -3239,7 +3386,8 @@
     selectedValue: 'K',
     evaluatedCard: null,
     result: null,
-    history: []
+    history: [],
+    soundMuted: false
   };
 
   function renderDrawSimulator(container) {
@@ -3284,13 +3432,18 @@
 
     container.innerHTML = `
       <div class="tool-card-box">
-        <div class="tool-card-header">
-          <h2>${isEn ? 'Draw Arbitrator & Odds Calculator' : 'Arbitr snímání & Kalkulátor šancí'}</h2>
-          <p class="tool-card-lead">
-            ${isEn
-              ? 'Authoritative rulings for physical cards flipped at the table, dispute prevention, and mathematical survival odds.'
-              : 'Nezpochybnitelný oficiální verdikt pro kartu otočenou ze stolu, řešení hádek u hry a přesné matematické šance na přežití.'}
-          </p>
+        <div class="tool-card-header" style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap;">
+          <div>
+            <h2>${isEn ? 'Draw Arbitrator & Odds Calculator' : 'Arbitr snímání & Kalkulátor šancí'}</h2>
+            <p class="tool-card-lead">
+              ${isEn
+                ? 'Authoritative rulings for physical cards flipped at the table, dispute prevention, and mathematical survival odds.'
+                : 'Nezpochybnitelný oficiální verdikt pro kartu otočenou ze stolu, řešení hádek u hry, přesné matematické šance na přežití a dramatické audio vyhodnocení.'}
+            </p>
+          </div>
+          <button type="button" id="btn-draw-mute-toggle" class="tool-subnav-btn ${drawSimulatorState.soundMuted ? '' : 'active'}" style="padding: 0.45rem 1rem; font-size: 0.86rem; cursor: pointer; border-radius: 20px; font-weight: 700; white-space: nowrap; display: inline-flex; align-items: center; gap: 0.45rem; box-shadow: 0 2px 6px rgba(0,0,0,0.12);">
+            ${drawSimulatorState.soundMuted ? (isEn ? '🔇 Silent Mode' : '🔇 Tichý režim (Zvuk VYP)') : (isEn ? '🔊 Sound FX: ON' : '🔊 Zvukový doprovod: ZAP')}
+          </button>
         </div>
 
         <!-- 1. SITUATION PRESETS -->
@@ -3530,6 +3683,14 @@
     if (chkDuke) {
       chkDuke.addEventListener('change', () => {
         drawSimulatorState.luckyDuke = chkDuke.checked;
+        renderDrawSimulator(container);
+      });
+    }
+
+    const btnDrawMute = document.getElementById('btn-draw-mute-toggle');
+    if (btnDrawMute) {
+      btnDrawMute.addEventListener('click', () => {
+        drawSimulatorState.soundMuted = !drawSimulatorState.soundMuted;
         renderDrawSimulator(container);
       });
     }
@@ -4586,6 +4747,16 @@
   // =========================================================================
   const matchTrackerState = {
     showForm: false,
+    activeView: 'matches', // 'matches' | 'league'
+    showAddPlayer: false,
+    showRecordLeague: false,
+    newPlayerName: '',
+    leagueForm: {
+      winnerFaction: 'sheriff',
+      participants: [],
+      winners: [],
+      kills: {}
+    },
     form: {
       winner: 'sheriff',
       playersCount: 5,
@@ -4596,10 +4767,24 @@
     }
   };
 
+  function copyTextToClipboard(text, successMsg) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(() => {
+        alert(successMsg);
+      }).catch(() => {
+        prompt(successMsg, text);
+      });
+    } else {
+      prompt(successMsg, text);
+    }
+  }
+
   function renderMatchTracker(container) {
     const isEn = state.lang === 'en';
     const tracker = window.BANG_TOOLS ? window.BANG_TOOLS.MatchTracker : null;
+    const league = window.BANG_TOOLS ? window.BANG_TOOLS.LeagueTracker : null;
     const matches = tracker ? tracker.getAll() : [];
+    const leagueData = league ? league.getData() : { seasonName: 'Saloon League', players: [], history: [] };
     const stats = tracker ? tracker.getStats() : {
       total: 0, sheriffWins: 0, outlawWins: 0, renegadeWins: 0, ironhorseWins: 0,
       sheriffPct: 0, outlawPct: 0, renegadePct: 0, ironhorsePct: 0, topMvp: []
@@ -4613,14 +4798,28 @@
       <div class="tool-card-box">
         <div class="tool-card-header" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
           <div>
-            <h2>${isEn ? 'Match Tracker & Party Stats' : 'Zápisník partií & statistiky party'}</h2>
+            <h2>${isEn ? 'Match Tracker & Party Season League' : 'Zápisník partií & Sezónní liga party'}</h2>
             <p class="tool-card-lead">
               ${isEn 
-                ? 'Record your game results, track win rates by role (Law, Outlaws, Renegade), and immortalize your table’s MVP gunfighters!'
-                : 'Zapisujte výsledky svých her, sledujte poměr výher jednotlivých rolí a zjistěte, který pistolník je ve vaší partě nejúspěšnější!'}
+                ? 'Record your games, track faction win rates, generate WhatsApp group telegrams, and compete in the seasonal party league!'
+                : 'Zapisujte výsledky her, sledujte bilanci frakcí, generujte westernová hlášení pro WhatsApp a soutěžte v ligové sezóně party!'}
             </p>
           </div>
-          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+        </div>
+
+        <!-- VIEW SWITCHER (NO ICONS in subnav) -->
+        <div style="display: flex; gap: 0.5rem; margin-bottom: 1.5rem; border-bottom: 2px solid var(--border-color); padding-bottom: 0.75rem;">
+          <button type="button" class="tool-subnav-btn ${matchTrackerState.activeView === 'matches' ? 'active' : ''} btn-switch-match-view" data-view="matches" style="font-size: 0.95rem; padding: 0.5rem 1.15rem; cursor: pointer; border-radius: 8px;">
+            ${isEn ? 'Match History & Stats' : 'Zápisník partií & Statistiky'}
+          </button>
+          <button type="button" class="tool-subnav-btn ${matchTrackerState.activeView === 'league' ? 'active' : ''} btn-switch-match-view" data-view="league" style="font-size: 0.95rem; padding: 0.5rem 1.15rem; cursor: pointer; border-radius: 8px;">
+            ${isEn ? 'Party Season League' : 'Sezónní liga party'}
+          </button>
+        </div>
+
+        ${matchTrackerState.activeView === 'matches' ? `
+          <!-- MATCHES VIEW -->
+          <div style="display: flex; justify-content: flex-end; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
             <button type="button" id="btn-toggle-match-form" class="btn-primary" style="padding: 0.6rem 1.1rem; font-size: 0.95rem; border-radius: 8px; font-weight: bold; display: flex; align-items: center; gap: 0.4rem; cursor: pointer;">
               ${matchTrackerState.showForm ? (isEn ? 'Close Form' : 'Zavřít formulář') : (isEn ? 'Record New Match' : 'Zapsat novou partii')}
             </button>
@@ -4633,212 +4832,489 @@
               </button>
             ` : ''}
           </div>
-        </div>
 
-        <!-- SUMMARY STATS OVERVIEW -->
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
-          <!-- LAW / SHERIFF -->
-          <div style="background: var(--bg-surface); border: 2px solid #f1c40f; border-radius: 10px; padding: 1.2rem; text-align: center; box-shadow: var(--shadow-sm);">
-            <div style="font-weight: 800; color: #d4ac0d; font-family: var(--font-western); font-size: 1.15rem; letter-spacing: 0.5px;">★ ${isEn ? 'Law (Sheriff)' : 'Zákon (Šerif)'} ★</div>
-            <div style="font-size: 2rem; font-weight: bold; color: #d4ac0d; margin: 0.35rem 0;">${stats.sheriffPct}%</div>
-            <div style="font-size: 0.82rem; color: var(--text-muted);">${stats.sheriffWins} ${isEn ? 'wins' : 'výher'} / ${stats.total}</div>
-          </div>
-
-          <!-- OUTLAWS -->
-          <div style="background: var(--bg-surface); border: 2px solid #e74c3c; border-radius: 10px; padding: 1.2rem; text-align: center; box-shadow: var(--shadow-sm);">
-            <div style="font-weight: 800; color: #c0392b; font-family: var(--font-western); font-size: 1.15rem; letter-spacing: 0.5px;">⚔️ ${isEn ? 'Outlaws' : 'Bandité'}</div>
-            <div style="font-size: 2rem; font-weight: bold; color: #c0392b; margin: 0.35rem 0;">${stats.outlawPct}%</div>
-            <div style="font-size: 0.82rem; color: var(--text-muted);">${stats.outlawWins} ${isEn ? 'wins' : 'výher'} / ${stats.total}</div>
-          </div>
-
-          <!-- RENEGADE -->
-          <div style="background: var(--bg-surface); border: 2px solid #9b59b6; border-radius: 10px; padding: 1.2rem; text-align: center; box-shadow: var(--shadow-sm);">
-            <div style="font-weight: 800; color: #8e44ad; font-family: var(--font-western); font-size: 1.15rem; letter-spacing: 0.5px;">🎯 ${isEn ? 'Renegade' : 'Odpadlík'}</div>
-            <div style="font-size: 2rem; font-weight: bold; color: #8e44ad; margin: 0.35rem 0;">${stats.renegadePct}%</div>
-            <div style="font-size: 0.82rem; color: var(--text-muted);">${stats.renegadeWins} ${isEn ? 'wins' : 'výher'} / ${stats.total}</div>
-          </div>
-
-          <!-- IRONHORSE (TRAIN EXPANSION) -->
-          <div style="background: var(--bg-surface); border: 2px solid #e67e22; border-radius: 10px; padding: 1.2rem; text-align: center; box-shadow: var(--shadow-sm);">
-            <div style="font-weight: 800; color: #d35400; font-family: var(--font-western); font-size: 1.15rem; letter-spacing: 0.5px;">⚙️ ${isEn ? 'Ironhorse' : 'Železný oř'}</div>
-            <div style="font-size: 2rem; font-weight: bold; color: #d35400; margin: 0.35rem 0;">${stats.ironhorsePct}%</div>
-            <div style="font-size: 0.82rem; color: var(--text-muted);">${stats.ironhorseWins} ${isEn ? 'wins' : 'výher'} / ${stats.total}</div>
-          </div>
-        </div>
-
-        <!-- TOP MVP HEROES STRIP -->
-        ${stats.topMvp && stats.topMvp.length > 0 ? `
-          <div style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem;">
-            <div style="font-size: 0.92rem; font-weight: bold; color: var(--color-brown); display: flex; align-items: center; gap: 0.4rem; font-family: var(--font-western); letter-spacing: 0.3px;">
-              ${isEn ? 'Most Frequent MVP Gunfighters:' : 'Nejčastější hvězdy zápasu (MVP):'}
+          <!-- SUMMARY STATS OVERVIEW -->
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+            <!-- LAW / SHERIFF -->
+            <div style="background: var(--bg-surface); border: 2px solid #f1c40f; border-radius: 10px; padding: 1.2rem; text-align: center; box-shadow: var(--shadow-sm);">
+              <div style="font-weight: 800; color: #d4ac0d; font-family: var(--font-western); font-size: 1.15rem; letter-spacing: 0.5px;">★ ${isEn ? 'Law (Sheriff)' : 'Zákon (Šerif)'} ★</div>
+              <div style="font-size: 2rem; font-weight: bold; color: #d4ac0d; margin: 0.35rem 0;">${stats.sheriffPct}%</div>
+              <div style="font-size: 0.82rem; color: var(--text-muted);">${stats.sheriffWins} ${isEn ? 'wins' : 'výher'} / ${stats.total}</div>
             </div>
-            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-              ${stats.topMvp.map(m => `
-                <span style="background: rgba(212, 172, 13, 0.15); border: 1px solid #d4ac0d; border-radius: 16px; padding: 0.25rem 0.75rem; font-size: 0.85rem; font-weight: 700; color: var(--color-brown);">
-                  ${m.name} <strong>(${m.count}×)</strong>
-                </span>
-              `).join('')}
+
+            <!-- OUTLAWS -->
+            <div style="background: var(--bg-surface); border: 2px solid #e74c3c; border-radius: 10px; padding: 1.2rem; text-align: center; box-shadow: var(--shadow-sm);">
+              <div style="font-weight: 800; color: #c0392b; font-family: var(--font-western); font-size: 1.15rem; letter-spacing: 0.5px;">⚔️ ${isEn ? 'Outlaws' : 'Bandité'}</div>
+              <div style="font-size: 2rem; font-weight: bold; color: #c0392b; margin: 0.35rem 0;">${stats.outlawPct}%</div>
+              <div style="font-size: 0.82rem; color: var(--text-muted);">${stats.outlawWins} ${isEn ? 'wins' : 'výher'} / ${stats.total}</div>
+            </div>
+
+            <!-- RENEGADE -->
+            <div style="background: var(--bg-surface); border: 2px solid #9b59b6; border-radius: 10px; padding: 1.2rem; text-align: center; box-shadow: var(--shadow-sm);">
+              <div style="font-weight: 800; color: #8e44ad; font-family: var(--font-western); font-size: 1.15rem; letter-spacing: 0.5px;">🎯 ${isEn ? 'Renegade' : 'Odpadlík'}</div>
+              <div style="font-size: 2rem; font-weight: bold; color: #8e44ad; margin: 0.35rem 0;">${stats.renegadePct}%</div>
+              <div style="font-size: 0.82rem; color: var(--text-muted);">${stats.renegadeWins} ${isEn ? 'wins' : 'výher'} / ${stats.total}</div>
+            </div>
+
+            <!-- IRONHORSE (TRAIN EXPANSION) -->
+            <div style="background: var(--bg-surface); border: 2px solid #e67e22; border-radius: 10px; padding: 1.2rem; text-align: center; box-shadow: var(--shadow-sm);">
+              <div style="font-weight: 800; color: #d35400; font-family: var(--font-western); font-size: 1.15rem; letter-spacing: 0.5px;">⚙️ ${isEn ? 'Ironhorse' : 'Železný oř'}</div>
+              <div style="font-size: 2rem; font-weight: bold; color: #d35400; margin: 0.35rem 0;">${stats.ironhorsePct}%</div>
+              <div style="font-size: 0.82rem; color: var(--text-muted);">${stats.ironhorseWins} ${isEn ? 'wins' : 'výher'} / ${stats.total}</div>
             </div>
           </div>
-        ` : ''}
 
-        <!-- FORM MODAL / COLLAPSIBLE -->
-        ${matchTrackerState.showForm ? `
-          <div style="background: var(--bg-surface); border: 2px solid var(--color-gold); border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; box-shadow: var(--shadow-md);">
-            <h3 style="font-family: var(--font-western); color: var(--color-brown); margin-bottom: 1.25rem; font-size: 1.25rem;">
-              ${isEn ? 'Record Game Result' : 'Záznam odehrané hry'}
-            </h3>
-
-            <!-- WINNER SELECTOR -->
-            <div style="margin-bottom: 1.25rem;">
-              <label style="display: block; font-weight: bold; font-size: 0.9rem; margin-bottom: 0.5rem;">
-                ${isEn ? 'Winning Team / Role:' : 'Vítězná strana / role:'}
-              </label>
-              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.6rem;">
-                ${[
-                  { id: 'sheriff', labelCs: '★ Šerif & Zákon', labelEn: '★ Law & Sheriff', color: '#f1c40f' },
-                  { id: 'outlaws', labelCs: '⚔️ Bandité', labelEn: '⚔️ Outlaws', color: '#e74c3c' },
-                  { id: 'renegade', labelCs: '🎯 Odpadlík', labelEn: '🎯 Renegade', color: '#9b59b6' },
-                  { id: 'ironhorse', labelCs: '⚙️ Železný oř', labelEn: '⚙️ Ironhorse', color: '#e67e22' }
-                ].map(r => `
-                  <button type="button" class="btn-winner-opt ${matchTrackerState.form.winner === r.id ? 'active' : ''}"
-                          data-winner="${r.id}"
-                          style="padding: 0.75rem; border-radius: 8px; border: 2px solid ${matchTrackerState.form.winner === r.id ? r.color : 'var(--border-color)'}; background: ${matchTrackerState.form.winner === r.id ? r.color : 'var(--bg-card)'}; color: ${matchTrackerState.form.winner === r.id ? '#fff' : 'inherit'}; cursor: pointer; font-weight: bold; font-size: 0.9rem; transition: all 0.2s;">
-                    ${isEn ? r.labelEn : r.labelCs}
-                  </button>
+          <!-- TOP MVP HEROES STRIP -->
+          ${stats.topMvp && stats.topMvp.length > 0 ? `
+            <div style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem;">
+              <div style="font-size: 0.92rem; font-weight: bold; color: var(--color-brown); display: flex; align-items: center; gap: 0.4rem; font-family: var(--font-western); letter-spacing: 0.3px;">
+                ${isEn ? 'Most Frequent MVP Gunfighters:' : 'Nejčastější hvězdy zápasu (MVP):'}
+              </div>
+              <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                ${stats.topMvp.map(m => `
+                  <span style="background: rgba(212, 172, 13, 0.15); border: 1px solid #d4ac0d; border-radius: 16px; padding: 0.25rem 0.75rem; font-size: 0.85rem; font-weight: 700; color: var(--color-brown);">
+                    ${m.name} <strong>(${m.count}×)</strong>
+                  </span>
                 `).join('')}
               </div>
             </div>
+          ` : ''}
 
-            <!-- ROW: PLAYERS & DURATION -->
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.25rem;">
-              <div>
-                <label style="display: block; font-weight: bold; font-size: 0.9rem; margin-bottom: 0.4rem;">
-                  ${isEn ? 'Number of Players:' : 'Počet hráčů:'}
+          <!-- FORM MODAL / COLLAPSIBLE -->
+          ${matchTrackerState.showForm ? `
+            <div style="background: var(--bg-surface); border: 2px solid var(--color-gold); border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; box-shadow: var(--shadow-md);">
+              <h3 style="font-family: var(--font-western); color: var(--color-brown); margin-bottom: 1.25rem; font-size: 1.25rem;">
+                ${isEn ? 'Record Game Result' : 'Záznam odehrané hry'}
+              </h3>
+
+              <!-- WINNER SELECTOR -->
+              <div style="margin-bottom: 1.25rem;">
+                <label style="display: block; font-weight: bold; font-size: 0.9rem; margin-bottom: 0.5rem;">
+                  ${isEn ? 'Winning Team / Role:' : 'Vítězná strana / role:'}
                 </label>
-                <select id="inp-match-players" style="width: 100%; padding: 0.6rem 0.8rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-card); font-size: 0.95rem;">
-                  ${[3, 4, 5, 6, 7, 8].map(n => `
-                    <option value="${n}" ${matchTrackerState.form.playersCount === n ? 'selected' : ''}>
-                      ${n} ${isEn ? 'players' : 'hráčů'}
-                    </option>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.6rem;">
+                  ${[
+                    { id: 'sheriff', labelCs: '★ Šerif & Zákon', labelEn: '★ Law & Sheriff', color: '#f1c40f' },
+                    { id: 'outlaws', labelCs: '⚔️ Bandité', labelEn: '⚔️ Outlaws', color: '#e74c3c' },
+                    { id: 'renegade', labelCs: '🎯 Odpadlík', labelEn: '🎯 Renegade', color: '#9b59b6' },
+                    { id: 'ironhorse', labelCs: '⚙️ Železný oř', labelEn: '⚙️ Ironhorse', color: '#e67e22' }
+                  ].map(r => `
+                    <button type="button" class="btn-winner-opt ${matchTrackerState.form.winner === r.id ? 'active' : ''}"
+                            data-winner="${r.id}"
+                            style="padding: 0.75rem; border-radius: 8px; border: 2px solid ${matchTrackerState.form.winner === r.id ? r.color : 'var(--border-color)'}; background: ${matchTrackerState.form.winner === r.id ? r.color : 'var(--bg-card)'}; color: ${matchTrackerState.form.winner === r.id ? '#fff' : 'inherit'}; cursor: pointer; font-weight: bold; font-size: 0.9rem; transition: all 0.2s;">
+                      ${isEn ? r.labelEn : r.labelCs}
+                    </button>
                   `).join('')}
-                </select>
+                </div>
               </div>
 
-              <div>
+              <!-- ROW: PLAYERS & DURATION -->
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.25rem;">
+                <div>
+                  <label style="display: block; font-weight: bold; font-size: 0.9rem; margin-bottom: 0.4rem;">
+                    ${isEn ? 'Number of Players:' : 'Počet hráčů:'}
+                  </label>
+                  <select id="inp-match-players" style="width: 100%; padding: 0.6rem 0.8rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-card); font-size: 0.95rem;">
+                    ${[3, 4, 5, 6, 7, 8].map(n => `
+                      <option value="${n}" ${matchTrackerState.form.playersCount === n ? 'selected' : ''}>
+                        ${n} ${isEn ? 'players' : 'hráčů'}
+                      </option>
+                    `).join('')}
+                  </select>
+                </div>
+
+                <div>
+                  <label style="display: block; font-weight: bold; font-size: 0.9rem; margin-bottom: 0.4rem;">
+                    ${isEn ? 'Duration (minutes):' : 'Doba hry (minuty):'}
+                  </label>
+                  <input type="number" id="inp-match-duration" value="${matchTrackerState.form.durationMin}" min="5" max="300" step="5" style="width: 100%; padding: 0.6rem 0.8rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-card); font-size: 0.95rem;">
+                </div>
+              </div>
+
+              <!-- ROW: SHERIFF CHAR & MVP CHAR -->
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.25rem;">
+                <div>
+                  <label style="display: block; font-weight: bold; font-size: 0.9rem; margin-bottom: 0.4rem;">
+                    ${isEn ? 'Sheriff Character:' : 'Postava Šerifa:'}
+                  </label>
+                  <select id="inp-match-sheriff" style="width: 100%; padding: 0.6rem 0.8rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-card); font-size: 0.95rem;">
+                    <option value="">${isEn ? '-- Select Sheriff --' : '-- Vyber Šerifa --'}</option>
+                    ${allChars.map(c => `
+                      <option value="${c.name}" ${matchTrackerState.form.sheriffChar === c.name ? 'selected' : ''}>${c.name}</option>
+                    `).join('')}
+                  </select>
+                </div>
+
+                <div>
+                  <label style="display: block; font-weight: bold; font-size: 0.9rem; margin-bottom: 0.4rem;">
+                    ${isEn ? 'MVP / Match Hero:' : 'MVP / Hvězda zápasu:'}
+                  </label>
+                  <select id="inp-match-mvp" style="width: 100%; padding: 0.6rem 0.8rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-card); font-size: 0.95rem;">
+                    <option value="">${isEn ? '-- Select MVP --' : '-- Vyber MVP --'}</option>
+                    ${allChars.map(c => `
+                      <option value="${c.name}" ${matchTrackerState.form.mvpChar === c.name ? 'selected' : ''}>${c.name}</option>
+                    `).join('')}
+                  </select>
+                </div>
+              </div>
+
+              <!-- NOTES -->
+              <div style="margin-bottom: 1.5rem;">
                 <label style="display: block; font-weight: bold; font-size: 0.9rem; margin-bottom: 0.4rem;">
-                  ${isEn ? 'Duration (minutes):' : 'Doba hry (minuty):'}
+                  ${isEn ? 'Notes / Epic Moments:' : 'Poznámka / Památné okamžiky:'}
                 </label>
-                <input type="number" id="inp-match-duration" value="${matchTrackerState.form.durationMin}" min="5" max="300" step="5" style="width: 100%; padding: 0.6rem 0.8rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-card); font-size: 0.95rem;">
+                <input type="text" id="inp-match-notes" placeholder="${isEn ? 'e.g. Dynamite killed 2 players in round 3!' : 'např. Šerif přežil s 1 HP, Dynamit explodoval v duelu!'}" value="${matchTrackerState.form.notes}" style="width: 100%; padding: 0.6rem 0.8rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-card); font-size: 0.95rem;">
+              </div>
+
+              <div style="display: flex; gap: 0.8rem; justify-content: flex-end;">
+                <button type="button" id="btn-cancel-match" style="padding: 0.65rem 1.25rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-card); cursor: pointer; font-weight: 500;">
+                  ${isEn ? 'Cancel' : 'Zrušit'}
+                </button>
+                <button type="button" id="btn-save-match" class="btn-primary" style="padding: 0.65rem 1.5rem; border-radius: 6px; font-weight: bold; cursor: pointer;">
+                  ${isEn ? 'Save Match' : 'Uložit partii'}
+                </button>
+              </div>
+            </div>
+          ` : ''}
+
+          <!-- MATCH HISTORY LIST -->
+          <div>
+            <h3 style="font-family: var(--font-western); font-size: 1.25rem; color: var(--color-brown); margin-bottom: 1rem; border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem;">
+              ${isEn ? 'Recorded Matches' : 'Odehrané partie'} (${matches.length})
+            </h3>
+
+            ${matches.length === 0 ? `
+              <div style="text-align: center; padding: 3rem 1rem; background: var(--bg-surface); border-radius: 10px; border: 1px dashed var(--border-color); color: var(--text-muted);">
+                <div style="font-size: 1.05rem; font-weight: bold; margin-bottom: 0.3rem;">
+                  ${isEn ? 'No matches recorded yet!' : 'Zatím žádné odehrané partie v zápisníku!'}
+                </div>
+                <div style="font-size: 0.9rem;">
+                  ${isEn ? 'Click "Record New Match" above to save your first game.' : 'Klikněte na "Zapsat novou partii" výše a uložte svůj první výsledek.'}
+                </div>
+              </div>
+            ` : `
+              <div style="display: flex; flex-direction: column; gap: 0.85rem;">
+                ${matches.map(m => {
+                  const winnerBadge = {
+                    sheriff: { stampClass: 'stamp-sheriff', labelCs: '★ Zákon / Šerif', labelEn: '★ Law / Sheriff' },
+                    outlaws: { stampClass: 'stamp-outlaws', labelCs: '⚔️ Bandité', labelEn: '⚔️ Outlaws' },
+                    renegade: { stampClass: 'stamp-renegade', labelCs: '🎯 Odpadlík', labelEn: '🎯 Renegade' },
+                    ironhorse: { stampClass: 'stamp-ironhorse', labelCs: '⚙️ Železný oř', labelEn: '⚙️ Ironhorse' }
+                  }[m.winner] || { stampClass: 'stamp-sheriff', labelCs: 'Neznámý', labelEn: 'Unknown' };
+
+                  return `
+                    <div class="match-history-card">
+                      <div>
+                        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem; flex-wrap: wrap;">
+                          <span class="faction-stamp ${winnerBadge.stampClass}">
+                            ${isEn ? winnerBadge.labelEn : winnerBadge.labelCs}
+                          </span>
+                          <span style="font-size: 0.82rem; color: var(--text-muted); font-weight: 600;">
+                            ${m.dateFormatted || ''} • ${m.playersCount || '?'} ${isEn ? 'players' : 'hráčů'} • ${m.durationMin || '?'} min
+                          </span>
+                        </div>
+                        <div style="font-size: 0.88rem; display: flex; gap: 1.2rem; flex-wrap: wrap;">
+                          ${m.sheriffChar ? `<span><strong>${isEn ? 'Sheriff' : 'Šerif'}:</strong> ${m.sheriffChar}</span>` : ''}
+                          ${m.mvpChar ? `<span><strong>MVP:</strong> ${m.mvpChar}</span>` : ''}
+                        </div>
+                        ${m.notes ? `
+                          <div style="font-size: 0.84rem; font-style: italic; color: var(--text-muted); margin-top: 0.35rem;">
+                            "${m.notes}"
+                          </div>
+                        ` : ''}
+                        <div style="margin-top: 0.65rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                          <button type="button" class="btn-share-match-telegram" data-match-id="${m.id}" style="background: rgba(41, 128, 185, 0.12); border: 1.5px solid #2980b9; color: #1b4965; border-radius: 6px; font-size: 0.8rem; font-weight: 700; padding: 0.35rem 0.75rem; cursor: pointer; display: inline-flex; align-items: center; gap: 0.4rem;">
+                            📲 ${isEn ? 'Copy Telegram for WhatsApp' : 'Kopírovat telegram pro WhatsApp'}
+                          </button>
+                        </div>
+                      </div>
+
+                      <button type="button" class="btn-del-match" data-id="${m.id}" title="${isEn ? 'Delete match' : 'Smazat záznam'}" style="background: none; border: 1.5px solid var(--border-color); border-radius: 6px; font-size: 0.85rem; color: var(--text-muted); cursor: pointer; padding: 0.35rem 0.65rem; transition: all 0.2s; font-weight: 700;">
+                        ✕ ${isEn ? 'Delete' : 'Smazat'}
+                      </button>
+                    </div>
+                  `;
+                }).join('')}
+              </div>
+            `}
+          </div>
+        ` : `
+          <!-- SEASON LEAGUE VIEW -->
+          <div style="background: var(--bg-surface); border: 2px solid var(--color-brown); border-radius: var(--radius-lg); padding: 1.5rem; box-shadow: var(--shadow-sm); margin-bottom: 2rem;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.25rem;">
+              <div>
+                <span style="font-size: 0.82rem; font-weight: 800; text-transform: uppercase; color: var(--color-gold); letter-spacing: 0.5px;">
+                  ★ ${isEn ? 'Seasonal Campaign & Legacy Tracker' : 'Sezónní kampaň & Dlouhodobá liga'} ★
+                </span>
+                <h3 style="font-family: var(--font-western); color: var(--color-brown); font-size: 1.5rem; margin: 0.2rem 0;">
+                  🏆 ${leagueData.seasonName || 'Saloonová liga 2026'}
+                </h3>
+                <p style="font-size: 0.88rem; color: var(--text-muted); margin: 0; line-height: 1.45;">
+                  ${isEn
+                    ? 'Track long-term glory across 5–10 game nights! Earn titles, record kills, and crown the seasonal champion.'
+                    : 'Sledujte dlouhodobou slávu party v průběhu 5–10 herních večerů! Sbírejte westernové tituly a zářezy na pažbě.'}
+                </p>
+              </div>
+
+              <!-- LEAGUE ACTIONS -->
+              <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                <button type="button" id="btn-share-league-whatsapp" class="tool-subnav-btn active" style="font-size: 0.88rem; padding: 0.5rem 1rem; cursor: pointer; border-radius: 20px; font-weight: 700; background: #27ae60; color: #fff;">
+                  📲 ${isEn ? 'Copy Table for WhatsApp' : 'Kopírovat tabulku pro WhatsApp'}
+                </button>
+                <button type="button" id="btn-toggle-add-player" class="tool-subnav-btn" style="font-size: 0.88rem; padding: 0.5rem 0.9rem; cursor: pointer; border-radius: 20px;">
+                  ➕ ${isEn ? 'Add Player' : 'Přidat hráče'}
+                </button>
+                <button type="button" id="btn-toggle-record-league" class="tool-subnav-btn" style="font-size: 0.88rem; padding: 0.5rem 0.9rem; cursor: pointer; border-radius: 20px;">
+                  🎯 ${isEn ? 'Log Game Points' : 'Zapsat body z partie'}
+                </button>
+                <button type="button" id="btn-reset-league" style="background: none; border: 1.5px solid #e74c3c; color: #e74c3c; border-radius: 20px; font-size: 0.84rem; padding: 0.45rem 0.85rem; cursor: pointer; font-weight: 700;">
+                  🔄 ${isEn ? 'Reset Season' : 'Resetovat sezónu'}
+                </button>
               </div>
             </div>
 
-            <!-- ROW: SHERIFF CHAR & MVP CHAR -->
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.25rem;">
-              <div>
-                <label style="display: block; font-weight: bold; font-size: 0.9rem; margin-bottom: 0.4rem;">
-                  ${isEn ? 'Sheriff Character:' : 'Postava Šerifa:'}
+            <!-- ADD PLAYER FORM -->
+            ${matchTrackerState.showAddPlayer ? `
+              <div style="background: var(--bg-card); border: 1.5px solid var(--color-gold); border-radius: 8px; padding: 1rem; margin-bottom: 1.25rem;">
+                <label style="display: block; font-weight: 800; font-size: 0.88rem; margin-bottom: 0.4rem; color: var(--color-brown);">
+                  ${isEn ? 'Enter New Player Nickname:' : 'Zadejte přezdívku nového hráče do ligy:'}
                 </label>
-                <select id="inp-match-sheriff" style="width: 100%; padding: 0.6rem 0.8rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-card); font-size: 0.95rem;">
-                  <option value="">${isEn ? '-- Select Sheriff --' : '-- Vyber Šerifa --'}</option>
-                  ${allChars.map(c => `
-                    <option value="${c.name}" ${matchTrackerState.form.sheriffChar === c.name ? 'selected' : ''}>${c.name}</option>
-                  `).join('')}
-                </select>
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                  <input type="text" id="inp-new-player-name" placeholder="${isEn ? 'e.g. Pistol Pete' : 'např. Rychlý Tom'}" style="flex: 1; min-width: 200px; padding: 0.55rem 0.8rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-surface); font-size: 0.95rem;">
+                  <button type="button" id="btn-save-new-player" class="btn-primary" style="padding: 0.55rem 1.25rem; font-size: 0.9rem; font-weight: bold; border-radius: 6px; cursor: pointer;">
+                    ${isEn ? 'Add' : 'Přidat'}
+                  </button>
+                </div>
               </div>
+            ` : ''}
 
-              <div>
-                <label style="display: block; font-weight: bold; font-size: 0.9rem; margin-bottom: 0.4rem;">
-                  ${isEn ? 'MVP / Match Hero:' : 'MVP / Hvězda zápasu:'}
-                </label>
-                <select id="inp-match-mvp" style="width: 100%; padding: 0.6rem 0.8rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-card); font-size: 0.95rem;">
-                  <option value="">${isEn ? '-- Select MVP --' : '-- Vyber MVP --'}</option>
-                  ${allChars.map(c => `
-                    <option value="${c.name}" ${matchTrackerState.form.mvpChar === c.name ? 'selected' : ''}>${c.name}</option>
-                  `).join('')}
-                </select>
+            <!-- LOG GAME POINTS FORM -->
+            ${matchTrackerState.showRecordLeague ? `
+              <div style="background: var(--bg-card); border: 2px solid var(--color-gold); border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;">
+                <h4 style="font-family: var(--font-western); color: var(--color-brown); font-size: 1.15rem; margin-bottom: 0.85rem;">
+                  ${isEn ? 'Log League Match Points' : 'Zapsat body z odehrané partie'}
+                </h4>
+                
+                <!-- Winner faction -->
+                <div style="margin-bottom: 1rem;">
+                  <label style="display: block; font-weight: 800; font-size: 0.86rem; margin-bottom: 0.35rem;">
+                    ${isEn ? 'Winning Faction:' : 'Vítězná strana:'}
+                  </label>
+                  <select id="inp-league-faction" style="width: 100%; padding: 0.55rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-surface); font-size: 0.95rem;">
+                    <option value="sheriff">${isEn ? '★ Sheriff & Deputies (4 pts per winner)' : '★ Šerif a Pomocníci (4 body pro vítěze)'}</option>
+                    <option value="outlaw">${isEn ? '⚔️ Outlaws (3 pts per winner)' : '⚔️ Bandité (3 body pro vítěze)'}</option>
+                    <option value="renegade">${isEn ? '🎯 Solo Renegade (6 pts for win)' : '🎯 Odpadlík sólo (6 bodů za výhru)'}</option>
+                  </select>
+                </div>
+
+                <!-- Players Checkboxes -->
+                <div style="margin-bottom: 1rem;">
+                  <label style="display: block; font-weight: 800; font-size: 0.86rem; margin-bottom: 0.35rem;">
+                    ${isEn ? 'Participants, Winners & Kills:' : 'Účastníci, Vítězové a Zářezy (Kills):'}
+                  </label>
+                  <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                    ${(leagueData.players || []).map(p => `
+                      <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; background: var(--bg-surface); padding: 0.45rem 0.75rem; border-radius: 6px; border: 1px solid var(--border-color); flex-wrap: wrap;">
+                        <label style="display: flex; align-items: center; gap: 0.45rem; font-weight: 700; cursor: pointer; min-width: 140px;">
+                          <input type="checkbox" class="chk-league-participant" data-pid="${p.id}" checked>
+                          ${p.name}
+                        </label>
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                          <label style="display: flex; align-items: center; gap: 0.35rem; font-size: 0.84rem; cursor: pointer;">
+                            <input type="checkbox" class="chk-league-winner" data-pid="${p.id}">
+                            ${isEn ? 'Won game' : 'Vyhrál'}
+                          </label>
+                          <label style="display: flex; align-items: center; gap: 0.35rem; font-size: 0.84rem;">
+                            <span>${isEn ? 'Kills:' : 'Zářezů:'}</span>
+                            <input type="number" class="inp-league-kills" data-pid="${p.id}" value="0" min="0" max="7" style="width: 48px; padding: 0.25rem; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); text-align: center;">
+                          </label>
+                        </div>
+                      </div>
+                    `).join('')}
+                  </div>
+                </div>
+
+                <div style="display: flex; justify-content: flex-end; gap: 0.5rem;">
+                  <button type="button" id="btn-cancel-league-log" style="padding: 0.55rem 1rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-surface); cursor: pointer;">
+                    ${isEn ? 'Cancel' : 'Zrušit'}
+                  </button>
+                  <button type="button" id="btn-save-league-log" class="btn-primary" style="padding: 0.55rem 1.4rem; border-radius: 6px; font-weight: bold; cursor: pointer;">
+                    ${isEn ? 'Save League Points' : 'Uložit body'}
+                  </button>
+                </div>
               </div>
-            </div>
+            ` : ''}
 
-            <!-- NOTES -->
-            <div style="margin-bottom: 1.5rem;">
-              <label style="display: block; font-weight: bold; font-size: 0.9rem; margin-bottom: 0.4rem;">
-                ${isEn ? 'Notes / Epic Moments:' : 'Poznámka / Památné okamžiky:'}
-              </label>
-              <input type="text" id="inp-match-notes" placeholder="${isEn ? 'e.g. Dynamite killed 2 players in round 3!' : 'např. Šerif přežil s 1 HP, Dynamit explodoval v duelu!'}" value="${matchTrackerState.form.notes}" style="width: 100%; padding: 0.6rem 0.8rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-card); font-size: 0.95rem;">
-            </div>
+            <!-- LEAGUE STANDINGS TABLE -->
+            <div style="overflow-x: auto;">
+              <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem; text-align: left;">
+                <thead>
+                  <tr style="border-bottom: 2px solid var(--border-color); color: var(--color-brown); font-family: var(--font-western); letter-spacing: 0.5px;">
+                    <th style="padding: 0.65rem 0.5rem; width: 44px;">#</th>
+                    <th style="padding: 0.65rem 0.75rem;">${isEn ? 'Gunfighter & Title' : 'Pistolník & Westernový titul'}</th>
+                    <th style="padding: 0.65rem 0.75rem; text-align: center; font-weight: 900; color: var(--color-brown);">${isEn ? 'Points' : 'Body'}</th>
+                    <th style="padding: 0.65rem 0.75rem; text-align: center;">${isEn ? 'Games' : 'Hry'}</th>
+                    <th style="padding: 0.65rem 0.75rem; text-align: center;">${isEn ? 'Wins' : 'Výhry'}</th>
+                    <th style="padding: 0.65rem 0.75rem; text-align: center;">${isEn ? 'Kills' : 'Zářezy'}</th>
+                    <th style="padding: 0.65rem 0.75rem; text-align: center;">${isEn ? 'Win Rate' : 'Úspěšnost'}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${[...(leagueData.players || [])]
+                    .sort((a, b) => (b.points || 0) - (a.points || 0))
+                    .map((p, idx) => {
+                      const medal = idx === 0 ? '🥇' : idx === 1 ? '🥈' : idx === 2 ? '🥉' : `${idx + 1}.`;
+                      const title = league ? league.getPlayerTitle(p, isEn) : 'Zelenáč';
+                      const winRate = p.games > 0 ? Math.round((p.wins / p.games) * 100) : 0;
 
-            <div style="display: flex; gap: 0.8rem; justify-content: flex-end;">
-              <button type="button" id="btn-cancel-match" style="padding: 0.65rem 1.25rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-card); cursor: pointer; font-weight: 500;">
-                ${isEn ? 'Cancel' : 'Zrušit'}
-              </button>
-              <button type="button" id="btn-save-match" class="btn-primary" style="padding: 0.65rem 1.5rem; border-radius: 6px; font-weight: bold; cursor: pointer;">
-                ${isEn ? 'Save Match' : 'Uložit partii'}
-              </button>
+                      return `
+                        <tr style="border-bottom: 1px solid var(--border-color); background: ${idx === 0 ? 'rgba(212, 172, 13, 0.08)' : 'transparent'};">
+                          <td style="padding: 0.75rem 0.5rem; font-weight: 800; font-size: 1.05rem;">${medal}</td>
+                          <td style="padding: 0.75rem;">
+                            <div style="font-weight: 800; font-size: 0.96rem; color: var(--color-brown);">${p.name}</div>
+                            <div style="font-size: 0.78rem; color: var(--text-muted); font-weight: 600;">${title}</div>
+                          </td>
+                          <td style="padding: 0.75rem; text-align: center; font-weight: 900; font-size: 1.25rem; color: var(--color-brown);">${p.points || 0}</td>
+                          <td style="padding: 0.75rem; text-align: center; color: var(--text-muted);">${p.games || 0}</td>
+                          <td style="padding: 0.75rem; text-align: center; font-weight: 700; color: #27ae60;">${p.wins || 0}</td>
+                          <td style="padding: 0.75rem; text-align: center; font-weight: 700; color: #c0392b;">${p.kills || 0}</td>
+                          <td style="padding: 0.75rem; text-align: center; font-weight: 800;">${winRate}%</td>
+                        </tr>
+                      `;
+                    }).join('')}
+                </tbody>
+              </table>
             </div>
           </div>
-        ` : ''}
-
-        <!-- MATCH HISTORY LIST -->
-        <div>
-          <h3 style="font-family: var(--font-western); font-size: 1.25rem; color: var(--color-brown); margin-bottom: 1rem; border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem;">
-            ${isEn ? 'Recorded Matches' : 'Odehrané partie'} (${matches.length})
-          </h3>
-
-          ${matches.length === 0 ? `
-            <div style="text-align: center; padding: 3rem 1rem; background: var(--bg-surface); border-radius: 10px; border: 1px dashed var(--border-color); color: var(--text-muted);">
-              <div style="font-size: 1.05rem; font-weight: bold; margin-bottom: 0.3rem;">
-                ${isEn ? 'No matches recorded yet!' : 'Zatím žádné odehrané partie v zápisníku!'}
-              </div>
-              <div style="font-size: 0.9rem;">
-                ${isEn ? 'Click "Record New Match" above to save your first game.' : 'Klikněte na "Zapsat novou partii" výše a uložte svůj první výsledek.'}
-              </div>
-            </div>
-          ` : `
-            <div style="display: flex; flex-direction: column; gap: 0.85rem;">
-              ${matches.map(m => {
-                const winnerBadge = {
-                  sheriff: { stampClass: 'stamp-sheriff', labelCs: '★ Zákon / Šerif', labelEn: '★ Law / Sheriff' },
-                  outlaws: { stampClass: 'stamp-outlaws', labelCs: '⚔️ Bandité', labelEn: '⚔️ Outlaws' },
-                  renegade: { stampClass: 'stamp-renegade', labelCs: '🎯 Odpadlík', labelEn: '🎯 Renegade' },
-                  ironhorse: { stampClass: 'stamp-ironhorse', labelCs: '⚙️ Železný oř', labelEn: '⚙️ Ironhorse' }
-                }[m.winner] || { stampClass: 'stamp-sheriff', labelCs: 'Neznámý', labelEn: 'Unknown' };
-
-                return `
-                  <div class="match-history-card">
-                    <div>
-                      <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem; flex-wrap: wrap;">
-                        <span class="faction-stamp ${winnerBadge.stampClass}">
-                          ${isEn ? winnerBadge.labelEn : winnerBadge.labelCs}
-                        </span>
-                        <span style="font-size: 0.82rem; color: var(--text-muted); font-weight: 600;">
-                          ${m.dateFormatted || ''} • ${m.playersCount || '?'} ${isEn ? 'players' : 'hráčů'} • ${m.durationMin || '?'} min
-                        </span>
-                      </div>
-                      <div style="font-size: 0.88rem; display: flex; gap: 1.2rem; flex-wrap: wrap;">
-                        ${m.sheriffChar ? `<span><strong>${isEn ? 'Sheriff' : 'Šerif'}:</strong> ${m.sheriffChar}</span>` : ''}
-                        ${m.mvpChar ? `<span><strong>MVP:</strong> ${m.mvpChar}</span>` : ''}
-                      </div>
-                      ${m.notes ? `
-                        <div style="font-size: 0.84rem; font-style: italic; color: var(--text-muted); margin-top: 0.35rem;">
-                          "${m.notes}"
-                        </div>
-                      ` : ''}
-                    </div>
-
-                    <button type="button" class="btn-del-match" data-id="${m.id}" title="${isEn ? 'Delete match' : 'Smazat záznam'}" style="background: none; border: 1.5px solid var(--border-color); border-radius: 6px; font-size: 0.85rem; color: var(--text-muted); cursor: pointer; padding: 0.35rem 0.65rem; transition: all 0.2s; font-weight: 700;">
-                      ✕ ${isEn ? 'Delete' : 'Smazat'}
-                    </button>
-                  </div>
-                `;
-              }).join('')}
-            </div>
-          `}
-        </div>
+        `}
       </div>
     `;
 
-    // Event listeners
+    // View Switcher Handlers
+    container.querySelectorAll('.btn-switch-match-view').forEach(btn => {
+      btn.addEventListener('click', () => {
+        matchTrackerState.activeView = btn.dataset.view;
+        renderMatchTracker(container);
+      });
+    });
+
+    // Share Single Match Telegram Handler
+    container.querySelectorAll('.btn-share-match-telegram').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const mid = btn.dataset.matchId;
+        const targetMatch = matches.find(m => m.id === mid);
+        if (targetMatch && league) {
+          const telegram = league.generateMatchTelegram(targetMatch, isEn);
+          copyTextToClipboard(
+            telegram, 
+            isEn ? 'Telegram copied to clipboard! Paste it into WhatsApp or Messenger.' : 'Zpráva zkopírována do schránky! Vložte ji do chatu na WhatsAppu nebo Messengeru.'
+          );
+        }
+      });
+    });
+
+    // Share League Standings Telegram Handler
+    const btnShareLeague = document.getElementById('btn-share-league-whatsapp');
+    if (btnShareLeague) {
+      btnShareLeague.addEventListener('click', () => {
+        if (league) {
+          const telegram = league.generateLeagueTelegram(leagueData, isEn);
+          copyTextToClipboard(
+            telegram,
+            isEn ? 'Season league table copied! Paste it into WhatsApp group.' : 'Ligová tabulka zkopírována! Můžete ji vložit do party na WhatsApp.'
+          );
+        }
+      });
+    }
+
+    // Toggle Add Player Form
+    const btnToggleAdd = document.getElementById('btn-toggle-add-player');
+    if (btnToggleAdd) {
+      btnToggleAdd.addEventListener('click', () => {
+        matchTrackerState.showAddPlayer = !matchTrackerState.showAddPlayer;
+        renderMatchTracker(container);
+      });
+    }
+
+    // Save New Player
+    const btnSaveNewPlayer = document.getElementById('btn-save-new-player');
+    if (btnSaveNewPlayer) {
+      btnSaveNewPlayer.addEventListener('click', () => {
+        const inp = document.getElementById('inp-new-player-name');
+        if (inp && inp.value.trim() && league) {
+          league.addPlayer(inp.value.trim());
+          matchTrackerState.showAddPlayer = false;
+          renderMatchTracker(container);
+        }
+      });
+    }
+
+    // Toggle Log League Game Form
+    const btnToggleLeagueLog = document.getElementById('btn-toggle-record-league');
+    if (btnToggleLeagueLog) {
+      btnToggleLeagueLog.addEventListener('click', () => {
+        matchTrackerState.showRecordLeague = !matchTrackerState.showRecordLeague;
+        renderMatchTracker(container);
+      });
+    }
+
+    const btnCancelLeagueLog = document.getElementById('btn-cancel-league-log');
+    if (btnCancelLeagueLog) {
+      btnCancelLeagueLog.addEventListener('click', () => {
+        matchTrackerState.showRecordLeague = false;
+        renderMatchTracker(container);
+      });
+    }
+
+    // Save League Game Points
+    const btnSaveLeagueLog = document.getElementById('btn-save-league-log');
+    if (btnSaveLeagueLog) {
+      btnSaveLeagueLog.addEventListener('click', () => {
+        const factionEl = document.getElementById('inp-league-faction');
+        const winnerFaction = factionEl ? factionEl.value : 'sheriff';
+
+        const participants = [];
+        container.querySelectorAll('.chk-league-participant:checked').forEach(c => {
+          participants.push(c.dataset.pid);
+        });
+
+        const winners = [];
+        container.querySelectorAll('.chk-league-winner:checked').forEach(c => {
+          winners.push(c.dataset.pid);
+        });
+
+        const kills = {};
+        container.querySelectorAll('.inp-league-kills').forEach(inp => {
+          const val = parseInt(inp.value, 10) || 0;
+          if (val > 0) kills[inp.dataset.pid] = val;
+        });
+
+        if (league) {
+          league.recordMatchResult({
+            winnerFaction,
+            participants,
+            winners,
+            kills
+          });
+        }
+
+        matchTrackerState.showRecordLeague = false;
+        renderMatchTracker(container);
+      });
+    }
+
+    // Reset Season
+    const btnResetLeague = document.getElementById('btn-reset-league');
+    if (btnResetLeague) {
+      btnResetLeague.addEventListener('click', () => {
+        if (confirm(isEn ? 'Reset all season points to 0?' : 'Opravdu vynulovat všechny body a začít novou ligovou sezónu?')) {
+          if (league) league.resetSeason();
+          renderMatchTracker(container);
+        }
+      });
+    }
+
+    // Standard Match Tracker Form Handlers
     const btnToggle = document.getElementById('btn-toggle-match-form');
     if (btnToggle) {
       btnToggle.addEventListener('click', () => {
@@ -6175,6 +6651,343 @@
         }
       });
     });
+  }
+
+  // =========================================================================
+  // 15. SALOON MINI-GAMES (RUSSIAN ROULETTE & QUICK DRAW DUEL)
+  // =========================================================================
+  const miniGamesState = {
+    activeSubTab: 'roulette', // 'roulette' | 'duel'
+    rouletteMessage: '',
+    rouletteStatus: 'ready', // 'ready' | 'safe' | 'boom'
+    duelState: 'idle', // 'idle' | 'waiting' | 'ready' | 'finished' | 'false_start'
+    duelTimer: null,
+    duelStartTime: 0,
+    duelReactionMs: null,
+    duelBestMs: parseInt(localStorage.getItem('bang_duel_best_ms') || '0', 10) || null
+  };
+
+  function renderMiniGames(container) {
+    const isEn = state.lang === 'en';
+    const sfx = window.BANG_TOOLS ? window.BANG_TOOLS.SoundFX : null;
+    const roulette = window.BANG_TOOLS ? window.BANG_TOOLS.RouletteEngine : null;
+
+    container.innerHTML = `
+      <div class="tool-card-box">
+        <div class="tool-card-header" style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap;">
+          <div>
+            <h2>${isEn ? 'Saloon Mini-Games & Dispute Resolvers' : 'Saloonové minihry & Rozhodčí sporů'}</h2>
+            <p class="tool-card-lead">
+              ${isEn
+                ? 'Settle table disputes, determine the first Sheriff, or decide who buys the next round of saloon beers!'
+                : 'Rozhodněte herní spory u stolu, určete prvního Šerifa, kdo míchá balíček nebo kdo jde k baru pro rundu piv!'}
+            </p>
+          </div>
+        </div>
+
+        <!-- SUBTAB SWITCHER (NO ICONS per rule) -->
+        <div style="display: flex; gap: 0.5rem; margin-bottom: 1.5rem; border-bottom: 2px solid var(--border-color); padding-bottom: 0.75rem;">
+          <button type="button" class="tool-subnav-btn ${miniGamesState.activeSubTab === 'roulette' ? 'active' : ''} btn-minigame-tab" data-minigame="roulette" style="font-size: 0.95rem; padding: 0.5rem 1.15rem; cursor: pointer; border-radius: 8px;">
+            ${isEn ? 'Russian Roulette (Colt .45)' : 'Ruská ruleta (Colt .45)'}
+          </button>
+          <button type="button" class="tool-subnav-btn ${miniGamesState.activeSubTab === 'duel' ? 'active' : ''} btn-minigame-tab" data-minigame="duel" style="font-size: 0.95rem; padding: 0.5rem 1.15rem; cursor: pointer; border-radius: 8px;">
+            ${isEn ? 'Quick Draw Duel' : 'Saloonový rozstřel'}
+          </button>
+        </div>
+
+        ${miniGamesState.activeSubTab === 'roulette' ? `
+          <!-- RUSSIAN ROULETTE VIEW -->
+          <div style="background: var(--bg-surface); border: 2px solid var(--color-brown); border-radius: var(--radius-lg); padding: 1.75rem 1.25rem; text-align: center; box-shadow: var(--shadow-sm); max-width: 620px; margin: 0 auto;">
+            <div style="font-size: 0.82rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.6px; color: var(--color-brown); margin-bottom: 0.4rem;">
+              ${isEn ? '6 Chambers • 1 Live Bullet • Rotating Cylinder' : '6 komor • 1 ostrý náboj v bubínku • Obíhá kolem stolu'}
+            </div>
+            <h3 style="font-family: var(--font-western); color: var(--color-brown); font-size: 1.4rem; margin-bottom: 1.25rem;">
+              ${isEn ? 'Colt .45 Russian Roulette' : 'Ruská ruleta s Coltem .45'}
+            </h3>
+
+            <!-- CYLINDER VISUALIZATION -->
+            <div style="position: relative; width: 200px; height: 200px; margin: 0 auto 1.5rem; background: radial-gradient(circle, #3d2b1f 0%, #1a1008 100%); border-radius: 50%; border: 4px solid var(--color-gold); box-shadow: 0 6px 18px rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center;">
+              <!-- Center Axis / Pin -->
+              <div style="width: 44px; height: 44px; border-radius: 50%; background: var(--color-gold); border: 3px solid #6b4c1b; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.75rem; color: #3a2208; z-index: 2;">
+                ★
+              </div>
+
+              <!-- 6 Chambers arranged radially -->
+              ${[0, 1, 2, 3, 4, 5].map(idx => {
+                const angle = (idx * 60) * (Math.PI / 180);
+                const r = 64; // radius
+                const x = Math.round(100 + r * Math.sin(angle) - 18);
+                const y = Math.round(100 - r * Math.cos(angle) - 18);
+                const isUnderHammer = roulette && roulette.currentChamber === idx;
+                const isFired = roulette && roulette.shotsFired > idx;
+                const isTheBullet = roulette && roulette.fired && roulette.bulletChamber === idx;
+
+                return `
+                  <div style="position: absolute; left: ${x}px; top: ${y}px; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: bold; border: 2.5px solid ${
+                    isTheBullet ? '#e74c3c' : isUnderHammer ? 'var(--color-gold)' : isFired ? '#555' : '#8c7b70'
+                  }; background: ${
+                    isTheBullet ? '#c0392b' : isUnderHammer ? 'rgba(212, 172, 13, 0.45)' : isFired ? '#222' : '#2b1b11'
+                  }; color: ${isTheBullet ? '#fff' : '#fffae6'}; box-shadow: ${isUnderHammer ? '0 0 10px var(--color-gold)' : 'none'};">
+                    ${isTheBullet ? '💥' : (idx + 1)}
+                  </div>
+                `;
+              }).join('')}
+            </div>
+
+            <!-- CHAMBER STATS -->
+            <div style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+              ${isEn 
+                ? `Next Chamber to Fire: <strong>#${(roulette ? roulette.currentChamber : 0) + 1}</strong> | Shots Fired: <strong>${roulette ? roulette.shotsFired : 0} / 6</strong>`
+                : `Komora pod kohoutkem: <strong>#${(roulette ? roulette.currentChamber : 0) + 1}</strong> | Vystřeleno: <strong>${roulette ? roulette.shotsFired : 0} / 6</strong>`}
+            </div>
+
+            <!-- RESULT BANNER -->
+            ${miniGamesState.rouletteMessage ? `
+              <div style="border-radius: 8px; padding: 0.85rem 1rem; margin-bottom: 1.5rem; font-size: 0.98rem; font-weight: 700; line-height: 1.45; border: 2px solid ${
+                miniGamesState.rouletteStatus === 'boom' ? '#e74c3c' : miniGamesState.rouletteStatus === 'safe' ? '#2ecc71' : 'var(--border-color)'
+              }; background: ${
+                miniGamesState.rouletteStatus === 'boom' ? 'rgba(231, 76, 60, 0.15)' : miniGamesState.rouletteStatus === 'safe' ? 'rgba(46, 204, 113, 0.15)' : 'var(--bg-card)'
+              }; color: ${
+                miniGamesState.rouletteStatus === 'boom' ? '#c0392b' : miniGamesState.rouletteStatus === 'safe' ? '#27ae60' : 'var(--color-brown)'
+              };">
+                ${miniGamesState.rouletteMessage}
+              </div>
+            ` : ''}
+
+            <!-- ACTIONS -->
+            <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
+              <button type="button" id="btn-roulette-spin" class="tool-subnav-btn" style="padding: 0.65rem 1.25rem; font-size: 0.95rem; cursor: pointer; border-radius: 25px; font-weight: 700;">
+                🔄 ${isEn ? 'Spin Cylinder' : 'Protočit bubínek'}
+              </button>
+              <button type="button" id="btn-roulette-trigger" class="tool-subnav-btn active" style="padding: 0.65rem 1.6rem; font-size: 1.05rem; cursor: pointer; border-radius: 25px; font-weight: 800; background: ${miniGamesState.rouletteStatus === 'boom' ? '#7f8c8d' : '#c0392b'}; color: #fff; box-shadow: 0 4px 12px rgba(192, 57, 43, 0.35);">
+                💥 ${isEn ? 'Pull Trigger!' : 'Stisknout spoušť!'}
+              </button>
+              <button type="button" id="btn-roulette-reload" class="tool-subnav-btn" style="padding: 0.65rem 1.2rem; font-size: 0.92rem; cursor: pointer; border-radius: 25px;">
+                ⚙️ ${isEn ? 'Reload 6 Rounds' : 'Nové nabití'}
+              </button>
+            </div>
+          </div>
+        ` : `
+          <!-- QUICK DRAW DUEL VIEW -->
+          <div style="background: var(--bg-surface); border: 2px solid var(--color-brown); border-radius: var(--radius-lg); padding: 1.75rem 1.25rem; text-align: center; box-shadow: var(--shadow-sm); max-width: 620px; margin: 0 auto;">
+            <div style="font-size: 0.82rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.6px; color: var(--color-brown); margin-bottom: 0.4rem;">
+              ${isEn ? 'Reflex & Speed Test • Millisecond Accuracy' : 'Test reakčního času a postřehu • Přesnost na milisekundy'}
+            </div>
+            <h3 style="font-family: var(--font-western); color: var(--color-brown); font-size: 1.4rem; margin-bottom: 1.25rem;">
+              ${isEn ? 'Quick Draw Duel (Saloon Shootout)' : 'Saloonový rozstřel (Tasení koltů)'}
+            </h3>
+
+            ${miniGamesState.duelBestMs ? `
+              <div style="display: inline-block; background: rgba(212, 172, 13, 0.15); border: 1.5px solid var(--color-gold); border-radius: 20px; padding: 0.3rem 0.9rem; font-size: 0.86rem; font-weight: 800; color: var(--color-brown); margin-bottom: 1.25rem;">
+                🏆 ${isEn ? `Party Record: ${miniGamesState.duelBestMs} ms` : `Rekord party v tasení: ${miniGamesState.duelBestMs} ms`}
+              </div>
+            ` : ''}
+
+            <!-- INTERACTIVE DUEL ARENA -->
+            ${miniGamesState.duelState === 'idle' ? `
+              <div style="padding: 2.5rem 1rem; border: 2px dashed var(--border-color); border-radius: 12px; background: var(--bg-card); margin-bottom: 1.5rem;">
+                <p style="font-size: 0.95rem; color: var(--text-color); margin-bottom: 1.5rem; line-height: 1.5;">
+                  ${isEn 
+                    ? 'Place your finger on the screen. Wait for the signal FIRE! Tap as fast as humanly possible. If you shoot early, you lose!' 
+                    : 'Polož prst na displej a soustřeď se. Počkej na signál PAL! Klepni co nejrychleji. Kdo vystřelí dřív, je diskvalifikován!'}
+                </p>
+                <button type="button" id="btn-duel-start" class="tool-subnav-btn active" style="padding: 0.85rem 2.2rem; font-size: 1.15rem; font-weight: 800; cursor: pointer; border-radius: 30px; background: var(--color-brown); color: #fff; box-shadow: 0 4px 14px rgba(0,0,0,0.25);">
+                  🤠 ${isEn ? 'Ready... Draw Colts!' : 'Připravit kolty!'}
+                </button>
+              </div>
+            ` : miniGamesState.duelState === 'waiting' ? `
+              <div id="duel-tap-arena" style="padding: 3.5rem 1rem; border: 3px solid #f39c12; border-radius: 12px; background: #2c1a0e; color: #f1c40f; margin-bottom: 1.5rem; cursor: pointer; user-select: none;">
+                <div style="font-size: 1.8rem; font-weight: 900; font-family: var(--font-western); letter-spacing: 1px;">
+                  🟡 ${isEn ? 'STEADY... WAIT FOR FIRE!' : 'POZOR... ČEKEJ NA PAL!'}
+                </div>
+                <div style="font-size: 0.88rem; color: #ffeb99; margin-top: 0.75rem;">
+                  ${isEn ? '(Do NOT tap yet! Premature shot = defeat)' : '(Zatím neklikej! Předčasný výstřel = prohra)'}
+                </div>
+              </div>
+            ` : miniGamesState.duelState === 'ready' ? `
+              <div id="duel-tap-arena" style="padding: 3.5rem 1rem; border: 3px solid #e74c3c; border-radius: 12px; background: #c0392b; color: #fff; margin-bottom: 1.5rem; cursor: pointer; user-select: none; box-shadow: 0 0 25px #e74c3c;">
+                <div style="font-size: 3rem; font-weight: 900; font-family: var(--font-western); letter-spacing: 2px;">
+                  🔥 ${isEn ? 'FIRE! SHOOT NOW!' : 'PAL! STŘÍLEJ!'} 🔥
+                </div>
+                <div style="font-size: 1.1rem; font-weight: 800; margin-top: 0.5rem;">
+                  ${isEn ? 'TAP SCREEN NOW!' : 'KLEPNI HNED NA DISPLEJ!'}
+                </div>
+              </div>
+            ` : miniGamesState.duelState === 'false_start' ? `
+              <div style="padding: 2rem 1rem; border: 2px solid #e74c3c; border-radius: 12px; background: rgba(231, 76, 60, 0.12); margin-bottom: 1.5rem;">
+                <div style="font-size: 1.4rem; font-weight: 900; color: #c0392b; margin-bottom: 0.5rem; font-family: var(--font-western);">
+                  ❌ ${isEn ? 'FALSE START / PREMATURE SHOT!' : 'PŘEDČASNÝ VÝSTŘEL!'}
+                </div>
+                <p style="font-size: 0.95rem; color: var(--text-color); margin-bottom: 1.25rem;">
+                  ${isEn 
+                    ? 'You fired before the signal! The trigger-happy gunslinger is disqualified.' 
+                    : 'Vystřelil jsi dřív, než zazněl signál! Zbrklý pistolník byl diskvalifikován a prohrál rozstřel.'}
+                </p>
+                <button type="button" id="btn-duel-reset" class="tool-subnav-btn active" style="padding: 0.7rem 1.75rem; font-size: 1rem; font-weight: 800; cursor: pointer; border-radius: 25px;">
+                  🔄 ${isEn ? 'Try Again' : 'Nový rozstřel'}
+                </button>
+              </div>
+            ` : `
+              <!-- FINISHED DUEL WITH REACTION TIME -->
+              <div style="padding: 2rem 1rem; border: 2px solid #2ecc71; border-radius: 12px; background: rgba(46, 204, 113, 0.12); margin-bottom: 1.5rem;">
+                <div style="font-size: 0.85rem; font-weight: 800; text-transform: uppercase; color: #27ae60; margin-bottom: 0.35rem;">
+                  ${isEn ? 'Reaction Time:' : 'Zaznamenaný reakční čas:'}
+                </div>
+                <div style="font-size: 3.2rem; font-weight: 900; color: #27ae60; line-height: 1; margin-bottom: 0.75rem; font-family: var(--font-western);">
+                  ${miniGamesState.duelReactionMs} <span style="font-size: 1.5rem;">ms</span>
+                </div>
+                <div style="font-size: 1.15rem; font-weight: 800; color: var(--color-brown); margin-bottom: 1.25rem;">
+                  ${
+                    miniGamesState.duelReactionMs < 220
+                      ? (isEn ? '⚡ Legendary Willy the Kid (Lightning reflexes!)' : '⚡ Willy the Kid (Bleskový salónový reflex!)')
+                      : miniGamesState.duelReactionMs <= 300
+                      ? (isEn ? '🎯 Fast Saloon Gunman (Deadly draw!)' : '🎯 Bleskový pistolník (Smrtící tasení!)')
+                      : miniGamesState.duelReactionMs <= 420
+                      ? (isEn ? '⭐ Sharp Deputy (Solid reflexes)' : '⭐ Spolehlivý šerif (Dobrý průměr)')
+                      : miniGamesState.duelReactionMs <= 580
+                      ? (isEn ? '🌵 Slow Cowboy (Need another whiskey?)' : '🌵 Pomalý kovboj (Po dvou pivech?)')
+                      : (isEn ? '💀 Boot Hill Corpse (Too slow for the Wild West!)' : '💀 Obyvatel Boot Hillu (Na Divokém západě jsi po smrti!)')
+                  }
+                </div>
+                <button type="button" id="btn-duel-reset" class="tool-subnav-btn active" style="padding: 0.7rem 1.85rem; font-size: 1rem; font-weight: 800; cursor: pointer; border-radius: 25px;">
+                  🔄 ${isEn ? 'New Duel' : 'Nový rozstřel'}
+                </button>
+              </div>
+            `}
+          </div>
+        `}
+      </div>
+    `;
+
+    // Bind SubTab Buttons
+    container.querySelectorAll('.btn-minigame-tab').forEach(btn => {
+      btn.addEventListener('click', () => {
+        miniGamesState.activeSubTab = btn.dataset.minigame;
+        if (miniGamesState.duelTimer) {
+          clearTimeout(miniGamesState.duelTimer);
+          miniGamesState.duelTimer = null;
+        }
+        renderMiniGames(container);
+      });
+    });
+
+    // Russian Roulette Listeners
+    if (miniGamesState.activeSubTab === 'roulette') {
+      const btnSpin = document.getElementById('btn-roulette-spin');
+      if (btnSpin) {
+        btnSpin.addEventListener('click', () => {
+          if (roulette) roulette.spin();
+          try { if (sfx) sfx.playCock(); } catch (e) {}
+          miniGamesState.rouletteStatus = 'ready';
+          miniGamesState.rouletteMessage = isEn 
+            ? '🔄 Cylinder spun! Pass the Colt to the first brave gunfighter.' 
+            : '🔄 Buben protočen! Předejte Colt prvnímu odvážnému střelci.';
+          renderMiniGames(container);
+        });
+      }
+
+      const btnTrigger = document.getElementById('btn-roulette-trigger');
+      if (btnTrigger) {
+        btnTrigger.addEventListener('click', () => {
+          if (!roulette) return;
+          const res = roulette.pullTrigger();
+          if (res.isLive) {
+            miniGamesState.rouletteStatus = 'boom';
+            miniGamesState.rouletteMessage = isEn
+              ? '💀 BOOM! Live round in the chamber! The defeated gunfighter buys beers / shuffles the deck!'
+              : '💀 BÁÁÁC! Ostrý náboj v komoře! Poražený pistolník platí rundu piv / míchá balíček / Šerifem se stává vítěz!';
+            try {
+              if (sfx) {
+                sfx.playShot();
+                setTimeout(() => sfx.playWilhelm(), 320);
+              }
+            } catch (e) {}
+          } else {
+            miniGamesState.rouletteStatus = 'safe';
+            miniGamesState.rouletteMessage = isEn
+              ? `💨 CLICK! Empty chamber (${res.shotsFired}/6). Gunfighter survived! Pass the gun to the left!`
+              : `💨 CVAK! Prázdná komora (${res.shotsFired}/6). Pistolník přežil! Předejte zbraň hráči po levici!`;
+            try { if (sfx) sfx.playCock(); } catch (e) {}
+          }
+          renderMiniGames(container);
+        });
+      }
+
+      const btnReload = document.getElementById('btn-roulette-reload');
+      if (btnReload) {
+        btnReload.addEventListener('click', () => {
+          if (roulette) roulette.spin();
+          try { if (sfx) sfx.playCock(); } catch (e) {}
+          miniGamesState.rouletteStatus = 'ready';
+          miniGamesState.rouletteMessage = isEn
+            ? '⚙️ Colt .45 reloaded with 1 live round and 5 blanks.'
+            : '⚙️ Colt .45 nově nabit: 1 ostrý náboj a 5 prázdných komor.';
+          renderMiniGames(container);
+        });
+      }
+    }
+
+    // Quick Draw Duel Listeners
+    if (miniGamesState.activeSubTab === 'duel') {
+      const btnStart = document.getElementById('btn-duel-start');
+      if (btnStart) {
+        btnStart.addEventListener('click', () => {
+          miniGamesState.duelState = 'waiting';
+          renderMiniGames(container);
+          try { if (sfx) sfx.playCock(); } catch (e) {}
+
+          const delay = Math.floor(Math.random() * 2800) + 2000;
+          miniGamesState.duelTimer = setTimeout(() => {
+            miniGamesState.duelState = 'ready';
+            miniGamesState.duelStartTime = performance.now();
+            renderMiniGames(container);
+            try { if (sfx) sfx.playShot(); } catch (e) {}
+          }, delay);
+        });
+      }
+
+      const arena = document.getElementById('duel-tap-arena');
+      if (arena) {
+        arena.addEventListener('pointerdown', (e) => {
+          e.preventDefault();
+          if (miniGamesState.duelState === 'waiting') {
+            // Premature shot!
+            if (miniGamesState.duelTimer) {
+              clearTimeout(miniGamesState.duelTimer);
+              miniGamesState.duelTimer = null;
+            }
+            miniGamesState.duelState = 'false_start';
+            try { if (sfx) sfx.playRicochet(); } catch (err) {}
+            renderMiniGames(container);
+          } else if (miniGamesState.duelState === 'ready') {
+            // Successful draw!
+            const reactionTime = Math.round(performance.now() - miniGamesState.duelStartTime);
+            miniGamesState.duelReactionMs = reactionTime;
+            miniGamesState.duelState = 'finished';
+            if (!miniGamesState.duelBestMs || reactionTime < miniGamesState.duelBestMs) {
+              miniGamesState.duelBestMs = reactionTime;
+              try {
+                localStorage.setItem('bang_duel_best_ms', reactionTime.toString());
+              } catch (err) {}
+            }
+            renderMiniGames(container);
+          }
+        });
+      }
+
+      const btnReset = document.getElementById('btn-duel-reset');
+      if (btnReset) {
+        btnReset.addEventListener('click', () => {
+          if (miniGamesState.duelTimer) {
+            clearTimeout(miniGamesState.duelTimer);
+            miniGamesState.duelTimer = null;
+          }
+          miniGamesState.duelState = 'idle';
+          miniGamesState.duelReactionMs = null;
+          renderMiniGames(container);
+        });
+      }
+    }
   }
 
   // =========================================================================
