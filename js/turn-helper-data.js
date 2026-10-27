@@ -641,8 +641,11 @@
       </table>
     </div>
 
+    <!-- 4. ASISTENT PRO VYŘAZENÉ HRÁČE -->
+    <div id="afterlife-assistant-mount"></div>
+
     <h3 style="color: var(--color-brown); font-size: 1.3rem; margin: 2rem 0 0.5rem;">
-      4. Oficiální symboly a ikony na kartách (Dized / Pravidla BANG!)
+      5. Oficiální symboly a ikony na kartách (Dized / Pravidla BANG!)
     </h3>
     <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.25rem;">
       Oficiální grafické symboly používané na kartách BANG! pro jednoznačné určení efektů, cílení a vzdáleností bez závislosti na jazyce.
@@ -836,7 +839,7 @@
     </div>
 
     <h3 style="color: var(--color-brown); font-size: 1.3rem; margin: 2rem 0 0.5rem;">
-      5. Výjimky z pravidla „1 BANG! za tah“
+      6. Výjimky z pravidla „1 BANG! za tah“
     </h3>
     <div class="callout callout-info">
       <ul>
@@ -1042,8 +1045,11 @@
       </table>
     </div>
 
+    <!-- 4. ELIMINATED PLAYERS ASSISTANT -->
+    <div id="afterlife-assistant-mount"></div>
+
     <h3 style="color: var(--color-brown); font-size: 1.3rem; margin: 2rem 0 0.5rem;">
-      4. Official Card Symbols and Icons Guide (Dized / BANG! Rules)
+      5. Official Card Symbols and Icons Guide (Dized / BANG! Rules)
     </h3>
     <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.25rem;">
       Official graphic symbols used on BANG! cards to unambiguously indicate effects, targeting criteria, and distance rules across all languages.
@@ -1237,7 +1243,7 @@
     </div>
 
     <h3 style="color: var(--color-brown); font-size: 1.3rem; margin: 2rem 0 0.5rem;">
-      5. Exceptions to "1 BANG! per Turn" Limit
+      6. Exceptions to "1 BANG! per Turn" Limit
     </h3>
     <div class="callout callout-info">
       <ul>

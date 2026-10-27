@@ -1526,7 +1526,6 @@
   // =========================================================================
   // Shared sound evaluator for draw checks (Tah hráče, Arbitr snímání)
   function playDrawSound(preset, status) {
-    if (typeof drawSimulatorState !== 'undefined' && drawSimulatorState.soundMuted) return;
     if (!window.BANG_TOOLS || !window.BANG_TOOLS.SoundFX) return;
     const sfx = window.BANG_TOOLS.SoundFX;
     if (preset === 'dynamite') {
@@ -2225,7 +2224,7 @@
   function renderAfterlifeSection(isEn) {
     const rules = (window.BANG_TOOLS && window.BANG_TOOLS.AfterlifeRules) || [];
     const filterOptions = [
-      { id: 'all', labelCs: 'Všechna pravidla smrti', labelEn: 'All Afterlife Rules' },
+      { id: 'all', labelCs: 'Všechna pravidla', labelEn: 'All Rules' },
       { id: 'gold-rush', labelCs: 'Zlatá horečka', labelEn: 'Gold Rush' },
       { id: 'valley-of-shadows', labelCs: 'Údolí stínů', labelEn: 'Valley of Shadows' },
       { id: 'wild-west-show', labelCs: 'Divoký západ', labelEn: 'Wild West Show' },
@@ -2238,48 +2237,44 @@
       : rules.filter(r => r.expId === afterlifeState.selectedExp);
 
     return `
-      <div class="afterlife-assistant-container" style="margin-bottom: 2rem; background: var(--bg-surface); border: 2px solid var(--color-brown); border-radius: var(--radius-lg); padding: 1.5rem; box-shadow: var(--shadow-md);">
-        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.25rem;">
-          <div>
-            <h2 style="font-family: var(--font-western); color: var(--color-brown); font-size: 1.45rem; margin-bottom: 0.35rem; display: flex; align-items: center; gap: 0.5rem;">
-              👻 ${isEn ? 'Eliminated Players & Afterlife Assistant' : 'Asistent pro vyřazené hráče (Pravidla po smrti & Duchové)'}
-            </h2>
-            <p style="font-size: 0.92rem; color: var(--text-muted); margin: 0; line-height: 1.45;">
-              ${isEn 
-                ? 'Eliminated early? Check if your active expansions let you return as a ghost, aid your allies from the grave, or take revenge!' 
-                : 'Byl jsi vyřazen ze hry hned zkraje? Zjisti, jaká pravidla platí pro mrtvé hráče v aktivních rozšířeních — Stínoví střelci, karty duchů, oživení i posmrtné činy!'}
-            </p>
-          </div>
-        </div>
+      <div class="afterlife-section-wrap" style="margin-top: 2rem;">
+        <h3 style="color: var(--color-brown); font-size: 1.3rem; margin: 2rem 0 0.5rem;">
+          ${isEn ? '4. Eliminated Players Assistant (Afterlife & Ghost Rules)' : '4. Asistent pro vyřazené hráče (Pravidla po smrti a duchové)'}
+        </h3>
+        <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1rem;">
+          ${isEn 
+            ? 'Eliminated early? Check if your active expansions let you return as a ghost, aid your allies from the grave, or take revenge:' 
+            : 'Byl jsi vyřazen ze hry hned zkraje? Zjisti, jaká pravidla platí pro mrtvé hráče a duchy v jednotlivých rozšířeních:'}
+        </p>
 
         <!-- Filter chips -->
-        <div style="display: flex; gap: 0.45rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
+        <div style="display: flex; gap: 0.45rem; flex-wrap: wrap; margin-bottom: 1.25rem;">
           ${filterOptions.map(opt => `
             <button type="button" class="tool-subnav-btn ${afterlifeState.selectedExp === opt.id ? 'active' : ''} btn-afterlife-filter" 
                     data-afterlife-filter="${opt.id}" 
-                    style="font-size: 0.82rem; padding: 0.4rem 0.85rem; cursor: pointer; border-radius: 20px;">
+                    style="font-size: 0.82rem; padding: 0.35rem 0.8rem; cursor: pointer; border-radius: 20px;">
               ${isEn ? opt.labelEn : opt.labelCs}
             </button>
           `).join('')}
         </div>
 
         <!-- Rules Grid -->
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.15rem;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
           ${filtered.map(r => `
-            <div style="background: var(--bg-card); border: 1.5px solid var(--border-color); border-radius: 10px; padding: 1.15rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: var(--shadow-sm);">
+            <div style="background: var(--bg-card); border: 1.5px solid var(--border-color); border-radius: var(--radius-md); padding: 1.15rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: var(--shadow-sm);">
               <div>
-                <div style="display: flex; align-items: center; gap: 0.65rem; margin-bottom: 0.75rem;">
-                  <img src="${r.icon}" alt="" style="width: 28px; height: 28px; object-fit: contain; flex-shrink: 0;">
-                  <h3 style="font-family: var(--font-western); font-size: 1.12rem; color: var(--color-brown); margin: 0;">
+                <div style="display: flex; align-items: center; gap: 0.65rem; margin-bottom: 0.65rem;">
+                  <img src="${r.icon}" alt="" style="width: 26px; height: 26px; object-fit: contain; flex-shrink: 0;">
+                  <h4 style="font-family: var(--font-western); font-size: 1.15rem; color: var(--color-brown); margin: 0;">
                     ${isEn ? r.titleEn : r.titleCs}
-                  </h3>
+                  </h4>
                 </div>
-                <div style="background: rgba(123, 60, 16, 0.08); border-left: 3.5px solid var(--color-brown); padding: 0.55rem 0.8rem; border-radius: 4px; font-size: 0.88rem; font-weight: 700; color: var(--color-brown); margin-bottom: 0.85rem;">
+                <div style="background: rgba(123, 60, 16, 0.08); border-left: 3.5px solid var(--color-brown); padding: 0.45rem 0.75rem; border-radius: 4px; font-size: 0.88rem; font-weight: 700; color: var(--color-brown); margin-bottom: 0.75rem;">
                   ${isEn ? r.summaryEn : r.summaryCs}
                 </div>
-                <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.85rem; line-height: 1.5; color: var(--text-color);">
+                <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.86rem; line-height: 1.5; color: var(--text-color);">
                   ${(isEn ? r.rulesEn : r.rulesCs).map(rule => `
-                    <li style="margin-bottom: 0.45rem;">${rule}</li>
+                    <li style="margin-bottom: 0.35rem;">${rule}</li>
                   `).join('')}
                 </ul>
               </div>
@@ -2299,9 +2294,14 @@
           ${isEn ? 'Print Quick Player Cheat Sheet (A4 / PDF)' : 'Vytisknout rychlý tahák pro hráče (A4 / PDF)'}
         </button>
       </div>
-      ${renderAfterlifeSection(isEn)}
       ${isEn ? window.BANG_HELPER_HTML_EN : window.BANG_HELPER_HTML_CS}
     `;
+
+    const mount = document.getElementById('afterlife-assistant-mount');
+    if (mount) {
+      mount.innerHTML = renderAfterlifeSection(isEn);
+    }
+
     const btn = document.getElementById('btn-print-cheat-sheet-helper');
     if (btn) {
       btn.addEventListener('click', openPrintCheatSheet);
@@ -3386,8 +3386,7 @@
     selectedValue: 'K',
     evaluatedCard: null,
     result: null,
-    history: [],
-    soundMuted: false
+    history: []
   };
 
   function renderDrawSimulator(container) {
@@ -3432,18 +3431,13 @@
 
     container.innerHTML = `
       <div class="tool-card-box">
-        <div class="tool-card-header" style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap;">
-          <div>
-            <h2>${isEn ? 'Draw Arbitrator & Odds Calculator' : 'Arbitr snímání & Kalkulátor šancí'}</h2>
-            <p class="tool-card-lead">
-              ${isEn
-                ? 'Authoritative rulings for physical cards flipped at the table, dispute prevention, and mathematical survival odds.'
-                : 'Nezpochybnitelný oficiální verdikt pro kartu otočenou ze stolu, řešení hádek u hry, přesné matematické šance na přežití a dramatické audio vyhodnocení.'}
-            </p>
-          </div>
-          <button type="button" id="btn-draw-mute-toggle" class="tool-subnav-btn ${drawSimulatorState.soundMuted ? '' : 'active'}" style="padding: 0.45rem 1rem; font-size: 0.86rem; cursor: pointer; border-radius: 20px; font-weight: 700; white-space: nowrap; display: inline-flex; align-items: center; gap: 0.45rem; box-shadow: 0 2px 6px rgba(0,0,0,0.12);">
-            ${drawSimulatorState.soundMuted ? (isEn ? '🔇 Silent Mode' : '🔇 Tichý režim (Zvuk VYP)') : (isEn ? '🔊 Sound FX: ON' : '🔊 Zvukový doprovod: ZAP')}
-          </button>
+        <div class="tool-card-header">
+          <h2>${isEn ? 'Draw Arbitrator & Odds Calculator' : 'Arbitr snímání & Kalkulátor šancí'}</h2>
+          <p class="tool-card-lead">
+            ${isEn
+              ? 'Authoritative rulings for physical cards flipped at the table, dispute prevention, and mathematical survival odds.'
+              : 'Nezpochybnitelný oficiální verdikt pro kartu otočenou ze stolu, řešení hádek u hry, přesné matematické šance na přežití a dramatické audio vyhodnocení.'}
+          </p>
         </div>
 
         <!-- 1. SITUATION PRESETS -->
@@ -3683,14 +3677,6 @@
     if (chkDuke) {
       chkDuke.addEventListener('change', () => {
         drawSimulatorState.luckyDuke = chkDuke.checked;
-        renderDrawSimulator(container);
-      });
-    }
-
-    const btnDrawMute = document.getElementById('btn-draw-mute-toggle');
-    if (btnDrawMute) {
-      btnDrawMute.addEventListener('click', () => {
-        drawSimulatorState.soundMuted = !drawSimulatorState.soundMuted;
         renderDrawSimulator(container);
       });
     }
@@ -5112,26 +5098,32 @@
                   <label style="display: block; font-weight: 800; font-size: 0.86rem; margin-bottom: 0.35rem;">
                     ${isEn ? 'Participants, Winners & Kills:' : 'Účastníci, Vítězové a Zářezy (Kills):'}
                   </label>
-                  <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-                    ${(leagueData.players || []).map(p => `
-                      <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; background: var(--bg-surface); padding: 0.45rem 0.75rem; border-radius: 6px; border: 1px solid var(--border-color); flex-wrap: wrap;">
-                        <label style="display: flex; align-items: center; gap: 0.45rem; font-weight: 700; cursor: pointer; min-width: 140px;">
-                          <input type="checkbox" class="chk-league-participant" data-pid="${p.id}" checked>
-                          ${p.name}
-                        </label>
-                        <div style="display: flex; align-items: center; gap: 1rem;">
-                          <label style="display: flex; align-items: center; gap: 0.35rem; font-size: 0.84rem; cursor: pointer;">
-                            <input type="checkbox" class="chk-league-winner" data-pid="${p.id}">
-                            ${isEn ? 'Won game' : 'Vyhrál'}
+                  ${(leagueData.players || []).length === 0 ? `
+                    <div style="padding: 1rem; background: var(--bg-surface); border-radius: 6px; color: var(--text-muted); font-style: italic; text-align: center;">
+                      ${isEn ? 'No players registered yet! Please add players first using "Add Player" above.' : 'V lize zatím nejsou žádní hráči! Nejprve přidejte hráče tlačítkem „Přidat hráče“ výše.'}
+                    </div>
+                  ` : `
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                      ${(leagueData.players || []).map(p => `
+                        <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; background: var(--bg-surface); padding: 0.45rem 0.75rem; border-radius: 6px; border: 1px solid var(--border-color); flex-wrap: wrap;">
+                          <label style="display: flex; align-items: center; gap: 0.45rem; font-weight: 700; cursor: pointer; min-width: 140px;">
+                            <input type="checkbox" class="chk-league-participant" data-pid="${p.id}" checked>
+                            ${p.name}
                           </label>
-                          <label style="display: flex; align-items: center; gap: 0.35rem; font-size: 0.84rem;">
-                            <span>${isEn ? 'Kills:' : 'Zářezů:'}</span>
-                            <input type="number" class="inp-league-kills" data-pid="${p.id}" value="0" min="0" max="7" style="width: 48px; padding: 0.25rem; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); text-align: center;">
-                          </label>
+                          <div style="display: flex; align-items: center; gap: 1rem;">
+                            <label style="display: flex; align-items: center; gap: 0.35rem; font-size: 0.84rem; cursor: pointer;">
+                              <input type="checkbox" class="chk-league-winner" data-pid="${p.id}">
+                              ${isEn ? 'Won game' : 'Vyhrál'}
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 0.35rem; font-size: 0.84rem;">
+                              <span>${isEn ? 'Kills:' : 'Zářezů:'}</span>
+                              <input type="number" class="inp-league-kills" data-pid="${p.id}" value="0" min="0" max="7" style="width: 48px; padding: 0.25rem; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); text-align: center;">
+                            </label>
+                          </div>
                         </div>
-                      </div>
-                    `).join('')}
-                  </div>
+                      `).join('')}
+                    </div>
+                  `}
                 </div>
 
                 <div style="display: flex; justify-content: flex-end; gap: 0.5rem;">
@@ -5160,28 +5152,41 @@
                   </tr>
                 </thead>
                 <tbody>
-                  ${[...(leagueData.players || [])]
-                    .sort((a, b) => (b.points || 0) - (a.points || 0))
-                    .map((p, idx) => {
-                      const medal = idx === 0 ? '🥇' : idx === 1 ? '🥈' : idx === 2 ? '🥉' : `${idx + 1}.`;
-                      const title = league ? league.getPlayerTitle(p, isEn) : 'Zelenáč';
-                      const winRate = p.games > 0 ? Math.round((p.wins / p.games) * 100) : 0;
+                  ${(leagueData.players || []).length === 0 ? `
+                    <tr>
+                      <td colspan="7" style="text-align: center; padding: 2.5rem 1rem; color: var(--text-muted); font-style: italic; background: var(--bg-card); border-radius: 8px;">
+                        <div style="font-size: 1rem; font-weight: 700; color: var(--color-brown); margin-bottom: 0.35rem;">
+                          ${isEn ? 'No players registered in the league yet!' : 'V lize zatím nejsou zapsáni žádní hráči!'}
+                        </div>
+                        <div style="font-size: 0.88rem;">
+                          ${isEn ? 'Click "Add Player" above to register gunfighters from your game group.' : 'Klikněte na tlačítko „Přidat hráče“ výše a zapište pistolníky ze své herní party.'}
+                        </div>
+                      </td>
+                    </tr>
+                  ` : `
+                    ${[...(leagueData.players || [])]
+                      .sort((a, b) => (b.points || 0) - (a.points || 0))
+                      .map((p, idx) => {
+                        const medal = idx === 0 ? '🥇' : idx === 1 ? '🥈' : idx === 2 ? '🥉' : `${idx + 1}.`;
+                        const title = league ? league.getPlayerTitle(p, isEn) : 'Zelenáč';
+                        const winRate = p.games > 0 ? Math.round((p.wins / p.games) * 100) : 0;
 
-                      return `
-                        <tr style="border-bottom: 1px solid var(--border-color); background: ${idx === 0 ? 'rgba(212, 172, 13, 0.08)' : 'transparent'};">
-                          <td style="padding: 0.75rem 0.5rem; font-weight: 800; font-size: 1.05rem;">${medal}</td>
-                          <td style="padding: 0.75rem;">
-                            <div style="font-weight: 800; font-size: 0.96rem; color: var(--color-brown);">${p.name}</div>
-                            <div style="font-size: 0.78rem; color: var(--text-muted); font-weight: 600;">${title}</div>
-                          </td>
-                          <td style="padding: 0.75rem; text-align: center; font-weight: 900; font-size: 1.25rem; color: var(--color-brown);">${p.points || 0}</td>
-                          <td style="padding: 0.75rem; text-align: center; color: var(--text-muted);">${p.games || 0}</td>
-                          <td style="padding: 0.75rem; text-align: center; font-weight: 700; color: #27ae60;">${p.wins || 0}</td>
-                          <td style="padding: 0.75rem; text-align: center; font-weight: 700; color: #c0392b;">${p.kills || 0}</td>
-                          <td style="padding: 0.75rem; text-align: center; font-weight: 800;">${winRate}%</td>
-                        </tr>
-                      `;
-                    }).join('')}
+                        return `
+                          <tr style="border-bottom: 1px solid var(--border-color); background: ${idx === 0 ? 'rgba(212, 172, 13, 0.08)' : 'transparent'};">
+                            <td style="padding: 0.75rem 0.5rem; font-weight: 800; font-size: 1.05rem;">${medal}</td>
+                            <td style="padding: 0.75rem;">
+                              <div style="font-weight: 800; font-size: 0.96rem; color: var(--color-brown);">${p.name}</div>
+                              <div style="font-size: 0.78rem; color: var(--text-muted); font-weight: 600;">${title}</div>
+                            </td>
+                            <td style="padding: 0.75rem; text-align: center; font-weight: 900; font-size: 1.25rem; color: var(--color-brown);">${p.points || 0}</td>
+                            <td style="padding: 0.75rem; text-align: center; color: var(--text-muted);">${p.games || 0}</td>
+                            <td style="padding: 0.75rem; text-align: center; font-weight: 700; color: #27ae60;">${p.wins || 0}</td>
+                            <td style="padding: 0.75rem; text-align: center; font-weight: 700; color: #c0392b;">${p.kills || 0}</td>
+                            <td style="padding: 0.75rem; text-align: center; font-weight: 800;">${winRate}%</td>
+                          </tr>
+                        `;
+                      }).join('')}
+                  `}
                 </tbody>
               </table>
             </div>

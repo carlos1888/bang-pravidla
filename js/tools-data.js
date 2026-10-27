@@ -1830,13 +1830,18 @@
     getData: () => {
       try {
         const raw = localStorage.getItem(LEAGUE_STORAGE_KEY);
-        return raw ? JSON.parse(raw) : {
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          // Purge legacy test mock players if present in stored state
+          if (parsed.players && parsed.players.some(p => p.id === 'p_1' && p.name === 'Šerif Carlos')) {
+            parsed.players = parsed.players.filter(p => !['p_1', 'p_2', 'p_3'].includes(p.id));
+            LeagueTracker.saveData(parsed);
+          }
+          return parsed;
+        }
+        return {
           seasonName: 'Saloonová liga 2026',
-          players: [
-            { id: 'p_1', name: 'Šerif Carlos', points: 14, games: 4, wins: 3, kills: 5, outlawWins: 1, renegadeWins: 0 },
-            { id: 'p_2', name: 'Rychlý Petr', points: 11, games: 4, wins: 2, kills: 4, outlawWins: 2, renegadeWins: 0 },
-            { id: 'p_3', name: 'Divoká Lucka', points: 8, games: 3, wins: 2, kills: 2, outlawWins: 1, renegadeWins: 0 }
-          ],
+          players: [],
           history: []
         };
       } catch (e) {
@@ -1979,6 +1984,11 @@
 
     generateLeagueTelegram: (leagueData, isEn) => {
       const sorted = [...(leagueData.players || [])].sort((a, b) => (b.points || 0) - (a.points || 0));
+      if (sorted.length === 0) {
+        return isEn
+          ? `🏆 *BANG! SEASON LEAGUE STANDINGS* 🏆\nSeason: ${leagueData.seasonName || 'Saloon League'}\n-------------------------------\nNo players registered yet. Add players in BANG! Companion to start the season!\nhttps://carlos1888.github.io/bang-pravidla/`
+          : `🏆 *AKTUÁLNÍ TABULKA LIGY BANG!* 🏆\nSezóna: ${leagueData.seasonName || 'Saloonová liga'}\n-------------------------------\nV lize zatím nejsou zapsáni žádní hráči. Přidejte hráče v aplikaci BANG! Companion!\nhttps://carlos1888.github.io/bang-pravidla/`;
+      }
       if (isEn) {
         let msg = `🏆 *BANG! SEASON LEAGUE STANDINGS* 🏆\n` +
                   `Season: ${leagueData.seasonName || 'Saloon League'}\n` +
