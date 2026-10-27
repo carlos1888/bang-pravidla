@@ -2375,11 +2375,11 @@ main.app-main {
 
 .step-box {
   display: flex;
-  gap: 1.25rem;
+  gap: 1.15rem;
   background: var(--bg-surface);
   border: 2px solid var(--border-color);
   border-radius: var(--radius-md);
-  padding: 1.35rem 1.25rem;
+  padding: 1.25rem 1.35rem;
   align-items: flex-start;
   box-shadow: 0 3px 10px rgba(43, 24, 16, 0.06);
   transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -2397,8 +2397,8 @@ main.app-main {
 }
 
 .step-num {
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   background: linear-gradient(135deg, #d49a37 0%, #8c531b 100%);
   color: #fff;
   border-radius: 50%;
@@ -2410,7 +2410,7 @@ main.app-main {
   font-family: var(--font-western);
   flex-shrink: 0;
   border: 2px solid #5a3410;
-  box-shadow: 0 3px 0 #3a200b, 0 4px 8px rgba(0,0,0,0.25);
+  box-shadow: 0 2px 0 #3a200b, 0 3px 6px rgba(0,0,0,0.25);
   text-shadow: 0 1px 2px rgba(0,0,0,0.5);
 }
 
@@ -2418,15 +2418,32 @@ main.app-main {
   background: linear-gradient(135deg, #ffe066 0%, #d49a00 100%);
   color: #1a0f07;
   border-color: #8c531b;
-  box-shadow: 0 3px 0 #5a3410, 0 0 12px rgba(255, 204, 0, 0.5);
+  box-shadow: 0 2px 0 #5a3410, 0 0 12px rgba(255, 204, 0, 0.5);
 }
 
+.step-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.rules-article .step-content h4,
 .step-content h4 {
   font-family: var(--font-western);
   font-size: 1.25rem;
+  font-weight: 700;
   color: var(--text-main);
-  margin-bottom: 0.4rem;
+  margin: 0 0 0.45rem 0 !important;
+  padding: 0 !important;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
   letter-spacing: 0.3px;
+  line-height: 1.25;
+}
+
+[data-theme="dark"] .rules-article .step-content h4,
+[data-theme="dark"] .step-content h4 {
+  color: var(--accent-gold);
 }
 
 .step-content p {
@@ -3882,9 +3899,12 @@ footer.app-footer {
     flex: 1 !important;
   }
 
+  .rules-article .step-content h4,
   .step-content h4 {
     font-size: 1.05rem !important;
-    margin-bottom: 0.25rem !important;
+    min-height: 30px !important;
+    margin: 0 0 0.35rem 0 !important;
+    line-height: 1.25 !important;
   }
 
   .step-content p {
