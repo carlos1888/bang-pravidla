@@ -2239,7 +2239,7 @@
     return `
       <div class="afterlife-section-wrap" style="margin-top: 2rem;">
         <h3 style="color: var(--color-brown); font-size: 1.3rem; margin: 2rem 0 0.5rem;">
-          ${isEn ? '4. Eliminated Players Assistant (Afterlife & Ghost Rules)' : '4. Asistent pro vyřazené hráče (Pravidla po smrti a duchové)'}
+          ${isEn ? 'Eliminated Players Assistant (Afterlife & Ghost Rules)' : 'Asistent pro vyřazené hráče (Pravidla po smrti a duchové)'}
         </h3>
         <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1rem;">
           ${isEn 
