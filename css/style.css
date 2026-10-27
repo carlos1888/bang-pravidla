@@ -2282,12 +2282,13 @@ main.app-main {
 }
 
 .phase-header {
-  padding: 1rem 1.4rem;
+  padding: 0.85rem 1.4rem;
   display: flex;
   align-items: center;
   gap: 0.75rem;
   border-bottom: 1px solid var(--border-color);
   background: var(--bg-surface);
+  flex-wrap: nowrap;
 }
 
 .phase-0 .phase-header { background: #fdf5e6; }
@@ -2303,18 +2304,47 @@ main.app-main {
 [data-theme="dark"] .phase-4 .phase-header { background: #382806; }
 
 .phase-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background: var(--color-brown);
   color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-weight: 800;
   font-size: 0.75rem;
-  padding: 0.2rem 0.55rem;
+  line-height: 1;
+  padding: 0.28rem 0.6rem;
   border-radius: 4px;
   text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
 }
 
+.phase-0 .phase-tag { background: #7b1fa2; }
+.phase-1 .phase-tag { background: #1565c0; }
+.phase-2 .phase-tag { background: #2e7d32; }
+.phase-3 .phase-tag { background: #c62828; }
+.phase-4 .phase-tag { background: #d84315; }
+
+.rules-article .phase-header h3,
 .phase-header h3 {
+  font-family: var(--font-western);
   font-size: 1.25rem;
+  font-weight: 700;
   color: var(--text-main);
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1.25;
+  letter-spacing: 0.3px;
+  flex: 1;
+  min-width: 0;
+}
+
+[data-theme="dark"] .rules-article .phase-header h3,
+[data-theme="dark"] .phase-header h3 {
+  color: var(--accent-gold);
 }
 
 .phase-body {
@@ -3716,18 +3746,26 @@ footer.app-footer {
   }
 
   .phase-header {
-    padding: 0.75rem 0.85rem !important;
-    gap: 0.5rem !important;
-    flex-wrap: wrap !important;
+    padding: 0.65rem 0.85rem !important;
+    gap: 0.55rem !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
   }
 
   .phase-tag {
-    font-size: 0.72rem !important;
-    padding: 0.15rem 0.45rem !important;
+    font-size: 0.7rem !important;
+    padding: 0.22rem 0.48rem !important;
+    flex-shrink: 0 !important;
   }
 
+  .rules-article .phase-header h3,
   .phase-header h3 {
     font-size: 1.05rem !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1.25 !important;
+    flex: 1 !important;
+    min-width: 0 !important;
   }
 
   .phase-body {
