@@ -4576,6 +4576,62 @@ button.btn-secondary:active {
   box-shadow: 0 1px 0 #542b10;
 }
 
+/* Western Danger / Destructive Action Button (e.g. Reset Season) */
+.btn-western-danger,
+button.btn-western-danger {
+  background: linear-gradient(180deg, #c0392b 0%, #9e2a1e 50%, #781c12 100%);
+  border: 2px solid #52120a;
+  color: #ffffff !important;
+  border-radius: 8px;
+  font-family: var(--font-western);
+  font-size: 0.88rem;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  padding: 0.55rem 1.05rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  box-shadow: 0 4px 0 #420d07, 0 4px 12px rgba(192, 57, 43, 0.35);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  transition: all 0.18s cubic-bezier(0.2, 0.8, 0.2, 1);
+  white-space: nowrap;
+  position: relative;
+  text-decoration: none;
+}
+
+.btn-western-danger:hover,
+button.btn-western-danger:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.15);
+  box-shadow: 0 6px 0 #420d07, 0 6px 16px rgba(192, 57, 43, 0.5);
+  border-color: #7a1b10;
+}
+
+.btn-western-danger:active,
+button.btn-western-danger:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #420d07, 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .btn-western-danger,
+[data-theme="dark"] button.btn-western-danger {
+  background: linear-gradient(180deg, #9e2a1e 0%, #781c12 50%, #52120a 100%);
+  border-color: #380a05;
+  box-shadow: 0 4px 0 #1e0503, 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .btn-western-danger:hover,
+[data-theme="dark"] button.btn-western-danger:hover {
+  box-shadow: 0 6px 0 #1e0503, 0 6px 16px rgba(192, 57, 43, 0.4);
+}
+
+[data-theme="dark"] .btn-western-danger:active,
+[data-theme="dark"] button.btn-western-danger:active {
+  box-shadow: 0 1px 0 #1e0503;
+}
+
 [data-theme="dark"] .btn-secondary {
   background: linear-gradient(180deg, #381e10 0%, #24130a 100%);
   border-color: #66381a;

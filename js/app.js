@@ -5048,14 +5048,14 @@
               </div>
 
               <!-- LEAGUE ACTIONS -->
-              <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                <button type="button" id="btn-toggle-add-player" class="tool-subnav-btn" style="font-size: 0.88rem; padding: 0.5rem 0.9rem; cursor: pointer; border-radius: 20px;">
+              <div style="display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center;">
+                <button type="button" id="btn-toggle-add-player" class="tool-subnav-btn ${matchTrackerState.showAddPlayer ? 'active' : ''}">
                   ➕ ${isEn ? 'Add Player' : 'Přidat hráče'}
                 </button>
-                <button type="button" id="btn-toggle-record-league" class="tool-subnav-btn" style="font-size: 0.88rem; padding: 0.5rem 0.9rem; cursor: pointer; border-radius: 20px;">
+                <button type="button" id="btn-toggle-record-league" class="tool-subnav-btn ${matchTrackerState.showRecordLeague ? 'active' : ''}">
                   🎯 ${isEn ? 'Log Game Points' : 'Zapsat body z partie'}
                 </button>
-                <button type="button" id="btn-reset-league" style="background: none; border: 1.5px solid #e74c3c; color: #e74c3c; border-radius: 20px; font-size: 0.84rem; padding: 0.45rem 0.85rem; cursor: pointer; font-weight: 700;">
+                <button type="button" id="btn-reset-league" class="btn-western-danger" title="${isEn ? 'Reset League Season' : 'Vynulovat a začít novou sezónu'}">
                   🔄 ${isEn ? 'Reset Season' : 'Resetovat sezónu'}
                 </button>
               </div>
@@ -5129,10 +5129,10 @@
                 </div>
 
                 <div style="display: flex; justify-content: flex-end; gap: 0.5rem;">
-                  <button type="button" id="btn-cancel-league-log" style="padding: 0.55rem 1rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-surface); cursor: pointer;">
+                  <button type="button" id="btn-cancel-league-log" class="btn-secondary" style="padding: 0.55rem 1.15rem; cursor: pointer;">
                     ${isEn ? 'Cancel' : 'Zrušit'}
                   </button>
-                  <button type="button" id="btn-save-league-log" class="btn-primary" style="padding: 0.55rem 1.4rem; border-radius: 6px; font-weight: bold; cursor: pointer;">
+                  <button type="button" id="btn-save-league-log" class="btn-primary" style="padding: 0.55rem 1.4rem; font-weight: bold; cursor: pointer;">
                     ${isEn ? 'Save League Points' : 'Uložit body'}
                   </button>
                 </div>
