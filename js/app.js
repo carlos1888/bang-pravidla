@@ -482,6 +482,9 @@
   }
 
   function setTab(tabId) {
+    if (window.BANG_TOOLS && window.BANG_TOOLS.SoundFX) {
+      window.BANG_TOOLS.SoundFX.stopAll();
+    }
     state.activeTab = tabId;
     window.location.hash = tabId;
 
@@ -1520,6 +1523,34 @@
   // =========================================================================
   // RENDER TURN GUIDE & QUICK HELPER (BILINGUAL & INTERACTIVE STEPPER)
   // =========================================================================
+  // Shared sound evaluator for draw checks (Tah hráče, Arbitr snímání)
+  function playDrawSound(preset, status) {
+    if (!window.BANG_TOOLS || !window.BANG_TOOLS.SoundFX) return;
+    const sfx = window.BANG_TOOLS.SoundFX;
+    if (preset === 'dynamite') {
+      if (status === 'failure') sfx.playDynamite(); // Exploded! (♠ 2-9)
+      else sfx.playRicochet(); // Passed safely to player on left
+    } else if (preset === 'jail') {
+      if (status === 'failure') sfx.playJail(); // Still in jail (heavy iron door slams shut)
+      else sfx.playHorse(); // Escaped jail (rode away on horseback)
+    } else if (preset === 'barrel') {
+      if (status === 'success') sfx.playBarrel(); // Deflected by oak barrel
+      else sfx.playShot(); // Bullet hit
+    } else if (preset === 'rattlesnake') {
+      if (status === 'failure') sfx.playRattlesnake(); // Snake bite!
+      else sfx.playRicochet(); // Dodged snake
+    } else if (preset === 'bomb') {
+      if (status === 'failure') sfx.playDynamite(); // Bomb exploded
+      else sfx.playRicochet(); // Passed safely
+    } else if (preset === 'teren') {
+      if (status === 'failure') sfx.playBell(); // Eliminated (death knell)
+      else sfx.playBeer(); // Survived at 1 HP
+    } else {
+      if (status === 'failure') sfx.playShot();
+      else sfx.playRicochet();
+    }
+  }
+
   const turnStepperState = {
     mode: 'stepper', // 'stepper' or 'full'
     activeStep: 0,
@@ -1947,11 +1978,11 @@
           const evalRes = window.BANG_TOOLS.DrawSimulator.evaluate(action, card, isEn);
           turnStepperState.quickTestResult = { card, evalRes };
 
-          // Play sound
-          if (window.BANG_TOOLS.SoundFX) {
-            if (action === 'dynamite' && evalRes.status === 'failure') window.BANG_TOOLS.SoundFX.playDynamite();
-            else if (evalRes.status === 'success') window.BANG_TOOLS.SoundFX.playBeer();
-            else window.BANG_TOOLS.SoundFX.playShot();
+          // Play authentic sound safely
+          try {
+            playDrawSound(action, evalRes.status);
+          } catch (e) {
+            console.warn('Audio playback error:', e);
           }
 
           renderTurnGuide();
@@ -2468,6 +2499,9 @@
 
   function renderTools() {
     if (!els.toolsContentArea) return;
+    if (window.BANG_TOOLS && window.BANG_TOOLS.SoundFX) {
+      window.BANG_TOOLS.SoundFX.stopAll();
+    }
 
     if (els.toolsSubnav) {
       els.toolsSubnav.querySelectorAll('.tool-subnav-btn').forEach(btn => {
@@ -3201,8 +3235,8 @@
   const drawSimulatorState = {
     preset: 'dynamite',
     luckyDuke: false,
-    selectedSuit: '♠',
-    selectedValue: '7',
+    selectedSuit: '♥',
+    selectedValue: 'K',
     evaluatedCard: null,
     result: null,
     history: []
@@ -3211,6 +3245,10 @@
   function renderDrawSimulator(container) {
     const isEn = state.lang === 'en';
     const sim = window.BANG_TOOLS ? window.BANG_TOOLS.DrawSimulator : null;
+    if (!drawSimulatorState.evaluatedCard && sim) {
+      drawSimulatorState.evaluatedCard = sim.createCard(drawSimulatorState.selectedSuit, drawSimulatorState.selectedValue);
+      drawSimulatorState.result = sim.evaluate(drawSimulatorState.preset, drawSimulatorState.evaluatedCard, isEn);
+    }
     const suits = (sim && sim.suits) ? sim.suits : [
       { symbol: '♥', nameCs: 'Srdce', nameEn: 'Hearts', color: 'red' },
       { symbol: '♦', nameCs: 'Káry', nameEn: 'Diamonds', color: 'red' },
@@ -3334,12 +3372,12 @@
                 <img src="assets/symbols/symbol_draw_check.png" class="rules-symbol-inline" alt=""> ${isEn ? 'Tabletop Referee: Enter Flipped Card' : 'Rozhodčí: Zadej kartu otočenou ze stolu'}
               </div>
               <div style="font-size: 0.82rem; color: var(--text-muted);">
-                ${isEn ? 'Select card suit & value. The live verdict updates immediately below. Click "Record This Draw" to log it.' : 'Zvolte barvu a hodnotu karty otočené z balíčku. Verdikt se zobrazuje živě níže. Tlačítkem jej zapíšete do protokolu.'}
+                ${isEn ? 'Step 1: Select the suit and rank of the card drawn from the physical deck. The live verdict reacts below.' : 'Krok 1: Zvolte barvu a hodnotu karty sejmuté z balíčku na stole. Živý verdikt níže ihned vyhodnotí výsledek.'}
               </div>
             </div>
 
             <button type="button" id="btn-random-draw" class="tool-subnav-btn active" style="padding: 0.5rem 1.1rem; font-size: 0.88rem; border-radius: 20px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 0.4rem;">
-              ${isEn ? 'Simulate Random Draw' : 'Simulovat náhodné otočení'}
+              🎲 ${isEn ? 'Simulate Random Draw' : 'Simulovat náhodné otočení'}
             </button>
           </div>
 
@@ -3395,7 +3433,7 @@
           <!-- CONFIRM RECORD BUTTON -->
           <div style="display: flex; justify-content: center; padding-top: 0.75rem; border-top: 1px dashed var(--border-color);">
             <button type="button" id="btn-confirm-draw" class="tool-subnav-btn active" style="font-size: 1rem; padding: 0.75rem 1.75rem; border-radius: 25px; box-shadow: var(--shadow-sm); display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer;">
-              ${isEn ? `Record This Draw (${drawSimulatorState.selectedSuit} ${drawSimulatorState.selectedValue})` : `Zaznamenat sejmutí do protokolu (${drawSimulatorState.selectedSuit} ${drawSimulatorState.selectedValue})`}
+              ${isEn ? `📥 Record to Protocol & Play Sound (${drawSimulatorState.selectedSuit} ${drawSimulatorState.selectedValue})` : `📥 Zaznamenat do protokolu a přehrát zvuk (${drawSimulatorState.selectedSuit} ${drawSimulatorState.selectedValue})`}
             </button>
           </div>
         </div>
@@ -3403,6 +3441,9 @@
         <!-- 4. OFFICIAL VERDICT BANNER -->
         ${drawSimulatorState.evaluatedCard && drawSimulatorState.result ? `
           <div style="background: radial-gradient(ellipse at center, #2e170a 0%, #170b04 100%); border: 2px solid #5a3014; border-radius: 12px; padding: 1.75rem 1.25rem; text-align: center; margin-bottom: 1.5rem; box-shadow: inset 0 2px 10px rgba(0,0,0,0.6); display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <div style="font-size: 0.82rem; font-weight: 800; color: #ffcc00; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 0.85rem;">
+              ${isEn ? '⚡ Step 2: Live Official Verdict (Reacts immediately as you tap suit or rank):' : '⚡ Krok 2: Živý oficiální verdikt (okamžitě reaguje na volbu barvy i hodnoty):'}
+            </div>
             
             <div style="display: flex; gap: 1.5rem; justify-content: center; align-items: center; flex-wrap: wrap; margin-bottom: 1.25rem;">
               <!-- CARD GRAPHIC -->
@@ -3535,19 +3576,7 @@
 
         // Play Sound FX safely
         try {
-          if (window.BANG_TOOLS && window.BANG_TOOLS.SoundFX) {
-            if (drawSimulatorState.preset === 'dynamite' && drawSimulatorState.result.status === 'failure') {
-              window.BANG_TOOLS.SoundFX.playDynamite();
-            } else if (drawSimulatorState.preset === 'jail') {
-              window.BANG_TOOLS.SoundFX.playJail();
-            } else if (drawSimulatorState.preset === 'rattlesnake') {
-              window.BANG_TOOLS.SoundFX.playRattlesnake();
-            } else if (drawSimulatorState.result.status === 'failure') {
-              window.BANG_TOOLS.SoundFX.playShot();
-            } else {
-              window.BANG_TOOLS.SoundFX.playBell();
-            }
-          }
+          playDrawSound(drawSimulatorState.preset, drawSimulatorState.result.status);
         } catch (e) {
           console.warn('Audio playback error:', e);
         }
@@ -3575,19 +3604,7 @@
 
         // Play Sound FX safely
         try {
-          if (window.BANG_TOOLS && window.BANG_TOOLS.SoundFX) {
-            if (drawSimulatorState.preset === 'dynamite' && drawSimulatorState.result.status === 'failure') {
-              window.BANG_TOOLS.SoundFX.playDynamite();
-            } else if (drawSimulatorState.preset === 'jail') {
-              window.BANG_TOOLS.SoundFX.playJail();
-            } else if (drawSimulatorState.preset === 'rattlesnake') {
-              window.BANG_TOOLS.SoundFX.playRattlesnake();
-            } else if (drawSimulatorState.result.status === 'failure') {
-              window.BANG_TOOLS.SoundFX.playShot();
-            } else {
-              window.BANG_TOOLS.SoundFX.playBell();
-            }
-          }
+          playDrawSound(drawSimulatorState.preset, drawSimulatorState.result.status);
         } catch (e) {
           console.warn('Audio playback error:', e);
         }
@@ -6090,9 +6107,16 @@
 
     container.innerHTML = `
       <div class="tool-card-box">
-        <div class="tool-card-header">
-          <h2>${isEn ? 'Wild West Soundboard' : 'Westernový Soundboard'}</h2>
-          <p class="tool-card-lead">${isEn ? 'Authentic comic-style sound effects from BANG! and the Wild West: Colt .45, Gatling, Indians!, Duel, Jail, Oak Barrel, Bowie Knife, Saloon Brawl, and foaming cold beer. Fully cached for 100% offline play.' : 'Autentické komiksové zvukové efekty ze hry BANG! a Divokého západu: Colt .45, Gatling, Indiáni!, Duel, Vězení, Barel, Nůž, Hospodská rvačka i poctivé vychlazené pivo. Funguje 100% i offline bez internetu.'}</p>
+        <div class="tool-card-header" style="margin-bottom: 1.25rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap;">
+            <div>
+              <h2 style="margin: 0 0 0.35rem 0;">${isEn ? 'Wild West Soundboard' : 'Westernový Soundboard'}</h2>
+              <p class="tool-card-lead" style="margin: 0;">${isEn ? 'Authentic comic-style sound effects from BANG! and the Wild West. Tap to play, tap again or press Stop to silence immediately.' : 'Autentické komiksové zvukové efekty ze hry BANG! a Divokého západu. Kliknutím spustíte, dalším kliknutím nebo tlačítkem Zastavit okamžitě utichne.'}</p>
+            </div>
+            <button type="button" id="btn-soundboard-stop" class="tool-subnav-btn" style="border-color: #c0392b; color: #c0392b; font-size: 0.92rem; padding: 0.55rem 1.15rem; font-weight: 800; display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer; border-radius: 20px; white-space: nowrap; box-shadow: 0 2px 6px rgba(0,0,0,0.15);">
+              ⏹️ ${isEn ? 'Stop Sound' : 'Zastavit zvuk'}
+            </button>
+          </div>
         </div>
 
         <div class="soundboard-grid">
@@ -6106,13 +6130,39 @@
       </div>
     `;
 
+    const stopBtn = document.getElementById('btn-soundboard-stop');
+    if (stopBtn) {
+      stopBtn.addEventListener('click', () => {
+        if (window.BANG_TOOLS && window.BANG_TOOLS.SoundFX) {
+          window.BANG_TOOLS.SoundFX.stopAll();
+        }
+        container.querySelectorAll('.sound-tile').forEach(t => t.classList.remove('sound-tile-playing'));
+      });
+    }
+
+    const onSoundStop = () => {
+      container.querySelectorAll('.sound-tile').forEach(t => t.classList.remove('sound-tile-playing'));
+    };
+    document.addEventListener('bang:sound_ended', onSoundStop);
+    document.addEventListener('bang:sound_stopped', onSoundStop);
+
     container.querySelectorAll('.sound-tile').forEach(tile => {
       const play = () => {
         const sid = tile.dataset.snd;
+        const sfx = window.BANG_TOOLS ? window.BANG_TOOLS.SoundFX : null;
+        if (!sfx) return;
+
+        // If clicking the sound that is already actively playing -> toggle stop it!
+        if (sfx.isPlaying && sfx.isPlaying() && sfx.getCurrentKey && sfx.getCurrentKey() === sid) {
+          sfx.stopAll();
+          tile.classList.remove('sound-tile-playing');
+          return;
+        }
+
         const targetSnd = sounds.find(s => s.id === sid);
         if (targetSnd) {
+          container.querySelectorAll('.sound-tile').forEach(t => t.classList.remove('sound-tile-playing'));
           tile.classList.add('sound-tile-playing');
-          setTimeout(() => tile.classList.remove('sound-tile-playing'), 250);
           targetSnd.action();
         }
       };

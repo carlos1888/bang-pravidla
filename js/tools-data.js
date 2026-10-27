@@ -30,23 +30,56 @@
     duel: 'assets/audio/duel.m4a'
   };
 
-  const audioCache = {};
+  let currentAudio = null;
+  let currentAudioKey = null;
+
+  function stopAllAudio() {
+    if (currentAudio) {
+      try {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+      } catch (e) {}
+      currentAudio = null;
+      const prevKey = currentAudioKey;
+      currentAudioKey = null;
+      if (typeof document !== 'undefined') {
+        document.dispatchEvent(new CustomEvent('bang:sound_stopped', { detail: { key: prevKey } }));
+      }
+    }
+  }
 
   function playAudioFile(key) {
     if (!soundEnabled) return;
     const path = AUDIO_PATHS[key];
     if (!path) return;
     try {
-      if (!audioCache[key]) {
-        audioCache[key] = new Audio(path);
-      }
-      const sound = audioCache[key].cloneNode();
+      // 1. Immediately stop any currently playing audio so sounds never overlap!
+      stopAllAudio();
+
+      const sound = new Audio(path);
       sound.volume = 0.95;
+      currentAudio = sound;
+      currentAudioKey = key;
+
+      sound.addEventListener('ended', () => {
+        if (currentAudio === sound) {
+          currentAudio = null;
+          currentAudioKey = null;
+          if (typeof document !== 'undefined') {
+            document.dispatchEvent(new CustomEvent('bang:sound_ended', { detail: { key } }));
+          }
+        }
+      });
+
       const promise = sound.play();
       if (promise && promise.catch) {
         promise.catch((err) => {
           console.warn('[Audio] Playback issue:', err);
         });
+      }
+
+      if (typeof document !== 'undefined') {
+        document.dispatchEvent(new CustomEvent('bang:sound_started', { detail: { key } }));
       }
     } catch (e) {
       console.warn('[Audio] Audio error:', e);
@@ -57,8 +90,13 @@
     isEnabled: () => soundEnabled,
     toggle: (enable) => {
       soundEnabled = enable !== undefined ? enable : !soundEnabled;
+      if (!soundEnabled) stopAllAudio();
       return soundEnabled;
     },
+    stop: stopAllAudio,
+    stopAll: stopAllAudio,
+    isPlaying: () => !!currentAudio && !currentAudio.paused,
+    getCurrentKey: () => currentAudioKey,
     play: (id) => playAudioFile(id),
     playShot: () => playAudioFile('shot'),
     playRicochet: () => playAudioFile('ricochet'),
