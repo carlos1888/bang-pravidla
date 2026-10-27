@@ -1006,10 +1006,10 @@
             ${isPinned ? t.unpinCharacter : t.pinCharacter}
           </button>
         ` : ''}
-        <button type="button" id="btn-compare-card" class="btn-reset-filters" style="font-weight: 700;">
+        <button type="button" id="btn-compare-card" class="btn-secondary" style="font-size: 0.88rem; padding: 0.45rem 0.95rem;">
           ${t.compareCard}
         </button>
-        <button type="button" id="btn-modal-close-action" class="btn-reset-filters" style="font-weight: 700; margin-left: auto;">
+        <button type="button" id="btn-modal-close-action" class="btn-secondary" style="font-size: 0.88rem; padding: 0.45rem 0.95rem; margin-left: auto;">
           ✕ ${isEn ? 'Close' : 'Zavřít'}
         </button>
       </div>
@@ -1228,7 +1228,7 @@
           <h2 style="font-family: 'Georgia', serif; font-size: 1.6rem; color: var(--color-brown); margin: 0;">
             ⚖️ ${isEn ? 'Card Comparison' : 'Porovnání karet'}
           </h2>
-          <button type="button" class="btn-reset-filters" id="btn-back-to-single" style="font-weight: 700;">
+          <button type="button" class="btn-secondary" id="btn-back-to-single" style="font-size: 0.88rem; padding: 0.45rem 0.95rem;">
             ← ${isEn ? 'Back to Card Detail' : 'Zpět na detail karty'}
           </button>
         </div>
@@ -1818,7 +1818,7 @@
                 <div style="font-size: 0.88rem; opacity: 0.9;">${isEn ? q.evalRes.messageEn : q.evalRes.messageCs}</div>
               </div>
             </div>
-            <button type="button" id="btn-close-quick-test" style="background: rgba(0,0,0,0.3); color: #fff; border: 1px solid rgba(255,255,255,0.4); border-radius: 4px; padding: 0.3rem 0.6rem; cursor: pointer;">✕</button>
+            <button type="button" id="btn-close-quick-test" class="btn-close-western" style="margin: 0; flex-shrink: 0;" title="${isEn ? 'Close' : 'Zavřít'}" aria-label="${isEn ? 'Close' : 'Zavřít'}">✕</button>
           </div>
         </div>
       `;
@@ -1907,8 +1907,8 @@
             ⬅️ ${isEn ? 'Previous Phase' : 'Předchozí fáze'}
           </button>
 
-          <button type="button" id="btn-turn-reset" class="tool-subnav-btn" style="padding: 0.75rem 1.2rem; font-size: 0.9rem; cursor: pointer;">
-            ${isEn ? 'Start Turn Over' : 'Začít nový tah'}
+          <button type="button" id="btn-turn-reset" class="btn-secondary" style="padding: 0.75rem 1.3rem; font-size: 0.92rem; cursor: pointer;">
+            🔄 ${isEn ? 'Start Turn Over' : 'Začít nový tah'}
           </button>
 
           <button type="button" id="btn-turn-next" class="tool-subnav-btn active" style="padding: 0.75rem 1.6rem; font-size: 1rem; font-weight: 800; cursor: pointer;">
@@ -2186,7 +2186,7 @@
             <button type="button" id="btn-trigger-print" class="tool-subnav-btn active" style="font-size: 0.95rem; padding: 0.5rem 1.1rem; cursor: pointer; display: inline-flex; align-items: center; gap: 0.4rem; background: var(--color-brown); color: #fff;">
               ${isEn ? 'Print / Save PDF' : 'Vytisknout / Uložit PDF'}
             </button>
-            <button type="button" id="btn-close-cheat-sheet" class="btn-reset-filters" style="font-size: 0.95rem; padding: 0.5rem 0.9rem; cursor: pointer;">
+            <button type="button" id="btn-close-cheat-sheet" class="btn-secondary" style="font-size: 0.92rem; padding: 0.5rem 1rem; cursor: pointer;">
               ✕ ${isEn ? 'Close' : 'Zavřít'}
             </button>
           </div>
@@ -2290,8 +2290,8 @@
     const isEn = state.lang === 'en';
     els.pomocnikTarget.innerHTML = `
       <div style="display: flex; justify-content: flex-end; margin-bottom: 1.25rem;">
-        <button type="button" id="btn-print-cheat-sheet-helper" class="tool-subnav-btn active" style="font-size: 0.95rem; padding: 0.6rem 1.25rem; cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem; background: var(--color-brown); color: #fff;">
-          ${isEn ? 'Print Quick Player Cheat Sheet (A4 / PDF)' : 'Vytisknout rychlý tahák pro hráče (A4 / PDF)'}
+        <button type="button" id="btn-print-cheat-sheet-helper" class="btn-primary" style="font-size: 0.95rem; padding: 0.65rem 1.35rem; cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem;">
+          🖨️ ${isEn ? 'Print Quick Player Cheat Sheet (A4 / PDF)' : 'Vytisknout rychlý tahák pro hráče (A4 / PDF)'}
         </button>
       </div>
       ${isEn ? window.BANG_HELPER_HTML_EN : window.BANG_HELPER_HTML_CS}
@@ -2522,11 +2522,11 @@
               ${isEn ? `${checkedCount} of ${totalItems} steps completed` : `${checkedCount} z ${totalItems} kroků dokončeno`}
             </div>
           </div>
-          <div style="display: flex; gap: 0.6rem;">
-            <button type="button" id="btn-setup-reset-checks" class="tool-subnav-btn" style="padding: 0.45rem 0.85rem; font-size: 0.85rem; cursor: pointer;">
-              ${isEn ? 'Reset Checklist' : 'Resetovat zaškrtnutí'}
+          <div style="display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center;">
+            <button type="button" id="btn-setup-reset-checks" class="btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.88rem; cursor: pointer;">
+              🔄 ${isEn ? 'Reset Checklist' : 'Resetovat zaškrtnutí'}
             </button>
-            <button type="button" id="btn-setup-goto-draft" class="tool-subnav-btn active" style="padding: 0.45rem 1.1rem; font-size: 0.95rem; font-weight: 700; cursor: pointer;">
+            <button type="button" id="btn-setup-goto-draft" class="btn-primary" style="padding: 0.5rem 1.25rem; font-size: 0.95rem; cursor: pointer;">
               ${isEn ? 'Go to Role & Char Draft ➔' : 'Přejít na losování rolí a postav ➔'}
             </button>
           </div>
@@ -3639,8 +3639,8 @@
                 ${isEn ? 'Arbitration Log (Recent Table Draws):' : 'Záznam posuzovaných sejmutí u stolu:'}
                 <span style="font-size: 0.78rem; font-weight: normal; opacity: 0.8;">(${drawSimulatorState.history.length})</span>
               </span>
-              <button type="button" id="btn-clear-draw-hist" style="background: none; border: none; font-size: 0.8rem; color: #c0392b; cursor: pointer; text-decoration: underline; font-weight: bold;">
-                ${isEn ? 'Clear log' : 'Vymazat záznam'}
+              <button type="button" id="btn-clear-draw-hist" class="btn-western-danger" style="font-size: 0.78rem; padding: 0.3rem 0.75rem;" title="${isEn ? 'Clear arbitration log' : 'Vymazat historii sejmutí'}">
+                🗑️ ${isEn ? 'Clear log' : 'Vymazat záznam'}
               </button>
             </div>
 
@@ -3976,7 +3976,7 @@
                   <button type="button" class="tool-subnav-btn active" id="btn-next-sheriff" ${eventDeckState.sheriffIndex >= eventDeckState.sheriffDeck.length - 1 ? 'disabled style="opacity: 0.5;"' : ''}>
                     ${isEn ? 'Next Round ➔' : 'Další kolo ➔'}
                   </button>
-                  <button type="button" class="btn-reset-filters" id="btn-shuffle-sheriff" style="font-weight: 700; padding: 0.45rem 0.85rem;" title="${isEn ? 'Shuffle Sheriff Deck' : 'Zamíchat balíček Šerifa'}">
+                  <button type="button" class="btn-secondary" id="btn-shuffle-sheriff" style="padding: 0.45rem 0.85rem;" title="${isEn ? 'Shuffle Sheriff Deck' : 'Zamíchat balíček Šerifa'}">
                     🔄
                   </button>
                 </div>
@@ -4004,10 +4004,10 @@
                     <button type="button" class="tool-subnav-btn active" id="btn-next-wws" ${eventDeckState.wwsIndex >= eventDeckState.wwsDeck.length - 1 ? 'disabled style="opacity: 0.5;"' : ''}>
                       📯 ${isEn ? 'Stagecoach Played ➔' : 'Zahrán Dostavník ➔'}
                     </button>
-                    <button type="button" class="btn-reset-filters" id="btn-shuffle-wws" style="font-weight: 700; padding: 0.45rem 0.85rem;" title="${isEn ? 'Shuffle WWS Deck' : 'Zamíchat balíček Divokého západu'}">
+                    <button type="button" class="btn-secondary" id="btn-shuffle-wws" style="padding: 0.45rem 0.85rem;" title="${isEn ? 'Shuffle WWS Deck' : 'Zamíchat balíček Divokého západu'}">
                       🔄
                     </button>
-                    <button type="button" class="btn-reset-filters" id="btn-reset-wws" style="font-size: 0.82rem; padding: 0.45rem 0.75rem;" title="${isEn ? 'Reset to Waiting' : 'Vrátit do stavu před Dostavníkem'}">
+                    <button type="button" class="btn-secondary" id="btn-reset-wws" style="font-size: 0.82rem; padding: 0.45rem 0.75rem;" title="${isEn ? 'Reset to Waiting' : 'Vrátit do stavu před Dostavníkem'}">
                       ⏸️ ${isEn ? 'Wait' : 'Čekat'}
                     </button>
                   </div>
@@ -4360,7 +4360,7 @@
                 <div style="font-size: 0.88rem; font-weight: 800; color: var(--color-brown); text-transform: uppercase;">
                   ${isEn ? 'Secret Pass-the-Phone' : 'Tajné předání'} (${draftState.currentIdx + 1} / ${draftState.playerCount} ${isEn ? 'players' : 'hráčů'})
                 </div>
-                <button type="button" class="btn-cancel-draft" style="background: none; border: 1.5px solid var(--border-color); border-radius: 20px; padding: 0.35rem 0.85rem; font-size: 0.82rem; font-weight: bold; color: var(--text-muted); cursor: pointer; display: inline-flex; align-items: center; gap: 0.35rem;">
+                <button type="button" class="btn-cancel-draft btn-secondary" style="font-size: 0.82rem; padding: 0.4rem 0.85rem; cursor: pointer;">
                   ⚙️ ${isEn ? 'Change Player Count' : 'Změnit počet hráčů / Zrušit'}
                 </button>
               </div>
@@ -4445,7 +4445,7 @@
               <div style="font-size: 0.85rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase;">
                 ${p.name} (${draftState.currentIdx + 1} / ${draftState.playerCount} ${isEn ? 'players' : 'hráčů'})
               </div>
-              <button type="button" class="btn-cancel-draft" style="background: none; border: 1.5px solid var(--border-color); border-radius: 20px; padding: 0.35rem 0.85rem; font-size: 0.82rem; font-weight: bold; color: var(--text-muted); cursor: pointer; display: inline-flex; align-items: center; gap: 0.35rem;">
+              <button type="button" class="btn-cancel-draft btn-secondary" style="font-size: 0.82rem; padding: 0.4rem 0.85rem; cursor: pointer;">
                 ⚙️ ${isEn ? 'Change Player Count' : 'Změnit počet hráčů / Zrušit'}
               </button>
             </div>
@@ -4580,7 +4580,7 @@
               </div>
             </div>
 
-            <button type="button" class="btn-reset-filters" id="btn-restart-draft" style="font-weight: 700; font-size: 1rem; padding: 0.75rem 1.5rem; cursor: pointer;">
+            <button type="button" class="btn-primary" id="btn-restart-draft" style="font-size: 1rem; padding: 0.75rem 1.6rem; cursor: pointer;">
               🔄 ${isEn ? 'Start New Draft' : 'Spustit nové losování'}
             </button>
           </div>
@@ -4615,8 +4615,8 @@
             <input type="checkbox" id="chk-tracker-sheriff" ${trackerState.isSheriff ? 'checked' : ''}>
             <span>${isEn ? 'I am the Sheriff (+1 max life)' : 'Jsem Šerif (+1 max život navíc)'}</span>
           </label>
-          <button type="button" class="btn-reset-filters" id="btn-reset-tracker">
-            ${isEn ? 'Reset Tracker' : 'Resetovat desku'}
+          <button type="button" class="btn-western-danger" id="btn-reset-tracker" style="font-size: 0.82rem; padding: 0.4rem 0.85rem;" title="${isEn ? 'Reset Player Board' : 'Vynulovat stav hráče'}">
+            🔄 ${isEn ? 'Reset Tracker' : 'Resetovat desku'}
           </button>
         </div>
 
@@ -4815,11 +4815,11 @@
               ${matchTrackerState.showForm ? (isEn ? 'Close Form' : 'Zavřít formulář') : (isEn ? 'Record New Match' : 'Zapsat novou partii')}
             </button>
             ${matches.length > 0 ? `
-              <button type="button" id="btn-export-matches" style="background: var(--bg-surface); border: 1px solid var(--border-color); padding: 0.6rem 0.9rem; font-size: 0.88rem; border-radius: 8px; cursor: pointer;">
-                ${isEn ? 'Export JSON' : 'Export JSON'}
+              <button type="button" id="btn-export-matches" class="btn-secondary" style="font-size: 0.88rem; padding: 0.55rem 1rem; cursor: pointer;">
+                📥 ${isEn ? 'Export JSON' : 'Export JSON'}
               </button>
-              <button type="button" id="btn-clear-matches" style="background: var(--bg-surface); border: 1px solid #e74c3c; color: #e74c3c; padding: 0.6rem 0.9rem; font-size: 0.88rem; border-radius: 8px; cursor: pointer;">
-                ${isEn ? 'Clear All' : 'Smazat vše'}
+              <button type="button" id="btn-clear-matches" class="btn-western-danger" style="font-size: 0.88rem; padding: 0.55rem 1rem; cursor: pointer;" title="${isEn ? 'Clear all match records' : 'Smazat všechny odehrané partie'}">
+                🗑️ ${isEn ? 'Clear All' : 'Smazat vše'}
               </button>
             ` : ''}
           </div>
@@ -4958,10 +4958,10 @@
               </div>
 
               <div style="display: flex; gap: 0.8rem; justify-content: flex-end;">
-                <button type="button" id="btn-cancel-match" style="padding: 0.65rem 1.25rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-card); cursor: pointer; font-weight: 500;">
+                <button type="button" id="btn-cancel-match" class="btn-secondary" style="padding: 0.65rem 1.25rem; cursor: pointer;">
                   ${isEn ? 'Cancel' : 'Zrušit'}
                 </button>
-                <button type="button" id="btn-save-match" class="btn-primary" style="padding: 0.65rem 1.5rem; border-radius: 6px; font-weight: bold; cursor: pointer;">
+                <button type="button" id="btn-save-match" class="btn-primary" style="padding: 0.65rem 1.5rem; cursor: pointer;">
                   ${isEn ? 'Save Match' : 'Uložit partii'}
                 </button>
               </div>
@@ -5020,8 +5020,8 @@
                         </div>
                       </div>
 
-                      <button type="button" class="btn-del-match" data-id="${m.id}" title="${isEn ? 'Delete match' : 'Smazat záznam'}" style="background: none; border: 1.5px solid var(--border-color); border-radius: 6px; font-size: 0.85rem; color: var(--text-muted); cursor: pointer; padding: 0.35rem 0.65rem; transition: all 0.2s; font-weight: 700;">
-                        ✕ ${isEn ? 'Delete' : 'Smazat'}
+                      <button type="button" class="btn-del-match btn-close-western" data-id="${m.id}" title="${isEn ? 'Delete match' : 'Smazat záznam'}" aria-label="${isEn ? 'Delete match' : 'Smazat záznam'}">
+                        ✕
                       </button>
                     </div>
                   `;
@@ -5489,8 +5489,8 @@
                   ${isEn ? 'Pause' : 'Pozastavit'}
                 </button>
               `}
-              <button type="button" id="btn-timer-reset" style="padding: 0.75rem 1.4rem; border-radius: 30px; font-weight: bold; font-size: 1.1rem; cursor: pointer; background: var(--bg-surface); border: 1px solid var(--border-color);">
-                ${isEn ? 'Reset' : 'Reset'}
+              <button type="button" id="btn-timer-reset" class="btn-secondary" style="padding: 0.75rem 1.6rem; border-radius: 30px; font-weight: bold; font-size: 1.05rem; cursor: pointer;">
+                🔄 ${isEn ? 'Reset' : 'Reset'}
               </button>
             </div>
           </div>
@@ -6772,13 +6772,13 @@
 
             <!-- ACTIONS -->
             <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
-              <button type="button" id="btn-roulette-spin" class="tool-subnav-btn" style="padding: 0.65rem 1.25rem; font-size: 0.95rem; cursor: pointer; border-radius: 25px; font-weight: 700;">
+              <button type="button" id="btn-roulette-spin" class="btn-secondary" style="padding: 0.65rem 1.35rem; font-size: 0.95rem; cursor: pointer;">
                 🔄 ${isEn ? 'Spin Cylinder' : 'Protočit bubínek'}
               </button>
-              <button type="button" id="btn-roulette-trigger" class="tool-subnav-btn active" style="padding: 0.65rem 1.6rem; font-size: 1.05rem; cursor: pointer; border-radius: 25px; font-weight: 800; background: ${miniGamesState.rouletteStatus === 'boom' ? '#7f8c8d' : '#c0392b'}; color: #fff; box-shadow: 0 4px 12px rgba(192, 57, 43, 0.35);">
+              <button type="button" id="btn-roulette-trigger" class="btn-western-danger" style="padding: 0.7rem 1.8rem; font-size: 1.05rem; cursor: pointer;">
                 💥 ${isEn ? 'Pull Trigger!' : 'Stisknout spoušť!'}
               </button>
-              <button type="button" id="btn-roulette-reload" class="tool-subnav-btn" style="padding: 0.65rem 1.2rem; font-size: 0.92rem; cursor: pointer; border-radius: 25px;">
+              <button type="button" id="btn-roulette-reload" class="btn-secondary" style="padding: 0.65rem 1.3rem; font-size: 0.92rem; cursor: pointer;">
                 ⚙️ ${isEn ? 'Reload 6 Rounds' : 'Nové nabití'}
               </button>
             </div>
@@ -6839,7 +6839,7 @@
                     ? 'You fired before the signal! The trigger-happy gunslinger is disqualified.' 
                     : 'Vystřelil jsi dřív, než zazněl signál! Zbrklý pistolník byl diskvalifikován a prohrál rozstřel.'}
                 </p>
-                <button type="button" id="btn-duel-reset" class="tool-subnav-btn active" style="padding: 0.7rem 1.75rem; font-size: 1rem; font-weight: 800; cursor: pointer; border-radius: 25px;">
+                <button type="button" id="btn-duel-reset" class="btn-primary" style="padding: 0.75rem 2rem; font-size: 1.05rem; font-weight: 800; cursor: pointer;">
                   🔄 ${isEn ? 'Try Again' : 'Nový rozstřel'}
                 </button>
               </div>
@@ -6865,7 +6865,7 @@
                       : (isEn ? '💀 Boot Hill Corpse (Too slow for the Wild West!)' : '💀 Obyvatel Boot Hillu (Na Divokém západě jsi po smrti!)')
                   }
                 </div>
-                <button type="button" id="btn-duel-reset" class="tool-subnav-btn active" style="padding: 0.7rem 1.85rem; font-size: 1rem; font-weight: 800; cursor: pointer; border-radius: 25px;">
+                <button type="button" id="btn-duel-reset" class="btn-primary" style="padding: 0.75rem 2rem; font-size: 1.05rem; font-weight: 800; cursor: pointer;">
                   🔄 ${isEn ? 'New Duel' : 'Nový rozstřel'}
                 </button>
               </div>
