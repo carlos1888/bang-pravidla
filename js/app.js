@@ -5151,7 +5151,7 @@
                     <th style="padding: 0.65rem 0.75rem; text-align: center;">${isEn ? 'Wins' : 'Výhry'}</th>
                     <th style="padding: 0.65rem 0.75rem; text-align: center;">${isEn ? 'Kills' : 'Zářezy'}</th>
                     <th style="padding: 0.65rem 0.75rem; text-align: center;">${isEn ? 'Win Rate' : 'Úspěšnost'}</th>
-                    <th style="padding: 0.65rem 0.5rem; text-align: center; width: 44px;">${isEn ? 'Delete' : 'Smazat'}</th>
+                    <th style="padding: 0.65rem 0.5rem; text-align: center; width: 48px;">${isEn ? 'Remove' : 'Odebrat'}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -5186,8 +5186,8 @@
                             <td style="padding: 0.75rem; text-align: center; font-weight: 700; color: #27ae60;">${p.wins || 0}</td>
                             <td style="padding: 0.75rem; text-align: center; font-weight: 700; color: #c0392b;">${p.kills || 0}</td>
                             <td style="padding: 0.75rem; text-align: center; font-weight: 800;">${winRate}%</td>
-                            <td style="padding: 0.75rem 0.5rem; text-align: center;">
-                              <button type="button" class="btn-del-league-player" data-pid="${p.id}" data-pname="${p.name}" title="${isEn ? 'Remove player from league' : 'Odstranit hráče z ligy'}" style="background: none; border: 1.5px solid var(--border-color); border-radius: 6px; font-size: 0.85rem; color: #c0392b; cursor: pointer; padding: 0.3rem 0.55rem; font-weight: 700; transition: all 0.2s;">
+                            <td style="padding: 0.75rem 0.5rem; text-align: center; vertical-align: middle;">
+                              <button type="button" class="btn-del-league-player" data-pid="${p.id}" data-pname="${p.name}" title="${isEn ? 'Remove player from league' : 'Odebrat hráče z ligy'}" aria-label="${isEn ? 'Remove player' : 'Odebrat hráče'}">
                                 ✕
                               </button>
                             </td>
