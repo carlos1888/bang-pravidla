@@ -2239,7 +2239,7 @@
     return `
       <div class="afterlife-section-wrap" style="margin-top: 2rem;">
         <h3 style="color: var(--color-brown); font-size: 1.3rem; margin: 2rem 0 0.5rem;">
-          ${isEn ? 'Eliminated Players Assistant (Afterlife & Ghost Rules)' : 'Asistent pro vyřazené hráče (Pravidla po smrti a duchové)'}
+          ${isEn ? '4. Eliminated Players Assistant (Afterlife & Ghost Rules)' : '4. Asistent pro vyřazené hráče (Pravidla po smrti a duchové)'}
         </h3>
         <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1rem;">
           ${isEn 
@@ -2300,6 +2300,11 @@
     const mount = document.getElementById('afterlife-assistant-mount');
     if (mount) {
       mount.innerHTML = renderAfterlifeSection(isEn);
+    } else {
+      const fallbackWrap = document.createElement('div');
+      fallbackWrap.id = 'afterlife-assistant-mount';
+      fallbackWrap.innerHTML = renderAfterlifeSection(isEn);
+      els.pomocnikTarget.appendChild(fallbackWrap);
     }
 
     const btn = document.getElementById('btn-print-cheat-sheet-helper');
