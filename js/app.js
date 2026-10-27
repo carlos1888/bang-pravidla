@@ -5044,9 +5044,6 @@
 
               <!-- LEAGUE ACTIONS -->
               <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                <button type="button" id="btn-share-league-whatsapp" class="tool-subnav-btn active" style="font-size: 0.88rem; padding: 0.5rem 1rem; cursor: pointer; border-radius: 20px; font-weight: 700; background: #27ae60; color: #fff;">
-                  📲 ${isEn ? 'Copy Table for WhatsApp' : 'Kopírovat tabulku pro WhatsApp'}
-                </button>
                 <button type="button" id="btn-toggle-add-player" class="tool-subnav-btn" style="font-size: 0.88rem; padding: 0.5rem 0.9rem; cursor: pointer; border-radius: 20px;">
                   ➕ ${isEn ? 'Add Player' : 'Přidat hráče'}
                 </button>
@@ -5149,12 +5146,13 @@
                     <th style="padding: 0.65rem 0.75rem; text-align: center;">${isEn ? 'Wins' : 'Výhry'}</th>
                     <th style="padding: 0.65rem 0.75rem; text-align: center;">${isEn ? 'Kills' : 'Zářezy'}</th>
                     <th style="padding: 0.65rem 0.75rem; text-align: center;">${isEn ? 'Win Rate' : 'Úspěšnost'}</th>
+                    <th style="padding: 0.65rem 0.5rem; text-align: center; width: 44px;">${isEn ? 'Delete' : 'Smazat'}</th>
                   </tr>
                 </thead>
                 <tbody>
                   ${(leagueData.players || []).length === 0 ? `
                     <tr>
-                      <td colspan="7" style="text-align: center; padding: 2.5rem 1rem; color: var(--text-muted); font-style: italic; background: var(--bg-card); border-radius: 8px;">
+                      <td colspan="8" style="text-align: center; padding: 2.5rem 1rem; color: var(--text-muted); font-style: italic; background: var(--bg-card); border-radius: 8px;">
                         <div style="font-size: 1rem; font-weight: 700; color: var(--color-brown); margin-bottom: 0.35rem;">
                           ${isEn ? 'No players registered in the league yet!' : 'V lize zatím nejsou zapsáni žádní hráči!'}
                         </div>
@@ -5183,6 +5181,11 @@
                             <td style="padding: 0.75rem; text-align: center; font-weight: 700; color: #27ae60;">${p.wins || 0}</td>
                             <td style="padding: 0.75rem; text-align: center; font-weight: 700; color: #c0392b;">${p.kills || 0}</td>
                             <td style="padding: 0.75rem; text-align: center; font-weight: 800;">${winRate}%</td>
+                            <td style="padding: 0.75rem 0.5rem; text-align: center;">
+                              <button type="button" class="btn-del-league-player" data-pid="${p.id}" data-pname="${p.name}" title="${isEn ? 'Remove player from league' : 'Odstranit hráče z ligy'}" style="background: none; border: 1.5px solid var(--border-color); border-radius: 6px; font-size: 0.85rem; color: #c0392b; cursor: pointer; padding: 0.3rem 0.55rem; font-weight: 700; transition: all 0.2s;">
+                                ✕
+                              </button>
+                            </td>
                           </tr>
                         `;
                       }).join('')}
@@ -5218,19 +5221,22 @@
       });
     });
 
-    // Share League Standings Telegram Handler
-    const btnShareLeague = document.getElementById('btn-share-league-whatsapp');
-    if (btnShareLeague) {
-      btnShareLeague.addEventListener('click', () => {
-        if (league) {
-          const telegram = league.generateLeagueTelegram(leagueData, isEn);
-          copyTextToClipboard(
-            telegram,
-            isEn ? 'Season league table copied! Paste it into WhatsApp group.' : 'Ligová tabulka zkopírována! Můžete ji vložit do party na WhatsApp.'
-          );
+    // Delete League Player Handler
+    container.querySelectorAll('.btn-del-league-player').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const pid = btn.dataset.pid;
+        const pname = btn.dataset.pname || '';
+        const confirmMsg = isEn 
+          ? `Are you sure you want to remove ${pname} from the season league?`
+          : `Opravdu chcete odstranit hráče ${pname} z ligové sezóny?`;
+        if (confirm(confirmMsg)) {
+          if (league) {
+            league.removePlayer(pid);
+          }
+          renderMatchTracker(container);
         }
       });
-    }
+    });
 
     // Toggle Add Player Form
     const btnToggleAdd = document.getElementById('btn-toggle-add-player');
