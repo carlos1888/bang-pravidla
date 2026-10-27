@@ -1823,6 +1823,242 @@ main.app-main {
   letter-spacing: 0.3px;
 }
 
+/* ==========================================================================
+   UNIFIED WESTERN LIST STYLING (Rules, Cards, FAQ & Helpers)
+   ========================================================================== */
+.rules-article ul:not(.rules-toc-list),
+.disclosure-body ul,
+#pomocnik-target ul,
+.turn-stepper ul,
+.turn-step-card ul,
+.concept-card ul,
+.concept-item ul,
+.role-card ul,
+.role-rules ul,
+.callout ul,
+.expansion-detail-card ul,
+.phase-body ul,
+.characters-rules-grid ul,
+.rule-sublist,
+.card-synergies-card ul,
+.card-counters-card ul,
+.faq-verdict + ul {
+  list-style: none !important;
+  margin: 0.65rem 0 0.85rem 0 !important;
+  padding-left: 0.35rem !important;
+}
+
+.rules-article ul:not(.rules-toc-list) > li,
+.disclosure-body ul > li,
+#pomocnik-target ul > li,
+.turn-stepper ul > li,
+.turn-step-card ul > li,
+.concept-card ul > li,
+.concept-item ul > li,
+.role-card ul > li,
+.role-rules ul > li,
+.callout ul > li,
+.expansion-detail-card ul > li,
+.phase-body ul > li,
+.characters-rules-grid ul > li,
+.rule-sublist > li,
+.card-synergies-card ul > li,
+.card-counters-card ul > li,
+.faq-verdict + ul > li {
+  position: relative !important;
+  padding-left: 1.45rem !important;
+  margin-bottom: 0.45rem !important;
+  line-height: 1.55 !important;
+  font-size: 0.95rem;
+}
+
+.rules-article ul:not(.rules-toc-list) > li:last-child,
+.disclosure-body ul > li:last-child,
+#pomocnik-target ul > li:last-child,
+.turn-stepper ul > li:last-child,
+.turn-step-card ul > li:last-child,
+.concept-card ul > li:last-child,
+.concept-item ul > li:last-child,
+.role-card ul > li:last-child,
+.role-rules ul > li:last-child,
+.callout ul > li:last-child,
+.expansion-detail-card ul > li:last-child,
+.phase-body ul > li:last-child,
+.characters-rules-grid ul > li:last-child,
+.rule-sublist > li:last-child,
+.card-synergies-card ul > li:last-child,
+.card-counters-card ul > li:last-child,
+.faq-verdict + ul > li:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* Custom Western Bullet (Smooth brass dot) */
+.rules-article ul:not(.rules-toc-list) > li::before,
+.disclosure-body ul > li::before,
+#pomocnik-target ul > li::before,
+.turn-stepper ul > li::before,
+.turn-step-card ul > li::before,
+.concept-card ul > li::before,
+.concept-item ul > li::before,
+.role-card ul > li::before,
+.role-rules ul > li::before,
+.callout ul > li::before,
+.expansion-detail-card ul > li::before,
+.phase-body ul > li::before,
+.characters-rules-grid ul > li::before,
+.rule-sublist > li::before,
+.faq-verdict + ul > li::before {
+  content: '' !important;
+  position: absolute !important;
+  left: 0.25rem !important;
+  top: 0.62em !important;
+  width: 6px !important;
+  height: 6px !important;
+  border-radius: 50% !important;
+  background-color: var(--color-brown) !important;
+  box-shadow: 0 0 0 1.5px rgba(123, 60, 16, 0.25) !important;
+}
+
+[data-theme="dark"] .rules-article ul:not(.rules-toc-list) > li::before,
+[data-theme="dark"] .disclosure-body ul > li::before,
+[data-theme="dark"] #pomocnik-target ul > li::before,
+[data-theme="dark"] .turn-stepper ul > li::before,
+[data-theme="dark"] .turn-step-card ul > li::before,
+[data-theme="dark"] .concept-card ul > li::before,
+[data-theme="dark"] .concept-item ul > li::before,
+[data-theme="dark"] .role-card ul > li::before,
+[data-theme="dark"] .role-rules ul > li::before,
+[data-theme="dark"] .callout ul > li::before,
+[data-theme="dark"] .expansion-detail-card ul > li::before,
+[data-theme="dark"] .phase-body ul > li::before,
+[data-theme="dark"] .characters-rules-grid ul > li::before,
+[data-theme="dark"] .rule-sublist > li::before,
+[data-theme="dark"] .faq-verdict + ul > li::before {
+  background-color: var(--accent-gold) !important;
+  box-shadow: 0 0 0 1.5px rgba(212, 154, 0, 0.4) !important;
+}
+
+/* Specific card bullets in detail modal */
+.card-synergies-card ul > li::before {
+  background-color: #16a34a !important;
+  box-shadow: 0 0 0 1.5px rgba(22, 163, 74, 0.25) !important;
+}
+
+.card-counters-card ul > li::before {
+  background-color: #dc2626 !important;
+  box-shadow: 0 0 0 1.5px rgba(220, 38, 38, 0.25) !important;
+}
+
+/* Nested lists (Level 2) */
+.rules-article ul:not(.rules-toc-list) > li > ul,
+.disclosure-body ul > li > ul,
+#pomocnik-target ul > li > ul,
+.turn-stepper ul > li > ul,
+.concept-card ul > li > ul,
+.callout ul > li > ul {
+  margin: 0.35rem 0 0.45rem 0 !important;
+  padding-left: 0.5rem !important;
+}
+
+.rules-article ul:not(.rules-toc-list) > li > ul > li,
+.disclosure-body ul > li > ul > li,
+#pomocnik-target ul > li > ul > li,
+.turn-stepper ul > li > ul > li,
+.concept-card ul > li > ul > li,
+.callout ul > li > ul > li {
+  padding-left: 1.3rem !important;
+  font-size: 0.92rem !important;
+  margin-bottom: 0.35rem !important;
+}
+
+.rules-article ul:not(.rules-toc-list) > li > ul > li::before,
+.disclosure-body ul > li > ul > li::before,
+#pomocnik-target ul > li > ul > li::before,
+.turn-stepper ul > li > ul > li::before,
+.concept-card ul > li > ul > li::before,
+.callout ul > li > ul > li::before {
+  left: 0.2rem !important;
+  top: 0.65em !important;
+  width: 5px !important;
+  height: 5px !important;
+  background-color: transparent !important;
+  border: 1.5px solid var(--color-brown) !important;
+  border-radius: 50% !important;
+  box-shadow: none !important;
+}
+
+[data-theme="dark"] .rules-article ul:not(.rules-toc-list) > li > ul > li::before,
+[data-theme="dark"] .disclosure-body ul > li > ul > li::before,
+[data-theme="dark"] #pomocnik-target ul > li > ul > li::before,
+[data-theme="dark"] .turn-stepper ul > li > ul > li::before,
+[data-theme="dark"] .concept-card ul > li > ul > li::before,
+[data-theme="dark"] .callout ul > li > ul > li::before {
+  border-color: var(--accent-gold) !important;
+}
+
+/* Ordered lists styling */
+.rules-article ol,
+.disclosure-body ol,
+#pomocnik-target ol,
+.turn-stepper ol,
+.turn-step-card ol,
+.concept-card ol,
+.concept-item ol,
+.role-card ol,
+.callout ol,
+.phase-body ol,
+.phase-steps-list {
+  margin: 0.65rem 0 0.85rem 0 !important;
+  padding-left: 1.65rem !important;
+}
+
+.rules-article ol > li,
+.disclosure-body ol > li,
+#pomocnik-target ol > li,
+.turn-stepper ol > li,
+.turn-step-card ol > li,
+.concept-card ol > li,
+.concept-item ol > li,
+.role-card ol > li,
+.callout ol > li,
+.phase-body ol > li,
+.phase-steps-list > li {
+  padding-left: 0.35rem !important;
+  margin-bottom: 0.45rem !important;
+  line-height: 1.55 !important;
+  font-size: 0.95rem;
+}
+
+.rules-article ol > li::marker,
+.disclosure-body ol > li::marker,
+#pomocnik-target ol > li::marker,
+.turn-stepper ol > li::marker,
+.turn-step-card ol > li::marker,
+.concept-card ol > li::marker,
+.concept-item ol > li::marker,
+.role-card ol > li::marker,
+.callout ol > li::marker,
+.phase-body ol > li::marker,
+.phase-steps-list > li::marker {
+  font-family: var(--font-western);
+  font-weight: 800;
+  color: var(--color-brown);
+}
+
+[data-theme="dark"] .rules-article ol > li::marker,
+[data-theme="dark"] .disclosure-body ol > li::marker,
+[data-theme="dark"] #pomocnik-target ol > li::marker,
+[data-theme="dark"] .turn-stepper ol > li::marker,
+[data-theme="dark"] .turn-step-card ol > li::marker,
+[data-theme="dark"] .concept-card ol > li::marker,
+[data-theme="dark"] .concept-item ol > li::marker,
+[data-theme="dark"] .role-card ol > li::marker,
+[data-theme="dark"] .callout ol > li::marker,
+[data-theme="dark"] .phase-body ol > li::marker,
+[data-theme="dark"] .phase-steps-list > li::marker {
+  color: var(--accent-gold);
+}
+
 .rules-back-to-toc {
   margin-top: 1.75rem;
   padding-top: 1rem;
@@ -2067,17 +2303,10 @@ main.app-main {
   gap: 0.35rem;
 }
 
-.role-rules ul {
-  padding-left: 1.25rem;
-  font-size: 0.92rem;
+.role-rules {
   margin-top: 0.85rem;
   border-top: 1.5px dashed var(--border-color);
   padding-top: 0.65rem;
-  line-height: 1.5;
-}
-
-.role-rules li {
-  margin-bottom: 0.4rem;
 }
 
 /* Callouts / Alerts — Vintage Frontier Dispatches */
@@ -2266,11 +2495,6 @@ main.app-main {
   font-size: 0.94rem;
 }
 
-.concept-example ul {
-  padding-left: 1.2rem;
-  margin-top: 0.35rem;
-}
-
 /* Phase Cards in Turn Sequence */
 .phase-card {
   background: var(--bg-card);
@@ -2401,13 +2625,6 @@ main.app-main {
   font-size: 1.3rem;
   color: var(--color-brown);
   margin-bottom: 0.6rem;
-}
-
-.expansion-detail-card ul {
-  padding-left: 1.25rem;
-}
-.expansion-detail-card li {
-  margin-bottom: 0.4rem;
 }
 
 /* =========================================================================
@@ -3629,15 +3846,8 @@ footer.app-footer {
     margin-bottom: 0.5rem !important;
   }
 
-  .role-rules ul {
-    padding-left: 1.15rem !important;
-    font-size: 0.88rem !important;
-    line-height: 1.5 !important;
+  .role-rules {
     margin-top: 0.5rem !important;
-  }
-
-  .role-rules li {
-    margin-bottom: 0.3rem !important;
   }
 
   /* Setup Steps in Rules */
@@ -3732,10 +3942,6 @@ footer.app-footer {
     border-left-width: 3px !important;
   }
 
-  .concept-example ul {
-    padding-left: 1.15rem !important;
-    margin-top: 0.3rem !important;
-  }
 
   /* Phase Cards in Turn Sequence */
   .phase-card {
@@ -3837,10 +4043,6 @@ footer.app-footer {
     margin-bottom: 0.35rem !important;
   }
 
-  .callout ul {
-    padding-left: 1.15rem !important;
-  }
-
   .expansion-detail-card {
     padding: 1rem 0.85rem !important;
     margin: 0.85rem 0 !important;
@@ -3854,14 +4056,62 @@ footer.app-footer {
     margin-bottom: 0.4rem !important;
   }
 
-  .expansion-detail-card p,
-  .expansion-detail-card li {
+  .expansion-detail-card p {
     font-size: 0.88rem !important;
     line-height: 1.5 !important;
   }
 
-  .expansion-detail-card ul {
-    padding-left: 1.15rem !important;
+  /* Unified Western Mobile List Rules */
+  .rules-article ul:not(.rules-toc-list),
+  .disclosure-body ul,
+  #pomocnik-target ul,
+  .turn-stepper ul,
+  .turn-step-card ul,
+  .concept-card ul,
+  .concept-item ul,
+  .role-card ul,
+  .role-rules ul,
+  .callout ul,
+  .expansion-detail-card ul,
+  .phase-body ul,
+  .characters-rules-grid ul,
+  .rule-sublist {
+    margin: 0.5rem 0 0.65rem 0 !important;
+    padding-left: 0.2rem !important;
+  }
+
+  .rules-article ul:not(.rules-toc-list) > li,
+  .disclosure-body ul > li,
+  #pomocnik-target ul > li,
+  .turn-stepper ul > li,
+  .turn-step-card ul > li,
+  .concept-card ul > li,
+  .concept-item ul > li,
+  .role-card ul > li,
+  .role-rules ul > li,
+  .callout ul > li,
+  .expansion-detail-card ul > li,
+  .phase-body ul > li,
+  .characters-rules-grid ul > li,
+  .rule-sublist > li {
+    padding-left: 1.35rem !important;
+    font-size: 0.88rem !important;
+    line-height: 1.5 !important;
+    margin-bottom: 0.4rem !important;
+  }
+
+  .rules-article ol,
+  .disclosure-body ol,
+  #pomocnik-target ol,
+  .turn-stepper ol,
+  .turn-step-card ol,
+  .concept-card ol,
+  .concept-item ol,
+  .role-card ol,
+  .callout ol,
+  .phase-body ol,
+  .phase-steps-list {
+    padding-left: 1.4rem !important;
   }
 
   /* --- FAQ Section & Conflict Arbitrator --- */
